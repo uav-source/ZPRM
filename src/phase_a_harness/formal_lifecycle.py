@@ -13,7 +13,8 @@ import os
 import shlex
 import stat
 import time
-from collections import Counter, defaultdict
+from collections import Counter, defaultdict, deque
+from concurrent.futures import Future, ThreadPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping
@@ -53,6 +54,14 @@ RUN_MANIFEST_SCHEMA = "version_agnostic_formal_run_manifest_v1"
 INVOCATION_REPORT_SCHEMA = "version_agnostic_formal_invocation_report_v1"
 POSTRUN_RESULT_SCHEMA = "version_agnostic_formal_postrun_result_v1"
 _REQUESTED_MODES = frozenset({"fresh", "resume"})
+_PRE_EXECUTION_EVIDENCE_FILES = frozenset(
+    {
+        "environment_report.json",
+        "preflight_report.json",
+        "smoke_qualification_report.json",
+        "source_asset_hashes_before.json",
+    }
+)
 
 
 class FormalLifecycleError(RuntimeError):
@@ -97,6 +106,36 @@ def _safe_invocation_id(value: str) -> str:
     ):
         raise ValueError("invocation_id must be one safe canonical name")
     return value
+
+
+def _persist_pre_execution_evidence(
+    spec: FormalLifecycleSpec,
+    evidence: Mapping[str, Mapping[str, Any]] | None,
+) -> None:
+    """Commit caller-supplied audit evidence before scientific work starts."""
+
+    if evidence is None:
+        return
+    if not isinstance(evidence, Mapping) or set(evidence) != set(
+        _PRE_EXECUTION_EVIDENCE_FILES
+    ):
+        raise FormalLifecycleError(
+            "pre-execution evidence file inventory is invalid"
+        )
+    for name in sorted(_PRE_EXECUTION_EVIDENCE_FILES):
+        value = _mapping(evidence[name], label=f"pre-execution evidence {name}")
+        path = spec.paths.runtime_root / name
+        if path.exists():
+            if path.is_symlink() or not path.is_file():
+                raise FormalLifecycleError(
+                    "pre-execution evidence path is unsafe"
+                )
+            if read_canonical_json(path) != value:
+                raise FormalLifecycleError(
+                    "pre-execution evidence changed across resume"
+                )
+        else:
+            atomic_create_canonical_json(path, value)
 
 
 def _canonical_command(
@@ -491,6 +530,27 @@ def _validate_manifest_entry(
     )
 
 
+@dataclass(frozen=True)
+class _PendingBackendTrial:
+    trial_id: str
+    trial_row: dict[str, Any]
+    backend: str
+    binding: Any
+    backend_input: Any
+    common: dict[str, Any]
+    result_path: Path
+
+
+def _call_pending_backend(trial: _PendingBackendTrial) -> Any:
+    """Run only the authorized backend operation in an executor thread."""
+
+    return _call(
+        trial.binding,
+        backend_input=trial.backend_input,
+        common=trial.common,
+    )
+
+
 def _execute_trials(
     validated: ValidatedFormalLifecycleSpec,
     *,
@@ -533,6 +593,7 @@ def _execute_trials(
     executed: list[str] = []
     skipped: list[str] = []
     recovered: list[str] = []
+    pending_trials: list[_PendingBackendTrial] = []
     for trial_id, trial_row in plan_by_id.items():
         validated_trial = _mapping(
             _call(spec.components.trial_validator, row=trial_row),
@@ -595,54 +656,96 @@ def _execute_trials(
             completed[trial_id] = payload
             skipped.append(trial_id)
             continue
-        append_event_v2(
-            spec.paths.event_log,
-            run_id=spec.run_id,
-            invocation_id=invocation_id,
-            event_type="STARTED",
-            planned_trial_id=trial_id,
-            backend=str(trial_row["backend"]),
-        )
         backend = str(trial_row["backend"])
         binding = spec.components.backend_registry.get(backend)
         if binding is None:
             raise PermissionError(f"backend is not authorized: {backend}")
-        value = _call(binding, backend_input=backend_input, common=common)
-        payload = _mapping(
-            _call(
-                spec.components.result_validator,
-                spec=spec,
+        pending_trials.append(
+            _PendingBackendTrial(
+                trial_id=trial_id,
                 trial_row=trial_row,
+                backend=backend,
+                binding=binding,
+                backend_input=backend_input,
                 common=common,
-                value=value,
-            ),
-            label="trial result",
+                result_path=result_path,
+            )
         )
-        atomic_create_bytes(result_path, canonical_json_bytes(payload))
-        entry = {
-            "path": result_path.name,
-            "planned_trial_id": trial_id,
-            "sha256": _file_sha256(result_path),
-        }
-        raw_manifest["results"][trial_id] = entry
-        atomic_replace_canonical_json(spec.paths.raw_manifest, raw_manifest)
-        append_event_v2(
-            spec.paths.event_log,
-            run_id=spec.run_id,
-            invocation_id=invocation_id,
-            event_type="COMPLETED",
-            planned_trial_id=trial_id,
-            backend=backend,
-            result_sha256=str(entry["sha256"]),
-        )
-        completed[trial_id] = payload
-        executed.append(trial_id)
-        _write_progress(
-            spec,
-            phase="trial",
-            committed_id=trial_id,
-            committed_count=len(executed),
-        )
+
+    # Authenticate the complete resume/orphan inventory before starting any new
+    # scientific backend call.  Only the backend operation runs in executor
+    # threads; result validation and every durable write remain ordered on this
+    # single-writer lifecycle thread.
+    remaining = iter(pending_trials)
+    in_flight: deque[tuple[_PendingBackendTrial, Future[Any]]] = deque()
+    with ThreadPoolExecutor(
+        max_workers=spec.workers,
+        thread_name_prefix="formal-backend",
+    ) as executor:
+
+        def submit_next() -> bool:
+            try:
+                trial = next(remaining)
+            except StopIteration:
+                return False
+            append_event_v2(
+                spec.paths.event_log,
+                run_id=spec.run_id,
+                invocation_id=invocation_id,
+                event_type="STARTED",
+                planned_trial_id=trial.trial_id,
+                backend=trial.backend,
+            )
+            in_flight.append(
+                (trial, executor.submit(_call_pending_backend, trial))
+            )
+            return True
+
+        for _index in range(min(spec.workers, len(pending_trials))):
+            submit_next()
+
+        while in_flight:
+            trial, future = in_flight.popleft()
+            value = future.result()
+            payload = _mapping(
+                _call(
+                    spec.components.result_validator,
+                    spec=spec,
+                    trial_row=trial.trial_row,
+                    common=trial.common,
+                    value=value,
+                ),
+                label="trial result",
+            )
+            atomic_create_bytes(
+                trial.result_path,
+                canonical_json_bytes(payload),
+            )
+            entry = {
+                "path": trial.result_path.name,
+                "planned_trial_id": trial.trial_id,
+                "sha256": _file_sha256(trial.result_path),
+            }
+            raw_manifest["results"][trial.trial_id] = entry
+            atomic_replace_canonical_json(spec.paths.raw_manifest, raw_manifest)
+            append_event_v2(
+                spec.paths.event_log,
+                run_id=spec.run_id,
+                invocation_id=invocation_id,
+                event_type="COMPLETED",
+                planned_trial_id=trial.trial_id,
+                backend=trial.backend,
+                result_sha256=str(entry["sha256"]),
+            )
+            completed[trial.trial_id] = payload
+            executed.append(trial.trial_id)
+            _write_progress(
+                spec,
+                phase="trial",
+                committed_id=trial.trial_id,
+                committed_count=len(executed),
+            )
+            submit_next()
     expected_ids = set(plan_by_id)
     if set(raw_manifest["results"]) != expected_ids or set(completed) != expected_ids:
         raise FormalLifecycleError("formal trial matrix is incomplete")
@@ -775,6 +878,7 @@ def execute_formal_lifecycle(
     *,
     requested_mode: str,
     invocation_id: str | None = None,
+    pre_execution_evidence: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> CompletedFormalRun:
     """Execute one fresh or resume invocation through the sole lifecycle."""
 
@@ -822,6 +926,7 @@ def execute_formal_lifecycle(
         )
         if seed_gate.get("seed_entry_lock_gate_pass") is not True:
             raise FormalLifecycleError("immutable lifecycle entry lock failed")
+        _persist_pre_execution_evidence(spec, pre_execution_evidence)
         spec.paths.temporary_inventory.mkdir(parents=True, exist_ok=True)
         _record_git_gate(spec, "PRE_RUN_GIT_GATE", pre_gate)
         post_lock = _git_gate(spec, "POST_LOCK_GIT_GATE")
@@ -853,6 +958,30 @@ def execute_formal_lifecycle(
             or pairing["completed_trial_count"] != len(spec.trial_plan)
         ):
             raise FormalLifecycleError("completed result pairing failed")
+        seed_access_count = base_contract.get(
+            "confirmatory_seed_access_count"
+        )
+        contract_rng_instantiation_count = base_contract.get(
+            "confirmatory_rng_instantiation_count",
+            0,
+        )
+        lock_value = lock_report.get("lock")
+        rng_instantiation_count = (
+            lock_value.get("confirmatory_rng_instantiation_count")
+            if type(lock_value) is dict
+            else None
+        )
+        if any(
+            type(value) is not int or type(value) is bool or value < 0
+            for value in (
+                seed_access_count,
+                contract_rng_instantiation_count,
+                rng_instantiation_count,
+            )
+        ) or contract_rng_instantiation_count != rng_instantiation_count:
+            raise FormalLifecycleError(
+                "immutable run contract or snapshot lock lacks stable counters"
+            )
         run_manifest = {
             "schema_version": RUN_MANIFEST_SCHEMA,
             "run_id": spec.run_id,
@@ -872,12 +1001,10 @@ def execute_formal_lifecycle(
             "formal_command_log_sha256": transition["command_binding"][
                 "command_log_sha256"
             ],
-            "formal_confirmatory_seed_access_count": snapshots[
-                "confirmatory_seed_access_count_this_invocation"
-            ],
-            "confirmatory_rng_instantiation_count_this_invocation": snapshots[
-                "confirmatory_rng_instantiation_count_this_invocation"
-            ],
+            "formal_confirmatory_seed_access_count": seed_access_count,
+            "confirmatory_rng_instantiation_count_this_invocation": (
+                rng_instantiation_count
+            ),
             "native_execution_count": 0,
             "complete": True,
         }

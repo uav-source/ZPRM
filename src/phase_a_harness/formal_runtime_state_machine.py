@@ -79,6 +79,17 @@ _RESUMABLE_TOP_LEVEL = frozenset(
     {
         *_BOOTSTRAP_TOP_LEVEL,
         IMMUTABLE_RUN_LOCK_NAME,
+        # Version-specific lifecycle adapters may persist audit-only evidence
+        # beside the version-neutral runtime payload.  These names are files,
+        # never directories, and cannot replace any core lock/result path.
+        "completeness_report.json",
+        "environment_report.json",
+        "preflight_report.json",
+        "run_summary.json",
+        "run_summary.md",
+        "smoke_qualification_report.json",
+        "source_asset_hashes_after.json",
+        "source_asset_hashes_before.json",
         "analysis",
         "artifact_staging",
         "backend_tmp",

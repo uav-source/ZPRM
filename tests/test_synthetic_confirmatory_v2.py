@@ -73,6 +73,25 @@ V1_BUNDLE = Path(
 V1_BUNDLE_SHA = "21e803756da78c3bf06a93d957c0395850a36d6cf119b23cd00c88ab927dcb72"
 
 
+def _source_only_package() -> bool:
+    return "formal_runtime_artifacts_included=false" in (
+        ROOT / "SOURCE_STATE.txt"
+    ).read_text(encoding="utf-8")
+
+
+def _require_historical_commit() -> None:
+    result = subprocess.run(
+        ["git", "cat-file", "-e", f"{BASE_COMMIT}^{{commit}}"],
+        cwd=ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    if result.returncode != 0 and _source_only_package():
+        pytest.skip("source-only ZIP excludes the historical v2 Git object")
+    assert result.returncode == 0
+
+
 @pytest.fixture(scope="session")
 def ideal_snapshot() -> dict[str, object]:
     return build_development_ideal_qualification_snapshot(
@@ -125,6 +144,9 @@ def _ast_sha(path: Path, function: str) -> str:
 
 
 def test_v1_failure_archive_is_preserved() -> None:
+    if not V1_BUNDLE.is_file() and _source_only_package():
+        pytest.skip("source-only ZIP excludes the historical v1 failure bundle")
+    _require_historical_commit()
     assert V1_BUNDLE.is_file()
     assert file_sha256(V1_BUNDLE) == V1_BUNDLE_SHA
     assert subprocess.run(
@@ -187,6 +209,7 @@ def test_v2_namespace_and_seed_sets_are_collision_free() -> None:
 
 
 def test_v2_static_seed_provenance_audit_is_exact_and_constructor_free() -> None:
+    _require_historical_commit()
     report = audit_v2_seed_provenance(ROOT)
     assert report["STATIC_V2_SEED_PROVENANCE_AUDIT_PASS"] is True
     assert report["NEW_V2_NAMESPACE_COLLISION"] is False
@@ -265,6 +288,7 @@ def test_frozen_model_and_backend_implementations_are_unchanged() -> None:
     assert file_sha256(ROOT / contract.PCL_CLI_RELATIVE) == (
         "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff"
     )
+    _require_historical_commit()
     baseline = subprocess.check_output(
         ["git", "show", f"{BASE_COMMIT}:src/phase_a_harness/open3d_backend.py"],
         cwd=ROOT,
@@ -524,6 +548,7 @@ def test_development_nonideal_scientific_payload_is_byte_exact(
 
 
 def test_v1_and_v2_manifests_are_explicitly_version_selected() -> None:
+    _require_historical_commit()
     v1_path = ROOT / "frozen_assets/synthetic_confirmatory_formal_manifest_v1.json"
     baseline = subprocess.check_output(
         ["git", "show", f"{BASE_COMMIT}:{v1_path.relative_to(ROOT).as_posix()}"],

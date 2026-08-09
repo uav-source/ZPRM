@@ -6,6 +6,8 @@ import subprocess
 from pathlib import Path
 from typing import Any, Mapping
 
+import pytest
+
 from phase_a_harness.execution_context import ExecutionContextError
 from phase_a_harness import synthetic_confirmatory_v3_contract as contract
 from phase_a_harness import synthetic_confirmatory_v3_snapshot_builder as reader
@@ -40,14 +42,24 @@ def _sha256(path: Path) -> str:
 
 
 def _git_source(path: str) -> str:
-    return subprocess.run(
+    result = subprocess.run(
         ["git", "show", f"{BASELINE_COMMIT}:{path}"],
         cwd=REPOSITORY,
-        check=True,
+        check=False,
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
-    ).stdout
+    )
+    if result.returncode != 0:
+        source_state = (REPOSITORY / "SOURCE_STATE.txt").read_text(
+            encoding="utf-8"
+        )
+        if "formal_runtime_artifacts_included=false" in source_state:
+            pytest.skip(
+                "source-only ZIP excludes the historical Git baseline object"
+            )
+        result.check_returncode()
+    return result.stdout
 
 
 def _function(tree: ast.Module, name: str) -> ast.FunctionDef:

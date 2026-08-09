@@ -50,6 +50,17 @@ from phase_a_harness.phase_a_trial_result_schema import OPEN3D_BACKEND
 from phase_a_harness.phase_a_trial_result_schema import canonical_json_bytes
 
 
+def _source_only_package() -> bool:
+    return "formal_runtime_artifacts_included=false" in (
+        ROOT / "SOURCE_STATE.txt"
+    ).read_text(encoding="utf-8")
+
+
+def _skip_source_only_exclusion(reason: str) -> None:
+    if _source_only_package():
+        pytest.skip(reason)
+
+
 def test_six_conditions_are_exact_and_only_five_are_new() -> None:
     assert ALL_CONDITIONS == (
         "IDEAL_MATCHED",
@@ -174,6 +185,17 @@ def test_phase_b_overlap_retains_all_published_snapshot_and_trial_ids() -> None:
         repeat_index=0,
         condition="FULL_NOISE",
     ) == "phase-b-signal-v1/LONG_CORRIDOR/g1/FULL_NOISE"
+    tag = subprocess.run(
+        ["git", "rev-parse", f"{protocol_module.PHASE_B_PASS_TAG}^{{commit}}"],
+        cwd=ROOT,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    if tag.returncode != 0:
+        _skip_source_only_exclusion(
+            "source-only ZIP excludes the historical Phase B tag object"
+        )
     archive = verify_phase_b_pass_archive(ROOT)
     assert archive["PHASE_B_PASS_ARCHIVE_VALID"] is True
     assert archive["phase_b_pass_tag_commit"] == protocol_module.BASELINE_COMMIT
@@ -192,6 +214,10 @@ def test_phase_b_overlap_retains_all_published_snapshot_and_trial_ids() -> None:
 
 
 def test_phase_a_ideal_import_is_read_only_and_complete() -> None:
+    if not (ROOT / "results/formal_phase_a_v1/raw_result_manifest.json").is_file():
+        _skip_source_only_exclusion(
+            "source-only ZIP excludes the historical formal Phase A results"
+        )
     report = verify_phase_a_ideal_import(ROOT, write_report=False)
     assert report["PHASE_A_IDEAL_IMPORT_PASS"] is True
     assert report["completed_snapshot_count"] == 210
@@ -489,6 +515,10 @@ def test_unauthorized_manifest_has_no_future_gate_report_cycle(
 def test_authorization_rejects_forged_gate_report(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    if not (ROOT / "results/phase_b_signal_v1/raw_result_manifest.json").is_file():
+        _skip_source_only_exclusion(
+            "source-only ZIP excludes the historical Phase B raw results"
+        )
     (tmp_path / "frozen_assets").mkdir()
     base = {
         "formal_execution_authorized": False,
