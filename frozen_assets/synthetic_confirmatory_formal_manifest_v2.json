@@ -1,0 +1,292 @@
+{
+  "artifact_inventory_version": "7_tables_3_figures_7_root_files_v1",
+  "artifact_schema": "synthetic_confirmatory_formal_artifact_v2",
+  "backend_count": 2,
+  "bootstrap_seed": 146517424,
+  "bound_files": {
+    "attempt_events": {
+      "path": "src/phase_a_harness/phase_a_attempt_events.py",
+      "sha256": "2b1ec95dc1c300fdcc7285a5cc26da1508c2766bd8cd2360db7a16a25c8f8d0d"
+    },
+    "backend_execution": {
+      "path": "src/phase_a_harness/phase_a_execution_chain_audit.py",
+      "sha256": "a0ffa3a6ef1d4afb98e124981f5712d23cf27b632efc362ba84447459e23105c"
+    },
+    "backend_metrics": {
+      "path": "src/phase_a_harness/backend_phase_a_metrics.py",
+      "sha256": "1ca6cdf0529e4f26e67dce30a8f49793f8d7a0425fa289adec062c67bd1b2816"
+    },
+    "backend_parameter_contract": {
+      "path": "frozen_assets/backend_parameter_contract.json",
+      "sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+    },
+    "backend_types": {
+      "path": "src/phase_a_harness/types.py",
+      "sha256": "f74527d30e10da4d729de33ae072cc31af65519fe1d9162ea522568fbae20cc2"
+    },
+    "common_association": {
+      "path": "src/phase_a_harness/common_association_analysis.py",
+      "sha256": "458190c26d8640353004663474adb64305d1193d89ff0dc68f71f404de8f175d"
+    },
+    "fixture_artifact_verifier": {
+      "path": "src/phase_a_harness/fixture_publication_artifact_verifier.py",
+      "sha256": "d523d2f8b714072a917d3866aa7fb1ed6ad980982ea99634ce51d54dbb1638cd"
+    },
+    "fixture_backend_parameter_lock": {
+      "path": "frozen_assets/fixtures/fixture_backend_parameter_lock.json",
+      "sha256": "dfaf0e15f569a41acacfab1bc660c08e31007e70173f5bc02e60d3ec56b28d0c"
+    },
+    "fixture_plan": {
+      "path": "frozen_assets/fixtures/fixture_plan.json",
+      "sha256": "b2476717464d6e1df46b8bc5f95782de740544bbdaa82d524b51d617bce9f005"
+    },
+    "fixture_publication": {
+      "path": "src/phase_a_harness/fixture_publication.py",
+      "sha256": "2291eeec440dd80e33ed5efde6c4c9d3e28971edf51c3a2801ef1ca0c1f58126"
+    },
+    "fixture_qualification": {
+      "path": "src/phase_a_harness/fixture_qualification.py",
+      "sha256": "8ec4477d4e4818fcd7de324f0484b5cd26f71181970d30ba9da07cc555354157"
+    },
+    "fixture_snapshot_lock": {
+      "path": "frozen_assets/fixtures/fixture_snapshot_lock.json",
+      "sha256": "8c3e4ff9fcd8ec18903e468cd126ecf9edf0f5e6a5dc0e6c8087b1a208967949"
+    },
+    "frozen_model": {
+      "path": "frozen_assets/confirmatory_development_trained_models_v1.json",
+      "sha256": "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872"
+    },
+    "frozen_model_inference": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_models.py",
+      "sha256": "2320d95da617d8972ad89d721ec2e68c62ea0ca9d1b9bf4562b0d8ce866cf6f7"
+    },
+    "full_synthetic_backend_execution": {
+      "path": "src/phase_a_harness/full_synthetic_backend_execution.py",
+      "sha256": "5620f1c4da91ef234492817901a3561f54080646ed9756b2dea54bd9c280c7b5"
+    },
+    "full_synthetic_snapshot_builder": {
+      "path": "src/phase_a_harness/full_synthetic_snapshot_builder.py",
+      "sha256": "419b613e85ccf955bd23d3f68a65ca93ca132203800c77f808aff6b92660bf7c"
+    },
+    "gate_contract": {
+      "path": "protocols/synthetic_confirmatory_gate_contract_v2.json",
+      "sha256": "d467f3f0582feb4d5930827ecdaf5ee2fb6da32bc4bee2933a547e74ffed9ed6"
+    },
+    "generator": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/capture_range/day2_development_scene.py",
+      "sha256": "f1632095ab6c433e1e917cf0c9a49551683fce2f106761d41c3c3a5e6517b922"
+    },
+    "generator_capture_init": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/capture_range/__init__.py",
+      "sha256": "776afd1fbb613d17f6b9421f21bb7aa80516a4ca7355fbf326f840acafc69aa7"
+    },
+    "generator_capture_protocol": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/capture_range/day2_development_protocol.py",
+      "sha256": "f284008f9a459d2dc330d119c57c90a109bfe417be5a5852ea980971a0e26bd3"
+    },
+    "generator_capture_types": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/capture_range/types.py",
+      "sha256": "649dc0ce4df1783ac8bea5b76599621149eda83beca0be07c321de4a96632204"
+    },
+    "generator_package_init": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/__init__.py",
+      "sha256": "cc92d0812ccc135964157d8800699cb4f16354d940b0d68549505577ef84d453"
+    },
+    "generator_wrapper": {
+      "path": "src/phase_a_harness/phase_b_generator.py",
+      "sha256": "7f38a51880b225dfcd9756cd83649c510d88c6c3eeddeb5b51e5061177386fe1"
+    },
+    "generator_zero_init": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/zero_perturbation/__init__.py",
+      "sha256": "6abf26b1a1adb16b2875096c6e0ab23051e5fd8121fedfa7e940b2378917fc27"
+    },
+    "generator_zero_protocol": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/zero_perturbation/protocol.py",
+      "sha256": "b744409a669cdea7f14b5e6b3ed0a10f7dbf488c19d5b3e98a11b734faed28f7"
+    },
+    "generator_zero_snapshot_builder": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/zero_perturbation/snapshot_builder.py",
+      "sha256": "6718fc442439e52327e01622df6356a0167456a6d7d8070f25d6e684ef69b72e"
+    },
+    "generator_zero_types": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/zero_perturbation/types.py",
+      "sha256": "f74527d30e10da4d729de33ae072cc31af65519fe1d9162ea522568fbae20cc2"
+    },
+    "independent_scientific_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_independent_verifier.py",
+      "sha256": "f8e80b600121d3089bf7ccbb1951f68147fd617394d6f2618af403992286eb39"
+    },
+    "open3d_adapter": {
+      "path": "src/phase_a_harness/open3d_backend.py",
+      "sha256": "eb327dd5d13f7cf099469e5e1a315e23c41d593cd7301d278135b4276b9f255f"
+    },
+    "pcl_adapter": {
+      "path": "src/phase_a_harness/pcl_backend.py",
+      "sha256": "25e45b31bc90c93bc578104c994992c3f913437b12bf46389a8380d1d06b9e31"
+    },
+    "pcl_cli": {
+      "path": "bin/pcl_point_to_plane_cli",
+      "sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff"
+    },
+    "phase_a_lineage": {
+      "path": "src/phase_a_harness/phase_b_generator_frozen/zero_perturbation/backend_phase_a_v1_2.py",
+      "sha256": "6d65af2050472f9626f12254970204a164c808a27af84d3d6a4d46757583cfff"
+    },
+    "planned_snapshots": {
+      "path": "protocols/synthetic_confirmatory_planned_snapshots_v2.csv",
+      "sha256": "ce532d407a9c182f3731bef6f8b4d3776866ae0148b0bd9f65528973072aa5bf"
+    },
+    "planned_trials": {
+      "path": "protocols/synthetic_confirmatory_planned_trials_v2.csv",
+      "sha256": "45646416ca8772caad20a9c6b23043f4bc704279e9e71a3628688367578c3b26"
+    },
+    "primary_scientific_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_analysis.py",
+      "sha256": "2c00e898e30f2394e71b412a4ce554a4324238d6a1efb9123f3f0e8f32b6c145"
+    },
+    "rotation_metrics": {
+      "path": "src/phase_a_harness/rotation_metrics.py",
+      "sha256": "0ed2f040d275f013e26cfc3d9be0610511be436ba512333fed610daa663ffb8a"
+    },
+    "scientific_protocol": {
+      "path": "protocols/synthetic_confirmatory_protocol_v2.json",
+      "sha256": "112abbbebb1e2b39fb2aab07df97cd311fa6621797d74866d798b874738632fa"
+    },
+    "scientific_protocol_document": {
+      "path": "protocols/synthetic_confirmatory_protocol_v2.md",
+      "sha256": "8fc489a31116506bc0e2e7da298b18c2ae0877a7043374e448616d849908d182"
+    },
+    "seed_schedule": {
+      "path": "frozen_assets/synthetic_confirmatory_v2_seed_schedule.json",
+      "sha256": "cfa7c14d6a45cc0f5a67c4ccfdd1941cbcefa4280111bfd23cc2585975c5b59a"
+    },
+    "trial_result_writer": {
+      "path": "src/phase_a_harness/phase_a_trial_result_writer.py",
+      "sha256": "219fd433828439348d75dc392f2c0d3a31134632d3dcfddf6b0c378c8dc89e19"
+    },
+    "trial_resume": {
+      "path": "src/phase_a_harness/phase_a_trial_resume.py",
+      "sha256": "1be089aec982a3b7fd0c3302153c9e42c08e312c5916dc111f60d39aa4abac95"
+    },
+    "trial_schema": {
+      "path": "frozen_assets/trial_result_schema.json",
+      "sha256": "4d1b9da79d11b36b19350bec1c0b9eb84fc64a3699be682a4eecca684b451773"
+    },
+    "trial_schema_validator": {
+      "path": "src/phase_a_harness/phase_a_trial_result_schema.py",
+      "sha256": "6b252e07b41e9b2eb8cc1cf0bef735c6411d98587015928e0f544477e54a2c70"
+    },
+    "v2_analysis": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_analysis.py",
+      "sha256": "183ed8b8c352214345cf4add7c856982955bfbd8070a59bd5036b17e4c461f8c"
+    },
+    "v2_analysis_script": {
+      "path": "scripts/analyze_synthetic_confirmatory_v2.py",
+      "sha256": "bf6838d630d0c2b44e6fb22bec71aac5558ae727347a308257fffdf0b92814f4"
+    },
+    "v2_artifact_verifier": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_artifact_verifier.py",
+      "sha256": "7f7f38fdbb5e16cc6ac7cf6b3b4e46f5c0880351f586dd89242a9bc4c4038a52"
+    },
+    "v2_asset_freezer_script": {
+      "path": "scripts/freeze_synthetic_confirmatory_v2.py",
+      "sha256": "7b4989765a0860c73889ff957febd253f3e53273d92a8ceef17b68afba6ab1be"
+    },
+    "v2_contract": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_contract.py",
+      "sha256": "e86c9adb48058e81b361aab0f16b3740fe029b53fde1fa87cf3cf9ea2a0adc19"
+    },
+    "v2_independent_verifier": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_independent_verifier.py",
+      "sha256": "4f136a7e1fd025c6a848bfeafa6b96a9c5b643525fa86fa24360e71a6c2ff2d2"
+    },
+    "v2_prerun": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_prerun.py",
+      "sha256": "db4741261f7792619dd289900e69a97a140abff65add8ac233297dfbc8c7169f"
+    },
+    "v2_publisher": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_publisher.py",
+      "sha256": "5e6bfebbcc23545609b9ea8528d08a5d8443cff748b8ba6d0cf719b417ffc217"
+    },
+    "v2_publisher_script": {
+      "path": "scripts/publish_synthetic_confirmatory_v2.py",
+      "sha256": "4280e9db22cab34ae4a903423670ff8e00f45e4e6ca1704885dd58521b29dec3"
+    },
+    "v2_qualification": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_qualification.py",
+      "sha256": "ce921c8f64ae9b399417c74785e1371f5ce450b8859944719b5e4d01d46e929d"
+    },
+    "v2_qualification_script": {
+      "path": "scripts/qualify_synthetic_confirmatory_v2.py",
+      "sha256": "4eb4466f9810e72a7028d398ce1e969a4bbd19d69c2c39f34178a09f105726bd"
+    },
+    "v2_runner": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_runner.py",
+      "sha256": "24a88c7ec684d3d2a1d8c43cc410857d0b1f9d9135d37df3d990b58de9232df6"
+    },
+    "v2_runner_script": {
+      "path": "scripts/run_synthetic_confirmatory_v2.py",
+      "sha256": "5b40d77d81f799db0e39fa19a82de3b54651649047aba73ff296b11c30e74ebe"
+    },
+    "v2_seed_provenance_audit": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_seed_audit.py",
+      "sha256": "35196dcc81113840cf94f75e95afa3745a39e0911cad45213c1cb8e00c2bdc72"
+    },
+    "v2_snapshot_builder": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_snapshot_builder.py",
+      "sha256": "4286a485055e5bb9578fe0698163fa63431a55d1e1666bced9c526118694f199"
+    },
+    "v2_verifier_script": {
+      "path": "scripts/verify_synthetic_confirmatory_v2.py",
+      "sha256": "851e0d3669de921296d916adc0052dea55af272a030787031ccf7a9775b043b6"
+    }
+  },
+  "formal_branch": "fix/zero-perturbation-confirmatory-ideal-lineage",
+  "formal_execution_authorized": true,
+  "formal_output_dir": "results/synthetic_confirmatory_v2",
+  "formal_pre_run_tag": "archive/zero-perturbation-synthetic-confirmatory-v2-pre-run-pass",
+  "formal_run_id": "synthetic-confirmatory-v2",
+  "formal_workers": 2,
+  "frozen_model_path": "frozen_assets/confirmatory_development_trained_models_v1.json",
+  "frozen_model_sha256": "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872",
+  "gate_contract_path": "protocols/synthetic_confirmatory_gate_contract_v2.json",
+  "gate_contract_sha256": "d467f3f0582feb4d5930827ecdaf5ee2fb6da32bc4bee2933a547e74ffed9ed6",
+  "geometry_seeds": [
+    1632408808,
+    2098780325,
+    2113923543,
+    143826534,
+    1099133161
+  ],
+  "manifest_payload_sha256": "52334995e5d5e5103c95f45cb0e3c0ad49777ef6ab6b243914016baac537680a",
+  "manifest_schema": "synthetic_confirmatory_formal_manifest_v2",
+  "manifest_version": "2",
+  "measurement_seeds": [
+    740417430,
+    23963997,
+    925756274
+  ],
+  "native_trial_count": 0,
+  "open3d_parameter_sha256": "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413",
+  "open3d_version": "0.19.0+b012259",
+  "pcl_parameter_sha256": "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd",
+  "pcl_version": "1.15.1",
+  "planned_snapshot_count": 595,
+  "planned_snapshots_path": "protocols/synthetic_confirmatory_planned_snapshots_v2.csv",
+  "planned_snapshots_sha256": "ce532d407a9c182f3731bef6f8b4d3776866ae0148b0bd9f65528973072aa5bf",
+  "planned_trial_count": 1190,
+  "planned_trials_path": "protocols/synthetic_confirmatory_planned_trials_v2.csv",
+  "planned_trials_sha256": "45646416ca8772caad20a9c6b23043f4bc704279e9e71a3628688367578c3b26",
+  "raw_result_manifest_schema": "synthetic_confirmatory_raw_result_manifest_v2",
+  "schema_version": "synthetic_confirmatory_formal_manifest_v2",
+  "scientific_protocol_document_path": "protocols/synthetic_confirmatory_protocol_v2.md",
+  "scientific_protocol_document_sha256": "8fc489a31116506bc0e2e7da298b18c2ae0877a7043374e448616d849908d182",
+  "scientific_protocol_path": "protocols/synthetic_confirmatory_protocol_v2.json",
+  "scientific_protocol_sha256": "112abbbebb1e2b39fb2aab07df97cd311fa6621797d74866d798b874738632fa",
+  "seed_namespace": "zero_perturbation_synthetic_confirmatory_v2_20260729_ideal_lineage_fix",
+  "seed_schedule_path": "frozen_assets/synthetic_confirmatory_v2_seed_schedule.json",
+  "seed_schedule_payload_sha256": "5977fe63c4412e7fb916ed6fb8c20189eb67920e8192f38defbae98a3e285198",
+  "seed_schedule_sha256": "cfa7c14d6a45cc0f5a67c4ccfdd1941cbcefa4280111bfd23cc2585975c5b59a",
+  "snapshot_cache_root": "data/synthetic_confirmatory_v2_snapshots",
+  "snapshot_lock_path": "data/synthetic_confirmatory_v2_snapshot_lock.json"
+}

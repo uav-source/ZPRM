@@ -1,0 +1,109 @@
+{
+  "gates": {
+    "combining_rule": "every_gate_for_both_backends_must_pass",
+    "completeness": {
+      "backend_input_checksum_mismatch_count": 0,
+      "confirmatory_rng_instantiation_count": 0,
+      "gt_optimization_leakage_count": 0,
+      "native_formal_execution_count": 0,
+      "old_capture_test_rng_instantiation_count": 0,
+      "required_snapshot_count": 210,
+      "required_trial_count": 420,
+      "snapshot_pairing_violation_count": 0
+    },
+    "per_backend": {
+      "aggregate_level": "all_210_backend_trials",
+      "nonfinite_output_count": 0,
+      "q95_rotation_update_rad_max": 0.00017453292519943296,
+      "q95_translation_update_m_max": 0.001,
+      "solver_failure_count": 0,
+      "translation_within_0_001_m_fraction_min": 0.95
+    },
+    "per_scene_per_backend": {
+      "aggregate_level": "each_scene_30_snapshots_for_one_backend",
+      "median_translation_update_m_max": 0.001
+    }
+  },
+  "metric_difference_count": 0,
+  "quantiles": {
+    "median": {
+      "implementation": "numpy.median"
+    },
+    "post_result_method_change_forbidden": true,
+    "q95": {
+      "implementation": "numpy.quantile",
+      "method": "linear",
+      "q": 0.95
+    }
+  },
+  "rotation_quality": {
+    "abs_raw_determinant_minus_one_max": 1e-05,
+    "failure_classification": "solver_output_failure",
+    "orthogonality_defect_fro_max": 1e-05,
+    "projection_cannot_rescue_quality_failure": true,
+    "projection_correction_fro_max": 1e-05,
+    "raw_rotation_determinant_positive": true,
+    "raw_rotation_finite": true
+  },
+  "schema_version": "backend_phase_a_v1_2_metric_contract_v1",
+  "snapshot_diversity": {
+    "aggregate_level": "each_scene_across_30_snapshots",
+    "failure_flag": "IDEAL_MATCHED_SNAPSHOT_DIVERSITY_PASS",
+    "minimum_unique_source_checksum_count": 10,
+    "repeated_target_checksum_is_not_automatic_failure": true,
+    "report_fields": [
+      "unique_target_checksum_count",
+      "unique_source_checksum_count",
+      "duplicate_source_checksum_count"
+    ]
+  },
+  "solver_failures": {
+    "open3d_point_to_plane": {
+      "any_of": [
+        "python_or_cpp_exception",
+        "final_transform_nonfinite",
+        "fitness_nonfinite",
+        "inlier_rmse_nonfinite",
+        "correspondence_set_size_zero",
+        "rotation_matrix_quality_gate_failed",
+        "required_output_field_missing",
+        "snapshot_or_input_checksum_mismatch"
+      ]
+    },
+    "pcl_iterative_closest_point_with_normals": {
+      "any_of": [
+        "cli_exception_or_nonzero_exit",
+        "has_converged_raw_false",
+        "final_transform_nonfinite",
+        "fitness_nonfinite",
+        "correspondence_count_zero",
+        "source_or_target_nan_or_zero_normals",
+        "rotation_matrix_quality_gate_failed",
+        "required_output_field_missing",
+        "snapshot_or_input_checksum_mismatch"
+      ]
+    },
+    "unexecuted_trial_is_zero_failure_forbidden": true
+  },
+  "threshold_difference_count": 0,
+  "transform_semantics": {
+    "T_delta": {
+      "expression": "inverse(T_reference) @ T_estimated"
+    },
+    "T_estimated": {
+      "direction": "source_frame_to_target_map_frame"
+    },
+    "T_reference": {
+      "direction": "source_frame_to_target_map_frame"
+    },
+    "rotation_update_rad": {
+      "angle": "atan2_geodesic",
+      "input": "T_delta[0:3, 0:3]",
+      "projection": "reflection_safe_nearest_SO3_SVD",
+      "raw_trace_acos_gate_forbidden": true
+    },
+    "translation_update_m": {
+      "expression": "norm(T_delta[0:3, 3])"
+    }
+  }
+}

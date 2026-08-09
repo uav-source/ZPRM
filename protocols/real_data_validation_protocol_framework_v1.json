@@ -1,0 +1,31 @@
+{
+  "CONFIRMATORY_RUN_AUTHORIZED": false,
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "REAL_DATA_DATASET_ELIGIBILITY_COMPLETE": false,
+  "REAL_DATA_PROTOCOL_FRAMEWORK_READY": true,
+  "REAL_DATA_RUN_AUTHORIZED": false,
+  "dataset_download_count": 0,
+  "dataset_execution_count": 0,
+  "eligibility_requirement_count": 14,
+  "minimum_independent_public_dataset_count": 2,
+  "minimum_snapshot_count_per_dataset_and_scene_group": {
+    "CORRIDOR_OR_WEAK_GEOMETRY": 50,
+    "GEOMETRY_RICH": 50
+  },
+  "primary_comparison": "CORRIDOR_OR_WEAK_GEOMETRY_vs_GEOMETRY_RICH",
+  "primary_outputs": [
+    "translation_displacement",
+    "rotation_displacement",
+    "cross_backend_ranking",
+    "turnover_error_association",
+    "uncertainty_normalized_effect"
+  ],
+  "protocol_payload_sha256": "0ce3fb58a2d10395ab075f02ada9d5e732a11f12259c3409d182e46527e0d97b",
+  "registration_backends": [
+    "open3d_point_to_plane",
+    "pcl_point_to_plane"
+  ],
+  "registration_parameters": "FROZEN_FROM_SYNTHETIC_DEVELOPMENT",
+  "schema_version": "real_data_validation_protocol_framework_v1",
+  "scientific_survival_audit_pass": true
+}

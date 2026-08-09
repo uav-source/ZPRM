@@ -1,0 +1,10 @@
+{
+  "CONFIRMATORY_SEED_PROVENANCE_PASS": true,
+  "confirmatory_seed_instantiation_count": 0,
+  "ordinary_document_mentions_counted_as_use": 0,
+  "parse_failure_count": 0,
+  "parse_failures": [],
+  "schema_version": "confirmatory_seed_provenance_audit_v1",
+  "structured_file_count": 4033,
+  "structured_usage_hits": []
+}

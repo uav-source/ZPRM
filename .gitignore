@@ -1,0 +1,27 @@
+/data/frozen_snapshots/
+/data/phase_b_signal_snapshots/
+/data/full_synthetic_development_v1_snapshots/
+/data/synthetic_confirmatory_v1_snapshots/
+/data/synthetic_confirmatory_v1_snapshot_lock.json
+/data/synthetic_confirmatory_v2_snapshots/
+/data/synthetic_confirmatory_v2_snapshot_lock.json
+/results/formal_phase_a_v1/
+/results/phase_b_signal_v1/
+/results/full_synthetic_development_v1/
+/results/synthetic_confirmatory_v1/
+/results/synthetic_confirmatory_v2/
+/artifacts/fixture_qualification/fixture_cache/
+/artifacts/fixture_qualification/raw_results/
+/artifacts/fixture_qualification/raw_result_manifest.json
+*.pcd
+__pycache__/
+.pytest_cache/
+*.tmp
+
+# The Degen-LIO nested import retains the complete, seed-free fixture audit.
+# The unmodified standalone rules are archived as .gitignore.source.
+!/artifacts/fixture_qualification/fixture_cache/
+!/artifacts/fixture_qualification/fixture_cache/**
+!/artifacts/fixture_qualification/raw_results/
+!/artifacts/fixture_qualification/raw_results/**
+!/artifacts/fixture_qualification/raw_result_manifest.json

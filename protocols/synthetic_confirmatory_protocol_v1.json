@@ -1,0 +1,54 @@
+{
+  "CONFIRMATORY_RUN_AUTHORIZED": false,
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "REAL_DATA_RUN_AUTHORIZED": false,
+  "SYNTHETIC_CONFIRMATORY_PROTOCOL_READY": true,
+  "backend_count": 2,
+  "backends": [
+    "open3d_point_to_plane",
+    "pcl_point_to_plane"
+  ],
+  "bootstrap_seed": 1083684578,
+  "condition_count": 3,
+  "conditions": [
+    "IDEAL_MATCHED",
+    "INDEPENDENT_NOISE_FREE",
+    "FULL_NOISE"
+  ],
+  "confirmatory_seed_provenance_pass": true,
+  "development_model_lock_sha256": "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872",
+  "development_model_weighting": "UNIQUE_INPUT_CONDITION_BALANCED",
+  "gate_contract_payload_sha256": "4b90e35c7177597ea6ce1d55f44f4e26ab4a2dc88adafafff3907fab452d5e2d",
+  "geometry_seeds": [
+    248284635,
+    376488233,
+    198112089,
+    229684695,
+    226655024
+  ],
+  "measurement_seeds": [
+    469989467,
+    1088311622,
+    916609326
+  ],
+  "native_trial_count": 0,
+  "planned_snapshot_count": 595,
+  "planned_snapshot_identity_sha256": "41977561dfa644a28ffea22a1f42d0dc2f9714d6c4ce9679e6af95726a04920e",
+  "planned_trial_count": 1190,
+  "planned_trial_identity_sha256": "4d462cd424c674d8b2af51bbdf8fedd2a5d219aaf517cadb3f82a8e49bca7161",
+  "protocol_payload_sha256": "1bc3b7e4da8f913ba1495f5b47aea4b94b08a3a1c25bda8e88610d74508c22f6",
+  "registration_execution_count": 0,
+  "scene_count": 7,
+  "scenes": [
+    "GEOMETRY_RICH_ROOM",
+    "LONG_CORRIDOR",
+    "PARALLEL_WALLS",
+    "END_FACE_TRANSITION_PRESENT",
+    "END_FACE_TRANSITION_WEAK",
+    "END_FACE_TRANSITION_ABSENT",
+    "REPEATED_STRUCTURE"
+  ],
+  "schema_version": "synthetic_confirmatory_protocol_v1",
+  "scientific_survival_audit_pass": true,
+  "snapshot_generation_count": 0
+}

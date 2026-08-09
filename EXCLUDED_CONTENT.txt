@@ -1,0 +1,12 @@
+未包含：
+- .git
+- data/
+- results/
+- artifacts/
+- Python缓存和临时文件
+- Degen-LIO detector / ODI / AIS
+- 弱方向更新 Stage 2B / Stage 2C
+- FAST-LIO2、MUN-FRL、真实数据旧 Pilot
+- Native backend
+- Synthetic Confirmatory v1/v2 旧正式执行入口
+- v2失败归档和部分运行数据

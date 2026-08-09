@@ -1,0 +1,402 @@
+schema_version: directional_capture_range_day2_development_feasibility_v1
+
+protocol:
+  name: directional_capture_range_day2_development_feasibility
+  version: "1.0.0"
+  protocol_type: exploratory_development
+  status: prospectively_frozen_before_any_development_seed_run
+  scientific_claim_authorized: false
+  confirmatory_test_seed_access: forbidden
+  formal_scientific_pass_fail_authorized: false
+  day3_authorization: forbidden
+
+archived_prior_state:
+  day1_engineering_pass: true
+  day2_v1_0_status: BLOCKED_BY_SPEC_AMBIGUITY
+  day2_v1_1_status: BLOCKED_BY_SPEC_AMBIGUITY
+  day2_scientific_result: NOT_EVALUATED
+  development_runs: 0
+  test_runs: 0
+  development_seeds_consumed: false
+  test_seeds_consumed: false
+  blocked_base_commit: aed8d28597b2a0bc97fe41b29dd763d5d814a023
+  blocked_archive_tag: archive/directional-capture-range-day2-v1.1-blocked
+
+immutable_parent_files:
+  files:
+    - path: configs/capture_range/day2_synthetic_locked.yaml
+      sha256: 3b2f007c1d68d2399493ce5e15775120c4936495e4c08ef3fd0df1a88c35db65
+    - path: docs/directional_capture_range_day2_protocol.md
+      sha256: 765f3eb755db18559fa0a83a1729512f2123b9ce658169542491faecc59e7bd4
+    - path: configs/capture_range/day2_protocol_amendment_v1_1.yaml
+      sha256: f2d68cbe467d617e013c19b6436bda8fc78744e0c8a3e26a76cf3bec654360d5
+    - path: docs/directional_capture_range_day2_protocol_amendment_v1_1.md
+      sha256: 8121e3d73110e7f367a0252c6f4654ba47a3073a784c19af3fd626d75d0d1c22
+  runtime_use: byte_hash_validation_only
+  parse_parent_test_split_during_development: false
+
+scope:
+  use_real_data: false
+  modify_odi: false
+  modify_fast_lio2: false
+  use_vision: false
+  candidate_nonequivalence_search: false
+  hessian_similarity_pair_search: false
+  manual_valid_review: false
+  production_schur_raw_matrix_change: false
+  formal_rich_room_bootstrap_gate: false
+  formal_six_test_block_aggregation: false
+  generate_day2_test_lock: false
+  claim_d50_innovation: false
+
+seed_firewall:
+  split: development
+  global_seed: 314159
+  allowed_geometry_seeds: [1101, 1103, 1107]
+  allowed_measurement_seeds: [2101, 2111]
+  repeats: 5
+  forbidden_confirmatory_geometry_seed_sentinels: [1201, 1213, 1223]
+  forbidden_confirmatory_measurement_seed_sentinels: [2203, 2213]
+  reject_unknown_seed: true
+  assert_before_hash_or_rng_construction: true
+  forbidden_sentinels_are_equality_guard_only: true
+  never_pass_forbidden_sentinel_to_generator_hash_or_rng: true
+  direction_or_amplitude_in_point_cloud_seed: false
+  method_name_in_any_seed: false
+
+canonical_hashing:
+  text_encoding: UTF-8
+  mapping_key_order: sorted
+  json_separators: [",", ":"]
+  ensure_ascii: false
+  float_encoding: python_float_hex
+  negative_zero_normalized_to_positive_zero: true
+  digest: SHA-256
+  digest_to_seed: first_16_digest_bytes_unsigned_big_endian
+  digest_to_unit_interval: first_8_digest_bytes_unsigned_big_endian_divided_by_2_pow_64
+  cross_process_identity_required: true
+  array_payload:
+    fields: [dtype, shape, values]
+    values_order: C
+    floating_values_use_float_encoding: true
+  scope: development_seed_scene_snapshot_and_output_hashes_only
+  production_correspondence_checksum_unchanged: true
+
+directions:
+  directed: true
+  expected_per_scene: 18
+  aliases_in_runtime_inventory: false
+  role_declarations_change_runtime_count: false
+  cartesian:
+    - {direction_id: pos_x, vector: [1.0, 0.0, 0.0]}
+    - {direction_id: neg_x, vector: [-1.0, 0.0, 0.0]}
+    - {direction_id: pos_y, vector: [0.0, 1.0, 0.0]}
+    - {direction_id: neg_y, vector: [0.0, -1.0, 0.0]}
+    - {direction_id: pos_z, vector: [0.0, 0.0, 1.0]}
+    - {direction_id: neg_z, vector: [0.0, 0.0, -1.0]}
+  normalized_icosahedron:
+    - {direction_id: ico_00, raw_vector: [0.0, 1.0, 1.618033988749895]}
+    - {direction_id: ico_01, raw_vector: [0.0, 1.0, -1.618033988749895]}
+    - {direction_id: ico_02, raw_vector: [0.0, -1.0, 1.618033988749895]}
+    - {direction_id: ico_03, raw_vector: [0.0, -1.0, -1.618033988749895]}
+    - {direction_id: ico_04, raw_vector: [1.0, 1.618033988749895, 0.0]}
+    - {direction_id: ico_05, raw_vector: [1.0, -1.618033988749895, 0.0]}
+    - {direction_id: ico_06, raw_vector: [-1.0, 1.618033988749895, 0.0]}
+    - {direction_id: ico_07, raw_vector: [-1.0, -1.618033988749895, 0.0]}
+    - {direction_id: ico_08, raw_vector: [1.618033988749895, 0.0, 1.0]}
+    - {direction_id: ico_09, raw_vector: [1.618033988749895, 0.0, -1.0]}
+    - {direction_id: ico_10, raw_vector: [-1.618033988749895, 0.0, 1.0]}
+    - {direction_id: ico_11, raw_vector: [-1.618033988749895, 0.0, -1.0]}
+  normalization: euclidean_unit_norm_float64
+  uniqueness_rule: signed_dot_less_than_0p9999999999_for_distinct_rows
+  preserve_antipodes: true
+  role_table:
+    GEOMETRY_RICH_ROOM: {x: control, y: control, z: control}
+    LONG_CORRIDOR: {x: weak, y: strong, z: strong}
+    PARALLEL_WALLS: {x: weak, y: strong, z: strong}
+    END_FACE_TRANSITION_PRESENT: {x: control, y: strong, z: strong}
+    END_FACE_TRANSITION_WEAK: {x: weak, y: strong, z: strong}
+    END_FACE_TRANSITION_ABSENT: {x: weak, y: strong, z: strong}
+    REPEATED_STRUCTURE: {x: weak, y: strong, z: strong}
+  supplemental_role: supplemental
+  roles_saved_separately: direction_roles.csv
+  roles_excluded_from: [registration_configuration, registration_snapshot_metadata, point_cloud_seed, trial_seed, registration_runner_inputs]
+
+scene_generation:
+  variants_in_order:
+    - GEOMETRY_RICH_ROOM
+    - LONG_CORRIDOR
+    - PARALLEL_WALLS
+    - END_FACE_TRANSITION_PRESENT
+    - END_FACE_TRANSITION_WEAK
+    - END_FACE_TRANSITION_ABSENT
+    - REPEATED_STRUCTURE
+  float_dtype: float64
+  surface_id: primitive_id_double_colon_face_token
+  planar_face_tokens_and_normals:
+    neg_x: [-1.0, 0.0, 0.0]
+    pos_x: [1.0, 0.0, 0.0]
+    neg_y: [0.0, -1.0, 0.0]
+    pos_y: [0.0, 1.0, 0.0]
+    bottom: [0.0, 0.0, -1.0]
+    top: [0.0, 0.0, 1.0]
+  room_and_corridor_boundary_normals_point_inward: true
+  cuboid_and_rib_face_normals_point_outward: true
+  common:
+    map_point_spacing_m: 0.10
+    scan_point_spacing_m: 0.10
+    sensor_height_m: 1.50
+    minimum_scan_range_m: 0.30
+    maximum_scan_range_m: 20.0
+    maximum_map_range_from_reference_m: 20.0
+    reference_pose_translation_world: [0.0, 0.0, 1.50]
+    reference_pose_rpy_deg: [0.0, 0.0, 0.0]
+    full_360_degree_no_occlusion: true
+  geometry_rich_room:
+    bounds_xyz_m: [[-6.0, 6.0], [-5.0, 5.0], [0.0, 4.0]]
+    primitive_order: [floor, ceiling, wall_neg_x, wall_pos_x, wall_neg_y, wall_pos_y, cuboid_00, cuboid_01, cuboid_02]
+    asymmetric_cuboids:
+      - {primitive_id: cuboid_00, center: [2.0, 1.7, 0.75], size: [1.2, 0.8, 1.5]}
+      - {primitive_id: cuboid_01, center: [-2.8, -1.2, 1.0], size: [0.7, 1.5, 2.0]}
+      - {primitive_id: cuboid_02, center: [0.8, -3.2, 0.6], size: [1.8, 0.5, 1.2]}
+  long_corridor:
+    bounds_xyz_m: [[-20.0, 20.0], [-1.5, 1.5], [0.0, 3.0]]
+    primitive_order: [floor, ceiling, wall_neg_y, wall_pos_y]
+  parallel_walls:
+    bounds_xyz_m: [[-20.0, 20.0], [-2.0, 2.0], [0.0, 3.0]]
+    primitive_order: [floor, wall_neg_y, wall_pos_y]
+  end_face_transition:
+    bounds_xyz_m: [[-20.0, 20.0], [-1.5, 1.5], [0.0, 3.0]]
+    base_primitive_order: [floor, ceiling, wall_neg_y, wall_pos_y]
+    end_face: {primitive_id: end_face_x8, x_m: 8.0, normal: [-1.0, 0.0, 0.0]}
+    retention_fraction:
+      END_FACE_TRANSITION_PRESENT: 1.0
+      END_FACE_TRANSITION_WEAK: 0.10
+      END_FACE_TRANSITION_ABSENT: 0.0
+  repeated_structure:
+    bounds_xyz_m: [[-20.0, 20.0], [-1.5, 1.5], [0.0, 3.0]]
+    base_primitive_order: [floor, ceiling, wall_neg_y, wall_pos_y]
+    period_x_m: 0.40
+    thickness_x_m: 0.04
+    depth_y_m: 0.08
+    height_z_m: 2.80
+    attach_to_both_side_walls: true
+    rib_face_order: [neg_x, pos_x, neg_y, pos_y, bottom, top]
+  planar_grid:
+    algorithm: min_plus_phase_plus_integer_spacing_then_clip
+    phase_key_fields: [global_seed, geometry_seed, scene_variant, primitive_id, map_or_scan, surface_axis_name]
+    phase_m: unit_interval_from_canonical_hash_times_spacing
+    integer_index_bounds: mathematical_ceil_and_floor
+    bound_tolerance_m: 1.0e-9
+    interval_is_closed: true
+  rib_phase:
+    key_fields: [global_seed, geometry_seed, scene_variant, repeated_rib_longitudinal_phase]
+    phase_m: unit_interval_from_canonical_hash_times_period
+    center_formula: x_min_plus_phase_plus_n_times_period
+  weak_end_face_retention:
+    key_fields: [global_seed, geometry_seed, scene_variant, primitive_id, quantized_position]
+    retain_if: unit_interval_from_canonical_hash_less_than_retention_fraction
+  quantization:
+    resolution_m: 1.0e-9
+    integer_rounding: half_away_from_zero
+  deduplication:
+    key: [quantized_x, quantized_y, quantized_z, quantized_normal_x, quantized_normal_y, quantized_normal_z]
+    retain_same_position_with_different_normals: true
+    duplicate_winner: lexicographically_first_primitive_id_then_source_index
+  sorting:
+    key: [quantized_x, quantized_y, quantized_z, quantized_normal_x, quantized_normal_y, quantized_normal_z, primitive_id, source_index]
+  operation_order: construct_primitives_then_sample_then_variant_retention_then_range_filter_then_deduplicate_then_sort_then_sensor_frame_transform
+  map_generation:
+    independent_phase_role: map
+    euclidean_range_filter_from_reference_position: true
+  scan_generation:
+    independent_phase_role: scan
+    euclidean_range_filter_from_reference_position: true
+    transform_world_to_reference_sensor_frame_after_filter: true
+  geometry_seed_effects_only: [map_grid_phase, scan_grid_phase, end_face_retention_hash, repeated_rib_longitudinal_phase]
+
+measurement_realization:
+  scan_point_gaussian_sigma_m: 0.003
+  map_point_gaussian_sigma_m: 0.001
+  scan_dropout_fraction: 0.01
+  map_dropout_fraction: 0.00
+  rng: numpy.random.Generator_PCG64
+  stream_key_fields: [global_seed, scene_variant, geometry_seed, measurement_seed, repeat_index, stream_role]
+  stream_roles_in_order: [scan_dropout, map_dropout, scan_noise, map_noise]
+  operation_order: generate_dropout_mask_then_generate_noise_for_all_pre_dropout_points_then_apply_mask
+  same_realization_across_all_directions_amplitudes_and_methods: true
+  reference_pose_noise: false
+
+snapshot_contract:
+  base_snapshot_key_fields: [scene_variant, geometry_seed, measurement_seed, repeat_index]
+  block_key_fields: [scene_variant, geometry_seed, measurement_seed]
+  base_snapshot_generated_exactly_once: true
+  shared_within_base_snapshot: [noisy_scan, noisy_map, dropout_mask, reference_pose, registration_configuration]
+  required_checksums: [base_snapshot_checksum, scan_checksum, map_checksum, dropout_checksum]
+  dropout_checksum_payload: {scan_dropout_mask: canonical_array_hash, map_dropout_mask: canonical_array_hash}
+  expected_base_snapshot_count: 210
+  method_mismatch_count_required: 0
+  direction_mismatch_count_required: 0
+  amplitude_mismatch_count_required: 0
+
+amplitudes:
+  translation_m: [0.00, 0.01, 0.02, 0.05, 0.10, 0.20, 0.40, 0.80]
+  rotation_deg: [0.00, 0.25, 0.50, 1.00, 2.00, 5.00, 10.00, 20.00]
+  rotation_rad_conversion: math.radians_float64
+
+registration:
+  backend: day1_capture_range_point_to_plane
+  max_iterations: 20
+  k_neighbors: 5
+  max_neighbor_distance_m: 0.75
+  plane_fit_tolerance_m: 0.05
+  huber_delta_m: 0.05
+  damping: 0.000001
+  rotation_step_tolerance_rad: 0.00001
+  translation_step_tolerance_m: 0.00001
+  min_correspondences: 30
+  correspondence_tie_breaking: stable_distance_then_map_index
+  full_reassociation_rebuilds_each_nonlinear_evaluation: true
+  fixed_local_map_kdtree_reuse_within_base_snapshot_allowed: true
+  frozen_jacobian_prepared_once_per_base_snapshot: true
+  execution_matrix: every_base_snapshot_times_18_directions_times_8_amplitudes_times_2_perturbation_types_times_2_registration_paths
+  expected_trial_rows: 120960
+  optimizer_inputs_exclude_direction_roles_and_theoretical_weak_direction: true
+
+success:
+  translation_error_threshold_m: 0.02
+  rotation_geodesic_error_threshold_deg: 0.5
+  rotation_geodesic_error_threshold_rad: 0.008726646259971648
+  require_solver_converged: true
+  require_finite_result: true
+  require_iteration_limit_not_failed: true
+
+recovery_curves:
+  group_fields: [block_id, perturbation_type, direction_id, registration_path, amplitude]
+  repeats_per_amplitude: 5
+  raw_probability: successful_trials_divided_by_total_trials
+  wilson_confidence_level: 0.95
+  raw_use: [full_vs_frozen_curve_comparison, maximum_probability_gap, trapezoidal_integral, monotonicity_audit]
+  isotonic:
+    fit: weighted_nonincreasing_pava
+    weights: total_trials
+    use_only: [d50, d90]
+  d50: first_sampled_amplitude_with_fitted_probability_le_0p5
+  d90: first_sampled_amplitude_with_fitted_probability_le_0p9
+  interpolation: forbidden
+  extrapolation: forbidden
+  preserve_nonmonotonic_curves: true
+
+right_censoring_and_separation:
+  censored_numeric_value: null
+  never_impute_maximum_amplitude_as_exact: true
+  axis_radius: minimum_of_exact_positive_and_negative_d50_values
+  axis_is_right_censored: both_antipodal_d50_values_right_censored
+  weak_radius_right_censored_means_separation: null
+  weak_radius_right_censored_means_block_evaluable: false
+  strong_axis_lower_bound:
+    both_exact: minimum
+    one_exact_one_censored: exact_value
+    both_censored: maximum_sampled_amplitude_lower_bound
+  strong_radius: median_of_y_and_z_axis_lower_bounds
+  separation_formula: one_minus_weak_radius_divided_by_strong_radius
+  if_strong_radius_le_1e_minus_12: {separation: null, block_evaluable: false, reason: NONPOSITIVE_STRONG_RADIUS}
+  finite_negative_separation_is_not_clamped: true
+  development_scene_summary: evaluable_blocks_only
+  formal_four_of_six_gate: disabled
+  full_vs_frozen_censor_pattern_values: [BOTH_EXACT, FULL_EXACT_FROZEN_CENSORED, FULL_CENSORED_FROZEN_EXACT, BOTH_CENSORED]
+  scene_summary_reports: [total_blocks, evaluable_blocks, unevaluable_blocks, median_evaluable_separation]
+
+directional_trend:
+  evaluated_scenes: [LONG_CORRIDOR, PARALLEL_WALLS]
+  perturbation_type: translation
+  registration_path: full_reassociation
+  weak_axis: x
+  strong_axes: [y, z]
+  per_block_observation: evaluable_and_separation_greater_than_zero
+  scene_observation: at_least_one_evaluable_block_and_median_evaluable_separation_greater_than_zero
+  DIRECTIONAL_SIGNAL_OBSERVED: both_scenes_observed
+  scientific_gate: false
+
+full_vs_frozen_development:
+  perturbation_type: translation
+  predeclared:
+    END_FACE_TRANSITION_WEAK: [pos_x, neg_x]
+    END_FACE_TRANSITION_ABSENT: [pos_x, neg_x]
+    REPEATED_STRUCTURE: [pos_x, neg_x]
+  curve_source: raw_recovery_probability
+  raw_maximum_probability_gap: max_absolute_P_full_minus_P_frozen
+  raw_trapezoidal_integral_difference: integral_of_P_full_minus_P_frozen_over_sampled_amplitudes
+  exact_d50_difference: d50_full_minus_d50_frozen_only_when_both_exact
+  right_censoring_pattern_required: true
+  correspondence_checksum_change_count: adjacent_changes_in_full_reassociation_checksum_trace
+  numeric_zero_tolerance: 1.0e-12
+  descriptive_difference_observed: any_predeclared_block_direction_with_nonzero_raw_gap_or_exact_d50_difference_and_positive_full_correspondence_checksum_change_count
+  formal_test_gate: disabled
+
+repeatability_development:
+  scope: every_full_reassociation_translation_block_direction_curve
+  resampling_unit: repeat_index_shared_across_amplitudes
+  repetitions: 500
+  seed: 161803
+  rng: numpy.random.Generator_PCG64
+  per_curve_rng_seed: canonical_hash_of_bootstrap_seed_and_block_id_and_direction_id
+  draw: five_repeat_indices_with_replacement_once_per_bootstrap_and_share_draw_across_all_amplitudes
+  recompute_isotonic_and_d50_each_resample: true
+  right_censored_bootstrap_d50_imputation: forbidden
+  finite_statistics_only_over_uncensored_bootstrap_d50:
+    - uncensored_fraction
+    - mean
+    - sample_std_ddof_1
+    - cv
+    - eligibility
+  cv_denominator: finite_mean
+  minimum_uncensored_fraction_for_eligibility: 0.80
+  mean_le_1e_minus_12:
+    cv: null
+    reason: ZERO_MEAN_D50
+    eligible: false
+  fewer_than_two_uncensored_values:
+    sample_std: null
+    cv: null
+    reason: INSUFFICIENT_UNCENSORED_BOOTSTRAPS
+    eligible: false
+  no_formal_gate: true
+
+engineering_outcomes:
+  CONFIRMATORY_PROTOCOL_READY_requires_true:
+    - DEVELOPMENT_PIPELINE_EXECUTABLE
+    - ALL_SCENES_GENERATED
+    - ALL_SCENES_HAVE_18_DIRECTIONS
+    - SNAPSHOT_PAIRING_PASS
+    - NO_TEST_SEED_ACCESS
+    - NO_GT_LEAKAGE
+  CONFIRMATORY_PROTOCOL_READY_requires_false:
+    - NEW_PROTOCOL_AMBIGUITIES_FOUND
+  not_required_for_confirmatory_protocol_ready:
+    - DIRECTIONAL_SIGNAL_OBSERVED
+    - FULL_REASSOCIATION_DIFFERENCE_OBSERVED
+
+outputs:
+  result_root: results/capture_range/day2_development
+  artifact_root: artifacts/current/directional_capture_range_day2_development
+  exact_required_files:
+    - scene_inventory.csv
+    - direction_inventory.csv
+    - direction_roles.csv
+    - snapshot_inventory.csv
+    - trial_results.csv
+    - raw_recovery_curves.csv
+    - isotonic_recovery_curves.csv
+    - capture_radius_summary.csv
+    - right_censoring_summary.csv
+    - full_vs_frozen_development.csv
+    - repeatability_development.csv
+    - protocol_issue_log.csv
+    - development_report.md
+    - run_manifest.json
+    - SHA256SUMS
+  result_and_artifact_bytes_must_match: true
+  csv_encoding: UTF-8
+  csv_line_ending: LF
+  deterministic_row_order_required: true

@@ -1,0 +1,271 @@
+{
+  "algorithm": "seed = int.from_bytes(SHA256(UTF-8(payload))[0:8], byteorder='big', signed=False) % 2147483647; if seed == 0, seed = 1",
+  "allowed_domains": [
+    "geometry",
+    "measurement",
+    "bootstrap",
+    "backend"
+  ],
+  "allowed_splits": [
+    "development",
+    "confirmatory"
+  ],
+  "created_before_any_experiment": true,
+  "derived_seed_provenance_collision": false,
+  "development_confirmatory_overlap": [],
+  "development_confirmatory_overlap_count": 0,
+  "development_confirmatory_seeds_disjoint": true,
+  "labels": {
+    "confirmatory": {
+      "backend": {
+        "native": 910140651,
+        "open3d": 326720362
+      },
+      "bootstrap": {
+        "bootstrap_0": 1083684578
+      },
+      "geometry": {
+        "geometry_0": 248284635,
+        "geometry_1": 376488233,
+        "geometry_2": 198112089,
+        "geometry_3": 229684695,
+        "geometry_4": 226655024
+      },
+      "measurement": {
+        "measurement_0": 469989467,
+        "measurement_1": 1088311622,
+        "measurement_2": 916609326
+      }
+    },
+    "development": {
+      "backend": {
+        "native": 738007943,
+        "open3d": 1004155548
+      },
+      "bootstrap": {
+        "bootstrap_0": 1191248828
+      },
+      "geometry": {
+        "geometry_0": 1850310744,
+        "geometry_1": 1957656152,
+        "geometry_2": 1334931069
+      },
+      "measurement": {
+        "measurement_0": 217775206,
+        "measurement_1": 1664898153
+      }
+    }
+  },
+  "namespace": "zero_perturbation_registration_measurement_v1_20260728",
+  "pairwise_duplicate_count": 0,
+  "payload_format": "{namespace}|{split}|{domain}|{index}",
+  "records": [
+    {
+      "domain": "geometry",
+      "index": 0,
+      "label": "geometry_0",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|geometry|0",
+      "seed": 1850310744,
+      "split": "development"
+    },
+    {
+      "domain": "geometry",
+      "index": 1,
+      "label": "geometry_1",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|geometry|1",
+      "seed": 1957656152,
+      "split": "development"
+    },
+    {
+      "domain": "geometry",
+      "index": 2,
+      "label": "geometry_2",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|geometry|2",
+      "seed": 1334931069,
+      "split": "development"
+    },
+    {
+      "domain": "measurement",
+      "index": 0,
+      "label": "measurement_0",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|measurement|0",
+      "seed": 217775206,
+      "split": "development"
+    },
+    {
+      "domain": "measurement",
+      "index": 1,
+      "label": "measurement_1",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|measurement|1",
+      "seed": 1664898153,
+      "split": "development"
+    },
+    {
+      "domain": "bootstrap",
+      "index": 0,
+      "label": "bootstrap_0",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|bootstrap|0",
+      "seed": 1191248828,
+      "split": "development"
+    },
+    {
+      "domain": "backend",
+      "index": 0,
+      "label": "native",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|backend|0",
+      "seed": 738007943,
+      "split": "development"
+    },
+    {
+      "domain": "backend",
+      "index": 1,
+      "label": "open3d",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|development|backend|1",
+      "seed": 1004155548,
+      "split": "development"
+    },
+    {
+      "domain": "geometry",
+      "index": 0,
+      "label": "geometry_0",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|geometry|0",
+      "seed": 248284635,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "geometry",
+      "index": 1,
+      "label": "geometry_1",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|geometry|1",
+      "seed": 376488233,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "geometry",
+      "index": 2,
+      "label": "geometry_2",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|geometry|2",
+      "seed": 198112089,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "geometry",
+      "index": 3,
+      "label": "geometry_3",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|geometry|3",
+      "seed": 229684695,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "geometry",
+      "index": 4,
+      "label": "geometry_4",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|geometry|4",
+      "seed": 226655024,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "measurement",
+      "index": 0,
+      "label": "measurement_0",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|measurement|0",
+      "seed": 469989467,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "measurement",
+      "index": 1,
+      "label": "measurement_1",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|measurement|1",
+      "seed": 1088311622,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "measurement",
+      "index": 2,
+      "label": "measurement_2",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|measurement|2",
+      "seed": 916609326,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "bootstrap",
+      "index": 0,
+      "label": "bootstrap_0",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|bootstrap|0",
+      "seed": 1083684578,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "backend",
+      "index": 0,
+      "label": "native",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|backend|0",
+      "seed": 910140651,
+      "split": "confirmatory"
+    },
+    {
+      "domain": "backend",
+      "index": 1,
+      "label": "open3d",
+      "payload": "zero_perturbation_registration_measurement_v1_20260728|confirmatory|backend|1",
+      "seed": 326720362,
+      "split": "confirmatory"
+    }
+  ],
+  "schema_version": "zero_perturbation_seed_schedule_v1",
+  "seed_provenance_audit": {
+    "audit_version": "seed_provenance_context_v1",
+    "candidate_seeds": [
+      198112089,
+      217775206,
+      226655024,
+      229684695,
+      248284635,
+      326720362,
+      376488233,
+      469989467,
+      738007943,
+      910140651,
+      916609326,
+      1004155548,
+      1083684578,
+      1088311622,
+      1191248828,
+      1334931069,
+      1664898153,
+      1850310744,
+      1957656152
+    ],
+    "collision_count": 0,
+    "collisions": [],
+    "definition": {
+      "bare_numeric_matches_are_collisions": false,
+      "code_contexts": [
+        "np.random/numpy.random/random.seed/default_rng/mt19937",
+        "seeded RNG calls",
+        "bootstrap initialization",
+        "scene-generator RNG initialization"
+      ],
+      "csv_columns": [
+        "seed",
+        "random_state",
+        "rng"
+      ],
+      "structured_fields": [
+        "seed",
+        "random_state",
+        "rng"
+      ]
+    },
+    "derived_seed_provenance_collision": false,
+    "parse_errors": [],
+    "scanned_candidate_files": {
+      "cpp": 0,
+      "csv": 0,
+      "json_yaml": 0,
+      "python": 0
+    }
+  },
+  "seed_schedule_pairwise_unique": true
+}

@@ -1,0 +1,520 @@
+{
+  "analysis_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/analysis",
+  "artifact_inventory_version": "7_tables_3_figures_7_root_files_v1",
+  "artifact_schema": "synthetic_confirmatory_formal_artifact_v3",
+  "artifact_staging_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/artifact_staging",
+  "artifact_verifier": {
+    "delegation_core_path": "src/phase_a_harness/synthetic_confirmatory_v2_artifact_verifier.py",
+    "delegation_core_sha256": "7f7f38fdbb5e16cc6ac7cf6b3b4e46f5c0880351f586dd89242a9bc4c4038a52",
+    "verification_mode": "EXTERNAL_RUNTIME_READ_THEN_COMPACT_IMPORT"
+  },
+  "authorization_binding": {
+    "authorization_authority": "VERIFIED_PRE_RUN_FINAL_DECISION",
+    "expected_release_tag": "archive/zero-perturbation-synthetic-confirmatory-v3-bootstrap-repair-r3-pre-run-pass",
+    "pre_run_final_decision_path": "artifacts/synthetic_confirmatory_v3_bootstrap_repair_r3_prerun/final_decision.json",
+    "required_authorization_field": "CONFIRMATORY_V3_RUN_AUTHORIZED",
+    "required_authorization_value": true
+  },
+  "backend_bindings": {
+    "native": {
+      "authorized": false,
+      "planned_trial_count": 0
+    },
+    "open3d": {
+      "adapter_path": "src/phase_a_harness/open3d_backend.py",
+      "adapter_sha256": "eb327dd5d13f7cf099469e5e1a315e23c41d593cd7301d278135b4276b9f255f",
+      "algorithm": "TransformationEstimationPointToPlane",
+      "parameter_sha256": "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413",
+      "planned_trial_count": 595,
+      "version": "0.19.0+b012259"
+    },
+    "pcl": {
+      "adapter_path": "src/phase_a_harness/pcl_backend.py",
+      "adapter_sha256": "25e45b31bc90c93bc578104c994992c3f913437b12bf46389a8380d1d06b9e31",
+      "algorithm": "pcl::IterativeClosestPointWithNormals",
+      "cli_path": "bin/pcl_point_to_plane_cli",
+      "cli_sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff",
+      "parameter_sha256": "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd",
+      "planned_trial_count": 595,
+      "version": "1.15.1"
+    }
+  },
+  "backend_temporary_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/backend_tmp",
+  "bootstrap_seed": 860920164,
+  "bound_files": {
+    "backend_parameter_contract": {
+      "path": "frozen_assets/backend_parameter_contract.json",
+      "sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+    },
+    "execution_profile": {
+      "path": "frozen_assets/synthetic_confirmatory_v3_execution_profile_bootstrap_repair_r3.json",
+      "sha256": "5d69a66c674d95200c8972f91fa04eaf9d9a1623f76103fc9a074dfec02d10e7"
+    },
+    "formal_artifact_verifier_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_artifact_verifier.py",
+      "sha256": "7f7f38fdbb5e16cc6ac7cf6b3b4e46f5c0880351f586dd89242a9bc4c4038a52"
+    },
+    "formal_publisher_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v2_publisher.py",
+      "sha256": "5e6bfebbcc23545609b9ea8528d08a5d8443cff748b8ba6d0cf719b417ffc217"
+    },
+    "formal_runtime_state_machine": {
+      "path": "src/phase_a_harness/formal_runtime_state_machine.py",
+      "sha256": "3f4c9a84865c3085e7c31928a73fd76ce31e139035dd56b608cf299b9d425310"
+    },
+    "frozen_model": {
+      "path": "frozen_assets/confirmatory_development_trained_models_v1.json",
+      "sha256": "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872"
+    },
+    "frozen_model_inference": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_models.py",
+      "sha256": "2320d95da617d8972ad89d721ec2e68c62ea0ca9d1b9bf4562b0d8ce866cf6f7"
+    },
+    "gate_contract": {
+      "path": "protocols/synthetic_confirmatory_gate_contract_v3.json",
+      "sha256": "3f66adb54705d2a08803f6916291bc543f14401f22556468576c2f09b66f30e1"
+    },
+    "independent_scientific_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_independent_verifier.py",
+      "sha256": "f8e80b600121d3089bf7ccbb1951f68147fd617394d6f2618af403992286eb39"
+    },
+    "old_v3_bootstrap_contract_invalidation": {
+      "path": "artifacts/synthetic_confirmatory_v3_bootstrap_contract_invalidation/final_decision.json",
+      "sha256": "aeef6b18e924a22993a2457c37d14b9250ae6010bf4af392675a648fafa6509f"
+    },
+    "pcl_cli": {
+      "path": "bin/pcl_point_to_plane_cli",
+      "sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff"
+    },
+    "planned_snapshots": {
+      "path": "protocols/synthetic_confirmatory_planned_snapshots_v3.csv",
+      "sha256": "dbe75e9df8545b1c61c61bac2baa3ee2c525aeda65b9db10215c61863b3b29ef"
+    },
+    "planned_trials": {
+      "path": "protocols/synthetic_confirmatory_planned_trials_v3.csv",
+      "sha256": "f5b2f6fb84e3a64e686eacfc22c8ec90d6bc9c14860116e8b51f4d628a77b8d4"
+    },
+    "primary_scientific_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_analysis.py",
+      "sha256": "2c00e898e30f2394e71b412a4ce554a4324238d6a1efb9123f3f0e8f32b6c145"
+    },
+    "qualification_final_aggregate_tests": {
+      "path": "tests/test_qualification_final_aggregate.py",
+      "sha256": "d7555120aca843ea894357c8ea493bd30a7acc7dbe980ee27be9f2f7ee78a8ce"
+    },
+    "qualification_json_native": {
+      "path": "src/phase_a_harness/qualification_json_native.py",
+      "sha256": "0bd7d237095ea2c0e8b3cf7c3ce66ca647ccb82dbd41fe91420f13821b51d5d3"
+    },
+    "qualification_json_native_tests": {
+      "path": "tests/test_qualification_json_native.py",
+      "sha256": "c6d03f518e27d907068e7362aed866da6a6adf0a66755899d096772a035d5dd7"
+    },
+    "r2_json_failure_manifest": {
+      "path": "artifacts/synthetic_confirmatory_v3_bootstrap_repair_r2_json_failure/MANIFEST.csv",
+      "sha256": "e5eb764a7dcedeae1b53b0f0bd4461bfac2f0404601bb01ec0a04b3621f6feae"
+    },
+    "r2_json_failure_sha256sums": {
+      "path": "artifacts/synthetic_confirmatory_v3_bootstrap_repair_r2_json_failure/SHA256SUMS",
+      "sha256": "dc6b602c7eabb9957b6c5d9dfc3d1160ac7f57b5e75b80063cd6d5ade5db10fe"
+    },
+    "runtime_core_authority": {
+      "path": "artifacts/runtime_lifecycle_qualification_v1/implementation_manifest.json",
+      "sha256": "51e201d75f5d7b250803d837fb56ccd3c3f5113bfdd336153156fd61bd27546d"
+    },
+    "runtime_git_gate": {
+      "path": "src/phase_a_harness/runtime_git_gate.py",
+      "sha256": "acd6818ee229adff259e8b86d7ef2cd3a6febea9ce996aaa332d1680cbdd9dd3"
+    },
+    "runtime_lifecycle_fixture": {
+      "path": "src/phase_a_harness/runtime_lifecycle_fixture.py",
+      "sha256": "14bc9be9d3c6c6ace54d06140b0179e250ffaf32b0c7bf466c8210bbce47d394"
+    },
+    "runtime_lifecycle_io": {
+      "path": "src/phase_a_harness/runtime_lifecycle_io.py",
+      "sha256": "62c69842f67f9da9fd5a6af917a7951995c6dba3b2fd2ca6ab4f6143d56a9b76"
+    },
+    "runtime_path_policy": {
+      "path": "src/phase_a_harness/runtime_path_policy.py",
+      "sha256": "043740a365195cff2d9ef21fd0bffdbd342ed9dd83d9fa76a89ab532503e56b5"
+    },
+    "runtime_qualification_decision": {
+      "path": "artifacts/runtime_lifecycle_qualification_v1/final_decision.json",
+      "sha256": "ab18fd7dbd04f6a08e3904b71b2d7f8b8d8c2ba9bd25f21180a4c10c468ff9a9"
+    },
+    "scientific_core_authority": {
+      "path": "artifacts/runtime_lifecycle_qualification_v1/scientific_core_binding.json",
+      "sha256": "fe79f8c0148689f6163ca8a25b2944b51058f0f69404f6a153795457b85c6e42"
+    },
+    "scientific_protocol": {
+      "path": "protocols/synthetic_confirmatory_protocol_v3.json",
+      "sha256": "216bfe1b0f9d5fef0f9c11235099979b56394d99ea82452d0f476ddc2d777831"
+    },
+    "scientific_protocol_document": {
+      "path": "protocols/synthetic_confirmatory_protocol_v3.md",
+      "sha256": "22198d0347e52f3620575bb606a7c5d0d4b20593d8c49b7904e3eeaef1474e3a"
+    },
+    "seed_schedule": {
+      "path": "frozen_assets/synthetic_confirmatory_v3_seed_schedule.json",
+      "sha256": "a0e7921b9c1282d4b12e3e0cccccd3d66ee3cbc10ff5b4666a6c0cb01f521fbc"
+    },
+    "v1_failure_binding": {
+      "path": "artifacts/synthetic_confirmatory_v2_prerun/v1_failure_binding.json",
+      "sha256": "6e938207ce06e1885180fdd2f642156c38fe3badcb40eff24efe2a8fd457e446"
+    },
+    "v1_seed_retirement": {
+      "path": "artifacts/synthetic_confirmatory_v2_prerun/old_seed_retirement.json",
+      "sha256": "3a4457ebdc338781079e73cf213d4de36affc801f69638c817f9a54fcb39d777"
+    },
+    "v2_failure_archive_verification": {
+      "path": "artifacts/runtime_lifecycle_qualification_v1/v2_failure_archive_verification.json",
+      "sha256": "a4887e30e8d20412068a41d06d1bf44d025c4753ae06a04ea721cd7295f2b74b"
+    },
+    "v2_failure_binding": {
+      "path": "artifacts/runtime_lifecycle_qualification_v1/v2_failure_binding.json",
+      "sha256": "975eca74cb7b25f61c8d38f3157112d8647e76285307df6bf25a10aa6f1fc3f8"
+    },
+    "v2_scientific_gate_source": {
+      "path": "protocols/synthetic_confirmatory_gate_contract_v2.json",
+      "sha256": "d467f3f0582feb4d5930827ecdaf5ee2fb6da32bc4bee2933a547e74ffed9ed6"
+    },
+    "v2_seed_retirement": {
+      "path": "artifacts/runtime_lifecycle_qualification_v1/v2_seed_retirement.json",
+      "sha256": "29b9d1f50c9c9ae93b54c2461dd82976bc47b5efa97339f76890f664abe7ff4c"
+    },
+    "v3_adapter": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_adapter.py",
+      "sha256": "a85def4a556007868d03fbecc4b81b5ca3a1bfc5e3f8ba8a7a8e6c17ad94960d"
+    },
+    "v3_adapter_fixture_qualifier": {
+      "path": "scripts/qualify_synthetic_confirmatory_v3_adapter_fixture.py",
+      "sha256": "127c416a1485e739ba3d8e01afdf60104822724e6b3e7d3eab0d0c068a38d594"
+    },
+    "v3_adapter_tests": {
+      "path": "tests/test_synthetic_confirmatory_v3_adapter.py",
+      "sha256": "51cedad8c15ee84d59872b9851a6d02f44af4716d3816a0622df80616a73c1e5"
+    },
+    "v3_analysis_cli": {
+      "path": "scripts/analyze_synthetic_confirmatory_v3.py",
+      "sha256": "fbbaeb540ac61c9ca26c7084d05ffad4654692769a8c0cac73243edf2114b27e"
+    },
+    "v3_asset_freezer": {
+      "path": "scripts/freeze_synthetic_confirmatory_v3.py",
+      "sha256": "5afcdfbee368aada2ea575f3402a32caf5ed0a8e712c976f5a2ebb2780574bfd"
+    },
+    "v3_bootstrap_cli": {
+      "path": "scripts/bootstrap_synthetic_confirmatory_v3.py",
+      "sha256": "0bb8535a58d0efa273ce524da598898a26cfe4e5b6557397cf6f8d1644441eb6"
+    },
+    "v3_bootstrap_repair_artifact_builder": {
+      "path": "scripts/build_synthetic_confirmatory_v3_bootstrap_repair_prerun.py",
+      "sha256": "12322d2ceb78f62aac7f0cae4e2da7c1ae0813aee9d12963d28948616da51e78"
+    },
+    "v3_bootstrap_repair_artifact_verifier": {
+      "path": "scripts/verify_synthetic_confirmatory_v3_bootstrap_repair_artifact.py",
+      "sha256": "935e54621fe404264fbe7238ef5764489f832803feb8ec38cfa06da13242bee5"
+    },
+    "v3_bootstrap_repair_artifact_verifier_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_bootstrap_repair_artifact_verifier.py",
+      "sha256": "13d17cbc0ddb4d13719953aafee981ef719525d87a6179136081962c36bbdb4c"
+    },
+    "v3_bootstrap_repair_freezer": {
+      "path": "scripts/freeze_synthetic_confirmatory_v3_bootstrap_repair.py",
+      "sha256": "0fc6dc2fff0616f7ff3010eb2305ef85f7de349d31a156fa74fce1394b558f16"
+    },
+    "v3_bootstrap_repair_qualifier": {
+      "path": "scripts/qualify_synthetic_confirmatory_v3_bootstrap_repair.py",
+      "sha256": "9f22e9aeb4db89cd36473beb67b60713df9a73b1fab40c575e8be5921e3e5924"
+    },
+    "v3_bootstrap_repair_r2_artifact_builder": {
+      "path": "scripts/build_synthetic_confirmatory_v3_bootstrap_repair_r2_prerun.py",
+      "sha256": "16cb77dc3a98682de34bebba4a3a096b7f56eccffe1351b3fa303e388eed21db"
+    },
+    "v3_bootstrap_repair_r2_artifact_verifier": {
+      "path": "scripts/verify_synthetic_confirmatory_v3_bootstrap_repair_r2_artifact.py",
+      "sha256": "f9acef54913821c73d01209aa38824a888e6a4a088a6ce45b8791e6767bf5688"
+    },
+    "v3_bootstrap_repair_r2_artifact_verifier_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_bootstrap_repair_r2_artifact_verifier.py",
+      "sha256": "dba7e16aa835ade8895363c74db7fba87aeeb0738d62266ea491abc1a2fa57bd"
+    },
+    "v3_bootstrap_repair_r2_freezer": {
+      "path": "scripts/freeze_synthetic_confirmatory_v3_bootstrap_repair_r2.py",
+      "sha256": "9fcf95c56f4c0f926e12d6cd4b2695bf57593738a5068af976aca5febb51282b"
+    },
+    "v3_bootstrap_repair_r2_qualifier": {
+      "path": "scripts/qualify_synthetic_confirmatory_v3_bootstrap_repair_r2.py",
+      "sha256": "3b701ebeed3301c4b3e6ec5a1116a1e83620bf04c8be16e6791054cc4670a953"
+    },
+    "v3_bootstrap_repair_r3_artifact_builder": {
+      "path": "scripts/build_synthetic_confirmatory_v3_bootstrap_repair_r3_prerun.py",
+      "sha256": "fffd9d0ff05270cae7162dd9726178796d4be1c67f141a43953eb9ce89caf8b4"
+    },
+    "v3_bootstrap_repair_r3_artifact_verifier": {
+      "path": "scripts/verify_synthetic_confirmatory_v3_bootstrap_repair_r3_artifact.py",
+      "sha256": "ab4c064830d9b414c17f5d9fea5bca018215982690145386842d68292be5c7d8"
+    },
+    "v3_bootstrap_repair_r3_artifact_verifier_core": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_bootstrap_repair_r3_artifact_verifier.py",
+      "sha256": "50607962bbf7b1206acc47e3edafc94974ed5da7ad3282fe186f76c5e10dfaf3"
+    },
+    "v3_bootstrap_repair_r3_freezer": {
+      "path": "scripts/freeze_synthetic_confirmatory_v3_bootstrap_repair_r3.py",
+      "sha256": "b17add41b0ca0ea1b3ccc1a93687cb1961bb515f2c21e133ef84b6a74ab6d764"
+    },
+    "v3_bootstrap_repair_r3_qualifier": {
+      "path": "scripts/qualify_synthetic_confirmatory_v3_bootstrap_repair_r3.py",
+      "sha256": "b0731cdecc28a4fc2fa6d4a15f918be9e031f8f6e5fa512b4319993643ea977a"
+    },
+    "v3_bootstrap_state_machine_tests": {
+      "path": "tests/test_synthetic_confirmatory_v3_bootstrap_state_machine.py",
+      "sha256": "738cedbad654f672e13e8241058d186cc80d2d3c15652dd5df39d35bb0b3e119"
+    },
+    "v3_completeness_cli": {
+      "path": "scripts/check_synthetic_confirmatory_v3_completeness.py",
+      "sha256": "3ab51105147972c69d63ec177d425e17b96d756d1c59425d3677f35d7e06f609"
+    },
+    "v3_contract": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_contract.py",
+      "sha256": "dcd9d99e4d537f49371d0c41cddb5e8ed2152f3cd10d84f015ec0735c8aad915"
+    },
+    "v3_difference_audit_cli": {
+      "path": "scripts/audit_synthetic_confirmatory_v3_difference.py",
+      "sha256": "69d7195e19e47a1f4bb1e899c8e65eca0aa023efd0c46ad013085de5ea83210c"
+    },
+    "v3_execution_tests": {
+      "path": "tests/test_synthetic_confirmatory_v3_execution.py",
+      "sha256": "e996603623e3df94c78ee3c451a1ee7f120fd3d888287596d571b29b48c0ec65"
+    },
+    "v3_fixture_publisher_envelope_adapter": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_fixture_publisher_envelope_adapter.py",
+      "sha256": "e753a0162219dd215131e5811eca182e5440f02d8131fe32715715433d9d2ae9"
+    },
+    "v3_fixture_publisher_envelope_adapter_tests": {
+      "path": "tests/test_synthetic_confirmatory_v3_fixture_publisher_envelope_adapter.py",
+      "sha256": "107cc6de12ebcec9e4bf9b5b173cae1320be54ecf84daddf0b1c7c0b359509c7"
+    },
+    "v3_formal_artifact_verifier_cli": {
+      "path": "scripts/verify_synthetic_confirmatory_v3_artifact.py",
+      "sha256": "819609342379ba589be0047401ba7e95d02b853d0214d1ad561d2ae7b258f660"
+    },
+    "v3_independent_verifier_cli": {
+      "path": "scripts/verify_synthetic_confirmatory_v3.py",
+      "sha256": "af508b0a794efa2550e0cc910070ce832949a27a8d443b8effcb627a4ef5c0a9"
+    },
+    "v3_preflight_cli": {
+      "path": "scripts/preflight_synthetic_confirmatory_v3.py",
+      "sha256": "2c4e186697ca4e70bc2b949943c5534298643bdfcd4de112b4461edde47fafc2"
+    },
+    "v3_prerun": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_prerun.py",
+      "sha256": "ba51fe150008bade3ba0b1540a0dd193a29b26ec79815405a8f760c92b35e774"
+    },
+    "v3_prerun_artifact_verifier": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_artifact_verifier.py",
+      "sha256": "bb7a2e0c58f2f5325bd5fdeb40807cb081fb61971eb62863288c63c1e1b913ca"
+    },
+    "v3_prerun_qualifier": {
+      "path": "scripts/qualify_synthetic_confirmatory_v3_prerun.py",
+      "sha256": "21edd199bf5efcce632b3d78c294aee7b6fbf59c6d0823ad73f04498eda71b6c"
+    },
+    "v3_prerun_tests": {
+      "path": "tests/test_synthetic_confirmatory_v3_prerun.py",
+      "sha256": "93b6bb1219b748abbd302b930ddcd4f3063cd2d8f28b59f71da82de7b18a9a8a"
+    },
+    "v3_publisher_cli": {
+      "path": "scripts/publish_synthetic_confirmatory_v3.py",
+      "sha256": "badcaae9201f35fa4586bd5c3896e8af3067a616dbce4c167394f9793a13f3b7"
+    },
+    "v3_run_cli": {
+      "path": "scripts/run_synthetic_confirmatory_v3.py",
+      "sha256": "6a32c8394cb43c062769c973adbb49f1798143c3ac42c18451071662b733cfb3"
+    },
+    "v3_runner": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_runner.py",
+      "sha256": "d30481c2e77c94a6b86c3a877fd738fa63e3970464620bee84f638b4f3db4b96"
+    },
+    "v3_seed_audit": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_seed_audit.py",
+      "sha256": "df8337b3ece34b5699987bfe5e66cf5c08a0d801471ccf5a5eb224c0d6c787c1"
+    },
+    "v3_snapshot_builder": {
+      "path": "src/phase_a_harness/synthetic_confirmatory_v3_snapshot_builder.py",
+      "sha256": "72ba681e6c47c6fbfa661b717dd626a9cd9320d33bb217a5a269e38b89c89c32"
+    }
+  },
+  "configuration_authority": "THIS_MANIFEST",
+  "core_bindings": {
+    "runtime_lifecycle": {
+      "RUNTIME_LIFECYCLE_CORE_FILE_CHANGE_COUNT": 2,
+      "RUNTIME_LIFECYCLE_UNAUTHORIZED_FILE_CHANGE_COUNT": 0,
+      "authority_path": "artifacts/runtime_lifecycle_qualification_v1/implementation_manifest.json",
+      "authority_sha256": "51e201d75f5d7b250803d837fb56ccd3c3f5113bfdd336153156fd61bd27546d",
+      "authorized_bootstrap_repair_changes": [
+        {
+          "baseline_sha256": "ac70ffb100afe4016b36772101163d631b780c49cce4ea8ca869935dec0a9e9b",
+          "path": "src/phase_a_harness/runtime_lifecycle_fixture.py",
+          "repair_sha256": "14bc9be9d3c6c6ace54d06140b0179e250ffaf32b0c7bf466c8210bbce47d394"
+        },
+        {
+          "baseline_sha256": "5152602f56b1c38b966e228ccfbe153fcd8a3f95c87f607e7bfa6c9118c0b39d",
+          "path": "src/phase_a_harness/runtime_lifecycle_io.py",
+          "repair_sha256": "62c69842f67f9da9fd5a6af917a7951995c6dba3b2fd2ca6ab4f6143d56a9b76"
+        }
+      ],
+      "file_binding_count": 16,
+      "file_binding_set_sha256": "e5d947179a9c601e1e43505d0b1200949c932ff4e794ade1fb1be21ca53341fe",
+      "formal_execution_core_files": {
+        "src/phase_a_harness/runtime_git_gate.py": "acd6818ee229adff259e8b86d7ef2cd3a6febea9ce996aaa332d1680cbdd9dd3",
+        "src/phase_a_harness/runtime_lifecycle_io.py": "62c69842f67f9da9fd5a6af917a7951995c6dba3b2fd2ca6ab4f6143d56a9b76",
+        "src/phase_a_harness/runtime_path_policy.py": "043740a365195cff2d9ef21fd0bffdbd342ed9dd83d9fa76a89ab532503e56b5"
+      },
+      "formal_execution_core_sha256": "f64bdb133ec241bc33b54d7883d48547bbd0fcca814fa56f8555090b0ae84815",
+      "qualification_decision_path": "artifacts/runtime_lifecycle_qualification_v1/final_decision.json",
+      "qualification_decision_sha256": "ab18fd7dbd04f6a08e3904b71b2d7f8b8d8c2ba9bd25f21180a4c10c468ff9a9",
+      "qualification_pass": true
+    },
+    "scientific": {
+      "SCIENTIFIC_CORE_FILE_CHANGE_COUNT": 0,
+      "ast_binding_count": 7,
+      "ast_binding_set_sha256": "977d9768f704bc7f33749a4cb8112ba2bb3f014a3c66a1a920dd460c73b743b5",
+      "authority_path": "artifacts/runtime_lifecycle_qualification_v1/scientific_core_binding.json",
+      "authority_sha256": "fe79f8c0148689f6163ca8a25b2944b51058f0f69404f6a153795457b85c6e42",
+      "file_binding_count": 33,
+      "file_binding_set_sha256": "425e339b1092101417f25099edce825c27045e6acc056b2c1e94e4f2c0f56bc3"
+    }
+  },
+  "event_log_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/event_logs",
+  "execution_profile_path": "frozen_assets/synthetic_confirmatory_v3_execution_profile_bootstrap_repair_r3.json",
+  "expected_branch": "fix/zero-perturbation-v3-qualification-json-native-r3",
+  "expected_release_tag": "archive/zero-perturbation-synthetic-confirmatory-v3-bootstrap-repair-r3-pre-run-pass",
+  "final_decision_schema": "synthetic_confirmatory_v3_final_decision_v1",
+  "formal_bootstrap_contract": {
+    "allowed_bootstrap_files": [
+      "formal_command.log",
+      "formal_command.log.sha256"
+    ],
+    "command_log_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/formal_command.log",
+    "command_log_sha256_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/formal_command.log.sha256",
+    "immutable_run_lock_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/immutable_run_lock.json",
+    "implementation_revision": "synthetic_confirmatory_v3_bootstrap_repair_r1",
+    "state_machine_schema": "synthetic_confirmatory_v3_formal_runtime_state_machine_v1",
+    "states": [
+      "FORMAL_RUNTIME_ABSENT",
+      "FORMAL_RUNTIME_BOOTSTRAP_ONLY",
+      "FORMAL_RUNTIME_RESUMABLE",
+      "FORMAL_RUNTIME_INVALID"
+    ]
+  },
+  "formal_execution_state": "NOT_EXECUTED",
+  "formal_run_authorization_state": "PENDING_VERIFIED_PRE_RUN_FINAL_DECISION",
+  "frozen_model_path": "frozen_assets/confirmatory_development_trained_models_v1.json",
+  "frozen_model_sha256": "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872",
+  "gate_contract_path": "protocols/synthetic_confirmatory_gate_contract_v3.json",
+  "gate_contract_sha256": "3f66adb54705d2a08803f6916291bc543f14401f22556468576c2f09b66f30e1",
+  "geometry_seeds": [
+    1601523854,
+    326786082,
+    944942356,
+    51440372,
+    183965697
+  ],
+  "history": {
+    "v1": {
+      "failure_binding_path": "artifacts/synthetic_confirmatory_v2_prerun/v1_failure_binding.json",
+      "failure_binding_sha256": "6e938207ce06e1885180fdd2f642156c38fe3badcb40eff24efe2a8fd457e446",
+      "failure_reason": "FLOAT_QUANTIZATION_BYTEWISE_COMPARISON",
+      "failure_tag": "archive/zero-perturbation-synthetic-confirmatory-v1-ideal-lineage-fail",
+      "scientific_state": "NOT_EVALUATED",
+      "seed_retirement_path": "artifacts/synthetic_confirmatory_v2_prerun/old_seed_retirement.json",
+      "seed_retirement_sha256": "3a4457ebdc338781079e73cf213d4de36affc801f69638c817f9a54fcb39d777",
+      "seed_reuse_authorized": false
+    },
+    "v2": {
+      "archive_tar_path": "/home/lj/zero_perturbation_runtime_archive/synthetic_confirmatory_v2_runtime_lifecycle_failure_20260730.tar.gz",
+      "archive_tar_sha256": "5979ed924d21afc43bbbcb12267fda471c67ed642ebafd71167883ed0ee34176",
+      "failure_binding_path": "artifacts/runtime_lifecycle_qualification_v1/v2_failure_binding.json",
+      "failure_binding_sha256": "975eca74cb7b25f61c8d38f3157112d8647e76285307df6bf25a10aa6f1fc3f8",
+      "failure_reason": "RUNTIME_PATH_AND_GIT_GATE_LIFECYCLE_DEFECT",
+      "failure_tag": "archive/zero-perturbation-synthetic-confirmatory-v2-runtime-lifecycle-fail",
+      "scientific_state": "NOT_EVALUATED",
+      "seed_retirement_path": "artifacts/runtime_lifecycle_qualification_v1/v2_seed_retirement.json",
+      "seed_retirement_sha256": "29b9d1f50c9c9ae93b54c2461dd82976bc47b5efa97339f76890f664abe7ff4c",
+      "seed_reuse_authorized": false
+    }
+  },
+  "manifest_payload_sha256": "792cf7009c12fbc9e1152c79400475542a4dcbcfd0ba9ae10c59b4be788b7e68",
+  "manifest_version": "3-bootstrap-repair-r3",
+  "measurement_seeds": [
+    1607390209,
+    92844875,
+    774747940
+  ],
+  "native_trial_count": 0,
+  "planned_snapshot_count": 595,
+  "planned_snapshots_path": "protocols/synthetic_confirmatory_planned_snapshots_v3.csv",
+  "planned_snapshots_sha256": "dbe75e9df8545b1c61c61bac2baa3ee2c525aeda65b9db10215c61863b3b29ef",
+  "planned_trial_count": 1190,
+  "planned_trials_path": "protocols/synthetic_confirmatory_planned_trials_v3.csv",
+  "planned_trials_sha256": "f5b2f6fb84e3a64e686eacfc22c8ec90d6bc9c14860116e8b51f4d628a77b8d4",
+  "protocol_path": "protocols/synthetic_confirmatory_protocol_v3.json",
+  "protocol_sha256": "216bfe1b0f9d5fef0f9c11235099979b56394d99ea82452d0f476ddc2d777831",
+  "protocol_version": "3",
+  "publisher_inventory": {
+    "figure_count": 3,
+    "figures": [
+      "gate_matrix.png",
+      "scene_effect.png",
+      "model_comparison.png"
+    ],
+    "root_file_count": 7,
+    "root_files": [
+      "synthetic_confirmatory_report.md",
+      "primary_analysis.json",
+      "independent_verification.json",
+      "final_decision.json",
+      "run_manifest.json",
+      "SHA256SUMS",
+      "artifact_verification.json"
+    ],
+    "table_count": 7,
+    "tables": [
+      "h1_ideal_control.csv",
+      "h2_scene_effect.csv",
+      "h3_cross_backend_ranking.csv",
+      "h4_reassociation.csv",
+      "h5_frozen_models.csv",
+      "h6_systematic_groups.csv",
+      "gate_summary.csv"
+    ]
+  },
+  "publisher_staging_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/publisher_staging",
+  "raw_result_manifest_schema": "synthetic_confirmatory_raw_result_manifest_v3",
+  "raw_results_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/raw_results",
+  "run_id": "synthetic-confirmatory-v3",
+  "runtime_lifecycle_core_sha256": "f64bdb133ec241bc33b54d7883d48547bbd0fcca814fa56f8555090b0ae84815",
+  "runtime_lifecycle_qualification_file_set_sha256": "e5d947179a9c601e1e43505d0b1200949c932ff4e794ade1fb1be21ca53341fe",
+  "runtime_path_policy_sha256": "043740a365195cff2d9ef21fd0bffdbd342ed9dd83d9fa76a89ab532503e56b5",
+  "runtime_root": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+  "schema_version": "synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3",
+  "scientific_core_sha256": "425e339b1092101417f25099edce825c27045e6acc056b2c1e94e4f2c0f56bc3",
+  "scientific_evaluation_state": "NOT_EVALUATED",
+  "seed_declaration_authority": "frozen_assets/synthetic_confirmatory_v3_seed_schedule.json",
+  "seed_namespace": "zero_perturbation_synthetic_confirmatory_v3_20260730_runtime_lifecycle_qualified",
+  "seed_schedule_path": "frozen_assets/synthetic_confirmatory_v3_seed_schedule.json",
+  "seed_schedule_payload_sha256": "14e158a12cab1d634d7571b2e6e24290a22be3a3bb6a982b882ed6954f47767c",
+  "seed_schedule_sha256": "a0e7921b9c1282d4b12e3e0cccccd3d66ee3cbc10ff5b4666a6c0cb01f521fbc",
+  "snapshot_cache_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/snapshot_cache",
+  "snapshot_lock_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/snapshot_lock.json",
+  "temporary_inventory_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/working_inventory",
+  "verification_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/verification",
+  "workers": 2,
+  "zero_instance_pre_run": {
+    "backend_execution_count": 0,
+    "rng_instantiation_count": 0,
+    "scientific_result_count": 0,
+    "snapshot_construction_count": 0,
+    "started_event_count": 0,
+    "trial_result_count": 0
+  }
+}

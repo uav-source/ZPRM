@@ -1,0 +1,310 @@
+schema_version: zero_perturbation_development_v1
+
+protocol:
+  name: zero_perturbation_registration_measurement_development
+  version: "1.0.0"
+  protocol_type: zero_perturbation_development
+  status: prospectively_frozen_before_any_development_snapshot
+  confirmatory_claim_authorized: false
+  real_data_authorized: false
+  measurement_paper_authorized: false
+  confirmatory_run_authorized: false
+
+immutable_inputs:
+  seed_schedule:
+    path: configs/zero_perturbation/seed_schedule_v1.json
+    sha256: 1006b76427b19151389f35a82b04e2b93abca339310bf8d56a5b92a27131f050
+    split: development
+    derive_again: false
+    hand_enter_integer_seeds: false
+  scene_source:
+    path: configs/capture_range/day2_development_feasibility.yaml
+    sha256: efbc316542fd32f801d7df84a33f943d4f4ea2eabc5e9c95a5a0770b0383edec
+    copied_scene_section_only: true
+    parse_parent_at_runtime: false
+  scene_generator:
+    path: src/capture_range/day2_development_scene.py
+    sha256: f1632095ab6c433e1e917cf0c9a49551683fce2f106761d41c3c3a5e6517b922
+  native_registration_core:
+    path: src/capture_range/registration_core.py
+    sha256: 139452dd59df78001630dbdfdc53687b72426b6e764e8c258ebd7f569001d114
+  native_full_runner:
+    path: src/capture_range/full_reassociation_runner.py
+    sha256: c45f56064c293e0c5cbbe7e8a3c10b3acfeed406f1bbb6912e81b754c9344035
+  native_frozen_runner:
+    path: src/capture_range/frozen_jacobian_runner.py
+    sha256: 17c8b2f71ad3215170a4189e2671ba12887feb1d6284ea8790a3b1406915e39e
+
+seed_firewall:
+  schedule_split: development
+  geometry_labels: [geometry_0, geometry_1, geometry_2]
+  measurement_labels: [measurement_0, measurement_1]
+  bootstrap_label: bootstrap_0
+  backend_labels: [native, open3d]
+  repeat_indices: [0, 1, 2, 3, 4]
+  confirmatory_seed_instantiation_forbidden: true
+  old_capture_range_test_seed_access_forbidden: true
+  method_name_in_snapshot_seed: false
+  scene_label_in_backend_seed: false
+  assert_before_rng_construction: true
+
+canonical_hashing:
+  text_encoding: UTF-8
+  mapping_key_order: sorted
+  json_separators: [",", ":"]
+  ensure_ascii: false
+  float_encoding: python_float_hex
+  negative_zero_normalized_to_positive_zero: true
+  digest: SHA-256
+  digest_to_seed: first_16_digest_bytes_unsigned_big_endian
+  digest_to_unit_interval: first_8_digest_bytes_unsigned_big_endian_divided_by_2_pow_64
+  array_payload_fields: [dtype, shape, values]
+  array_values_order: C
+
+measurement_definition:
+  initial_pose: reference_pose_exact
+  delta_rotation: transpose_R_reference_times_R_estimated
+  rotation_vector: Log_SO3_delta_rotation
+  translation_vector_world: p_estimated_minus_p_reference
+  translation_error_m: norm_translation_vector
+  rotation_error_rad: norm_rotation_vector
+  legacy_capture_range_thresholds_used: false
+  single_trial_term: zero_initialization_registration_error
+  repeated_mean_term: systematic_offset
+  bias_term_authorized: false
+
+noise_conditions:
+  - name: IDEAL_MATCHED
+    independent_sampling: false
+    scan_is_deterministic_map_subset: true
+    scan_noise_sigma_m: 0.0
+    map_noise_sigma_m: 0.0
+    scan_dropout_fraction: 0.0
+    map_dropout_fraction: 0.0
+  - name: INDEPENDENT_NOISE_FREE
+    independent_sampling: true
+    scan_is_deterministic_map_subset: false
+    scan_noise_sigma_m: 0.0
+    map_noise_sigma_m: 0.0
+    scan_dropout_fraction: 0.0
+    map_dropout_fraction: 0.0
+  - name: SCAN_NOISE_ONLY
+    independent_sampling: true
+    scan_is_deterministic_map_subset: false
+    scan_noise_sigma_m: 0.003
+    map_noise_sigma_m: 0.0
+    scan_dropout_fraction: 0.0
+    map_dropout_fraction: 0.0
+  - name: MAP_NOISE_ONLY
+    independent_sampling: true
+    scan_is_deterministic_map_subset: false
+    scan_noise_sigma_m: 0.0
+    map_noise_sigma_m: 0.001
+    scan_dropout_fraction: 0.0
+    map_dropout_fraction: 0.0
+  - name: DROPOUT_ONLY
+    independent_sampling: true
+    scan_is_deterministic_map_subset: false
+    scan_noise_sigma_m: 0.0
+    map_noise_sigma_m: 0.0
+    scan_dropout_fraction: 0.01
+    map_dropout_fraction: 0.0
+  - name: FULL_NOISE
+    independent_sampling: true
+    scan_is_deterministic_map_subset: false
+    scan_noise_sigma_m: 0.003
+    map_noise_sigma_m: 0.001
+    scan_dropout_fraction: 0.01
+    map_dropout_fraction: 0.0
+
+scene_generation:
+  variants_in_order:
+    - GEOMETRY_RICH_ROOM
+    - LONG_CORRIDOR
+    - PARALLEL_WALLS
+    - END_FACE_TRANSITION_PRESENT
+    - END_FACE_TRANSITION_WEAK
+    - END_FACE_TRANSITION_ABSENT
+    - REPEATED_STRUCTURE
+  float_dtype: float64
+  surface_id: primitive_id_double_colon_face_token
+  planar_face_tokens_and_normals:
+    neg_x: [-1.0, 0.0, 0.0]
+    pos_x: [1.0, 0.0, 0.0]
+    neg_y: [0.0, -1.0, 0.0]
+    pos_y: [0.0, 1.0, 0.0]
+    bottom: [0.0, 0.0, -1.0]
+    top: [0.0, 0.0, 1.0]
+  room_and_corridor_boundary_normals_point_inward: true
+  cuboid_and_rib_face_normals_point_outward: true
+  global_scene_seed: 314159
+  common:
+    map_point_spacing_m: 0.10
+    scan_point_spacing_m: 0.10
+    sensor_height_m: 1.50
+    minimum_scan_range_m: 0.30
+    maximum_scan_range_m: 20.0
+    maximum_map_range_from_reference_m: 20.0
+    reference_pose_translation_world: [0.0, 0.0, 1.50]
+    reference_pose_rpy_deg: [0.0, 0.0, 0.0]
+    full_360_degree_no_occlusion: true
+  geometry_rich_room:
+    bounds_xyz_m: [[-6.0, 6.0], [-5.0, 5.0], [0.0, 4.0]]
+    primitive_order: [floor, ceiling, wall_neg_x, wall_pos_x, wall_neg_y, wall_pos_y, cuboid_00, cuboid_01, cuboid_02]
+    asymmetric_cuboids:
+      - {primitive_id: cuboid_00, center: [2.0, 1.7, 0.75], size: [1.2, 0.8, 1.5]}
+      - {primitive_id: cuboid_01, center: [-2.8, -1.2, 1.0], size: [0.7, 1.5, 2.0]}
+      - {primitive_id: cuboid_02, center: [0.8, -3.2, 0.6], size: [1.8, 0.5, 1.2]}
+  long_corridor:
+    bounds_xyz_m: [[-20.0, 20.0], [-1.5, 1.5], [0.0, 3.0]]
+    primitive_order: [floor, ceiling, wall_neg_y, wall_pos_y]
+  parallel_walls:
+    bounds_xyz_m: [[-20.0, 20.0], [-2.0, 2.0], [0.0, 3.0]]
+    primitive_order: [floor, wall_neg_y, wall_pos_y]
+  end_face_transition:
+    bounds_xyz_m: [[-20.0, 20.0], [-1.5, 1.5], [0.0, 3.0]]
+    base_primitive_order: [floor, ceiling, wall_neg_y, wall_pos_y]
+    end_face: {primitive_id: end_face_x8, x_m: 8.0, normal: [-1.0, 0.0, 0.0]}
+    retention_fraction:
+      END_FACE_TRANSITION_PRESENT: 1.0
+      END_FACE_TRANSITION_WEAK: 0.10
+      END_FACE_TRANSITION_ABSENT: 0.0
+  repeated_structure:
+    bounds_xyz_m: [[-20.0, 20.0], [-1.5, 1.5], [0.0, 3.0]]
+    base_primitive_order: [floor, ceiling, wall_neg_y, wall_pos_y]
+    period_x_m: 0.40
+    thickness_x_m: 0.04
+    depth_y_m: 0.08
+    height_z_m: 2.80
+    attach_to_both_side_walls: true
+    rib_face_order: [neg_x, pos_x, neg_y, pos_y, bottom, top]
+  planar_grid:
+    algorithm: min_plus_phase_plus_integer_spacing_then_clip
+    phase_key_fields: [global_seed, geometry_seed, scene_variant, primitive_id, map_or_scan, surface_axis_name]
+    phase_m: unit_interval_from_canonical_hash_times_spacing
+    integer_index_bounds: mathematical_ceil_and_floor
+    bound_tolerance_m: 1.0e-9
+    interval_is_closed: true
+  rib_phase:
+    key_fields: [global_seed, geometry_seed, scene_variant, repeated_rib_longitudinal_phase]
+    phase_m: unit_interval_from_canonical_hash_times_period
+    center_formula: x_min_plus_phase_plus_n_times_period
+  weak_end_face_retention:
+    key_fields: [global_seed, geometry_seed, scene_variant, primitive_id, quantized_position]
+    retain_if: unit_interval_from_canonical_hash_less_than_retention_fraction
+  quantization:
+    resolution_m: 1.0e-9
+    integer_rounding: half_away_from_zero
+  deduplication:
+    key: [quantized_x, quantized_y, quantized_z, quantized_normal_x, quantized_normal_y, quantized_normal_z]
+    retain_same_position_with_different_normals: true
+    duplicate_winner: lexicographically_first_primitive_id_then_source_index
+  sorting:
+    key: [quantized_x, quantized_y, quantized_z, quantized_normal_x, quantized_normal_y, quantized_normal_z, primitive_id, source_index]
+  operation_order: construct_primitives_then_sample_then_variant_retention_then_range_filter_then_deduplicate_then_sort_then_sensor_frame_transform
+  map_generation:
+    independent_phase_role: map
+    euclidean_range_filter_from_reference_position: true
+  scan_generation:
+    independent_phase_role: scan
+    euclidean_range_filter_from_reference_position: true
+    transform_world_to_reference_sensor_frame_after_filter: true
+  geometry_seed_effects_only: [map_grid_phase, scan_grid_phase, end_face_retention_hash, repeated_rib_longitudinal_phase]
+
+measurement_realization:
+  rng: numpy.random.Generator_PCG64
+  seed_payload_fields: [development_measurement_seed, scene_variant, geometry_seed, repeat_index, noise_condition, stream_role]
+  stream_roles_in_order: [scan_dropout, map_dropout, scan_noise, map_noise]
+  operation_order: generate_dropout_mask_then_generate_noise_for_all_pre_dropout_points_then_apply_mask
+  reference_pose_noise: false
+  method_name_in_seed: false
+  scene_label_in_backend_seed: false
+
+ideal_matched_realization:
+  source_geometry: deterministic_map_geometry
+  subset_rule: inclusive_reference_range_filter
+  minimum_range_m: 0.30
+  maximum_range_m: 20.0
+  transform_world_to_sensor: inverse_reference_pose_exact
+  preserve_map_order: true
+  independent_scan_sampling: false
+  noise_and_dropout_disabled: true
+
+snapshot_contract:
+  key_fields: [scene_variant, geometry_seed, measurement_seed, repeat_index, noise_condition]
+  snapshot_generated_exactly_once: true
+  methods: [native_full, native_frozen, open3d_full]
+  shared_inputs: [scan, map, noise, dropout_mask, reference_pose]
+  required_checksums: [scene_checksum, scan_checksum, map_checksum, noise_checksum, dropout_checksum, reference_pose_checksum]
+  expected_snapshot_count: 1260
+  expected_trial_count: 3780
+
+native_registration:
+  max_iterations: 20
+  k_neighbors: 5
+  max_neighbor_distance_m: 0.75
+  plane_fit_tolerance_m: 0.05
+  huber_delta_m: 0.05
+  damping: 1.0e-6
+  rotation_step_tolerance_rad: 1.0e-5
+  translation_step_tolerance_m: 1.0e-5
+  min_correspondences: 30
+  full_reassociation_rebuilds_each_nonlinear_evaluation: true
+  frozen_jacobian_prepared_once_per_snapshot: true
+  optimizer_inputs_exclude_scene_label_and_gt_weak_direction: true
+
+open3d_registration:
+  registration_method: point_to_plane
+  maximum_correspondence_distance_m: 0.50
+  target_normal_estimation:
+    radius_m: 0.40
+    max_nn: 50
+  icp_convergence:
+    relative_fitness: 1.0e-8
+    relative_rmse: 1.0e-8
+    max_iteration: 50
+  target_normals_from_target_map_only: true
+  scene_specific_parameters: false
+
+statistics:
+  repeat_group_fields: [scene_variant, geometry_seed, noise_condition, registration_backend]
+  aggregate_over: [measurement_seed, repeat_index]
+  covariance_ddof: 1
+  quantiles: [0.25, 0.50, 0.75, 0.95]
+  systematic_fraction_denominator_epsilon: 1.0e-12
+  exploratory_bootstrap:
+    outer_block: geometry_seed
+    repetitions: 1000
+    seed_label: bootstrap_0
+  formal_p_values: false
+  formal_model_a_b_training: false
+
+development_gates:
+  ideal_matched:
+    deciding_backends: [native_full, open3d_full]
+    q95_translation_error_max_m: 0.001
+    q95_rotation_error_max_deg: 0.01
+    solver_failure_count: 0
+  preliminary_scene_effect:
+    conditions: [INDEPENDENT_NOISE_FREE, FULL_NOISE]
+    weak_scenes: [LONG_CORRIDOR, PARALLEL_WALLS]
+    control_scene: GEOMETRY_RICH_ROOM
+    minimum_median_ratio: 2.0
+    require_same_condition_both_backends: true
+  preliminary_cross_backend:
+    conditions: [INDEPENDENT_NOISE_FREE, FULL_NOISE]
+    minimum_spearman_rho_any_condition: 0.50
+  preliminary_reassociation:
+    weak_scenes: [LONG_CORRIDOR, PARALLEL_WALLS, END_FACE_TRANSITION_WEAK, END_FACE_TRANSITION_ABSENT]
+    control_scene: GEOMETRY_RICH_ROOM
+    minimum_median_ratio_any_scene: 3.0
+    minimum_abs_turnover_difference_spearman: 0.30
+  new_protocol_ambiguities_required: false
+
+outputs:
+  data_root: data/zero_perturbation/development
+  result_root: results/zero_perturbation/development
+  artifact_root: artifacts/current/zero_perturbation_development
+  csv_encoding: UTF-8
+  csv_line_ending: LF
+  deterministic_row_order_required: true

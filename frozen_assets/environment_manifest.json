@@ -1,0 +1,27 @@
+{
+  "compiler": {
+    "cxx": "c++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0"
+  },
+  "pcl": {
+    "binary_file_type": "ELF 64-bit LSB shared object, x86-64, dynamically linked, not stripped",
+    "cli_path": "bin/pcl_point_to_plane_cli",
+    "cli_sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff",
+    "environment": "/home/lj/.local/share/degen-lio-micromamba/envs/degen-lio-pcl-backend",
+    "ldd_missing_library_count": 0,
+    "linked_pcl_libraries": [
+      "libpcl_common.so.1.15",
+      "libpcl_features.so.1.15",
+      "libpcl_io.so.1.15"
+    ],
+    "version": "1.15.1"
+  },
+  "python": {
+    "environment": "/home/lj/.local/share/degen-lio-micromamba/envs/degen-lio-zprm-py311",
+    "matplotlib": "3.10.3",
+    "numpy": "1.26.4",
+    "open3d": "0.19.0+b012259",
+    "python": "3.11.15",
+    "scipy": "1.11.4"
+  },
+  "schema_version": "phase_a_minimal_harness_environment_manifest_v1"
+}

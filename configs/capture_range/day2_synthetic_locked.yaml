@@ -1,0 +1,439 @@
+protocol:
+  name: directional_capture_range_day2_synthetic_survival_test
+  version: "1.0.0"
+  status: prospectively_frozen_before_any_day2_run
+  day1_required_commit: "91f2d07f0b112a339702ea72f4055404cd356fdf"
+  day1_required_tag: "archive/directional-capture-range-day1-pass"
+  day1_protocol_path: "configs/capture_range/day1_protocol.yaml"
+  day1_artifact_dir: "artifacts/current/directional_capture_range_day1"
+  forbid_day2_execution_before_lock_commit: true
+  forbid_test_seed_consumption_before_test_lock: true
+
+inheritance:
+  inherit_day1_measurement_contract: true
+  inherit_day1_registration_configuration: true
+  inherit_day1_success_thresholds: true
+  translation_success_threshold_m: 0.02
+  rotation_success_threshold_deg: 0.5
+  recovery_probability_confidence_level: 0.95
+  recovery_probability_interval: wilson
+  capture_curve_fit: weighted_nonincreasing_isotonic
+  d50_definition: first_sampled_amplitude_with_fitted_probability_le_0p5
+  d90_definition: first_sampled_amplitude_with_fitted_probability_le_0p9
+  interpolation: forbidden
+  extrapolation: forbidden
+  preserve_raw_probabilities: true
+  positive_negative_directions_separate: true
+  translation_rotation_groups_separate: true
+
+randomness:
+  global_seed: 314159
+  seed_key_fields:
+    - split
+    - scene_id
+    - scene_variant
+    - geometry_seed
+    - measurement_seed
+    - perturbation_type
+    - direction_id
+    - signed_amplitude
+    - repeat_index
+  forbidden_seed_fields:
+    - method_name
+    - result_label
+    - theoretical_weak_direction
+  trial_measurement_perturbation:
+    enabled: true
+    scan_point_gaussian_sigma_m: 0.003
+    map_point_gaussian_sigma_m: 0.001
+    scan_dropout_fraction: 0.01
+    map_dropout_fraction: 0.00
+    reference_pose_noise: false
+    shared_across_methods: true
+  deterministic_replay_required: true
+
+splits:
+  development:
+    geometry_seeds: [1101, 1103, 1107]
+    measurement_seeds: [2101, 2111]
+    repeats_per_direction_amplitude: 5
+  test:
+    geometry_seeds: [1201, 1213, 1223]
+    measurement_seeds: [2203, 2213]
+    repeats_per_direction_amplitude: 10
+  require_disjoint_geometry_seeds: true
+  require_disjoint_measurement_seeds: true
+
+coordinate_contract:
+  world_axes:
+    corridor_axis: [1.0, 0.0, 0.0]
+    lateral_axis: [0.0, 1.0, 0.0]
+    vertical_axis: [0.0, 0.0, 1.0]
+  translation_perturbation_frame: world
+  rotation_perturbation_frame: body
+  rotation_update: "R_initial = R_reference * Exp(delta_theta_body)"
+  translation_update: "p_initial = p_reference + delta_p_world"
+  direction_norm_tolerance: 1.0e-12
+  oriented_direction_dedup_dot_tolerance: 1.0e-10
+  do_not_merge_antipodal_directions: true
+
+direction_set:
+  base_directed_axes:
+    - {id: pos_x, vector: [1.0, 0.0, 0.0]}
+    - {id: neg_x, vector: [-1.0, 0.0, 0.0]}
+    - {id: pos_y, vector: [0.0, 1.0, 0.0]}
+    - {id: neg_y, vector: [0.0, -1.0, 0.0]}
+    - {id: pos_z, vector: [0.0, 0.0, 1.0]}
+    - {id: neg_z, vector: [0.0, 0.0, -1.0]}
+  include_scene_weak_axis_antipodes: true
+  include_two_scene_strong_axes_antipodes: true
+  supplemental_sphere:
+    construction: normalized_icosahedron_vertices
+    phi: 1.618033988749895
+    raw_vectors:
+      - [0.0, 1.0, 1.618033988749895]
+      - [0.0, 1.0, -1.618033988749895]
+      - [0.0, -1.0, 1.618033988749895]
+      - [0.0, -1.0, -1.618033988749895]
+      - [1.0, 1.618033988749895, 0.0]
+      - [1.0, -1.618033988749895, 0.0]
+      - [-1.0, 1.618033988749895, 0.0]
+      - [-1.0, -1.618033988749895, 0.0]
+      - [1.618033988749895, 0.0, 1.0]
+      - [1.618033988749895, 0.0, -1.0]
+      - [-1.618033988749895, 0.0, 1.0]
+      - [-1.618033988749895, 0.0, -1.0]
+  normalization_required: true
+  generate_inventory_before_development: true
+  freeze_inventory_sha256_before_development: true
+
+amplitudes:
+  translation_m: [0.00, 0.01, 0.02, 0.05, 0.10, 0.20, 0.40, 0.80]
+  rotation_deg: [0.00, 0.25, 0.50, 1.00, 2.00, 5.00, 10.00, 20.00]
+  translation_is_primary_day2_gate: true
+  rotation_results_required_but_not_primary_gate: true
+
+scene_generator:
+  common:
+    map_point_spacing_m: 0.10
+    scan_point_spacing_m: 0.10
+    sensor_height_m: 1.50
+    maximum_scan_range_m: 20.0
+    minimum_scan_range_m: 0.30
+    reference_pose_translation_world: [0.0, 0.0, 1.50]
+    reference_pose_rpy_deg: [0.0, 0.0, 0.0]
+    use_day1_registration_backend: true
+    robust_kernel_and_termination_inherited_from_day1: true
+
+  geometry_rich_room:
+    scene_id: GEOMETRY_RICH_ROOM
+    room_length_x_m: 12.0
+    room_width_y_m: 10.0
+    room_height_z_m: 4.0
+    include_floor: true
+    include_ceiling: true
+    include_all_four_walls: true
+    asymmetric_cuboids:
+      - {center: [2.0, 1.7, 0.75], size: [1.2, 0.8, 1.5]}
+      - {center: [-2.8, -1.2, 1.0], size: [0.7, 1.5, 2.0]}
+      - {center: [0.8, -3.2, 0.6], size: [1.8, 0.5, 1.2]}
+    theoretical_weak_direction: null
+    theoretical_strong_directions:
+      - [1.0, 0.0, 0.0]
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+
+  long_corridor:
+    scene_id: LONG_CORRIDOR
+    corridor_length_x_m: 40.0
+    corridor_width_y_m: 3.0
+    corridor_height_z_m: 3.0
+    include_side_walls: true
+    include_floor: true
+    include_ceiling: true
+    include_end_faces: false
+    theoretical_weak_direction: [1.0, 0.0, 0.0]
+    theoretical_strong_directions:
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+
+  parallel_walls:
+    scene_id: PARALLEL_WALLS
+    extent_x_m: 40.0
+    wall_separation_y_m: 4.0
+    wall_height_z_m: 3.0
+    include_two_side_walls: true
+    include_floor: true
+    include_ceiling: false
+    include_end_faces: false
+    theoretical_weak_direction: [1.0, 0.0, 0.0]
+    theoretical_strong_directions:
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+
+  end_face_transition:
+    scene_id: END_FACE_TRANSITION
+    corridor_length_x_m: 40.0
+    corridor_width_y_m: 3.0
+    corridor_height_z_m: 3.0
+    include_side_walls: true
+    include_floor: true
+    include_ceiling: true
+    end_face_x_m: 8.0
+    variants:
+      PRESENT:
+        end_face_point_retention_fraction: 1.00
+      WEAK:
+        end_face_point_retention_fraction: 0.10
+      ABSENT:
+        end_face_point_retention_fraction: 0.00
+    theoretical_weak_direction_by_variant:
+      PRESENT: null
+      WEAK: [1.0, 0.0, 0.0]
+      ABSENT: [1.0, 0.0, 0.0]
+    theoretical_strong_directions:
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+
+  repeated_structure:
+    scene_id: REPEATED_STRUCTURE
+    corridor_length_x_m: 40.0
+    corridor_width_y_m: 3.0
+    corridor_height_z_m: 3.0
+    include_side_walls: true
+    include_floor: true
+    include_ceiling: true
+    include_end_faces: false
+    repeated_rib_period_x_m: 0.40
+    repeated_rib_thickness_x_m: 0.04
+    repeated_rib_depth_y_m: 0.08
+    repeated_rib_height_z_m: 2.80
+    theoretical_weak_direction: [1.0, 0.0, 0.0]
+    theoretical_strong_directions:
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+
+weak_direction_extraction:
+  source: full_reassociation_d50_only
+  use_translation_d50: true
+  right_censored_value_for_storage: null
+  right_censored_value_for_ordering: positive_infinity
+  require_at_least_one_uncensored_direction: true
+  minimum_d50_tolerance: 1.0e-12
+  antipodal_axis_equivalence_for_angle_only: true
+  tie_rule:
+    collect_all_directions_with_minimum_d50: true
+    collinear_abs_dot_threshold: 0.999
+    if_all_tied_directions_collinear: use_lexicographically_first_canonical_axis
+    if_noncollinear_tie: mark_ambiguous_and_assign_angle_error_deg_90
+  angle_error_formula: "acos(clamp(abs(dot(normalize(u_emp), normalize(u_gt))),0,1))"
+  geometry_rich_room_has_no_direction_accuracy_gate: true
+
+capture_radius_aggregation:
+  axis_conservative_radius: "min(d50(+axis), d50(-axis))"
+  weak_axis_requires_at_least_one_exact_side: true
+  if_one_weak_side_exact_and_other_right_censored: use_exact_side_as_conservative_weak_radius
+  if_both_weak_sides_right_censored: mark_weak_radius_right_censored
+  strong_axis_lower_bound:
+    exact_side_rule: minimum_of_positive_and_negative_exact_values
+    if_both_sides_right_censored: use_maximum_sampled_amplitude_as_lower_bound
+    if_one_side_exact_one_side_right_censored: use_exact_side_as_conservative_axis_radius
+  strong_radius: median_of_two_theoretical_strong_axis_lower_bounds
+  separation_ratio_lower_bound: "1 - d50_weak_conservative / d50_strong_lower_bound"
+  separation_gate_requires_weak_radius_not_right_censored: true
+
+repeatability:
+  bootstrap_repetitions: 2000
+  bootstrap_seed: 271828
+  bootstrap_unit: repeat_index_within_each_amplitude
+  recompute_isotonic_curve_each_bootstrap: true
+  exclude_right_censored_bootstrap_d50_from_cv: true
+  minimum_uncensored_bootstrap_fraction: 0.80
+  minimum_eligible_scene_direction_fraction: 0.70
+  cv_definition: standard_deviation_over_mean
+  day2_median_cv_target: 0.20
+
+right_censoring_rules:
+  never_replace_with_maximum_amplitude_as_exact_value: true
+  never_extrapolate: true
+  full_vs_frozen_numeric_relative_difference_requires_both_exact: true
+  if_one_exact_one_censored:
+    report_categorical_order_only: true
+    allow_probability_curve_gap_gate: true
+  if_both_censored:
+    numeric_difference: null
+    categorical_result: both_right_censored
+
+rich_room_pseudo_weak_rule:
+  evaluated_axes: [x, y, z]
+  test_blocks_total: 6
+  same_axis_minimum_required_blocks: 5
+  median_separation_ratio_threshold: 0.30
+  median_minimum_axis_d50_max_m: 0.20
+  bootstrap_ci_lower_for_separation_must_exceed: 0.20
+  pseudo_weak_flag_requires_all_conditions: true
+  gate_action_if_flagged: fail_geometry_rich_control
+  no_posthoc_geometric_explanation_override: true
+
+linear_metrics:
+  computed_from_same_reference_linearization_and_weights: true
+  metrics:
+    - lambda_min
+    - condition_number
+    - lambda_min_over_lambda_max
+    - normalized_eigenvalue_vector
+    - spectral_entropy
+    - effective_rank
+    - ODI
+    - AIS
+    - eigengap_ratio
+
+full_vs_frozen_value_gate:
+  evaluated_scene_families:
+    - END_FACE_TRANSITION
+    - REPEATED_STRUCTURE
+  primary_exact_pair_metric: median_relative_d50_difference
+  relative_d50_difference_formula: "abs(d50_full-d50_frozen)/max(min(d50_full,d50_frozen),1e-6)"
+  exact_pair_threshold: 0.20
+  alternative_curve_metric: maximum_absolute_probability_gap
+  curve_gap_threshold: 0.25
+  require_stable_directional_sign_across_test_blocks: true
+  stable_test_block_fraction: 0.67
+  pass_if_either_primary_or_alternative: true
+
+nonequivalence_candidate_search:
+  development_search_allowed_for_diagnostics: true
+  final_candidate_pool: test_only
+  pair_scope:
+    require_different_snapshot_id: true
+    require_same_perturbation_type: translation
+    require_same_canonical_direction_id: true
+    allow_different_scene_family: true
+    allow_same_scene_family_different_variant: true
+  linear_similarity:
+    normalized_eigenvalue_cosine_similarity_min: 0.98
+    absolute_log_condition_number_ratio_max: 0.15
+    absolute_log_lambda_min_ratio_max: 0.15
+    require_all_conditions: true
+  capture_difference:
+    require_both_d50_exact: true
+    relative_difference_formula: "abs(d50_a-d50_b)/max(min(d50_a,d50_b),1e-6)"
+    relative_difference_min: 0.30
+  candidate_record_fields:
+    - candidate_id
+    - snapshot_a
+    - snapshot_b
+    - direction_id
+    - eigenvalue_cosine_similarity
+    - abs_log_condition_ratio
+    - abs_log_lambda_min_ratio
+    - d50_a
+    - d50_b
+    - relative_d50_difference
+    - recovery_curve_a_id
+    - recovery_curve_b_id
+    - correspondence_checksum_change_count_a
+    - correspondence_checksum_change_count_b
+    - alternate_local_minimum_evidence_a
+    - alternate_local_minimum_evidence_b
+    - automatic_candidate_pass
+    - manual_review_status
+    - manual_review_rationale
+    - reviewed_by
+    - reviewed_at
+  manual_review_status_values:
+    - VALID
+    - REJECT_NUMERICAL
+    - REJECT_GEOMETRY_NOT_COMPARABLE
+    - REJECT_NO_LOCAL_MINIMUM_EVIDENCE
+    - INCONCLUSIVE
+  automatic_candidate_is_not_scientific_confirmation: true
+
+monotonicity_audit:
+  preserve_raw_curve: true
+  violation_definition: "P_raw(d_next)-P_raw(d_current) > 0"
+  report_violation_count: true
+  report_maximum_upward_jump: true
+  report_disjoint_success_regions: true
+
+day2_gates:
+  engineering:
+    require_full_pytest_pass: true
+    require_split_seed_disjointness: true
+    require_test_lock_match: true
+    require_no_gt_in_registration: true
+    require_full_reassociation_executed: true
+    require_frozen_jacobian_isolated: true
+    require_no_missing_trials: true
+    require_finite_outputs: true
+    require_input_checksums_match_across_methods: true
+    require_clean_final_worktree: true
+
+  directionality:
+    long_corridor_median_angle_error_deg_max: 10.0
+    parallel_walls_median_angle_error_deg_max: 10.0
+    minimum_number_of_degraded_scenes_with_separation_pass: 2
+    separation_ratio_lower_bound_min: 0.30
+
+  geometry_rich_control:
+    rich_room_pseudo_weak_flag_must_be_false: true
+
+  full_reassociation_value:
+    use_full_vs_frozen_value_gate: true
+
+  preliminary_repeatability:
+    median_cv_max: 0.20
+    eligible_fraction_min: 0.70
+
+  day3_authorization:
+    require_engineering_pass: true
+    require_directionality_pass: true
+    require_full_reassociation_value_observed: true
+    preliminary_repeatability_pass_is_reported_but_not_required: true
+    candidate_nonequivalence_found_is_reported_but_not_required: true
+
+outputs:
+  development_root: "results/capture_range/day2/development"
+  test_root: "results/capture_range/day2/test"
+  artifact_root: "artifacts/current/directional_capture_range_day2"
+  required_tables:
+    - scene_inventory.csv
+    - direction_inventory.csv
+    - trial_results.csv
+    - direction_recovery_curves.csv
+    - capture_radius_summary.csv
+    - weak_direction_accuracy.csv
+    - strong_weak_separation.csv
+    - full_vs_frozen.csv
+    - repeatability_bootstrap.csv
+    - monotonicity_audit.csv
+    - candidate_nonequivalence_pairs.csv
+    - candidate_manual_review.csv
+    - rich_room_control.csv
+    - runtime_summary.csv
+    - gate_summary.csv
+  required_files:
+    - protocol_lock.json
+    - direction_inventory_lock.json
+    - day2_test_lock.json
+    - run_manifest.json
+    - day2_report.md
+    - final_decision.json
+    - SHA256SUMS
+
+permissions:
+  allow_modify_day1_contract: false
+  allow_change_success_thresholds_after_development: false
+  allow_consume_test_seeds_before_test_lock: false
+  allow_tune_scene_parameters_after_development: false
+  allow_tune_direction_set_after_development: false
+  allow_tune_amplitudes_after_development: false
+  allow_drop_failed_seeds: false
+  allow_drop_nonmonotonic_curves: false
+  allow_use_gt_to_drive_registration: false
+  allow_use_real_data: false
+  allow_use_visual_data: false
+  allow_modify_odi: false
+  allow_modify_fastlio2_estimator: false
+  allow_claim_scientific_innovation_established: false
+  allow_git_push: false

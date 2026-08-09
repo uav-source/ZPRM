@@ -1,0 +1,62 @@
+{
+  "CONFIRMATORY_RUN_AUTHORIZED": false,
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "REAL_DATA_RUN_AUTHORIZED": false,
+  "SYNTHETIC_CONFIRMATORY_PROTOCOL_READY": true,
+  "backend_count": 2,
+  "backends": [
+    "open3d_point_to_plane",
+    "pcl_point_to_plane"
+  ],
+  "bootstrap_seed": 146517424,
+  "condition_count": 3,
+  "conditions": [
+    "IDEAL_MATCHED",
+    "INDEPENDENT_NOISE_FREE",
+    "FULL_NOISE"
+  ],
+  "confirmatory_seed_provenance_pass": true,
+  "development_model_lock_sha256": "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872",
+  "development_model_weighting": "UNIQUE_INPUT_CONDITION_BALANCED",
+  "gate_contract_payload_sha256": "60e2c46078cfd199c70c0bc42b1f5c51963685cab085ed24958c82cc88519956",
+  "geometry_seeds": [
+    1632408808,
+    2098780325,
+    2113923543,
+    143826534,
+    1099133161
+  ],
+  "history": {
+    "root_cause": "FLOAT_QUANTIZATION_BYTEWISE_COMPARISON",
+    "v1_failure_tag": "archive/zero-perturbation-synthetic-confirmatory-v1-ideal-lineage-fail",
+    "v1_status": "NOT_EVALUATED"
+  },
+  "lineage_schema_version": "synthetic_confirmatory_parent_lineage_v2",
+  "measurement_seeds": [
+    740417430,
+    23963997,
+    925756274
+  ],
+  "native_trial_count": 0,
+  "planned_snapshot_count": 595,
+  "planned_snapshot_identity_sha256": "7550b1b6704b8a952196eabbb52ec550a07c1c7d6184591f2cf01490f1616b30",
+  "planned_trial_count": 1190,
+  "planned_trial_identity_sha256": "3d6787226c346a9c51416f20c370671d05521cc859f6af0f0746fbc8e39f0c6d",
+  "protocol_payload_sha256": "8f56f8956b7c51f6cecd14423bc21e4fdcd2c09c39f1760a537fea122dfa531e",
+  "registration_execution_count": 0,
+  "scene_count": 7,
+  "scenes": [
+    "GEOMETRY_RICH_ROOM",
+    "LONG_CORRIDOR",
+    "PARALLEL_WALLS",
+    "END_FACE_TRANSITION_PRESENT",
+    "END_FACE_TRANSITION_WEAK",
+    "END_FACE_TRANSITION_ABSENT",
+    "REPEATED_STRUCTURE"
+  ],
+  "schema_version": "synthetic_confirmatory_protocol_v2",
+  "scientific_survival_audit_pass": true,
+  "seed_namespace": "zero_perturbation_synthetic_confirmatory_v2_20260729_ideal_lineage_fix",
+  "seed_schedule_payload_sha256": "5977fe63c4412e7fb916ed6fb8c20189eb67920e8192f38defbae98a3e285198",
+  "snapshot_generation_count": 0
+}

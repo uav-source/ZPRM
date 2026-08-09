@@ -1,0 +1,67 @@
+{
+  "backend_parameter_lock_path": "tests/data/phase_a_execution_chain_audit/fixture_backend_parameter_lock.json",
+  "backend_parameter_lock_sha256": "dfaf0e15f569a41acacfab1bc660c08e31007e70173f5bc02e60d3ec56b28d0c",
+  "fixture_only": true,
+  "fixture_plan_sha256": "b2476717464d6e1df46b8bc5f95782de740544bbdaa82d524b51d617bce9f005",
+  "formal_phase_a": false,
+  "formal_seed_values_included": false,
+  "random_seed_used": false,
+  "schema_version": "phase_a_execution_chain_fixture_snapshot_lock_v1",
+  "snapshots": [
+    {
+      "condition": "FIXTURE_IDENTITY",
+      "expected_failure_classifications": [
+        "NONE"
+      ],
+      "reference_pose_checksum": "ccc7977ae7987f37c2235e57c320a5142d6b58413825b6457a4a1c9fe469ac1c",
+      "reference_pose_4x4": [
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0]
+      ],
+      "scene_variant": "AUDIT_ASYMMETRIC_3D",
+      "snapshot_checksum": "05af66af78a1163a23f96fb8be0599427242b7a97e6eecdf849e377a8af75697",
+      "snapshot_id": "fixture-audit-v1/identity",
+      "source_checksum": "35e8ac9f85882addce9d0a5b423f88361e49fbce626e8e8a35b1688e17365f62",
+      "target_checksum": "35e8ac9f85882addce9d0a5b423f88361e49fbce626e8e8a35b1688e17365f62"
+    },
+    {
+      "condition": "FIXTURE_NONIDENTITY_REFERENCE",
+      "expected_failure_classifications": [
+        "NONE"
+      ],
+      "reference_pose_checksum": "6400fe576c3be1d3b71391c90de73920ceffb637fd06729ff1884f0626594e80",
+      "reference_pose_4x4": [
+        [0.9990483607430192, -0.035350753780142616, -0.02554793737001175, 0.08],
+        [0.0348875375166154, 0.9992226710945481, -0.018355198084015867, -0.04],
+        [0.026176948307873153, 0.01744642593348103, 0.9995050723230146, 0.06],
+        [0.0, 0.0, 0.0, 1.0]
+      ],
+      "scene_variant": "AUDIT_ASYMMETRIC_3D",
+      "snapshot_checksum": "505bf6349d31489a2bbb76c0313ec327302f8dce1ad6d12d3e459eb41f915036",
+      "snapshot_id": "fixture-audit-v1/nonidentity-reference",
+      "source_checksum": "35e8ac9f85882addce9d0a5b423f88361e49fbce626e8e8a35b1688e17365f62",
+      "target_checksum": "568b61568055228113601a67c2dfa99bd9ca22ed115f39afa565b4c34621c3e8"
+    },
+    {
+      "condition": "FIXTURE_NO_CORRESPONDENCE",
+      "expected_failure_classifications": [
+        "NO_CORRESPONDENCES",
+        "SCIENTIFIC_SOLVER_FAILURE"
+      ],
+      "reference_pose_checksum": "ccc7977ae7987f37c2235e57c320a5142d6b58413825b6457a4a1c9fe469ac1c",
+      "reference_pose_4x4": [
+        [1.0, 0.0, 0.0, 0.0],
+        [0.0, 1.0, 0.0, 0.0],
+        [0.0, 0.0, 1.0, 0.0],
+        [0.0, 0.0, 0.0, 1.0]
+      ],
+      "scene_variant": "AUDIT_SEPARATED_ASYMMETRIC_3D",
+      "snapshot_checksum": "f3f25e39772aa5a5bab0280bf6e6261faf46c084b40eba9dcb1cc11ae6495b53",
+      "snapshot_id": "fixture-audit-v1/no-correspondence",
+      "source_checksum": "35e8ac9f85882addce9d0a5b423f88361e49fbce626e8e8a35b1688e17365f62",
+      "target_checksum": "9ab4e39212200518bcbed60a0ade3c8bbede436237ddbfe24952376db41e776f"
+    }
+  ]
+}

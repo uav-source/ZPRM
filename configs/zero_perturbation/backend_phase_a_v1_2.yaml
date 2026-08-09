@@ -1,0 +1,213 @@
+schema_version: zero_perturbation_backend_phase_a_v1_2
+
+protocol:
+  name: zero_perturbation_dual_backend_phase_a_qualification_v1_2
+  protocol_type: dual_independent_backend_phase_a_qualification
+  protocol_version: 1.2
+  amendment_type: provenance_contract_and_execution_staging_only
+  status: prospectively_frozen_before_any_v1_2_stage0_snapshot
+  scientific_claim_authorized: false
+  phase_a_stage1_backend_run_authorized_before_stage0_lock: false
+  phase_b_authorized: false
+  full_development_authorized: false
+  confirmatory_authorized: false
+  real_data_authorized: false
+  measurement_paper_authorized: false
+
+scientific_contract:
+  authoritative_base_path: configs/zero_perturbation/backend_phase_a_v1.yaml
+  authoritative_base_sha256: d5e657862294a79c1d01fc349d6f668501d07d3ec965d2d8807171dc3b952b8c
+  invalidated_v1_1_path: configs/zero_perturbation/backend_phase_a_v1_1.yaml
+  invalidated_v1_1_sha256: 11ad4ffa1e5303f005fa8dc600627b4a45ce31fc1bae9d8b6bb042f03a8ff27e
+  inherited_byte_exact_sections:
+    - formal_backends
+    - immutable_inputs
+    - phase_a_matrix
+    - ideal_matched
+    - transform_semantics
+    - canonical_backend_input
+    - open3d_parameter_contract
+    - pcl_parameter_contract
+    - rotation_matrix_quality_gate
+    - solver_failure_definitions
+    - phase_a_hard_gates
+    - quantile_contract
+    - snapshot_diversity_gate
+  required_difference_counts:
+    scientific_parameter_difference_count: 0
+    scene_difference_count: 0
+    seed_difference_count: 0
+    repeat_difference_count: 0
+    condition_difference_count: 0
+    backend_parameter_difference_count: 0
+    metric_difference_count: 0
+    threshold_difference_count: 0
+    quantile_method_difference_count: 0
+    planned_snapshot_difference_count: 0
+    planned_trial_difference_count: 0
+    provenance_implementation_difference_count_min: 1
+    execution_staging_difference_count_min: 1
+
+v1_1_invalidation:
+  evidence_root: artifacts/current/zero_perturbation_backend_phase_a_v1_1_invalidation
+  archive_tag: archive/zero-perturbation-backend-phase-a-v1.1-provenance-invalid
+  bytewise_roundtrip_assertion_invalid: true
+  formal_snapshot_build_attempt_count: 1
+  formal_completed_snapshot_count: 0
+  formal_backend_execution_count: 0
+  formal_trial_result_count: 0
+  scientific_result_exposure_count: 0
+  formal_seed_access_status: OCCURRED_DURING_FIRST_SNAPSHOT_BUILD
+
+canonical_target_contract:
+  source: one_invocation_of_frozen_scene_generator_per_scene_and_geometry_seed
+  quantization_count: 1
+  dtype: float32
+  byte_order: little_endian
+  memory_order: C_contiguous
+  shape: Nx3
+  lineage_float64_view: canonical_target_points_f32.astype_float64
+  independent_target_copy_for_source_selection_forbidden: true
+  original_float64_scene_as_lineage_parent_forbidden: true
+
+source_parent_index_contract:
+  dtype: int64
+  byte_order: little_endian
+  shape: M
+  lower_bound_inclusive: 0
+  upper_bound_exclusive: target_point_count
+  unique_required: true
+  canonical_source_row_order_matches_index_order: true
+  parent_points_expression: canonical_target_points_f32[source_parent_target_indices].astype_float64
+  parent_point_equality: exact_float64_values_from_index_read
+  eligible_parent_rule:
+    range_frame: reference_translation_origin_in_map_frame
+    range_norm: euclidean_L2
+    minimum_range_m_inclusive: 0.30
+    maximum_range_m_inclusive: 20.0
+    preserve_canonical_target_order: true
+  deterministic_subset_rule:
+    purpose: implement_frozen_measurement_seed_and_repeat_source_subset_control
+    random_generator_used: false
+    per_parent_payload_encoding: UTF-8
+    payload_format: phase-a-v1.2-parent-selection|scene={scene}|geometry_seed={geometry_seed}|measurement_seed={measurement_seed}|repeat={repeat}|parent_index={parent_index}
+    digest: SHA-256
+    retained_when: first_digest_byte_modulo_4_is_not_zero
+    expected_retention_fraction: 0.75
+    preserve_eligible_parent_order: true
+    post_build_rule_change_forbidden: true
+
+source_generation_contract:
+  transform_direction: source_frame_to_target_map_frame
+  source_float64_expression: R_transpose_times_parent_minus_translation
+  source_quantization_count: 1
+  canonical_source_dtype: float32
+  canonical_source_byte_order: little_endian
+  canonical_source_memory_order: C_contiguous
+  canonical_source_shape: Mx3
+  backend_specific_reconstruction_forbidden: true
+
+quantization_closure_contract:
+  vector_norm: euclidean_L2
+  eps64: numpy_finfo_float64_eps
+  float64_guard_coefficient: 256.0
+  scale_expression: max_1_parent_norm_source_float64_norm_translation_norm
+  reconstructed_map_expression: R_times_source_quantized_float64_plus_translation
+  actual_error_expression: reconstructed_map_minus_parent_map
+  source_quantization_expression: source_quantized_float64_minus_source_float64
+  predicted_quantization_expression: R_times_source_quantization
+  closure_residual_expression: actual_error_minus_predicted_quantization
+  per_point_residual_gate: closure_residual_norm_lte_float64_guard
+  per_point_actual_gate: actual_error_norm_lte_predicted_quantization_norm_plus_float64_guard
+  max_normalized_closure_ratio_max: 1.0
+  quantiles:
+    median: numpy.median
+    q95:
+      implementation: numpy.quantile
+      q: 0.95
+      method: linear
+  post_stage0_change_forbidden: true
+
+snapshot_cache_contract:
+  root: data/zero_perturbation/backend_phase_a_v1_2_stage0
+  ignored_by_git: true
+  arrays:
+    source_points.npy: {dtype: float32, shape: Mx3, memory_order: C_contiguous}
+    target_points.npy: {dtype: float32, shape: Nx3, memory_order: C_contiguous}
+    reference_pose.npy: {dtype: float64, shape: 4x4, memory_order: C_contiguous}
+    source_parent_target_indices.npy: {dtype: int64, shape: M, memory_order: C_contiguous}
+  numpy_load_allow_pickle: false
+  metadata_file: metadata.json
+  atomic_write:
+    temporary_sibling_directory: true
+    flush_and_fsync_files: true
+    fsync_parent_before_and_after_rename: true
+    rename_operation: atomic_os_replace
+  resume:
+    valid_existing_snapshot_reused: true
+    silent_overwrite_forbidden: true
+    corrupt_or_mismatched_existing_snapshot_action: stop
+
+stage_contract:
+  stage0:
+    script: scripts/169_build_backend_phase_a_stage0.py
+    verifier_script: scripts/170_verify_backend_phase_a_stage0.py
+    planned_snapshot_count: 210
+    backend_import_count: 0
+    backend_execution_count: 0
+    trial_result_count: 0
+    independent_verifier_must_not_call_builder: true
+  stage1:
+    runner: scripts/168_run_backend_phase_a.py
+    snapshot_lock_argument: --snapshot-lock
+    snapshot_lock_required: true
+    snapshot_regeneration_forbidden: true
+    backend_execution_before_valid_stage0_lock_forbidden: true
+    executed_this_round: false
+
+seed_continuation_contract:
+  formal_seed_set_changed: false
+  justified_only_if:
+    v1_1_backend_execution_count: 0
+    v1_1_scientific_result_exposure_count: 0
+    backend_pose_error_observed: false
+    correction_basis: general_floating_point_quantization_non_commutativity
+    correction_depends_on_scene_results: false
+    scene_seed_metric_or_gate_changed: false
+
+stage0_gate_contract:
+  required_true:
+    - PHASE_A_V1_2_PROTOCOL_LOCK_PASS
+    - SEED_CONTINUATION_AFTER_PRE_BACKEND_ABORT_JUSTIFIED
+    - ALL_210_STAGE0_SNAPSHOTS_COMPLETE
+    - SNAPSHOT_PROVENANCE_LINEAGE_PASS
+    - FLOAT32_RECONSTRUCTION_CLOSURE_PASS
+    - CANONICAL_INPUT_CACHE_PASS
+    - IDEAL_MATCHED_SNAPSHOT_DIVERSITY_PASS
+    - STAGE0_ANALYSIS_VERIFIER_MATCH
+    - STAGE0_ARTIFACT_VERIFICATION_PASS
+  required_counts:
+    FORMAL_STAGE0_SNAPSHOT_BUILD_COUNT: 210
+    FORMAL_BACKEND_EXECUTION_COUNT: 0
+    FORMAL_TRIAL_RESULT_COUNT: 0
+    CONFIRMATORY_SEED_ACCESS_COUNT: 0
+    OLD_CAPTURE_TEST_SEED_ACCESS_COUNT: 0
+    NATIVE_EXECUTION_COUNT: 0
+  pass_decision:
+    PHASE_A_V1_2_STAGE0_PASS: true
+    PHASE_A_STAGE1_BACKEND_RUN_AUTHORIZED: true
+  fixed_state:
+    PHASE_A_STAGE1_BACKEND_EXECUTED: false
+    BACKEND_PHASE_A_COMPLETE: false
+    TWO_INDEPENDENT_BACKENDS_QUALIFIED: false
+    DAY1_SCIENTIFIC_VALIDATION_PASS: NOT_EVALUATED
+    PHASE_B_AUTHORIZED: false
+    FULL_DEVELOPMENT_AUTHORIZED: false
+    CONFIRMATORY_AUTHORIZED: false
+    REAL_DATA_AUTHORIZED: false
+    MEASUREMENT_PAPER_MAINLINE_AUTHORIZED: false
+
+artifact_contract:
+  protocol_lock_root: artifacts/current/zero_perturbation_backend_phase_a_v1_2_lock
+  stage0_root: artifacts/current/zero_perturbation_backend_phase_a_v1_2_stage0
+  snapshot_lock_file: backend_phase_a_v1_2_snapshot_lock.json

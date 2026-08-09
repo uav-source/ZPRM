@@ -1,0 +1,119 @@
+{
+  "bootstrap_contract": {
+    "allowed_bootstrap_files": [
+      "formal_command.log",
+      "formal_command.log.sha256"
+    ],
+    "formal_command_log_sha256": "6b7f51b4205684a1cf8c0ce5083042c63833a21212145bf3126ec3afa849ef79",
+    "formal_command_log_text": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/run_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --run-id synthetic-confirmatory-v3 --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3 --workers 2 --mode fresh",
+    "immutable_run_lock_name": "immutable_run_lock.json",
+    "implementation_revision": "synthetic_confirmatory_v3_bootstrap_repair_r1",
+    "states": [
+      "FORMAL_RUNTIME_ABSENT",
+      "FORMAL_RUNTIME_BOOTSTRAP_ONLY",
+      "FORMAL_RUNTIME_RESUMABLE",
+      "FORMAL_RUNTIME_INVALID"
+    ]
+  },
+  "commands": {
+    "step_01_preflight_fresh": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/preflight_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --run-id synthetic-confirmatory-v3 --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3 --workers 2 --mode fresh",
+    "step_01_preflight_resume": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/preflight_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --run-id synthetic-confirmatory-v3 --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3 --workers 2 --mode resume",
+    "step_02_bootstrap_fresh": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/bootstrap_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3 --run-id synthetic-confirmatory-v3 --workers 2 --mode fresh",
+    "step_02_bootstrap_resume": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/bootstrap_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3 --run-id synthetic-confirmatory-v3 --workers 2 --mode resume",
+    "step_03_runner_fresh": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/run_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --run-id synthetic-confirmatory-v3 --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3 --workers 2 --mode fresh",
+    "step_03_runner_resume": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/run_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --run-id synthetic-confirmatory-v3 --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3 --workers 2 --mode resume",
+    "step_04_completeness": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/check_synthetic_confirmatory_v3_completeness.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "step_05_primary": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/analyze_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "step_06_independent": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/verify_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "step_07_difference": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/audit_synthetic_confirmatory_v3_difference.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "step_08_publisher": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/publish_synthetic_confirmatory_v3.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "step_09_artifact_verifier": "env -u PYTHONPATH PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/verify_synthetic_confirmatory_v3_artifact.py --manifest frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json --runtime-root /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "step_10_final_sha": "sha256sum -c /home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/artifact_staging/SHA256SUMS"
+  },
+  "configuration_authority": "frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json",
+  "entrypoints": {
+    "analysis": "scripts/analyze_synthetic_confirmatory_v3.py",
+    "artifact_verifier": "scripts/verify_synthetic_confirmatory_v3_artifact.py",
+    "bootstrap": "scripts/bootstrap_synthetic_confirmatory_v3.py",
+    "completeness": "scripts/check_synthetic_confirmatory_v3_completeness.py",
+    "difference_audit": "scripts/audit_synthetic_confirmatory_v3_difference.py",
+    "independent_verifier": "scripts/verify_synthetic_confirmatory_v3.py",
+    "preflight": "scripts/preflight_synthetic_confirmatory_v3.py",
+    "publisher": "scripts/publish_synthetic_confirmatory_v3.py",
+    "runner": "scripts/run_synthetic_confirmatory_v3.py"
+  },
+  "execution_profile_payload_sha256": "a1b9735577d63566cef934ced8b99a57acd51c34d9c8c0929186dde8c5b4fa33",
+  "expected_branch": "fix/zero-perturbation-v3-qualification-json-native-r3",
+  "expected_release_tag": "archive/zero-perturbation-synthetic-confirmatory-v3-bootstrap-repair-r3-pre-run-pass",
+  "final_decision_schema": "synthetic_confirmatory_v3_final_decision_v1",
+  "formal_cli_contract": {
+    "explicit_modes": [
+      "fresh",
+      "resume"
+    ],
+    "required_options": [
+      "--manifest",
+      "--runtime-root",
+      "--run-id",
+      "--workers"
+    ],
+    "science_override_options": []
+  },
+  "formal_execution_state": "NOT_EXECUTED",
+  "formal_runtime_creation_count": 0,
+  "publisher_inventory": {
+    "figure_count": 3,
+    "figures": [
+      "gate_matrix.png",
+      "scene_effect.png",
+      "model_comparison.png"
+    ],
+    "root_file_count": 7,
+    "root_files": [
+      "synthetic_confirmatory_report.md",
+      "primary_analysis.json",
+      "independent_verification.json",
+      "final_decision.json",
+      "run_manifest.json",
+      "SHA256SUMS",
+      "artifact_verification.json"
+    ],
+    "table_count": 7,
+    "tables": [
+      "h1_ideal_control.csv",
+      "h2_scene_effect.csv",
+      "h3_cross_backend_ranking.csv",
+      "h4_reassociation.csv",
+      "h5_frozen_models.csv",
+      "h6_systematic_groups.csv",
+      "gate_summary.csv"
+    ]
+  },
+  "run_id": "synthetic-confirmatory-v3",
+  "runtime_paths": {
+    "analysis_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/analysis",
+    "artifact_staging_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/artifact_staging",
+    "backend_temporary_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/backend_tmp",
+    "event_log_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/event_logs",
+    "publisher_staging_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/publisher_staging",
+    "raw_results_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/raw_results",
+    "runtime_root": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "snapshot_cache_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/snapshot_cache",
+    "snapshot_lock_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/snapshot_lock.json",
+    "temporary_inventory_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/working_inventory",
+    "verification_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/verification"
+  },
+  "schema_version": "synthetic_confirmatory_v3_execution_profile_bootstrap_repair_r3",
+  "scientific_evaluation_state": "NOT_EVALUATED",
+  "this_file_executes_commands": false,
+  "workers": 2,
+  "zero_instance_counters": {
+    "backend_execution_count": 0,
+    "rng_instantiation_count": 0,
+    "scientific_result_count": 0,
+    "seed_access_count": 0,
+    "snapshot_construction_count": 0,
+    "started_event_count": 0,
+    "trial_result_count": 0
+  }
+}

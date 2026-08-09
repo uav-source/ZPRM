@@ -1,0 +1,41 @@
+{
+  "execution_chain_audit_pass": true,
+  "execution_chain_audit_path": "artifacts/current/zero_perturbation_phase_a_lock_architecture_v2/execution_fixture_final_decision.json",
+  "execution_chain_audit_sha256": "b2c0fe566b5d86095971bd896bec1f319e565aa613d7eae39a2e9670ed103ab6",
+  "fixture_contract_binding": {
+    "fixture_builder_path": "src/zero_perturbation/phase_a_execution_chain_fixture.py",
+    "fixture_builder_sha256": "b69968756afa3d69b76ed58f2f4136d4fbda708d0ca1da860a60166e787b5a28",
+    "fixture_lock_path": "tests/data/phase_a_execution_chain_audit/fixture_snapshot_lock.json",
+    "fixture_lock_sha256": "8c3e4ff9fcd8ec18903e468cd126ecf9edf0f5e6a5dc0e6c8087b1a208967949",
+    "fixture_parameter_lock_path": "tests/data/phase_a_execution_chain_audit/fixture_backend_parameter_lock.json",
+    "fixture_parameter_lock_sha256": "dfaf0e15f569a41acacfab1bc660c08e31007e70173f5bc02e60d3ec56b28d0c",
+    "fixture_plan_path": "tests/data/phase_a_execution_chain_audit/fixture_plan.json",
+    "fixture_plan_sha256": "b2476717464d6e1df46b8bc5f95782de740544bbdaa82d524b51d617bce9f005",
+    "fixture_protocol_lock_path": "artifacts/current/zero_perturbation_phase_a_execution_chain_audit_v1_protocol_lock/audit_protocol_lock.json",
+    "fixture_protocol_lock_sha256": "0abe1989205220912c38556331a8c07df3d2025a10433050cd485490b9123152",
+    "fixture_snapshot_count": 3,
+    "fixture_trial_count": 6
+  },
+  "implementation_bindings": {
+    "artifact_verifier_sha256": "15279dd74b84f93f2a16c1861e630b57972f59904f1267d94a9b4e24b0c13296",
+    "attempt_event_writer_sha256": "2b1ec95dc1c300fdcc7285a5cc26da1508c2766bd8cd2360db7a16a25c8f8d0d",
+    "execution_engine_sha256": "320b71dc2080de39f2a2549cf894046c452a24cfdfa96944941f456e55582268",
+    "formal_runner_sha256": "9d3e72bdc4e5b04d27f671db6f7ebf50b73dee26c1efb598f61601ccf8b9b96e",
+    "independent_verifier_sha256": "605588ae361846eaca007ad441468d294a15426f0058fa51312517b6495a5445",
+    "open3d_adapter_sha256": "eb327dd5d13f7cf099469e5e1a315e23c41d593cd7301d278135b4276b9f255f",
+    "pcl_adapter_sha256": "25e45b31bc90c93bc578104c994992c3f913437b12bf46389a8380d1d06b9e31",
+    "pcl_cli_sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff",
+    "publisher_sha256": "bf3c6e2791d011fefdcd47be6c6f36a675c2f4e6dae3bcb9e099572c11b8ad1d",
+    "resume_scientific_equivalence_sha256": "c0e401a301612470e2b545a9bd91818e02b2c10aa9ad5fe3fea3698f8ae757d2",
+    "rotation_metric_sha256": "0ed2f040d275f013e26cfc3d9be0610511be436ba512333fed610daa663ffb8a",
+    "stage1_analysis_sha256": "313c9ea20ac14e9fd69404d6efb1ae43513027445998bb24b4964d23bf1c3452",
+    "trial_result_schema_sha256": "4d1b9da79d11b36b19350bec1c0b9eb84fc64a3699be682a4eecca684b451773",
+    "trial_result_validator_sha256": "6b252e07b41e9b2eb8cc1cf0bef735c6411d98587015928e0f544477e54a2c70",
+    "trial_result_writer_sha256": "219fd433828439348d75dc392f2c0d3a31134632d3dcfddf6b0c378c8dc89e19",
+    "trial_resume_validator_sha256": "1be089aec982a3b7fd0c3302153c9e42c08e312c5916dc111f60d39aa4abac95"
+  },
+  "implementation_payload_sha256": "b5bc1a685a3e9f2ca4fd6a82d6716bb14aa6781979932abc1fc6fb4f1840d41f",
+  "lock_type": "phase_a_execution_implementation_lock",
+  "lock_version": "2",
+  "schema_version": "phase_a_execution_implementation_lock_v2"
+}

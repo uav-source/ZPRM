@@ -1,0 +1,351 @@
+schema_version: zero_perturbation_backend_phase_a_v1
+
+protocol:
+  name: zero_perturbation_dual_backend_phase_a_qualification
+  protocol_type: dual_independent_backend_phase_a_qualification
+  protocol_version: 1
+  status: prospectively_frozen_before_any_phase_a_snapshot_or_trial
+  scientific_claim_authorized: false
+  phase_a_run_authorized_before_lock: false
+  phase_b_authorized: false
+  full_development_authorized: false
+  confirmatory_authorized: false
+  real_data_authorized: false
+  measurement_paper_authorized: false
+
+authoritative_baseline:
+  source_branch: feature/zero-perturbation-pcl-backend-qualification-v3
+  source_commit: 6e4cfb857fb9c3050aa42647d9f86c8892130d80
+  pcl_v3_archive_tag: archive/zero-perturbation-pcl-backend-qualification-v3-pass
+  pcl_v3_bundle_path: /tmp/Degen-LIO-zero-perturbation-pcl-v3-pass.bundle
+  pcl_v3_bundle_sha256: 4a5744bc668b93657619632735e0395d0ccabfca8b6efdd8fedab17662158010
+  pcl_v3_decision_path: artifacts/current/zero_perturbation_backend_qualification_v3/final_decision.json
+  pcl_v3_decision_sha256: d1a15d981fb795d2730d6b48eb6dbac4bd1316c8ef73e45505ddd4dcc1a3f008
+  native_backend_qualification_pass: false
+  native_backend_formal_use_authorized: false
+  pcl_backend_implementation_valid: true
+  pcl_backend_phase_a_qualification_authorized: true
+  open3d_backend_implementation_available: true
+  phase_a_execution_count: 0
+  phase_b_execution_count: 0
+  two_independent_backends_qualified: false
+  day1_scientific_validation_pass: NOT_EVALUATED
+
+formal_backends:
+  allowed_in_order:
+    - open3d_point_to_plane
+    - pcl_iterative_closest_point_with_normals
+  excluded:
+    native_full:
+      reason: native_full_failed_ideal_matched_control
+    native_frozen:
+      reason: native_full_failed_ideal_matched_control
+  planned_native_trial_count: 0
+  backend_independence:
+    open3d_must_not_read_pcl_result: true
+    pcl_must_not_read_open3d_result: true
+    neither_backend_may_read_theoretical_weak_direction: true
+    neither_backend_may_read_offline_error: true
+
+immutable_inputs:
+  seed_schedule:
+    path: configs/zero_perturbation/seed_schedule_v1.json
+    sha256: 1006b76427b19151389f35a82b04e2b93abca339310bf8d56a5b92a27131f050
+    split: development
+    confirmatory_subtree_use_forbidden: true
+    old_capture_range_test_seed_use_forbidden: true
+  development_protocol:
+    path: configs/zero_perturbation/development_v1.yaml
+    sha256: 8fe4bcfabfb8492d003b9f690162e106e9fa5745b962ed2c4edfe8666acb291e
+  scene_generator:
+    path: src/capture_range/day2_development_scene.py
+    sha256: f1632095ab6c433e1e917cf0c9a49551683fce2f106761d41c3c3a5e6517b922
+  snapshot_builder:
+    path: src/zero_perturbation/snapshot_builder.py
+    sha256: 6718fc442439e52327e01622df6356a0167456a6d7d8070f25d6e684ef69b72e
+  open3d_backend:
+    path: src/zero_perturbation/open3d_backend.py
+    sha256: eb327dd5d13f7cf099469e5e1a315e23c41d593cd7301d278135b4276b9f255f
+  pcl_python_adapter:
+    path: src/zero_perturbation/pcl_backend.py
+    sha256: 25e45b31bc90c93bc578104c994992c3f913437b12bf46389a8380d1d06b9e31
+  pcl_cli:
+    path: tools/pcl_point_to_plane/pcl_point_to_plane_cli.cpp
+    sha256: 2a7203b82cc9401c558fe3ad410d7eb5a2f253ca0578db7e2c2f069715fad56c
+  rotation_metric:
+    path: src/zero_perturbation/rotation_metrics.py
+    sha256: 0ed2f040d275f013e26cfc3d9be0610511be436ba512333fed610daa663ffb8a
+
+phase_a_matrix:
+  conditions:
+    - IDEAL_MATCHED
+  scenes:
+    - GEOMETRY_RICH_ROOM
+    - LONG_CORRIDOR
+    - PARALLEL_WALLS
+    - END_FACE_TRANSITION_PRESENT
+    - END_FACE_TRANSITION_WEAK
+    - END_FACE_TRANSITION_ABSENT
+    - REPEATED_STRUCTURE
+  development_geometry_seeds:
+    - {index: 0, label: geometry_0, value: 1850310744}
+    - {index: 1, label: geometry_1, value: 1957656152}
+    - {index: 2, label: geometry_2, value: 1334931069}
+  development_measurement_seeds:
+    - {index: 0, label: measurement_0, value: 217775206}
+    - {index: 1, label: measurement_1, value: 1664898153}
+  repeat_indices: [0, 1, 2, 3, 4]
+  planned_snapshot_count: 210
+  planned_trial_count: 420
+  planned_open3d_trial_count: 210
+  planned_pcl_trial_count: 210
+  planned_native_trial_count: 0
+  snapshot_id_format: phase-a-v1/{scene}/{geometry_seed_index}/{measurement_seed_index}/{repeat_index}
+  trial_id_format: phase-a-v1/{scene}/{geometry_seed_index}/{measurement_seed_index}/{repeat_index}/{backend}
+  plan_generation:
+    combination_enumeration_only: true
+    point_cloud_data_forbidden: true
+    scene_generator_import_or_call_forbidden: true
+    rng_import_or_instantiation_forbidden: true
+
+ideal_matched:
+  target_map_source: existing_frozen_scene_generator
+  source_relation_to_target: exact_deterministic_subset_of_target_coordinates
+  every_source_point_must_equal_a_target_coordinate: true
+  independent_resampling: false
+  scan_noise_m: 0.0
+  map_noise_m: 0.0
+  source_dropout_fraction: 0.0
+  target_dropout_fraction: 0.0
+  initial_pose: T_reference_exact
+  measurement_seed_and_repeat_control_only: source_subset_selection
+  measurement_seed_and_repeat_must_not_affect:
+    - target_map_geometry
+    - reference_pose
+    - scene_parameters
+  existing_subset_rule:
+    rule: inclusive_reference_range_filter
+    minimum_range_m: 0.30
+    maximum_range_m: 20.0
+    preserve_target_order: true
+
+transform_semantics:
+  T_reference:
+    direction: source_frame_to_target_map_frame
+  T_estimated:
+    direction: source_frame_to_target_map_frame
+  T_delta:
+    expression: inverse(T_reference) @ T_estimated
+  translation_update_m:
+    expression: norm(T_delta[0:3, 3])
+  rotation_update_rad:
+    input: T_delta[0:3, 0:3]
+    projection: reflection_safe_nearest_SO3_SVD
+    angle: atan2_geodesic
+    raw_trace_acos_gate_forbidden: true
+
+canonical_backend_input:
+  source:
+    dtype: float32
+    byte_order: little_endian
+    memory_order: C_contiguous
+    shape: Nx3
+    checksum: SHA256_raw_bytes
+  target:
+    dtype: float32
+    byte_order: little_endian
+    memory_order: C_contiguous
+    shape: Nx3
+    checksum: SHA256_raw_bytes
+  reference_pose:
+    dtype: float64
+    byte_order: little_endian
+    memory_order: C_contiguous
+    shape: 4x4
+    checksum: SHA256_raw_bytes
+  open3d_conversion: float64_values_derived_only_from_canonical_float32_coordinates
+  pcl_conversion: exact_canonical_float32_values_written_to_PCD_or_input_structure
+  backend_input_checksum_mismatch_count_required: 0
+  backend_specific_normals_and_correspondences_allowed: true
+  backend_specific_preprocessing_forbidden:
+    - clipping
+    - downsampling
+    - noise
+    - dropout
+    - coordinate_transform
+    - initial_transform
+    - maximum_correspondence_distance
+
+open3d_parameter_contract:
+  canonical_sha256: 94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413
+  canonical_json_encoding: UTF-8_sorted_keys_compact_separators
+  parameters:
+    version: 0.19.0+b012259
+    algorithm: TransformationEstimationPointToPlane
+    maximum_correspondence_distance_m: 0.50
+    target_normal_estimation:
+      radius_m: 0.40
+      max_nn: 50
+    convergence:
+      relative_fitness: 1.0e-8
+      relative_rmse: 1.0e-8
+      max_iteration: 50
+    target_normals_from_target_only: true
+    initial_transform: T_reference
+    scene_specific_parameters: false
+
+pcl_parameter_contract:
+  canonical_sha256: 16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd
+  canonical_json_encoding: UTF-8_sorted_keys_compact_separators
+  parameters:
+    version: 1.15.1
+    algorithm: pcl::IterativeClosestPointWithNormals
+    transformation_estimation: pcl::TransformationEstimationPointToPlaneLLS
+    normal_estimation:
+      implementation: pcl::NormalEstimationOMP
+      method: KSearch
+      k: 50
+    icp:
+      maximum_correspondence_distance_m: 0.50
+      maximum_iterations: 50
+      transformation_epsilon: 1.0e-10
+      euclidean_fitness_epsilon: 1.0e-10
+      use_reciprocal_correspondences: false
+      use_symmetric_objective: false
+      enforce_same_direction_normals: true
+    source_and_target_normals_estimated_by_pcl: true
+    initial_transform: T_reference
+    scene_specific_parameters: false
+
+rotation_matrix_quality_gate:
+  raw_rotation_finite: true
+  raw_rotation_determinant_positive: true
+  orthogonality_defect_fro_max: 1.0e-5
+  abs_raw_determinant_minus_one_max: 1.0e-5
+  projection_correction_fro_max: 1.0e-5
+  projection_cannot_rescue_quality_failure: true
+  failure_classification: solver_output_failure
+
+solver_failure_definitions:
+  open3d_point_to_plane:
+    any_of:
+      - python_or_cpp_exception
+      - final_transform_nonfinite
+      - fitness_nonfinite
+      - inlier_rmse_nonfinite
+      - correspondence_set_size_zero
+      - rotation_matrix_quality_gate_failed
+      - required_output_field_missing
+      - snapshot_or_input_checksum_mismatch
+  pcl_iterative_closest_point_with_normals:
+    any_of:
+      - cli_exception_or_nonzero_exit
+      - has_converged_raw_false
+      - final_transform_nonfinite
+      - fitness_nonfinite
+      - correspondence_count_zero
+      - source_or_target_nan_or_zero_normals
+      - rotation_matrix_quality_gate_failed
+      - required_output_field_missing
+      - snapshot_or_input_checksum_mismatch
+  unexecuted_trial_is_zero_failure_forbidden: true
+
+phase_a_hard_gates:
+  completeness:
+    required_snapshot_count: 210
+    required_trial_count: 420
+    snapshot_pairing_violation_count: 0
+    backend_input_checksum_mismatch_count: 0
+    gt_optimization_leakage_count: 0
+    confirmatory_rng_instantiation_count: 0
+    old_capture_test_rng_instantiation_count: 0
+    native_formal_execution_count: 0
+  per_backend:
+    aggregate_level: all_210_backend_trials
+    solver_failure_count: 0
+    nonfinite_output_count: 0
+    q95_translation_update_m_max: 0.001
+    q95_rotation_update_rad_max: 0.00017453292519943296
+    translation_within_0_001_m_fraction_min: 0.95
+  per_scene_per_backend:
+    aggregate_level: each_scene_30_snapshots_for_one_backend
+    median_translation_update_m_max: 0.001
+  combining_rule: every_gate_for_both_backends_must_pass
+
+quantile_contract:
+  median:
+    implementation: numpy.median
+  q95:
+    implementation: numpy.quantile
+    q: 0.95
+    method: linear
+  post_result_method_change_forbidden: true
+
+snapshot_diversity_gate:
+  aggregate_level: each_scene_across_30_snapshots
+  minimum_unique_source_checksum_count: 10
+  report_fields:
+    - unique_target_checksum_count
+    - unique_source_checksum_count
+    - duplicate_source_checksum_count
+  repeated_target_checksum_is_not_automatic_failure: true
+  failure_flag: IDEAL_MATCHED_SNAPSHOT_DIVERSITY_PASS
+
+execution_contract:
+  runner_path: scripts/168_run_backend_phase_a.py
+  required_argument: --protocol-lock
+  lock_file_sha256_must_match: true
+  forbidden_arguments:
+    - --ignore-lock
+    - --override-parameters
+    - --change-thresholds
+  missing_or_tampered_lock_action: refuse_before_rng_snapshot_or_backend
+  phase_a_execution_forbidden_during_lock_round: true
+  phase_b_execution_forbidden: true
+
+lock_round_counters:
+  phase_a_rng_instantiation_count: 0
+  phase_a_snapshot_generation_count: 0
+  phase_a_backend_execution_count: 0
+  phase_a_trial_result_count: 0
+  confirmatory_rng_instantiation_count: 0
+  old_capture_test_rng_instantiation_count: 0
+  native_formal_execution_count: 0
+
+lock_decision_contract:
+  protocol_has_no_ambiguities_required: true
+  artifact_sha_verification_required: true
+  full_python_pytest_required: true
+  pcl_v3_ctest_required: true
+  final_worktree_clean_required: true
+  if_all_lock_requirements_pass:
+    BACKEND_PHASE_A_PROTOCOL_LOCK_PASS: true
+    BACKEND_PHASE_A_RUN_AUTHORIZED: true
+  fixed_not_executed_state:
+    BACKEND_PHASE_A_EXECUTED: false
+    BACKEND_PHASE_A_COMPLETE: false
+    TWO_INDEPENDENT_BACKENDS_QUALIFIED: false
+    DAY1_SCIENTIFIC_VALIDATION_PASS: NOT_EVALUATED
+    PHASE_B_AUTHORIZED: false
+    FULL_DEVELOPMENT_AUTHORIZED: false
+    CONFIRMATORY_AUTHORIZED: false
+    REAL_DATA_AUTHORIZED: false
+    MEASUREMENT_PAPER_MAINLINE_AUTHORIZED: false
+
+artifact_contract:
+  root: artifacts/current/zero_perturbation_backend_phase_a_lock
+  required_files:
+    - backend_phase_a_protocol_lock.json
+    - planned_snapshots.csv
+    - planned_trials.csv
+    - backend_parameter_contract.json
+    - transform_semantics.json
+    - metric_contract.json
+    - gate_contract.json
+    - seed_usage_audit.json
+    - implementation_hashes.json
+    - test_report.json
+    - run_manifest.json
+    - final_decision.json
+    - phase_a_lock_report.md
+    - SHA256SUMS

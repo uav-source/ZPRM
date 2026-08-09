@@ -1,0 +1,257 @@
+{
+  "allowed_use_classes_this_freeze": [
+    "SEED_DECLARATION",
+    "SEED_PLAN_REFERENCE"
+  ],
+  "bootstrap_seed": 860920164,
+  "derivation": {
+    "digest": "SHA256(UTF-8(namespace|domain|index))",
+    "domains": {
+      "bootstrap": [
+        0
+      ],
+      "geometry": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "measurement": [
+        0,
+        1,
+        2
+      ]
+    },
+    "integer": "int.from_bytes(digest[0:8], byteorder=big, signed=false) % 2147483647",
+    "zero_remap": "0 -> 1"
+  },
+  "derivation_prerequisites": {
+    "adapter_fixture": {
+      "artifact_verifier_fixture_pass": true,
+      "backend_trial_counts": {
+        "open3d_point_to_plane": 3,
+        "pcl_point_to_plane": 3
+      },
+      "fixture_report_path": "/home/lj/zero_perturbation_runtime/qualification/synthetic_confirmatory_v3_prerun_preseed_9bd944/working_inventory/v3_adapter_fixture_qualification.json",
+      "fixture_report_sha256": "a9fb470a6da288e4a5f6d0aafe4651cd6fdea875f667602e4e0fc675ae8de7b2",
+      "fixture_snapshot_count": 3,
+      "fixture_trial_count": 6,
+      "fresh_resume_scientific_equivalence": true,
+      "git_gate_pass_count": 22,
+      "native_execution_count": 0,
+      "primary_independent_exact_match": true,
+      "publisher_fixture_pass": true,
+      "seed_free": true,
+      "valid_snapshot_reexecution_count": 0,
+      "valid_trial_reexecution_count": 0
+    },
+    "derivation_prerequisite_commit": "9bd944002cff7b7f6eb22b7f636d081f6a7211eb",
+    "runtime_lifecycle_baseline_commit": "b35acb88bf8de9df6486f91a4ab59069ec5ef945"
+  },
+  "forbidden_use_counts_this_freeze": {
+    "backend_execution_count": 0,
+    "rng_instantiation_count": 0,
+    "scientific_result_count": 0,
+    "snapshot_construction_count": 0,
+    "trial_result_count": 0
+  },
+  "geometry_seeds": [
+    1601523854,
+    326786082,
+    944942356,
+    51440372,
+    183965697
+  ],
+  "measurement_seeds": [
+    1607390209,
+    92844875,
+    774747940
+  ],
+  "namespace": "zero_perturbation_synthetic_confirmatory_v3_20260730_runtime_lifecycle_qualified",
+  "prewrite_collision_scan": {
+    "NEW_V3_NAMESPACE_COLLISION": false,
+    "V3_PREWRITE_COLLISION_SCAN_PASS": true,
+    "V3_SEED_COLLISION_WITH_DEVELOPMENT_COUNT": 0,
+    "V3_SEED_COLLISION_WITH_OLD_TEST_COUNT": 0,
+    "V3_SEED_COLLISION_WITH_V1_COUNT": 0,
+    "V3_SEED_COLLISION_WITH_V2_COUNT": 0,
+    "V3_SEED_PROVENANCE_COLLISION_COUNT": 0,
+    "all_refs_namespace_history_hits": [],
+    "all_refs_seed_history_hits": {
+      "1601523854": [],
+      "1607390209": [],
+      "183965697": [],
+      "326786082": [],
+      "51440372": [],
+      "774747940": [],
+      "860920164": [],
+      "92844875": [],
+      "944942356": []
+    },
+    "archive_tar_binding": {
+      "extracted_archive_path": "/home/lj/zero_perturbation_runtime_archive/synthetic_confirmatory_v2_runtime_lifecycle_failure_20260730",
+      "qualification_verification_path": "artifacts/runtime_lifecycle_qualification_v1/v2_failure_archive_verification.json",
+      "scan_uses_verified_extracted_tree": true
+    },
+    "baseline_commit": "b35acb88bf8de9df6486f91a4ab59069ec5ef945",
+    "baseline_namespace_history_hits": [],
+    "baseline_namespace_paths": [],
+    "baseline_seed_history_hits": {
+      "1601523854": [],
+      "1607390209": [],
+      "183965697": [],
+      "326786082": [],
+      "51440372": [],
+      "774747940": [],
+      "860920164": [],
+      "92844875": [],
+      "944942356": []
+    },
+    "baseline_seed_paths": {
+      "1601523854": [],
+      "1607390209": [],
+      "183965697": [],
+      "326786082": [],
+      "51440372": [],
+      "774747940": [],
+      "860920164": [],
+      "92844875": [],
+      "944942356": []
+    },
+    "derivation_prerequisite_commit": "9bd944002cff7b7f6eb22b7f636d081f6a7211eb",
+    "development_collisions": [],
+    "external_namespace_paths": {
+      "qualification_runtime": [],
+      "source_repository": [],
+      "v2_failure_archive": []
+    },
+    "external_seed_paths": {
+      "qualification_runtime": [],
+      "source_repository": [],
+      "v2_failure_archive": []
+    },
+    "namespace_collision_count": 0,
+    "old_test_collisions": [],
+    "old_test_seed_paths": {
+      "1601523854": [],
+      "1607390209": [],
+      "183965697": [],
+      "326786082": [],
+      "51440372": [],
+      "774747940": [],
+      "860920164": [],
+      "92844875": [],
+      "944942356": []
+    },
+    "prerequisite_namespace_history_hits": [],
+    "prerequisite_namespace_paths": [],
+    "prerequisite_seed_history_hits": {
+      "1601523854": [],
+      "1607390209": [],
+      "183965697": [],
+      "326786082": [],
+      "51440372": [],
+      "774747940": [],
+      "860920164": [],
+      "92844875": [],
+      "944942356": []
+    },
+    "prerequisite_seed_paths": {
+      "1601523854": [],
+      "1607390209": [],
+      "183965697": [],
+      "326786082": [],
+      "51440372": [],
+      "774747940": [],
+      "860920164": [],
+      "92844875": [],
+      "944942356": []
+    },
+    "scan_scope": [
+      "runtime lifecycle baseline commit and ancestry",
+      "adapter fixture prerequisite commit and ancestry",
+      "source repository current tree and all Git refs",
+      "verified extracted v2 failure archive",
+      "v3 qualification runtime",
+      "Development seed registry",
+      "v1 retired Confirmatory seed registry",
+      "v2 retired Confirmatory seed registry",
+      "historical Test tree at the prerequisite commit"
+    ],
+    "schema_version": "synthetic_confirmatory_v3_prewrite_seed_collision_scan_v1",
+    "seed_context_collision_count": 0,
+    "source_namespace_history_hits": [],
+    "source_seed_history_hits": {
+      "1601523854": [],
+      "1607390209": [],
+      "183965697": [],
+      "326786082": [],
+      "51440372": [],
+      "774747940": [],
+      "860920164": [],
+      "92844875": [],
+      "944942356": []
+    },
+    "v1_collisions": [],
+    "v2_collisions": []
+  },
+  "records": [
+    {
+      "domain": "geometry",
+      "index": 0,
+      "payload_sha256": "c9b933274c02ea3defc281448512c7105c142823f407eda54dd14702b193e4f3",
+      "seed": 1601523854
+    },
+    {
+      "domain": "geometry",
+      "index": 1,
+      "payload_sha256": "5e24f201d730781d02ee9bfbefc0b5fb2ce28e64391998fd7d82f350daecd341",
+      "seed": 326786082
+    },
+    {
+      "domain": "geometry",
+      "index": 2,
+      "payload_sha256": "b068b2435781488b6e11e27a69410bd4837fa0ca0e20c7c6951a2ad936745a52",
+      "seed": 944942356
+    },
+    {
+      "domain": "geometry",
+      "index": 3,
+      "payload_sha256": "a78b2598b3fa9fc01381744dd78f724e75878abb2ef35588c44450df36815ab1",
+      "seed": 51440372
+    },
+    {
+      "domain": "geometry",
+      "index": 4,
+      "payload_sha256": "9225f16666ab3532089605b469aa40cb597b7edd4ce89c71818b5b4c7ef4a8f8",
+      "seed": 183965697
+    },
+    {
+      "domain": "measurement",
+      "index": 0,
+      "payload_sha256": "f03d17a37f54a4b73910a2ab9f877b1bdbbaec3813b578bb63763acac554d966",
+      "seed": 1607390209
+    },
+    {
+      "domain": "measurement",
+      "index": 1,
+      "payload_sha256": "790c25a8137067f904aad9ff7d7f4762ab3be2399a27610bc56525515bdada1a",
+      "seed": 92844875
+    },
+    {
+      "domain": "measurement",
+      "index": 2,
+      "payload_sha256": "46658b0c2162a10b2c6ac9cd460be80e45a7d51093e786b98f813d639561acef",
+      "seed": 774747940
+    },
+    {
+      "domain": "bootstrap",
+      "index": 0,
+      "payload_sha256": "0b9798901c216844e20fe55c3ae936ee1c6aa5ae95929b41f152c3850663001b",
+      "seed": 860920164
+    }
+  ],
+  "schema_version": "synthetic_confirmatory_v3_seed_schedule_v1",
+  "seed_schedule_payload_sha256": "14e158a12cab1d634d7571b2e6e24290a22be3a3bb6a982b882ed6954f47767c"
+}

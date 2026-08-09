@@ -1,0 +1,71 @@
+{
+  "files": {
+    "artifact_verifier_sha256": {
+      "path": "src/zero_perturbation/phase_a_lock_architecture_v2.py",
+      "sha256": "15279dd74b84f93f2a16c1861e630b57972f59904f1267d94a9b4e24b0c13296"
+    },
+    "attempt_event_writer_sha256": {
+      "path": "src/zero_perturbation/phase_a_attempt_events.py",
+      "sha256": "2b1ec95dc1c300fdcc7285a5cc26da1508c2766bd8cd2360db7a16a25c8f8d0d"
+    },
+    "execution_engine_sha256": {
+      "path": "src/zero_perturbation/backend_phase_a_v2.py",
+      "sha256": "320b71dc2080de39f2a2549cf894046c452a24cfdfa96944941f456e55582268"
+    },
+    "formal_runner_sha256": {
+      "path": "scripts/179_run_backend_phase_a_v2.py",
+      "sha256": "9d3e72bdc4e5b04d27f671db6f7ebf50b73dee26c1efb598f61601ccf8b9b96e"
+    },
+    "independent_verifier_sha256": {
+      "path": "src/zero_perturbation/phase_a_stage1_independent_verifier.py",
+      "sha256": "605588ae361846eaca007ad441468d294a15426f0058fa51312517b6495a5445"
+    },
+    "open3d_adapter_sha256": {
+      "path": "src/zero_perturbation/open3d_backend.py",
+      "sha256": "eb327dd5d13f7cf099469e5e1a315e23c41d593cd7301d278135b4276b9f255f"
+    },
+    "pcl_adapter_sha256": {
+      "path": "src/zero_perturbation/pcl_backend.py",
+      "sha256": "25e45b31bc90c93bc578104c994992c3f913437b12bf46389a8380d1d06b9e31"
+    },
+    "pcl_cli_sha256": {
+      "path": "build/pcl_point_to_plane_v3/pcl_point_to_plane_cli",
+      "sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff"
+    },
+    "publisher_sha256": {
+      "path": "src/zero_perturbation/phase_a_stage1_publisher.py",
+      "sha256": "bf3c6e2791d011fefdcd47be6c6f36a675c2f4e6dae3bcb9e099572c11b8ad1d"
+    },
+    "resume_scientific_equivalence_sha256": {
+      "path": "src/zero_perturbation/phase_a_resume_scientific_equivalence.py",
+      "sha256": "c0e401a301612470e2b545a9bd91818e02b2c10aa9ad5fe3fea3698f8ae757d2"
+    },
+    "rotation_metric_sha256": {
+      "path": "src/zero_perturbation/rotation_metrics.py",
+      "sha256": "0ed2f040d275f013e26cfc3d9be0610511be436ba512333fed610daa663ffb8a"
+    },
+    "stage1_analysis_sha256": {
+      "path": "src/zero_perturbation/phase_a_stage1_analysis.py",
+      "sha256": "313c9ea20ac14e9fd69404d6efb1ae43513027445998bb24b4964d23bf1c3452"
+    },
+    "trial_result_schema_sha256": {
+      "path": "schemas/phase_a_trial_result_v1.schema.json",
+      "sha256": "4d1b9da79d11b36b19350bec1c0b9eb84fc64a3699be682a4eecca684b451773"
+    },
+    "trial_result_validator_sha256": {
+      "path": "src/zero_perturbation/phase_a_trial_result_schema.py",
+      "sha256": "6b252e07b41e9b2eb8cc1cf0bef735c6411d98587015928e0f544477e54a2c70"
+    },
+    "trial_result_writer_sha256": {
+      "path": "src/zero_perturbation/phase_a_trial_result_writer.py",
+      "sha256": "219fd433828439348d75dc392f2c0d3a31134632d3dcfddf6b0c378c8dc89e19"
+    },
+    "trial_resume_validator_sha256": {
+      "path": "src/zero_perturbation/phase_a_trial_resume.py",
+      "sha256": "1be089aec982a3b7fd0c3302153c9e42c08e312c5916dc111f60d39aa4abac95"
+    }
+  },
+  "implementation_lock_file_sha256": "346efe034be66aea79a7cd1af6602e0275c3baae1f79b8d8727890ec0ff217ec",
+  "implementation_payload_sha256": "b5bc1a685a3e9f2ca4fd6a82d6716bb14aa6781979932abc1fc6fb4f1840d41f",
+  "schema_version": "phase_a_lock_architecture_v2_implementation_manifest_v1"
+}

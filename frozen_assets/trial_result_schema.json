@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://degen-lio.local/schemas/phase_a_trial_result_v1.schema.json",
+  "title": "Phase A trial result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "planned_trial_id",
+    "snapshot_id",
+    "scene_variant",
+    "condition",
+    "backend",
+    "protocol_sha256",
+    "snapshot_lock_sha256",
+    "snapshot_checksum",
+    "source_checksum",
+    "target_checksum",
+    "reference_pose_checksum",
+    "implementation_sha256",
+    "solver_failure",
+    "failure_classification",
+    "failure_detail",
+    "final_transform_4x4",
+    "translation_update_m",
+    "rotation_update_rad",
+    "raw_rotation_finite",
+    "raw_rotation_determinant",
+    "orthogonality_defect_fro",
+    "projection_correction_fro",
+    "finite_output",
+    "runtime_ms",
+    "backend_diagnostics"
+  ],
+  "properties": {
+    "schema_version": {"const": "phase_a_trial_result_v1"},
+    "planned_trial_id": {"type": "string", "minLength": 1},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "scene_variant": {"type": "string", "minLength": 1},
+    "condition": {
+      "enum": [
+        "FIXTURE_IDENTITY",
+        "FIXTURE_NONIDENTITY_REFERENCE",
+        "FIXTURE_NO_CORRESPONDENCE",
+        "IDEAL_MATCHED"
+      ]
+    },
+    "backend": {"enum": ["open3d_point_to_plane", "pcl_point_to_plane"]},
+    "protocol_sha256": {"$ref": "#/$defs/sha256"},
+    "snapshot_lock_sha256": {"$ref": "#/$defs/sha256"},
+    "snapshot_checksum": {"$ref": "#/$defs/sha256"},
+    "source_checksum": {"$ref": "#/$defs/sha256"},
+    "target_checksum": {"$ref": "#/$defs/sha256"},
+    "reference_pose_checksum": {"$ref": "#/$defs/sha256"},
+    "implementation_sha256": {"$ref": "#/$defs/sha256"},
+    "solver_failure": {"type": "boolean"},
+    "failure_classification": {
+      "enum": [
+        "NONE",
+        "SCIENTIFIC_SOLVER_FAILURE",
+        "NONFINITE_OUTPUT",
+        "INPUT_PAIRING_VIOLATION",
+        "ROTATION_MATRIX_QUALITY_FAILURE",
+        "INVALID_NORMALS",
+        "NO_CORRESPONDENCES",
+        "BACKEND_EXCEPTION",
+        "LOCK_MISMATCH",
+        "CORRUPT_EXISTING_RESULT",
+        "SCHEMA_VALIDATION_FAILURE"
+      ]
+    },
+    "failure_detail": {"type": ["string", "null"]},
+    "final_transform_4x4": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {"type": "number"}
+          }
+        }
+      ]
+    },
+    "translation_update_m": {"type": ["number", "null"], "minimum": 0},
+    "rotation_update_rad": {"type": ["number", "null"], "minimum": 0},
+    "raw_rotation_finite": {"type": "boolean"},
+    "raw_rotation_determinant": {"type": ["number", "null"]},
+    "orthogonality_defect_fro": {"type": ["number", "null"], "minimum": 0},
+    "projection_correction_fro": {"type": ["number", "null"], "minimum": 0},
+    "finite_output": {"type": "boolean"},
+    "runtime_ms": {"type": "number", "minimum": 0},
+    "backend_diagnostics": {"type": "object"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "normal_statistics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finite_count", "zero_count", "nan_count", "norm_min", "norm_median", "norm_max"],
+      "properties": {
+        "finite_count": {"type": "integer", "minimum": 0},
+        "zero_count": {"type": "integer", "minimum": 0},
+        "nan_count": {"type": "integer", "minimum": 0},
+        "norm_min": {"type": ["number", "null"], "minimum": 0},
+        "norm_median": {"type": ["number", "null"], "minimum": 0},
+        "norm_max": {"type": ["number", "null"], "minimum": 0}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"solver_failure": {"const": false}}},
+      "then": {
+        "properties": {
+          "failure_classification": {"const": "NONE"},
+          "failure_detail": {"type": "null"},
+          "final_transform_4x4": {"type": "array"},
+          "translation_update_m": {"type": "number"},
+          "rotation_update_rad": {"type": "number"},
+          "finite_output": {"const": true}
+        }
+      },
+      "else": {
+        "properties": {
+          "failure_classification": {"not": {"const": "NONE"}},
+          "failure_detail": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"backend": {"const": "open3d_point_to_plane"}}},
+      "then": {
+        "properties": {
+          "backend_diagnostics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["fitness", "inlier_rmse", "correspondence_set_size"],
+            "properties": {
+              "fitness": {"type": ["number", "null"]},
+              "inlier_rmse": {"type": ["number", "null"], "minimum": 0},
+              "correspondence_set_size": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "backend_diagnostics": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "pcl_version",
+              "pcl_cli_sha256",
+              "exit_code",
+              "has_converged_raw",
+              "fitness_score",
+              "iteration_count",
+              "correspondence_count",
+              "source_normal_statistics",
+              "target_normal_statistics"
+            ],
+            "properties": {
+              "pcl_version": {"type": "string", "minLength": 1},
+              "pcl_cli_sha256": {"$ref": "#/$defs/sha256"},
+              "exit_code": {"type": "integer"},
+              "has_converged_raw": {"type": "boolean"},
+              "fitness_score": {"type": ["number", "null"], "minimum": 0},
+              "iteration_count": {"type": "integer", "minimum": 0},
+              "correspondence_count": {"type": "integer", "minimum": 0},
+              "source_normal_statistics": {"$ref": "#/$defs/normal_statistics"},
+              "target_normal_statistics": {"$ref": "#/$defs/normal_statistics"}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

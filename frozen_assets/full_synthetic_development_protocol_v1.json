@@ -1,0 +1,429 @@
+{
+  "authorization_ceiling": {
+    "CONFIRMATORY_RUN_AUTHORIZED": false,
+    "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+    "REAL_DATA_RUN_AUTHORIZED": false
+  },
+  "backend_parameters": {
+    "contract_path": "frozen_assets/backend_parameter_contract.json",
+    "open3d_sha256": "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413",
+    "pcl_sha256": "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd"
+  },
+  "bootstrap": {
+    "inner_unit": "measurement_seed_x_repeat",
+    "outer_unit": "geometry_seed",
+    "repetitions": 2000,
+    "scope": "exploratory_development_only",
+    "seed": 1191248828
+  },
+  "common_association": {
+    "invalid_reasons": [
+      "NO_INITIAL_CORRESPONDENCE",
+      "NO_FINAL_CORRESPONDENCE",
+      "INSUFFICIENT_VALID_NORMALS",
+      "NONFINITE_COMMON_METRICS",
+      "OTHER"
+    ],
+    "maximum_correspondence_distance_m": 0.5,
+    "minimum_valid_fraction": 0.95,
+    "normal_estimation": {
+      "covariance_denominator": "k",
+      "eigensolver": "numpy.linalg.eigh",
+      "k": 50,
+      "minimum_neighbors": 10,
+      "orientation_unified": false
+    },
+    "target_index": "scipy.spatial.cKDTree",
+    "turnover": "one_minus_pair_set_jaccard"
+  },
+  "conditions": {
+    "DROPOUT_ONLY": {
+      "independent_sampling": true,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.0,
+      "scan_dropout_fraction": 0.01,
+      "scan_noise_sigma_m": 0.0
+    },
+    "FULL_NOISE": {
+      "independent_sampling": true,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.001,
+      "scan_dropout_fraction": 0.01,
+      "scan_noise_sigma_m": 0.003
+    },
+    "IDEAL_MATCHED": {
+      "independent_sampling": false,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.0,
+      "scan_dropout_fraction": 0.0,
+      "scan_noise_sigma_m": 0.0
+    },
+    "INDEPENDENT_NOISE_FREE": {
+      "independent_sampling": true,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.0,
+      "scan_dropout_fraction": 0.0,
+      "scan_noise_sigma_m": 0.0
+    },
+    "MAP_NOISE_ONLY": {
+      "independent_sampling": true,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.001,
+      "scan_dropout_fraction": 0.0,
+      "scan_noise_sigma_m": 0.0
+    },
+    "SCAN_NOISE_ONLY": {
+      "independent_sampling": true,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.0,
+      "scan_dropout_fraction": 0.0,
+      "scan_noise_sigma_m": 0.003
+    }
+  },
+  "counts": {
+    "combined_snapshots": 1260,
+    "combined_trials": 2520,
+    "native_trials": 0,
+    "new_open3d_trials": 1050,
+    "new_pcl_trials": 1050,
+    "new_snapshots": 1050,
+    "new_trials": 2100,
+    "phase_a_ideal_snapshots": 210,
+    "phase_a_ideal_trials": 420,
+    "phase_b_overlap_snapshots": 42,
+    "phase_b_overlap_trials": 84
+  },
+  "cross_validation": {
+    "folds": 3,
+    "ridge_alpha": 1.0,
+    "ridge_fit_intercept": true,
+    "split": "leave_one_geometry_seed_out",
+    "standard_scaler_fit": "training_fold_only",
+    "target": "log10_translation_error_plus_1e-9"
+  },
+  "execution_environment": {
+    "development_runtime_versions": {
+      "matplotlib": "3.8.2",
+      "numpy": "1.26.4",
+      "open3d": "0.19.0+b012259",
+      "python": "3.11.15",
+      "scikit_learn": "1.9.0",
+      "scipy": "1.11.4"
+    },
+    "environment_manifest_path": "frozen_assets/environment_manifest.json",
+    "hard_gates": {
+      "mamba_root_prefix": "/home/lj/.local/share/degen-lio-micromamba",
+      "micromamba_executable": "/home/lj/.local/bin/micromamba",
+      "open3d_version": "0.19.0+b012259",
+      "pcl_cli_sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff",
+      "pcl_linked_abi": "1.15",
+      "pcl_version": "1.15.1"
+    },
+    "python_no_user_site_required": true,
+    "source_repository_python_path_forbidden": true
+  },
+  "formal_execution": {
+    "command": "MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba PYTHONNOUSERSITE=1 /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python scripts/run_full_synthetic_development.py --manifest frozen_assets/full_synthetic_development_manifest_v1.json --run-id full-synthetic-development-v1 --output-dir results/full_synthetic_development_v1 --workers 2 --resume",
+    "command_sha256": "940873be1ef4b95c6523dc56b7a12d716cc905d523f83d02d0a2e936fcede9c8",
+    "output_directory": "results/full_synthetic_development_v1",
+    "resume_required": true,
+    "run_id": "full-synthetic-development-v1",
+    "workers": 2
+  },
+  "gates": {
+    "automatic_nonequivalence_candidate": {
+      "absolute_log_condition_ratio_max": 0.2,
+      "absolute_log_initial_rmse_ratio_max": 0.2,
+      "allowed_manual_review_status": "AUTOMATIC_CANDIDATE",
+      "conditions": [
+        "INDEPENDENT_NOISE_FREE",
+        "SCAN_NOISE_ONLY",
+        "MAP_NOISE_ONLY",
+        "DROPOUT_ONLY",
+        "FULL_NOISE"
+      ],
+      "correspondence_count_ratio_max": 1.1,
+      "correspondence_count_ratio_min": 0.9,
+      "finite_translation_error_required_both": true,
+      "finite_turnover_required_both": true,
+      "forbidden_automatic_status": "VALID_SCIENTIFIC_COUNTEREXAMPLE",
+      "normalized_hessian_eigenvalue_cosine_similarity_min": 0.98,
+      "search_scope": "within_backend_and_condition_snapshot_pairs",
+      "translation_error_ratio_min": 5.0,
+      "turnover_absolute_difference_min": 0.15
+    },
+    "common_association_valid_fraction_min": 0.95,
+    "cross_backend": {
+      "at_least_four_of_five_rho_min": 0.5,
+      "full_noise_rho_min": 0.7,
+      "independent_noise_free_rho_min": 0.7,
+      "median_five_rho_min": 0.7,
+      "pooled_rho_min": 0.75
+    },
+    "execution_success": {
+      "backend_condition_min": 0.95,
+      "backend_condition_scene_min": 0.9
+    },
+    "local_metric_incremental_value": {
+      "alternative_candidate_count_per_backend_min": 10,
+      "alternative_scene_pair_coverage_min": 3,
+      "mean_relative_mae_improvement_min": 0.1,
+      "per_backend_relative_improvement_min": -0.02
+    },
+    "primary_scene_effect": {
+      "conditions": [
+        "INDEPENDENT_NOISE_FREE",
+        "FULL_NOISE"
+      ],
+      "control": "GEOMETRY_RICH_ROOM",
+      "matched_blocks": 30,
+      "minimum_absolute_difference_m": 0.005,
+      "minimum_paired_wins": 24,
+      "minimum_ratio": 5.0,
+      "minimum_success_rate": 0.9,
+      "scene": "LONG_CORRIDOR"
+    },
+    "reassociation": {
+      "centered_rho_min_one_backend": 0.2,
+      "centered_rho_min_other_backend": 0.0,
+      "pooled_rho_min_each_backend": 0.4
+    },
+    "scene_rank_stability": {
+      "condition_backend_combination_count": 10,
+      "conditions": [
+        "INDEPENDENT_NOISE_FREE",
+        "SCAN_NOISE_ONLY",
+        "MAP_NOISE_ONLY",
+        "DROPOUT_ONLY",
+        "FULL_NOISE"
+      ],
+      "geometry_rich_room_low_error_rank_max": 2,
+      "geometry_rich_room_required_combinations_min": 8,
+      "weak_scene_candidates": [
+        "LONG_CORRIDOR",
+        "END_FACE_TRANSITION_ABSENT"
+      ],
+      "weak_scene_high_error_rank_max": 3,
+      "weak_scene_required_combinations_min": 8,
+      "weak_scene_rule": "at_least_one_candidate_within_highest_error_rank"
+    },
+    "systematic_offset_claim": {
+      "all_backend_condition_combinations_required": true,
+      "backend_condition_combination_count": 4,
+      "conditions": [
+        "INDEPENDENT_NOISE_FREE",
+        "FULL_NOISE"
+      ],
+      "geometry_groups_per_backend_condition": 3,
+      "group_observation_count": 10,
+      "group_systematic_fraction_translation_min": 0.6,
+      "group_systematic_translation_offset_m_min": 0.005,
+      "median_systematic_fraction_translation_min": 0.7,
+      "qualified_geometry_groups_min": 2,
+      "scene": "LONG_CORRIDOR",
+      "wording_gate_only_not_development_pass_requirement": true
+    }
+  },
+  "generator_contract": {
+    "generator_sha256": "f1632095ab6c433e1e917cf0c9a49551683fce2f106761d41c3c3a5e6517b922",
+    "method_name_in_seed": false,
+    "shared_snapshot_across_backends": true,
+    "snapshot_builder_sha256": "6718fc442439e52327e01622df6356a0167456a6d7d8070f25d6e684ef69b72e"
+  },
+  "geometry_seeds": [
+    1850310744,
+    1957656152,
+    1334931069
+  ],
+  "measurement_seeds": [
+    217775206,
+    1664898153
+  ],
+  "metric_contract": {
+    "initial_transform": "reference_pose_exact",
+    "relative_transform": "inverse(T_reference) @ T_estimated",
+    "rotation": "norm(Log_SO3(nearest_SO3_reflection_safe(R_reference.T @ R_estimated)))",
+    "rotation_geodesic": "atan2_geodesic_not_raw_trace_acos",
+    "rotation_vector": "Log_SO3(R_reference.T @ R_estimated)",
+    "translation": "norm(T_estimated[0:3,3] - T_reference[0:3,3])",
+    "translation_vector": "T_estimated[0:3,3] - T_reference[0:3,3]"
+  },
+  "model_features": {
+    "model_a": [
+      "log10_initial_residual_rmse_plus_1e-9",
+      "log10_condition_number_trans_plus_1",
+      "log10_inverse_lambda_min_trans",
+      "spectral_entropy_trans",
+      "log10_initial_correspondence_count_plus_1",
+      "initial_translation_gradient_norm"
+    ],
+    "model_b_additions": [
+      "correspondence_turnover",
+      "accepted_source_turnover",
+      "median_normal_angle_change_deg",
+      "q95_normal_angle_change_deg",
+      "residual_rmse_change",
+      "correspondence_count_change_ratio"
+    ]
+  },
+  "phase_a_import": {
+    "artifact_root": "artifacts/formal_phase_a_v1",
+    "formal_run_manifest_path": "results/formal_phase_a_v1/run_manifest.json",
+    "mode": "read_only_no_copy_no_rerun"
+  },
+  "phase_b_reproduction": {
+    "absolute_tolerance": 1e-12,
+    "reference_raw_manifest_path": "results/phase_b_signal_v1/raw_result_manifest.json",
+    "relative_tolerance": 1e-12,
+    "subset": {
+      "conditions": [
+        "INDEPENDENT_NOISE_FREE",
+        "FULL_NOISE"
+      ],
+      "measurement_seed": 217775206,
+      "repeat_index": 0
+    }
+  },
+  "pre_run_freeze": {
+    "branch": "feature/zero-perturbation-full-synthetic-development",
+    "commit_message": "chore: freeze full synthetic development experiment",
+    "formal_operational_sequence": [
+      "authorize_manifest_from_raw_evidence",
+      "commit_authorized_manifest_and_all_pre_run_evidence",
+      "create_pre_run_tag_at_HEAD",
+      "require_tag_equals_HEAD_and_clean_worktree_before_formal_execution"
+    ],
+    "required_tag": "archive/zero-perturbation-full-synthetic-development-pre-run",
+    "self_referential_commit_hash_in_manifest": false
+  },
+  "repeat_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "scenes": [
+    "GEOMETRY_RICH_ROOM",
+    "LONG_CORRIDOR",
+    "PARALLEL_WALLS",
+    "END_FACE_TRANSITION_PRESENT",
+    "END_FACE_TRANSITION_WEAK",
+    "END_FACE_TRANSITION_ABSENT",
+    "REPEATED_STRUCTURE"
+  ],
+  "schema_version": "full_synthetic_development_protocol_v1",
+  "scientific_scope": "development_not_confirmatory",
+  "source_baseline_commit": "d33685d8515c8fc8d34354570561de3bfd7107ae",
+  "statistical_reporting": {
+    "development_intervals_are_confirmatory": false,
+    "iqr": "q75_minus_q25",
+    "median_ratio": "median(numerator) / median(denominator)",
+    "paired_median_difference": "median(blockwise_value_a_minus_value_b)",
+    "paired_win_rate": "count(blockwise_value_a_gt_value_b) / matched_block_count",
+    "quantile_implementation": "numpy.quantile",
+    "quantile_method": "linear",
+    "reported": [
+      "median",
+      "IQR",
+      "q95",
+      "paired_median_difference",
+      "median_ratio",
+      "exploratory_95_percent_bootstrap_interval",
+      "paired_win_rate",
+      "spearman_rho",
+      "spearman_exploratory_interval"
+    ],
+    "spearman": "scipy.stats.spearmanr"
+  },
+  "systematic_offset_and_repeatability": {
+    "direction_concentration": "norm(sum(rho_k / norm(rho_k))) / valid_nonzero_count",
+    "direction_concentration_excludes_zero_vectors": true,
+    "group_keys": [
+      "scene_variant",
+      "geometry_seed",
+      "condition",
+      "backend"
+    ],
+    "group_observations": "2_measurement_seeds_x_5_repeats_equals_10",
+    "mean_rotation_vector": "mean(phi_k)",
+    "mean_translation_vector": "mean(rho_k)",
+    "rotation_repeatability_covariance": "cov(phi_k, ddof=1)",
+    "rotation_repeatability_rms_rad": "sqrt(trace(rotation_repeatability_covariance))",
+    "systematic_fraction_translation": "norm(mean_translation_vector) / mean(norm(rho_k))",
+    "systematic_fraction_zero_denominator_epsilon": 1e-12,
+    "systematic_fraction_zero_denominator_value": null,
+    "systematic_rotation_offset_rad": "norm(mean_rotation_vector)",
+    "systematic_translation_offset_m": "norm(mean_translation_vector)",
+    "terminology_requires_systematic_offset_claim_authorized": true,
+    "translation_repeatability_covariance": "cov(rho_k, ddof=1)",
+    "translation_repeatability_rms_m": "sqrt(trace(translation_repeatability_covariance))"
+  },
+  "test_execution": {
+    "existing": {
+      "collection_sha256": "c7fd7d9cc860606065281548a0dc3a776b0fc2077d0bf030e06c7da167b0ff28",
+      "command": "MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba PYTHONNOUSERSITE=1 /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python -m pytest -q tests/test_minimal_harness.py tests/test_phase_b_analysis.py tests/test_phase_b_assets_runner.py tests/test_phase_b_frozen_integration.py tests/test_phase_b_trial_bridge.py --junitxml=artifacts/full_synthetic_existing_test_results.xml",
+      "command_sha256": "e3e968060b37941b7472adccacd636f862c3ebdf1b1185b99f6fa8af4b7bcecb",
+      "exact_count": 65,
+      "files": [
+        "tests/test_minimal_harness.py",
+        "tests/test_phase_b_analysis.py",
+        "tests/test_phase_b_assets_runner.py",
+        "tests/test_phase_b_frozen_integration.py",
+        "tests/test_phase_b_trial_bridge.py"
+      ]
+    },
+    "new": {
+      "collection_sha256": "9674fad7a77002d06f346cfecd3647110fe3bcb53758185e7b011748443c133d",
+      "command": "MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba PYTHONNOUSERSITE=1 /home/lj/.local/bin/micromamba run -n degen-lio-zprm-py311 python -m pytest -q tests/test_full_synthetic_protocol_assets_runner.py tests/test_full_synthetic_diagnostics_models.py tests/test_full_synthetic_analysis_publication.py --junitxml=artifacts/full_synthetic_new_test_results.xml",
+      "command_sha256": "fcc76e462928211b9e1c441c09904c5fdf64c315cad0a23cffe57675d3b3b715",
+      "exact_count": 35,
+      "files": [
+        "tests/test_full_synthetic_protocol_assets_runner.py",
+        "tests/test_full_synthetic_diagnostics_models.py",
+        "tests/test_full_synthetic_analysis_publication.py"
+      ],
+      "permitted_count_range": [
+        25,
+        35
+      ],
+      "required_categories": [
+        "six_condition_contract",
+        "ideal_read_only_import",
+        "new_snapshot_count_1050",
+        "combined_snapshot_count_1260",
+        "new_trial_count_2100",
+        "combined_trial_count_2520",
+        "phase_b_subset_reproduction",
+        "snapshot_shared_by_two_backends",
+        "confirmatory_seed_not_accessed",
+        "native_trial_count_zero",
+        "systematic_offset_definition",
+        "repeatability_covariance_ddof_1",
+        "systematic_fraction_zero_denominator",
+        "direction_concentration",
+        "common_nearest_neighbor_contract",
+        "pca_normal_contract",
+        "turnover_jaccard",
+        "accepted_source_turnover",
+        "normal_sign_invariant_angle",
+        "normalized_translation_hessian",
+        "spectral_entropy",
+        "initial_translation_gradient",
+        "leave_one_geometry_seed_out",
+        "scaler_fit_on_training_fold_only",
+        "fixed_ridge_alpha",
+        "counterexample_pair_conditions",
+        "scene_paired_win_rate",
+        "cross_backend_spearman",
+        "primary_analysis_verifier_agreement",
+        "artifact_verifier"
+      ]
+    }
+  },
+  "trial_result_schema": {
+    "path": "frozen_assets/trial_result_schema.json",
+    "schema_version": "phase_a_trial_result_v1",
+    "sha256": "4d1b9da79d11b36b19350bec1c0b9eb84fc64a3699be682a4eecca684b451773"
+  }
+}

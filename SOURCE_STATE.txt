@@ -1,0 +1,6 @@
+cleaned_at_utc=2026-07-31T07:56:54Z
+source_uploaded_zip=零扰动位移_最新实验代码.zip
+source_git_commit=eb395e059af87f72dfb4c97c2b88ae2cf41f8ee2
+source_git_branch=feature/zero-perturbation-phase-a-lock-v2-regression-repair
+package_policy=paper-mainline-source-only; old direct routes and failed repair history removed
+formal_runtime_artifacts_included=false

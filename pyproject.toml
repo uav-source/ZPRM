@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zprm-lidar"
+version = "1.0.0"
+description = "Zero-Perturbation Registration Measurement for LiDAR scan-to-map registration"
+requires-python = "==3.11.15"
+dependencies = [
+  "jsonschema",
+  "matplotlib",
+  "numpy==1.26.4",
+  "open3d==0.19.0+b012259",
+  "PyYAML",
+  "scipy==1.11.4",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["src"]

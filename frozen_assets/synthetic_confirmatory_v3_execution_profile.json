@@ -1,0 +1,84 @@
+{
+  "configuration_authority": "frozen_assets/synthetic_confirmatory_formal_manifest_v3.json",
+  "entrypoints": {
+    "analysis": "scripts/analyze_synthetic_confirmatory_v3.py",
+    "artifact_verifier": "scripts/verify_synthetic_confirmatory_v3_artifact.py",
+    "independent_verifier": "scripts/verify_synthetic_confirmatory_v3.py",
+    "publisher": "scripts/publish_synthetic_confirmatory_v3.py",
+    "runner": "scripts/run_synthetic_confirmatory_v3.py"
+  },
+  "execution_profile_payload_sha256": "c86c2629d47d0443281b794fa6c735368d695d5e2d3eb6c5ca4bfc706bf89b2d",
+  "expected_branch": "feature/zero-perturbation-synthetic-confirmatory-v3-prerun",
+  "expected_release_tag": "archive/zero-perturbation-synthetic-confirmatory-v3-pre-run-pass",
+  "final_decision_schema": "synthetic_confirmatory_v3_final_decision_v1",
+  "formal_cli_contract": {
+    "boolean_switches": [
+      "--resume",
+      "--dry-run"
+    ],
+    "required_options": [
+      "--manifest",
+      "--runtime-root",
+      "--run-id",
+      "--workers"
+    ],
+    "science_override_options": []
+  },
+  "formal_execution_state": "NOT_EXECUTED",
+  "formal_runtime_creation_count": 0,
+  "fresh_resume_modes_frozen": true,
+  "publisher_inventory": {
+    "figure_count": 3,
+    "figures": [
+      "gate_matrix.png",
+      "scene_effect.png",
+      "model_comparison.png"
+    ],
+    "root_file_count": 7,
+    "root_files": [
+      "synthetic_confirmatory_report.md",
+      "primary_analysis.json",
+      "independent_verification.json",
+      "final_decision.json",
+      "run_manifest.json",
+      "SHA256SUMS",
+      "artifact_verification.json"
+    ],
+    "table_count": 7,
+    "tables": [
+      "h1_ideal_control.csv",
+      "h2_scene_effect.csv",
+      "h3_cross_backend_ranking.csv",
+      "h4_reassociation.csv",
+      "h5_frozen_models.csv",
+      "h6_systematic_groups.csv",
+      "gate_summary.csv"
+    ]
+  },
+  "run_id": "synthetic-confirmatory-v3",
+  "runtime_paths": {
+    "analysis_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/analysis",
+    "artifact_staging_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/artifact_staging",
+    "backend_temporary_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/backend_tmp",
+    "event_log_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/event_logs",
+    "publisher_staging_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/publisher_staging",
+    "raw_results_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/raw_results",
+    "runtime_root": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3",
+    "snapshot_cache_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/snapshot_cache",
+    "snapshot_lock_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/snapshot_lock.json",
+    "temporary_inventory_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/working_inventory",
+    "verification_path": "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3/verification"
+  },
+  "schema_version": "synthetic_confirmatory_v3_execution_profile_v1",
+  "scientific_evaluation_state": "NOT_EVALUATED",
+  "this_file_executes_commands": false,
+  "workers": 2,
+  "zero_instance_counters": {
+    "backend_execution_count": 0,
+    "rng_instantiation_count": 0,
+    "scientific_result_count": 0,
+    "snapshot_construction_count": 0,
+    "started_event_count": 0,
+    "trial_result_count": 0
+  }
+}

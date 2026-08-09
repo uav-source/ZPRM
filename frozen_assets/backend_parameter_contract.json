@@ -1,0 +1,51 @@
+{
+  "backend_parameter_difference_count": 0,
+  "open3d": {
+    "canonical_json_encoding": "UTF-8_sorted_keys_compact_separators",
+    "canonical_sha256": "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413",
+    "parameters": {
+      "algorithm": "TransformationEstimationPointToPlane",
+      "convergence": {
+        "max_iteration": 50,
+        "relative_fitness": 1e-08,
+        "relative_rmse": 1e-08
+      },
+      "initial_transform": "T_reference",
+      "maximum_correspondence_distance_m": 0.5,
+      "scene_specific_parameters": false,
+      "target_normal_estimation": {
+        "max_nn": 50,
+        "radius_m": 0.4
+      },
+      "target_normals_from_target_only": true,
+      "version": "0.19.0+b012259"
+    }
+  },
+  "pcl": {
+    "canonical_json_encoding": "UTF-8_sorted_keys_compact_separators",
+    "canonical_sha256": "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd",
+    "parameters": {
+      "algorithm": "pcl::IterativeClosestPointWithNormals",
+      "icp": {
+        "enforce_same_direction_normals": true,
+        "euclidean_fitness_epsilon": 1e-10,
+        "maximum_correspondence_distance_m": 0.5,
+        "maximum_iterations": 50,
+        "transformation_epsilon": 1e-10,
+        "use_reciprocal_correspondences": false,
+        "use_symmetric_objective": false
+      },
+      "initial_transform": "T_reference",
+      "normal_estimation": {
+        "implementation": "pcl::NormalEstimationOMP",
+        "k": 50,
+        "method": "KSearch"
+      },
+      "scene_specific_parameters": false,
+      "source_and_target_normals_estimated_by_pcl": true,
+      "transformation_estimation": "pcl::TransformationEstimationPointToPlaneLLS",
+      "version": "1.15.1"
+    }
+  },
+  "schema_version": "backend_phase_a_v1_2_backend_parameter_contract_v1"
+}

@@ -1,0 +1,11 @@
+{
+  "feature_change_authorized": false,
+  "model_asset_path": "frozen_assets/confirmatory_development_trained_models_v1.json",
+  "model_asset_sha256": "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872",
+  "model_count": 4,
+  "model_lock_payload_sha256": "ab339a574f04277f0840d8d2f27d90f94bc5abb7be1ba3f1ee118f1a76d76827",
+  "refit_authorized": false,
+  "restandardization_authorized": false,
+  "schema_version": "confirmatory_development_model_lock_v1",
+  "weighting_scheme": "UNIQUE_INPUT_CONDITION_BALANCED"
+}

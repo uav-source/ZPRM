@@ -1,0 +1,79 @@
+{
+  "bootstrap_seed": 146517424,
+  "derivation": {
+    "digest": "SHA256(UTF-8(namespace|domain|index))",
+    "integer": "int.from_bytes(digest[0:8], byteorder=big, signed=false) % 2147483647",
+    "zero_remap": "0 -> 1"
+  },
+  "geometry_seeds": [
+    1632408808,
+    2098780325,
+    2113923543,
+    143826534,
+    1099133161
+  ],
+  "measurement_seeds": [
+    740417430,
+    23963997,
+    925756274
+  ],
+  "namespace": "zero_perturbation_synthetic_confirmatory_v2_20260729_ideal_lineage_fix",
+  "records": [
+    {
+      "domain": "geometry",
+      "index": 0,
+      "payload_sha256": "bb6adc22ea76dca0358573db0b9535edd5cb7645372d3be2dd5e74da8963c9de",
+      "seed": 1632408808
+    },
+    {
+      "domain": "geometry",
+      "index": 1,
+      "payload_sha256": "a1ac0e3a39c0bc2f8eebd8927faa3982b398192702e0943c88ec22ef37722870",
+      "seed": 2098780325
+    },
+    {
+      "domain": "geometry",
+      "index": 2,
+      "payload_sha256": "940f6185d5e126ca49ae7fe5833face65e6962acaf82d9ff2839729205dc658e",
+      "seed": 2113923543
+    },
+    {
+      "domain": "geometry",
+      "index": 3,
+      "payload_sha256": "83db588780dbed55377b5cdb6af949b0844276ceddbe3ec1726a9be5a752b893",
+      "seed": 143826534
+    },
+    {
+      "domain": "geometry",
+      "index": 4,
+      "payload_sha256": "78f4e583cf99a5e0a048222cdeadb14c5a52329d6aa67691b19c47e70db61884",
+      "seed": 1099133161
+    },
+    {
+      "domain": "measurement",
+      "index": 0,
+      "payload_sha256": "cca7c9d692d24be6378e1ddd4792a7de355f68cc1449421827f9150f56da95e3",
+      "seed": 740417430
+    },
+    {
+      "domain": "measurement",
+      "index": 1,
+      "payload_sha256": "db0c9453cb5480b2537c6a7a30529409a04ce001dc07904e05a5cbf1d06112fb",
+      "seed": 23963997
+    },
+    {
+      "domain": "measurement",
+      "index": 2,
+      "payload_sha256": "8f7f79de982ef7b397a1b396f2e02e26f041dcf2acbc5ce7ce3ba758384a0ae5",
+      "seed": 925756274
+    },
+    {
+      "domain": "bootstrap",
+      "index": 0,
+      "payload_sha256": "f1a5c37ba57026b5bddaa2e75bd8c48c0efc24c250d7f3218e9a6cc15edbeb56",
+      "seed": 146517424
+    }
+  ],
+  "schema_version": "synthetic_confirmatory_v2_seed_schedule_v1",
+  "seed_schedule_payload_sha256": "5977fe63c4412e7fb916ed6fb8c20189eb67920e8192f38defbae98a3e285198"
+}

@@ -1,0 +1,15 @@
+requirement_id,requirement,mandatory,required_evidence,status
+R01,At least two independent public data sources,True,dataset citations and immutable release identifiers,NOT_EVALUATED
+R02,Independent high-accuracy 6DoF reference,True,reference-system specification and accuracy evidence,NOT_EVALUATED
+R03,Evaluated scan is not used to build its target map,True,map-construction lineage,NOT_EVALUATED
+R04,Target map and evaluated scan have independent source acquisition,True,scan/map source identifiers,NOT_EVALUATED
+R05,Time synchronization and extrinsics are auditable,True,"timestamps, calibration, and transform chain",NOT_EVALUATED
+R06,Each dataset has at least 50 corridor or weak-geometry snapshots and 50 geometry-rich snapshots,True,frozen snapshot inventory,NOT_EVALUATED
+R07,Scene labels are frozen before registration error is viewed,True,timestamped blinded labeling record,NOT_EVALUATED
+R08,Open3D and PCL share identical inputs,True,per-backend input checksums,NOT_EVALUATED
+R09,Frozen Open3D and PCL parameters are retained,True,parameter-lock SHA-256,NOT_EVALUATED
+R10,"Reference trajectory, map, and interpolation uncertainty are recorded",True,uncertainty budget,NOT_EVALUATED
+R11,Primary effect exceeds synthetic and real-reference uncertainty budgets,True,preregistered uncertainty-normalized comparison,NOT_EVALUATED
+R12,Continuous errors are primary; an arbitrary success threshold is not the sole result,True,analysis contract,NOT_EVALUATED
+R13,Common-association metrics use the frozen offline definition,True,common-analyzer implementation SHA-256,NOT_EVALUATED
+R14,Scene intervals cannot be reselected after results are inspected,True,immutable interval-selection manifest,NOT_EVALUATED

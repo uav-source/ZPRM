@@ -1,0 +1,122 @@
+{
+  "allowed_backends": [
+    "open3d_point_to_plane",
+    "pcl_iterative_closest_point_with_normals"
+  ],
+  "authorization_ceiling": {
+    "CONFIRMATORY_AUTHORIZED": false,
+    "FULL_SYNTHETIC_DEVELOPMENT_RUN_AUTHORIZED": false,
+    "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+    "REAL_DATA_AUTHORIZED": false
+  },
+  "conditions": {
+    "FULL_NOISE": {
+      "independent_sampling": true,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.001,
+      "scan_dropout_fraction": 0.01,
+      "scan_noise_sigma_m": 0.003
+    },
+    "INDEPENDENT_NOISE_FREE": {
+      "independent_sampling": true,
+      "map_dropout_fraction": 0.0,
+      "map_noise_sigma_m": 0.0,
+      "scan_dropout_fraction": 0.0,
+      "scan_noise_sigma_m": 0.0
+    }
+  },
+  "forbidden_backends": [
+    "native_full",
+    "native_frozen"
+  ],
+  "formal_execution": {
+    "output_directory": "results/phase_b_signal_v1",
+    "resume_required": true,
+    "run_id": "phase-b-signal-v1",
+    "workers": 2
+  },
+  "gates": {
+    "cross_backend_ranking": {
+      "at_least_one_condition_rho_min": 0.7,
+      "each_condition_rho_min": 0.5,
+      "implementation": "scipy.stats.spearmanr",
+      "nonfinite_rho_passes": false
+    },
+    "engineering": {
+      "backend_input_checksum_mismatch_count": 0,
+      "completed_snapshot_count": 42,
+      "completed_trial_count": 84,
+      "corrupt_trial_count": 0,
+      "duplicate_trial_count": 0,
+      "extra_trial_count": 0,
+      "missing_trial_count": 0,
+      "native_trial_count": 0,
+      "nonfinite_output_count_per_backend": 0,
+      "open3d_trial_count": 42,
+      "pcl_trial_count": 42,
+      "solver_failure_count_per_backend": 0
+    },
+    "geometry_seed_consistency": {
+      "comparison": "weak_scene_translation_error_gt_geometry_rich_room",
+      "minimum_successes_per_backend": 2,
+      "seed_count": 3
+    },
+    "scene_ranking": {
+      "geometry_rich_room_max_rank": 2,
+      "long_corridor_or_parallel_walls_min_rank": 5,
+      "ranking": "ascending_translation_median_average_ties"
+    },
+    "weak_rich_effect": {
+      "candidate_weak_scenes": [
+        "LONG_CORRIDOR",
+        "PARALLEL_WALLS"
+      ],
+      "control_scene": "GEOMETRY_RICH_ROOM",
+      "minimum_absolute_difference_m": 0.001,
+      "minimum_ratio": 2.0,
+      "ratio_null_when_control_median_le_m": 1e-12,
+      "selected_candidate_rule": "first_passing_in_candidate_weak_scenes_order",
+      "same_weak_scene_required_across_backends_within_condition": true
+    }
+  },
+  "geometry_seeds": [
+    1850310744,
+    1957656152,
+    1334931069
+  ],
+  "measurement_seed": 217775206,
+  "metric_contract": {
+    "initial_transform": "reference_pose_exact",
+    "rotation_metric_sha256": "0ed2f040d275f013e26cfc3d9be0610511be436ba512333fed610daa663ffb8a",
+    "rotation_update": "atan2_geodesic_of_inverse_reference_times_estimate",
+    "translation_metric_sha256": "1ca6cdf0529e4f26e67dce30a8f49793f8d7a0425fa289adec062c67bd1b2816",
+    "translation_update": "euclidean_norm_of_inverse_reference_times_estimate_translation"
+  },
+  "native_trial_count": 0,
+  "phase_a_formal_pass_commit": "50fd4415deb6af3f3e07d88db5a2f21227d05f69",
+  "planned_snapshot_count": 42,
+  "planned_trial_count": 84,
+  "quantile_method": "linear",
+  "repeat_index": 0,
+  "scenes": [
+    "GEOMETRY_RICH_ROOM",
+    "LONG_CORRIDOR",
+    "PARALLEL_WALLS",
+    "END_FACE_TRANSITION_PRESENT",
+    "END_FACE_TRANSITION_WEAK",
+    "END_FACE_TRANSITION_ABSENT",
+    "REPEATED_STRUCTURE"
+  ],
+  "schema_version": "phase_b_scene_signal_protocol_v1",
+  "scientific_scope": "cross_backend_scene_effect_survival_test",
+  "trial_result_contract": {
+    "common_field_count": 26,
+    "condition_extension": [
+      "INDEPENDENT_NOISE_FREE",
+      "FULL_NOISE"
+    ],
+    "frozen_phase_a_schema_sha256": "4d1b9da79d11b36b19350bec1c0b9eb84fc64a3699be682a4eecca684b451773",
+    "frozen_phase_a_validator_sha256": "6b252e07b41e9b2eb8cc1cf0bef735c6411d98587015928e0f544477e54a2c70",
+    "schema_version": "phase_a_trial_result_v1"
+  }
+}

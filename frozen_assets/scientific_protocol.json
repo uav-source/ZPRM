@@ -1,0 +1,232 @@
+{
+  "allowed_backends": [
+    "open3d_point_to_plane",
+    "pcl_iterative_closest_point_with_normals"
+  ],
+  "backend_algorithms": {
+    "open3d_point_to_plane": "TransformationEstimationPointToPlane",
+    "pcl_iterative_closest_point_with_normals": {
+      "algorithm": "pcl::IterativeClosestPointWithNormals",
+      "transformation_estimation": "pcl::TransformationEstimationPointToPlaneLLS"
+    }
+  },
+  "backend_parameters": {
+    "open3d_point_to_plane": {
+      "algorithm": "TransformationEstimationPointToPlane",
+      "convergence": {
+        "max_iteration": 50,
+        "relative_fitness": 1e-08,
+        "relative_rmse": 1e-08
+      },
+      "initial_transform": "T_reference",
+      "maximum_correspondence_distance_m": 0.5,
+      "scene_specific_parameters": false,
+      "target_normal_estimation": {
+        "max_nn": 50,
+        "radius_m": 0.4
+      },
+      "target_normals_from_target_only": true,
+      "version": "0.19.0+b012259"
+    },
+    "pcl_iterative_closest_point_with_normals": {
+      "algorithm": "pcl::IterativeClosestPointWithNormals",
+      "icp": {
+        "enforce_same_direction_normals": true,
+        "euclidean_fitness_epsilon": 1e-10,
+        "maximum_correspondence_distance_m": 0.5,
+        "maximum_iterations": 50,
+        "transformation_epsilon": 1e-10,
+        "use_reciprocal_correspondences": false,
+        "use_symmetric_objective": false
+      },
+      "initial_transform": "T_reference",
+      "normal_estimation": {
+        "implementation": "pcl::NormalEstimationOMP",
+        "k": 50,
+        "method": "KSearch"
+      },
+      "scene_specific_parameters": false,
+      "source_and_target_normals_estimated_by_pcl": true,
+      "transformation_estimation": "pcl::TransformationEstimationPointToPlaneLLS",
+      "version": "1.15.1"
+    }
+  },
+  "backend_versions": {
+    "open3d_point_to_plane": "0.19.0+b012259",
+    "pcl_iterative_closest_point_with_normals": "1.15.1"
+  },
+  "condition": "IDEAL_MATCHED",
+  "failure_definitions": {
+    "open3d_point_to_plane": {
+      "any_of": [
+        "python_or_cpp_exception",
+        "final_transform_nonfinite",
+        "fitness_nonfinite",
+        "inlier_rmse_nonfinite",
+        "correspondence_set_size_zero",
+        "rotation_matrix_quality_gate_failed",
+        "required_output_field_missing",
+        "snapshot_or_input_checksum_mismatch"
+      ]
+    },
+    "pcl_iterative_closest_point_with_normals": {
+      "any_of": [
+        "cli_exception_or_nonzero_exit",
+        "has_converged_raw_false",
+        "final_transform_nonfinite",
+        "fitness_nonfinite",
+        "correspondence_count_zero",
+        "source_or_target_nan_or_zero_normals",
+        "rotation_matrix_quality_gate_failed",
+        "required_output_field_missing",
+        "snapshot_or_input_checksum_mismatch"
+      ]
+    },
+    "unexecuted_trial_is_zero_failure_forbidden": true
+  },
+  "forbidden_backends": [
+    "native_full",
+    "native_frozen"
+  ],
+  "geometry_seeds": [
+    {
+      "index": 0,
+      "label": "geometry_0",
+      "value": 1850310744
+    },
+    {
+      "index": 1,
+      "label": "geometry_1",
+      "value": 1957656152
+    },
+    {
+      "index": 2,
+      "label": "geometry_2",
+      "value": 1334931069
+    }
+  ],
+  "lock_type": "phase_a_scientific_protocol_lock",
+  "lock_version": "2",
+  "measurement_seeds": [
+    {
+      "index": 0,
+      "label": "measurement_0",
+      "value": 217775206
+    },
+    {
+      "index": 1,
+      "label": "measurement_1",
+      "value": 1664898153
+    }
+  ],
+  "planned_snapshot_count": 210,
+  "planned_trial_count": 420,
+  "qualification_gates": {
+    "phase_a_hard_gates": {
+      "combining_rule": "every_gate_for_both_backends_must_pass",
+      "completeness": {
+        "backend_input_checksum_mismatch_count": 0,
+        "confirmatory_rng_instantiation_count": 0,
+        "gt_optimization_leakage_count": 0,
+        "native_formal_execution_count": 0,
+        "old_capture_test_rng_instantiation_count": 0,
+        "required_snapshot_count": 210,
+        "required_trial_count": 420,
+        "snapshot_pairing_violation_count": 0
+      },
+      "per_backend": {
+        "aggregate_level": "all_210_backend_trials",
+        "nonfinite_output_count": 0,
+        "q95_rotation_update_rad_max": 0.00017453292519943296,
+        "q95_translation_update_m_max": 0.001,
+        "solver_failure_count": 0,
+        "translation_within_0_001_m_fraction_min": 0.95
+      },
+      "per_scene_per_backend": {
+        "aggregate_level": "each_scene_30_snapshots_for_one_backend",
+        "median_translation_update_m_max": 0.001
+      }
+    },
+    "rotation_matrix_quality_gate": {
+      "abs_raw_determinant_minus_one_max": 1e-05,
+      "failure_classification": "solver_output_failure",
+      "orthogonality_defect_fro_max": 1e-05,
+      "projection_cannot_rescue_quality_failure": true,
+      "projection_correction_fro_max": 1e-05,
+      "raw_rotation_determinant_positive": true,
+      "raw_rotation_finite": true
+    },
+    "snapshot_diversity_gate": {
+      "aggregate_level": "each_scene_across_30_snapshots",
+      "failure_flag": "IDEAL_MATCHED_SNAPSHOT_DIVERSITY_PASS",
+      "minimum_unique_source_checksum_count": 10,
+      "repeated_target_checksum_is_not_automatic_failure": true,
+      "report_fields": [
+        "unique_target_checksum_count",
+        "unique_source_checksum_count",
+        "duplicate_source_checksum_count"
+      ]
+    }
+  },
+  "quantile_method": "linear",
+  "repeat_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "rotation_metric_semantics": {
+    "rotation_matrix_quality_gate": {
+      "abs_raw_determinant_minus_one_max": 1e-05,
+      "failure_classification": "solver_output_failure",
+      "orthogonality_defect_fro_max": 1e-05,
+      "projection_cannot_rescue_quality_failure": true,
+      "projection_correction_fro_max": 1e-05,
+      "raw_rotation_determinant_positive": true,
+      "raw_rotation_finite": true
+    },
+    "rotation_update_rad": {
+      "angle": "atan2_geodesic",
+      "input": "T_delta[0:3, 0:3]",
+      "projection": "reflection_safe_nearest_SO3_SVD",
+      "raw_trace_acos_gate_forbidden": true
+    }
+  },
+  "scenes": [
+    "GEOMETRY_RICH_ROOM",
+    "LONG_CORRIDOR",
+    "PARALLEL_WALLS",
+    "END_FACE_TRANSITION_PRESENT",
+    "END_FACE_TRANSITION_WEAK",
+    "END_FACE_TRANSITION_ABSENT",
+    "REPEATED_STRUCTURE"
+  ],
+  "schema_version": "phase_a_scientific_protocol_lock_v2",
+  "scientific_payload_sha256": "c0b2a6c057feb938665dae87a6bc8e4a55e5433379501bcfbcd3a2fd27faac1c",
+  "source_legacy_protocol_path": "artifacts/current/zero_perturbation_backend_phase_a_v1_2_lock/backend_phase_a_v1_2_protocol_lock.json",
+  "source_legacy_protocol_sha256": "7f4b108c365c867b73101e003294cec8123159f968034238440168916e535f75",
+  "transform_semantics": {
+    "T_delta": {
+      "expression": "inverse(T_reference) @ T_estimated"
+    },
+    "T_estimated": {
+      "direction": "source_frame_to_target_map_frame"
+    },
+    "T_reference": {
+      "direction": "source_frame_to_target_map_frame"
+    },
+    "rotation_update_rad": {
+      "angle": "atan2_geodesic",
+      "input": "T_delta[0:3, 0:3]",
+      "projection": "reflection_safe_nearest_SO3_SVD",
+      "raw_trace_acos_gate_forbidden": true
+    },
+    "translation_update_m": {
+      "expression": "norm(T_delta[0:3, 3])"
+    }
+  },
+  "translation_metric": {
+    "expression": "norm(T_delta[0:3, 3])"
+  }
+}

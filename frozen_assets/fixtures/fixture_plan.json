@@ -1,0 +1,33 @@
+{
+  "fixture_only": true,
+  "formal_phase_a": false,
+  "random_seed_used": false,
+  "schema_version": "phase_a_execution_chain_fixture_plan_v1",
+  "snapshots": [
+    {
+      "condition": "FIXTURE_IDENTITY",
+      "expected_failure_classifications": [
+        "NONE"
+      ],
+      "scene_variant": "AUDIT_ASYMMETRIC_3D",
+      "snapshot_id": "fixture-audit-v1/identity"
+    },
+    {
+      "condition": "FIXTURE_NONIDENTITY_REFERENCE",
+      "expected_failure_classifications": [
+        "NONE"
+      ],
+      "scene_variant": "AUDIT_ASYMMETRIC_3D",
+      "snapshot_id": "fixture-audit-v1/nonidentity-reference"
+    },
+    {
+      "condition": "FIXTURE_NO_CORRESPONDENCE",
+      "expected_failure_classifications": [
+        "NO_CORRESPONDENCES",
+        "SCIENTIFIC_SOLVER_FAILURE"
+      ],
+      "scene_variant": "AUDIT_SEPARATED_ASYMMETRIC_3D",
+      "snapshot_id": "fixture-audit-v1/no-correspondence"
+    }
+  ]
+}

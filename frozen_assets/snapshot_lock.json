@@ -1,0 +1,15 @@
+{
+  "FORMAL_BACKEND_EXECUTION_COUNT": 0,
+  "FORMAL_STAGE0_SNAPSHOT_BUILD_COUNT": 210,
+  "FORMAL_TRIAL_RESULT_COUNT": 0,
+  "PHASE_A_STAGE1_BACKEND_RUN_AUTHORIZED": true,
+  "PHASE_A_V1_2_STAGE0_PASS": true,
+  "implementation_sha256": "72f0f09938bd96a7fe6c9e2971c2bb176f09698a7d269a075d06f83761241fe3",
+  "lock_payload_sha256": "bc589f5b8aae4c18a66c28b2d40fb4ff2cf1914142b916500db945286e50a44d",
+  "protocol_sha256": "d412c9bb74fd4e3828c830d17144e1fb4440a27936941ce000e9daa87afabf81",
+  "run_id": "backend-phase-a-v1-2-stage0-20260728",
+  "schema_version": "backend_phase_a_v1_2_snapshot_lock_v1",
+  "snapshot_cache_root": "data/zero_perturbation/backend_phase_a_v1_2_stage0",
+  "snapshot_inventory_path": "artifacts/current/zero_perturbation_backend_phase_a_v1_2_stage0/tables/snapshot_inventory.csv",
+  "snapshot_inventory_sha256": "d2d3e1e7cddb9f7dcc50a340335801b36b3b41a3ac10ab2466b37774c031697d"
+}
