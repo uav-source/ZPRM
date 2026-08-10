@@ -71,6 +71,87 @@ GRANDTOUR_LFS_SHA256 = {
     "2024-11-02-17-43-10/data/tf.tar": "1fe009cb5f0082a44b260dcc3a7d332b892bf4d97cafb644876c801860f5f383",
 }
 
+IILABS_ROSBAG_RANGE_AUDIT = {
+    "audit_method": "HTTP Range reads of the official immutable bag header, first complete chunk, and index tail; no point-cloud geometry or registration output was read",
+    "nav_a_diff": {
+        "bag_size_bytes": 48164911024,
+        "bag_start_time_ros_epoch_s": 1738933502.2271461,
+        "bag_end_time_ros_epoch_s": 1738934262.056712,
+        "chunk_count": 7598,
+        "first_chunk_range": "bytes=4117-6399562",
+        "first_chunk_sha256": "1b4c9907f671bd67532168ab73a2a27a16fc1eb73f1a76ed1a580e778674a6d0",
+        "index_tail_range": "bytes=48163646374-48164911023",
+        "index_tail_sha256": "95c71b367941afcec7600e68eb580ee1eea9718c490104c5e10185452c19aa69",
+        "first_odometry": {
+            "frame_id": "eve/odom",
+            "child_frame_id": "eve/base_footprint",
+            "translation_m": [0.0, 0.0, 0.0],
+            "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0],
+        },
+        "first_map_nn0_transform": {
+            "parent_frame": "eve/odom",
+            "child_frame": "eve/map/nn0",
+            "translation_m": [4.068138610391483, 3.1720707529277767, 0.0],
+            "quaternion_xyzw": [0.0, 0.0, 0.7030638112693579, 0.7111267659731314],
+        },
+        "topic_message_counts": {
+            "/eve/motors_enc": 75699,
+            "/tf_static": 5,
+            "/tf": 106033,
+            "/eve/imu/data": 302094,
+            "/eve/scan": 30338,
+            "/eve/odom": 75690,
+            "/eve/ouster/imu": 75960,
+            "/eve/ouster/points": 7597,
+        },
+    },
+    "nav_a_omni": {
+        "bag_size_bytes": 24637246105,
+        "bag_start_time_ros_epoch_s": 1738935843.8544369,
+        "bag_end_time_ros_epoch_s": 1738936232.584366,
+        "chunk_count": 3887,
+        "first_chunk_range": "bytes=4117-6430115",
+        "first_chunk_sha256": "6dffbc93a9ed6974c406a487039c7ad4a75e154a2cee4a132e6cf8530e412926",
+        "index_tail_range": "bytes=24636590059-24637246104",
+        "index_tail_sha256": "7f5f486a9a5e921e54e6c43ba5bfdf3d91968b8e0f438e86bbab8d60595e8b22",
+        "first_odometry": {
+            "frame_id": "eve/odom",
+            "child_frame_id": "eve/base_footprint",
+            "translation_m": [0.0, 0.0, 0.0],
+            "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0],
+        },
+        "first_map_nn0_transform": {
+            "parent_frame": "eve/odom",
+            "child_frame": "eve/map/nn0",
+            "translation_m": [3.915405815387846, 3.379853301433703, 0.0],
+            "quaternion_xyzw": [0.0, 0.0, 0.7178065166282731, 0.6962426334877696],
+        },
+        "topic_message_counts": {
+            "/tf_static": 5,
+            "/eve/motors_enc": 38727,
+            "/eve/scan": 15521,
+            "/eve/imu/data": 154551,
+            "/tf": 54241,
+            "/eve/ouster/imu": 38851,
+            "/eve/odom": 38717,
+            "/eve/ouster/points": 3886,
+        },
+    },
+    "mocap_or_optitrack_topic_count": 0,
+    "pointcloud_frame_id": "eve/os_sensor",
+    "pointcloud_fields": ["x", "y", "z", "intensity", "t", "reflectivity", "ring", "ambient", "range"],
+    "static_transform_pairs": [
+        ["eve/base_footprint", "eve/base_link"],
+        ["eve/base_link", "eve/imu_link"],
+        ["eve/base_link", "eve/laser"],
+        ["eve/base_link", "eve/os_sensor"],
+        ["eve/os_sensor", "eve/lidar3d"],
+        ["eve/os_sensor", "eve/os_imu"],
+    ],
+    "t_base_link_ouster_translation_m": [0.0, 0.0, 0.4367],
+    "t_base_link_ouster_quaternion_xyzw": [0.0, 0.0, 0.0, 1.0],
+}
+
 PROTOCOL_ASSETS = (
     "protocols/real_data_validation_protocol_framework_v1.md",
     "protocols/real_data_validation_protocol_framework_v1.json",
@@ -429,6 +510,8 @@ def execute_preparation(
             "evidence": [
                 "Both published TUM files begin at translation [0,0,0].",
                 "Official documentation states initial position offsets were adjusted during EVO post-processing.",
+                "Official bag index tails contain eight topics but no MoCap, Motive, or OptiTrack topic.",
+                "Both first raw /eve/odom messages are identity poses in sequence-local eve/odom.",
                 "No official fixed Nav_A_Diff-to-Nav_A_Omni transform is published in downloaded metadata.",
             ],
             "failure_reason": "UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
@@ -458,6 +541,10 @@ def execute_preparation(
         atomic_write_json(runtime_root / "iilabs/reference_audit.json", iilabs_reference)
         atomic_write_json(runtime_root / "iilabs/common_world_frame_audit.json", iilabs_common)
         atomic_write_json(runtime_root / "iilabs/gt_overlap_report.json", iilabs_overlap)
+        atomic_write_json(
+            runtime_root / "iilabs/raw_rosbag_range_audit.json",
+            IILABS_ROSBAG_RANGE_AUDIT,
+        )
 
         grandtour = _grandtour_probe(repository, data_root)
         spx_forward = grandtour["gt_only_overlap"]["SPX-1->SPX-3"]
@@ -545,9 +632,53 @@ def execute_preparation(
         }
         for dataset in ("iilabs", "grandtour"):
             atomic_write_json(runtime_root / dataset / "map_lineage_manifest.json", {"dataset_id": dataset, **lineage})
-            atomic_write_json(runtime_root / dataset / "transform_chain_manifest.json", {"dataset_id": dataset, "status": "INCOMPLETE", "T_world_sensor_formula": "T_world_base @ T_base_sensor", "matrix_direction_audited": True})
-            atomic_write_json(runtime_root / dataset / "time_sync_audit.json", {"dataset_id": dataset, "status": "PARTIAL", "registration_or_lidar_odometry_used": False})
             atomic_write_json(runtime_root / dataset / "uncertainty_evidence.json", {"dataset_id": dataset, "status": "FAIL_UNKNOWN_COMPONENTS", "unknown_components": ["extrinsic", "map", "deskew_interpolation"], "zero_substitution_used": False})
+        atomic_write_json(
+            runtime_root / "iilabs/transform_chain_manifest.json",
+            {
+                "dataset_id": "iilabs",
+                "matrix_direction_audited": True,
+                "T_world_ouster_formula": "T_world_base_link @ T_base_link_ouster",
+                "T_base_link_ouster_translation_m": [0.0, 0.0, 0.4367],
+                "T_base_link_ouster_quaternion_order": "xyzw",
+                "T_world_base_link_status": "UNAVAILABLE_IN_RAW_SELECTED_BAGS_AND_SEQUENCE_LOCAL_TUM_ONLY",
+                "status": "INCOMPLETE_UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
+            },
+        )
+        atomic_write_json(
+            runtime_root / "iilabs/time_sync_audit.json",
+            {
+                "dataset_id": "iilabs",
+                "bag_and_tum_time_base": "ROS_UNIX_EPOCH_SECONDS",
+                "bag_timestamps_strictly_ordered_by_chunk_info": True,
+                "per_point_time_field": "t",
+                "registration_or_lidar_odometry_used": False,
+                "status": "PARTIAL_WORLD_REFERENCE_TOPIC_ABSENT",
+            },
+        )
+        atomic_write_json(
+            runtime_root / "grandtour/transform_chain_manifest.json",
+            {
+                "dataset_id": "grandtour",
+                "common_position_frame": "WGS84_ECEF_FROM_PUBLISHED_IE_TC_NAVSATFIX",
+                "orientation_source": "PUBLISHED_IE_TC_6DOF_ODOMETRY",
+                "matrix_direction_audited": True,
+                "status": "REFERENCE_CHAIN_AUDITED_RAW_HESAI_EXTRINSIC_NOT_MATERIALIZED_AFTER_OVERLAP_FAIL",
+            },
+        )
+        atomic_write_json(
+            runtime_root / "grandtour/time_sync_audit.json",
+            {
+                "dataset_id": "grandtour",
+                "ie_tc_pose_rate_hz": 200.0,
+                "max_reference_gap_s": max(
+                    grandtour["missions"][mission]["max_timestamp_gap_s"]
+                    for mission in ("SPX-1", "SPX-3")
+                ),
+                "registration_or_lidar_odometry_used": False,
+                "status": "REFERENCE_PASS_RAW_HESAI_TIMING_NOT_AUDITED_AFTER_OVERLAP_FAIL",
+            },
+        )
 
         synthetic_analysis = synthetic_run_root / "analysis/primary.json"
         synthetic_sha = sha256_file(synthetic_analysis)

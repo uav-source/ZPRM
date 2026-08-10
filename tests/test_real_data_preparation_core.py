@@ -42,6 +42,7 @@ from phase_a_harness.real_data_preparation.transforms import (
     transform_from_xyzw,
 )
 from phase_a_harness.real_data_preparation.uncertainty import conservative_uncertainty
+from phase_a_harness.real_data_preparation.workflow import IILABS_ROSBAG_RANGE_AUDIT
 from phase_a_harness.real_data_protocol import SNAPSHOT_SELECTION_FIELDS
 
 
@@ -135,6 +136,23 @@ def test_iilabs_sequence_local_tum_is_not_treated_as_common_world() -> None:
         "failure_reason": "UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
         "overlap_status": "NOT_COMPUTABLE",
     }
+
+
+def test_iilabs_raw_bag_index_audit_has_no_mocap_world_topic() -> None:
+    assert IILABS_ROSBAG_RANGE_AUDIT["mocap_or_optitrack_topic_count"] == 0
+    for sequence in ("nav_a_diff", "nav_a_omni"):
+        row = IILABS_ROSBAG_RANGE_AUDIT[sequence]
+        assert set(row["topic_message_counts"]) == {
+            "/eve/motors_enc",
+            "/tf_static",
+            "/tf",
+            "/eve/imu/data",
+            "/eve/scan",
+            "/eve/odom",
+            "/eve/ouster/imu",
+            "/eve/ouster/points",
+        }
+        assert row["first_odometry"]["translation_m"] == [0.0, 0.0, 0.0]
 
 
 def test_transform_direction_is_world_base_then_base_sensor() -> None:
