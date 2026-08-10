@@ -340,6 +340,8 @@ def _verify_source_and_inventory(root: Path, data_root: Path, manifest: Mapping[
         _fail("static no-registration audit did not pass")
     pyboreas = _load(root / "pyboreas_source_manifest.json")
     _same(pyboreas.get("commit"), PYBOREAS_COMMIT, "pyboreas manifest commit")
+    _same(pyboreas.get("checkout_mode"), "official git clone with sparse checkout of root files, pyboreas/data, and pyboreas/utils", "pyboreas checkout mode")
+    _same(pyboreas.get("worktree_clean"), True, "pyboreas recorded worktree status")
     if compact_sha256(pyboreas.get("files")) != pyboreas.get("tree_rows_sha256"):
         _fail("pyboreas tree digest mismatch")
     live_devkit_rows = []

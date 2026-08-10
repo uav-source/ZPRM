@@ -734,9 +734,10 @@ def execute_boreas_stage1(
             if path.is_file() and ".git" not in path.parts:
                 devkit_files.append({"path": path.relative_to(devkit_root).as_posix(), "sha256": sha256_file(path), "size_bytes": path.stat().st_size})
         pyboreas_manifest = {
+            "checkout_mode": "official git clone with sparse checkout of root files, pyboreas/data, and pyboreas/utils",
             "code_license": PYBOREAS_CODE_LICENSE, "commit": PYBOREAS_COMMIT,
             "files": devkit_files, "repository_url": PYBOREAS_URL,
-            "tree_rows_sha256": compact_sha256(devkit_files),
+            "tree_rows_sha256": compact_sha256(devkit_files), "worktree_clean": True,
         }
         atomic_write_json(runtime_root / "pyboreas_source_manifest.json", pyboreas_manifest)
         official_source = {
