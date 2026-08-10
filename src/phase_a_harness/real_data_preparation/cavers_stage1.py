@@ -10,6 +10,7 @@ from __future__ import annotations
 import binascii
 import csv
 import hashlib
+import http.client
 import json
 import os
 import platform
@@ -262,7 +263,15 @@ class RangeClient:
                         }
                     )
                     return payload
-            except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, CaversStage1Error) as error:
+            except (
+                urllib.error.HTTPError,
+                urllib.error.URLError,
+                http.client.IncompleteRead,
+                http.client.RemoteDisconnected,
+                TimeoutError,
+                ConnectionError,
+                CaversStage1Error,
+            ) as error:
                 last_error = error
                 if isinstance(error, urllib.error.HTTPError) and error.code not in (429, 500, 502, 503, 504):
                     raise
@@ -319,7 +328,15 @@ class RangeClient:
                     return payload
             except Stage1LargeFileDownloadForbidden:
                 raise
-            except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, CaversStage1Error) as error:
+            except (
+                urllib.error.HTTPError,
+                urllib.error.URLError,
+                http.client.IncompleteRead,
+                http.client.RemoteDisconnected,
+                TimeoutError,
+                ConnectionError,
+                CaversStage1Error,
+            ) as error:
                 last_error = error
                 if isinstance(error, urllib.error.HTTPError) and error.code not in (429, 500, 502, 503, 504):
                     raise
@@ -456,16 +473,88 @@ def _verify_existing_member(path: Path, member: Mapping[str, Any]) -> None:
         raise CaversStage1Error(f"resume member CRC mismatch: {path}")
 
 
+def _authenticate_sequence_checkpoint(
+    *,
+    sequence_id: str,
+    inventory: Mapping[str, Mapping[str, Any]],
+    source_root: Path,
+) -> dict[str, Any] | None:
+    inventory_path = source_root / "sequences" / sequence_id / "remote_zip_inventory.json"
+    if not inventory_path.exists():
+        return None
+    value = json.loads(inventory_path.read_text(encoding="utf-8"))
+    if value.get("sequence_id") != sequence_id:
+        raise CaversStage1Error("resume sequence checkpoint identity mismatch")
+    raw_name = f"{sequence_id}.zip"
+    bag_name = f"{sequence_id}_rosbag.zip"
+    raw = inventory.get(raw_name)
+    bag = inventory.get(bag_name)
+    if raw is None or bag is None:
+        raise CaversStage1Error("resume checkpoint official archive is absent")
+    for key, expected in (("raw_archive", raw), ("rosbag_archive", bag)):
+        archive = value.get(key)
+        if not isinstance(archive, Mapping) or (
+            archive.get("archive_name") != expected["archive_name"]
+            or archive.get("archive_size_bytes") != expected["size_bytes"]
+            or archive.get("url") != expected["download_url"]
+        ):
+            raise CaversStage1Error("resume checkpoint archive provenance mismatch")
+    selected = value.get("selected_members")
+    if not isinstance(selected, list) or len(selected) != len(RAW_MEMBER_SUFFIXES) + 1:
+        raise CaversStage1Error("resume checkpoint member inventory mismatch")
+    expected_paths = {
+        *(f"{sequence_id}/{suffix}" for suffix in RAW_MEMBER_SUFFIXES),
+        f"{sequence_id}/{ROSBAG_MEMBER_SUFFIX}",
+    }
+    if {row.get("path") for row in selected if isinstance(row, Mapping)} != expected_paths:
+        raise CaversStage1Error("resume checkpoint member allow-list mismatch")
+    evidence_bytes = 0
+    sequence_root = (source_root / "sequences" / sequence_id).resolve(strict=True)
+    for row in selected:
+        if not isinstance(row, Mapping):
+            raise CaversStage1Error("invalid resume checkpoint member")
+        local = Path(str(row.get("local_path", ""))).resolve(strict=True)
+        if sequence_root not in local.parents or local.is_symlink():
+            raise CaversStage1Error("resume checkpoint member path is unsafe")
+        _verify_existing_member(local, row)
+        if sha256_file(local) != row.get("sha256"):
+            raise CaversStage1Error("resume checkpoint member SHA-256 mismatch")
+        evidence_bytes += local.stat().st_size
+    return {
+        "evidence_bytes": evidence_bytes,
+        "raw_archive_bytes_not_downloaded": raw["size_bytes"],
+        "raw_archive_name": raw_name,
+        "rosbag_archive_bytes_not_downloaded": bag["size_bytes"],
+        "rosbag_archive_name": bag_name,
+        "selected_member_count": len(selected),
+        "sequence_id": sequence_id,
+        "zip_inventory_path": str(inventory_path),
+        "zip_inventory_sha256": sha256_file(inventory_path),
+    }
+
+
 def materialize_sequence_evidence(
     *,
     parsed_record: Mapping[str, Any],
     source_root: Path,
     maximum_bytes: int,
+    resume_existing: bool = False,
 ) -> dict[str, Any]:
     inventory = {row["archive_name"]: row for row in parsed_record["files"]}
     client = RangeClient(maximum_materialized_member_bytes=maximum_bytes)
     sequence_rows: list[dict[str, Any]] = []
+    resume_authenticated_sequence_ids: list[str] = []
     for sequence_id in CANDIDATE_SEQUENCES:
+        if resume_existing:
+            checkpoint = _authenticate_sequence_checkpoint(
+                sequence_id=sequence_id,
+                inventory=inventory,
+                source_root=source_root,
+            )
+            if checkpoint is not None:
+                sequence_rows.append(checkpoint)
+                resume_authenticated_sequence_ids.append(sequence_id)
+                continue
         raw_name = f"{sequence_id}.zip"
         bag_name = f"{sequence_id}_rosbag.zip"
         raw = inventory.get(raw_name)
@@ -573,12 +662,16 @@ def materialize_sequence_evidence(
             "full_archive_download_count": 0,
             "maximum_materialized_member_bytes": maximum_bytes,
             "receipts": client.receipts,
+            "resume_authenticated_sequence_count": len(resume_authenticated_sequence_ids),
+            "resume_authenticated_sequence_ids": resume_authenticated_sequence_ids,
             "total_range_response_bytes": sum(row["response_bytes"] for row in client.receipts),
         },
     )
     return {
         "range_receipt_path": str(receipt_path),
         "range_receipt_sha256": sha256_file(receipt_path),
+        "resume_authenticated_sequence_count": len(resume_authenticated_sequence_ids),
+        "resume_authenticated_sequence_ids": resume_authenticated_sequence_ids,
         "sequences": sequence_rows,
         "total_range_response_bytes": sum(row["response_bytes"] for row in client.receipts),
     }
@@ -661,6 +754,12 @@ def load_materialized_sequence_evidence(
     return {
         "range_receipt_path": str(receipt_path),
         "range_receipt_sha256": sha256_file(receipt_path),
+        "resume_authenticated_sequence_count": receipt.get(
+            "resume_authenticated_sequence_count", 0
+        ),
+        "resume_authenticated_sequence_ids": receipt.get(
+            "resume_authenticated_sequence_ids", []
+        ),
         "sequences": sequence_rows,
         "total_range_response_bytes": receipt["total_range_response_bytes"],
     }
@@ -1043,11 +1142,31 @@ def execute_cavers_stage1(
             or environment.get("git", {}).get("worktree_porcelain") != []
         ):
             raise PermissionError("resume environment identity mismatch")
+        live_environment = _environment_report(repository, data_root)
+        if live_environment["git"]["worktree_porcelain"]:
+            raise PermissionError("worktree changed before resume")
+        resume_environment_path = runtime_root / "resume_environment_report.json"
+        if resume_environment_path.is_file():
+            finalizing_environment = json.loads(
+                resume_environment_path.read_text(encoding="utf-8")
+            )
+            if finalizing_environment.get("git", {}).get("commit") != live_environment["git"][
+                "commit"
+            ]:
+                raise PermissionError("resume implementation commit changed again")
+        else:
+            finalizing_environment = {
+                **live_environment,
+                "resume_origin_commit": environment["git"]["commit"],
+                "resume_policy": "authenticate completed sequence checkpoints by official archive identity, size, CRC32, and SHA-256 before continuation",
+            }
+            atomic_write_json(resume_environment_path, finalizing_environment)
     else:
         environment = _environment_report(repository, data_root)
         if environment["git"]["worktree_porcelain"]:
             raise PermissionError("worktree changed during preflight")
         atomic_write_json(environment_path, environment)
+        finalizing_environment = environment
     cleanup = _cleanup_report()
     atomic_write_json(runtime_root / "cleanup_report.json", cleanup)
     atomic_write_json(runtime_root / "cavers_cleanup_report.json", cleanup)
@@ -1111,6 +1230,7 @@ def execute_cavers_stage1(
                 parsed_record=parsed_record,
                 source_root=source_root,
                 maximum_bytes=maximum_single_download_bytes,
+                resume_existing=mode == "resume",
             )
         official_source = {
             "arxiv_id": ARXIV_ID,
@@ -1527,6 +1647,12 @@ def execute_cavers_stage1(
             "maximum_materialized_file_bytes": max(row["size_bytes"] for row in source_rows),
             "maximum_single_download_bytes": maximum_single_download_bytes,
             "range_response_bytes": evidence["total_range_response_bytes"],
+            "resume_authenticated_sequence_count": len(
+                evidence.get("resume_authenticated_sequence_ids", [])
+            ),
+            "resume_authenticated_sequence_ids": evidence.get(
+                "resume_authenticated_sequence_ids", []
+            ),
         }
         atomic_write_json(runtime_root / "download_manifest.json", download_manifest)
 
@@ -1625,6 +1751,7 @@ def execute_cavers_stage1(
             for name in payload_names
         ],
         "producer_commit": environment["git"]["commit"],
+        "finalizing_commit": finalizing_environment["git"]["commit"],
         "schema_version": "cavers_stage1_manifest_v1",
     }
     manifest["manifest_payload_sha256"] = compact_sha256(manifest)

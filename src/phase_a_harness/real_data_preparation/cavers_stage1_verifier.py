@@ -96,6 +96,7 @@ REQUIRED_RUNTIME_FILES = frozenset(
         "SHA256SUMS",
     }
 )
+OPTIONAL_RUNTIME_FILES = frozenset({"resume_environment_report.json"})
 
 GT_REQUIRED_FIELDS = (
     "Timestamp",
@@ -318,7 +319,22 @@ def _verify_sha256sums(root: Path, actual_files: set[str]) -> dict[str, str]:
     return entries
 
 
-def _verify_manifest(root: Path, data_rows: list[dict[str, Any]]) -> dict[str, Any]:
+def _git_commit_is_head_ancestor(repository: Path, commit: str) -> bool:
+    result = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", commit, "HEAD"],
+        cwd=repository,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    return result.returncode == 0
+
+
+def _verify_manifest(
+    root: Path,
+    data_rows: list[dict[str, Any]],
+    repository: Path,
+) -> dict[str, Any]:
     manifest = _mapping_json(root / "cavers_stage1_manifest.json")
     stored = manifest.get("manifest_payload_sha256")
     payload = {key: value for key, value in manifest.items() if key != "manifest_payload_sha256"}
@@ -342,6 +358,48 @@ def _verify_manifest(root: Path, data_rows: list[dict[str, Any]]) -> dict[str, A
     )
     producer_commit = manifest.get("producer_commit")
     _require(isinstance(producer_commit, str) and re.fullmatch(r"[0-9a-f]{40}", producer_commit) is not None, "invalid producer commit")
+    finalizing_commit = manifest.get("finalizing_commit")
+    _require(
+        isinstance(finalizing_commit, str)
+        and re.fullmatch(r"[0-9a-f]{40}", finalizing_commit) is not None,
+        "invalid finalizing commit",
+    )
+    environment = _mapping_json(root / "environment_report.json")
+    environment_git = environment.get("git")
+    _require(
+        isinstance(environment_git, dict)
+        and environment_git.get("commit") == producer_commit
+        and environment_git.get("branch") == "prep/cavers-single-dataset-stage1-v1"
+        and environment_git.get("worktree_porcelain") == [],
+        "fresh producer environment provenance mismatch",
+    )
+    resume_path = root / "resume_environment_report.json"
+    if resume_path.is_file():
+        resume_environment = _mapping_json(resume_path)
+        resume_git = resume_environment.get("git")
+        _require(
+            isinstance(resume_git, dict)
+            and resume_git.get("commit") == finalizing_commit
+            and resume_git.get("branch") == "prep/cavers-single-dataset-stage1-v1"
+            and resume_git.get("worktree_porcelain") == [],
+            "resume finalizing environment provenance mismatch",
+        )
+        _require(
+            resume_environment.get("resume_origin_commit") == producer_commit
+            and isinstance(resume_environment.get("resume_policy"), str)
+            and "authenticate completed sequence checkpoints" in resume_environment["resume_policy"],
+            "resume origin/policy provenance mismatch",
+        )
+    else:
+        _require(finalizing_commit == producer_commit, "fresh run finalizing commit differs from producer commit")
+    _require(
+        _git_commit_is_head_ancestor(repository, producer_commit),
+        "producer commit is not an ancestor of current HEAD",
+    )
+    _require(
+        _git_commit_is_head_ancestor(repository, finalizing_commit),
+        "finalizing commit is not an ancestor of current HEAD",
+    )
 
     rows = manifest.get("payload")
     _require(isinstance(rows, list), "manifest payload is not a list")
@@ -546,6 +604,7 @@ def _verify_small_members(
     official: Mapping[str, Any],
     archive_rows: Mapping[str, Mapping[str, Any]],
     data_root: Path,
+    runtime_root: Path,
 ) -> None:
     evidence = official.get("source_evidence")
     _require(isinstance(evidence, dict), "official source evidence missing")
@@ -572,6 +631,22 @@ def _verify_small_members(
         response_total += response_bytes
     _require(receipts.get("total_range_response_bytes") == response_total, "HTTP receipt total mismatch")
     _require(evidence.get("total_range_response_bytes") == response_total, "official receipt total mismatch")
+    resume_ids = receipts.get("resume_authenticated_sequence_ids")
+    resume_count = receipts.get("resume_authenticated_sequence_count")
+    _require(isinstance(resume_ids, list), "resume-authenticated sequence IDs missing")
+    _require(
+        all(isinstance(sequence_id, str) and sequence_id in CANDIDATE_SEQUENCES for sequence_id in resume_ids),
+        "resume-authenticated sequence ID is not a CAVERS candidate",
+    )
+    _require(len(resume_ids) == len(set(resume_ids)), "duplicate resume-authenticated sequence ID")
+    _require(
+        isinstance(resume_count, int)
+        and not isinstance(resume_count, bool)
+        and resume_count == len(resume_ids),
+        "resume-authenticated sequence count mismatch",
+    )
+    if not (runtime_root / "resume_environment_report.json").is_file():
+        _require(resume_count == 0, "checkpoint reuse recorded without resume environment provenance")
 
     expected_suffixes = {
         "GT_ODOM/data.csv",
@@ -1293,7 +1368,11 @@ def verify_cavers_stage1(
     _require(repository.is_dir() and data_root.is_dir() and runtime_root.is_dir(), "verification roots must be directories")
 
     actual_runtime_files = _runtime_file_names(runtime_root)
-    _require(actual_runtime_files == REQUIRED_RUNTIME_FILES, "required runtime inventory mismatch")
+    _require(
+        REQUIRED_RUNTIME_FILES <= actual_runtime_files
+        and actual_runtime_files <= REQUIRED_RUNTIME_FILES | OPTIONAL_RUNTIME_FILES,
+        "required/optional runtime inventory mismatch",
+    )
     _verify_sha256sums(runtime_root, actual_runtime_files)
     cleanup = _mapping_json(runtime_root / "cleanup_report.json")
     cavers_cleanup = _mapping_json(runtime_root / "cavers_cleanup_report.json")
@@ -1305,10 +1384,10 @@ def verify_cavers_stage1(
     )
 
     data_rows, maximum_size = _scan_data_files(data_root)
-    _verify_manifest(runtime_root, data_rows)
+    _verify_manifest(runtime_root, data_rows, repository)
     download = _verify_download_manifest(runtime_root, data_rows, maximum_size)
     official, archive_rows = _verify_official_source(runtime_root, data_root)
-    _verify_small_members(official, archive_rows, data_root)
+    _verify_small_members(official, archive_rows, data_root, runtime_root)
     reference = _verify_reference(runtime_root, data_root)
     _verify_sequence_inventory(runtime_root, reference)
     world = _verify_world_frame(runtime_root, reference)
@@ -1355,6 +1434,7 @@ __all__ = [
     "CaversStage1VerificationError",
     "MAX_STAGE1_FILE_BYTES",
     "OVERLAP_CONTRACT",
+    "OPTIONAL_RUNTIME_FILES",
     "REQUIRED_RUNTIME_FILES",
     "verify_cavers_stage1",
 ]

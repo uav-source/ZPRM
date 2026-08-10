@@ -252,6 +252,38 @@ def test_small_file_client_reads_only_expected_bytes_plus_one(
     assert reads == [4]
 
 
+def test_small_file_client_retries_chunked_incomplete_read(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    attempts = 0
+
+    class Response:
+        status = 200
+        headers: dict[str, str] = {}
+
+        def __enter__(self) -> "Response":
+            return self
+
+        def __exit__(self, *args: object) -> None:
+            return None
+
+        def read(self, size: int | None = None) -> bytes:
+            nonlocal attempts
+            attempts += 1
+            if attempts == 1:
+                raise cavers_stage1.http.client.IncompleteRead(b"ab")
+            return b"abc"
+
+    monkeypatch.setattr(cavers_stage1.urllib.request, "urlopen", lambda *args, **kwargs: Response())
+    monkeypatch.setattr(cavers_stage1.time, "sleep", lambda _: None)
+    client = RangeClient(maximum_materialized_member_bytes=1024)
+
+    assert client.get_small_file(
+        "https://zenodo.org/file/container/member", purpose="test", expected_bytes=3
+    ) == b"abc"
+    assert attempts == 2
+
+
 def test_no_registration_guard_fails_closed_without_environment(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
