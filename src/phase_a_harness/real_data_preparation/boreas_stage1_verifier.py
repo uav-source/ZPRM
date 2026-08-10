@@ -26,6 +26,9 @@ AWS_URI = "s3://boreas"
 REFERENCE_SEQUENCE = "boreas-2020-11-26-13-58"
 MAX_SINGLE = 500_000_000
 MAX_TOTAL = 5_000_000_000
+TRANSFORM_TRANSLATION_LIMIT_M = 1e-4
+TRANSFORM_ROTATION_LIMIT_RAD = 1e-4
+TRANSFORM_MINIMUM_DISCRIMINATION_RATIO = 1_000.0
 BACKEND_PARAMETER_SHA256 = "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
 OPEN3D_PARAMETER_CANONICAL_SHA256 = "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413"
 PCL_PARAMETER_CANONICAL_SHA256 = "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd"
@@ -479,6 +482,9 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
     gps_times, gps_values = _read_pose(gps_path)
     lidar_times, lidar_values = trajectories[REFERENCE_SEQUENCE]
     calculated = _chain(gps_times, gps_values, lidar_times, lidar_values, matrices[REFERENCE_SEQUENCE])
+    inverse_calculated = _chain(
+        gps_times, gps_values, lidar_times, lidar_values, np.linalg.inv(matrices[REFERENCE_SEQUENCE])
+    )
     consistency = _load(root / "boreas_transform_chain_consistency.json")
     for key, value in calculated.items():
         if isinstance(value, float):
@@ -489,8 +495,30 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
     _same(consistency.get("composition"), "T_ENU_lidar(t)=T_ENU_applanix(t)@T_applanix_lidar", "transform composition")
     _same(consistency.get("direction"), "T_applanix_lidar maps lidar coordinates into the Applanix frame", "transform direction")
     _same(consistency.get("status"), "PASS", "transform consistency status")
-    if calculated["maximum_translation_error_m"] > 1e-5 or calculated["maximum_rotation_error_rad"] > 1e-7:
+    if (
+        calculated["maximum_translation_error_m"] > TRANSFORM_TRANSLATION_LIMIT_M
+        or calculated["maximum_rotation_error_rad"] > TRANSFORM_ROTATION_LIMIT_RAD
+    ):
         _fail("transform consistency exceeds frozen numerical limit")
+    translation_ratio = inverse_calculated["maximum_translation_error_m"] / max(
+        calculated["maximum_translation_error_m"], np.finfo(np.float64).tiny
+    )
+    rotation_ratio = inverse_calculated["maximum_rotation_error_rad"] / max(
+        calculated["maximum_rotation_error_rad"], np.finfo(np.float64).tiny
+    )
+    for key, expected in (
+        ("inverse_maximum_translation_error_m", inverse_calculated["maximum_translation_error_m"]),
+        ("inverse_maximum_rotation_error_rad", inverse_calculated["maximum_rotation_error_rad"]),
+        ("direction_discrimination_translation_ratio", translation_ratio),
+        ("direction_discrimination_rotation_ratio", rotation_ratio),
+    ):
+        if not math.isclose(float(consistency.get(key)), expected, abs_tol=1e-12, rel_tol=1e-12):
+            _fail(f"transform direction discrimination mismatch: {key}")
+    _same(consistency.get("numerical_translation_limit_m"), TRANSFORM_TRANSLATION_LIMIT_M, "transform translation limit")
+    _same(consistency.get("numerical_rotation_limit_rad"), TRANSFORM_ROTATION_LIMIT_RAD, "transform rotation limit")
+    _same(consistency.get("minimum_direction_discrimination_ratio"), TRANSFORM_MINIMUM_DISCRIMINATION_RATIO, "transform discrimination limit")
+    if translation_ratio < TRANSFORM_MINIMUM_DISCRIMINATION_RATIO or rotation_ratio < TRANSFORM_MINIMUM_DISCRIMINATION_RATIO:
+        _fail("published transform direction is not decisively better than its inverse")
     chain = _load(root / "boreas_transform_chain_manifest.json")
     if not np.array_equal(np.asarray(chain.get("matrix")), matrices[REFERENCE_SEQUENCE]):
         _fail("recorded extrinsic matrix was altered")

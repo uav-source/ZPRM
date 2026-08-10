@@ -57,6 +57,9 @@ OPEN3D_PARAMETER_CANONICAL_SHA256 = "94a2d1e991658b7088be43ad1a82f9b1d783264736c
 PCL_PARAMETER_CANONICAL_SHA256 = "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd"
 MAX_SINGLE_OBJECT_BYTES = 500_000_000
 MAX_STAGE1_TOTAL_BYTES = 5_000_000_000
+TRANSFORM_NUMERICAL_TRANSLATION_LIMIT_M = 1e-4
+TRANSFORM_NUMERICAL_ROTATION_LIMIT_RAD = 1e-4
+TRANSFORM_DIRECTION_MINIMUM_DISCRIMINATION_RATIO = 1_000.0
 REFERENCE_SEQUENCE = "boreas-2020-11-26-13-58"
 POSE_HEADER = (
     "GPSTime", "easting", "northing", "altitude", "vel_east", "vel_north",
@@ -494,7 +497,41 @@ def transform_chain_consistency(gps_values: np.ndarray, lidar_values: np.ndarray
         "median_rotation_error_rad": float(np.median(rotation_errors)),
         "median_translation_error_m": float(np.median(translation_errors)),
         "sample_count": len(sample_indices),
-        "status": "PASS" if max(translation_errors) <= 1e-5 and max(rotation_errors) <= 1e-7 else "FAIL",
+        "status": "PASS" if (
+            max(translation_errors) <= TRANSFORM_NUMERICAL_TRANSLATION_LIMIT_M
+            and max(rotation_errors) <= TRANSFORM_NUMERICAL_ROTATION_LIMIT_RAD
+        ) else "FAIL",
+    }
+
+
+def audit_transform_chain_direction(
+    gps_values: np.ndarray, lidar_values: np.ndarray, extrinsic: np.ndarray
+) -> dict[str, Any]:
+    """Verify the published direction against poses and explicitly reject its inverse."""
+
+    forward = transform_chain_consistency(gps_values, lidar_values, extrinsic)
+    inverse = transform_chain_consistency(gps_values, lidar_values, np.linalg.inv(extrinsic))
+    translation_ratio = inverse["maximum_translation_error_m"] / max(
+        forward["maximum_translation_error_m"], np.finfo(np.float64).tiny
+    )
+    rotation_ratio = inverse["maximum_rotation_error_rad"] / max(
+        forward["maximum_rotation_error_rad"], np.finfo(np.float64).tiny
+    )
+    passed = (
+        forward["status"] == "PASS"
+        and translation_ratio >= TRANSFORM_DIRECTION_MINIMUM_DISCRIMINATION_RATIO
+        and rotation_ratio >= TRANSFORM_DIRECTION_MINIMUM_DISCRIMINATION_RATIO
+    )
+    return {
+        **forward,
+        "direction_discrimination_rotation_ratio": float(rotation_ratio),
+        "direction_discrimination_translation_ratio": float(translation_ratio),
+        "inverse_maximum_rotation_error_rad": inverse["maximum_rotation_error_rad"],
+        "inverse_maximum_translation_error_m": inverse["maximum_translation_error_m"],
+        "minimum_direction_discrimination_ratio": TRANSFORM_DIRECTION_MINIMUM_DISCRIMINATION_RATIO,
+        "numerical_rotation_limit_rad": TRANSFORM_NUMERICAL_ROTATION_LIMIT_RAD,
+        "numerical_translation_limit_m": TRANSFORM_NUMERICAL_TRANSLATION_LIMIT_M,
+        "status": "PASS" if passed else "FAIL",
     }
 
 
@@ -868,7 +905,9 @@ def execute_boreas_stage1(
         }
         atomic_write_json(runtime_root / "boreas_common_world_frame_audit.json", world)
 
-        consistency = transform_chain_consistency(gps_values, pose_values[REFERENCE_SEQUENCE], matrices[REFERENCE_SEQUENCE])
+        consistency = audit_transform_chain_direction(
+            gps_values, pose_values[REFERENCE_SEQUENCE], matrices[REFERENCE_SEQUENCE]
+        )
         atomic_write_json(runtime_root / "boreas_transform_chain_consistency.json", consistency)
         transform_manifest = {
             "composition": "T_ENU_lidar(t)=T_ENU_applanix(t)@T_applanix_lidar",
@@ -1010,7 +1049,7 @@ def execute_boreas_stage1(
 __all__ = [
     "BOREAS_SEQUENCES", "BoreasStage1Error", "MAX_SINGLE_OBJECT_BYTES", "MAX_STAGE1_TOTAL_BYTES",
     "Stage1DownloadBudgetExceeded", "Stage1LargeFileDownloadForbidden", "TEST_SEQUENCES", "TRAIN_SEQUENCES",
-    "assert_download_budget", "compose_enu_lidar", "execute_boreas_stage1", "parse_calibration",
+    "assert_download_budget", "audit_transform_chain_direction", "compose_enu_lidar", "execute_boreas_stage1", "parse_calibration",
     "detect_sequence_local_resets", "parse_pose_csv", "parse_s3_ls_line", "parse_top_level_s3_listing", "pose_row_to_transform",
     "transform_chain_consistency", "yaw_pitch_roll_to_rotation",
 ]

@@ -336,3 +336,25 @@ def test_36_official_paper_pdf_is_pinned() -> None:
     assert producer.PAPER_PDF_SHA256 == verifier.PAPER_PDF_SHA256
     assert len(producer.PAPER_PDF_SHA256) == 64
     assert set(producer.PAPER_PDF_SHA256) <= set("0123456789abcdef")
+
+
+def test_37_transform_direction_audit_rejects_inverse() -> None:
+    gps = np.asarray([
+        _pose_row(1_600_000_000 + index * 0.005, (index * 0.01, 0, 0))
+        for index in range(401)
+    ])
+    extrinsic = np.eye(4)
+    extrinsic[:3, :3] = producer._yaw(0.4)
+    extrinsic[2, 3] = 0.13
+    lidar = np.asarray([
+        _pose_row(
+            1_600_000_000_000_000 + index * 100_000,
+            (index * 0.2, 0, 0.13),
+            (0.0, 0.0, 0.4),
+        )
+        for index in range(21)
+    ])
+    result = producer.audit_transform_chain_direction(gps, lidar, extrinsic)
+    assert result["status"] == "PASS"
+    assert result["inverse_maximum_translation_error_m"] == pytest.approx(0.26)
+    assert result["direction_discrimination_translation_ratio"] >= 1_000
