@@ -181,6 +181,14 @@ def _resolve_evidence(data_root: Path, row: Mapping[str, Any]) -> Path:
     return candidate
 
 
+def _md5_file(path: Path) -> str:
+    digest = hashlib.md5(usedforsecurity=False)
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
 def _read_pose(path: Path) -> tuple[np.ndarray, np.ndarray]:
     with path.open("r", encoding="utf-8", newline="") as stream:
         reader = csv.reader(stream)
@@ -272,6 +280,7 @@ def _verify_source_and_inventory(root: Path, data_root: Path, manifest: Mapping[
     if not isinstance(rows, list) or len(rows) != 83:
         _fail("download evidence row count mismatch")
     paths: dict[str, Path] = {}
+    s3_source_rows: dict[str, Mapping[str, Any]] = {}
     s3_bytes = 0
     s3_count = 0
     for row in rows:
@@ -287,9 +296,18 @@ def _verify_source_and_inventory(root: Path, data_root: Path, manifest: Mapping[
                 _fail("downloaded object lacks exact S3 provenance")
             if not str(row["relative_path"]).endswith(str(row["s3_key"])):
                 _fail("S3 key/local path binding mismatch")
+            s3_source_rows[str(row["s3_key"])] = row
+            if re.fullmatch(r"[0-9a-f]{32}", str(row["etag"])) and _md5_file(path) != row["etag"]:
+                _fail(f"single-part S3 ETag/MD5 mismatch: {row['s3_key']}")
             s3_bytes += row["size_bytes"]
             s3_count += 1
     _same(s3_count, 76, "selected S3 object count")
+    expected_s3_keys = {
+        *(f"{sequence}/applanix/lidar_poses.csv" for sequence in TRAIN_SEQUENCES),
+        *(f"{sequence}/calib/T_applanix_lidar.txt" for sequence in BOREAS_SEQUENCES),
+        f"{REFERENCE_SEQUENCE}/applanix/gps_post_process.csv",
+    }
+    _same(set(s3_source_rows), expected_s3_keys, "allowlisted S3 key set")
     _same(download.get("downloaded_s3_object_count"), s3_count, "download manifest object count")
     _same(download.get("downloaded_s3_bytes"), s3_bytes, "download manifest byte count")
     if s3_bytes > MAX_TOTAL:
@@ -352,6 +370,17 @@ def _verify_source_and_inventory(root: Path, data_root: Path, manifest: Mapping[
             _fail(f"invalid remote LiDAR timestamp range: {sequence}")
         if re.fullmatch(r"[0-9a-f]{64}", str(row.get("lidar_listing_rows_sha256"))) is None:
             _fail(f"invalid remote LiDAR listing digest: {sequence}")
+    official_small_objects = {
+        item["key"]: item
+        for sequence_row in sequence_rows
+        for item in [*sequence_row["applanix_objects"], *sequence_row["calib_objects"]]
+    }
+    for key, source_row in s3_source_rows.items():
+        official = official_small_objects.get(key)
+        if official is None:
+            _fail(f"downloaded key is absent from official S3 inventory: {key}")
+        for field in ("etag", "last_modified", "size_bytes", "version_id"):
+            _same(source_row.get(field), official.get(field), f"S3 {field} binding {key}")
     inventory_fields = (
         "sequence_id", "applanix_available", "gps_post_process_available", "lidar_poses_available",
         "calib_available", "T_applanix_lidar_available", "lidar_object_count", "lidar_remote_bytes",
