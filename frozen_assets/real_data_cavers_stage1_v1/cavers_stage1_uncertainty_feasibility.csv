@@ -1,0 +1,11 @@
+component,value,unit,uncertainty_type,evidence_type,source,source_sha256,status
+OptiTrack position uncertainty,UNKNOWN,m,UNKNOWN,QUALITATIVE_ONLY,paper qualitative accuracy only,14a5781e2e749df0ebb3317b4529846abaf121f39e6683e3c8200c6dbc11aeeb,UNKNOWN
+OptiTrack orientation uncertainty,UNKNOWN,rad,UNKNOWN,ABSENT_NUMERIC_BOUND,no numeric release field,14a5781e2e749df0ebb3317b4529846abaf121f39e6683e3c8200c6dbc11aeeb,UNKNOWN
+GT timestamp uncertainty,UNKNOWN,s,UNKNOWN,ABSENT_NUMERIC_BOUND,ROS header timestamp without accuracy bound,5bd8ec16cc998b8607aa3ec134d7b8279326e1241bc6a14829107d4e9e919e3f,UNKNOWN
+LiDAR timestamp uncertainty,UNKNOWN,s,UNKNOWN,ABSENT_NUMERIC_BOUND,sensor/header timestamp without accuracy bound,5bd8ec16cc998b8607aa3ec134d7b8279326e1241bc6a14829107d4e9e919e3f,UNKNOWN
+synchronization/delay uncertainty,UNKNOWN,s,UNKNOWN,ABSENT_NUMERIC_BOUND,no hardware synchronization and no numeric delay,5bd8ec16cc998b8607aa3ec134d7b8279326e1241bc6a14829107d4e9e919e3f,UNKNOWN
+CAD extrinsic translation uncertainty,UNKNOWN,m,UNKNOWN,NOMINAL_ONLY,nominal transform is not an uncertainty,8f1b1c7a5aa15df3f6121cc58e5bab27ecd5e4b736879efc2ce0cfbe87fa9311,UNKNOWN
+CAD extrinsic rotation uncertainty,UNKNOWN,rad,UNKNOWN,NOMINAL_ONLY,nominal transform is not an uncertainty,8f1b1c7a5aa15df3f6121cc58e5bab27ecd5e4b736879efc2ce0cfbe87fa9311,UNKNOWN
+interpolation uncertainty,UNKNOWN,m/rad,UNKNOWN,NOT_YET_MATERIALIZED,future method candidate only,14a5781e2e749df0ebb3317b4529846abaf121f39e6683e3c8200c6dbc11aeeb,UNKNOWN
+future map accumulation uncertainty,UNKNOWN,m,UNKNOWN,NOT_YET_MATERIALIZED,map not materialized in Stage-1,NOT_AVAILABLE,UNKNOWN
+motion distortion / deskew uncertainty,UNKNOWN,m,UNKNOWN,NOT_YET_MATERIALIZED,LiDAR not downloaded in Stage-1,NOT_AVAILABLE,UNKNOWN

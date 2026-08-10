@@ -1,0 +1,115 @@
+{
+  "common_world_frame_status": "FAIL",
+  "evidence": [
+    "Direct independent OptiTrack odometry is exported from one named topic.",
+    "All candidate GT files use one identical Frame_ID.",
+    "First-pose reset detection is evaluated numerically and must be false for every sequence.",
+    "No trajectory or point-cloud fitting is used."
+  ],
+  "registration_or_trajectory_alignment_used": false,
+  "rows": [
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_1",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "91abe2f10957c21b6004bf68553d0a93bdd982d5a8b7448ae183d7328318847a"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_2",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "cf01d7f0469ad24c74a5dda2a644034b5a4b0d64300875cece680cd80af42638"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_3",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "18df4709b1baae4aa58c9008516d1d0e2d62f01a0b7165ef66fd7a2fb93cb8d5"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_4",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "c56ae17634b7c9395275e4e028bb8034251a86bb1d0b23d1aec2d65d4529b2e3"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_5",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "5885f7fe803a3caffd1f54259de8ce816952612a7fe70bf71b33b53d8fe00aab"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_6",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "7818b38b62003b4fa24ed9a39336d2cd0200a3437658cb019c000efd8408d744"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_7",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "a47f91fd1b50e60ae0d913c835fcaad3f54a4561b45dc9c0d61227da21d01765"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_diablo_8",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "80017f2cdba82195dc2287e5f46d273874ac835b93d4b31329af32c55b29429d"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_handheld_1",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "3115d6642f76a4e9ec24f22cebc7c0fe1add9a34031fb6b1a9074d1b459b223c"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_handheld_2",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "fa9b4efc919ed21f4163128839c3ba00d0426c7ff4fdbfc5bef2e64db604adf5"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_handheld_3",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "c2142e02ee6b0f71998245710321d4b6204a9996eaac4c0a679066f278530e4d"
+    },
+    {
+      "common_world_frame_status": "FAIL",
+      "sequence_id": "loc_handheld_4",
+      "sequence_local_reset_detected": false,
+      "shared_calibration_evidence": "NOT_PUBLISHED: no cross-recording calibration/session ID",
+      "world_frame": "map",
+      "world_frame_source": "a2222e13fdc1abf675637a20e1d8bc31f548d9bb365530f513f708686e583b85"
+    }
+  ],
+  "same_named_nonreset_frame_observed": true,
+  "sequence_local_reset_detected": false,
+  "sequence_local_reset_ids": [],
+  "shared_calibration_session_proven": false,
+  "unique_world_frames": [
+    "map"
+  ]
+}

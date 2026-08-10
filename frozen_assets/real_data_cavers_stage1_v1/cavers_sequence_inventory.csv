@@ -1,0 +1,13 @@
+sequence_id,room,platform_type,gt_available,gt_duration_s,gt_rate_hz,velodyne_present,transform_calibration_present,timestamp_index_available,reference_frame,rig_velodyne_transform_available
+loc_diablo_1,SALA_DEL_DIABLO,DIABLO_ROBOT,True,81.59302115440369,120.03617423158377,True,True,True,map,True
+loc_diablo_2,SALA_DEL_DIABLO,DIABLO_ROBOT,True,50.64227485656738,120.03273903213805,True,True,True,map,True
+loc_diablo_3,SALA_DEL_DIABLO,DIABLO_ROBOT,True,69.92532849311829,120.01900020030331,True,True,True,map,True
+loc_diablo_4,SALA_DEL_DIABLO,DIABLO_ROBOT,True,90.94262170791626,120.01556598374728,True,True,True,map,True
+loc_diablo_5,SALA_DEL_DIABLO,DIABLO_ROBOT,True,74.96767830848694,120.02586922306482,True,True,True,map,True
+loc_diablo_6,SALA_DEL_DIABLO,DIABLO_ROBOT,True,59.375921964645386,119.9846668764482,True,True,True,map,True
+loc_diablo_7,SALA_DEL_DIABLO,DIABLO_ROBOT,True,59.8925883769989,119.9846668764482,True,True,True,map,True
+loc_diablo_8,SALA_DEL_DIABLO,DIABLO_ROBOT,True,105.4511890411377,119.9846668764482,True,True,True,map,True
+loc_handheld_1,SALA_DEL_DIABLO,HANDHELD_RIG,True,67.76793766021729,120.01556598374728,True,True,True,map,True
+loc_handheld_2,SALA_DEL_DIABLO,HANDHELD_RIG,True,65.93412899971008,120.0018310826276,True,True,True,map,True
+loc_handheld_3,SALA_DEL_DIABLO,HANDHELD_RIG,True,44.717790842056274,119.9932483657326,True,True,True,map,True
+loc_handheld_4,SALA_DEL_DIABLO,HANDHELD_RIG,True,48.9255895614624,119.97437070938216,True,True,True,map,True

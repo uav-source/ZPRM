@@ -1,0 +1,35 @@
+{
+  "collected_at_utc": "2026-08-10T07:59:16.759179Z",
+  "disk": {
+    "free_bytes": 111398760448,
+    "total_bytes": 280630693888,
+    "used_bytes": 154902147072
+  },
+  "git": {
+    "branch": "prep/cavers-single-dataset-stage1-v1",
+    "commit": "d8a17944a08ba94198094c3b39d11f8664080587",
+    "tags": [
+      "execution/synthetic-confirmatory-v3-requalified"
+    ],
+    "worktree_porcelain": []
+  },
+  "host": "lj",
+  "machine": "x86_64",
+  "memory": {
+    "MemAvailable_bytes": 23794356224,
+    "MemTotal_bytes": 33045094400,
+    "SwapFree_bytes": 583888896,
+    "SwapTotal_bytes": 2147479552
+  },
+  "os": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "packages": {
+    "PyYAML": "6.0.2",
+    "numpy": "1.26.4",
+    "pytest": "8.3.5",
+    "scipy": "1.11.4"
+  },
+  "python_executable": "/home/lj/.local/share/degen-lio-micromamba/envs/degen-lio-zprm-py311/bin/python3.11",
+  "python_version": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:34:02) [GCC 14.3.0]",
+  "resume_origin_commit": "0fd8423b4601a35384e29c6120b804454707964a",
+  "resume_policy": "authenticate completed sequence checkpoints by official archive identity, size, CRC32, and SHA-256 before continuation"
+}

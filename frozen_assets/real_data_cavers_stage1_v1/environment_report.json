@@ -1,0 +1,33 @@
+{
+  "collected_at_utc": "2026-08-10T07:33:16.690234Z",
+  "disk": {
+    "free_bytes": 111429586944,
+    "total_bytes": 280630693888,
+    "used_bytes": 154871320576
+  },
+  "git": {
+    "branch": "prep/cavers-single-dataset-stage1-v1",
+    "commit": "0fd8423b4601a35384e29c6120b804454707964a",
+    "tags": [
+      "execution/synthetic-confirmatory-v3-requalified"
+    ],
+    "worktree_porcelain": []
+  },
+  "host": "lj",
+  "machine": "x86_64",
+  "memory": {
+    "MemAvailable_bytes": 23802077184,
+    "MemTotal_bytes": 33045094400,
+    "SwapFree_bytes": 582840320,
+    "SwapTotal_bytes": 2147479552
+  },
+  "os": "Linux-5.15.0-139-generic-x86_64-with-glibc2.31",
+  "packages": {
+    "PyYAML": "6.0.2",
+    "numpy": "1.26.4",
+    "pytest": "8.3.5",
+    "scipy": "1.11.4"
+  },
+  "python_executable": "/home/lj/.local/share/degen-lio-micromamba/envs/degen-lio-zprm-py311/bin/python3.11",
+  "python_version": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:34:02) [GCC 14.3.0]"
+}

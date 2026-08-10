@@ -1,0 +1,15 @@
+{
+  "PRIMARY_CANDIDATE_MAP_QUERY_PAIR": null,
+  "RESERVE_PAIR_1": null,
+  "RESERVE_PAIR_2": null,
+  "activation_policy": "reserve only for corruption, missing GT, download/checksum, or preregistered infrastructure failure; never registration outcome",
+  "eligible_pair_count": 0,
+  "ranking_rule": [
+    "covered duration descending",
+    "coverage fraction descending",
+    "eligible 5s intervals descending",
+    "nearest distance q95 ascending",
+    "map ID lexicographic",
+    "query ID lexicographic"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "contract": {
+    "maximum_native_gap_s": 0.2,
+    "min_contiguous_covered_duration_s": 5.0,
+    "min_coverage_fraction": 0.6,
+    "min_eligible_nonoverlapping_5s_intervals": 30,
+    "min_total_covered_duration_s": 150.0,
+    "radius_m": 5.0,
+    "resample_rate_hz": 1.0
+  },
+  "gate_status": "NOT_COMPUTABLE",
+  "pair_rows": [],
+  "point_cloud_or_registration_consulted": false
+}

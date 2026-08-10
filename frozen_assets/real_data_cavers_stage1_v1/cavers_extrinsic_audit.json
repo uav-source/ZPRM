@@ -1,0 +1,704 @@
+{
+  "extrinsic_uncertainty": "UNKNOWN",
+  "identical_cross_sequence_transform_count": 1,
+  "nominal_cad_transform_is_zero_uncertainty": false,
+  "rows": [
+    {
+      "sequence_id": "loc_diablo_1",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_1",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_1/TF_STATIC/data.csv",
+        "source_sha256": "9170eb4b77f5f22ac5080299a4c13cfdf1f076dc1916c35522204b8acf2f80d9",
+        "source_topic": "/tf_static",
+        "timestamp": "1745929076216808778",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_diablo_2",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_2",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_2/TF_STATIC/data.csv",
+        "source_sha256": "f86bb5706f26b792d2c008545feb6ddedd45eded65680ed5460e0d61b705f91f",
+        "source_topic": "/tf_static",
+        "timestamp": "1745929076216808778",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_diablo_3",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_3",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_3/TF_STATIC/data.csv",
+        "source_sha256": "89cb493125825b2ab1246ff5a0fbaa4146b25393b48da38b590b32298594c1de",
+        "source_topic": "/tf_static",
+        "timestamp": "1745936214425301696",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_diablo_4",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 24,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_4",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_4/TF_STATIC/data.csv",
+        "source_sha256": "3a3165ab4863ff1ded8a130aa893b4c1a409919382412322e4fb9bddc91cfbc3",
+        "source_topic": "/tf_static",
+        "timestamp": "1745936214425301696",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_diablo_5",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_5",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_5/TF_STATIC/data.csv",
+        "source_sha256": "5de115965d4b846edb792bfb204d3de962cbaeccec5fad713a2ea2c82199b278",
+        "source_topic": "/tf_static",
+        "timestamp": "1745936214425301696",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_diablo_6",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_6",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_6/TF_STATIC/data.csv",
+        "source_sha256": "ba253acdb466939dbcbaf5929109066bf536394ef54523d539ea8065b01dda3f",
+        "source_topic": "/tf_static",
+        "timestamp": "1745938867888666458",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_diablo_7",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 24,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_7",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_7/TF_STATIC/data.csv",
+        "source_sha256": "b50b5f21f0327edbcc8a6bdff1d0b4ccae902d56f00a1cdc72d7e3eb1f9e4841",
+        "source_topic": "/tf_static",
+        "timestamp": "1745938867888666458",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_diablo_8",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_diablo_8",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_8/TF_STATIC/data.csv",
+        "source_sha256": "ba253acdb466939dbcbaf5929109066bf536394ef54523d539ea8065b01dda3f",
+        "source_topic": "/tf_static",
+        "timestamp": "1745938867888666458",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_handheld_1",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 6,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_handheld_1",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_1/TF_STATIC/data.csv",
+        "source_sha256": "025612ba2b69b8fa87026755f2df13e610ffc5aec513c588ee21a6201452e0c2",
+        "source_topic": "/tf_static",
+        "timestamp": "0",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_handheld_2",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_handheld_2",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_2/TF_STATIC/data.csv",
+        "source_sha256": "1ee4a1ed65601faf184f842e7a1237d30ceb081a0177a9f60a16fb3305a4686c",
+        "source_topic": "/tf_static",
+        "timestamp": "1745938053217814135",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_handheld_3",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 6,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_handheld_3",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_3/TF_STATIC/data.csv",
+        "source_sha256": "689c4ed7ba9862cada55644b93aaca95b26c7a0a8104bc041ef78b8787b087dc",
+        "source_topic": "/tf_static",
+        "timestamp": "0",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    },
+    {
+      "sequence_id": "loc_handheld_4",
+      "status": "PASS",
+      "transform": {
+        "child_frame": "velodyne",
+        "composition_rule": "T_map_lidar(t) = T_map_rig(t) @ T_rig_lidar",
+        "csv_line_number": 14,
+        "direction": "T_base_link_velodyne",
+        "direction_test_pass": true,
+        "parent_frame": "base_link",
+        "quaternion_raw_norm": 1.0,
+        "quaternion_raw_norm_error": 0.0,
+        "quaternion_rounding_tolerance": 1e-06,
+        "quaternion_xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "quaternion_xyzw_raw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "sequence_id": "loc_handheld_4",
+        "source_file": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_4/TF_STATIC/data.csv",
+        "source_sha256": "95c02e55701a09ce9d93ebb9d1bb3f68d788a6fdaadccd4684f1286efcd718e8",
+        "source_topic": "/tf_static",
+        "timestamp": "1745938388773249915",
+        "translation_m": [
+          0.087,
+          -0.11,
+          0.17295
+        ],
+        "units": {
+          "rotation": "dimensionless",
+          "translation": "m"
+        }
+      }
+    }
+  ],
+  "status": "PASS"
+}

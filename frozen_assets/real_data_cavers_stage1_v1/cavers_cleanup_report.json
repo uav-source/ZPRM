@@ -1,0 +1,11 @@
+{
+  "allowed_deleted_root": "/home/lj/zero_perturbation_data/rts_gt_v1",
+  "deleted_root_absent": true,
+  "deleted_root_allocated_bytes_before": 232075264,
+  "filesystem_available_bytes_after": 111142998016,
+  "filesystem_available_bytes_before": 110910959616,
+  "filesystem_available_bytes_delta": 232038400,
+  "rts_failure_frozen_sha256sums": "/home/lj/ZPRM/frozen_assets/real_data_rts_gt_stage1_failed_v1/SHA256SUMS",
+  "rts_runtime_preserved": true,
+  "synthetic_runtime_preserved": true
+}

@@ -1,0 +1,107 @@
+{
+  "all_unknown_values_preserved_as_unknown": true,
+  "nominal_transform_treated_as_zero_uncertainty": false,
+  "rows": [
+    {
+      "component": "OptiTrack position uncertainty",
+      "evidence_type": "QUALITATIVE_ONLY",
+      "source": "paper qualitative accuracy only",
+      "source_sha256": "14a5781e2e749df0ebb3317b4529846abaf121f39e6683e3c8200c6dbc11aeeb",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "OptiTrack orientation uncertainty",
+      "evidence_type": "ABSENT_NUMERIC_BOUND",
+      "source": "no numeric release field",
+      "source_sha256": "14a5781e2e749df0ebb3317b4529846abaf121f39e6683e3c8200c6dbc11aeeb",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "rad",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "GT timestamp uncertainty",
+      "evidence_type": "ABSENT_NUMERIC_BOUND",
+      "source": "ROS header timestamp without accuracy bound",
+      "source_sha256": "5bd8ec16cc998b8607aa3ec134d7b8279326e1241bc6a14829107d4e9e919e3f",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "s",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "LiDAR timestamp uncertainty",
+      "evidence_type": "ABSENT_NUMERIC_BOUND",
+      "source": "sensor/header timestamp without accuracy bound",
+      "source_sha256": "5bd8ec16cc998b8607aa3ec134d7b8279326e1241bc6a14829107d4e9e919e3f",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "s",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "synchronization/delay uncertainty",
+      "evidence_type": "ABSENT_NUMERIC_BOUND",
+      "source": "no hardware synchronization and no numeric delay",
+      "source_sha256": "5bd8ec16cc998b8607aa3ec134d7b8279326e1241bc6a14829107d4e9e919e3f",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "s",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "CAD extrinsic translation uncertainty",
+      "evidence_type": "NOMINAL_ONLY",
+      "source": "nominal transform is not an uncertainty",
+      "source_sha256": "8f1b1c7a5aa15df3f6121cc58e5bab27ecd5e4b736879efc2ce0cfbe87fa9311",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "CAD extrinsic rotation uncertainty",
+      "evidence_type": "NOMINAL_ONLY",
+      "source": "nominal transform is not an uncertainty",
+      "source_sha256": "8f1b1c7a5aa15df3f6121cc58e5bab27ecd5e4b736879efc2ce0cfbe87fa9311",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "rad",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "interpolation uncertainty",
+      "evidence_type": "NOT_YET_MATERIALIZED",
+      "source": "future method candidate only",
+      "source_sha256": "14a5781e2e749df0ebb3317b4529846abaf121f39e6683e3c8200c6dbc11aeeb",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m/rad",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "future map accumulation uncertainty",
+      "evidence_type": "NOT_YET_MATERIALIZED",
+      "source": "map not materialized in Stage-1",
+      "source_sha256": "NOT_AVAILABLE",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "motion distortion / deskew uncertainty",
+      "evidence_type": "NOT_YET_MATERIALIZED",
+      "source": "LiDAR not downloaded in Stage-1",
+      "source_sha256": "NOT_AVAILABLE",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m",
+      "value": "UNKNOWN"
+    }
+  ],
+  "status": "PARTIAL"
+}

@@ -1,0 +1,182 @@
+{
+  "arxiv_id": "2604.15052",
+  "arxiv_pdf": {
+    "path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/cavers_paper_2604.15052.pdf",
+    "sha256": "ea7cfc4385c768b3144958952d0923ccd09e88f4b56c3814544328b698c98029",
+    "url": "https://arxiv.org/pdf/2604.15052"
+  },
+  "dataset_license": "cc-by-4.0",
+  "github_code_license": "MIT",
+  "github_commit": "74ead2bf1cffa337a1bff1b03b990819cb7ff067",
+  "github_url": "https://github.com/spaceuma/cavers.git",
+  "large_archive_download_count": 0,
+  "record": {
+    "created": "2026-04-15T14:26:49.632160+00:00",
+    "doi": "10.5281/zenodo.19367714",
+    "file_count": 48,
+    "license": "cc-by-4.0",
+    "modified": "2026-04-16T08:49:19.743285+00:00",
+    "publication_date": "2026-04-01",
+    "record_id": 19367714,
+    "revision": 18,
+    "title": "CAVERS: Multimodal SLAM Data from a Natural Karstic Cave with Ground Truth Motion Capture",
+    "total_archive_bytes": 162022890726,
+    "version": "0.0.1"
+  },
+  "source_evidence": {
+    "range_receipt_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/http_range_receipts.json",
+    "range_receipt_sha256": "dd1f44053be9c329e53b269f2a1d916a985668f96b94fe561daa5ad31ef865ad",
+    "resume_authenticated_sequence_count": 7,
+    "resume_authenticated_sequence_ids": [
+      "loc_diablo_1",
+      "loc_diablo_2",
+      "loc_diablo_3",
+      "loc_diablo_4",
+      "loc_diablo_5",
+      "loc_diablo_6",
+      "loc_diablo_7"
+    ],
+    "sequences": [
+      {
+        "evidence_bytes": 3453738,
+        "raw_archive_bytes_not_downloaded": 1335629859,
+        "raw_archive_name": "loc_diablo_1.zip",
+        "rosbag_archive_bytes_not_downloaded": 1422531487,
+        "rosbag_archive_name": "loc_diablo_1_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_1",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_1/remote_zip_inventory.json",
+        "zip_inventory_sha256": "458e3b900a6d578e25044c837c8fc4fe18ff2d074bdf4406b0a23dd152f715b5"
+      },
+      {
+        "evidence_bytes": 2199677,
+        "raw_archive_bytes_not_downloaded": 819054136,
+        "raw_archive_name": "loc_diablo_2.zip",
+        "rosbag_archive_bytes_not_downloaded": 872254061,
+        "rosbag_archive_name": "loc_diablo_2_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_2",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_2/remote_zip_inventory.json",
+        "zip_inventory_sha256": "4d7ad5ebdc076b1ba1b916fbe27465e51dec57939f573eef86313686a2ceca39"
+      },
+      {
+        "evidence_bytes": 3043160,
+        "raw_archive_bytes_not_downloaded": 1135335735,
+        "raw_archive_name": "loc_diablo_3.zip",
+        "rosbag_archive_bytes_not_downloaded": 1213999692,
+        "rosbag_archive_name": "loc_diablo_3_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_3",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_3/remote_zip_inventory.json",
+        "zip_inventory_sha256": "b4e528a4143b7eab0e90f10163bb2580c0e863849ecf8cd16d30da0b6924e77e"
+      },
+      {
+        "evidence_bytes": 3924676,
+        "raw_archive_bytes_not_downloaded": 1231020204,
+        "raw_archive_name": "loc_diablo_4.zip",
+        "rosbag_archive_bytes_not_downloaded": 1069646773,
+        "rosbag_archive_name": "loc_diablo_4_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_4",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_4/remote_zip_inventory.json",
+        "zip_inventory_sha256": "b1e43178d11c27931b50da9214cc861833eb4d8b46dbc31ed596ae84f7acabcf"
+      },
+      {
+        "evidence_bytes": 3276887,
+        "raw_archive_bytes_not_downloaded": 1207491428,
+        "raw_archive_name": "loc_diablo_5.zip",
+        "rosbag_archive_bytes_not_downloaded": 1305275502,
+        "rosbag_archive_name": "loc_diablo_5_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_5",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_5/remote_zip_inventory.json",
+        "zip_inventory_sha256": "3d821538b5c7e69666a212f9eb4bfb71b61a4dac7dd06a4317acc4c0d5c17c74"
+      },
+      {
+        "evidence_bytes": 2564828,
+        "raw_archive_bytes_not_downloaded": 977544085,
+        "raw_archive_name": "loc_diablo_6.zip",
+        "rosbag_archive_bytes_not_downloaded": 1032352381,
+        "rosbag_archive_name": "loc_diablo_6_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_6",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_6/remote_zip_inventory.json",
+        "zip_inventory_sha256": "cc4cb5a7d28d064a0689854c616f8838928252ca5a50f68992484b29cd57415f"
+      },
+      {
+        "evidence_bytes": 2594769,
+        "raw_archive_bytes_not_downloaded": 765105168,
+        "raw_archive_name": "loc_diablo_7.zip",
+        "rosbag_archive_bytes_not_downloaded": 648740809,
+        "rosbag_archive_name": "loc_diablo_7_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_7",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_7/remote_zip_inventory.json",
+        "zip_inventory_sha256": "0d475dbff66d03bc7983c4908f09e0de77de463d20f6472f439b638207723479"
+      },
+      {
+        "evidence_bytes": 4461874,
+        "raw_archive_bytes_not_downloaded": 1682037151,
+        "raw_archive_name": "loc_diablo_8.zip",
+        "rosbag_archive_bytes_not_downloaded": 1829697003,
+        "rosbag_archive_name": "loc_diablo_8_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_diablo_8",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_diablo_8/remote_zip_inventory.json",
+        "zip_inventory_sha256": "50fbc5449f5a758d81cfbc9f799289f2933af118410eea33cd05d7ca76cc1698"
+      },
+      {
+        "evidence_bytes": 2984676,
+        "raw_archive_bytes_not_downloaded": 1084806760,
+        "raw_archive_name": "loc_handheld_1.zip",
+        "rosbag_archive_bytes_not_downloaded": 1138341392,
+        "rosbag_archive_name": "loc_handheld_1_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_handheld_1",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_1/remote_zip_inventory.json",
+        "zip_inventory_sha256": "ff3d9ef67c9eed0e0c95f079c92e6ee0dd6e2a973de60fff24b8d496567d0383"
+      },
+      {
+        "evidence_bytes": 2839512,
+        "raw_archive_bytes_not_downloaded": 826821299,
+        "raw_archive_name": "loc_handheld_2.zip",
+        "rosbag_archive_bytes_not_downloaded": 700283280,
+        "rosbag_archive_name": "loc_handheld_2_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_handheld_2",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_2/remote_zip_inventory.json",
+        "zip_inventory_sha256": "9663c20c60007be3190111258b8ff8fe711662a0d753806d9a196817c68237eb"
+      },
+      {
+        "evidence_bytes": 1968398,
+        "raw_archive_bytes_not_downloaded": 594595165,
+        "raw_archive_name": "loc_handheld_3.zip",
+        "rosbag_archive_bytes_not_downloaded": 509368414,
+        "rosbag_archive_name": "loc_handheld_3_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_handheld_3",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_3/remote_zip_inventory.json",
+        "zip_inventory_sha256": "e3b9e5ea4a481b7457351af306982a9832aba8b732835318e5a3329a38db3ee6"
+      },
+      {
+        "evidence_bytes": 2158031,
+        "raw_archive_bytes_not_downloaded": 737941355,
+        "raw_archive_name": "loc_handheld_4.zip",
+        "rosbag_archive_bytes_not_downloaded": 730117449,
+        "rosbag_archive_name": "loc_handheld_4_rosbag.zip",
+        "selected_member_count": 5,
+        "sequence_id": "loc_handheld_4",
+        "zip_inventory_path": "/home/lj/zero_perturbation_data/cavers_stage1_v1/source_metadata/sequences/loc_handheld_4/remote_zip_inventory.json",
+        "zip_inventory_sha256": "5c01ee29b14df9a8777a6a6cb100b90f12bbd3a74ea1db1d33a5b5c4c82e0a3f"
+      }
+    ],
+    "total_range_response_bytes": 53597376
+  },
+  "static_no_registration_audit": {
+    "pass": true,
+    "python_file_count": 16,
+    "violations": []
+  },
+  "zenodo_api_url": "https://zenodo.org/api/records/19367714",
+  "zenodo_metadata_sha256": "5047d09c5c7e39f0df861b1773edf1304aa1d0448bbc3a82b7396aae147f0c24"
+}

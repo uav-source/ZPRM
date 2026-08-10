@@ -1,0 +1,73 @@
+{
+  "code_license": "MIT",
+  "commit": "74ead2bf1cffa337a1bff1b03b990819cb7ff067",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "d91b83845c515d4e148a9352b284805cf574af2c39d02fab17c1c5c79e99f7c3",
+      "size_bytes": 31
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "6e3b4b0dc07110166d184a37706c73403ab1d00db4c7bace2222b40786e31aa1",
+      "size_bytes": 1082
+    },
+    {
+      "path": "README.md",
+      "sha256": "9b46cabaf3876606678f632f57ef505a276bf7f37828d4d38507a05280577f23",
+      "size_bytes": 5894
+    },
+    {
+      "path": "cover.png",
+      "sha256": "d78fc612010b01caf5cb70b6b0c5777b6712a2a4271c1d6c15ff3a1aa134fa9b",
+      "size_bytes": 4129770
+    },
+    {
+      "path": "docker/Dockerfile",
+      "sha256": "fdca77ee6870ad8fc0465671a8eb9422e9141fce0d02bfd10f76d6a8873e7b8c",
+      "size_bytes": 669
+    },
+    {
+      "path": "docker/docker-compose.yaml",
+      "sha256": "5aec2820e75afa2e4c4227ebcfe99d38a1697cbbe33274e8ffb7f3ea0ab25779",
+      "size_bytes": 120
+    },
+    {
+      "path": "docker/ros_entrypoint.sh",
+      "sha256": "cfed664034e7e5b2abbc427f7e3545a701055d1e476e7ff515a9ea59b62045d6",
+      "size_bytes": 270
+    },
+    {
+      "path": "docker/thermal_camera/CMakeLists.txt",
+      "sha256": "cc727a3a54425be4b6bcd1852895818b38567795c3602ab005b0cf89a4c413ed",
+      "size_bytes": 611
+    },
+    {
+      "path": "docker/thermal_camera/README.md",
+      "sha256": "df49e6ea3f09a98ab8235a99e9e309e1b3687722bdfed8521e06a7786fe5b118",
+      "size_bytes": 93
+    },
+    {
+      "path": "docker/thermal_camera/msg/TemperatureMatrix.msg",
+      "sha256": "a3539d6413e461f1a921fc8fa1fdc30299ca8b1543a7b102da2441861d8a4926",
+      "size_bytes": 310
+    },
+    {
+      "path": "docker/thermal_camera/package.xml",
+      "sha256": "da3ae1213be6fa35665e127b2be299ae23b28260c4530c48d4a4c7bd8134a7d3",
+      "size_bytes": 805
+    },
+    {
+      "path": "export_logs.py",
+      "sha256": "be3700004f4b648ad31ddbbeeb1b28b041f64b1140efb48d7e528e8a52255ef6",
+      "size_bytes": 14373
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "9ce0bcaf4ab932349e1e52d523cd4ff6d045664dd191ec63e22bd147dcb1b522",
+      "size_bytes": 104
+    }
+  ],
+  "repository_url": "https://github.com/spaceuma/cavers.git",
+  "tree_rows_sha256": "d7d5930dc9d9b4daa986daa1a34a659aa980171fee2e0462eeed093a3da35b8b"
+}

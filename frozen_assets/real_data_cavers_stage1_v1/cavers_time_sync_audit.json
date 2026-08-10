@@ -1,0 +1,333 @@
+{
+  "candidate_interpolation_method": "linear translation plus quaternion SLERP, gap-limited",
+  "hardware_level_synchronization": false,
+  "rows": [
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 81.56035685539246,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745929251.804572,
+        "last_timestamp_s": 1745929333.364929,
+        "row_count": 408,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.3248772621154785,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.02503037452697754,
+      "sequence_id": "loc_diablo_1",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 49.89794301986694,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745929427.750196,
+        "last_timestamp_s": 1745929477.648139,
+        "row_count": 250,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.04158282279968262,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.6098358631134033,
+      "sequence_id": "loc_diablo_2",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 69.7892017364502,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745936300.208293,
+        "last_timestamp_s": 1745936370.1457992,
+        "row_count": 350,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.05831718444824219,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.14830446243286133,
+      "sequence_id": "loc_diablo_3",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 90.77829217910767,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745936529.2586555,
+        "last_timestamp_s": 1745936620.0369477,
+        "row_count": 454,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.0915367603302002,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.15764713287353516,
+      "sequence_id": "loc_diablo_4",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 73.74487948417664,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745937108.3961785,
+        "last_timestamp_s": 1745937182.141058,
+        "row_count": 369,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.04166269302368164,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 1.0802714824676514,
+      "sequence_id": "loc_diablo_5",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 59.3008975982666,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745938980.2754984,
+        "last_timestamp_s": 1745939039.7919474,
+        "row_count": 298,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.050054073333740234,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.21555137634277344,
+      "sequence_id": "loc_diablo_6",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 59.80005168914795,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745939073.4588706,
+        "last_timestamp_s": 1745939133.3756497,
+        "row_count": 300,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.04170870780944824,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.11672735214233398,
+      "sequence_id": "loc_diablo_7",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 105.20644402503967,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745939224.5546417,
+        "last_timestamp_s": 1745939329.7610857,
+        "row_count": 526,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.32498908042907715,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.14404511451721191,
+      "sequence_id": "loc_diablo_8",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 67.73321986198425,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745938072.227254,
+        "last_timestamp_s": 1745938139.9604738,
+        "row_count": 339,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.04167652130126953,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.004074811935424805,
+      "sequence_id": "loc_handheld_1",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 65.9256956577301,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745938194.066648,
+        "last_timestamp_s": 1745938259.9961245,
+        "row_count": 330,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.04170393943786621,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.008433341979980469,
+      "sequence_id": "loc_handheld_2",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 44.48713731765747,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745938426.418364,
+        "last_timestamp_s": 1745938470.9055014,
+        "row_count": 223,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.03339648246765137,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.14998984336853027,
+      "sequence_id": "loc_handheld_3",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    },
+    {
+      "clock_domains": [
+        "ROS2 recording timestamp",
+        "message header timestamp",
+        "sensor timestamp"
+      ],
+      "documented_processing_delay_s": "UNKNOWN",
+      "documented_sensor_delay_s": "UNKNOWN",
+      "gt_lidar_span_overlap_s": 48.87232804298401,
+      "hardware_sync_available": false,
+      "lidar_timestamp": {
+        "first_timestamp_s": 1745938517.1965408,
+        "last_timestamp_s": 1745938566.0924215,
+        "row_count": 245,
+        "strictly_monotonic": true,
+        "timestamp_resolution_s": 1e-09
+      },
+      "maximum_gt_gap_s": 0.16651654243469238,
+      "measured_metadata_offset_interpretation": "GT/LiDAR exported span-start difference; not a sensor-delay estimate",
+      "measured_metadata_offset_s": 0.023552656173706055,
+      "sequence_id": "loc_handheld_4",
+      "shared_recording_clock": true,
+      "tf_static_topic_present": true,
+      "time_sync_uncertainty": "UNKNOWN",
+      "timestamp_resolution_s": 1e-09,
+      "velodyne_topic_present": true
+    }
+  ],
+  "status": "PASS_WITH_DOCUMENTED_LIMITATION",
+  "time_sync_uncertainty_status": "UNKNOWN",
+  "zero_delay_assumed": false
+}
