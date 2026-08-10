@@ -21,6 +21,7 @@ from .io import canonical_json_bytes, compact_sha256, sha256_file
 EXPECTED_BRANCH = "prep/boreas-single-dataset-stage1-v1"
 PYBOREAS_COMMIT = "e968198cd564ccfca5ad256624c80e0e584e7150"
 PAPER_DOI = "10.1177/02783649231160195"
+PAPER_PDF_SHA256 = "29531b5782937ded0a34cb2fd214a4f47c46bfcb6e28fa4b688cb2d14cb43ee8"
 AWS_URI = "s3://boreas"
 REFERENCE_SEQUENCE = "boreas-2020-11-26-13-58"
 MAX_SINGLE = 500_000_000
@@ -277,7 +278,7 @@ def _verify_source_and_inventory(root: Path, data_root: Path, manifest: Mapping[
     _same(download.get("full_lidar_binary_download_count"), 0, "LiDAR binary download count")
     _same(download.get("lidar_payload_count"), 0, "LiDAR payload count")
     rows = download.get("materialized_files")
-    if not isinstance(rows, list) or len(rows) != 83:
+    if not isinstance(rows, list) or len(rows) != 84:
         _fail("download evidence row count mismatch")
     paths: dict[str, Path] = {}
     s3_source_rows: dict[str, Mapping[str, Any]] = {}
@@ -327,8 +328,14 @@ def _verify_source_and_inventory(root: Path, data_root: Path, manifest: Mapping[
     source = _load(root / "official_source_manifest.json")
     _same(source.get("aws_bucket"), AWS_URI, "S3 source")
     _same(source.get("paper_doi"), PAPER_DOI, "paper DOI")
+    _same(source.get("paper_pdf_sha256"), PAPER_PDF_SHA256, "paper PDF SHA")
     _same(source.get("pyboreas_commit"), PYBOREAS_COMMIT, "pyboreas commit")
     _same(source.get("pinned_source_sha256"), EXPECTED_DEVKIT_HASHES, "official source hashes")
+    paper = data_root / "source_metadata/boreas_paper_2203.10168.pdf"
+    _same(sha256_file(paper), PAPER_PDF_SHA256, "live paper PDF SHA")
+    paper_rows = [row for row in rows if row.get("status") == "PINNED_OFFICIAL_PAPER"]
+    if len(paper_rows) != 1 or paths.get("source_metadata/boreas_paper_2203.10168.pdf") != paper:
+        _fail("official paper evidence row mismatch")
     if source.get("static_no_registration_audit", {}).get("pass") is not True:
         _fail("static no-registration audit did not pass")
     pyboreas = _load(root / "pyboreas_source_manifest.json")

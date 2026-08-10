@@ -41,6 +41,7 @@ PYBOREAS_CODE_LICENSE = "BSD-3-Clause"
 DATASET_LICENSE = "CC-BY-4.0"
 PAPER_DOI = "10.1177/02783649231160195"
 PAPER_ARXIV = "2203.10168"
+PAPER_PDF_SHA256 = "29531b5782937ded0a34cb2fd214a4f47c46bfcb6e28fa4b688cb2d14cb43ee8"
 DATA_REFERENCE_SHA256 = "66b597c4b83ef65b5433d71da909f636ba47be0ad7193d5034e8a55715555d1b"
 README_SHA256 = "3b75572c0b3b3b81e6387ecbd4ed55b0bf79a898b218925c9df2bfa9580e5f78"
 DATA_LICENSE_SHA256 = "92368d96fe04291eaa6e56c22faabd9860d34f1d4ce1ecad0f0b3ba9e953a52d"
@@ -582,6 +583,15 @@ def _source_rows(data_root: Path, receipts: Sequence[Mapping[str, Any]], devkit_
             "sha256": sha256_file(path), "size_bytes": path.stat().st_size,
             "status": "PINNED_OFFICIAL_DEVKIT_SOURCE", "version_id": None,
         })
+    paper = data_root / "source_metadata/boreas_paper_2203.10168.pdf"
+    if sha256_file(paper) != PAPER_PDF_SHA256:
+        raise BoreasStage1Error("pinned Boreas paper PDF changed")
+    rows.append({
+        "etag": None, "last_modified": None, "local_path": str(paper),
+        "relative_path": str(paper.relative_to(data_root)), "s3_key": None,
+        "sha256": PAPER_PDF_SHA256, "size_bytes": paper.stat().st_size,
+        "status": "PINNED_OFFICIAL_PAPER", "version_id": None,
+    })
     return sorted(rows, key=lambda row: row["relative_path"])
 
 
@@ -733,6 +743,7 @@ def execute_boreas_stage1(
             "audit_time_utc": environment["collected_at_utc"], "aws_bucket": AWS_URI, "boreas_site": BOREAS_SITE,
             "code_license": PYBOREAS_CODE_LICENSE, "dataset_license": DATASET_LICENSE,
             "paper_arxiv": PAPER_ARXIV, "paper_doi": PAPER_DOI,
+            "paper_pdf_sha256": PAPER_PDF_SHA256,
             "pyboreas_commit": PYBOREAS_COMMIT,
             "pinned_source_sha256": expected_hashes,
             "protocol_sha256": {key: sha256_file(path) for key, path in protocol_paths.items()},
@@ -744,6 +755,7 @@ def execute_boreas_stage1(
             "# Boreas dataset citation and licenses\n\n"
             f"- Dataset site: {BOREAS_SITE}\n- Public bucket: `{AWS_URI}`.\n"
             f"- Dataset paper DOI: `{PAPER_DOI}`; arXiv:`{PAPER_ARXIV}`.\n"
+            f"- Pinned arXiv PDF SHA-256: `{PAPER_PDF_SHA256}`.\n"
             f"- Dataset terms: `{DATASET_LICENSE}` from DATA_LICENSE.md.\n"
             f"- Devkit: `{PYBOREAS_URL}` at `{PYBOREAS_COMMIT}`, `{PYBOREAS_CODE_LICENSE}`.\n"
         )

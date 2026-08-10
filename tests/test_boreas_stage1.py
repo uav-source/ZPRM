@@ -330,3 +330,9 @@ def test_35_gps_seconds_and_lidar_microseconds_are_not_conflated(tmp_path: Path)
     lidar_report, _, _ = producer.parse_pose_csv(lidar, "lidar")
     assert gps_report["timestamp_scale_to_seconds"] == 1.0
     assert lidar_report["timestamp_scale_to_seconds"] == 1e-6
+
+
+def test_36_official_paper_pdf_is_pinned() -> None:
+    assert producer.PAPER_PDF_SHA256 == verifier.PAPER_PDF_SHA256
+    assert len(producer.PAPER_PDF_SHA256) == 64
+    assert set(producer.PAPER_PDF_SHA256) <= set("0123456789abcdef")
