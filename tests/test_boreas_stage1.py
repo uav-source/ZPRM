@@ -358,3 +358,11 @@ def test_37_transform_direction_audit_rejects_inverse() -> None:
     assert result["status"] == "PASS"
     assert result["inverse_maximum_translation_error_m"] == pytest.approx(0.26)
     assert result["direction_discrimination_translation_ratio"] >= 1_000
+
+
+def test_38_reference_gap_over_0_2_seconds_is_excluded() -> None:
+    reports = [
+        {"sequence_id": "eligible", "maximum_gap_s": 0.2},
+        {"sequence_id": "excluded", "maximum_gap_s": 0.2000000001},
+    ]
+    assert [row["sequence_id"] for row in producer.eligible_reference_pose_reports(reports)] == ["eligible"]

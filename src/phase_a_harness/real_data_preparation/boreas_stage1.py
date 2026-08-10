@@ -445,6 +445,18 @@ def detect_sequence_local_resets(pose_reports: Sequence[Mapping[str, Any]]) -> l
     ]
 
 
+def eligible_reference_pose_reports(
+    pose_reports: Sequence[Mapping[str, Any]],
+) -> list[Mapping[str, Any]]:
+    """Apply the frozen native-gap ceiling before a sequence can enter pair ranking."""
+
+    return [
+        row
+        for row in pose_reports
+        if float(row["maximum_gap_s"]) <= FROZEN_STAGE1_OVERLAP_CONTRACT.maximum_native_gap_s
+    ]
+
+
 def compose_enu_lidar(enu_applanix: np.ndarray, applanix_lidar: np.ndarray) -> np.ndarray:
     left = np.asarray(enu_applanix, dtype=np.float64)
     right = np.asarray(applanix_lidar, dtype=np.float64)
@@ -820,13 +832,14 @@ def execute_boreas_stage1(
             "calibration_available", "row_count", "duration_s", "median_rate_hz", "maximum_gap_s",
             "first_timestamp_s", "last_timestamp_s", "reference_frame", "pose_sha256",
         )
+        eligible_reports = eligible_reference_pose_reports(pose_reports)
         eligible_rows = [
             {
                 "sequence_id": report["sequence_id"], "status": "ELIGIBLE_PUBLIC_GT",
                 "gps_post_process_available": True, "lidar_poses_available": True,
                 "calibration_available": True, **{key: report[key] for key in eligible_fields[5:]},
             }
-            for report in pose_reports
+            for report in eligible_reports
         ]
         atomic_write_csv(runtime_root / "eligible_reference_sequences.csv", eligible_rows, eligible_fields)
 
@@ -896,6 +909,16 @@ def execute_boreas_stage1(
             "first_reference_position_m": reference_first.tolist(),
             "independent_acquisition_sequence_count": len(TRAIN_SEQUENCES),
             "independent_sequence_ids_and_time_spans_verified": True,
+            "eligible_public_gt_sequence_count": len(eligible_reports),
+            "reference_gap_exclusions": [
+                {
+                    "maximum_gap_s": row["maximum_gap_s"],
+                    "reason": "MAXIMUM_NATIVE_GAP_EXCEEDS_0.2_SECONDS",
+                    "sequence_id": row["sequence_id"],
+                }
+                for row in pose_reports
+                if row not in eligible_reports
+            ],
             "official_definition": "fixed ENU_ref aligned in position with the first pose of the first sequence; WGS-84 tangent orientation, x East/y North/z up",
             "registration_or_trajectory_fitting_used": False,
             "sequence_local_reset_detected": bool(later_resets),
@@ -1049,7 +1072,7 @@ def execute_boreas_stage1(
 __all__ = [
     "BOREAS_SEQUENCES", "BoreasStage1Error", "MAX_SINGLE_OBJECT_BYTES", "MAX_STAGE1_TOTAL_BYTES",
     "Stage1DownloadBudgetExceeded", "Stage1LargeFileDownloadForbidden", "TEST_SEQUENCES", "TRAIN_SEQUENCES",
-    "assert_download_budget", "audit_transform_chain_direction", "compose_enu_lidar", "execute_boreas_stage1", "parse_calibration",
+    "assert_download_budget", "audit_transform_chain_direction", "compose_enu_lidar", "eligible_reference_pose_reports", "execute_boreas_stage1", "parse_calibration",
     "detect_sequence_local_resets", "parse_pose_csv", "parse_s3_ls_line", "parse_top_level_s3_listing", "pose_row_to_transform",
     "transform_chain_consistency", "yaw_pitch_roll_to_rotation",
 ]

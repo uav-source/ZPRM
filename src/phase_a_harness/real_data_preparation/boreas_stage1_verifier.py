@@ -416,6 +416,7 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
     inventory = _load(root / "boreas_remote_sequence_inventory.json")
     remote = {row["sequence_id"]: row for row in inventory["boreas_original_sequences"]}
     trajectories: dict[str, tuple[np.ndarray, np.ndarray]] = {}
+    maximum_gaps: dict[str, float] = {}
     resets: list[str] = []
     maximum_position = 0.0
     for index, sequence in enumerate(TRAIN_SEQUENCES):
@@ -424,6 +425,7 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
             _fail(f"public GT trajectory absent: {sequence}")
         times, values = _read_pose(paths[relative])
         trajectories[sequence] = (times, values)
+        maximum_gaps[sequence] = float(np.max(np.diff(times)))
         maximum_position = max(maximum_position, float(np.max(np.linalg.norm(values[:, 1:4], axis=1))))
         if index and np.linalg.norm(values[0, 1:4]) < 1e-6:
             resets.append(sequence)
@@ -436,7 +438,10 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
         "first_timestamp_s", "last_timestamp_s", "reference_frame", "pose_sha256",
     )
     eligible_rows = _csv_rows(root / "eligible_reference_sequences.csv", eligible_fields)
-    _same([row["sequence_id"] for row in eligible_rows], list(TRAIN_SEQUENCES), "eligible GT sequence order")
+    expected_eligible = [
+        sequence for sequence in TRAIN_SEQUENCES if maximum_gaps[sequence] <= OVERLAP_CONTRACT["maximum_native_gap_s"]
+    ]
+    _same([row["sequence_id"] for row in eligible_rows], expected_eligible, "eligible GT sequence order")
     for row in eligible_rows:
         sequence = row["sequence_id"]
         times, values = trajectories[sequence]
@@ -456,6 +461,17 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
     _same(world.get("sequence_local_reset_ids"), resets, "sequence-local reset IDs")
     _same(world.get("independent_acquisition_sequence_count"), len(TRAIN_SEQUENCES), "independent acquisition count")
     _same(world.get("independent_sequence_ids_and_time_spans_verified"), True, "independent acquisition evidence")
+    _same(world.get("eligible_public_gt_sequence_count"), len(expected_eligible), "eligible public GT count")
+    expected_gap_exclusions = [
+        {
+            "maximum_gap_s": maximum_gaps[sequence],
+            "reason": "MAXIMUM_NATIVE_GAP_EXCEEDS_0.2_SECONDS",
+            "sequence_id": sequence,
+        }
+        for sequence in TRAIN_SEQUENCES
+        if sequence not in expected_eligible
+    ]
+    _same(world.get("reference_gap_exclusions"), expected_gap_exclusions, "reference gap exclusions")
     if resets or maximum_position <= 100.0 or world.get("registration_or_trajectory_fitting_used") is not False:
         _fail("actual trajectories do not support fixed ENU_ref without fitting")
     if "first pose of the first sequence" not in world.get("official_definition", ""):
