@@ -298,3 +298,24 @@ def test_32_expected_devkit_hashes_match_between_implementations() -> None:
         "pyboreas/data/calib.py": producer.CALIB_PARSER_SHA256,
         "pyboreas/utils/utils.py": producer.UTILS_SHA256,
     }
+
+
+def test_33_r09_backend_outer_and_inner_hashes_are_frozen() -> None:
+    path = Path("frozen_assets/backend_parameter_contract.json")
+    backend = json.loads(path.read_text(encoding="utf-8"))
+    assert sha256_file(path) == producer.BACKEND_PARAMETER_SHA256 == verifier.BACKEND_PARAMETER_SHA256
+    for name, expected in (
+        ("open3d", producer.OPEN3D_PARAMETER_CANONICAL_SHA256),
+        ("pcl", producer.PCL_PARAMETER_CANONICAL_SHA256),
+    ):
+        assert compact_sha256(backend[name]["parameters"]) == expected
+        assert backend[name]["canonical_sha256"] == expected
+
+
+def test_34_sequence_local_reset_detection_uses_published_first_pose() -> None:
+    reports = [
+        {"sequence_id": "reference", "first_position_m": [0.0, 0.0, 0.0]},
+        {"sequence_id": "global", "first_position_m": [321.0, -42.0, 1.0]},
+        {"sequence_id": "reset", "first_position_m": [1e-8, -1e-8, 0.0]},
+    ]
+    assert producer.detect_sequence_local_resets(reports) == ["reset"]

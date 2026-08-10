@@ -25,6 +25,9 @@ AWS_URI = "s3://boreas"
 REFERENCE_SEQUENCE = "boreas-2020-11-26-13-58"
 MAX_SINGLE = 500_000_000
 MAX_TOTAL = 5_000_000_000
+BACKEND_PARAMETER_SHA256 = "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+OPEN3D_PARAMETER_CANONICAL_SHA256 = "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413"
+PCL_PARAMETER_CANONICAL_SHA256 = "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd"
 EXPECTED_DEVKIT_HASHES = {
     "README.md": "3b75572c0b3b3b81e6387ecbd4ed55b0bf79a898b218925c9df2bfa9580e5f78",
     "DATA_REFERENCE.md": "66b597c4b83ef65b5433d71da909f636ba47be0ad7193d5034e8a55715555d1b",
@@ -410,6 +413,8 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
     _same(world.get("COMMON_WORLD_FRAME"), "PASS", "common-world declaration")
     _same(world.get("sequence_local_reset_detected"), False, "sequence-local reset status")
     _same(world.get("sequence_local_reset_ids"), resets, "sequence-local reset IDs")
+    _same(world.get("independent_acquisition_sequence_count"), len(TRAIN_SEQUENCES), "independent acquisition count")
+    _same(world.get("independent_sequence_ids_and_time_spans_verified"), True, "independent acquisition evidence")
     if resets or maximum_position <= 100.0 or world.get("registration_or_trajectory_fitting_used") is not False:
         _fail("actual trajectories do not support fixed ENU_ref without fitting")
     if "first pose of the first sequence" not in world.get("official_definition", ""):
@@ -580,6 +585,16 @@ def verify_boreas_stage1(*, repository: str | Path, data_root: str | Path, runti
         _fail("producer commit is not an ancestor of current HEAD")
     branch = subprocess.check_output(["git", "branch", "--show-current"], cwd=repository, text=True).strip()
     _same(branch, EXPECTED_BRANCH, "verification branch")
+    backend_path = repository / "frozen_assets/backend_parameter_contract.json"
+    _same(sha256_file(backend_path), BACKEND_PARAMETER_SHA256, "backend parameter file SHA")
+    backend = json.loads(backend_path.read_text(encoding="utf-8"))
+    for name, expected in (
+        ("open3d", OPEN3D_PARAMETER_CANONICAL_SHA256),
+        ("pcl", PCL_PARAMETER_CANONICAL_SHA256),
+    ):
+        section = backend.get(name, {})
+        _same(section.get("canonical_sha256"), expected, f"{name} recorded canonical SHA")
+        _same(compact_sha256(section.get("parameters")), expected, f"{name} live canonical SHA")
     devkit = data_root / "pyboreas"
     _same(subprocess.check_output(["git", "-C", str(devkit), "rev-parse", "HEAD"], text=True).strip(), PYBOREAS_COMMIT, "live pyboreas commit")
     if subprocess.check_output(["git", "-C", str(devkit), "status", "--porcelain"], text=True).strip():

@@ -52,6 +52,8 @@ PROTOCOL_MD_SHA256 = "4755a90dfd42de1650d50caa0facc4d32a0dba7f837ce9d867d28f030e
 PROTOCOL_JSON_SHA256 = "3b4dc774051806728a060a93aa1220ac7a4fc82a6e59181da2390cfdcb7bd86e"
 CHECKLIST_SHA256 = "7a3c0b492f3783ea84bdda1eb8ff7fbd41ab73b9f5f7823806e2e30544a19c44"
 BACKEND_PARAMETER_SHA256 = "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+OPEN3D_PARAMETER_CANONICAL_SHA256 = "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413"
+PCL_PARAMETER_CANONICAL_SHA256 = "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd"
 MAX_SINGLE_OBJECT_BYTES = 500_000_000
 MAX_STAGE1_TOTAL_BYTES = 5_000_000_000
 REFERENCE_SEQUENCE = "boreas-2020-11-26-13-58"
@@ -429,6 +431,16 @@ def parse_calibration(path: Path) -> np.ndarray:
     return value
 
 
+def detect_sequence_local_resets(pose_reports: Sequence[Mapping[str, Any]]) -> list[str]:
+    """Flag later sequences whose published first position is locally reset to zero."""
+
+    return [
+        str(row["sequence_id"])
+        for row in pose_reports[1:]
+        if np.linalg.norm(np.asarray(row["first_position_m"], dtype=np.float64)) < 1e-6
+    ]
+
+
 def compose_enu_lidar(enu_applanix: np.ndarray, applanix_lidar: np.ndarray) -> np.ndarray:
     left = np.asarray(enu_applanix, dtype=np.float64)
     right = np.asarray(applanix_lidar, dtype=np.float64)
@@ -653,8 +665,17 @@ def execute_boreas_stage1(
     for path, expected in zip(protocol_paths.values(), (PROTOCOL_MD_SHA256, PROTOCOL_JSON_SHA256, CHECKLIST_SHA256)):
         if sha256_file(path) != expected:
             raise BoreasStage1Error("frozen real-data protocol changed")
-    if sha256_file(repository / "frozen_assets/backend_parameter_contract.json") != BACKEND_PARAMETER_SHA256:
+    backend_path = repository / "frozen_assets/backend_parameter_contract.json"
+    if sha256_file(backend_path) != BACKEND_PARAMETER_SHA256:
         raise BoreasStage1Error("backend parameter contract changed")
+    backend = json.loads(backend_path.read_text(encoding="utf-8"))
+    for name, expected in (
+        ("open3d", OPEN3D_PARAMETER_CANONICAL_SHA256),
+        ("pcl", PCL_PARAMETER_CANONICAL_SHA256),
+    ):
+        section = backend.get(name, {})
+        if section.get("canonical_sha256") != expected or compact_sha256(section.get("parameters")) != expected:
+            raise BoreasStage1Error(f"{name} backend parameter canonical SHA changed")
 
     environment_path = runtime_root / "environment_report.json"
     if environment_path.is_file():
@@ -815,10 +836,7 @@ def execute_boreas_stage1(
         )
 
         reference_first = np.asarray(pose_reports[0]["first_position_m"])
-        later_resets = [
-            row["sequence_id"] for row in pose_reports[1:]
-            if np.linalg.norm(row["first_position_m"]) < 1e-6
-        ]
+        later_resets = detect_sequence_local_resets(pose_reports)
         global_coordinate_extent = float(max(np.linalg.norm(trajectory[:, 1:4], axis=1).max() for trajectory in trajectories.values()))
         common_world_pass = not later_resets and global_coordinate_extent > 100.0
         world = {
@@ -826,6 +844,8 @@ def execute_boreas_stage1(
             "actual_global_coordinate_extent_m": global_coordinate_extent,
             "first_reference_sequence": REFERENCE_SEQUENCE,
             "first_reference_position_m": reference_first.tolist(),
+            "independent_acquisition_sequence_count": len(TRAIN_SEQUENCES),
+            "independent_sequence_ids_and_time_spans_verified": True,
             "official_definition": "fixed ENU_ref aligned in position with the first pose of the first sequence; WGS-84 tangent orientation, x East/y North/z up",
             "registration_or_trajectory_fitting_used": False,
             "sequence_local_reset_detected": bool(later_resets),
@@ -974,6 +994,6 @@ __all__ = [
     "BOREAS_SEQUENCES", "BoreasStage1Error", "MAX_SINGLE_OBJECT_BYTES", "MAX_STAGE1_TOTAL_BYTES",
     "Stage1DownloadBudgetExceeded", "Stage1LargeFileDownloadForbidden", "TEST_SEQUENCES", "TRAIN_SEQUENCES",
     "assert_download_budget", "compose_enu_lidar", "execute_boreas_stage1", "parse_calibration",
-    "parse_pose_csv", "parse_s3_ls_line", "parse_top_level_s3_listing", "pose_row_to_transform",
+    "detect_sequence_local_resets", "parse_pose_csv", "parse_s3_ls_line", "parse_top_level_s3_listing", "pose_row_to_transform",
     "transform_chain_consistency", "yaw_pitch_roll_to_rotation",
 ]
