@@ -58,6 +58,16 @@ IILABS_FILES = {
     },
 }
 
+IILABS_DOWNLOAD_PROGRESS_CHECKPOINT = {
+    "collected_at_utc": "2026-08-10T05:52:42Z",
+    "completed_bytes_are_lower_bounds": True,
+    "stop_reason": "FAIL_FAST_AFTER_UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME; partial files retained with aria2 control state",
+    "files": {
+        "iilabs3d/iilabs3d_dataset/benchmark/ouster_os1-64/nav_a_diff/ouster_nav_a_diff_2025-02-07-13-05-01.bag": 5152702464,
+        "iilabs3d/iilabs3d_dataset/benchmark/ouster_os1-64/nav_a_omni/ouster_nav_a_omni_2025-02-07-13-44-03.bag": 4537188352,
+    },
+}
+
 GRANDTOUR_LFS_SHA256 = {
     "2024-11-02-17-10-25/data/cpt7_ie_tc_odometry.tar": "73b93a32e6970d0ca12944a49b01ecb295e5721d153ec488c24e6f8e5db9aa8f",
     "2024-11-02-17-10-25/data/cpt7_ie_tc_tf.tar": "f9f233148594c493e98087cd6d2d7427565bc0434ef6fac30fb2784e8464c023",
@@ -225,14 +235,20 @@ def _download_rows(data_root: Path) -> list[dict[str, Any]]:
         path = final if final.is_file() else partial if partial.is_file() else None
         size = path.stat().st_size if path else 0
         complete = bool(final.is_file() and size == remote["size"])
+        control = Path(f"{partial}.aria2")
+        completed_checkpoint = IILABS_DOWNLOAD_PROGRESS_CHECKPOINT["files"].get(relative)
         rows.append(
             {
+                "aria2_completed_bytes_checkpoint": (
+                    remote["size"] if complete else completed_checkpoint or 0
+                ),
+                "aria2_control_sha256": sha256_file(control) if control.is_file() else "NOT_PRESENT",
                 "dataset_id": "IILABS_3D",
                 "local_path": str(path or final),
+                "logical_size_bytes": size,
                 "remote_checksum": "NOT_PUBLISHED",
                 "remote_size_bytes": remote["size"],
                 "sha256": sha256_file(path) if complete and path else "PENDING",
-                "size_bytes": size,
                 "status": "COMPLETE_SIZE_VERIFIED" if complete else "PARTIAL" if path else "MISSING",
                 "url": remote["url"],
             }
@@ -243,11 +259,13 @@ def _download_rows(data_root: Path) -> list[dict[str, Any]]:
         rows.append(
             {
                 "dataset_id": "GRANDTOUR",
+                "aria2_completed_bytes_checkpoint": 0,
+                "aria2_control_sha256": "NOT_APPLICABLE",
                 "local_path": str(path),
+                "logical_size_bytes": path.stat().st_size if path.is_file() else 0,
                 "remote_checksum": expected_sha,
                 "remote_size_bytes": path.stat().st_size if path.is_file() else 0,
                 "sha256": actual_sha,
-                "size_bytes": path.stat().st_size if path.is_file() else 0,
                 "status": "COMPLETE_SHA_VERIFIED" if actual_sha == expected_sha else "MISSING_OR_MISMATCH",
                 "url": f"https://huggingface.co/datasets/leggedrobotics/grand_tour_dataset/resolve/{HF_REVISION}/{relative}?download=true",
             }
@@ -256,11 +274,13 @@ def _download_rows(data_root: Path) -> list[dict[str, Any]]:
         rows.append(
             {
                 "dataset_id": "GRANDTOUR",
+                "aria2_completed_bytes_checkpoint": 0,
+                "aria2_control_sha256": "NOT_APPLICABLE",
                 "local_path": str(path),
+                "logical_size_bytes": path.stat().st_size,
                 "remote_checksum": "GIT_BLOB_ID_RECORDED_IN_REMOTE_TREE_AUDIT",
                 "remote_size_bytes": path.stat().st_size,
                 "sha256": sha256_file(path),
-                "size_bytes": path.stat().st_size,
                 "status": "COMPLETE_SIZE_VERIFIED",
                 "url": f"https://huggingface.co/datasets/leggedrobotics/grand_tour_dataset/resolve/{HF_REVISION}/{path.relative_to(data_root / 'grandtour')}?download=true",
             }
@@ -479,7 +499,8 @@ def execute_preparation(
 
         download_rows = _download_rows(data_root)
         download_fields = (
-            "dataset_id", "url", "local_path", "remote_size_bytes", "size_bytes",
+            "dataset_id", "url", "local_path", "remote_size_bytes", "logical_size_bytes",
+            "aria2_completed_bytes_checkpoint", "aria2_control_sha256",
             "remote_checksum", "sha256", "status",
         )
         atomic_write_csv(runtime_root / "download_manifest.csv", download_rows, download_fields)
@@ -492,6 +513,7 @@ def execute_preparation(
                     f"curl --continue-at - <selected GrandTour reference URLs pinned at {HF_REVISION}>",
                 ],
                 "files": download_rows,
+                "iilabs_partial_download_checkpoint": IILABS_DOWNLOAD_PROGRESS_CHECKPOINT,
                 "workers": workers,
             },
         )
@@ -532,6 +554,7 @@ def execute_preparation(
             "selected_sensor_cli_slug": "ouster_os1_64",
             "selected_sensor_storage_slug": "ouster_os1-64",
             "selected_sequences": ["nav_a_diff", "nav_a_omni"],
+            "partial_download_checkpoint": IILABS_DOWNLOAD_PROGRESS_CHECKPOINT,
             "status": "FAIL_UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
             "toolkit_cli_outputs_sha256": {
                 key: sha256_file(runtime_root / "iilabs" / f"toolkit_{key}.txt") for key in cli_outputs
