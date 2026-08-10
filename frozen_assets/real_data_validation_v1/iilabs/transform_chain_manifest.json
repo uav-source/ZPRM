@@ -1,0 +1,13 @@
+{
+  "T_base_link_ouster_quaternion_order": "xyzw",
+  "T_base_link_ouster_translation_m": [
+    0.0,
+    0.0,
+    0.4367
+  ],
+  "T_world_base_link_status": "UNAVAILABLE_IN_RAW_SELECTED_BAGS_AND_SEQUENCE_LOCAL_TUM_ONLY",
+  "T_world_ouster_formula": "T_world_base_link @ T_base_link_ouster",
+  "dataset_id": "iilabs",
+  "matrix_direction_audited": true,
+  "status": "INCOMPLETE_UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME"
+}

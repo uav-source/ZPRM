@@ -1,0 +1,12 @@
+{
+  "evidence": [
+    "Both published TUM files begin at translation [0,0,0].",
+    "Official documentation states initial position offsets were adjusted during EVO post-processing.",
+    "Official bag index tails contain eight topics but no MoCap, Motive, or OptiTrack topic.",
+    "Both first raw /eve/odom messages are identity poses in sequence-local eve/odom.",
+    "No official fixed Nav_A_Diff-to-Nav_A_Omni transform is published in downloaded metadata."
+  ],
+  "failure_reason": "UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
+  "same_fixed_world_frame_proven": false,
+  "status": "FAIL"
+}

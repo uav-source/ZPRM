@@ -1,0 +1,4 @@
+dataset_id,map_acquisition,query_acquisition,overlap_status,covered_duration_s,coverage_fraction
+IILABS_3D,nav_a_diff,nav_a_omni,NOT_COMPUTABLE,UNKNOWN,UNKNOWN
+GRANDTOUR,SPX-1,SPX-3,FAIL,78.0,0.34210526315789475
+GRANDTOUR,SPX-3,SPX-1,FAIL,27.0,0.15083798882681565

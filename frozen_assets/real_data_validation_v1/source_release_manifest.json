@@ -1,0 +1,39 @@
+{
+  "collected_at_utc": "2026-08-10T05:54:23.167679Z",
+  "grandtour": {
+    "dataset_access": "PUBLIC_UNGATED_HUGGING_FACE_ZARR",
+    "dataset_license_conflict": true,
+    "dataset_license_eth_repository": "IN_COPYRIGHT_NON_COMMERCIAL_USE_PERMITTED",
+    "dataset_license_hugging_face": "MIT",
+    "github_commit": "656e35dbe418683ddffae7585a254cc82d1f90b6",
+    "grand_tour_box_submodule_commit": "83a4952e5bfb1294bd74f6d6a78955f9da78d874",
+    "hesai_model": "Hesai XT-32",
+    "hf_revision": "daf91c5e2b6db564822a35cc58222d73f8e75bab",
+    "paper": "arXiv:2602.18164",
+    "spx_2_reference_status": "HIDDEN_OR_UNAVAILABLE"
+  },
+  "iilabs3d": {
+    "dataset_access": "PUBLIC_INESC_TEC_REPOSITORY",
+    "dataset_doi": "10.25747/VHNJ-WM80",
+    "dataset_license": "NOT_EXPLICITLY_RECOVERED_FROM_DATASET_LANDING_PAGE",
+    "paper_license": "CC_BY_4_0",
+    "software_license": "BSD_3_CLAUSE",
+    "toolkit_sdist_sha256": "75b7b973869b4d38631c5df1c909f1194928153216c4a62df7eabd1b6e74cb7a",
+    "toolkit_version": "0.2.1"
+  },
+  "protocol_asset_sha256": {
+    "frozen_assets/backend_parameter_contract.json": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "protocols/real_data_dataset_eligibility_checklist.csv": "7a3c0b492f3783ea84bdda1eb8ff7fbd41ab73b9f5f7823806e2e30544a19c44",
+    "protocols/real_data_snapshot_selection_template.csv": "ba7ebb3f7dd993afba8eea5d96b2606f97d1c8ff237d2f5c607cb3615780e1bd",
+    "protocols/real_data_uncertainty_budget_template.csv": "ae2f704707933a01a9f4f3204f3ece1d61ac07060f125490a8aa1af18398c5e7",
+    "protocols/real_data_validation_protocol_framework_v1.json": "3b4dc774051806728a060a93aa1220ac7a4fc82a6e59181da2390cfdcb7bd86e",
+    "protocols/real_data_validation_protocol_framework_v1.md": "4755a90dfd42de1650d50caa0facc4d32a0dba7f837ce9d867d28f030edfc834",
+    "src/phase_a_harness/common_association_analysis.py": "458190c26d8640353004663474adb64305d1193d89ff0dc68f71f404de8f175d",
+    "src/phase_a_harness/real_data_protocol.py": "8371ada3c46d966ff0f7ed98ac9fcfe70939d7d0a264ed1ebf22b1d969f2666e"
+  },
+  "static_no_registration_audit": {
+    "pass": true,
+    "python_file_count": 12,
+    "violations": []
+  }
+}

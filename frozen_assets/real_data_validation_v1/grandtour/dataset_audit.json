@@ -1,0 +1,10 @@
+{
+  "hf_revision": "daf91c5e2b6db564822a35cc58222d73f8e75bab",
+  "reference_only_download_sha_verified": true,
+  "selected_lidar": "Hesai XT-32 raw hesai_points.tar",
+  "selected_lidar_downloaded": false,
+  "selected_lidar_not_downloaded_reason": "GT_ONLY_OVERLAP_HARD_GATE_FAILED",
+  "spx_2_eligible": false,
+  "spx_2_reference_status": "HIDDEN_OR_UNAVAILABLE",
+  "status": "FAIL_GT_ONLY_OVERLAP"
+}

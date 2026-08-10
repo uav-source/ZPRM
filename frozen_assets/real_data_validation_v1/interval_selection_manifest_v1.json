@@ -1,0 +1,19 @@
+{
+  "candidate_interval_definitions": [],
+  "canonical_input_manifest_sha256": "2c71f5d63ba1d8f64bd75482f694df65d0f2f59677de12e75e599bd270ae8b1b",
+  "dataset_ids": [
+    "IILABS_3D",
+    "GRANDTOUR"
+  ],
+  "exact_selection_algorithm": "FROZEN_IN_SELECTION_PY_BUT_NOT_EXECUTED",
+  "failure_reasons": [
+    "UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
+    "GRANDTOUR_GT_ONLY_OVERLAP_FAIL"
+  ],
+  "labels_frozen_at_utc": null,
+  "r14_freeze_pass": false,
+  "selected_interval_ids": [],
+  "snapshot_selection_csv_sha256": "ba7ebb3f7dd993afba8eea5d96b2606f97d1c8ff237d2f5c607cb3615780e1bd",
+  "source_code_commit": "be65c36dcc4982ea1dae86bf40edca30f29c9626",
+  "status": "NOT_COMPLETED"
+}

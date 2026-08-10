@@ -1,0 +1,10 @@
+{
+  "dataset_id": "iilabs",
+  "status": "FAIL_UNKNOWN_COMPONENTS",
+  "unknown_components": [
+    "extrinsic",
+    "map",
+    "deskew_interpolation"
+  ],
+  "zero_substitution_used": false
+}

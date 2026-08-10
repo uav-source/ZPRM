@@ -1,0 +1,104 @@
+{
+  "requirements": [
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "PASS",
+      "grandtour_status": "PASS",
+      "iilabs_status": "PASS",
+      "reason": "Two public sources and immutable release identifiers were recorded.",
+      "requirement": "At least two independent public data sources",
+      "requirement_id": "R01"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "PASS",
+      "grandtour_status": "PASS",
+      "iilabs_status": "PASS",
+      "reason": "Downloaded IILABS MoCap TUM poses and GrandTour IE-TC/NavSatFix 6DoF reference files are independent of LiDAR registration.",
+      "requirement": "Independent high-accuracy 6DoF reference",
+      "requirement_id": "R02"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "FAIL",
+      "grandtour_status": "FAIL",
+      "iilabs_status": "FAIL",
+      "reason": "No target map was constructed; IILABS cross-acquisition world frame is unproven and GrandTour GT-only overlap failed.",
+      "requirement": "Evaluated scan is not used to build its target map",
+      "requirement_id": "R03"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "FAIL",
+      "grandtour_status": "FAIL",
+      "iilabs_status": "FAIL",
+      "reason": "Acquisitions are distinct, but no eligible cross-acquisition map/query pair survived the common-frame and overlap hard gates.",
+      "requirement": "Target map and evaluated scan have independent source acquisition",
+      "requirement_id": "R04"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "FAIL",
+      "grandtour_status": "FAIL",
+      "iilabs_status": "FAIL",
+      "reason": "IILABS raw MoCap frame continuity is not proven and GrandTour raw Hesai per-point timing was intentionally not downloaded after overlap failure.",
+      "requirement": "Time synchronization and extrinsics are auditable",
+      "requirement_id": "R05"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "BLOCKED",
+      "grandtour_status": "BLOCKED",
+      "iilabs_status": "BLOCKED",
+      "reason": "Zero snapshots were selected because materialization stopped at hard gates.",
+      "requirement": "Each dataset has at least 50 corridor or weak-geometry snapshots and 50 geometry-rich snapshots",
+      "requirement_id": "R06"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "BLOCKED",
+      "grandtour_status": "BLOCKED",
+      "iilabs_status": "BLOCKED",
+      "reason": "No labels exist to freeze; registration-result count is zero.",
+      "requirement": "Scene labels are frozen before registration error is viewed",
+      "requirement_id": "R07"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "BLOCKED",
+      "grandtour_status": "BLOCKED",
+      "iilabs_status": "BLOCKED",
+      "reason": "No canonical bundles exist, so byte-identical backend inputs cannot be asserted.",
+      "requirement": "Open3D and PCL share identical inputs",
+      "requirement_id": "R08"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "PASS",
+      "grandtour_status": "PASS",
+      "iilabs_status": "PASS",
+      "reason": "Historical backend parameter file and internal canonical hashes match exactly.",
+      "requirement": "Frozen Open3D and PCL parameters are retained",
+      "requirement_id": "R09"
+    },
+    {
+      "evidence_files": "MULTIPLE_SEE_JSON",
+      "evidence_sha256": "BOUND_BY_FROZEN_MANIFEST",
+      "global_status": "FAIL",
+      "grandtour_status": "FAIL",
+      "iilabs_status": "FAIL",
+      "reason": "Extrinsic/map/interpolation numeric uncertainty evidence is incomplete; UNKNOWN values were not replaced with zero.",
+      "requirement": "Reference trajectory, map, and interpolation uncertainty are recorded",
+      "requirement_id": "R10"
+    }
+  ]
+}

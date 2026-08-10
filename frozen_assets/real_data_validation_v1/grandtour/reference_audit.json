@@ -1,0 +1,54 @@
+{
+  "accuracy_evidence": {
+    "attitude_rms_degree_under_up_to_10s_outage": 0.01,
+    "position_rms_m_under_up_to_10s_outage": [
+      0.01,
+      0.02
+    ],
+    "source": "GrandTour paper and NovAtel CPT7 performance specification"
+  },
+  "actual_downloaded_reference": "Inertial Explorer tightly coupled odometry + NavSatFix + TF + prism",
+  "independent_non_lidar_6dof": true,
+  "probe": {
+    "SPX-1": {
+      "end_timestamp": 1730564261.0,
+      "frame_id": "enu_origin",
+      "max_timestamp_gap_s": 0.005000114440917969,
+      "median_timestamp_gap_s": 0.005000114440917969,
+      "odometry_frame_id": "enu_origin",
+      "orientation_present": true,
+      "orientation_quaternion_norm_max_error": 2.220446049250313e-16,
+      "pose_count": 35801,
+      "pose_covariance_all_zero": true,
+      "position_covariance_all_zero": false,
+      "position_covariance_diagonal_median": [
+        6.650741072417162e-05,
+        0.00015259540907464053,
+        0.0002112864560174668
+      ],
+      "start_timestamp": 1730564082.0,
+      "strictly_monotonic": true
+    },
+    "SPX-3": {
+      "end_timestamp": 1730566099.0,
+      "frame_id": "enu_origin",
+      "max_timestamp_gap_s": 0.005000114440917969,
+      "median_timestamp_gap_s": 0.005000114440917969,
+      "odometry_frame_id": "enu_origin",
+      "orientation_present": true,
+      "orientation_quaternion_norm_max_error": 3.3306690738754696e-16,
+      "pose_count": 45601,
+      "pose_covariance_all_zero": true,
+      "position_covariance_all_zero": false,
+      "position_covariance_diagonal_median": [
+        3.2472029063005315e-05,
+        4.8928391265680144e-05,
+        9.077889786978155e-05
+      ],
+      "start_timestamp": 1730565871.0,
+      "strictly_monotonic": true
+    }
+  },
+  "reference_status": "PASS_FOR_SPX_1_AND_SPX_3",
+  "spx_2_reference_status": "HIDDEN_OR_UNAVAILABLE"
+}

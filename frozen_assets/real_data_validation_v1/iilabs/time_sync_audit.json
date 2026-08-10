@@ -1,0 +1,8 @@
+{
+  "bag_and_tum_time_base": "ROS_UNIX_EPOCH_SECONDS",
+  "bag_timestamps_strictly_ordered_by_chunk_info": true,
+  "dataset_id": "iilabs",
+  "per_point_time_field": "t",
+  "registration_or_lidar_odometry_used": false,
+  "status": "PARTIAL_WORLD_REFERENCE_TOPIC_ABSENT"
+}

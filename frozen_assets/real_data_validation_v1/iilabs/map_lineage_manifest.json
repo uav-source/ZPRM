@@ -1,0 +1,8 @@
+{
+  "dataset_id": "iilabs",
+  "map_built": false,
+  "map_scan_source_ids": [],
+  "query_map_intersection_count": 0,
+  "query_scan_source_ids": [],
+  "status": "NOT_MATERIALIZED_HARD_GATE_FAILURE"
+}

@@ -1,0 +1,10 @@
+{
+  "estimated_transform_file_count": 0,
+  "estimated_transform_files": [],
+  "open3d_registration_call_count": 0,
+  "other_registration_process_count": 0,
+  "pass": true,
+  "pcl_cli_invocation_count": 0,
+  "real_trial_result_count": 0,
+  "registration_execution_count": 0
+}

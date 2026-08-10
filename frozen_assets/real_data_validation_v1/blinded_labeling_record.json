@@ -1,0 +1,8 @@
+{
+  "label_selector_source_sha256": "a0db9c6a61bb26385506e62efc641a1d4b2f1b57bc931aca410450e9da9f5b0c",
+  "labeler_blinded_to_registration_error": true,
+  "labels_frozen": false,
+  "real_registration_result_file_count": 0,
+  "registration_derived_field_access_count": 0,
+  "status": "BLOCKED_BEFORE_LABELING"
+}

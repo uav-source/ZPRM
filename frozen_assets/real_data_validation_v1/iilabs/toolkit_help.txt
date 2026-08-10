@@ -1,0 +1,26 @@
+                                                                                
+ Usage: iilabs3d [OPTIONS] COMMAND [ARGS]...                                    
+                                                                                
+╭─ Options ────────────────────────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the current shell.      │
+│ --show-completion             Show completion for the current shell, to copy │
+│                               it or customize the installation.              │
+│ --help                        Show this message and exit.                    │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────╮
+│ list-sequences  List all available IILABS 3D Dataset sequences and           │
+│                 categories.                                                  │
+│ list-sensors    List all available 3D LiDAR sensors in the IILABS 3D         │
+│                 Dataset.                                                     │
+│ download        Download sequences and sensor data. Use 'list-sequences' and │
+│                 'list-sensors' to view available options.                    │
+│ convert         Convert ROS 1 bag file(s) from to ROS 2 format               │
+│ eval            Evaluate trajectory accuracy by comparing ground truth and   │
+│                 odometry data. Calculates Absolute Trajectory Error (ATE),   │
+│                 Relative Translational Error (RTE), and Relative Rotational  │
+│                 Error (RRE). Both trajectories must be in the same reference │
+│                 frame (robot frame: base_link). If they are not, use the     │
+│                 'correct-frame' command to transform the odometry data.      │
+│ correct-frame   Correct trajectory reference frame to base_link              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+

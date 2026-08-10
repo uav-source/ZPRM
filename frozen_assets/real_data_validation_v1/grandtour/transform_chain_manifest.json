@@ -1,0 +1,7 @@
+{
+  "common_position_frame": "WGS84_ECEF_FROM_PUBLISHED_IE_TC_NAVSATFIX",
+  "dataset_id": "grandtour",
+  "matrix_direction_audited": true,
+  "orientation_source": "PUBLISHED_IE_TC_6DOF_ODOMETRY",
+  "status": "REFERENCE_CHAIN_AUDITED_RAW_HESAI_EXTRINSIC_NOT_MATERIALIZED_AFTER_OVERLAP_FAIL"
+}

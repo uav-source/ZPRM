@@ -1,0 +1,28 @@
+{
+  "rows": [
+    {
+      "coverage_fraction": "UNKNOWN",
+      "covered_duration_s": "UNKNOWN",
+      "dataset_id": "IILABS_3D",
+      "map_acquisition": "nav_a_diff",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_acquisition": "nav_a_omni"
+    },
+    {
+      "coverage_fraction": 0.34210526315789475,
+      "covered_duration_s": 78.0,
+      "dataset_id": "GRANDTOUR",
+      "map_acquisition": "SPX-1",
+      "overlap_status": "FAIL",
+      "query_acquisition": "SPX-3"
+    },
+    {
+      "coverage_fraction": 0.15083798882681565,
+      "covered_duration_s": 27.0,
+      "dataset_id": "GRANDTOUR",
+      "map_acquisition": "SPX-3",
+      "overlap_status": "FAIL",
+      "query_acquisition": "SPX-1"
+    }
+  ]
+}

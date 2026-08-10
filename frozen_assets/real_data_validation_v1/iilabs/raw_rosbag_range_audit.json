@@ -1,0 +1,153 @@
+{
+  "audit_method": "HTTP Range reads of the official immutable bag header, first complete chunk, and index tail; no point-cloud geometry or registration output was read",
+  "mocap_or_optitrack_topic_count": 0,
+  "nav_a_diff": {
+    "bag_end_time_ros_epoch_s": 1738934262.056712,
+    "bag_size_bytes": 48164911024,
+    "bag_start_time_ros_epoch_s": 1738933502.2271461,
+    "chunk_count": 7598,
+    "first_chunk_range": "bytes=4117-6399562",
+    "first_chunk_sha256": "1b4c9907f671bd67532168ab73a2a27a16fc1eb73f1a76ed1a580e778674a6d0",
+    "first_map_nn0_transform": {
+      "child_frame": "eve/map/nn0",
+      "parent_frame": "eve/odom",
+      "quaternion_xyzw": [
+        0.0,
+        0.0,
+        0.7030638112693579,
+        0.7111267659731314
+      ],
+      "translation_m": [
+        4.068138610391483,
+        3.1720707529277767,
+        0.0
+      ]
+    },
+    "first_odometry": {
+      "child_frame_id": "eve/base_footprint",
+      "frame_id": "eve/odom",
+      "quaternion_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "index_tail_range": "bytes=48163646374-48164911023",
+    "index_tail_sha256": "95c71b367941afcec7600e68eb580ee1eea9718c490104c5e10185452c19aa69",
+    "topic_message_counts": {
+      "/eve/imu/data": 302094,
+      "/eve/motors_enc": 75699,
+      "/eve/odom": 75690,
+      "/eve/ouster/imu": 75960,
+      "/eve/ouster/points": 7597,
+      "/eve/scan": 30338,
+      "/tf": 106033,
+      "/tf_static": 5
+    }
+  },
+  "nav_a_omni": {
+    "bag_end_time_ros_epoch_s": 1738936232.584366,
+    "bag_size_bytes": 24637246105,
+    "bag_start_time_ros_epoch_s": 1738935843.8544369,
+    "chunk_count": 3887,
+    "first_chunk_range": "bytes=4117-6430115",
+    "first_chunk_sha256": "6dffbc93a9ed6974c406a487039c7ad4a75e154a2cee4a132e6cf8530e412926",
+    "first_map_nn0_transform": {
+      "child_frame": "eve/map/nn0",
+      "parent_frame": "eve/odom",
+      "quaternion_xyzw": [
+        0.0,
+        0.0,
+        0.7178065166282731,
+        0.6962426334877696
+      ],
+      "translation_m": [
+        3.915405815387846,
+        3.379853301433703,
+        0.0
+      ]
+    },
+    "first_odometry": {
+      "child_frame_id": "eve/base_footprint",
+      "frame_id": "eve/odom",
+      "quaternion_xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "translation_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "index_tail_range": "bytes=24636590059-24637246104",
+    "index_tail_sha256": "7f5f486a9a5e921e54e6c43ba5bfdf3d91968b8e0f438e86bbab8d60595e8b22",
+    "topic_message_counts": {
+      "/eve/imu/data": 154551,
+      "/eve/motors_enc": 38727,
+      "/eve/odom": 38717,
+      "/eve/ouster/imu": 38851,
+      "/eve/ouster/points": 3886,
+      "/eve/scan": 15521,
+      "/tf": 54241,
+      "/tf_static": 5
+    }
+  },
+  "pointcloud_fields": [
+    "x",
+    "y",
+    "z",
+    "intensity",
+    "t",
+    "reflectivity",
+    "ring",
+    "ambient",
+    "range"
+  ],
+  "pointcloud_frame_id": "eve/os_sensor",
+  "static_transform_pairs": [
+    [
+      "eve/base_footprint",
+      "eve/base_link"
+    ],
+    [
+      "eve/base_link",
+      "eve/imu_link"
+    ],
+    [
+      "eve/base_link",
+      "eve/laser"
+    ],
+    [
+      "eve/base_link",
+      "eve/os_sensor"
+    ],
+    [
+      "eve/os_sensor",
+      "eve/lidar3d"
+    ],
+    [
+      "eve/os_sensor",
+      "eve/os_imu"
+    ]
+  ],
+  "t_base_link_ouster_quaternion_xyzw": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "t_base_link_ouster_translation_m": [
+    0.0,
+    0.0,
+    0.4367
+  ]
+}

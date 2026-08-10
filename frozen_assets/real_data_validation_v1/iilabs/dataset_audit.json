@@ -1,0 +1,24 @@
+{
+  "download_complete": false,
+  "partial_download_checkpoint": {
+    "collected_at_utc": "2026-08-10T05:52:42Z",
+    "completed_bytes_are_lower_bounds": true,
+    "files": {
+      "iilabs3d/iilabs3d_dataset/benchmark/ouster_os1-64/nav_a_diff/ouster_nav_a_diff_2025-02-07-13-05-01.bag": 5152702464,
+      "iilabs3d/iilabs3d_dataset/benchmark/ouster_os1-64/nav_a_omni/ouster_nav_a_omni_2025-02-07-13-44-03.bag": 4537188352
+    },
+    "stop_reason": "FAIL_FAST_AFTER_UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME; partial files retained with aria2 control state"
+  },
+  "selected_sensor_cli_slug": "ouster_os1_64",
+  "selected_sensor_storage_slug": "ouster_os1-64",
+  "selected_sequences": [
+    "nav_a_diff",
+    "nav_a_omni"
+  ],
+  "status": "FAIL_UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
+  "toolkit_cli_outputs_sha256": {
+    "help": "e6a0955f38e4f7ee333e7849f88255ea0fb05a71dcc2d837699b5d7a5cc8c7ef",
+    "list_sensors": "a5976a07fc64e40a9abfaaa249e029504268fae7f274c2e5373bbb8e60e139c2",
+    "list_sequences": "bb063727258916fd70222dae8d86c3cce14c2f2708e1918f3f6ce1dcfe443f0d"
+  }
+}

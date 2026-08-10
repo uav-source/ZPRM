@@ -1,0 +1,32 @@
+{
+  "contract_sha256": "537823a6419ce8f6bf3985250e12f1d28c4b7cf979d243d6dfac116508527ebe",
+  "contract_status": "FROZEN_BUT_NOT_EXECUTED_DUE_TO_ELIGIBILITY_FAILURE",
+  "coordinate_frames": {
+    "source": "sensor_lidar",
+    "target": "independent_reference_world"
+  },
+  "crop_rule": "no_crop",
+  "deskew_method": "per_point_independent_non_lidar_6dof_reference_only",
+  "dynamic_object_handling": "none",
+  "finite_value_rule": "all_xyz_finite",
+  "input_sensor": {
+    "grandtour": "Hesai_XT_32_raw",
+    "iilabs": "Ouster_OS1_64_RevC_raw"
+  },
+  "map_accumulation_rule": "map_acquisition_only_query_zero_contribution",
+  "numeric_dtype": "little_endian_float64_C_contiguous",
+  "point_ordering_rule": "scan_timestamp_then_original_point_index",
+  "range_filter_m": {
+    "maximum": 80.0,
+    "minimum": 1.0
+  },
+  "reference_interpolation_method": "linear_translation_SLERP_xyzw",
+  "software": {
+    "numpy": "1.26.4",
+    "scipy": "1.11.4"
+  },
+  "source_voxel_size_m": 0.1,
+  "target_map_scan_sampling": "every_fifth_map_scan",
+  "target_voxel_size_m": 0.1,
+  "timestamp_field": "REQUIRES_RAW_SENSOR_FIELD_AUDIT"
+}

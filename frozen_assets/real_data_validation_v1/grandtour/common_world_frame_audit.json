@@ -1,0 +1,6 @@
+{
+  "common_position_frame": "WGS84_ECEF_FROM_PUBLISHED_IE_TC_NAVSATFIX",
+  "orientation_note": "IE-TC publishes 6DoF orientation in ENU; GT-only overlap intentionally uses positions only.",
+  "status": "PASS_FOR_GT_ONLY_POSITION_OVERLAP",
+  "transform_estimated_from_trajectory_or_point_cloud": false
+}

@@ -1,0 +1,58 @@
+{
+  "independent_6dof_reference": true,
+  "nav_a_diff": {
+    "first_pose": [
+      1738933504.0454109,
+      0.0,
+      0.0,
+      1.3877787807814457e-17,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "last_pose": [
+      1738934263.3577576,
+      -0.020658429221871444,
+      0.021361188444780188,
+      0.0004101423995789312,
+      0.000998706334696492,
+      0.002765952355866408,
+      -0.052060619999883824,
+      0.9986395966205478
+    ],
+    "max_timestamp_gap_s": 0.0071392059326171875,
+    "row_count": 182234,
+    "strictly_monotonic": true,
+    "tum_sha256": "53059474195225cf1e7c0db39fec26be74ab7ae5527abd9baaa544d340ab657b"
+  },
+  "nav_a_omni": {
+    "first_pose": [
+      1738935844.9667647,
+      0.0,
+      -2.220446049250313e-16,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "last_pose": [
+      1738936233.7416992,
+      -0.04288732920135718,
+      0.0014402619944204886,
+      0.0009163915748627641,
+      0.0033370068313792896,
+      0.0029953103500469647,
+      -0.05021312219401855,
+      0.9987284590221923
+    ],
+    "max_timestamp_gap_s": 0.0049822330474853516,
+    "row_count": 93306,
+    "strictly_monotonic": true,
+    "tum_sha256": "559bccea5bf6a6ba17b3476a11ebc2f007e447c409aa03e7e4397fa2a365dd25"
+  },
+  "postprocessed_initial_offsets_adjusted": true,
+  "reference_source": "OptiTrack_Motive_via_NatNet_then_EVO_TUM",
+  "reference_status": "PASS_INDIVIDUAL_SEQUENCE_ONLY"
+}

@@ -1,0 +1,7 @@
+{
+  "eligibility_status": "FAIL",
+  "failure_reason": "UNPROVEN_CROSS_SEQUENCE_WORLD_FRAME",
+  "map_acquisition": "nav_a_diff",
+  "overlap_status": "NOT_COMPUTABLE",
+  "query_acquisition": "nav_a_omni"
+}

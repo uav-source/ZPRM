@@ -1,0 +1,7 @@
+{
+  "dataset_id": "grandtour",
+  "ie_tc_pose_rate_hz": 200.0,
+  "max_reference_gap_s": 0.005000114440917969,
+  "registration_or_lidar_odometry_used": false,
+  "status": "REFERENCE_PASS_RAW_HESAI_TIMING_NOT_AUDITED_AFTER_OVERLAP_FAIL"
+}
