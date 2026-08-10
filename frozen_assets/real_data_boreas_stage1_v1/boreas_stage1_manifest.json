@@ -926,7 +926,7 @@
     }
   ],
   "eligibility_sha256": "b76102144ad63e9383ed3027b574ce33c7023eda4b328b6b99621bb8d577f8c7",
-  "manifest_payload_sha256": "c3363ebc55aab36da23f292677c6569edafa0c5e8611a364c412e5998b8e8a91",
+  "manifest_payload_sha256": "aad7518a206b102bb62afd09c65c4d7c94e9c7701518748828d242e45c47dea3",
   "official_source_identity": {
     "aws_bucket": "s3://boreas",
     "paper_doi": "10.1177/02783649231160195",
@@ -945,8 +945,8 @@
     },
     {
       "path": "boreas_common_world_frame_audit.json",
-      "sha256": "49c59ef74af933dc6a0de296ac85cf41170d8b2db51d30d6bfbef0d1ff12913b",
-      "size_bytes": 733
+      "sha256": "54b0e8d3da5594b19c7a26b51998753ea81839cacd174ef747daec6299421d42",
+      "size_bytes": 1136
     },
     {
       "path": "boreas_extrinsic_independence_risk_assessment.json",
@@ -1050,17 +1050,17 @@
     },
     {
       "path": "eligible_reference_sequences.csv",
-      "sha256": "137d7009c47d01f39208a9d95c21a29c829649f49e8268fcc71bee910d8f3a6b",
-      "size_bytes": 7244
+      "sha256": "645eadd79a5c2f65279e84de3735e8084cab035fbc851aa67023ff1501033b82",
+      "size_bytes": 6788
     },
     {
       "path": "environment_report.json",
-      "sha256": "a1571ac5e2a2e52d0073e9ea480ed22aed4f02a7180808b39909f5026b1cb21f",
+      "sha256": "e02201417d206d15fe8b41351357bb66403e56e9bd2dc202e4ede152414cdef3",
       "size_bytes": 1072
     },
     {
       "path": "official_source_manifest.json",
-      "sha256": "905d15019f5927aac501719747aa754a4f74e6e066eeecd8156b2deed988b47f",
+      "sha256": "6a314f6d714972922e4d005074c527b33489a04592bc5bc79c7f15a7b637c049",
       "size_bytes": 1635
     },
     {
@@ -1069,6 +1069,6 @@
       "size_bytes": 4719
     }
   ],
-  "producer_commit": "7615352555e00e57fdb9deb5ace88229dead0f90",
+  "producer_commit": "a0dc0c1ade2756abaa5f6e2a1a5b515ee4a9c3c3",
   "schema_version": "boreas_stage1_manifest_v1"
 }

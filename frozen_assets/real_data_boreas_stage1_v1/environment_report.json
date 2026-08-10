@@ -1,14 +1,14 @@
 {
   "aws_cli": "aws-cli/1.46.0 Python/3.11.15 Linux/5.15.0-139-generic botocore/1.43.62",
-  "collected_at_utc": "2026-08-10T10:14:32.642006Z",
+  "collected_at_utc": "2026-08-10T10:19:37.895472Z",
   "disk": {
-    "free_bytes": 111022432256,
+    "free_bytes": 111012851712,
     "total_bytes": 280630693888,
-    "used_bytes": 155278475264
+    "used_bytes": 155288055808
   },
   "git": {
     "branch": "prep/boreas-single-dataset-stage1-v1",
-    "commit": "7615352555e00e57fdb9deb5ace88229dead0f90",
+    "commit": "a0dc0c1ade2756abaa5f6e2a1a5b515ee4a9c3c3",
     "tags": [
       "execution/synthetic-confirmatory-v3-requalified"
     ],
@@ -17,7 +17,7 @@
   "host": "lj",
   "machine": "x86_64",
   "memory": {
-    "MemAvailable_bytes": 23580696576,
+    "MemAvailable_bytes": 23591968768,
     "MemTotal_bytes": 33045094400,
     "SwapFree_bytes": 597258240,
     "SwapTotal_bytes": 2147479552

@@ -1,6 +1,7 @@
 {
   "COMMON_WORLD_FRAME": "PASS",
   "actual_global_coordinate_extent_m": 2269.597674245816,
+  "eligible_public_gt_sequence_count": 29,
   "first_reference_position_m": [
     -0.001453277103227628,
     -0.0027862943824595314,
@@ -10,6 +11,18 @@
   "independent_acquisition_sequence_count": 31,
   "independent_sequence_ids_and_time_spans_verified": true,
   "official_definition": "fixed ENU_ref aligned in position with the first pose of the first sequence; WGS-84 tangent orientation, x East/y North/z up",
+  "reference_gap_exclusions": [
+    {
+      "maximum_gap_s": 0.20684385299682617,
+      "reason": "MAXIMUM_NATIVE_GAP_EXCEEDS_0.2_SECONDS",
+      "sequence_id": "boreas-2020-11-26-13-58"
+    },
+    {
+      "maximum_gap_s": 0.20729684829711914,
+      "reason": "MAXIMUM_NATIVE_GAP_EXCEEDS_0.2_SECONDS",
+      "sequence_id": "boreas-2020-12-18-13-44"
+    }
+  ],
   "registration_or_trajectory_fitting_used": false,
   "sequence_local_reset_detected": false,
   "sequence_local_reset_ids": [],
