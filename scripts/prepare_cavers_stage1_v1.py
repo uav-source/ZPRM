@@ -5,14 +5,19 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+
+REPOSITORY = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPOSITORY / "src"))
 
 from phase_a_harness.real_data_preparation.cavers_stage1 import execute_cavers_stage1
 
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repository-root", type=Path, default=Path("/home/lj/ZPRM"))
+    parser.add_argument("--repository-root", type=Path, default=REPOSITORY)
     parser.add_argument("--data-root", type=Path, required=True)
     parser.add_argument("--runtime-root", type=Path, required=True)
     parser.add_argument("--mode", choices=("fresh", "resume"), default="fresh")
