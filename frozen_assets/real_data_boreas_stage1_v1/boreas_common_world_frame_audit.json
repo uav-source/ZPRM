@@ -1,0 +1,18 @@
+{
+  "COMMON_WORLD_FRAME": "PASS",
+  "actual_global_coordinate_extent_m": 2269.597674245816,
+  "first_reference_position_m": [
+    -0.001453277103227628,
+    -0.0027862943824595314,
+    0.1299924124139122
+  ],
+  "first_reference_sequence": "boreas-2020-11-26-13-58",
+  "independent_acquisition_sequence_count": 31,
+  "independent_sequence_ids_and_time_spans_verified": true,
+  "official_definition": "fixed ENU_ref aligned in position with the first pose of the first sequence; WGS-84 tangent orientation, x East/y North/z up",
+  "registration_or_trajectory_fitting_used": false,
+  "sequence_local_reset_detected": false,
+  "sequence_local_reset_ids": [],
+  "sequence_specific_origin_transform_published": false,
+  "status": "PASS"
+}

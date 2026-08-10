@@ -1,0 +1,25 @@
+{
+  "accuracy_semantics": "2-4 cm is nominal sequence-dependent RMS, not 1SIGMA; official paper also documents 20-40 cm urban-canyon residual RMS",
+  "position_accuracy_claim": {
+    "nominal_range_m": [
+      0.02,
+      0.04
+    ],
+    "uncertainty_type": "RMSE",
+    "urban_canyon_range_m": [
+      0.2,
+      0.4
+    ]
+  },
+  "reference_frame": "fixed ENU_ref",
+  "reference_rate_hz": 199.99542246805265,
+  "sampled_reference_sequence": "boreas-2020-11-26-13-58",
+  "source": "DATA_REFERENCE.md and Boreas IJRR Section 6",
+  "uses_gnss": true,
+  "uses_icp": false,
+  "uses_imu": true,
+  "uses_lidar": false,
+  "uses_rtx": true,
+  "uses_scan_matching": false,
+  "uses_wheel_encoder": true
+}

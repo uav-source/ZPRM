@@ -1,0 +1,28 @@
+{
+  "BOREAS_STAGE1_READY": false,
+  "GT_ONLY_OVERLAP": "NOT_COMPUTABLE",
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "R01": "PENDING_SECOND_DATASET",
+  "R02": "FAIL",
+  "R03": "BLOCKED_STAGE1",
+  "R04": "PASS",
+  "R05": "PASS",
+  "R06": "BLOCKED_STAGE1",
+  "R07": "BLOCKED_STAGE1",
+  "R08": "BLOCKED_STAGE1",
+  "R09": "PASS",
+  "R10": "PARTIAL",
+  "R14": "BLOCKED_STAGE1",
+  "REAL_DATA_RUN_AUTHORIZED": false,
+  "SINGLE_DATASET_PREREGISTRATION_READY": false,
+  "planned_future_trials": 0,
+  "primary_hard_blockers": [
+    "R02_LIDAR_ASSISTED_EXTRINSIC_INDEPENDENCE",
+    "GT_ONLY_OVERLAP_GATED",
+    "R10_UNCERTAINTY_FEASIBILITY"
+  ],
+  "registration_execution_count": 0,
+  "rich_snapshot_count": 0,
+  "snapshot_count": 0,
+  "weak_snapshot_count": 0
+}

@@ -1,0 +1,8 @@
+{
+  "circular_validation_risk": "UNRESOLVED_STATIC_CALIBRATION_DEPENDENCE",
+  "frozen_protocol_R02_text": "Independent high-accuracy 6DoF reference",
+  "frozen_protocol_R05_text": "Time synchronization and extrinsics are auditable",
+  "query_sequence_participation": "UNKNOWN",
+  "rationale": "The GNSS/IMU/wheel trajectory is independent, but the final lidar-frame 6DoF reference uses a proprietary static extrinsic obtained from lidar pointclouds; the release does not prove that evaluated query sequences were excluded.",
+  "risk_status": "FAIL_CLOSED_R02"
+}

@@ -1,0 +1,145 @@
+{
+  "checkout_mode": "official git clone with sparse checkout of root files, pyboreas/data, and pyboreas/utils",
+  "code_license": "BSD-3-Clause",
+  "commit": "e968198cd564ccfca5ad256624c80e0e584e7150",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "81f948914a38909cdc6a264e58590d57e52dddd895545f92f2c3cac657c48ee3",
+      "size_bytes": 2007
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "a04de34edfb3906fa06fb9b59c777dfec697a3c2a35dc6083b47da1d2e9c5f90",
+      "size_bytes": 191
+    },
+    {
+      "path": "DATA_LICENSE.md",
+      "sha256": "92368d96fe04291eaa6e56c22faabd9860d34f1d4ce1ecad0f0b3ba9e953a52d",
+      "size_bytes": 315
+    },
+    {
+      "path": "DATA_REFERENCE.md",
+      "sha256": "66b597c4b83ef65b5433d71da909f636ba47be0ad7193d5034e8a55715555d1b",
+      "size_bytes": 14035
+    },
+    {
+      "path": "DATA_RT_REFERENCE.md",
+      "sha256": "5e0c3815978498d04eaf4714d55162b511b40a9f067406e98397f23c4e91e59f",
+      "size_bytes": 19150
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "f40a0817c134eabbd843b1c625380b9cd5e269df92244c822228fc1f08f6ba71",
+      "size_bytes": 1544
+    },
+    {
+      "path": "README.md",
+      "sha256": "3b75572c0b3b3b81e6387ecbd4ed55b0bf79a898b218925c9df2bfa9580e5f78",
+      "size_bytes": 6414
+    },
+    {
+      "path": "download.md",
+      "sha256": "65b5d4b7b47d509096ed955bbacb62327f6864f0f7776de5eb252acf3981d630",
+      "size_bytes": 1708
+    },
+    {
+      "path": "pyboreas/__init__.py",
+      "sha256": "bb806c586c7e470e7cb41d032640312ff4605b3b84574c2d6960378d1a9745ce",
+      "size_bytes": 33
+    },
+    {
+      "path": "pyboreas/boreas.py",
+      "sha256": "05ab9b4afb6df2bfbce71b53b4452ff6dcf345d1d4da1c0d3e39ad1b381100ce",
+      "size_bytes": 2919
+    },
+    {
+      "path": "pyboreas/data/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "pyboreas/data/auxsensors.py",
+      "sha256": "8a4e5af6d80e776b48e9faec9c30bdf8523b3cd9da3fd723ee7ad46c24c9a393",
+      "size_bytes": 7317
+    },
+    {
+      "path": "pyboreas/data/bounding_boxes.py",
+      "sha256": "24a832d2e9997cbfe1b7932ca17a534b8a48d0d1366177d6c56b2f2cd64f6b1c",
+      "size_bytes": 9427
+    },
+    {
+      "path": "pyboreas/data/calib.py",
+      "sha256": "4e8c28a7f0fb0494fa0ee0e38b377f7a879a7f2e22809b974d28fdff1b0876e7",
+      "size_bytes": 2919
+    },
+    {
+      "path": "pyboreas/data/metadata_splits.py",
+      "sha256": "228eaf047202a5703eb415b3d22c93938d9a8f2f20d37ca23876190c9d12bdd2",
+      "size_bytes": 2772
+    },
+    {
+      "path": "pyboreas/data/pointcloud.py",
+      "sha256": "c755cce9677afa9356ea1bd6a30461b496ae9a3c128c762e20bdf170033ce83b",
+      "size_bytes": 6220
+    },
+    {
+      "path": "pyboreas/data/sensors.py",
+      "sha256": "6c16d4fa8a7eeccd3b9838d129b6b8ea047d492b224ad180ffd73527e8ae909e",
+      "size_bytes": 14384
+    },
+    {
+      "path": "pyboreas/data/sequence.py",
+      "sha256": "95fb169021c472a300fc01646c140ef167cae0e74be2842a06fb0d77e09b7de2",
+      "size_bytes": 16327
+    },
+    {
+      "path": "pyboreas/data/splits.py",
+      "sha256": "e57488ff5f3234f97ba1f321de836920c4434aa1bce32b5569475c7b943517a4",
+      "size_bytes": 9136
+    },
+    {
+      "path": "pyboreas/download_task.py",
+      "sha256": "6211ef9de48326e7420cb439bf9dd2d5c10cbf97a380602a8d60365548cef5cc",
+      "size_bytes": 1880
+    },
+    {
+      "path": "pyboreas/utils/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size_bytes": 0
+    },
+    {
+      "path": "pyboreas/utils/lgmath.py",
+      "sha256": "d0484c18267337e8b45cd23ed4adaf4755fb1e147b5d5254b390a4a52cfbc041",
+      "size_bytes": 6035
+    },
+    {
+      "path": "pyboreas/utils/odometry.py",
+      "sha256": "8f97cc4cf8d41fb5641b00773c7035755a7e5c0c19493316b4bf62e74b5ad5dc",
+      "size_bytes": 61851
+    },
+    {
+      "path": "pyboreas/utils/radar.py",
+      "sha256": "2b9692ae578c8d0bb60574024df060da7c0d3d8fcd9cb470515cee306082c2a2",
+      "size_bytes": 5189
+    },
+    {
+      "path": "pyboreas/utils/utils.py",
+      "sha256": "f22893877b97dccdc0a97569b3dad204e3f0013a655aff4392eec5c58c8671c5",
+      "size_bytes": 11309
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "c83da5db515857a120ce4f6afd13c08644ebee0ea5128ad7dc2109236a973075",
+      "size_bytes": 89
+    },
+    {
+      "path": "setup.py",
+      "sha256": "e810e302080695ebe73f0f8acca262dedd4f619f899acc28ea11e32ac8fe1c84",
+      "size_bytes": 850
+    }
+  ],
+  "repository_url": "https://github.com/utiasASRL/pyboreas.git",
+  "tree_rows_sha256": "8b0edf2e56af19cd61f5e36a19ce1318122790c6088de7f94d113dc441d86f57",
+  "worktree_clean": true
+}

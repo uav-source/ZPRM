@@ -1,0 +1,1074 @@
+{
+  "data_evidence": [
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/pyboreas/DATA_LICENSE.md",
+      "relative_path": "pyboreas/DATA_LICENSE.md",
+      "s3_key": null,
+      "sha256": "92368d96fe04291eaa6e56c22faabd9860d34f1d4ce1ecad0f0b3ba9e953a52d",
+      "size_bytes": 315,
+      "status": "PINNED_OFFICIAL_DEVKIT_SOURCE",
+      "version_id": null
+    },
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/pyboreas/DATA_REFERENCE.md",
+      "relative_path": "pyboreas/DATA_REFERENCE.md",
+      "s3_key": null,
+      "sha256": "66b597c4b83ef65b5433d71da909f636ba47be0ad7193d5034e8a55715555d1b",
+      "size_bytes": 14035,
+      "status": "PINNED_OFFICIAL_DEVKIT_SOURCE",
+      "version_id": null
+    },
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/pyboreas/LICENSE",
+      "relative_path": "pyboreas/LICENSE",
+      "s3_key": null,
+      "sha256": "f40a0817c134eabbd843b1c625380b9cd5e269df92244c822228fc1f08f6ba71",
+      "size_bytes": 1544,
+      "status": "PINNED_OFFICIAL_DEVKIT_SOURCE",
+      "version_id": null
+    },
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/pyboreas/README.md",
+      "relative_path": "pyboreas/README.md",
+      "s3_key": null,
+      "sha256": "3b75572c0b3b3b81e6387ecbd4ed55b0bf79a898b218925c9df2bfa9580e5f78",
+      "size_bytes": 6414,
+      "status": "PINNED_OFFICIAL_DEVKIT_SOURCE",
+      "version_id": null
+    },
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/pyboreas/pyboreas/data/calib.py",
+      "relative_path": "pyboreas/pyboreas/data/calib.py",
+      "s3_key": null,
+      "sha256": "4e8c28a7f0fb0494fa0ee0e38b377f7a879a7f2e22809b974d28fdff1b0876e7",
+      "size_bytes": 2919,
+      "status": "PINNED_OFFICIAL_DEVKIT_SOURCE",
+      "version_id": null
+    },
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/pyboreas/pyboreas/data/splits.py",
+      "relative_path": "pyboreas/pyboreas/data/splits.py",
+      "s3_key": null,
+      "sha256": "e57488ff5f3234f97ba1f321de836920c4434aa1bce32b5569475c7b943517a4",
+      "size_bytes": 9136,
+      "status": "PINNED_OFFICIAL_DEVKIT_SOURCE",
+      "version_id": null
+    },
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/pyboreas/pyboreas/utils/utils.py",
+      "relative_path": "pyboreas/pyboreas/utils/utils.py",
+      "s3_key": null,
+      "sha256": "f22893877b97dccdc0a97569b3dad204e3f0013a655aff4392eec5c58c8671c5",
+      "size_bytes": 11309,
+      "status": "PINNED_OFFICIAL_DEVKIT_SOURCE",
+      "version_id": null
+    },
+    {
+      "etag": null,
+      "last_modified": null,
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/source_metadata/boreas_paper_2203.10168.pdf",
+      "relative_path": "source_metadata/boreas_paper_2203.10168.pdf",
+      "s3_key": null,
+      "sha256": "29531b5782937ded0a34cb2fd214a4f47c46bfcb6e28fa4b688cb2d14cb43ee8",
+      "size_bytes": 4802824,
+      "status": "PINNED_OFFICIAL_PAPER",
+      "version_id": null
+    },
+    {
+      "etag": "8eb85066aa2be181bfd5634f6a01dcd3-5",
+      "last_modified": "2023-05-15T03:43:50.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-11-26-13-58/applanix/gps_post_process.csv",
+      "relative_path": "stage1_payload/boreas-2020-11-26-13-58/applanix/gps_post_process.csv",
+      "s3_key": "boreas-2020-11-26-13-58/applanix/gps_post_process.csv",
+      "sha256": "4556958b5ddf38e6a92d49caa4510fd1ee8f96cd4d5056b85cccf1edd734b68d",
+      "size_bytes": 77647402,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "ad42e74ac11b27051e77486fe0011dd3",
+      "last_modified": "2023-05-15T03:43:55.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-11-26-13-58/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2020-11-26-13-58/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2020-11-26-13-58/applanix/lidar_poses.csv",
+      "sha256": "c1bfd60f5400e613aac248a146b492535dcf9adb2ea036356a098aa69ac1887f",
+      "size_bytes": 2597071,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T03:45:11.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-11-26-13-58/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2020-11-26-13-58/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2020-11-26-13-58/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "ce876c33af300284c7ef13ac680a87c3",
+      "last_modified": "2023-05-15T05:30:02.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-12-01-13-26/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2020-12-01-13-26/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2020-12-01-13-26/applanix/lidar_poses.csv",
+      "sha256": "05fee17a8af420324eb065bda5e2fe6f23406b3deb8c998f50fc7658612a506d",
+      "size_bytes": 2407202,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:30:04.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-12-01-13-26/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2020-12-01-13-26/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2020-12-01-13-26/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:30:52.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-12-04-14-00/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2020-12-04-14-00/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2020-12-04-14-00/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "506a35118f26ca9d61a8466eb85060d9",
+      "last_modified": "2023-05-15T05:31:32.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-12-18-13-44/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2020-12-18-13-44/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2020-12-18-13-44/applanix/lidar_poses.csv",
+      "sha256": "15ea6fbc366182a92b5e9bfff6f795c64f78cac6acebbd26ab6b475ea1e976b7",
+      "size_bytes": 2496538,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:31:33.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-12-18-13-44/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2020-12-18-13-44/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2020-12-18-13-44/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "a9ffef39099ee3c4fcd4d7362065eef6",
+      "last_modified": "2023-05-15T05:41:59.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-01-15-12-17/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-01-15-12-17/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-01-15-12-17/applanix/lidar_poses.csv",
+      "sha256": "aa4e5158d07790ef5f05ba48f11a5ced6ec16cd1a112cfbbdd86787ce69770fb",
+      "size_bytes": 2321375,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:42:01.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-01-15-12-17/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-01-15-12-17/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-01-15-12-17/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "22dd070f6ed6173253cc5879b2a1b2e9",
+      "last_modified": "2023-05-15T05:42:47.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-01-19-15-08/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-01-19-15-08/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-01-19-15-08/applanix/lidar_poses.csv",
+      "sha256": "c0266b6795d610e6cc18dfb5f46a1ff34a3d5d9d76c0fd94a987da4dd815013a",
+      "size_bytes": 2367177,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:42:47.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-01-19-15-08/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-01-19-15-08/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-01-19-15-08/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:39:08.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-01-26-10-59/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-01-26-10-59/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-01-26-10-59/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "47bf5863753d3166f4fe43996ab5fc0c",
+      "last_modified": "2023-05-15T05:43:34.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-01-26-11-22/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-01-26-11-22/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-01-26-11-22/applanix/lidar_poses.csv",
+      "sha256": "516b9e86d050e5ee09b4c048271f2372efeaaede4e176b78e3fa0ea631c490ef",
+      "size_bytes": 3560588,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:43:36.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-01-26-11-22/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-01-26-11-22/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-01-26-11-22/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "0c4e739948af18b5ed4eb8c6f259d7a7",
+      "last_modified": "2023-05-15T05:44:35.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-02-02-14-07/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-02-02-14-07/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-02-02-14-07/applanix/lidar_poses.csv",
+      "sha256": "43b50fbe65a7ae6c166b19f0c63b942d76be450a6f3698da51350889550fa93a",
+      "size_bytes": 2783314,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:44:38.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-02-02-14-07/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-02-02-14-07/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-02-02-14-07/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:40:36.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-02-09-12-55/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-02-09-12-55/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-02-09-12-55/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "a5e0d7ff16087788fd06482258ad4da5",
+      "last_modified": "2023-05-15T05:45:29.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-03-02-13-38/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-03-02-13-38/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-03-02-13-38/applanix/lidar_poses.csv",
+      "sha256": "69d66eb9a6b4b5991b64ddd3631bf3bb708b996c86e2f997ecb2afd7a80028c1",
+      "size_bytes": 2714563,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:45:31.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-03-02-13-38/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-03-02-13-38/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-03-02-13-38/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:41:16.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-03-09-14-23/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-03-09-14-23/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-03-09-14-23/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "57d5ffb1e2f476eaf9defa24f4513dd7",
+      "last_modified": "2026-06-12T02:05:48.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-03-23-12-43/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-03-23-12-43/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-03-23-12-43/applanix/lidar_poses.csv",
+      "sha256": "598f8ee649f44670a87059916fcd3b1726b5aa1743a8f05227ea0166de17f4ac",
+      "size_bytes": 2511737,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:45:53.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-03-23-12-43/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-03-23-12-43/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-03-23-12-43/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "1cb2588f326b23c893eef80bf3866991",
+      "last_modified": "2023-05-15T05:46:15.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-03-30-14-23/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-03-30-14-23/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-03-30-14-23/applanix/lidar_poses.csv",
+      "sha256": "d7d66a8eab40c4a96a8235c9d11df697ba70a5cac75071166eb394e7ef9458e0",
+      "size_bytes": 2916043,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:46:17.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-03-30-14-23/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-03-30-14-23/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-03-30-14-23/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "d3d71a548e0b2af802408a17090c7ef9",
+      "last_modified": "2023-05-15T05:46:42.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-08-12-44/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-04-08-12-44/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-04-08-12-44/applanix/lidar_poses.csv",
+      "sha256": "fd6c2e44f185dbb66dc669bbf9f756b49b075c924ef8a2e921e9bd3f78ddb23b",
+      "size_bytes": 2298562,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:46:42.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-08-12-44/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-04-08-12-44/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-04-08-12-44/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "7c3336dcd3c34cca140881dbf17229e3",
+      "last_modified": "2023-05-15T05:47:14.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-13-14-49/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-04-13-14-49/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-04-13-14-49/applanix/lidar_poses.csv",
+      "sha256": "dd74f6e4eb2550ef3f20772fb1f276d346b1c2b6e4e436bd5b5723f50fcab205",
+      "size_bytes": 2664462,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:47:18.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-13-14-49/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-04-13-14-49/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-04-13-14-49/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "2fc153c5f88c01d860340f5308c27d98",
+      "last_modified": "2023-05-15T05:47:37.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-15-18-55/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-04-15-18-55/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-04-15-18-55/applanix/lidar_poses.csv",
+      "sha256": "491a77c869d740f1abd1cda1037144e01e37f7cdec8226a992eaf45bf3a3a06d",
+      "size_bytes": 2452117,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:47:40.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-15-18-55/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-04-15-18-55/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-04-15-18-55/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "a5f1c50aec5422a2df1cc5bd44243d1a",
+      "last_modified": "2023-05-15T05:48:12.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-20-14-11/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-04-20-14-11/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-04-20-14-11/applanix/lidar_poses.csv",
+      "sha256": "8424a211905af9b2a2fde79f7605fa72ae9093ee977eeaaf6aa966064891a356",
+      "size_bytes": 2460681,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:48:12.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-20-14-11/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-04-20-14-11/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-04-20-14-11/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:43:42.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-22-15-00/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-04-22-15-00/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-04-22-15-00/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "2d9840b9ae3a98d5c3e002a88fb914cf",
+      "last_modified": "2023-05-15T05:48:33.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-29-15-55/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-04-29-15-55/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-04-29-15-55/applanix/lidar_poses.csv",
+      "sha256": "8497040f262eae17e4f8557e5e956adaa4193f17259be542d88e2b3c7885feaf",
+      "size_bytes": 2694013,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:48:34.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-04-29-15-55/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-04-29-15-55/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-04-29-15-55/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "c9a93a17d62a88a030d48282fbc14994",
+      "last_modified": "2023-05-15T05:49:00.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-05-06-13-19/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-05-06-13-19/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-05-06-13-19/applanix/lidar_poses.csv",
+      "sha256": "9641250e84bc7eaeee39d20ad39b3992849e715d6538dde7a4888bec567b5f23",
+      "size_bytes": 2648666,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:49:01.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-05-06-13-19/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-05-06-13-19/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-05-06-13-19/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "b559786fe52eb9b06ad6abfa70a7d199",
+      "last_modified": "2023-05-15T05:49:47.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-05-13-16-11/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-05-13-16-11/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-05-13-16-11/applanix/lidar_poses.csv",
+      "sha256": "46830f1f07397b9551d94a7544d49e954df456ca234fe1b9fc86284058ba26ea",
+      "size_bytes": 2779102,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:49:49.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-05-13-16-11/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-05-13-16-11/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-05-13-16-11/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "adc3cdad74f9183b7f65a8953ed3dc8d",
+      "last_modified": "2023-05-15T05:50:34.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-06-03-16-00/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-06-03-16-00/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-06-03-16-00/applanix/lidar_poses.csv",
+      "sha256": "e1222e242982142129eeebabaa38d70a6cb0afbd65554bb9ab81588cfef13bbb",
+      "size_bytes": 2632247,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:50:38.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-06-03-16-00/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-06-03-16-00/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-06-03-16-00/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "e49e8c3b983b98e21232f8fcafdac9e2",
+      "last_modified": "2023-05-15T05:51:02.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-06-17-17-52/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-06-17-17-52/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-06-17-17-52/applanix/lidar_poses.csv",
+      "sha256": "59879eb85e04ee94a8f9455edd9a6fac8ab51d146a3584b1fd484aca9d9a2703",
+      "size_bytes": 3123277,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:51:06.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-06-17-17-52/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-06-17-17-52/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-06-17-17-52/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:45:52.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-06-29-18-53/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-06-29-18-53/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-06-29-18-53/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:46:13.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-06-29-20-43/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-06-29-20-43/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-06-29-20-43/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "34514dea519beff1779c33c9f914028d",
+      "last_modified": "2023-05-15T05:51:54.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-07-20-17-33/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-07-20-17-33/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-07-20-17-33/applanix/lidar_poses.csv",
+      "sha256": "90656511873b02fd4877f53189c424630c4cae1f53abd3c2720d57b8616e3264",
+      "size_bytes": 2839948,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:51:56.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-07-20-17-33/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-07-20-17-33/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-07-20-17-33/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "acd6f1cc54d7918a4c2d9c2c1295fb0c",
+      "last_modified": "2023-05-15T05:52:55.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-07-27-14-43/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-07-27-14-43/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-07-27-14-43/applanix/lidar_poses.csv",
+      "sha256": "40f806b0f2d8faf2941bc92ce07c34eb46c93d9eaaeb798ee03f3c7007645269",
+      "size_bytes": 2518617,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:52:56.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-07-27-14-43/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-07-27-14-43/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-07-27-14-43/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "192d88838cccad0864bb764fbfd34d53",
+      "last_modified": "2023-05-15T05:53:18.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-08-05-13-34/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-08-05-13-34/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-08-05-13-34/applanix/lidar_poses.csv",
+      "sha256": "47a9e52b2d2d99c69bbf9a19446c7f17fc77c304db1d2a5058cf6d5db1c58be4",
+      "size_bytes": 2818413,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:53:22.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-08-05-13-34/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-08-05-13-34/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-08-05-13-34/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "78564d959524bb6e56cf07944d536df8",
+      "last_modified": "2023-05-15T05:54:18.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-02-11-42/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-09-02-11-42/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-09-02-11-42/applanix/lidar_poses.csv",
+      "sha256": "9ad5e18499219ff663bbdac4c0fe8c20d255ba3231804078cba82738ab4a5630",
+      "size_bytes": 2593799,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:54:21.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-02-11-42/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-09-02-11-42/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-09-02-11-42/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "5583af5098de4432f30b5cda9ab344e9",
+      "last_modified": "2023-05-15T05:54:40.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-07-09-35/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-09-07-09-35/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-09-07-09-35/applanix/lidar_poses.csv",
+      "sha256": "e112efb02a2f023d7674af5cf95c04aed83824af67a6eb175236d9cf2bd806c5",
+      "size_bytes": 2239840,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:54:42.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-07-09-35/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-09-07-09-35/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-09-07-09-35/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:48:16.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-08-21-00/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-09-08-21-00/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-09-08-21-00/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:48:35.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-09-15-28/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-09-09-15-28/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-09-09-15-28/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "41ef898a7a05d08611c78c1ce48756a9",
+      "last_modified": "2023-05-15T05:55:27.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-14-20-00/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-09-14-20-00/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-09-14-20-00/applanix/lidar_poses.csv",
+      "sha256": "128ac99d099f3920f542216ef4659903d2949f1318ecc72ca5681dd146424d91",
+      "size_bytes": 2445605,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:55:30.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-09-14-20-00/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-09-14-20-00/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-09-14-20-00/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:49:34.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-10-05-15-35/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-10-05-15-35/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-10-05-15-35/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "a99f44ecfc70edf719034cc5ef0b1341",
+      "last_modified": "2023-05-15T05:55:54.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-10-15-12-35/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-10-15-12-35/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-10-15-12-35/applanix/lidar_poses.csv",
+      "sha256": "a5912b1b7462c4cd26fbf71533e05669775f56b4531087fab47b8c13e47a62eb",
+      "size_bytes": 2480813,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:55:57.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-10-15-12-35/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-10-15-12-35/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-10-15-12-35/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "9892af673ff2c964f1c0e1f972326dea",
+      "last_modified": "2023-05-15T05:56:41.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-10-22-11-36/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-10-22-11-36/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-10-22-11-36/applanix/lidar_poses.csv",
+      "sha256": "7a3427a5e2286ed7e46bd7e7c5622cc79ab258afd9a122a9146706c9c76b24a1",
+      "size_bytes": 2528121,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:56:43.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-10-22-11-36/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-10-22-11-36/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-10-22-11-36/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:50:44.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-10-26-12-35/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-10-26-12-35/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-10-26-12-35/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "d18bfd90af2155d51de76ebe2644c6b7",
+      "last_modified": "2023-05-15T05:57:21.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-02-11-16/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-11-02-11-16/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-11-02-11-16/applanix/lidar_poses.csv",
+      "sha256": "880d9ee598ac24ad186e9356a6db81f0a65218fe8254ea329fb56894fe838581",
+      "size_bytes": 2491894,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:57:24.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-02-11-16/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-11-02-11-16/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-11-02-11-16/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-25T03:51:22.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-06-18-55/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-11-06-18-55/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-11-06-18-55/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "28e7d68bde7d6f38e991de4397ce9bc5",
+      "last_modified": "2023-05-15T05:57:50.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-14-09-47/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-11-14-09-47/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-11-14-09-47/applanix/lidar_poses.csv",
+      "sha256": "734d0a25bb8150fbe7eae8e5a667be926f9af8bd0f9356792d280756d2ae7f17",
+      "size_bytes": 2564397,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:57:53.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-14-09-47/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-11-14-09-47/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-11-14-09-47/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "e0e8ddf2719153b638cb316a89b87fb5",
+      "last_modified": "2023-05-15T05:58:38.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-16-14-10/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-11-16-14-10/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-11-16-14-10/applanix/lidar_poses.csv",
+      "sha256": "ede0bdb60caeb3be05d9e22ea88f1c0dee43475081d1a997ef0c6e6d4a3b592e",
+      "size_bytes": 2575117,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:58:38.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-16-14-10/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-11-16-14-10/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-11-16-14-10/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "fbb75ae7913a0b7abefe1016ef31b5bf",
+      "last_modified": "2023-05-15T05:59:04.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-23-14-27/applanix/lidar_poses.csv",
+      "relative_path": "stage1_payload/boreas-2021-11-23-14-27/applanix/lidar_poses.csv",
+      "s3_key": "boreas-2021-11-23-14-27/applanix/lidar_poses.csv",
+      "sha256": "3253a4fa956d71b30933b29c9602b1ced058c9bdb7e2efaecb8093f8d7740fd9",
+      "size_bytes": 2584479,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:59:06.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-23-14-27/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-11-23-14-27/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-11-23-14-27/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    },
+    {
+      "etag": "58b1bee411fc44ad5d9caf778a2e0d1e",
+      "last_modified": "2023-05-15T05:00:14.000Z",
+      "local_path": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2021-11-28-09-18/calib/T_applanix_lidar.txt",
+      "relative_path": "stage1_payload/boreas-2021-11-28-09-18/calib/T_applanix_lidar.txt",
+      "s3_key": "boreas-2021-11-28-09-18/calib/T_applanix_lidar.txt",
+      "sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+      "size_bytes": 401,
+      "status": "DOWNLOADED_ALLOWLISTED_STAGE1_OBJECT",
+      "version_id": null
+    }
+  ],
+  "eligibility_sha256": "b76102144ad63e9383ed3027b574ce33c7023eda4b328b6b99621bb8d577f8c7",
+  "manifest_payload_sha256": "c3363ebc55aab36da23f292677c6569edafa0c5e8611a364c412e5998b8e8a91",
+  "official_source_identity": {
+    "aws_bucket": "s3://boreas",
+    "paper_doi": "10.1177/02783649231160195",
+    "pyboreas_commit": "e968198cd564ccfca5ad256624c80e0e584e7150"
+  },
+  "payload": [
+    {
+      "path": "NO_ICP_ATTESTATION.json",
+      "sha256": "aa971b6956599a465d3b23985fa27cb65c00da682dc698eaaa530bbef7173b7c",
+      "size_bytes": 482
+    },
+    {
+      "path": "boreas_cleanup_report.json",
+      "sha256": "416b41a206379520f1d2f3b1a6347d54c9008e82d5c468cf77310aaec947d1e6",
+      "size_bytes": 674
+    },
+    {
+      "path": "boreas_common_world_frame_audit.json",
+      "sha256": "49c59ef74af933dc6a0de296ac85cf41170d8b2db51d30d6bfbef0d1ff12913b",
+      "size_bytes": 733
+    },
+    {
+      "path": "boreas_extrinsic_independence_risk_assessment.json",
+      "sha256": "343d60ce0fc1ba461fa4dab8aeb9296d8a0652f670f88fbfbc186ba3606fdda7",
+      "size_bytes": 562
+    },
+    {
+      "path": "boreas_extrinsic_independence_risk_assessment.md",
+      "sha256": "5d76b6f559f27b4d7ca1c4beca9215c0f0c32c7d4a731a3899dc51985fba948c",
+      "size_bytes": 536
+    },
+    {
+      "path": "boreas_gt_only_overlap_matrix.csv",
+      "sha256": "e51e30610f0b2b4000590964b9e2bea01e437694a4d818a787e46e232618406d",
+      "size_bytes": 234
+    },
+    {
+      "path": "boreas_gt_only_overlap_matrix.json",
+      "sha256": "bc1edec999bbde9b5bb5b9e0edc95b8fd0fba2bb42d6c46726d1c5d93056be9c",
+      "size_bytes": 459
+    },
+    {
+      "path": "boreas_lidar_extrinsic_provenance.json",
+      "sha256": "fda2be032b760caefdc8db89619a9d47c7deec1a513b72f7714c01f5791a9cf0",
+      "size_bytes": 28108
+    },
+    {
+      "path": "boreas_pair_selection_v1.json",
+      "sha256": "0d5dd6c2f56c46bc7f757bf2bee10484652f430353a6df93213a4239fb93d7d9",
+      "size_bytes": 463
+    },
+    {
+      "path": "boreas_reference_trajectory_provenance.json",
+      "sha256": "0c1059705ebbaedd8d45d363db83cd8cd6ed1bb38679eb9dbefb94d93010ad9d",
+      "size_bytes": 694
+    },
+    {
+      "path": "boreas_remote_sequence_inventory.csv",
+      "sha256": "d6c2dc8ed78da352de29f159c02714c4a727c1729af6ebb97af2680ee8a7ec54",
+      "size_bytes": 5624
+    },
+    {
+      "path": "boreas_remote_sequence_inventory.json",
+      "sha256": "dffdb4153740e2839e2a237d9c1263492b392250cef2149937abeb6f4ec8c34a",
+      "size_bytes": 273942
+    },
+    {
+      "path": "boreas_stage1_eligibility.json",
+      "sha256": "b76102144ad63e9383ed3027b574ce33c7023eda4b328b6b99621bb8d577f8c7",
+      "size_bytes": 760
+    },
+    {
+      "path": "boreas_stage1_summary.json",
+      "sha256": "06b569bd063e31ed905733d290674e7b7cdba8982f01b4bfee3e9c59d601e2e6",
+      "size_bytes": 3480
+    },
+    {
+      "path": "boreas_stage1_summary.md",
+      "sha256": "fb68393ed2ddc19decbf57fcdf142f89d07270862e6728ca2d28bd1ccd6835f9",
+      "size_bytes": 2050
+    },
+    {
+      "path": "boreas_stage1_uncertainty_feasibility.csv",
+      "sha256": "b719cceeabdfb9cfbef6e6cbc1372603c5aeed56fd1ac996f4e746e68e2ad28a",
+      "size_bytes": 2113
+    },
+    {
+      "path": "boreas_stage1_uncertainty_feasibility.json",
+      "sha256": "b3f71f38f3658d336ddedd866dc47dd1bc899da697b25e697878fa9de609fcb7",
+      "size_bytes": 4024
+    },
+    {
+      "path": "boreas_time_sync_audit.json",
+      "sha256": "e252573f6f4c52de26e185262d04c007bc4a2a4e3f4fbea0b92c39798763e661",
+      "size_bytes": 1101
+    },
+    {
+      "path": "boreas_transform_chain_consistency.json",
+      "sha256": "283d13bc8c276c052dbf3f933b3fadc054e596a5193a94814295c994b26eb697",
+      "size_bytes": 864
+    },
+    {
+      "path": "boreas_transform_chain_manifest.json",
+      "sha256": "8d9e51e44795a1b960cecbb561ee9b0eeceaabf3bce8cfcde8cdbecdc60b6775",
+      "size_bytes": 795
+    },
+    {
+      "path": "dataset_citation_report.md",
+      "sha256": "89e37980d69eb494da4c762f81f8dc79c2531672ea8afa2744a54a176878f4e7",
+      "size_bytes": 460
+    },
+    {
+      "path": "download_manifest.csv",
+      "sha256": "4e2a081163ac321f5c46c61790635c04948d594d777abf130d12268685432bab",
+      "size_bytes": 31893
+    },
+    {
+      "path": "download_manifest.json",
+      "sha256": "a75744b8f05b1361561d038af1686e0c757877ec2b3a856cc3e3503dc08eb865",
+      "size_bytes": 49624
+    },
+    {
+      "path": "eligible_reference_sequences.csv",
+      "sha256": "137d7009c47d01f39208a9d95c21a29c829649f49e8268fcc71bee910d8f3a6b",
+      "size_bytes": 7244
+    },
+    {
+      "path": "environment_report.json",
+      "sha256": "a1571ac5e2a2e52d0073e9ea480ed22aed4f02a7180808b39909f5026b1cb21f",
+      "size_bytes": 1072
+    },
+    {
+      "path": "official_source_manifest.json",
+      "sha256": "905d15019f5927aac501719747aa754a4f74e6e066eeecd8156b2deed988b47f",
+      "size_bytes": 1635
+    },
+    {
+      "path": "pyboreas_source_manifest.json",
+      "sha256": "1170ab8428dde9cdd2df862361386df275e9bcf76c78a9cc8856d3b5de4fd766",
+      "size_bytes": 4719
+    }
+  ],
+  "producer_commit": "7615352555e00e57fdb9deb5ace88229dead0f90",
+  "schema_version": "boreas_stage1_manifest_v1"
+}

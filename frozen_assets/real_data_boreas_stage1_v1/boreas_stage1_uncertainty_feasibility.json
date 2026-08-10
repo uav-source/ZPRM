@@ -1,0 +1,107 @@
+{
+  "rmse_not_relabelled_as_1sigma": true,
+  "rows": [
+    {
+      "component": "GNSS/RTX position uncertainty",
+      "evidence_type": "IJRR_AND_DATA_REFERENCE",
+      "source": "Boreas IJRR Table 2 and Section 6; DATA_REFERENCE.md",
+      "source_sha256": "0c1059705ebbaedd8d45d363db83cd8cd6ed1bb38679eb9dbefb94d93010ad9d",
+      "status": "SEQUENCE_DEPENDENT_LIMITED_NUMERIC",
+      "uncertainty_type": "RMSE",
+      "unit": "m",
+      "value": "0.02-0.04 nominal; 0.20-0.40 documented urban-canyon residual RMS"
+    },
+    {
+      "component": "orientation uncertainty",
+      "evidence_type": "NO_RELEASE_WIDE_NUMERIC_BOUND",
+      "source": "Boreas IJRR/POSPac documentation audit",
+      "source_sha256": "0c1059705ebbaedd8d45d363db83cd8cd6ed1bb38679eb9dbefb94d93010ad9d",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "rad",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "sequence-dependent ground-truth quality",
+      "evidence_type": "OFFICIAL_SEQUENCE_DEPENDENCE_STATEMENT",
+      "source": "DATA_REFERENCE.md",
+      "source_sha256": "0c1059705ebbaedd8d45d363db83cd8cd6ed1bb38679eb9dbefb94d93010ad9d",
+      "status": "SEQUENCE_DEPENDENT_LIMITED_NUMERIC",
+      "uncertainty_type": "RMSE",
+      "unit": "m",
+      "value": "0.02-0.04 nominal; can degrade to 0.20-0.40"
+    },
+    {
+      "component": "Applanix time uncertainty",
+      "evidence_type": "PPS_NMEA_WITHOUT_ERROR_BOUND",
+      "source": "boreas_time_sync_audit.json",
+      "source_sha256": "e252573f6f4c52de26e185262d04c007bc4a2a4e3f4fbea0b92c39798763e661",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "s",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "Velodyne time synchronization uncertainty",
+      "evidence_type": "PPS_NMEA_WITHOUT_ERROR_BOUND",
+      "source": "boreas_time_sync_audit.json",
+      "source_sha256": "e252573f6f4c52de26e185262d04c007bc4a2a4e3f4fbea0b92c39798763e661",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "s",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "T_applanix_lidar translation uncertainty",
+      "evidence_type": "PROPRIETARY_LIDAR_ASSISTED_CALIBRATION_NO_BOUND",
+      "source": "boreas_lidar_extrinsic_provenance.json",
+      "source_sha256": "fda2be032b760caefdc8db89619a9d47c7deec1a513b72f7714c01f5791a9cf0",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "T_applanix_lidar rotation uncertainty",
+      "evidence_type": "PROPRIETARY_LIDAR_ASSISTED_CALIBRATION_NO_BOUND",
+      "source": "boreas_lidar_extrinsic_provenance.json",
+      "source_sha256": "fda2be032b760caefdc8db89619a9d47c7deec1a513b72f7714c01f5791a9cf0",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "rad",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "GT interpolation uncertainty",
+      "evidence_type": "NO_PUBLISHED_BOUND",
+      "source": "boreas_transform_chain_consistency.json",
+      "source_sha256": "e252573f6f4c52de26e185262d04c007bc4a2a4e3f4fbea0b92c39798763e661",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m/rad",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "future deskew uncertainty",
+      "evidence_type": "NOT_MATERIALIZED_STAGE1",
+      "source": "Stage-1 scope",
+      "source_sha256": "e252573f6f4c52de26e185262d04c007bc4a2a4e3f4fbea0b92c39798763e661",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m/rad",
+      "value": "UNKNOWN"
+    },
+    {
+      "component": "future target-map accumulation uncertainty",
+      "evidence_type": "NOT_MATERIALIZED_STAGE1",
+      "source": "Stage-1 scope",
+      "source_sha256": "e252573f6f4c52de26e185262d04c007bc4a2a4e3f4fbea0b92c39798763e661",
+      "status": "UNKNOWN",
+      "uncertainty_type": "UNKNOWN",
+      "unit": "m/rad",
+      "value": "UNKNOWN"
+    }
+  ],
+  "status": "PARTIAL",
+  "unknown_not_zero": true
+}

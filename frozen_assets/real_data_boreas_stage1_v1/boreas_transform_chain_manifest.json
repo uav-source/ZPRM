@@ -1,0 +1,35 @@
+{
+  "composition": "T_ENU_lidar(t)=T_ENU_applanix(t)@T_applanix_lidar",
+  "consistency_sha256": "283d13bc8c276c052dbf3f933b3fadc054e596a5193a94814295c994b26eb697",
+  "direction_verified_against_official_lidar_poses": true,
+  "inverse_used": false,
+  "matrix": [
+    [
+      0.7360555651493133,
+      -0.6769211217083996,
+      0.0,
+      0.0
+    ],
+    [
+      0.6769211217083996,
+      0.7360555651493133,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.13
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "source_file": "/home/lj/zero_perturbation_data/boreas_stage1_v1/stage1_payload/boreas-2020-11-26-13-58/calib/T_applanix_lidar.txt",
+  "source_sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db",
+  "status": "PASS"
+}

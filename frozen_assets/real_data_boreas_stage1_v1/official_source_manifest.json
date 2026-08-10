@@ -1,0 +1,31 @@
+{
+  "audit_time_utc": "2026-08-10T10:14:32.642006Z",
+  "aws_bucket": "s3://boreas",
+  "boreas_site": "https://www.boreas.utias.utoronto.ca/",
+  "code_license": "BSD-3-Clause",
+  "dataset_license": "CC-BY-4.0",
+  "paper_arxiv": "2203.10168",
+  "paper_doi": "10.1177/02783649231160195",
+  "paper_pdf_sha256": "29531b5782937ded0a34cb2fd214a4f47c46bfcb6e28fa4b688cb2d14cb43ee8",
+  "pinned_source_sha256": {
+    "DATA_LICENSE.md": "92368d96fe04291eaa6e56c22faabd9860d34f1d4ce1ecad0f0b3ba9e953a52d",
+    "DATA_REFERENCE.md": "66b597c4b83ef65b5433d71da909f636ba47be0ad7193d5034e8a55715555d1b",
+    "LICENSE": "f40a0817c134eabbd843b1c625380b9cd5e269df92244c822228fc1f08f6ba71",
+    "README.md": "3b75572c0b3b3b81e6387ecbd4ed55b0bf79a898b218925c9df2bfa9580e5f78",
+    "pyboreas/data/calib.py": "4e8c28a7f0fb0494fa0ee0e38b377f7a879a7f2e22809b974d28fdff1b0876e7",
+    "pyboreas/data/splits.py": "e57488ff5f3234f97ba1f321de836920c4434aa1bce32b5569475c7b943517a4",
+    "pyboreas/utils/utils.py": "f22893877b97dccdc0a97569b3dad204e3f0013a655aff4392eec5c58c8671c5"
+  },
+  "protocol_sha256": {
+    "eligibility_checklist": "7a3c0b492f3783ea84bdda1eb8ff7fbd41ab73b9f5f7823806e2e30544a19c44",
+    "framework_json": "3b4dc774051806728a060a93aa1220ac7a4fc82a6e59181da2390cfdcb7bd86e",
+    "framework_markdown": "4755a90dfd42de1650d50caa0facc4d32a0dba7f837ce9d867d28f030edfc834"
+  },
+  "pyboreas_commit": "e968198cd564ccfca5ad256624c80e0e584e7150",
+  "remote_inventory_sha256": "dffdb4153740e2839e2a237d9c1263492b392250cef2149937abeb6f4ec8c34a",
+  "static_no_registration_audit": {
+    "pass": true,
+    "python_file_count": 18,
+    "violations": []
+  }
+}

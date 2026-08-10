@@ -1,0 +1,22 @@
+{
+  "hardware_sync_available": true,
+  "interpolation_candidate": "linear translation plus SO(3) SLERP",
+  "lidar_rate_hz": 9.641900838605267,
+  "lidar_scan_timestamp_semantics": "UTC temporal middle of scan",
+  "maximum_reference_gap_s": 0.0050008296966552734,
+  "nmea_available": true,
+  "per_point_timestamp_documented": true,
+  "pps_available": true,
+  "reference_rate_hz": 199.99542246805265,
+  "reference_timestamp_actual_encoding": "floating-point Unix UTC seconds",
+  "reference_timestamp_documentation_claim": "DATA_REFERENCE describes gps_post_process t as UTC microseconds",
+  "reference_timestamp_documentation_data_discrepancy": true,
+  "reference_timestamp_scale_to_seconds": 1.0,
+  "status": "PASS_WITH_DOCUMENTED_LIMITATION",
+  "time_uncertainty_evidence": "hardware PPS/NMEA chain documented; no numeric end-to-end error bound published",
+  "time_uncertainty_status": "UNKNOWN",
+  "timestamp_epoch": "Unix UTC",
+  "timestamp_monotonicity": true,
+  "timestamp_unit": "microseconds for lidar filenames/poses; seconds in gps_post_process.csv",
+  "zero_time_uncertainty_assumed": false
+}

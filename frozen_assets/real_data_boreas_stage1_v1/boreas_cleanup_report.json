@@ -1,0 +1,15 @@
+{
+  "cavers_data_root": "/home/lj/zero_perturbation_data/cavers_stage1_v1",
+  "cavers_data_root_absent": true,
+  "deleted_allocated_bytes": 57831424,
+  "deleted_apparent_bytes": 57517402,
+  "deleted_directory_count": 84,
+  "deleted_file_count": 127,
+  "filesystem_available_bytes_after": 111266463744,
+  "filesystem_available_bytes_before": 111208640512,
+  "filesystem_available_bytes_delta": 57823232,
+  "frozen_cavers_root": "/home/lj/ZPRM/frozen_assets/real_data_cavers_stage1_v1",
+  "frozen_cavers_sha256sums_pass": true,
+  "frozen_cavers_verifier_pass": true,
+  "removal_recoverability": "data root removal is not recoverable; frozen audit and formal runtime remain"
+}
