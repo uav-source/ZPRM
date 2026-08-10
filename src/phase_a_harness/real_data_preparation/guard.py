@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import ast
+import csv
+import json
 import os
 import re
 import subprocess
@@ -20,6 +22,10 @@ DENIED_PROCESS_TOKENS = (
     "registration_icp",
     "kiss_icp",
     "kiss-icp",
+    "genz_icp",
+    "genz-icp",
+    "rtabmap",
+    "rtabmap_ros",
     "lio_sam",
     "lio-sam",
     "fast_lio",
@@ -35,11 +41,81 @@ DENIED_IMPORT_FRAGMENTS = (
     "full_synthetic_backend_execution",
     "synthetic_confirmatory_v3_runner",
     "open3d.pipelines.registration",
+    "genz_icp",
+    "rtabmap",
 )
 
 OPEN3D_REGISTRATION_ENTRY_PREFIXES = (
     "registration_",
     "get_information_matrix_",
+)
+
+SUSPICIOUS_RESULT_FILENAME_TOKENS = (
+    "t_estimated",
+    "estimated_transform",
+    "estimated_pose",
+    "estimated_trajectory",
+    "final_transform",
+    "translation_displacement",
+    "rotation_displacement",
+    "correspondence_turnover",
+    "registration_result",
+    "registration_output",
+    "registration_error",
+    "registration_residual",
+    "final_residual",
+    "icp_result",
+    "gicp_result",
+    "ndt_result",
+    "scan_matching_result",
+)
+
+SUSPICIOUS_RESULT_FIELDS = frozenset(
+    {
+        "t_estimated",
+        "estimated_transform",
+        "estimated_transform_4x4",
+        "estimated_pose",
+        "estimated_pose_4x4",
+        "estimated_trajectory",
+        "final_transform",
+        "final_transform_4x4",
+        "translation_displacement",
+        "translation_displacement_m",
+        "rotation_displacement",
+        "rotation_displacement_rad",
+        "translation_update",
+        "translation_update_m",
+        "rotation_update",
+        "rotation_update_rad",
+        "correspondence_turnover",
+        "registration_result",
+        "registration_results",
+        "registration_error",
+        "registration_error_m",
+        "registration_error_rad",
+        "registration_residual",
+        "registration_residual_rmse",
+        "final_residual",
+        "final_residual_rmse",
+        "icp_result",
+        "gicp_result",
+        "ndt_result",
+        "scan_matching_result",
+    }
+)
+
+ZERO_ONLY_RESULT_COUNT_FIELDS = frozenset(
+    {
+        "actual_registration_execution_count",
+        "estimated_transform_count",
+        "estimated_transform_file_count",
+        "open3d_registration_call_count",
+        "other_registration_process_count",
+        "pcl_cli_invocation_count",
+        "real_trial_result_count",
+        "registration_execution_count",
+    }
 )
 
 
@@ -64,6 +140,51 @@ def _is_denied_process(command: Any) -> bool:
     )
 
 
+def _is_denied_import(imported: str) -> bool:
+    normalized = imported.lower().replace("-", "_")
+    return any(fragment.replace("-", "_") in normalized for fragment in DENIED_IMPORT_FRAGMENTS)
+
+
+def _normalized_field_name(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "_", value.lower()).strip("_")
+
+
+def _json_field_findings(value: Any, *, path: str = "$") -> list[str]:
+    findings: list[str] = []
+    if isinstance(value, Mapping):
+        for key, child in value.items():
+            name = str(key)
+            child_path = f"{path}.{name}"
+            normalized = _normalized_field_name(name)
+            if normalized in SUSPICIOUS_RESULT_FIELDS:
+                findings.append(child_path)
+            elif normalized in ZERO_ONLY_RESULT_COUNT_FIELDS and (
+                isinstance(child, bool) or not isinstance(child, int) or child != 0
+            ):
+                findings.append(child_path)
+            findings.extend(_json_field_findings(child, path=child_path))
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            findings.extend(_json_field_findings(child, path=f"{path}[{index}]"))
+    return findings
+
+
+def _structured_result_findings(path: Path) -> list[str]:
+    suffix = path.suffix.lower()
+    if suffix == ".json":
+        value = json.loads(path.read_text(encoding="utf-8"))
+        return _json_field_findings(value)
+    if suffix == ".csv":
+        with path.open("r", encoding="utf-8", newline="") as stream:
+            fields = next(csv.reader(stream), [])
+        return [
+            f"$header.{field}"
+            for field in fields
+            if _normalized_field_name(field) in SUSPICIOUS_RESULT_FIELDS
+        ]
+    return []
+
+
 def _forbidden_callable(*args: Any, **kwargs: Any) -> Any:
     raise RegistrationForbiddenError("registration is forbidden during real-data preparation")
 
@@ -78,16 +199,22 @@ def assert_preparation_sources_are_safe(source_root: str | Path) -> dict[str, An
         scanned += 1
         tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
         for node in ast.walk(tree):
-            imported: str | None = None
             if isinstance(node, ast.Import):
                 for alias in node.names:
                     imported = alias.name
-                    if any(fragment in imported for fragment in DENIED_IMPORT_FRAGMENTS):
+                    if _is_denied_import(imported):
                         violations.append({"path": str(path), "line": node.lineno, "import": imported})
             elif isinstance(node, ast.ImportFrom):
-                imported = node.module or ""
-                if any(fragment in imported for fragment in DENIED_IMPORT_FRAGMENTS):
-                    violations.append({"path": str(path), "line": node.lineno, "import": imported})
+                module = node.module or ""
+                imports = [module] if module else []
+                imports.extend(
+                    f"{module}.{alias.name}" if module else alias.name for alias in node.names
+                )
+                for imported in imports:
+                    if _is_denied_import(imported):
+                        violations.append(
+                            {"path": str(path), "line": node.lineno, "import": imported}
+                        )
     if violations:
         raise RegistrationForbiddenError(f"unsafe preparation imports: {violations}")
     return {"pass": True, "python_file_count": scanned, "violations": []}
@@ -164,18 +291,31 @@ class NoRegistrationGuard:
 
     def attestation(self, runtime_root: str | Path) -> dict[str, Any]:
         root = Path(runtime_root)
-        estimated = []
-        result_files = []
+        estimated: list[str] = []
+        structured_findings: list[str] = []
+        structured_scan_errors: list[str] = []
+        result_files: list[str] = []
         if root.exists():
-            estimated = sorted(
-                str(path) for path in root.rglob("*")
-                if path.is_file() and any(
-                    token in path.name.lower()
-                    for token in ("t_estimated", "final_transform", "translation_displacement", "rotation_displacement", "correspondence_turnover")
-                )
-            )
+            files = sorted(path for path in root.rglob("*") if path.is_file())
+            estimated = [
+                str(path)
+                for path in files
+                if any(token in path.name.lower() for token in SUSPICIOUS_RESULT_FILENAME_TOKENS)
+            ]
+            for path in files:
+                if path.suffix.lower() not in {".json", ".csv"}:
+                    continue
+                try:
+                    findings = _structured_result_findings(path)
+                except (csv.Error, json.JSONDecodeError, OSError, UnicodeError, ValueError):
+                    structured_scan_errors.append(str(path))
+                    continue
+                structured_findings.extend(f"{path}#{finding}" for finding in findings)
             result_files = sorted(str(path) for path in root.rglob("raw_results/*.json"))
+        evidence = sorted(set([*estimated, *structured_findings]))
         value = {
+            "estimated_transform_count": len(evidence),
+            "estimated_transform_evidence": evidence,
             "estimated_transform_file_count": len(estimated),
             "estimated_transform_files": estimated,
             "open3d_registration_call_count": self.denied_open3d_attempt_count,
@@ -183,16 +323,20 @@ class NoRegistrationGuard:
             "pcl_cli_invocation_count": self.denied_process_attempt_count,
             "real_trial_result_count": len(result_files),
             "registration_execution_count": 0,
+            "structured_result_scan_error_count": len(structured_scan_errors),
+            "structured_result_scan_error_files": structured_scan_errors,
         }
         value["pass"] = all(
             value[key] == 0
             for key in (
+                "estimated_transform_count",
                 "estimated_transform_file_count",
                 "open3d_registration_call_count",
                 "other_registration_process_count",
                 "pcl_cli_invocation_count",
                 "real_trial_result_count",
                 "registration_execution_count",
+                "structured_result_scan_error_count",
             )
         )
         return value
