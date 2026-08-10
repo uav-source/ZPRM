@@ -319,3 +319,14 @@ def test_34_sequence_local_reset_detection_uses_published_first_pose() -> None:
         {"sequence_id": "reset", "first_position_m": [1e-8, -1e-8, 0.0]},
     ]
     assert producer.detect_sequence_local_resets(reports) == ["reset"]
+
+
+def test_35_gps_seconds_and_lidar_microseconds_are_not_conflated(tmp_path: Path) -> None:
+    gps = tmp_path / "gps.csv"
+    lidar = tmp_path / "lidar.csv"
+    _write_pose(gps, [_pose_row(1_606_417_077.0 + index * 0.005) for index in range(3)])
+    _write_pose(lidar, [_pose_row(1_606_417_077_000_000 + index * 100_000) for index in range(3)])
+    gps_report, _, _ = producer.parse_pose_csv(gps, "gps")
+    lidar_report, _, _ = producer.parse_pose_csv(lidar, "lidar")
+    assert gps_report["timestamp_scale_to_seconds"] == 1.0
+    assert lidar_report["timestamp_scale_to_seconds"] == 1e-6

@@ -891,6 +891,10 @@ def execute_boreas_stage1(
             "time_uncertainty_evidence": "hardware PPS/NMEA chain documented; no numeric end-to-end error bound published",
             "time_uncertainty_status": "UNKNOWN", "timestamp_epoch": "Unix UTC",
             "timestamp_monotonicity": True, "timestamp_unit": "microseconds for lidar filenames/poses; seconds in gps_post_process.csv",
+            "reference_timestamp_actual_encoding": "floating-point Unix UTC seconds",
+            "reference_timestamp_documentation_claim": "DATA_REFERENCE describes gps_post_process t as UTC microseconds",
+            "reference_timestamp_documentation_data_discrepancy": True,
+            "reference_timestamp_scale_to_seconds": gps_report["timestamp_scale_to_seconds"],
             "zero_time_uncertainty_assumed": False,
         }
         atomic_write_json(runtime_root / "boreas_time_sync_audit.json", time_audit)

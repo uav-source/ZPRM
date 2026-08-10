@@ -476,6 +476,9 @@ def _verify_science(root: Path, data_root: Path, paths: Mapping[str, Path]) -> N
     for key in ("hardware_sync_available", "pps_available", "nmea_available", "per_point_timestamp_documented", "timestamp_monotonicity"):
         _same(time.get(key), True, f"time-chain {key}")
     _same(time.get("timestamp_epoch"), "Unix UTC", "time epoch")
+    _same(time.get("reference_timestamp_actual_encoding"), "floating-point Unix UTC seconds", "reference timestamp encoding")
+    _same(time.get("reference_timestamp_documentation_data_discrepancy"), True, "reference timestamp documentation discrepancy")
+    _same(time.get("reference_timestamp_scale_to_seconds"), 1.0, "reference timestamp scale")
     _same(time.get("time_uncertainty_status"), "UNKNOWN", "time uncertainty status")
     _same(time.get("zero_time_uncertainty_assumed"), False, "time zero assumption")
     _same(time.get("status"), "PASS_WITH_DOCUMENTED_LIMITATION", "time-chain status")
