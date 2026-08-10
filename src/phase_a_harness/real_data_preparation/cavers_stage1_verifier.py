@@ -96,7 +96,14 @@ REQUIRED_RUNTIME_FILES = frozenset(
         "SHA256SUMS",
     }
 )
-OPTIONAL_RUNTIME_FILES = frozenset({"resume_environment_report.json"})
+RESUME_ENVIRONMENT_FILE = "resume_environment_report.json"
+RESUME_ENVIRONMENT_EXTRA_PATTERN = re.compile(
+    r"resume_environment_report_([0-9a-f]{40})\.json"
+)
+RESUME_POLICY = (
+    "authenticate completed sequence checkpoints by official archive identity, "
+    "size, CRC32, and SHA-256 before continuation"
+)
 
 GT_REQUIRED_FIELDS = (
     "Timestamp",
@@ -111,6 +118,33 @@ GT_REQUIRED_FIELDS = (
     "QW",
 )
 GT_VELOCITY_FIELDS = ("VX", "VY", "VZ", "VROLL", "VPITCH", "VYAW")
+REFERENCE_AUDIT_FIELDS = (
+    "sequence_id",
+    "status",
+    "complete_6dof",
+    "independent_reference_source",
+    "world_frames",
+    "child_frames",
+    "row_count",
+    "first_timestamp_s",
+    "last_timestamp_s",
+    "duration_s",
+    "median_rate_hz",
+    "maximum_timestamp_gap_s",
+    "strictly_monotonic",
+    "position_finite",
+    "first_position_m",
+    "first_quaternion_xyzw",
+    "timestamp_scale_to_seconds",
+    "quaternion_order",
+    "quaternion_norm_pass",
+    "max_quaternion_norm_error",
+    "linear_and_angular_velocity_fields_present",
+    "rosbag_optitrack_topic_present",
+    "rosbag_optitrack_message_count",
+    "sequence_local_reset_detected",
+    "gt_sha256",
+)
 UNCERTAINTY_COMPONENTS = {
     "OptiTrack position uncertainty": "m",
     "OptiTrack orientation uncertainty": "rad",
@@ -330,6 +364,114 @@ def _git_commit_is_head_ancestor(repository: Path, commit: str) -> bool:
     return result.returncode == 0
 
 
+def _git_commit_is_ancestor(repository: Path, ancestor: str, descendant: str) -> bool:
+    result = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", ancestor, descendant],
+        cwd=repository,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        check=False,
+    )
+    return result.returncode == 0
+
+
+def _resume_environment_paths(root: Path) -> list[Path]:
+    standard = root / RESUME_ENVIRONMENT_FILE
+    extras = sorted(root.glob("resume_environment_report_*.json"))
+    for path in extras:
+        _require(
+            RESUME_ENVIRONMENT_EXTRA_PATTERN.fullmatch(path.name) is not None,
+            f"malformed immutable resume environment filename: {path.name}",
+        )
+    if extras:
+        _require(standard.is_file(), "additional resume provenance exists without the standard first report")
+    return ([standard] if standard.is_file() else []) + extras
+
+
+def _verify_resume_provenance(
+    *,
+    root: Path,
+    repository: Path,
+    producer_commit: str,
+    finalizing_commit: str,
+) -> list[str]:
+    paths = _resume_environment_paths(root)
+    if not paths:
+        _require(finalizing_commit == producer_commit, "fresh run finalizing commit differs from producer commit")
+        return []
+
+    reports_by_commit: dict[str, dict[str, Any]] = {}
+    standard_commit: str | None = None
+    for index, path in enumerate(paths):
+        environment = _mapping_json(path)
+        git_value = environment.get("git")
+        _require(
+            isinstance(git_value, dict)
+            and isinstance(git_value.get("commit"), str)
+            and re.fullmatch(r"[0-9a-f]{40}", git_value["commit"]) is not None
+            and git_value.get("branch") == "prep/cavers-single-dataset-stage1-v1"
+            and git_value.get("worktree_porcelain") == [],
+            f"resume environment Git provenance mismatch: {path.name}",
+        )
+        commit = git_value["commit"]
+        if index > 0:
+            match = RESUME_ENVIRONMENT_EXTRA_PATTERN.fullmatch(path.name)
+            assert match is not None
+            _require(match.group(1) == commit, f"resume environment filename/commit mismatch: {path.name}")
+            previous = environment.get("previous_resume_commit")
+            _require(
+                isinstance(previous, str)
+                and re.fullmatch(r"[0-9a-f]{40}", previous) is not None,
+                f"additional resume report lacks a valid previous commit: {path.name}",
+            )
+        else:
+            _require(
+                "previous_resume_commit" not in environment,
+                "standard first resume report unexpectedly has a previous commit",
+            )
+            standard_commit = commit
+        _require(
+            environment.get("resume_origin_commit") == producer_commit
+            and environment.get("resume_policy") == RESUME_POLICY,
+            f"resume origin/policy provenance mismatch: {path.name}",
+        )
+        _require(
+            _git_commit_is_head_ancestor(repository, commit),
+            f"resume provenance commit is not an ancestor of current HEAD: {commit}",
+        )
+        _require(commit not in reports_by_commit, "duplicate commit in immutable resume provenance chain")
+        reports_by_commit[commit] = environment
+
+    assert standard_commit is not None
+    _require(
+        _git_commit_is_ancestor(repository, producer_commit, standard_commit),
+        "standard resume provenance commit does not descend from the producer commit",
+    )
+    chain = [standard_commit]
+    consumed = {standard_commit}
+    latest_commit = standard_commit
+    while True:
+        successors = [
+            commit
+            for commit, report in reports_by_commit.items()
+            if commit not in consumed and report.get("previous_resume_commit") == latest_commit
+        ]
+        if not successors:
+            break
+        _require(len(successors) == 1, "resume provenance chain forks")
+        successor = successors[0]
+        _require(
+            _git_commit_is_ancestor(repository, latest_commit, successor),
+            "resume provenance pointer is not forward-only in Git ancestry",
+        )
+        chain.append(successor)
+        consumed.add(successor)
+        latest_commit = successor
+    _require(consumed == set(reports_by_commit), "resume provenance chain is disconnected")
+    _require(finalizing_commit == chain[-1], "manifest finalizing commit is not the resume chain tail")
+    return chain
+
+
 def _verify_manifest(
     root: Path,
     data_rows: list[dict[str, Any]],
@@ -373,25 +515,12 @@ def _verify_manifest(
         and environment_git.get("worktree_porcelain") == [],
         "fresh producer environment provenance mismatch",
     )
-    resume_path = root / "resume_environment_report.json"
-    if resume_path.is_file():
-        resume_environment = _mapping_json(resume_path)
-        resume_git = resume_environment.get("git")
-        _require(
-            isinstance(resume_git, dict)
-            and resume_git.get("commit") == finalizing_commit
-            and resume_git.get("branch") == "prep/cavers-single-dataset-stage1-v1"
-            and resume_git.get("worktree_porcelain") == [],
-            "resume finalizing environment provenance mismatch",
-        )
-        _require(
-            resume_environment.get("resume_origin_commit") == producer_commit
-            and isinstance(resume_environment.get("resume_policy"), str)
-            and "authenticate completed sequence checkpoints" in resume_environment["resume_policy"],
-            "resume origin/policy provenance mismatch",
-        )
-    else:
-        _require(finalizing_commit == producer_commit, "fresh run finalizing commit differs from producer commit")
+    _verify_resume_provenance(
+        root=root,
+        repository=repository,
+        producer_commit=producer_commit,
+        finalizing_commit=finalizing_commit,
+    )
     _require(
         _git_commit_is_head_ancestor(repository, producer_commit),
         "producer commit is not an ancestor of current HEAD",
@@ -645,7 +774,7 @@ def _verify_small_members(
         and resume_count == len(resume_ids),
         "resume-authenticated sequence count mismatch",
     )
-    if not (runtime_root / "resume_environment_report.json").is_file():
+    if not (runtime_root / RESUME_ENVIRONMENT_FILE).is_file():
         _require(resume_count == 0, "checkpoint reuse recorded without resume environment provenance")
 
     expected_suffixes = {
@@ -851,11 +980,15 @@ def _verify_reference(runtime_root: Path, data_root: Path) -> dict[str, dict[str
         and audit.get("status") == "PASS",
         "R02 reference aggregate mismatch",
     )
-    csv_rows = _csv(runtime_root / "cavers_reference_audit.csv")
+    csv_rows = _csv(
+        runtime_root / "cavers_reference_audit.csv",
+        REFERENCE_AUDIT_FIELDS,
+    )
     _require(len(csv_rows) == 12 and [row.get("sequence_id") for row in csv_rows] == list(CANDIDATE_SEQUENCES), "reference CSV sequence rows mismatch")
     for row in csv_rows:
-        expected = expected_rows[row["sequence_id"]]
-        _require(row.get("status") == "PASS" and row.get("gt_sha256") == expected["gt_sha256"] and row.get("row_count") == str(expected["row_count"]), f"reference CSV mismatch: {row['sequence_id']}")
+        json_row = by_id[row["sequence_id"]]
+        expected_csv_row = {field: str(json_row[field]) for field in REFERENCE_AUDIT_FIELDS}
+        _require(row == expected_csv_row, f"reference CSV/JSON full-row mismatch: {row['sequence_id']}")
     return expected_rows
 
 
@@ -1368,9 +1501,14 @@ def verify_cavers_stage1(
     _require(repository.is_dir() and data_root.is_dir() and runtime_root.is_dir(), "verification roots must be directories")
 
     actual_runtime_files = _runtime_file_names(runtime_root)
+    optional_runtime_files = actual_runtime_files - REQUIRED_RUNTIME_FILES
     _require(
         REQUIRED_RUNTIME_FILES <= actual_runtime_files
-        and actual_runtime_files <= REQUIRED_RUNTIME_FILES | OPTIONAL_RUNTIME_FILES,
+        and all(
+            name == RESUME_ENVIRONMENT_FILE
+            or RESUME_ENVIRONMENT_EXTRA_PATTERN.fullmatch(name) is not None
+            for name in optional_runtime_files
+        ),
         "required/optional runtime inventory mismatch",
     )
     _verify_sha256sums(runtime_root, actual_runtime_files)
@@ -1434,7 +1572,9 @@ __all__ = [
     "CaversStage1VerificationError",
     "MAX_STAGE1_FILE_BYTES",
     "OVERLAP_CONTRACT",
-    "OPTIONAL_RUNTIME_FILES",
+    "RESUME_ENVIRONMENT_EXTRA_PATTERN",
+    "RESUME_ENVIRONMENT_FILE",
+    "RESUME_POLICY",
     "REQUIRED_RUNTIME_FILES",
     "verify_cavers_stage1",
 ]

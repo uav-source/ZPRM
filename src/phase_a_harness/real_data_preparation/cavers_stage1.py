@@ -14,6 +14,7 @@ import http.client
 import json
 import os
 import platform
+import re
 import shutil
 import struct
 import subprocess
@@ -88,6 +89,33 @@ ALLOWED_UNCERTAINTY_TYPES = {
     "CONSERVATIVE_BOUND",
     "UNKNOWN",
 }
+REFERENCE_AUDIT_FIELDS = (
+    "sequence_id",
+    "status",
+    "complete_6dof",
+    "independent_reference_source",
+    "world_frames",
+    "child_frames",
+    "row_count",
+    "first_timestamp_s",
+    "last_timestamp_s",
+    "duration_s",
+    "median_rate_hz",
+    "maximum_timestamp_gap_s",
+    "strictly_monotonic",
+    "position_finite",
+    "first_position_m",
+    "first_quaternion_xyzw",
+    "timestamp_scale_to_seconds",
+    "quaternion_order",
+    "quaternion_norm_pass",
+    "max_quaternion_norm_error",
+    "linear_and_angular_velocity_fields_present",
+    "rosbag_optitrack_topic_present",
+    "rosbag_optitrack_message_count",
+    "sequence_local_reset_detected",
+    "gt_sha256",
+)
 
 
 class CaversStage1Error(RuntimeError):
@@ -96,6 +124,12 @@ class CaversStage1Error(RuntimeError):
 
 class Stage1LargeFileDownloadForbidden(CaversStage1Error):
     """A request attempted to materialize an oversized file."""
+
+
+RESUME_POLICY = (
+    "authenticate completed sequence checkpoints by official archive identity, "
+    "size, CRC32, and SHA-256 before continuation"
+)
 
 
 def utc_now() -> str:
@@ -982,6 +1016,113 @@ def _environment_report(repository: Path, data_root: Path) -> dict[str, Any]:
     }
 
 
+def _resume_finalizing_environment(
+    *,
+    repository: Path,
+    runtime_root: Path,
+    origin_environment: Mapping[str, Any],
+    live_environment: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Append immutable provenance for each implementation-changing resume."""
+
+    origin_commit = origin_environment.get("git", {}).get("commit")
+    live_commit = live_environment.get("git", {}).get("commit")
+    if not isinstance(origin_commit, str) or re.fullmatch(r"[0-9a-f]{40}", origin_commit) is None:
+        raise PermissionError("invalid resume origin commit")
+    if not isinstance(live_commit, str) or re.fullmatch(r"[0-9a-f]{40}", live_commit) is None:
+        raise PermissionError("invalid live resume commit")
+
+    standard_path = runtime_root / "resume_environment_report.json"
+    if not standard_path.is_file():
+        first = {
+            **live_environment,
+            "resume_origin_commit": origin_commit,
+            "resume_policy": RESUME_POLICY,
+        }
+        atomic_write_json(standard_path, first)
+        return first
+
+    paths = [standard_path, *sorted(runtime_root.glob("resume_environment_report_*.json"))]
+    reports_by_commit: dict[str, dict[str, Any]] = {}
+    standard_commit: str | None = None
+    for index, path in enumerate(paths):
+        report = json.loads(path.read_text(encoding="utf-8"))
+        commit = report.get("git", {}).get("commit")
+        if (
+            not isinstance(commit, str)
+            or re.fullmatch(r"[0-9a-f]{40}", commit) is None
+            or report.get("git", {}).get("branch") != EXPECTED_BRANCH
+            or report.get("git", {}).get("worktree_porcelain") != []
+            or report.get("resume_origin_commit") != origin_commit
+            or report.get("resume_policy") != RESUME_POLICY
+            or commit in reports_by_commit
+        ):
+            raise PermissionError("invalid immutable resume environment report")
+        if index == 0:
+            standard_commit = commit
+        elif path.name != f"resume_environment_report_{commit}.json":
+            raise PermissionError("resume environment filename/commit mismatch")
+        reports_by_commit[commit] = report
+
+    for commit in reports_by_commit:
+        if subprocess.run(
+            ["git", "merge-base", "--is-ancestor", origin_commit, commit],
+            cwd=repository,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        ).returncode or subprocess.run(
+            ["git", "merge-base", "--is-ancestor", commit, live_commit],
+            cwd=repository,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        ).returncode:
+            raise PermissionError("resume environment commit is outside the active lineage")
+
+    assert standard_commit is not None
+    consumed = {standard_commit}
+    latest_commit = standard_commit
+    latest = reports_by_commit[latest_commit]
+    while True:
+        successors = [
+            (commit, report)
+            for commit, report in reports_by_commit.items()
+            if commit not in consumed and report.get("previous_resume_commit") == latest_commit
+        ]
+        if not successors:
+            break
+        if len(successors) != 1:
+            raise PermissionError("resume provenance chain forks")
+        successor_commit, successor = successors[0]
+        if subprocess.run(
+            ["git", "merge-base", "--is-ancestor", latest_commit, successor_commit],
+            cwd=repository,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        ).returncode:
+            raise PermissionError("resume provenance link is not forward-only")
+        latest_commit, latest = successor_commit, successor
+        consumed.add(latest_commit)
+    if consumed != set(reports_by_commit):
+        raise PermissionError("resume provenance chain is disconnected")
+    if live_commit == latest_commit:
+        return latest
+    if subprocess.run(
+        ["git", "merge-base", "--is-ancestor", latest_commit, live_commit],
+        cwd=repository,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    ).returncode:
+        raise PermissionError("resume implementation lineage is not forward-only")
+    current = {
+        **live_environment,
+        "previous_resume_commit": latest_commit,
+        "resume_origin_commit": origin_commit,
+        "resume_policy": RESUME_POLICY,
+    }
+    atomic_write_json(runtime_root / f"resume_environment_report_{live_commit}.json", current)
+    return current
+
+
 def _source_files(data_root: Path) -> list[dict[str, Any]]:
     rows = []
     for path in sorted(data_root.rglob("*")):
@@ -1145,22 +1286,12 @@ def execute_cavers_stage1(
         live_environment = _environment_report(repository, data_root)
         if live_environment["git"]["worktree_porcelain"]:
             raise PermissionError("worktree changed before resume")
-        resume_environment_path = runtime_root / "resume_environment_report.json"
-        if resume_environment_path.is_file():
-            finalizing_environment = json.loads(
-                resume_environment_path.read_text(encoding="utf-8")
-            )
-            if finalizing_environment.get("git", {}).get("commit") != live_environment["git"][
-                "commit"
-            ]:
-                raise PermissionError("resume implementation commit changed again")
-        else:
-            finalizing_environment = {
-                **live_environment,
-                "resume_origin_commit": environment["git"]["commit"],
-                "resume_policy": "authenticate completed sequence checkpoints by official archive identity, size, CRC32, and SHA-256 before continuation",
-            }
-            atomic_write_json(resume_environment_path, finalizing_environment)
+        finalizing_environment = _resume_finalizing_environment(
+            repository=repository,
+            runtime_root=runtime_root,
+            origin_environment=environment,
+            live_environment=live_environment,
+        )
     else:
         environment = _environment_report(repository, data_root)
         if environment["git"]["worktree_porcelain"]:
@@ -1344,16 +1475,11 @@ def execute_cavers_stage1(
                 }
             )
 
-        reference_fields = (
-            "sequence_id", "status", "complete_6dof", "independent_reference_source", "world_frames",
-            "child_frames", "row_count", "first_timestamp_s", "last_timestamp_s", "duration_s",
-            "median_rate_hz", "maximum_timestamp_gap_s", "strictly_monotonic", "position_finite",
-            "quaternion_order", "quaternion_norm_pass", "max_quaternion_norm_error",
-            "linear_and_angular_velocity_fields_present", "rosbag_optitrack_topic_present",
-            "rosbag_optitrack_message_count",
-            "sequence_local_reset_detected", "gt_sha256",
+        atomic_write_csv(
+            runtime_root / "cavers_reference_audit.csv",
+            reference_rows,
+            REFERENCE_AUDIT_FIELDS,
         )
-        atomic_write_csv(runtime_root / "cavers_reference_audit.csv", reference_rows, reference_fields)
         reference_audit = {
             "candidate_count": len(reference_rows),
             "independent_optitrack_6dof_pass_count": sum(row["status"] == "PASS" for row in reference_rows),

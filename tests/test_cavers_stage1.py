@@ -5,6 +5,7 @@ import math
 import subprocess
 from dataclasses import FrozenInstanceError
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
 
 import numpy as np
@@ -382,6 +383,75 @@ def test_gt_audit_estimates_rate_and_nanosecond_scale(tmp_path: Path) -> None:
     assert report["median_rate_hz"] == pytest.approx(100.0, rel=1e-5)
     assert report["duration_s"] == pytest.approx(0.03, rel=1e-5)
     assert trajectory.shape == (4, 4)
+
+
+def test_reference_csv_schema_covers_every_audited_field(tmp_path: Path) -> None:
+    path = _write_gt(
+        tmp_path / "gt.csv",
+        [
+            "0,map,base_link,1,2,3,0,0,0,1,0,0,0,0,0,0",
+            "0.01,map,base_link,1.1,2,3,0,0,0,1,0,0,0,0,0,0",
+        ],
+    )
+    report, _ = audit_gt_csv(path, "loc_diablo_1")
+    report["rosbag_optitrack_topic_present"] = True
+    report["rosbag_optitrack_message_count"] = 2
+
+    assert set(report) == set(cavers_stage1.REFERENCE_AUDIT_FIELDS)
+
+
+def test_repeated_resume_appends_immutable_commit_provenance(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    origin_commit = "a" * 40
+    first_commit = "b" * 40
+    final_commit = "c" * 40
+    origin = {
+        "git": {
+            "branch": cavers_stage1.EXPECTED_BRANCH,
+            "commit": origin_commit,
+            "worktree_porcelain": [],
+        }
+    }
+
+    def environment(commit: str) -> dict[str, Any]:
+        return {
+            "git": {
+                "branch": cavers_stage1.EXPECTED_BRANCH,
+                "commit": commit,
+                "worktree_porcelain": [],
+            }
+        }
+
+    monkeypatch.setattr(
+        cavers_stage1.subprocess,
+        "run",
+        lambda *args, **kwargs: SimpleNamespace(returncode=0),
+    )
+    first = cavers_stage1._resume_finalizing_environment(
+        repository=tmp_path,
+        runtime_root=tmp_path,
+        origin_environment=origin,
+        live_environment=environment(first_commit),
+    )
+    final = cavers_stage1._resume_finalizing_environment(
+        repository=tmp_path,
+        runtime_root=tmp_path,
+        origin_environment=origin,
+        live_environment=environment(final_commit),
+    )
+    repeated = cavers_stage1._resume_finalizing_environment(
+        repository=tmp_path,
+        runtime_root=tmp_path,
+        origin_environment=origin,
+        live_environment=environment(final_commit),
+    )
+
+    assert first["git"]["commit"] == first_commit
+    assert final["previous_resume_commit"] == first_commit
+    assert repeated == final
+    assert (tmp_path / "resume_environment_report.json").is_file()
+    assert (tmp_path / f"resume_environment_report_{final_commit}.json").is_file()
 
 
 def test_gt_audit_detects_sequence_local_identity_reset(tmp_path: Path) -> None:
