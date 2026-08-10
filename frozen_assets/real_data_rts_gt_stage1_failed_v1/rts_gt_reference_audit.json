@@ -1,0 +1,276 @@
+{
+  "audit_conclusion": "PASS_INDEPENDENT_PRISM_TRIAD_6DOF_REFERENCE",
+  "caveat": "The release publishes synchronized three-prism trajectories, not ready-made robot/LiDAR SE(3) poses; a non-collinear prism triad defines a 6DoF prism-rig frame independently of LiDAR registration.",
+  "configuration": "f-2-1-1-1-6-1-SGP-1000",
+  "experiments": {
+    "20220715-1": {
+      "available": true,
+      "experiment_id": "20220715-1",
+      "first_timestamp": 1657900236.1820164,
+      "last_timestamp": 1657900386.7820163,
+      "max_native_gap_s": 0.10000014305114746,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 93.61764686912798,
+      "prism_triangle_twice_area_min_m2": 93.60605542126594,
+      "row_count": 1507,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-1/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "98146f0f728fb5a36d0fec7f28d3542c3bc7d423b4eb653b3191376c2d442a39",
+          "size_bytes": 217834
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-1/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "822c8f15629e97252a3b0461c0bdc03e7048fd1b61d8a85fc6d4e1f1249bea0a",
+          "size_bytes": 217705
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-1/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "c822fa9bff7b55d43dbf1604f31e0244ee6b4e189b39a3867e3627b93e5546ff",
+          "size_bytes": 217940
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    },
+    "20220715-2": {
+      "available": true,
+      "experiment_id": "20220715-2",
+      "first_timestamp": 1657900394.1837943,
+      "last_timestamp": 1657900598.7868073,
+      "max_native_gap_s": 53.80251097679138,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 93.61353749727489,
+      "prism_triangle_twice_area_min_m2": 3.0167636276631127,
+      "row_count": 926,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-2/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "d95689b13174ec43de5c23e689ec1c2f8ea73bbe780ad9f4defa78db81634bbf",
+          "size_bytes": 134512
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-2/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "b8075fd0fcae1e0da05c4d32ddb8277002468561226544cbb71eb91efaea08e2",
+          "size_bytes": 134567
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-2/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "430d4f545cadcca10397701476326def862cdcb4896ab0577a0c8d82e4b7516f",
+          "size_bytes": 133442
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    },
+    "20220715-3": {
+      "available": true,
+      "experiment_id": "20220715-3",
+      "first_timestamp": 1657900781.3884568,
+      "last_timestamp": 1657900884.7907422,
+      "max_native_gap_s": 21.799614191055298,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 158.55267727214616,
+      "prism_triangle_twice_area_min_m2": 3.270933190170291,
+      "row_count": 684,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-3/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "05781cb337102fd81ce5cf049a7af1c7f3272663cbd34e6a2924dbe408250c18",
+          "size_bytes": 98181
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-3/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "1832b696376f18e654cb23428138df58cc2c335f434132d26ba3c68bff15bc87",
+          "size_bytes": 98163
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-3/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "a7e5b41d1835c624e24b61ad44b6cf01b0c09ffda711a7c0905820141824da38",
+          "size_bytes": 98334
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    },
+    "20220715-4": {
+      "available": true,
+      "experiment_id": "20220715-4",
+      "first_timestamp": 1657910549.1038284,
+      "last_timestamp": 1657910796.1032345,
+      "max_native_gap_s": 17.0005202293396,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 120.53315993402953,
+      "prism_triangle_twice_area_min_m2": 120.51615953338516,
+      "row_count": 2200,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-4/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "177d2d02c4de17448da051b282764efee2a1dea628e8c9dfcd15894fd5763b31",
+          "size_bytes": 322212
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-4/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "dd9e5e82c10b0826fb7c1f1b8bd008151bf51bca8d6514579a183e9b0975e652",
+          "size_bytes": 317263
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220715-4/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "b353a4a722c5d9444fc7dc6dcc634876c4b711dadb998dbfbfbf420839de9fa9",
+          "size_bytes": 320732
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    },
+    "20220717-1": {
+      "available": false,
+      "experiment_id": "20220717-1",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "paths": [
+        "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-1/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+        "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-1/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+        "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-1/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv"
+      ]
+    },
+    "20220717-2": {
+      "available": true,
+      "experiment_id": "20220717-2",
+      "first_timestamp": 1653336073.1745276,
+      "last_timestamp": 1653336657.1243043,
+      "max_native_gap_s": 18.454137802124023,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 4928.026848733365,
+      "prism_triangle_twice_area_min_m2": 6.656331307810005,
+      "row_count": 4363,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-2/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "111ac1d94d4251c642d81aa7aaf54ac16d132c00da0c4d8bc3e156e220b2c984",
+          "size_bytes": 621841
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-2/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "07ea6b3eb7e5275aaeab55104751feca5f30a8cd37c4d402c5949361081d480d",
+          "size_bytes": 626408
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-2/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "6e37a67a815ad425a350f7cc70610f01c0e985c2a5bae9e27ebd5ba9cf869b5f",
+          "size_bytes": 630487
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    },
+    "20220717-3": {
+      "available": true,
+      "experiment_id": "20220717-3",
+      "first_timestamp": 1653337705.9931457,
+      "last_timestamp": 1653338225.9303503,
+      "max_native_gap_s": 30.799323558807373,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 5729.423351425569,
+      "prism_triangle_twice_area_min_m2": 7.134201424860174,
+      "row_count": 3729,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-3/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "f8195ae8083ab124410d7155c7ea76f42477557b22a1fe2a588a84935a518ac1",
+          "size_bytes": 529456
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-3/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "9331ef056b112055c39229f7e23d296b00bd8a1f07bebfc195e8f84b420e4072",
+          "size_bytes": 534942
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-3/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "30008b756f8499d049bcb17d3c618a5cd7e314439432c69fd8beb7cda07347ef",
+          "size_bytes": 539295
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    },
+    "20220717-4": {
+      "available": true,
+      "experiment_id": "20220717-4",
+      "first_timestamp": 1653339183.0358827,
+      "last_timestamp": 1653339827.5394917,
+      "max_native_gap_s": 37.42909264564514,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 6598.951656088904,
+      "prism_triangle_twice_area_min_m2": 6.810213627136008,
+      "row_count": 5119,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-4/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "7cdce37ab640c84e8a1e3b3bc6c66de35d4ccbaebcc4596862fcb543c51b5d53",
+          "size_bytes": 729369
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-4/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "6204c37047e69220a49d369d8dd9e82ef8caaee3c150e6a8df4c5a0c2e47dd14",
+          "size_bytes": 736902
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-4/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "294b3c7491e25982e4281b84ba8174dd801cdb55a0af8b26ecdc284955112eda",
+          "size_bytes": 743883
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    },
+    "20220717-5": {
+      "available": true,
+      "experiment_id": "20220717-5",
+      "first_timestamp": 1653340588.5421183,
+      "last_timestamp": 1653340772.7421184,
+      "max_native_gap_s": 0.10000014305114746,
+      "median_native_rate_hz": 10.000009536752259,
+      "per_axis_precision_fields_present": true,
+      "precision_field_count_per_prism": 3,
+      "prism_triangle_twice_area_median_m2": 4191.270359422425,
+      "prism_triangle_twice_area_min_m2": 171.27524302521718,
+      "row_count": 1843,
+      "source_files": [
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-5/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_1.csv",
+          "sha256": "f7239b20507db7a289fdce3aa43acc2a091578351f17b5e6349f44be94754b4c",
+          "size_bytes": 263215
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-5/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_2.csv",
+          "sha256": "1fd5448b710b9cb7c9ce86aa4f3345ee30eff67f5463a826f66db803336f9588",
+          "size_bytes": 264968
+        },
+        {
+          "path": "/home/lj/zero_perturbation_data/rts_gt_v1/official_repository/data/20220717-5/filtered_prediction/f-2-1-1-1-6-1-SGP-1000_3.csv",
+          "sha256": "f75ff766614a7d863fbd2dd71e3640efce629711dc1b182ffff9bc69da9cff68",
+          "size_bytes": 266946
+        }
+      ],
+      "synchronized_triplet": true,
+      "triad_6dof_constructible": true
+    }
+  },
+  "high_accuracy_evidence": "Three robotic total stations, synchronized filtered positions, and three per-axis precision fields per prism row.",
+  "official_method": "Three RTS tracking three active prisms; position and orientation are constructed from prism geometry.",
+  "r02_status": "PASS"
+}

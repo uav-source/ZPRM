@@ -1,0 +1,35 @@
+{
+  "GT_ONLY_OVERLAP": {
+    "Campus": "PASS",
+    "Tunnel": "PASS",
+    "status": "PASS"
+  },
+  "R01": "PENDING_SECOND_DATASET",
+  "R02": "PASS",
+  "R03": "PASS_CANDIDATE",
+  "R04": "PASS",
+  "R05": "FAIL",
+  "R06": "BLOCKED_STAGE1",
+  "R07": "BLOCKED_STAGE1",
+  "R08": "BLOCKED_STAGE1",
+  "R09": "PASS",
+  "R10": "FAIL",
+  "R14": "BLOCKED_STAGE1",
+  "actual_trials": 0,
+  "candidate_gate_status": {
+    "GT_ONLY_OVERLAP": "PASS",
+    "R02_candidate": "PASS",
+    "R03_candidate": "PASS",
+    "R04_candidate": "PASS",
+    "R05_candidate": "FAIL"
+  },
+  "large_lidar_download_authorized": false,
+  "planned_future_trials": 0,
+  "planned_future_trials_if_100_snapshots_had_frozen": 200,
+  "primary_blocker": "R05: released transform/time chain is not auditable (missing sensor_positions/LiDAR extrinsic, plus Tunnel release date/timestamp conflict)",
+  "rich_snapshot_count": 0,
+  "single_dataset_preregistration_ready": false,
+  "snapshot_count": 0,
+  "stage1_status": "FAIL_STOPPED_BEFORE_LIDAR_DOWNLOAD",
+  "weak_snapshot_count": 0
+}

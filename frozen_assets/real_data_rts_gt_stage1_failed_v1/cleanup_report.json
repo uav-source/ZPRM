@@ -1,0 +1,28 @@
+{
+  "after": {
+    "deleted_roots_absent": true,
+    "filesystem_available_bytes": 111309828096,
+    "filesystem_used_bytes": 154991079424
+  },
+  "allowed_deleted_roots": [
+    "/home/lj/zero_perturbation_data/real_data_v1",
+    "/home/lj/zero_perturbation_runtime/real_data/preparation_v1"
+  ],
+  "before": {
+    "data_root_allocated_bytes": 73676689408,
+    "filesystem_available_bytes": 37632868352,
+    "filesystem_used_bytes": 228668039168,
+    "runtime_root_allocated_bytes": 270336
+  },
+  "cleanup_execution_date_utc": "2026-08-10",
+  "first_failure_audit_aggregate_file_list_sha256": "5a0495540d9ad8037810b52674efddab020590cc141e7ba0da6d30b74edfb241",
+  "first_failure_audit_verification": {
+    "checked_file_count": 47,
+    "mismatch_count": 0,
+    "pass": true
+  },
+  "released_bytes": 73676959744,
+  "released_decimal_gb": 73.676959744,
+  "released_gib": 68.61705374717712,
+  "synthetic_confirmatory_runtime_preserved": true
+}

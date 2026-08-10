@@ -1,0 +1,76 @@
+{
+  "experiments": [
+    {
+      "directory_date": "2022-07-15",
+      "experiment_id": "20220715-1",
+      "first_reference_timestamp_utc": "2022-07-15T15:50:36.182016Z",
+      "last_reference_timestamp_utc": "2022-07-15T15:53:06.782016Z",
+      "reason": "DIRECTORY_DATE_MATCH",
+      "status": "PASS"
+    },
+    {
+      "directory_date": "2022-07-15",
+      "experiment_id": "20220715-2",
+      "first_reference_timestamp_utc": "2022-07-15T15:53:14.183794Z",
+      "last_reference_timestamp_utc": "2022-07-15T15:56:38.786807Z",
+      "reason": "DIRECTORY_DATE_MATCH",
+      "status": "PASS"
+    },
+    {
+      "directory_date": "2022-07-15",
+      "experiment_id": "20220715-3",
+      "first_reference_timestamp_utc": "2022-07-15T15:59:41.388457Z",
+      "last_reference_timestamp_utc": "2022-07-15T16:01:24.790742Z",
+      "reason": "DIRECTORY_DATE_MATCH",
+      "status": "PASS"
+    },
+    {
+      "directory_date": "2022-07-15",
+      "experiment_id": "20220715-4",
+      "first_reference_timestamp_utc": "2022-07-15T18:42:29.103828Z",
+      "last_reference_timestamp_utc": "2022-07-15T18:46:36.103235Z",
+      "reason": "DIRECTORY_DATE_MATCH",
+      "status": "PASS"
+    },
+    {
+      "experiment_id": "20220717-1",
+      "reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "status": "FAIL"
+    },
+    {
+      "directory_date": "2022-07-17",
+      "experiment_id": "20220717-2",
+      "first_reference_timestamp_utc": "2022-05-23T20:01:13.174528Z",
+      "last_reference_timestamp_utc": "2022-05-23T20:10:57.124304Z",
+      "reason": "REFERENCE_TIMESTAMPS_CONFLICT_WITH_DIRECTORY_DATE",
+      "status": "FAIL"
+    },
+    {
+      "directory_date": "2022-07-17",
+      "experiment_id": "20220717-3",
+      "first_reference_timestamp_utc": "2022-05-23T20:28:25.993146Z",
+      "last_reference_timestamp_utc": "2022-05-23T20:37:05.930350Z",
+      "reason": "REFERENCE_TIMESTAMPS_CONFLICT_WITH_DIRECTORY_DATE",
+      "status": "FAIL"
+    },
+    {
+      "directory_date": "2022-07-17",
+      "experiment_id": "20220717-4",
+      "first_reference_timestamp_utc": "2022-05-23T20:53:03.035883Z",
+      "last_reference_timestamp_utc": "2022-05-23T21:03:47.539492Z",
+      "reason": "REFERENCE_TIMESTAMPS_CONFLICT_WITH_DIRECTORY_DATE",
+      "status": "FAIL"
+    },
+    {
+      "directory_date": "2022-07-17",
+      "experiment_id": "20220717-5",
+      "first_reference_timestamp_utc": "2022-05-23T21:16:28.542118Z",
+      "last_reference_timestamp_utc": "2022-05-23T21:19:32.742118Z",
+      "reason": "REFERENCE_TIMESTAMPS_CONFLICT_WITH_DIRECTORY_DATE",
+      "status": "FAIL"
+    }
+  ],
+  "paper_timestamp_caveat": "RTS station clocks are not globally valid and official processing interpolates/synchronizes observations.",
+  "status": "FAIL",
+  "tunnel_conflict": "20220717-2 through -5 filtered reference timestamps resolve to 2022-05-23; 20220717-1 reference files are empty."
+}

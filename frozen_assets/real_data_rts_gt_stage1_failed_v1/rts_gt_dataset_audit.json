@@ -1,0 +1,36 @@
+{
+  "arxiv_doi": "10.48550/arXiv.2309.11935",
+  "dataset": "RTS-GT",
+  "dataset_doi": "NOT_LOCATED; paper DOI and arXiv DOI recorded separately",
+  "deployments": {
+    "Campus": {
+      "date": "2022-07-15",
+      "experiment_count": 4,
+      "lidar_advertised": true,
+      "platform": "Warthog"
+    },
+    "Tunnel": {
+      "date": "2022-07-17",
+      "experiment_count": 5,
+      "lidar_advertised": true,
+      "platform": "HD2"
+    }
+  },
+  "license": {
+    "dataset_payload_scope": "NOT_SEPARATELY_STATED_ON_AUDITED_OFFICIAL_PAGE",
+    "license_pass_not_overclaimed": true,
+    "official_repository": "MIT"
+  },
+  "official_page_url": "https://norlab.ulaval.ca/research/RTS_dataset/",
+  "official_repository_commit": "449a299bcf8bc11766718db4ed4aea4a489c7c46",
+  "official_repository_url": "https://github.com/norlab-ulaval/RTS_project.git",
+  "paper_doi": "10.1109/ICRA57147.2024.10610998",
+  "paper_url": "https://arxiv.org/abs/2309.11935",
+  "release_identity": "official repository commit plus downloaded official page and paper SHA256 in download manifest",
+  "source_only_download": true,
+  "static_no_registration_source_audit": {
+    "pass": true,
+    "python_file_count": 13,
+    "violations": []
+  }
+}

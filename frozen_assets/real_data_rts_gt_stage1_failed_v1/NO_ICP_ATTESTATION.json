@@ -1,0 +1,18 @@
+{
+  "environment_guard": "ZPRM_REAL_DATA_PREP_NO_REGISTRATION=1",
+  "estimated_transform_file_count": 0,
+  "estimated_transform_files": [],
+  "large_lidar_download_performed": false,
+  "no_registration_source_audit": {
+    "pass": true,
+    "python_file_count": 13,
+    "violations": []
+  },
+  "open3d_registration_call_count": 0,
+  "other_registration_process_count": 0,
+  "pass": true,
+  "pcl_cli_invocation_count": 0,
+  "real_trial_result_count": 0,
+  "registration_execution_count": 0,
+  "status": "PASS"
+}

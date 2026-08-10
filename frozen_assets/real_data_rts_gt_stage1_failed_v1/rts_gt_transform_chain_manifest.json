@@ -1,0 +1,35 @@
+{
+  "Campus": {
+    "available_steps": [
+      "RTS observations",
+      "GCP/common world",
+      "synchronized prism triad",
+      "prism-rig 6DoF"
+    ],
+    "missing_steps": [
+      "published prism/robot-to-LiDAR sensor_positions.csv or equivalent named SE(3)"
+    ],
+    "status": "FAIL"
+  },
+  "Tunnel": {
+    "available_steps": [
+      "RTS observations",
+      "GCP/common world",
+      "synchronized prism triad",
+      "calibration_raw.csv",
+      "calibration_results.csv"
+    ],
+    "missing_steps": [
+      "sensor_positions.csv required by official groundtruth_utils.py",
+      "documented frame semantics for the 12 calibration_results values"
+    ],
+    "status": "FAIL"
+  },
+  "official_landing_page_calibration_status": "Calibration information (available soon)",
+  "official_script_required_path": "sensors_extrinsic_calibration/sensor_positions.csv",
+  "official_tree_sensor_positions_file_count_other_deployments": 44,
+  "registration_derived_transform_forbidden_and_used": false,
+  "selected_deployment_sensor_positions_file_count": 0,
+  "selected_deployment_sensor_positions_paths": [],
+  "status": "FAIL"
+}

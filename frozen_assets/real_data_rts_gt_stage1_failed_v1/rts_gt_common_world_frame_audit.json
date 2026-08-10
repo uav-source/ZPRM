@@ -1,0 +1,84 @@
+{
+  "Campus": {
+    "evidence": {
+      "GCP": {
+        "all_present_hashes_identical": true,
+        "by_experiment": {
+          "20220715-1": "2acdcc7b4987a1eef0a793e13b6976735295515f3c1e2abf478a442a5ddea83d",
+          "20220715-2": "2acdcc7b4987a1eef0a793e13b6976735295515f3c1e2abf478a442a5ddea83d",
+          "20220715-3": "2acdcc7b4987a1eef0a793e13b6976735295515f3c1e2abf478a442a5ddea83d",
+          "20220715-4": "2acdcc7b4987a1eef0a793e13b6976735295515f3c1e2abf478a442a5ddea83d"
+        },
+        "missing_count": 0,
+        "unique_present_sha256": [
+          "2acdcc7b4987a1eef0a793e13b6976735295515f3c1e2abf478a442a5ddea83d"
+        ]
+      },
+      "Two_points": {
+        "all_present_hashes_identical": true,
+        "by_experiment": {
+          "20220715-1": "835044917464a2ebe349211c34868d431e0619c73da1c735375b5d3c97c1eb59",
+          "20220715-2": "835044917464a2ebe349211c34868d431e0619c73da1c735375b5d3c97c1eb59",
+          "20220715-3": "835044917464a2ebe349211c34868d431e0619c73da1c735375b5d3c97c1eb59",
+          "20220715-4": "835044917464a2ebe349211c34868d431e0619c73da1c735375b5d3c97c1eb59"
+        },
+        "missing_count": 0,
+        "unique_present_sha256": [
+          "835044917464a2ebe349211c34868d431e0619c73da1c735375b5d3c97c1eb59"
+        ]
+      }
+    },
+    "experiments": [
+      "20220715-1",
+      "20220715-2",
+      "20220715-3",
+      "20220715-4"
+    ],
+    "same_fixed_world_frame_proven": true,
+    "status": "PASS"
+  },
+  "Tunnel": {
+    "evidence": {
+      "GCP": {
+        "all_present_hashes_identical": true,
+        "by_experiment": {
+          "20220717-1": "b48f3e3ad6f9fa80b20d18e4274fc4a4921618b9e9602d926814c3b55ee97ab3",
+          "20220717-2": "b48f3e3ad6f9fa80b20d18e4274fc4a4921618b9e9602d926814c3b55ee97ab3",
+          "20220717-3": "b48f3e3ad6f9fa80b20d18e4274fc4a4921618b9e9602d926814c3b55ee97ab3",
+          "20220717-4": "b48f3e3ad6f9fa80b20d18e4274fc4a4921618b9e9602d926814c3b55ee97ab3",
+          "20220717-5": "b48f3e3ad6f9fa80b20d18e4274fc4a4921618b9e9602d926814c3b55ee97ab3"
+        },
+        "missing_count": 0,
+        "unique_present_sha256": [
+          "b48f3e3ad6f9fa80b20d18e4274fc4a4921618b9e9602d926814c3b55ee97ab3"
+        ]
+      },
+      "static_control_transform_experiments_2_to_5": {
+        "all_present_hashes_identical": true,
+        "by_experiment": {
+          "20220717-2": "e62e5ac971254e9e5bd9449ae6ef6c4d968be2ac79cc76def9fe2c733163aa0b",
+          "20220717-3": "e62e5ac971254e9e5bd9449ae6ef6c4d968be2ac79cc76def9fe2c733163aa0b",
+          "20220717-4": "e62e5ac971254e9e5bd9449ae6ef6c4d968be2ac79cc76def9fe2c733163aa0b",
+          "20220717-5": "e62e5ac971254e9e5bd9449ae6ef6c4d968be2ac79cc76def9fe2c733163aa0b"
+        },
+        "missing_count": 0,
+        "unique_present_sha256": [
+          "e62e5ac971254e9e5bd9449ae6ef6c4d968be2ac79cc76def9fe2c733163aa0b"
+        ]
+      }
+    },
+    "experiments": [
+      "20220717-1",
+      "20220717-2",
+      "20220717-3",
+      "20220717-4",
+      "20220717-5"
+    ],
+    "same_fixed_world_frame_proven": true,
+    "status": "PASS"
+  },
+  "cross_deployment_common_frame_required": false,
+  "method": "Byte-identical official GCP/control files and fixed control transforms within each deployment; no trajectory or point-cloud fitting.",
+  "registration_alignment_used": false,
+  "status": "PASS"
+}

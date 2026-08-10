@@ -1,0 +1,1526 @@
+{
+  "contract": {
+    "maximum_native_gap_s": 0.1500001,
+    "min_contiguous_covered_duration_s": 5.0,
+    "min_coverage_fraction": 0.6,
+    "min_eligible_nonoverlapping_5s_intervals": 30,
+    "min_total_covered_duration_s": 150.0,
+    "radius_m": 5.0,
+    "resample_rate_hz": 1.0
+  },
+  "coordinate_used": "centroid of synchronized three-prism RTS reference in the proven deployment world frame",
+  "pair_rows": [
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 23.0,
+          "end_time": 1657900417.1837943,
+          "sample_count": 23,
+          "segment_id": 0,
+          "start_time": 1657900394.1837943
+        },
+        {
+          "duration_s": 17.0,
+          "end_time": 1657900447.5842776,
+          "sample_count": 17,
+          "segment_id": 1,
+          "start_time": 1657900430.5842776
+        },
+        {
+          "duration_s": 11.0,
+          "end_time": 1657900511.9867885,
+          "sample_count": 11,
+          "segment_id": 2,
+          "start_time": 1657900500.9867885
+        }
+      ],
+      "coverage_fraction": 0.5425531914893617,
+      "covered_query_count": 51,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 51.0,
+      "eligible_nonoverlapping_5s_interval_count": 9,
+      "map_experiment_id": "20220715-1",
+      "map_resampled_count": 151,
+      "nearest_distance_max_m": 29.82603967581275,
+      "nearest_distance_median_m": 4.883896670768512,
+      "nearest_distance_q95_m": 29.719283318457496,
+      "overlap_status": "FAIL",
+      "query_count": 94,
+      "query_experiment_id": "20220715-2",
+      "query_resampled_segment_count": 6,
+      "total_covered_duration_s": 51.0
+    },
+    {
+      "contiguous_covered_intervals": [],
+      "coverage_fraction": 0.0,
+      "covered_query_count": 0,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 0.0,
+      "eligible_nonoverlapping_5s_interval_count": 0,
+      "map_experiment_id": "20220715-1",
+      "map_resampled_count": 151,
+      "nearest_distance_max_m": 41.66331075198423,
+      "nearest_distance_median_m": 22.70758113360008,
+      "nearest_distance_q95_m": 41.302497429958706,
+      "overlap_status": "FAIL",
+      "query_count": 70,
+      "query_experiment_id": "20220715-3",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 0.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 77.0,
+          "end_time": 1657910626.1038284,
+          "sample_count": 77,
+          "segment_id": 0,
+          "start_time": 1657910549.1038284
+        },
+        {
+          "duration_s": 9.0,
+          "end_time": 1657910640.1044946,
+          "sample_count": 9,
+          "segment_id": 1,
+          "start_time": 1657910631.1044946
+        },
+        {
+          "duration_s": 30.0,
+          "end_time": 1657910686.7050147,
+          "sample_count": 30,
+          "segment_id": 2,
+          "start_time": 1657910656.7050147
+        },
+        {
+          "duration_s": 105.0,
+          "end_time": 1657910796.5032346,
+          "sample_count": 105,
+          "segment_id": 3,
+          "start_time": 1657910691.5032346
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 221,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 221.0,
+      "eligible_nonoverlapping_5s_interval_count": 43,
+      "map_experiment_id": "20220715-1",
+      "map_resampled_count": 151,
+      "nearest_distance_max_m": 2.9035243002310414,
+      "nearest_distance_median_m": 2.9030138566841743,
+      "nearest_distance_q95_m": 2.9033497930164622,
+      "overlap_status": "PASS",
+      "query_count": 221,
+      "query_experiment_id": "20220715-4",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 221.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 151.0,
+          "end_time": 1657900387.1820164,
+          "sample_count": 151,
+          "segment_id": 0,
+          "start_time": 1657900236.1820164
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 151,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 151.0,
+      "eligible_nonoverlapping_5s_interval_count": 30,
+      "map_experiment_id": "20220715-2",
+      "map_resampled_count": 94,
+      "nearest_distance_max_m": 0.00026647497973162287,
+      "nearest_distance_median_m": 0.0001073976480385066,
+      "nearest_distance_q95_m": 0.0001892078507022673,
+      "overlap_status": "PASS",
+      "query_count": 151,
+      "query_experiment_id": "20220715-1",
+      "query_resampled_segment_count": 1,
+      "total_covered_duration_s": 151.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 31.0,
+          "end_time": 1657900812.3884568,
+          "sample_count": 31,
+          "segment_id": 0,
+          "start_time": 1657900781.3884568
+        },
+        {
+          "duration_s": 4.0,
+          "end_time": 1657900864.9894378,
+          "sample_count": 4,
+          "segment_id": 2,
+          "start_time": 1657900860.9894378
+        },
+        {
+          "duration_s": 5.0,
+          "end_time": 1657900873.9894378,
+          "sample_count": 5,
+          "segment_id": 2,
+          "start_time": 1657900868.9894378
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1657900885.1907423,
+          "sample_count": 7,
+          "segment_id": 3,
+          "start_time": 1657900878.1907423
+        }
+      ],
+      "coverage_fraction": 0.6714285714285714,
+      "covered_query_count": 47,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 43.0,
+      "eligible_nonoverlapping_5s_interval_count": 8,
+      "map_experiment_id": "20220715-2",
+      "map_resampled_count": 94,
+      "nearest_distance_max_m": 12.991032158230471,
+      "nearest_distance_median_m": 3.868555891689636,
+      "nearest_distance_q95_m": 12.667907694440519,
+      "overlap_status": "FAIL",
+      "query_count": 70,
+      "query_experiment_id": "20220715-3",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 47.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 77.0,
+          "end_time": 1657910626.1038284,
+          "sample_count": 77,
+          "segment_id": 0,
+          "start_time": 1657910549.1038284
+        },
+        {
+          "duration_s": 9.0,
+          "end_time": 1657910640.1044946,
+          "sample_count": 9,
+          "segment_id": 1,
+          "start_time": 1657910631.1044946
+        },
+        {
+          "duration_s": 30.0,
+          "end_time": 1657910686.7050147,
+          "sample_count": 30,
+          "segment_id": 2,
+          "start_time": 1657910656.7050147
+        },
+        {
+          "duration_s": 105.0,
+          "end_time": 1657910796.5032346,
+          "sample_count": 105,
+          "segment_id": 3,
+          "start_time": 1657910691.5032346
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 221,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 221.0,
+      "eligible_nonoverlapping_5s_interval_count": 43,
+      "map_experiment_id": "20220715-2",
+      "map_resampled_count": 94,
+      "nearest_distance_max_m": 2.9030680807963933,
+      "nearest_distance_median_m": 2.9025571915206863,
+      "nearest_distance_q95_m": 2.90289349349882,
+      "overlap_status": "PASS",
+      "query_count": 221,
+      "query_experiment_id": "20220715-4",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 221.0
+    },
+    {
+      "contiguous_covered_intervals": [],
+      "coverage_fraction": 0.0,
+      "covered_query_count": 0,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 0.0,
+      "eligible_nonoverlapping_5s_interval_count": 0,
+      "map_experiment_id": "20220715-3",
+      "map_resampled_count": 70,
+      "nearest_distance_max_m": 9.819916893842876,
+      "nearest_distance_median_m": 9.81950153894016,
+      "nearest_distance_q95_m": 9.819771160674417,
+      "overlap_status": "FAIL",
+      "query_count": 151,
+      "query_experiment_id": "20220715-1",
+      "query_resampled_segment_count": 1,
+      "total_covered_duration_s": 0.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 11.0,
+          "end_time": 1657900532.3864264,
+          "sample_count": 11,
+          "segment_id": 3,
+          "start_time": 1657900521.3864264
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1657900555.5864897,
+          "sample_count": 7,
+          "segment_id": 4,
+          "start_time": 1657900548.5864897
+        },
+        {
+          "duration_s": 25.0,
+          "end_time": 1657900598.7868073,
+          "sample_count": 25,
+          "segment_id": 5,
+          "start_time": 1657900573.7868073
+        }
+      ],
+      "coverage_fraction": 0.4574468085106383,
+      "covered_query_count": 43,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 43.0,
+      "eligible_nonoverlapping_5s_interval_count": 8,
+      "map_experiment_id": "20220715-3",
+      "map_resampled_count": 70,
+      "nearest_distance_max_m": 9.927469835585615,
+      "nearest_distance_median_m": 5.813289865653318,
+      "nearest_distance_q95_m": 9.819810098797708,
+      "overlap_status": "FAIL",
+      "query_count": 94,
+      "query_experiment_id": "20220715-2",
+      "query_resampled_segment_count": 6,
+      "total_covered_duration_s": 43.0
+    },
+    {
+      "contiguous_covered_intervals": [],
+      "coverage_fraction": 0.0,
+      "covered_query_count": 0,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 0.0,
+      "eligible_nonoverlapping_5s_interval_count": 0,
+      "map_experiment_id": "20220715-3",
+      "map_resampled_count": 70,
+      "nearest_distance_max_m": 11.139923940715514,
+      "nearest_distance_median_m": 11.139190321239814,
+      "nearest_distance_q95_m": 11.139609214000139,
+      "overlap_status": "FAIL",
+      "query_count": 221,
+      "query_experiment_id": "20220715-4",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 0.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 151.0,
+          "end_time": 1657900387.1820164,
+          "sample_count": 151,
+          "segment_id": 0,
+          "start_time": 1657900236.1820164
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 151,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 151.0,
+      "eligible_nonoverlapping_5s_interval_count": 30,
+      "map_experiment_id": "20220715-4",
+      "map_resampled_count": 221,
+      "nearest_distance_max_m": 2.903345913213236,
+      "nearest_distance_median_m": 2.9028173013990943,
+      "nearest_distance_q95_m": 2.9031212694391426,
+      "overlap_status": "PASS",
+      "query_count": 151,
+      "query_experiment_id": "20220715-1",
+      "query_resampled_segment_count": 1,
+      "total_covered_duration_s": 151.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 23.0,
+          "end_time": 1657900417.1837943,
+          "sample_count": 23,
+          "segment_id": 0,
+          "start_time": 1657900394.1837943
+        },
+        {
+          "duration_s": 17.0,
+          "end_time": 1657900447.5842776,
+          "sample_count": 17,
+          "segment_id": 1,
+          "start_time": 1657900430.5842776
+        }
+      ],
+      "coverage_fraction": 0.425531914893617,
+      "covered_query_count": 40,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 40.0,
+      "eligible_nonoverlapping_5s_interval_count": 7,
+      "map_experiment_id": "20220715-4",
+      "map_resampled_count": 221,
+      "nearest_distance_max_m": 29.40532011618566,
+      "nearest_distance_median_m": 7.238169299588538,
+      "nearest_distance_q95_m": 29.15010587061289,
+      "overlap_status": "FAIL",
+      "query_count": 94,
+      "query_experiment_id": "20220715-2",
+      "query_resampled_segment_count": 6,
+      "total_covered_duration_s": 40.0
+    },
+    {
+      "contiguous_covered_intervals": [],
+      "coverage_fraction": 0.0,
+      "covered_query_count": 0,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 0.0,
+      "eligible_nonoverlapping_5s_interval_count": 0,
+      "map_experiment_id": "20220715-4",
+      "map_resampled_count": 221,
+      "nearest_distance_max_m": 41.3107208873339,
+      "nearest_distance_median_m": 22.618067547943312,
+      "nearest_distance_q95_m": 40.93920584895099,
+      "overlap_status": "FAIL",
+      "query_count": 70,
+      "query_experiment_id": "20220715-3",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 0.0
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-1",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-2",
+      "total_covered_duration_s": ""
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-1",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-3",
+      "total_covered_duration_s": ""
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-1",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-4",
+      "total_covered_duration_s": ""
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-1",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-5",
+      "total_covered_duration_s": ""
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-2",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-1",
+      "total_covered_duration_s": ""
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 8.0,
+          "end_time": 1653337713.9931457,
+          "sample_count": 8,
+          "segment_id": 0,
+          "start_time": 1653337705.9931457
+        },
+        {
+          "duration_s": 104.0,
+          "end_time": 1653337834.6293972,
+          "sample_count": 104,
+          "segment_id": 1,
+          "start_time": 1653337730.6293972
+        },
+        {
+          "duration_s": 17.0,
+          "end_time": 1653337856.7774699,
+          "sample_count": 17,
+          "segment_id": 2,
+          "start_time": 1653337839.7774699
+        },
+        {
+          "duration_s": 106.0,
+          "end_time": 1653337980.628125,
+          "sample_count": 106,
+          "segment_id": 3,
+          "start_time": 1653337874.628125
+        },
+        {
+          "duration_s": 15.0,
+          "end_time": 1653338026.0310752,
+          "sample_count": 15,
+          "segment_id": 4,
+          "start_time": 1653338011.0310752
+        },
+        {
+          "duration_s": 34.0,
+          "end_time": 1653338076.9798353,
+          "sample_count": 34,
+          "segment_id": 5,
+          "start_time": 1653338042.9798353
+        },
+        {
+          "duration_s": 27.0,
+          "end_time": 1653338108.3807116,
+          "sample_count": 27,
+          "segment_id": 6,
+          "start_time": 1653338081.3807116
+        },
+        {
+          "duration_s": 31.0,
+          "end_time": 1653338148.0315316,
+          "sample_count": 31,
+          "segment_id": 7,
+          "start_time": 1653338117.0315316
+        },
+        {
+          "duration_s": 13.0,
+          "end_time": 1653338166.029862,
+          "sample_count": 13,
+          "segment_id": 8,
+          "start_time": 1653338153.029862
+        },
+        {
+          "duration_s": 13.0,
+          "end_time": 1653338188.0310266,
+          "sample_count": 13,
+          "segment_id": 9,
+          "start_time": 1653338175.0310266
+        },
+        {
+          "duration_s": 8.0,
+          "end_time": 1653338226.2303503,
+          "sample_count": 8,
+          "segment_id": 10,
+          "start_time": 1653338218.2303503
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 376,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 376.0,
+      "eligible_nonoverlapping_5s_interval_count": 70,
+      "map_experiment_id": "20220717-2",
+      "map_resampled_count": 441,
+      "nearest_distance_max_m": 2.5609009286000273,
+      "nearest_distance_median_m": 0.21652766063627502,
+      "nearest_distance_q95_m": 1.0668553790883641,
+      "overlap_status": "PASS",
+      "query_count": 376,
+      "query_experiment_id": "20220717-3",
+      "query_resampled_segment_count": 11,
+      "total_covered_duration_s": 376.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 25.0,
+          "end_time": 1653339208.0358827,
+          "sample_count": 25,
+          "segment_id": 0,
+          "start_time": 1653339183.0358827
+        },
+        {
+          "duration_s": 11.0,
+          "end_time": 1653339227.6354764,
+          "sample_count": 11,
+          "segment_id": 1,
+          "start_time": 1653339216.6354764
+        },
+        {
+          "duration_s": 43.0,
+          "end_time": 1653339275.6366026,
+          "sample_count": 43,
+          "segment_id": 2,
+          "start_time": 1653339232.6366026
+        },
+        {
+          "duration_s": 252.0,
+          "end_time": 1653339544.6362758,
+          "sample_count": 252,
+          "segment_id": 3,
+          "start_time": 1653339292.6362758
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339571.6366518,
+          "sample_count": 7,
+          "segment_id": 4,
+          "start_time": 1653339564.6366518
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339588.4372523,
+          "sample_count": 7,
+          "segment_id": 5,
+          "start_time": 1653339581.4372523
+        },
+        {
+          "duration_s": 40.0,
+          "end_time": 1653339650.2391438,
+          "sample_count": 40,
+          "segment_id": 6,
+          "start_time": 1653339610.2391438
+        },
+        {
+          "duration_s": 62.0,
+          "end_time": 1653339716.4099925,
+          "sample_count": 62,
+          "segment_id": 7,
+          "start_time": 1653339654.4099925
+        },
+        {
+          "duration_s": 63.0,
+          "end_time": 1653339783.810399,
+          "sample_count": 63,
+          "segment_id": 8,
+          "start_time": 1653339720.810399
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339828.0394917,
+          "sample_count": 7,
+          "segment_id": 9,
+          "start_time": 1653339821.0394917
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 517,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 517.0,
+      "eligible_nonoverlapping_5s_interval_count": 100,
+      "map_experiment_id": "20220717-2",
+      "map_resampled_count": 441,
+      "nearest_distance_max_m": 2.5651101977189628,
+      "nearest_distance_median_m": 0.23741153460316672,
+      "nearest_distance_q95_m": 1.1729156480927907,
+      "overlap_status": "PASS",
+      "query_count": 517,
+      "query_experiment_id": "20220717-4",
+      "query_resampled_segment_count": 10,
+      "total_covered_duration_s": 517.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 185.0,
+          "end_time": 1653340773.5421183,
+          "sample_count": 185,
+          "segment_id": 0,
+          "start_time": 1653340588.5421183
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 185,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 185.0,
+      "eligible_nonoverlapping_5s_interval_count": 37,
+      "map_experiment_id": "20220717-2",
+      "map_resampled_count": 441,
+      "nearest_distance_max_m": 2.0989144964553805,
+      "nearest_distance_median_m": 0.4569829419489375,
+      "nearest_distance_q95_m": 0.8692891046993476,
+      "overlap_status": "PASS",
+      "query_count": 185,
+      "query_experiment_id": "20220717-5",
+      "query_resampled_segment_count": 1,
+      "total_covered_duration_s": 185.0
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-3",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-1",
+      "total_covered_duration_s": ""
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 14.0,
+          "end_time": 1653336087.1745276,
+          "sample_count": 14,
+          "segment_id": 0,
+          "start_time": 1653336073.1745276
+        },
+        {
+          "duration_s": 59.0,
+          "end_time": 1653336152.0228794,
+          "sample_count": 59,
+          "segment_id": 1,
+          "start_time": 1653336093.0228794
+        },
+        {
+          "duration_s": 46.0,
+          "end_time": 1653336214.5553777,
+          "sample_count": 46,
+          "segment_id": 2,
+          "start_time": 1653336168.5553777
+        },
+        {
+          "duration_s": 40.0,
+          "end_time": 1653336263.0236883,
+          "sample_count": 40,
+          "segment_id": 3,
+          "start_time": 1653336223.0236883
+        },
+        {
+          "duration_s": 35.0,
+          "end_time": 1653336308.0242064,
+          "sample_count": 35,
+          "segment_id": 4,
+          "start_time": 1653336273.0242064
+        },
+        {
+          "duration_s": 15.0,
+          "end_time": 1653336335.557337,
+          "sample_count": 15,
+          "segment_id": 5,
+          "start_time": 1653336320.557337
+        },
+        {
+          "duration_s": 42.0,
+          "end_time": 1653336393.0241904,
+          "sample_count": 42,
+          "segment_id": 6,
+          "start_time": 1653336351.0241904
+        },
+        {
+          "duration_s": 28.0,
+          "end_time": 1653336439.1783283,
+          "sample_count": 28,
+          "segment_id": 7,
+          "start_time": 1653336411.1783283
+        },
+        {
+          "duration_s": 8.0,
+          "end_time": 1653336464.2255013,
+          "sample_count": 8,
+          "segment_id": 8,
+          "start_time": 1653336456.2255013
+        },
+        {
+          "duration_s": 47.0,
+          "end_time": 1653336528.3604386,
+          "sample_count": 47,
+          "segment_id": 9,
+          "start_time": 1653336481.3604386
+        },
+        {
+          "duration_s": 22.0,
+          "end_time": 1653336559.4258366,
+          "sample_count": 22,
+          "segment_id": 10,
+          "start_time": 1653336537.4258366
+        },
+        {
+          "duration_s": 37.0,
+          "end_time": 1653336604.0258749,
+          "sample_count": 37,
+          "segment_id": 11,
+          "start_time": 1653336567.0258749
+        },
+        {
+          "duration_s": 48.0,
+          "end_time": 1653336657.4243042,
+          "sample_count": 48,
+          "segment_id": 12,
+          "start_time": 1653336609.4243042
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 441,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 441.0,
+      "eligible_nonoverlapping_5s_interval_count": 83,
+      "map_experiment_id": "20220717-3",
+      "map_resampled_count": 376,
+      "nearest_distance_max_m": 4.130782108172119,
+      "nearest_distance_median_m": 0.2361217199034382,
+      "nearest_distance_q95_m": 0.8767495262715015,
+      "overlap_status": "PASS",
+      "query_count": 441,
+      "query_experiment_id": "20220717-2",
+      "query_resampled_segment_count": 13,
+      "total_covered_duration_s": 441.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 25.0,
+          "end_time": 1653339208.0358827,
+          "sample_count": 25,
+          "segment_id": 0,
+          "start_time": 1653339183.0358827
+        },
+        {
+          "duration_s": 11.0,
+          "end_time": 1653339227.6354764,
+          "sample_count": 11,
+          "segment_id": 1,
+          "start_time": 1653339216.6354764
+        },
+        {
+          "duration_s": 43.0,
+          "end_time": 1653339275.6366026,
+          "sample_count": 43,
+          "segment_id": 2,
+          "start_time": 1653339232.6366026
+        },
+        {
+          "duration_s": 252.0,
+          "end_time": 1653339544.6362758,
+          "sample_count": 252,
+          "segment_id": 3,
+          "start_time": 1653339292.6362758
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339571.6366518,
+          "sample_count": 7,
+          "segment_id": 4,
+          "start_time": 1653339564.6366518
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339588.4372523,
+          "sample_count": 7,
+          "segment_id": 5,
+          "start_time": 1653339581.4372523
+        },
+        {
+          "duration_s": 40.0,
+          "end_time": 1653339650.2391438,
+          "sample_count": 40,
+          "segment_id": 6,
+          "start_time": 1653339610.2391438
+        },
+        {
+          "duration_s": 62.0,
+          "end_time": 1653339716.4099925,
+          "sample_count": 62,
+          "segment_id": 7,
+          "start_time": 1653339654.4099925
+        },
+        {
+          "duration_s": 63.0,
+          "end_time": 1653339783.810399,
+          "sample_count": 63,
+          "segment_id": 8,
+          "start_time": 1653339720.810399
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339828.0394917,
+          "sample_count": 7,
+          "segment_id": 9,
+          "start_time": 1653339821.0394917
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 517,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 517.0,
+      "eligible_nonoverlapping_5s_interval_count": 100,
+      "map_experiment_id": "20220717-3",
+      "map_resampled_count": 376,
+      "nearest_distance_max_m": 4.3164306401857155,
+      "nearest_distance_median_m": 0.24883288830532763,
+      "nearest_distance_q95_m": 0.9542179069497277,
+      "overlap_status": "PASS",
+      "query_count": 517,
+      "query_experiment_id": "20220717-4",
+      "query_resampled_segment_count": 10,
+      "total_covered_duration_s": 517.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 185.0,
+          "end_time": 1653340773.5421183,
+          "sample_count": 185,
+          "segment_id": 0,
+          "start_time": 1653340588.5421183
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 185,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 185.0,
+      "eligible_nonoverlapping_5s_interval_count": 37,
+      "map_experiment_id": "20220717-3",
+      "map_resampled_count": 376,
+      "nearest_distance_max_m": 3.564487009589852,
+      "nearest_distance_median_m": 0.47698843139676816,
+      "nearest_distance_q95_m": 0.8715236339095779,
+      "overlap_status": "PASS",
+      "query_count": 185,
+      "query_experiment_id": "20220717-5",
+      "query_resampled_segment_count": 1,
+      "total_covered_duration_s": 185.0
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-4",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-1",
+      "total_covered_duration_s": ""
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 14.0,
+          "end_time": 1653336087.1745276,
+          "sample_count": 14,
+          "segment_id": 0,
+          "start_time": 1653336073.1745276
+        },
+        {
+          "duration_s": 59.0,
+          "end_time": 1653336152.0228794,
+          "sample_count": 59,
+          "segment_id": 1,
+          "start_time": 1653336093.0228794
+        },
+        {
+          "duration_s": 46.0,
+          "end_time": 1653336214.5553777,
+          "sample_count": 46,
+          "segment_id": 2,
+          "start_time": 1653336168.5553777
+        },
+        {
+          "duration_s": 40.0,
+          "end_time": 1653336263.0236883,
+          "sample_count": 40,
+          "segment_id": 3,
+          "start_time": 1653336223.0236883
+        },
+        {
+          "duration_s": 35.0,
+          "end_time": 1653336308.0242064,
+          "sample_count": 35,
+          "segment_id": 4,
+          "start_time": 1653336273.0242064
+        },
+        {
+          "duration_s": 15.0,
+          "end_time": 1653336335.557337,
+          "sample_count": 15,
+          "segment_id": 5,
+          "start_time": 1653336320.557337
+        },
+        {
+          "duration_s": 42.0,
+          "end_time": 1653336393.0241904,
+          "sample_count": 42,
+          "segment_id": 6,
+          "start_time": 1653336351.0241904
+        },
+        {
+          "duration_s": 28.0,
+          "end_time": 1653336439.1783283,
+          "sample_count": 28,
+          "segment_id": 7,
+          "start_time": 1653336411.1783283
+        },
+        {
+          "duration_s": 8.0,
+          "end_time": 1653336464.2255013,
+          "sample_count": 8,
+          "segment_id": 8,
+          "start_time": 1653336456.2255013
+        },
+        {
+          "duration_s": 47.0,
+          "end_time": 1653336528.3604386,
+          "sample_count": 47,
+          "segment_id": 9,
+          "start_time": 1653336481.3604386
+        },
+        {
+          "duration_s": 22.0,
+          "end_time": 1653336559.4258366,
+          "sample_count": 22,
+          "segment_id": 10,
+          "start_time": 1653336537.4258366
+        },
+        {
+          "duration_s": 37.0,
+          "end_time": 1653336604.0258749,
+          "sample_count": 37,
+          "segment_id": 11,
+          "start_time": 1653336567.0258749
+        },
+        {
+          "duration_s": 48.0,
+          "end_time": 1653336657.4243042,
+          "sample_count": 48,
+          "segment_id": 12,
+          "start_time": 1653336609.4243042
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 441,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 441.0,
+      "eligible_nonoverlapping_5s_interval_count": 83,
+      "map_experiment_id": "20220717-4",
+      "map_resampled_count": 517,
+      "nearest_distance_max_m": 1.13470195547017,
+      "nearest_distance_median_m": 0.2155151891644312,
+      "nearest_distance_q95_m": 0.429197438038688,
+      "overlap_status": "PASS",
+      "query_count": 441,
+      "query_experiment_id": "20220717-2",
+      "query_resampled_segment_count": 13,
+      "total_covered_duration_s": 441.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 8.0,
+          "end_time": 1653337713.9931457,
+          "sample_count": 8,
+          "segment_id": 0,
+          "start_time": 1653337705.9931457
+        },
+        {
+          "duration_s": 104.0,
+          "end_time": 1653337834.6293972,
+          "sample_count": 104,
+          "segment_id": 1,
+          "start_time": 1653337730.6293972
+        },
+        {
+          "duration_s": 17.0,
+          "end_time": 1653337856.7774699,
+          "sample_count": 17,
+          "segment_id": 2,
+          "start_time": 1653337839.7774699
+        },
+        {
+          "duration_s": 106.0,
+          "end_time": 1653337980.628125,
+          "sample_count": 106,
+          "segment_id": 3,
+          "start_time": 1653337874.628125
+        },
+        {
+          "duration_s": 15.0,
+          "end_time": 1653338026.0310752,
+          "sample_count": 15,
+          "segment_id": 4,
+          "start_time": 1653338011.0310752
+        },
+        {
+          "duration_s": 34.0,
+          "end_time": 1653338076.9798353,
+          "sample_count": 34,
+          "segment_id": 5,
+          "start_time": 1653338042.9798353
+        },
+        {
+          "duration_s": 27.0,
+          "end_time": 1653338108.3807116,
+          "sample_count": 27,
+          "segment_id": 6,
+          "start_time": 1653338081.3807116
+        },
+        {
+          "duration_s": 31.0,
+          "end_time": 1653338148.0315316,
+          "sample_count": 31,
+          "segment_id": 7,
+          "start_time": 1653338117.0315316
+        },
+        {
+          "duration_s": 13.0,
+          "end_time": 1653338166.029862,
+          "sample_count": 13,
+          "segment_id": 8,
+          "start_time": 1653338153.029862
+        },
+        {
+          "duration_s": 13.0,
+          "end_time": 1653338188.0310266,
+          "sample_count": 13,
+          "segment_id": 9,
+          "start_time": 1653338175.0310266
+        },
+        {
+          "duration_s": 8.0,
+          "end_time": 1653338226.2303503,
+          "sample_count": 8,
+          "segment_id": 10,
+          "start_time": 1653338218.2303503
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 376,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 376.0,
+      "eligible_nonoverlapping_5s_interval_count": 70,
+      "map_experiment_id": "20220717-4",
+      "map_resampled_count": 517,
+      "nearest_distance_max_m": 0.9910773261926905,
+      "nearest_distance_median_m": 0.2282993496176582,
+      "nearest_distance_q95_m": 0.43206059154949417,
+      "overlap_status": "PASS",
+      "query_count": 376,
+      "query_experiment_id": "20220717-3",
+      "query_resampled_segment_count": 11,
+      "total_covered_duration_s": 376.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 185.0,
+          "end_time": 1653340773.5421183,
+          "sample_count": 185,
+          "segment_id": 0,
+          "start_time": 1653340588.5421183
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 185,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 185.0,
+      "eligible_nonoverlapping_5s_interval_count": 37,
+      "map_experiment_id": "20220717-4",
+      "map_resampled_count": 517,
+      "nearest_distance_max_m": 1.34244790021203,
+      "nearest_distance_median_m": 0.38569819749942347,
+      "nearest_distance_q95_m": 0.6556444335914929,
+      "overlap_status": "PASS",
+      "query_count": 185,
+      "query_experiment_id": "20220717-5",
+      "query_resampled_segment_count": 1,
+      "total_covered_duration_s": 185.0
+    },
+    {
+      "coverage_fraction": "",
+      "covered_query_count": "",
+      "deployment": "Tunnel",
+      "eligible_nonoverlapping_5s_interval_count": "",
+      "failure_reason": "EMPTY_OR_MISSING_REFERENCE_PRISM_FILE",
+      "map_experiment_id": "20220717-5",
+      "overlap_status": "NOT_COMPUTABLE",
+      "query_count": "",
+      "query_experiment_id": "20220717-1",
+      "total_covered_duration_s": ""
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 51.0,
+          "end_time": 1653336152.0228794,
+          "sample_count": 51,
+          "segment_id": 1,
+          "start_time": 1653336101.0228794
+        },
+        {
+          "duration_s": 46.0,
+          "end_time": 1653336214.5553777,
+          "sample_count": 46,
+          "segment_id": 2,
+          "start_time": 1653336168.5553777
+        },
+        {
+          "duration_s": 40.0,
+          "end_time": 1653336263.0236883,
+          "sample_count": 40,
+          "segment_id": 3,
+          "start_time": 1653336223.0236883
+        },
+        {
+          "duration_s": 26.0,
+          "end_time": 1653336299.0242064,
+          "sample_count": 26,
+          "segment_id": 4,
+          "start_time": 1653336273.0242064
+        },
+        {
+          "duration_s": 8.0,
+          "end_time": 1653336464.2255013,
+          "sample_count": 8,
+          "segment_id": 8,
+          "start_time": 1653336456.2255013
+        },
+        {
+          "duration_s": 47.0,
+          "end_time": 1653336528.3604386,
+          "sample_count": 47,
+          "segment_id": 9,
+          "start_time": 1653336481.3604386
+        },
+        {
+          "duration_s": 22.0,
+          "end_time": 1653336559.4258366,
+          "sample_count": 22,
+          "segment_id": 10,
+          "start_time": 1653336537.4258366
+        },
+        {
+          "duration_s": 37.0,
+          "end_time": 1653336604.0258749,
+          "sample_count": 37,
+          "segment_id": 11,
+          "start_time": 1653336567.0258749
+        },
+        {
+          "duration_s": 48.0,
+          "end_time": 1653336657.4243042,
+          "sample_count": 48,
+          "segment_id": 12,
+          "start_time": 1653336609.4243042
+        }
+      ],
+      "coverage_fraction": 0.7369614512471655,
+      "covered_query_count": 325,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 325.0,
+      "eligible_nonoverlapping_5s_interval_count": 62,
+      "map_experiment_id": "20220717-5",
+      "map_resampled_count": 185,
+      "nearest_distance_max_m": 36.90591323142459,
+      "nearest_distance_median_m": 0.6082312460899797,
+      "nearest_distance_q95_m": 33.58247530270507,
+      "overlap_status": "PASS",
+      "query_count": 441,
+      "query_experiment_id": "20220717-2",
+      "query_resampled_segment_count": 13,
+      "total_covered_duration_s": 325.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 104.0,
+          "end_time": 1653337834.6293972,
+          "sample_count": 104,
+          "segment_id": 1,
+          "start_time": 1653337730.6293972
+        },
+        {
+          "duration_s": 17.0,
+          "end_time": 1653337856.7774699,
+          "sample_count": 17,
+          "segment_id": 2,
+          "start_time": 1653337839.7774699
+        },
+        {
+          "duration_s": 55.0,
+          "end_time": 1653337929.628125,
+          "sample_count": 55,
+          "segment_id": 3,
+          "start_time": 1653337874.628125
+        },
+        {
+          "duration_s": 28.0,
+          "end_time": 1653338076.9798353,
+          "sample_count": 28,
+          "segment_id": 5,
+          "start_time": 1653338048.9798353
+        },
+        {
+          "duration_s": 27.0,
+          "end_time": 1653338108.3807116,
+          "sample_count": 27,
+          "segment_id": 6,
+          "start_time": 1653338081.3807116
+        },
+        {
+          "duration_s": 31.0,
+          "end_time": 1653338148.0315316,
+          "sample_count": 31,
+          "segment_id": 7,
+          "start_time": 1653338117.0315316
+        },
+        {
+          "duration_s": 13.0,
+          "end_time": 1653338166.029862,
+          "sample_count": 13,
+          "segment_id": 8,
+          "start_time": 1653338153.029862
+        },
+        {
+          "duration_s": 13.0,
+          "end_time": 1653338188.0310266,
+          "sample_count": 13,
+          "segment_id": 9,
+          "start_time": 1653338175.0310266
+        },
+        {
+          "duration_s": 8.0,
+          "end_time": 1653338226.2303503,
+          "sample_count": 8,
+          "segment_id": 10,
+          "start_time": 1653338218.2303503
+        }
+      ],
+      "coverage_fraction": 0.7872340425531915,
+      "covered_query_count": 296,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 296.0,
+      "eligible_nonoverlapping_5s_interval_count": 55,
+      "map_experiment_id": "20220717-5",
+      "map_resampled_count": 185,
+      "nearest_distance_max_m": 36.62721230902941,
+      "nearest_distance_median_m": 0.5863126639505747,
+      "nearest_distance_q95_m": 29.686564067404504,
+      "overlap_status": "PASS",
+      "query_count": 376,
+      "query_experiment_id": "20220717-3",
+      "query_resampled_segment_count": 11,
+      "total_covered_duration_s": 296.0
+    },
+    {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 35.0,
+          "end_time": 1653339275.6366026,
+          "sample_count": 35,
+          "segment_id": 2,
+          "start_time": 1653339240.6366026
+        },
+        {
+          "duration_s": 152.0,
+          "end_time": 1653339444.6362758,
+          "sample_count": 152,
+          "segment_id": 3,
+          "start_time": 1653339292.6362758
+        },
+        {
+          "duration_s": 26.0,
+          "end_time": 1653339650.2391438,
+          "sample_count": 26,
+          "segment_id": 6,
+          "start_time": 1653339624.2391438
+        },
+        {
+          "duration_s": 62.0,
+          "end_time": 1653339716.4099925,
+          "sample_count": 62,
+          "segment_id": 7,
+          "start_time": 1653339654.4099925
+        },
+        {
+          "duration_s": 63.0,
+          "end_time": 1653339783.810399,
+          "sample_count": 63,
+          "segment_id": 8,
+          "start_time": 1653339720.810399
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339828.0394917,
+          "sample_count": 7,
+          "segment_id": 9,
+          "start_time": 1653339821.0394917
+        }
+      ],
+      "coverage_fraction": 0.6673114119922631,
+      "covered_query_count": 345,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 345.0,
+      "eligible_nonoverlapping_5s_interval_count": 67,
+      "map_experiment_id": "20220717-5",
+      "map_resampled_count": 185,
+      "nearest_distance_max_m": 37.32450281095121,
+      "nearest_distance_median_m": 0.6484811915694224,
+      "nearest_distance_q95_m": 34.156022629732014,
+      "overlap_status": "PASS",
+      "query_count": 517,
+      "query_experiment_id": "20220717-4",
+      "query_resampled_segment_count": 10,
+      "total_covered_duration_s": 345.0
+    }
+  ],
+  "registration_output_consulted": false,
+  "selected_pairs": {
+    "Campus": {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 77.0,
+          "end_time": 1657910626.1038284,
+          "sample_count": 77,
+          "segment_id": 0,
+          "start_time": 1657910549.1038284
+        },
+        {
+          "duration_s": 9.0,
+          "end_time": 1657910640.1044946,
+          "sample_count": 9,
+          "segment_id": 1,
+          "start_time": 1657910631.1044946
+        },
+        {
+          "duration_s": 30.0,
+          "end_time": 1657910686.7050147,
+          "sample_count": 30,
+          "segment_id": 2,
+          "start_time": 1657910656.7050147
+        },
+        {
+          "duration_s": 105.0,
+          "end_time": 1657910796.5032346,
+          "sample_count": 105,
+          "segment_id": 3,
+          "start_time": 1657910691.5032346
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 221,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 221.0,
+      "eligible_nonoverlapping_5s_interval_count": 43,
+      "map_experiment_id": "20220715-1",
+      "map_resampled_count": 151,
+      "nearest_distance_max_m": 2.9035243002310414,
+      "nearest_distance_median_m": 2.9030138566841743,
+      "nearest_distance_q95_m": 2.9033497930164622,
+      "overlap_status": "PASS",
+      "query_count": 221,
+      "query_experiment_id": "20220715-4",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 221.0
+    },
+    "Tunnel": {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 25.0,
+          "end_time": 1653339208.0358827,
+          "sample_count": 25,
+          "segment_id": 0,
+          "start_time": 1653339183.0358827
+        },
+        {
+          "duration_s": 11.0,
+          "end_time": 1653339227.6354764,
+          "sample_count": 11,
+          "segment_id": 1,
+          "start_time": 1653339216.6354764
+        },
+        {
+          "duration_s": 43.0,
+          "end_time": 1653339275.6366026,
+          "sample_count": 43,
+          "segment_id": 2,
+          "start_time": 1653339232.6366026
+        },
+        {
+          "duration_s": 252.0,
+          "end_time": 1653339544.6362758,
+          "sample_count": 252,
+          "segment_id": 3,
+          "start_time": 1653339292.6362758
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339571.6366518,
+          "sample_count": 7,
+          "segment_id": 4,
+          "start_time": 1653339564.6366518
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339588.4372523,
+          "sample_count": 7,
+          "segment_id": 5,
+          "start_time": 1653339581.4372523
+        },
+        {
+          "duration_s": 40.0,
+          "end_time": 1653339650.2391438,
+          "sample_count": 40,
+          "segment_id": 6,
+          "start_time": 1653339610.2391438
+        },
+        {
+          "duration_s": 62.0,
+          "end_time": 1653339716.4099925,
+          "sample_count": 62,
+          "segment_id": 7,
+          "start_time": 1653339654.4099925
+        },
+        {
+          "duration_s": 63.0,
+          "end_time": 1653339783.810399,
+          "sample_count": 63,
+          "segment_id": 8,
+          "start_time": 1653339720.810399
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339828.0394917,
+          "sample_count": 7,
+          "segment_id": 9,
+          "start_time": 1653339821.0394917
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 517,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 517.0,
+      "eligible_nonoverlapping_5s_interval_count": 100,
+      "map_experiment_id": "20220717-2",
+      "map_resampled_count": 441,
+      "nearest_distance_max_m": 2.5651101977189628,
+      "nearest_distance_median_m": 0.23741153460316672,
+      "nearest_distance_q95_m": 1.1729156480927907,
+      "overlap_status": "PASS",
+      "query_count": 517,
+      "query_experiment_id": "20220717-4",
+      "query_resampled_segment_count": 10,
+      "total_covered_duration_s": 517.0
+    }
+  },
+  "sorting_rule": [
+    "total_covered_duration_s descending",
+    "coverage_fraction descending",
+    "eligible_nonoverlapping_5s_interval_count descending",
+    "map then query experiment ID lexicographic"
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "answers": [
+    "第一次失败数据释放 73.676959744 GB（68.617 GiB）。",
+    "RTS-GT 当前本地占用 0.231616512 GB（含 partial-clone Git 对象；无 LiDAR payload）。",
+    "Tunnel 审计 20220717-1..5；GT-overlap 最优候选为 20220717-2 map → 20220717-4 query，exp1 参考文件为空。",
+    "Campus 审计 20220715-1..4；GT-overlap 最优候选为 20220715-1 map → 20220715-4 query。",
+    "是；同一 deployment 的官方 GCP/control 文件逐字节一致，且没有做轨迹或点云拟合。",
+    "Tunnel GT-only overlap PASS。",
+    "Campus GT-only overlap PASS。",
+    "R02 PASS：同步、非共线的三棱镜 RTS 轨迹可独立构造 prism-rig 6DoF；但 LiDAR 变换链在 R05 失败。",
+    "否；Stage 1 失败，weak=0、rich=0、snapshot=0。",
+    "R02=PASS，R03=PASS_CANDIDATE，R04=PASS，R05=FAIL，R06–R08=BLOCKED_STAGE1，R09=PASS，R10=FAIL。",
+    "R14 未完成（BLOCKED_STAGE1），没有 interval 可冻结。",
+    "是；Open3D=0、PCL CLI=0、其他 registration process=0、registration execution=0。",
+    "否；SINGLE_DATASET_PREREGISTRATION_READY=false。",
+    "主要阻塞是 R05：官方 release 缺 sensor_positions/LiDAR 外参，并且 Tunnel 目录日期与参考轨迹时间戳冲突。",
+    "暂不值得立即下载第二数据集；应先向 RTS-GT 发布方取得可认证外参与 Tunnel 时间/版本说明，否则当前 RTS-GT 无法完成 R05/R10。"
+  ],
+  "eligibility": {
+    "GT_ONLY_OVERLAP": {
+      "Campus": "PASS",
+      "Tunnel": "PASS",
+      "status": "PASS"
+    },
+    "R01": "PENDING_SECOND_DATASET",
+    "R02": "PASS",
+    "R03": "PASS_CANDIDATE",
+    "R04": "PASS",
+    "R05": "FAIL",
+    "R06": "BLOCKED_STAGE1",
+    "R07": "BLOCKED_STAGE1",
+    "R08": "BLOCKED_STAGE1",
+    "R09": "PASS",
+    "R10": "FAIL",
+    "R14": "BLOCKED_STAGE1",
+    "actual_trials": 0,
+    "candidate_gate_status": {
+      "GT_ONLY_OVERLAP": "PASS",
+      "R02_candidate": "PASS",
+      "R03_candidate": "PASS",
+      "R04_candidate": "PASS",
+      "R05_candidate": "FAIL"
+    },
+    "large_lidar_download_authorized": false,
+    "planned_future_trials": 0,
+    "planned_future_trials_if_100_snapshots_had_frozen": 200,
+    "primary_blocker": "R05: released transform/time chain is not auditable (missing sensor_positions/LiDAR extrinsic, plus Tunnel release date/timestamp conflict)",
+    "rich_snapshot_count": 0,
+    "single_dataset_preregistration_ready": false,
+    "snapshot_count": 0,
+    "stage1_status": "FAIL_STOPPED_BEFORE_LIDAR_DOWNLOAD",
+    "weak_snapshot_count": 0
+  },
+  "measurement_paper_mainline_authorized": false,
+  "real_data_run_authorized": false,
+  "selected_gt_only_pairs": {
+    "Campus": {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 77.0,
+          "end_time": 1657910626.1038284,
+          "sample_count": 77,
+          "segment_id": 0,
+          "start_time": 1657910549.1038284
+        },
+        {
+          "duration_s": 9.0,
+          "end_time": 1657910640.1044946,
+          "sample_count": 9,
+          "segment_id": 1,
+          "start_time": 1657910631.1044946
+        },
+        {
+          "duration_s": 30.0,
+          "end_time": 1657910686.7050147,
+          "sample_count": 30,
+          "segment_id": 2,
+          "start_time": 1657910656.7050147
+        },
+        {
+          "duration_s": 105.0,
+          "end_time": 1657910796.5032346,
+          "sample_count": 105,
+          "segment_id": 3,
+          "start_time": 1657910691.5032346
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 221,
+      "deployment": "Campus",
+      "eligible_covered_duration_s": 221.0,
+      "eligible_nonoverlapping_5s_interval_count": 43,
+      "map_experiment_id": "20220715-1",
+      "map_resampled_count": 151,
+      "nearest_distance_max_m": 2.9035243002310414,
+      "nearest_distance_median_m": 2.9030138566841743,
+      "nearest_distance_q95_m": 2.9033497930164622,
+      "overlap_status": "PASS",
+      "query_count": 221,
+      "query_experiment_id": "20220715-4",
+      "query_resampled_segment_count": 4,
+      "total_covered_duration_s": 221.0
+    },
+    "Tunnel": {
+      "contiguous_covered_intervals": [
+        {
+          "duration_s": 25.0,
+          "end_time": 1653339208.0358827,
+          "sample_count": 25,
+          "segment_id": 0,
+          "start_time": 1653339183.0358827
+        },
+        {
+          "duration_s": 11.0,
+          "end_time": 1653339227.6354764,
+          "sample_count": 11,
+          "segment_id": 1,
+          "start_time": 1653339216.6354764
+        },
+        {
+          "duration_s": 43.0,
+          "end_time": 1653339275.6366026,
+          "sample_count": 43,
+          "segment_id": 2,
+          "start_time": 1653339232.6366026
+        },
+        {
+          "duration_s": 252.0,
+          "end_time": 1653339544.6362758,
+          "sample_count": 252,
+          "segment_id": 3,
+          "start_time": 1653339292.6362758
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339571.6366518,
+          "sample_count": 7,
+          "segment_id": 4,
+          "start_time": 1653339564.6366518
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339588.4372523,
+          "sample_count": 7,
+          "segment_id": 5,
+          "start_time": 1653339581.4372523
+        },
+        {
+          "duration_s": 40.0,
+          "end_time": 1653339650.2391438,
+          "sample_count": 40,
+          "segment_id": 6,
+          "start_time": 1653339610.2391438
+        },
+        {
+          "duration_s": 62.0,
+          "end_time": 1653339716.4099925,
+          "sample_count": 62,
+          "segment_id": 7,
+          "start_time": 1653339654.4099925
+        },
+        {
+          "duration_s": 63.0,
+          "end_time": 1653339783.810399,
+          "sample_count": 63,
+          "segment_id": 8,
+          "start_time": 1653339720.810399
+        },
+        {
+          "duration_s": 7.0,
+          "end_time": 1653339828.0394917,
+          "sample_count": 7,
+          "segment_id": 9,
+          "start_time": 1653339821.0394917
+        }
+      ],
+      "coverage_fraction": 1.0,
+      "covered_query_count": 517,
+      "deployment": "Tunnel",
+      "eligible_covered_duration_s": 517.0,
+      "eligible_nonoverlapping_5s_interval_count": 100,
+      "map_experiment_id": "20220717-2",
+      "map_resampled_count": 441,
+      "nearest_distance_max_m": 2.5651101977189628,
+      "nearest_distance_median_m": 0.23741153460316672,
+      "nearest_distance_q95_m": 1.1729156480927907,
+      "overlap_status": "PASS",
+      "query_count": 517,
+      "query_experiment_id": "20220717-4",
+      "query_resampled_segment_count": 10,
+      "total_covered_duration_s": 517.0
+    }
+  },
+  "single_dataset_preregistration_ready": false
+}
