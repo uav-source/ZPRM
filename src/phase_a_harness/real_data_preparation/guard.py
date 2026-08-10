@@ -24,6 +24,8 @@ DENIED_PROCESS_TOKENS = (
     "kiss-icp",
     "genz_icp",
     "genz-icp",
+    "steam_icp",
+    "steam-icp",
     "rtabmap",
     "rtabmap_ros",
     "lio_sam",
@@ -42,6 +44,7 @@ DENIED_IMPORT_FRAGMENTS = (
     "synthetic_confirmatory_v3_runner",
     "open3d.pipelines.registration",
     "genz_icp",
+    "steam_icp",
     "rtabmap",
 )
 
