@@ -1,0 +1,326 @@
+{
+  "canonical_self_hash": {
+    "algorithm": "SHA256",
+    "encoding": "UTF-8_SORTED_KEYS_COMPACT_SEPARATORS_ENSURE_ASCII_FALSE_ALLOW_NAN_FALSE",
+    "excluded_field": "contract_payload_sha256"
+  },
+  "canonicalization": {
+    "future_backend_input_rule": "Open3D and PCL must consume the same content-addressed canonical source and target bundles",
+    "source_point_dtype": "LITTLE_ENDIAN_FLOAT64",
+    "source_point_layout": "C_CONTIGUOUS_N_BY_3",
+    "source_point_payload": "source_points.npy NPY_V1_0_ALLOW_PICKLE_FALSE",
+    "t_reference_direction": "SOURCE_LIDAR_AT_SCAN_MIDDLE_TO_TARGET_ENU_REF",
+    "t_reference_dtype": "LITTLE_ENDIAN_FLOAT64",
+    "t_reference_layout": "C_CONTIGUOUS_4_BY_4",
+    "t_reference_payload": "T_reference.npy NPY_V1_0_ALLOW_PICKLE_FALSE",
+    "target_point_dtype": "LITTLE_ENDIAN_FLOAT64",
+    "target_point_layout": "C_CONTIGUOUS_N_BY_3",
+    "target_point_payload": "target_points.npy NPY_V1_0_ALLOW_PICKLE_FALSE"
+  },
+  "contract_payload_sha256": "e1f89636946bad0d7d57af40a5a5dff4dfe37d92f0eea3c695c0672e2a0857b8",
+  "contract_status": "FROZEN",
+  "coordinate_convention": {
+    "applanix_frame": "PUBLISHED_APPLANIX_SENSOR_FRAME",
+    "axis_reinterpretation": "NONE",
+    "raw_source": "NATIVE_BOREAS_VELODYNE_LIDAR_XYZ",
+    "source_after_deskew": "NATIVE_LIDAR_FRAME_AT_SCAN_TEMPORAL_MIDDLE",
+    "target": "FIXED_ENU_REF_X_EAST_Y_NORTH_Z_UP",
+    "transform_composition": "T_ENU_lidar(t)=T_ENU_applanix(t)@T_applanix_lidar",
+    "transform_direction": "T_applanix_lidar maps native lidar coordinates into the Applanix frame"
+  },
+  "crop_policy": "NONE",
+  "deskew": {
+    "algorithm": "PYBOREAS_POINTCLOUD_REMOVE_MOTION_SORTED_TIMESTAMP_PATH_V1",
+    "bin_count": 21,
+    "body_rate_definition": "[v_x,v_y,v_z,w_x,w_y,w_z] in the scan-reference lidar frame; linear ENU velocity is rotated by transpose(T_ENU_lidar.R), angular fields use lidar_poses columns angvel_x,angvel_y,angvel_z",
+    "degenerate_timestamp_span_policy": "FAIL_CLOSED",
+    "enabled": true,
+    "independent_reference_inputs_only": [
+      "Applanix GNSS/IMU/wheel/RTX-derived official lidar_poses row",
+      "frozen static T_applanix_lidar provenance",
+      "per-point Velodyne time offset"
+    ],
+    "nondecreasing_point_timestamp_required": true,
+    "point_transform": "Exp((t_bin-t_ref)*body_rate_lidar)",
+    "reference_time": "SCAN_FILENAME_UTC_TEMPORAL_MIDDLE",
+    "sorted_path_interval_count": 20,
+    "sorted_path_rule": "uniform bins over retained point timestamp min/max; each interval uses its left-endpoint transform; the maximum timestamp enters interval 19; the 21st transform is not applied",
+    "uses_lidar_odometry": false,
+    "uses_registration": false
+  },
+  "dynamic_object_policy": "NONE_KEEP_ALL_FINITE_IN_RANGE_RETURNS_WITHOUT_SEMANTIC_OR_MOTION_LABEL_FILTERING",
+  "e02_documented_limitation": {
+    "adjudication": "PASS_WITH_DOCUMENTED_LIMITATION",
+    "calibration_date_or_session": "UNKNOWN",
+    "extrinsic_is_independent_of_all_historical_lidar": false,
+    "extrinsic_is_uncertainty_free": false,
+    "query_sequence_used_for_historical_calibration": "UNKNOWN",
+    "reference_trajectory_backbone_uses_lidar": false,
+    "reference_trajectory_backbone_uses_scan_matching": false,
+    "static_extrinsic_historical_provenance": "LIDAR_ASSISTED_APPLANIX_PROPRIETARY_BATCH_CALIBRATION",
+    "study_role": "SUPPLEMENTARY_EXTERNAL_GENERALIZATION_ONLY"
+  },
+  "evidence_bindings": {
+    "backend_parameter_contract": {
+      "file_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+      "path": "frozen_assets/backend_parameter_contract.json"
+    },
+    "boreas_paper": {
+      "file_sha256": "29531b5782937ded0a34cb2fd214a4f47c46bfcb6e28fa4b688cb2d14cb43ee8",
+      "path_from_boreas_stage1_data_root": "source_metadata/boreas_paper_2203.10168.pdf"
+    },
+    "common_association_analysis": {
+      "file_sha256": "458190c26d8640353004663474adb64305d1193d89ff0dc68f71f404de8f175d",
+      "path": "src/phase_a_harness/common_association_analysis.py"
+    },
+    "official_data_reference": {
+      "file_sha256": "66b597c4b83ef65b5433d71da909f636ba47be0ad7193d5034e8a55715555d1b",
+      "path_from_pyboreas_checkout": "DATA_REFERENCE.md"
+    },
+    "official_pyboreas_checkout": {
+      "commit": "e968198cd564ccfca5ad256624c80e0e584e7150",
+      "manifest_file_sha256": "1170ab8428dde9cdd2df862361386df275e9bcf76c78a9cc8856d3b5de4fd766",
+      "manifest_path": "frozen_assets/real_data_boreas_stage1_v1/pyboreas_source_manifest.json"
+    },
+    "official_pyboreas_lgmath": {
+      "file_sha256": "d0484c18267337e8b45cd23ed4adaf4755fb1e147b5d5254b390a4a52cfbc041",
+      "path_from_pyboreas_checkout": "pyboreas/utils/lgmath.py"
+    },
+    "official_pyboreas_pointcloud": {
+      "file_sha256": "c755cce9677afa9356ea1bd6a30461b496ae9a3c128c762e20bdf170033ce83b",
+      "path_from_pyboreas_checkout": "pyboreas/data/pointcloud.py"
+    },
+    "official_pyboreas_utils": {
+      "file_sha256": "f22893877b97dccdc0a97569b3dad204e3f0013a655aff4392eec5c58c8671c5",
+      "path_from_pyboreas_checkout": "pyboreas/utils/utils.py"
+    },
+    "public_data_v2_analysis_contract": {
+      "file_sha256": "462b3e5c0a9c78d161b7d40ff0187ba258efa42d06863aad1e512ebec0439e4a",
+      "path": "frozen_assets/public_data_external_validation_v2_boreas_stage1/public_data_external_validation_analysis_contract_v2.json"
+    },
+    "public_data_v2_protocol": {
+      "file_sha256": "9a367081dba37dd9dee8ca6c2d6ed9d83495475521672e2d9223c269947525d4",
+      "path": "frozen_assets/public_data_external_validation_v2_boreas_stage1/public_data_external_validation_protocol_v2.json"
+    },
+    "real_data_v1_preprocessing_prior": {
+      "embedded_contract_sha256": "537823a6419ce8f6bf3985250e12f1d28c4b7cf979d243d6dfac116508527ebe",
+      "file_sha256": "c0644c03c78df13cfcec34677662a47d8a344176d94cb2a3ac7f9c3e5c1297f7",
+      "path": "frozen_assets/real_data_validation_v1/real_data_preprocessing_contract_v1.json",
+      "status": "FROZEN_BUT_NOT_EXECUTED_DUE_TO_ELIGIBILITY_FAILURE"
+    },
+    "stage1_allowlist": {
+      "file_sha256": "26ac211c854472dcb3db2f1cd5b096849bfd27867bac34e75bc8ce0d01bb2787",
+      "path": "frozen_assets/public_data_external_validation_v2_boreas_stage1/boreas_v2_stage2_download_allowlist.csv"
+    },
+    "stage1_eligible_reference_inventory": {
+      "file_sha256": "645eadd79a5c2f65279e84de3735e8084cab035fbc851aa67023ff1501033b82",
+      "path": "frozen_assets/real_data_boreas_stage1_v1/eligible_reference_sequences.csv"
+    },
+    "stage1_extrinsic_provenance": {
+      "file_sha256": "fda2be032b760caefdc8db89619a9d47c7deec1a513b72f7714c01f5791a9cf0",
+      "path": "frozen_assets/real_data_boreas_stage1_v1/boreas_lidar_extrinsic_provenance.json"
+    },
+    "stage1_reference_provenance": {
+      "file_sha256": "0c1059705ebbaedd8d45d363db83cd8cd6ed1bb38679eb9dbefb94d93010ad9d",
+      "path": "frozen_assets/real_data_boreas_stage1_v1/boreas_reference_trajectory_provenance.json"
+    },
+    "stage1_time_audit": {
+      "file_sha256": "e252573f6f4c52de26e185262d04c007bc4a2a4e3f4fbea0b92c39798763e661",
+      "path": "frozen_assets/real_data_boreas_stage1_v1/boreas_time_sync_audit.json"
+    },
+    "stage1_transform_chain_consistency": {
+      "file_sha256": "283d13bc8c276c052dbf3f933b3fadc054e596a5193a94814295c994b26eb697",
+      "path": "frozen_assets/real_data_boreas_stage1_v1/boreas_transform_chain_consistency.json"
+    },
+    "stage1_transform_chain_manifest": {
+      "file_sha256": "8d9e51e44795a1b960cecbb561ee9b0eeceaabf3bce8cfcde8cdbecdc60b6775",
+      "path": "frozen_assets/real_data_boreas_stage1_v1/boreas_transform_chain_manifest.json"
+    },
+    "stage2_scientific_lock": {
+      "file_sha256": "2744c2d867b863fdc82e150c00a0e86661c3f20005c350bf55ceb23615192369",
+      "path": "frozen_assets/boreas_v2_stage2_storage_optimization/stage2_scientific_lock_contract.json"
+    },
+    "stage2_streaming_map_contract": {
+      "file_sha256": "180d009735cafd53469eeae98564aa0cd95c9a84a867e293d48de79f906f4f1b",
+      "path": "frozen_assets/boreas_v2_stage2_storage_optimization/stage2_streaming_map_contract.json"
+    },
+    "stage2_streaming_query_contract": {
+      "file_sha256": "781170e1bf89ff65a3cc7d9f3b24cee3cc2d569fdbc58ce8a17a2ecd4e07b5cd",
+      "path": "frozen_assets/boreas_v2_stage2_storage_optimization/stage2_streaming_query_contract.json"
+    }
+  },
+  "execution_state_at_freeze": {
+    "geometry_metric_execution_count": 0,
+    "lidar_payload_download_count": 0,
+    "registration_execution_count": 0
+  },
+  "filtering": {
+    "finite_fields_required": [
+      "x",
+      "y",
+      "z",
+      "per_point_time_offset"
+    ],
+    "finite_filter_action": "EXCLUDE_POINT_AND_COUNT",
+    "intensity_used_for_geometry": false,
+    "laser_id_used_for_geometry": false,
+    "order": [
+      "DECODE_FLOAT32_TO_FLOAT64",
+      "FINITE_XYZ_AND_TIME_FILTER",
+      "INCLUSIVE_RAW_SENSOR_RANGE_FILTER",
+      "REFERENCE_BASED_DESKEW",
+      "ROLE_SPECIFIC_VOXELIZATION"
+    ],
+    "range_frame": "RAW_NATIVE_LIDAR_BEFORE_DESKEW",
+    "range_maximum_m": 80.0,
+    "range_maximum_rule": "INCLUSIVE",
+    "range_metric": "EUCLIDEAN_NORM_XYZ",
+    "range_minimum_m": 1.0,
+    "range_minimum_rule": "INCLUSIVE"
+  },
+  "frozen_at_utc": "2026-08-12T15:45:44Z",
+  "implementation_bindings": {
+    "production_preprocessing": {
+      "file_sha256": "045b5b650bcd658f7abff401c6c95317f63dae8a07665daf6a3336683f88bce3",
+      "path": "src/phase_a_harness/real_data_preparation/boreas_v2_stage2_preprocessing.py"
+    }
+  },
+  "map_accumulation": {
+    "duplicate_handling": "KEEP_ALL_FINITE_IN_RANGE_POINTS_IN_SUFFICIENT_STATISTICS",
+    "map_scan_count": 8202,
+    "map_scan_input_order": "FROZEN_STAGE2_ALLOWLIST_ORDINAL_THEN_RAW_POINT_ORDINAL",
+    "map_scan_sampling": "ALL_FROZEN_TARGET_MAP_ALLOWLIST_OBJECTS_NO_EVERY_FIFTH_SUBSAMPLING",
+    "query_contribution_count": 0,
+    "representative": "CENTROID_FROM_FIXED_ORDER_FLOAT64_SUM",
+    "source_sequence_id": "boreas-2021-11-14-09-47",
+    "target_map_count": 1,
+    "target_map_final_order": "LEXICOGRAPHIC_VOXEL_KEY_X_Y_Z",
+    "target_map_physical_copy_count": 1,
+    "target_voxel_origin_enu_ref_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "target_voxel_size_m": 0.1,
+    "worker_count_may_change_reduction_order": false
+  },
+  "parameter_basis": {
+    "association_and_pca": "UNCHANGED_FROZEN_COMMON_ASSOCIATION_IMPLEMENTATION",
+    "deskew": "OFFICIAL_BOREAS_DEVKIT_METHOD_WITH_EXPLICIT_OFFICIAL_SCAN_MIDDLE_REFERENCE",
+    "range_and_voxel_values": "PREEXISTING_REPOSITORY_WIDE_REAL_DATA_V1_SCIENTIFIC_PRIOR_FROZEN_BEFORE_ANY_BOREAS_GEOMETRY",
+    "range_and_voxel_values_are_boreas_official_recommendations": false,
+    "real_geometry_inspected_to_choose_parameters": false,
+    "registration_outcomes_inspected_to_choose_parameters": false,
+    "storage_planner_selected_scientific_parameters": false
+  },
+  "point_ordering": {
+    "map_accumulator_input": "ALLOWLIST_SCAN_ORDINAL_THEN_RETAINED_RAW_POINT_ORDINAL",
+    "query_before_source_voxel": "RETAINED_RAW_POINT_ORDINAL",
+    "query_canonical_output": "LEXICOGRAPHIC_SOURCE_VOXEL_KEY_X_Y_Z",
+    "raw_decode": "BINARY_RECORD_ORDINAL",
+    "target_canonical_output": "LEXICOGRAPHIC_TARGET_VOXEL_KEY_X_Y_Z"
+  },
+  "primary_pair": {
+    "map_lidar_pose_sha256": "734d0a25bb8150fbe7eae8e5a667be926f9af8bd0f9356792d280756d2ae7f17",
+    "map_sequence_id": "boreas-2021-11-14-09-47",
+    "query_lidar_pose_sha256": "516b9e86d050e5ee09b4c048271f2372efeaaede4e176b78e3fa0ea631c490ef",
+    "query_sequence_id": "boreas-2021-01-26-11-22",
+    "static_t_applanix_lidar_sha256": "e32772bcc7d617c62db0c3047e896e3626760d3f148fa83e26ad24b0c8f024db"
+  },
+  "prohibited_inputs_and_actions": [
+    "ICP",
+    "GICP",
+    "NDT",
+    "Open3D registration",
+    "PCL registration",
+    "KISS-ICP",
+    "FAST-LIO",
+    "LOAM",
+    "STEAM-ICP",
+    "scan matching",
+    "LiDAR odometry",
+    "query contribution to target map",
+    "scene-specific preprocessing",
+    "registration-result-dependent parameter changes",
+    "local target crop"
+  ],
+  "reference": {
+    "exact_pose_join_error_tolerance_us": 0,
+    "exact_pose_join_required": true,
+    "fallback_if_exact_pose_absent": "FAIL_CLOSED_NO_NEAREST_NO_INTERPOLATION_NO_EXTRAPOLATION",
+    "maximum_native_reference_gap_s": 0.2,
+    "pose_interpolation_executed_by_stage2": false,
+    "pose_interpolation_method": "NONE_EXACT_OFFICIAL_LIDAR_POSE_ROW",
+    "reference_pose_dtype": "LITTLE_ENDIAN_FLOAT64",
+    "scan_reference_definition": "OFFICIAL_T_ENU_LIDAR_AT_FILENAME_SCAN_MIDDLE_TIMESTAMP",
+    "timestamp_epoch": "UNIX_UTC",
+    "timestamp_float_seconds_conversion": "float(np.round(timestamp_us/1e6,6)) EXACT_PINNED_PYBOREAS_MICRO_TO_SEC",
+    "timestamp_join_key": "INTEGER_MICROSECONDS"
+  },
+  "schema_version": "boreas_v2_stage2_preprocessing_contract_v1",
+  "sensor_and_wire_format": {
+    "decode_rule": "np.frombuffer(payload,dtype='<f4').reshape((-1,6)).astype('<f8')",
+    "field_count": 6,
+    "fields": [
+      "x_m",
+      "y_m",
+      "z_m",
+      "intensity",
+      "laser_id",
+      "time_offset_from_scan_middle_s"
+    ],
+    "per_point_time_storage_dtype": "LITTLE_ENDIAN_FLOAT32",
+    "per_point_timestamp_definition": "SECONDS_RELATIVE_TO_SCAN_TEMPORAL_MIDDLE",
+    "raw_point_dtype": "LITTLE_ENDIAN_FLOAT32",
+    "raw_point_stride_bytes": 24,
+    "return_policy": "DATASET_RETAINS_STRONGEST_RETURN_ONLY",
+    "scan_filename_timestamp_definition": "INTEGER_MICROSECONDS_SINCE_1970_UTC_AT_TEMPORAL_MIDDLE_OF_SCAN",
+    "sensor": "Velodyne Alpha-Prime 128-beam LiDAR used by Boreas"
+  },
+  "source_downsampling": {
+    "enabled": true,
+    "input_frame": "NATIVE_LIDAR_AT_SCAN_TEMPORAL_MIDDLE_AFTER_RANGE_AND_DESKEW",
+    "input_reduction_order": "RETAINED_RAW_POINT_ORDINAL",
+    "origin_xyz_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "output_order": "LEXICOGRAPHIC_VOXEL_KEY_X_Y_Z",
+    "representative": "CENTROID_FROM_FIXED_ORDER_FLOAT64_SUM",
+    "voxel_size_m": 0.1
+  },
+  "target_geometry_analysis": {
+    "association": {
+      "implementation": "scipy.spatial.cKDTree.query",
+      "maximum_distance_m": 0.5,
+      "nearest_neighbor_count": 1,
+      "workers": 1
+    },
+    "backend_normal_parameters_are_separate_and_unchanged": true,
+    "geometry_only_screen_must_not_compute_or_persist_initial_residual_or_gradient": true,
+    "pca_target_normals": {
+      "chunk_size": 2048,
+      "minimum_neighbors": 10,
+      "neighbor_count": 50,
+      "normal_norm_epsilon": 1e-12,
+      "orientation": "UNORIENTED",
+      "source": "TARGET_ONLY"
+    }
+  },
+  "uncertainty_policy": {
+    "known_position_reference": "SEQUENCE_SPECIFIC_0.02_TO_0.04_M_NOMINAL_RMSE_WITH_DOCUMENTED_0.20_TO_0.40_M_URBAN_CANYON_RESIDUAL_RMSE",
+    "numeric_status": {
+      "deskew": "UNKNOWN",
+      "extrinsic_rotation": "UNKNOWN",
+      "extrinsic_translation": "UNKNOWN",
+      "orientation_reference": "UNKNOWN",
+      "target_map_accumulation": "UNKNOWN",
+      "time_synchronization": "UNKNOWN",
+      "upstream_reference_pose_materialization_interpolation": "UNKNOWN",
+      "voxelization": "UNKNOWN"
+    },
+    "stage2_pose_interpolation_operation": "NOT_APPLICABLE_EXACT_TIMESTAMP_JOIN",
+    "unknown_imputed_as_zero": false
+  }
+}
