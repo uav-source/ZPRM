@@ -298,6 +298,7 @@ class Stage2CheckpointLog:
         processing_contract_sha256: str | None = None,
         gt_sha256: str | None = None,
         calibration_sha256: str | None = None,
+        expected_record_kinds: Iterable[str] | None = None,
     ) -> None:
         self.path = _ensure_log_parent(Path(path))
         self.expected_bindings = {
@@ -308,8 +309,19 @@ class Stage2CheckpointLog:
         for label, value in self.expected_bindings.items():
             if value is not None:
                 _validate_sha256(value, label)
+        self.expected_record_kinds = (
+            ALLOWED_RECORD_KINDS
+            if expected_record_kinds is None
+            else frozenset(str(value) for value in expected_record_kinds)
+        )
+        if not self.expected_record_kinds or not self.expected_record_kinds <= ALLOWED_RECORD_KINDS:
+            raise Stage2CheckpointError("invalid expected checkpoint record kinds")
 
     def _validate_bindings(self, record: CheckpointRecord) -> None:
+        if record.record_kind not in self.expected_record_kinds:
+            raise Stage2CheckpointError(
+                f"checkpoint record kind differs from log role: {record.record_kind}"
+            )
         for field, expected in self.expected_bindings.items():
             if expected is not None and getattr(record, field) != expected:
                 raise Stage2CheckpointError(f"checkpoint {field} differs from resume contract")
@@ -357,6 +369,8 @@ class Stage2CheckpointLog:
                 chunks.append(block)
             existing = _parse_log(b"".join(chunks))
             existing_logical = [_logical_from_envelope(value) for value in existing]
+            for existing_record in existing_logical:
+                self._validate_bindings(existing_record)
             if logical.s3_key in {value.s3_key for value in existing_logical}:
                 raise DuplicateCheckpointError(
                     f"checkpoint already contains object: {logical.s3_key}"
@@ -539,7 +553,15 @@ def cleanup_partial_temporaries(path: str | Path) -> dict[str, Any]:
     marker_path = root / ".stage2_temporary_root.json"
     if not marker_path.is_file() or marker_path.is_symlink():
         raise Stage2CheckpointError(f"unmarked temporary cleanup root: {root}")
-    marker = json.loads(marker_path.read_text(encoding="utf-8"))
+    try:
+        marker = json.loads(marker_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise Stage2CheckpointError(
+            f"temporary-root marker is invalid JSON: {root}"
+        ) from exc
+    expected_marker_keys = {"canonical_root", "purpose", "schema", "temporary"}
+    if not isinstance(marker, dict) or set(marker) != expected_marker_keys:
+        raise Stage2CheckpointError(f"temporary-root marker field set differs: {root}")
     if canonical_json_bytes(marker) != marker_path.read_bytes():
         raise Stage2CheckpointError(f"temporary-root marker is not canonical: {root}")
     if (

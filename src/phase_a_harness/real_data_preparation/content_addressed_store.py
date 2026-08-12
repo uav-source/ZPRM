@@ -26,12 +26,18 @@ import numpy as np
 from phase_a_harness.pcl_backend import write_binary_xyz_pcd
 
 from .io import canonical_json_bytes, sha256_file
+from .stage2_checkpoint import (
+    Stage2CheckpointError,
+    cleanup_partial_temporaries,
+    initialize_temporary_root,
+)
 
 
 SHA256_PATTERN = re.compile(r"^[0-9a-f]{64}$")
 SAFE_NAME_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_.-]{0,127}$")
 OBJECT_SCHEMA = "zprm-stage2-content-addressed-object-v1"
 SNAPSHOT_REFERENCE_SCHEMA = "zprm-stage2-snapshot-content-reference-v1"
+XYZ_ARRAY_SCHEMA = "zprm-stage2-finite-float64-xyz-v1"
 
 
 class ContentAddressedStoreError(RuntimeError):
@@ -95,6 +101,57 @@ def _safe_name(value: str, label: str) -> str:
 
 def _sha256(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
+
+
+def _validated_float64_xyz(value: Any, *, label: str) -> np.ndarray:
+    array = np.asarray(value)
+    if (
+        array.ndim != 2
+        or array.shape[1] != 3
+        or array.dtype.kind != "f"
+        or array.dtype.itemsize != 8
+        or not np.all(np.isfinite(array))
+    ):
+        raise ContentAddressedStoreError(
+            f"{label} must be a finite (N, 3) float64 XYZ array"
+        )
+    return np.ascontiguousarray(array, dtype="<f8")
+
+
+def _validated_snapshot_bindings(value: Mapping[str, Any]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for raw_key, child in value.items():
+        key = _safe_name(str(raw_key), "snapshot binding key")
+        if isinstance(child, bool) or child is None:
+            result[key] = child
+        elif isinstance(child, int) and not isinstance(child, bool):
+            result[key] = child
+        elif isinstance(child, float) and np.isfinite(child):
+            result[key] = child
+        elif isinstance(child, str) and len(child.encode("utf-8")) <= 512:
+            result[key] = child
+        else:
+            raise ContentAddressedStoreError(
+                "snapshot bindings must be small scalar JSON values; containers/payloads are forbidden"
+            )
+    return result
+
+
+def _forbidden_reference_binding_paths(value: Any, *, path: str = "bindings") -> list[str]:
+    findings: list[str] = []
+    if isinstance(value, Mapping):
+        for key, child in value.items():
+            child_path = f"{path}.{key}"
+            normalized = str(key).lower()
+            if any(token in normalized for token in ("path", "points", "payload")):
+                findings.append(child_path)
+            findings.extend(_forbidden_reference_binding_paths(child, path=child_path))
+    elif isinstance(value, (list, tuple)):
+        for index, child in enumerate(value):
+            findings.extend(
+                _forbidden_reference_binding_paths(child, path=f"{path}[{index}]")
+            )
+    return findings
 
 
 def _publish_immutable_bytes(path: Path, payload: bytes) -> None:
@@ -223,6 +280,25 @@ class ContentAddressedStore:
         array: np.ndarray | None,
         user_metadata: Mapping[str, Any] | None,
     ) -> StoredObject:
+        # Validate the reserved scientific roles before creating a temporary
+        # directory or publishing anything.  A failing role/name request must
+        # never leave an immutable digest directory behind and poison a later
+        # correct publication of the same payload.
+        reserved = {
+            "target_map": ("target_points.npy", "NPY"),
+            "canonical_source": ("source_points.npy", "NPY"),
+        }
+        if object_kind in reserved:
+            expected_name, expected_format = reserved[object_kind]
+            if (
+                payload_name != expected_name
+                or payload_format != expected_format
+                or array is None
+                or user_metadata != {"array_contract_schema": XYZ_ARRAY_SCHEMA}
+            ):
+                raise ContentAddressedStoreError(
+                    f"reserved {object_kind} publication contract differs"
+                )
         digest = _sha256(payload)
         destination = self._directory(digest)
         metadata = self._metadata(
@@ -301,12 +377,36 @@ class ContentAddressedStore:
             raise ContentAddressedStoreError(f"invalid object metadata: {metadata_path}") from error
         if not isinstance(metadata, dict) or metadata.get("schema") != OBJECT_SCHEMA:
             raise ContentAddressedStoreError(f"object metadata schema differs: {metadata_path}")
+        base_fields = {
+            "object_kind",
+            "payload_filename",
+            "payload_format",
+            "schema",
+            "sha256",
+            "size_bytes",
+            "user_metadata",
+        }
+        array_fields = {"allow_pickle", "c_contiguous", "dtype", "npy_version", "shape"}
+        expected_fields = (
+            base_fields | array_fields
+            if metadata.get("payload_format") == "NPY"
+            else base_fields
+        )
+        if set(metadata) != expected_fields:
+            raise ContentAddressedStoreError(f"object metadata field set differs: {metadata_path}")
         if canonical_json_bytes(metadata) != metadata_path.read_bytes():
             raise ContentAddressedStoreError(f"object metadata is not canonical: {metadata_path}")
         if metadata.get("sha256") != expected_digest:
             raise ContentAddressedStoreError(f"object digest binding differs: {directory}")
         payload_name = str(metadata.get("payload_filename", ""))
         _safe_name(payload_name, "payload filename")
+        if payload_name == "target_points.npy" and metadata.get("object_kind") != "target_map":
+            raise ContentAddressedStoreError("target payload object-kind contract differs")
+        if (
+            payload_name == "source_points.npy"
+            and metadata.get("object_kind") != "canonical_source"
+        ):
+            raise ContentAddressedStoreError("source payload object-kind contract differs")
         if expected_payload_name is not None and payload_name != expected_payload_name:
             raise ContentAddressedStoreError("same content digest requested with different object contract")
         payload_path = directory / payload_name
@@ -321,8 +421,38 @@ class ContentAddressedStore:
             raise ContentAddressedStoreError("content-address collision or immutable payload mismatch")
         if expected_metadata is not None and metadata_path.read_bytes() != expected_metadata:
             raise ContentAddressedStoreError("immutable metadata differs for existing content")
-        files = {path.name for path in directory.iterdir() if path.is_file()}
-        if files != {payload_name, "metadata.json"}:
+        if metadata.get("object_kind") in {"target_map", "canonical_source"}:
+            kind = str(metadata["object_kind"])
+            expected_name = (
+                "target_points.npy" if kind == "target_map" else "source_points.npy"
+            )
+            user_metadata = metadata.get("user_metadata")
+            if (
+                user_metadata != {"array_contract_schema": XYZ_ARRAY_SCHEMA}
+                or metadata.get("payload_filename") != expected_name
+                or metadata.get("payload_format") != "NPY"
+                or metadata.get("dtype") != "<f8"
+                or metadata.get("c_contiguous") is not True
+                or metadata.get("allow_pickle") is not False
+                or metadata.get("npy_version") != "1.0"
+            ):
+                raise ContentAddressedStoreError("XYZ object array-contract schema differs")
+            try:
+                xyz_array, canonical_payload = _canonical_npy_from_bytes(actual_payload)
+                xyz_array = _validated_float64_xyz(
+                    xyz_array, label=str(metadata.get("object_kind"))
+                )
+            except (ValueError, ContentAddressedStoreError) as exc:
+                raise ContentAddressedStoreError("XYZ object payload contract differs") from exc
+            if canonical_payload != actual_payload:
+                raise ContentAddressedStoreError("XYZ object encoding contract differs")
+            if metadata.get("shape") != [int(value) for value in xyz_array.shape]:
+                raise ContentAddressedStoreError("XYZ object shape metadata differs")
+        entries = list(directory.iterdir())
+        if (
+            {path.name for path in entries} != {payload_name, "metadata.json"}
+            or any(path.is_symlink() or not path.is_file() for path in entries)
+        ):
             raise ContentAddressedStoreError(f"unexpected physical files in object: {directory}")
         return StoredObject(
             sha256=expected_digest,
@@ -345,6 +475,27 @@ class ContentAddressedStore:
         payload_name = _safe_name(payload_name, "payload filename")
         if not payload_name.endswith(".npy"):
             raise ContentAddressedStoreError("NPY payload filename must end in .npy")
+        if object_kind in {"target_map", "canonical_source"}:
+            value = _validated_float64_xyz(value, label=object_kind)
+            # Scientific XYZ object metadata is completely determined by its
+            # payload and fixed storage role.  Arbitrary provenance belongs in
+            # a separately content-addressed manifest; allowing it here would
+            # let a re-signed metadata.json alter scientific bindings while the
+            # payload-address directory stayed unchanged.
+            if metadata:
+                raise ContentAddressedStoreError(
+                    "scientific XYZ metadata must be stored in a separate content-addressed manifest"
+                )
+            metadata = {"array_contract_schema": XYZ_ARRAY_SCHEMA}
+            expected_name = (
+                "target_points.npy"
+                if object_kind == "target_map"
+                else "source_points.npy"
+            )
+            if payload_name != expected_name:
+                raise ContentAddressedStoreError(
+                    f"reserved {object_kind} payload filename differs"
+                )
         payload = canonical_npy_bytes(value)
         array, _ = _canonical_npy_from_bytes(payload)
         return self._publish(
@@ -362,7 +513,7 @@ class ContentAddressedStore:
         """Publish the one canonical target representation used by all snapshots."""
 
         return self.put_npy(
-            value,
+            _validated_float64_xyz(value, label="target_map"),
             object_kind="target_map",
             payload_name="target_points.npy",
             metadata=metadata,
@@ -427,17 +578,20 @@ class ContentAddressedStore:
         source_digest = None
         if canonical_source_sha256 is not None:
             source_digest = self._validate_digest(canonical_source_sha256)
-        bindings = dict(extra_bindings or {})
-        forbidden = {
-            key
-            for key in bindings
-            if "path" in str(key).lower()
-            or "points" in str(key).lower()
-            or "payload" in str(key).lower()
-        }
+            source = self.get(source_digest)
+            if (
+                source.object_kind != "canonical_source"
+                or source.payload_path.name != "source_points.npy"
+            ):
+                raise ContentAddressedStoreError(
+                    "snapshot source does not name a canonical-source object"
+                )
+        raw_bindings = dict(extra_bindings or {})
+        bindings = _validated_snapshot_bindings(raw_bindings)
+        forbidden = _forbidden_reference_binding_paths(raw_bindings)
         if forbidden:
             raise ContentAddressedStoreError(
-                f"snapshot references may not embed/copy target payloads: {sorted(forbidden)}"
+                f"snapshot references may not contain path/point/payload bindings: {forbidden}"
             )
         value = {
             "schema": SNAPSHOT_REFERENCE_SCHEMA,
@@ -458,12 +612,36 @@ class ContentAddressedStore:
         expected_reference_count: int,
     ) -> dict[str, Any]:
         target_digest = self._validate_digest(expected_target_map_sha256)
-        references = (
-            sorted(self.references_root.glob("*.json")) if self.references_root.exists() else []
-        )
+        root_entries = list(self.root.iterdir())
+        for entry in root_entries:
+            if entry.name == self.references_root.name:
+                if entry.is_symlink() or not entry.is_dir():
+                    raise ContentAddressedStoreError("snapshot reference root is unsafe")
+                continue
+            if (
+                SHA256_PATTERN.fullmatch(entry.name) is None
+                or entry.is_symlink()
+                or not entry.is_dir()
+            ):
+                raise ContentAddressedStoreError(
+                    f"unknown entry in content-addressed store root: {entry}"
+                )
+        if self.references_root.exists():
+            if self.references_root.is_symlink() or not self.references_root.is_dir():
+                raise ContentAddressedStoreError("snapshot reference root is unsafe")
+            entries = sorted(self.references_root.iterdir(), key=lambda item: item.name)
+            if any(
+                item.is_symlink() or not item.is_file() or item.suffix != ".json"
+                for item in entries
+            ):
+                raise ContentAddressedStoreError("unknown entry in snapshot reference root")
+            references = entries
+        else:
+            references = []
         if len(references) != int(expected_reference_count):
             raise ContentAddressedStoreError("snapshot reference count differs")
         snapshot_ids: set[str] = set()
+        referenced_source_digests: set[str] = set()
         for path in references:
             if path.is_symlink() or not path.is_file():
                 raise ContentAddressedStoreError(f"unsafe snapshot reference: {path}")
@@ -472,22 +650,65 @@ class ContentAddressedStore:
                 raise ContentAddressedStoreError(f"non-canonical snapshot reference: {path}")
             if value.get("schema") != SNAPSHOT_REFERENCE_SCHEMA:
                 raise ContentAddressedStoreError(f"snapshot reference schema differs: {path}")
+            if set(value) != {
+                "bindings",
+                "canonical_source_sha256",
+                "schema",
+                "snapshot_id",
+                "target_map_sha256",
+            }:
+                raise ContentAddressedStoreError(f"snapshot reference field set differs: {path}")
             if value.get("target_map_sha256") != target_digest:
                 raise ContentAddressedStoreError(f"snapshot target digest differs: {path}")
+            try:
+                bindings = _validated_snapshot_bindings(value.get("bindings", {}))
+            except (AttributeError, ContentAddressedStoreError) as exc:
+                raise ContentAddressedStoreError(
+                    f"snapshot bindings are invalid: {path}"
+                ) from exc
+            if bindings != value.get("bindings"):
+                raise ContentAddressedStoreError(f"snapshot bindings differ: {path}")
+            source_digest = value.get("canonical_source_sha256")
+            if int(expected_reference_count) == 100 and source_digest is None:
+                raise ContentAddressedStoreError(
+                    f"published 100-snapshot reference lacks its canonical source: {path}"
+                )
+            if source_digest is not None:
+                source = self.get(self._validate_digest(source_digest))
+                if (
+                    source.object_kind != "canonical_source"
+                    or source.payload_path.name != "source_points.npy"
+                    or self.physical_payload_copy_count(source.sha256) != 1
+                ):
+                    raise ContentAddressedStoreError(
+                        f"snapshot source is absent, mis-typed, or duplicated: {path}"
+                    )
+                referenced_source_digests.add(source.sha256)
             snapshot_id = str(value.get("snapshot_id", ""))
             if snapshot_id in snapshot_ids or path.name != f"{snapshot_id}.json":
                 raise ContentAddressedStoreError(f"duplicate/misnamed snapshot reference: {path}")
             snapshot_ids.add(snapshot_id)
         target_objects: list[StoredObject] = []
+        source_objects: list[StoredObject] = []
         for directory in sorted(self.root.iterdir(), key=lambda item: item.name):
             if SHA256_PATTERN.fullmatch(directory.name) is None:
                 continue
             stored = self.get(directory.name)
             if stored.object_kind == "target_map":
                 target_objects.append(stored)
+            elif stored.object_kind == "canonical_source":
+                source_objects.append(stored)
+            else:
+                raise ContentAddressedStoreError(
+                    f"unexpected content object kind in snapshot store: {stored.object_kind}"
+                )
         if len(target_objects) != 1 or target_objects[0].sha256 != target_digest:
             raise ContentAddressedStoreError(
                 "store must contain exactly one target-map content object"
+            )
+        if {stored.sha256 for stored in source_objects} != referenced_source_digests:
+            raise ContentAddressedStoreError(
+                "snapshot store contains an orphan or missing canonical-source object"
             )
         physical_count = self.physical_payload_copy_count(target_digest)
         if physical_count != 1:
@@ -525,6 +746,50 @@ def _canonical_npy_from_bytes(payload: bytes) -> tuple[np.ndarray, bytes]:
     return array, payload
 
 
+def _verify_binary_xyz_pcd_projection(path: Path, canonical: np.ndarray) -> None:
+    """Independently reparse the PCD and verify its mandated float32 projection."""
+
+    payload = path.read_bytes()
+    marker = b"DATA binary\n"
+    split = payload.find(marker)
+    if split < 0:
+        raise ContentAddressedStoreError("temporary PCD has no binary-data marker")
+    header = payload[: split + len(marker)].decode("ascii")
+    expected = _validated_float64_xyz(canonical, label="temporary PCD input")
+    expected_header_lines = [
+        "# .PCD v0.7 - Point Cloud Data file format",
+        "VERSION 0.7",
+        "FIELDS x y z",
+        "SIZE 4 4 4",
+        "TYPE F F F",
+        "COUNT 1 1 1",
+        f"WIDTH {expected.shape[0]}",
+        "HEIGHT 1",
+        "VIEWPOINT 0 0 0 1 0 0 0",
+        f"POINTS {expected.shape[0]}",
+        "DATA binary",
+    ]
+    if header.splitlines() != expected_header_lines:
+        raise ContentAddressedStoreError("temporary PCD structural header differs")
+    expected_projection = np.ascontiguousarray(expected, dtype="<f4")
+    body = payload[split + len(marker) :]
+    width_match = re.search(r"(?m)^WIDTH ([0-9]+)$", header)
+    points_match = re.search(r"(?m)^POINTS ([0-9]+)$", header)
+    if (
+        width_match is None
+        or points_match is None
+        or int(width_match.group(1)) != expected_projection.shape[0]
+        or int(points_match.group(1)) != expected_projection.shape[0]
+        or len(body) != expected_projection.nbytes
+    ):
+        raise ContentAddressedStoreError("temporary PCD header/size differs")
+    reconstructed = np.frombuffer(body, dtype="<f4").reshape((-1, 3))
+    if not np.array_equal(reconstructed, expected_projection):
+        raise ContentAddressedStoreError(
+            "temporary PCD differs from deterministic float32 projection"
+        )
+
+
 @contextmanager
 def deterministic_temporary_pcl_conversion(
     source_npy: str | Path,
@@ -538,17 +803,81 @@ def deterministic_temporary_pcl_conversion(
     or any registration entrypoint.
     """
 
-    root = _safe_existing_directory(temporary_root, create=True)
-    source_path = Path(source_npy)
-    target_path = Path(target_npy)
+    candidate = Path(temporary_root)
+    if not candidate.is_absolute():
+        raise ContentAddressedStoreError("tmp_pcl root must be absolute")
+    try:
+        if candidate.exists():
+            if candidate.is_symlink() or not candidate.is_dir():
+                raise ContentAddressedStoreError("tmp_pcl root is unsafe")
+            marker = candidate / ".stage2_temporary_root.json"
+            if any(candidate.iterdir()):
+                if not marker.is_file() or marker.is_symlink():
+                    raise ContentAddressedStoreError("tmp_pcl root has an unknown orphan")
+                marker_value = json.loads(marker.read_text(encoding="utf-8"))
+                if (
+                    set(marker_value)
+                    != {"canonical_root", "purpose", "schema", "temporary"}
+                    or canonical_json_bytes(marker_value) != marker.read_bytes()
+                    or marker_value.get("schema")
+                    != "zprm-boreas-stage2-temporary-root-v1"
+                    or marker_value.get("temporary") is not True
+                    or marker_value.get("purpose") != "tmp_pcl"
+                    or marker_value.get("canonical_root") != str(candidate)
+                ):
+                    raise ContentAddressedStoreError("tmp_pcl marker differs")
+                cleanup_partial_temporaries(candidate)
+        root = initialize_temporary_root(candidate, purpose="tmp_pcl")
+    except (Stage2CheckpointError, json.JSONDecodeError, OSError) as exc:
+        raise ContentAddressedStoreError(f"tmp_pcl root is untrusted: {exc}") from exc
+    def require_cas_role(
+        raw_path: str | Path, *, expected_kind: str, expected_name: str
+    ) -> Path:
+        path = Path(raw_path)
+        if (
+            not path.is_absolute()
+            or path.is_symlink()
+            or not path.is_file()
+            or path.resolve(strict=True) != path
+            or path.name != expected_name
+            or SHA256_PATTERN.fullmatch(path.parent.name) is None
+        ):
+            raise ContentAddressedStoreError(
+                f"PCL {expected_kind} input is not a canonical CAS payload path"
+            )
+        stored = ContentAddressedStore(path.parent.parent).get(path.parent.name)
+        if (
+            stored.object_kind != expected_kind
+            or stored.payload_path != path
+            or stored.sha256 != _sha256(path.read_bytes())
+        ):
+            raise ContentAddressedStoreError(
+                f"PCL {expected_kind} input role or digest differs"
+            )
+        return path
+
+    source_path = require_cas_role(
+        source_npy,
+        expected_kind="canonical_source",
+        expected_name="source_points.npy",
+    )
+    target_path = require_cas_role(
+        target_npy,
+        expected_kind="target_map",
+        expected_name="target_points.npy",
+    )
     source, source_payload = _canonical_npy_from_file(source_path)
     target, target_payload = _canonical_npy_from_file(target_path)
+    source = _validated_float64_xyz(source, label="PCL canonical source")
+    target = _validated_float64_xyz(target, label="PCL canonical target")
     work = Path(tempfile.mkdtemp(prefix="pcl-derived-", dir=root))
     try:
         source_pcd = work / "source.pcd"
         target_pcd = work / "target.pcd"
         write_binary_xyz_pcd(source_pcd, source)
         write_binary_xyz_pcd(target_pcd, target)
+        _verify_binary_xyz_pcd_projection(source_pcd, source)
+        _verify_binary_xyz_pcd_projection(target_pcd, target)
         for path in (source_pcd, target_pcd):
             with path.open("rb") as stream:
                 os.fsync(stream.fileno())

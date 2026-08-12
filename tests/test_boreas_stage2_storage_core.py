@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import subprocess
 import urllib.request
 from pathlib import Path
@@ -84,14 +85,25 @@ def _inventory(
 
 def test_content_addressed_target_is_immutable_and_single_copy(tmp_path: Path) -> None:
     store = ContentAddressedStore(tmp_path / "target_maps")
-    first = store.put_target_map(_points(), metadata={"sequence": "synthetic"})
-    second = store.put_target_map(_points(), metadata={"sequence": "synthetic"})
+    first = store.put_target_map(_points())
+    second = store.put_target_map(_points())
     assert first == second
     assert first.payload_path == store.root / first.sha256 / "target_points.npy"
     assert store.physical_payload_copy_count(first.sha256) == 1
     assert np.array_equal(store.load_npy(first.sha256), _points())
-    with pytest.raises(ContentAddressedStoreError, match="metadata differs"):
+    with pytest.raises(ContentAddressedStoreError, match="separate content-addressed manifest"):
         store.put_target_map(_points(), metadata={"sequence": "changed"})
+
+
+def test_failed_reserved_role_publish_leaves_no_poison_object(tmp_path: Path) -> None:
+    store = ContentAddressedStore(tmp_path / "reserved-role")
+    with pytest.raises(ContentAddressedStoreError, match="payload filename differs"):
+        store.put_npy(
+            _points(), object_kind="target_map", payload_name="array.npy"
+        )
+    assert list(store.root.iterdir()) == []
+    target = store.put_target_map(_points())
+    assert target.payload_path.is_file()
 
 
 def test_content_addressed_payload_tamper_fails_closed(tmp_path: Path) -> None:
@@ -102,6 +114,76 @@ def test_content_addressed_payload_tamper_fails_closed(tmp_path: Path) -> None:
         store.get(stored.sha256)
 
 
+@pytest.mark.parametrize(
+    "value",
+    [
+        np.asarray([1.0, 2.0, 3.0], dtype=np.float64),
+        np.asarray([[np.nan, 0.0, 0.0]], dtype=np.float64),
+        np.asarray([[True, False, True]], dtype=np.bool_),
+    ],
+)
+def test_target_and_source_require_finite_float64_xyz(
+    tmp_path: Path, value: np.ndarray
+) -> None:
+    store = ContentAddressedStore(tmp_path / "xyz-contract")
+    with pytest.raises(ContentAddressedStoreError, match="finite.*float64 XYZ"):
+        store.put_target_map(value)
+    with pytest.raises(ContentAddressedStoreError, match="finite.*float64 XYZ"):
+        store.put_npy(
+            value,
+            object_kind="canonical_source",
+            payload_name="source_points.npy",
+        )
+
+
+def test_resigned_metadata_kind_and_contract_tamper_fails(tmp_path: Path) -> None:
+    store = ContentAddressedStore(tmp_path / "metadata-contract")
+    target = store.put_target_map(_points())
+    metadata = json.loads(target.metadata_path.read_text(encoding="utf-8"))
+    metadata["object_kind"] = "canonical_array"
+    target.metadata_path.write_bytes(canonical_json_bytes(metadata))
+    with pytest.raises(ContentAddressedStoreError, match="object-kind"):
+        store.get(target.sha256)
+
+    source = store.put_npy(
+        _points(1.0),
+        object_kind="canonical_source",
+        payload_name="source_points.npy",
+    )
+    metadata = json.loads(source.metadata_path.read_text(encoding="utf-8"))
+    metadata["user_metadata"]["array_contract_schema"] = "evil"
+    source.metadata_path.write_bytes(canonical_json_bytes(metadata))
+    with pytest.raises(ContentAddressedStoreError, match="array-contract"):
+        store.get(source.sha256)
+
+
+def test_content_object_rejects_extra_directory_and_symlink_inventory(tmp_path: Path) -> None:
+    store = ContentAddressedStore(tmp_path / "entry-contract")
+    target = store.put_target_map(_points())
+    extra = target.payload_path.parent / "extra"
+    extra.mkdir()
+    with pytest.raises(ContentAddressedStoreError, match="unexpected physical files"):
+        store.get(target.sha256)
+    extra.rmdir()
+    outside = tmp_path / "outside"
+    outside.write_bytes(b"keep")
+    (target.payload_path.parent / "link").symlink_to(outside)
+    with pytest.raises(ContentAddressedStoreError, match="unexpected physical files"):
+        store.get(target.sha256)
+
+
+def test_snapshot_audit_rejects_rogue_or_partial_store_root(tmp_path: Path) -> None:
+    store = ContentAddressedStore(tmp_path / "root-closure")
+    target = store.put_target_map(_points())
+    store.create_snapshot_reference("snapshot-000", target_map_sha256=target.sha256)
+    rogue = store.root / "rogue-target"
+    rogue.mkdir()
+    (rogue / "target_points.npy").write_bytes(target.payload_path.read_bytes())
+    with pytest.raises(ContentAddressedStoreError, match="unknown entry"):
+        store.audit_snapshot_references(
+            expected_target_map_sha256=target.sha256,
+            expected_reference_count=1,
+        )
 def test_canonical_npy_normalizes_byte_order_without_value_change() -> None:
     little = np.arange(12, dtype="<f8").reshape(4, 3)
     big = little.astype(">f8")
@@ -118,11 +200,19 @@ def test_content_addressed_json_is_canonical_and_immutable(tmp_path: Path) -> No
 def test_snapshot_manifests_reference_one_target_without_copy(tmp_path: Path) -> None:
     store = ContentAddressedStore(tmp_path / "target_maps")
     target = store.put_target_map(_points())
+    sources = [
+        store.put_npy(
+            _points(float(index + 1)),
+            object_kind="canonical_source",
+            payload_name="source_points.npy",
+        )
+        for index in range(100)
+    ]
     for index in range(100):
         store.create_snapshot_reference(
             f"snapshot-{index:03d}",
             target_map_sha256=target.sha256,
-            canonical_source_sha256=f"{index:064x}",
+            canonical_source_sha256=sources[index].sha256,
         )
     audit = store.audit_snapshot_references(
         expected_target_map_sha256=target.sha256,
@@ -136,6 +226,26 @@ def test_snapshot_manifests_reference_one_target_without_copy(tmp_path: Path) ->
         "target_map_sha256": target.sha256,
     }
     assert not list(store.references_root.rglob("*.npy"))
+
+
+def test_snapshot_reference_rejects_dangling_or_wrong_kind_source(tmp_path: Path) -> None:
+    store = ContentAddressedStore(tmp_path / "target_maps")
+    target = store.put_target_map(_points())
+    with pytest.raises(ContentAddressedStoreError, match="unsafe object directory"):
+        store.create_snapshot_reference(
+            "snapshot-000",
+            target_map_sha256=target.sha256,
+            canonical_source_sha256="a" * 64,
+        )
+    wrong = store.put_npy(
+        _points(1.0), object_kind="other", payload_name="other.npy"
+    )
+    with pytest.raises(ContentAddressedStoreError, match="canonical-source"):
+        store.create_snapshot_reference(
+            "snapshot-001",
+            target_map_sha256=target.sha256,
+            canonical_source_sha256=wrong.sha256,
+        )
 
 
 def test_snapshot_reference_is_immutable_no_clobber(tmp_path: Path) -> None:
@@ -156,6 +266,40 @@ def test_snapshot_reference_is_immutable_no_clobber(tmp_path: Path) -> None:
             "snapshot-000", target_map_sha256=target.sha256, extra_bindings={"interval": 2}
         )
     assert first.read_bytes() == before
+    with pytest.raises(ContentAddressedStoreError, match="containers/payloads"):
+        store.create_snapshot_reference(
+            "snapshot-nested",
+            target_map_sha256=target.sha256,
+            extra_bindings={"nested": {"target_points": [[0.0, 0.0, 0.0]]}},
+        )
+    with pytest.raises(ContentAddressedStoreError, match="containers/payloads"):
+        store.create_snapshot_reference(
+            "snapshot-vertices",
+            target_map_sha256=target.sha256,
+            extra_bindings={"vertices": _points().tolist()},
+        )
+    with pytest.raises(ContentAddressedStoreError, match="path/point/payload"):
+        store.create_snapshot_reference(
+            "snapshot-path",
+            target_map_sha256=target.sha256,
+            extra_bindings={"target_path": "/tmp/alternate.npy"},
+        )
+
+
+def test_snapshot_audit_rejects_orphan_canonical_source(tmp_path: Path) -> None:
+    store = ContentAddressedStore(tmp_path / "source-closure")
+    target = store.put_target_map(_points())
+    store.put_npy(
+        _points(1.0),
+        object_kind="canonical_source",
+        payload_name="source_points.npy",
+    )
+    store.create_snapshot_reference("snapshot-000", target_map_sha256=target.sha256)
+    with pytest.raises(ContentAddressedStoreError, match="orphan or missing"):
+        store.audit_snapshot_references(
+            expected_target_map_sha256=target.sha256,
+            expected_reference_count=1,
+        )
 
 
 def test_duplicate_physical_target_is_detected(tmp_path: Path) -> None:
@@ -164,7 +308,7 @@ def test_duplicate_physical_target_is_detected(tmp_path: Path) -> None:
     store.create_snapshot_reference("snapshot-000", target_map_sha256=target.sha256)
     duplicate = store.references_root / "target_points.npy"
     duplicate.write_bytes(target.payload_path.read_bytes())
-    with pytest.raises(ContentAddressedStoreError, match="physical copies"):
+    with pytest.raises(ContentAddressedStoreError, match="physical copies|unknown entry"):
         store.audit_snapshot_references(
             expected_target_map_sha256=target.sha256,
             expected_reference_count=1,
@@ -198,7 +342,17 @@ def test_pcl_conversion_is_deterministic_and_always_cleaned(tmp_path: Path) -> N
         assert first.source_npy_sha256 == source.sha256
         assert first.target_npy_sha256 == target.sha256
         assert first.source_path.is_file() and first.target_path.is_file()
-    assert not list(temporary.iterdir())
+    assert [path.name for path in temporary.iterdir()] == [
+        ".stage2_temporary_root.json"
+    ]
+
+    with pytest.raises(ContentAddressedStoreError, match="canonical CAS payload path|role"):
+        with deterministic_temporary_pcl_conversion(
+            target.payload_path,
+            source.payload_path,
+            temporary_root=temporary,
+        ):
+            pytest.fail("source/target roles must not be interchangeable")
     with deterministic_temporary_pcl_conversion(
         source.payload_path, target.payload_path, temporary_root=temporary
     ) as second:
@@ -207,7 +361,34 @@ def test_pcl_conversion_is_deterministic_and_always_cleaned(tmp_path: Path) -> N
         with pytest.raises(RuntimeError, match="synthetic crash"):
             raise RuntimeError("synthetic crash")
     assert not work.exists()
-    assert not list(temporary.iterdir())
+    assert [path.name for path in temporary.iterdir()] == [
+        ".stage2_temporary_root.json"
+    ]
+
+
+def test_pcl_cleanup_rejects_extra_marker_field_before_deleting(tmp_path: Path) -> None:
+    sources = ContentAddressedStore(tmp_path / "sources")
+    targets = ContentAddressedStore(tmp_path / "targets")
+    source = sources.put_npy(
+        _points(1.0), object_kind="canonical_source", payload_name="source_points.npy"
+    )
+    target = targets.put_target_map(_points())
+    temporary = initialize_temporary_root(tmp_path / "tmp_pcl", purpose="tmp_pcl")
+    marker = temporary / ".stage2_temporary_root.json"
+    marker_value = json.loads(marker.read_text(encoding="utf-8"))
+    marker_value["unexpected_authority"] = True
+    marker.write_bytes(canonical_json_bytes(marker_value))
+    victim = temporary / "must-not-delete.pcd"
+    victim.write_bytes(b"synthetic")
+
+    with pytest.raises(ContentAddressedStoreError, match="marker differs"):
+        with deterministic_temporary_pcl_conversion(
+            source.payload_path,
+            target.payload_path,
+            temporary_root=temporary,
+        ):
+            pytest.fail("conversion must not start")
+    assert victim.read_bytes() == b"synthetic"
 
 
 def test_checkpoint_append_is_canonical_chained_and_no_clobber(tmp_path: Path) -> None:
@@ -216,6 +397,7 @@ def test_checkpoint_append_is_canonical_chained_and_no_clobber(tmp_path: Path) -
         processing_contract_sha256=SHA_B,
         gt_sha256=SHA_C,
         calibration_sha256=SHA_D,
+        expected_record_kinds={"MAP", "QUERY"},
     )
     first = log.append_completed(_record())
     second = log.append_completed(_record(key=QUERY_KEY, kind="QUERY"))
@@ -224,6 +406,38 @@ def test_checkpoint_append_is_canonical_chained_and_no_clobber(tmp_path: Path) -
     assert len(log.logical_records()) == 2
     with pytest.raises(DuplicateCheckpointError):
         log.append_completed(_record())
+
+
+def test_checkpoint_append_refuses_existing_mixed_contract(tmp_path: Path) -> None:
+    path = tmp_path / "processed_map_objects.jsonl"
+    first = Stage2CheckpointLog(
+        path,
+        processing_contract_sha256=SHA_B,
+        gt_sha256=SHA_C,
+        calibration_sha256=SHA_D,
+    )
+    first.append_completed(_record())
+    second = Stage2CheckpointLog(
+        path,
+        processing_contract_sha256=SHA_A,
+        gt_sha256=SHA_C,
+        calibration_sha256=SHA_D,
+        expected_record_kinds={"MAP", "QUERY"},
+    )
+    replacement = _record(key=QUERY_KEY, kind="QUERY").to_mapping()
+    replacement["processing_contract_sha256"] = SHA_A
+    before = path.read_bytes()
+    with pytest.raises(Stage2CheckpointError, match="differs from resume contract"):
+        second.append_completed(replacement)
+    assert path.read_bytes() == before
+
+
+def test_checkpoint_log_role_rejects_wrong_record_kind(tmp_path: Path) -> None:
+    log = Stage2CheckpointLog(
+        tmp_path / "processed_map_objects.jsonl", expected_record_kinds={"MAP"}
+    )
+    with pytest.raises(Stage2CheckpointError, match="log role"):
+        log.append_completed(_record(key=QUERY_KEY, kind="QUERY"))
 
 
 def test_checkpoint_normalizes_quoted_etag_and_requires_utc_completion(tmp_path: Path) -> None:
@@ -305,6 +519,22 @@ def test_partial_temp_cleanup_refuses_symlink(tmp_path: Path) -> None:
     assert outside.read_bytes() == b"keep"
 
 
+def test_partial_temp_cleanup_rejects_extra_marker_field_before_deleting(
+    tmp_path: Path,
+) -> None:
+    root = initialize_temporary_root(tmp_path / "tmp_download", purpose="tmp_download")
+    marker = root / ".stage2_temporary_root.json"
+    marker_value = json.loads(marker.read_text(encoding="utf-8"))
+    marker_value["unexpected_authority"] = True
+    marker.write_bytes(canonical_json_bytes(marker_value))
+    victim = root / "must-not-delete.bin"
+    victim.write_bytes(b"synthetic")
+
+    with pytest.raises(Stage2CheckpointError, match="field set differs"):
+        cleanup_partial_temporaries(root)
+    assert victim.read_bytes() == b"synthetic"
+
+
 def test_temporary_root_cannot_bless_an_existing_nonempty_directory(tmp_path: Path) -> None:
     root = tmp_path / "persistent"
     root.mkdir()
@@ -312,6 +542,26 @@ def test_temporary_root_cannot_bless_an_existing_nonempty_directory(tmp_path: Pa
     with pytest.raises(Stage2CheckpointError, match="nonempty"):
         initialize_temporary_root(root, purpose="tmp_download")
     assert (root / "evidence.json").is_file()
+
+
+@pytest.mark.parametrize(
+    "command",
+    [
+        [
+            "sh",
+            "-c",
+            "aws s3api get-object --bucket boreas --key seq/lidar/1.bin /tmp/x",
+        ],
+        [
+            "python",
+            "-c",
+            "import urllib.request; urllib.request.urlretrieve("
+            "'https://boreas.s3.amazonaws.com/seq/lidar/1.bin','/tmp/x')",
+        ],
+    ],
+)
+def test_payload_guard_detects_nested_shell_and_quoted_python_urls(command: list[str]) -> None:
+    assert command_attempts_boreas_lidar_download(command) is True
 
 
 @pytest.mark.parametrize(
@@ -348,6 +598,22 @@ def test_temporary_root_cannot_bless_an_existing_nonempty_directory(tmp_path: Pa
             ],
             True,
         ),
+        (
+            "aws s3api get-object --bucket 'boreas' --key "
+            "'boreas-2021-01-26-11-22/lidar/1.bin' /tmp/x",
+            True,
+        ),
+        (
+            [
+                "aws",
+                "s3api",
+                "get-object",
+                "--bucket=boreas",
+                "--key=boreas-2021-01-26-11-22/lidar/1.bin",
+                "/tmp/x",
+            ],
+            True,
+        ),
         (["aws", "s3", "sync", "s3://boreas/seq/lidar/", "/tmp/lidar"], True),
         (["curl", "https://boreas.s3.amazonaws.com/seq/lidar/1.bin"], True),
         (["curl", "-i", "https://boreas.s3.amazonaws.com/seq/lidar/1.bin"], True),
@@ -359,7 +625,7 @@ def test_temporary_root_cannot_bless_an_existing_nonempty_directory(tmp_path: Pa
         (["curl", "https://example.test/synthetic/lidar/1.bin"], False),
     ],
 )
-def test_payload_command_classifier(command: list[str], blocked: bool) -> None:
+def test_payload_command_classifier(command: object, blocked: bool) -> None:
     assert command_attempts_boreas_lidar_download(command) is blocked
 
 

@@ -12,6 +12,9 @@ import numpy as np
 import pytest
 
 from phase_a_harness.real_data_preparation import boreas_external_v2_stage1 as producer
+from phase_a_harness.real_data_preparation import (
+    boreas_external_v2_stage1_verifier as independent_verifier,
+)
 from phase_a_harness.real_data_preparation.boreas_external_v2_stage1_verifier import (
     BoreasExternalV2Stage1VerificationError,
     verify_boreas_external_v2_stage1,
@@ -548,7 +551,9 @@ def test_stage1_protocol_freezes_zero_payload_and_all_authorization_boundaries()
     assert protocol["MEASUREMENT_PAPER_MAINLINE_AUTHORIZED"] is False
 
 
-def test_independent_verifier_rejects_incomplete_tampered_closure(tmp_path: Path) -> None:
+def test_independent_verifier_rejects_incomplete_tampered_closure(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
     data_root = tmp_path / "data"
     runtime_root = tmp_path / "tampered-v2-closure"
     data_root.mkdir()
@@ -557,8 +562,19 @@ def test_independent_verifier_rejects_incomplete_tampered_closure(tmp_path: Path
         '{"MEASUREMENT_PAPER_MAINLINE_AUTHORIZED":true}\n', encoding="utf-8"
     )
 
+    # This historical verifier intentionally binds its producing branch.  On
+    # later descendant preparation branches, isolate the test's intended
+    # malformed-closure gate instead of failing earlier on branch provenance.
+    monkeypatch.setattr(
+        independent_verifier,
+        "EXPECTED_BRANCH",
+        subprocess.check_output(
+            ["git", "branch", "--show-current"], cwd=REPOSITORY, text=True
+        ).strip(),
+    )
+
     with pytest.raises(BoreasExternalV2Stage1VerificationError, match="SHA256SUMS"):
-        verify_boreas_external_v2_stage1(
+        independent_verifier.verify_boreas_external_v2_stage1(
             repository=REPOSITORY,
             data_root=data_root,
             runtime_root=runtime_root,
