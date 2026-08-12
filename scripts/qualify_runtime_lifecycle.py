@@ -47,6 +47,9 @@ PRE_RUN_BUNDLE = Path(
     "/tmp/zero-perturbation-synthetic-confirmatory-v2-pre-run.bundle"
 )
 PCL_V3_SOURCE = Path("/tmp/synthetic_confirmatory_v2_pcl_v3_requalification")
+PCL_V3_EXTERNAL_QUALIFICATION_ENV = (
+    "ZPRM_REQUIRE_PCL_V3_EXTERNAL_QUALIFICATION"
+)
 SOURCE_REPOSITORY = Path("/home/lj/Degen-LIO")
 FROZEN_MAMBA_ROOT_PREFIX = "/home/lj/.local/share/degen-lio-micromamba"
 EXPECTED_FAILURE_TAR_SHA256 = (
@@ -778,10 +781,51 @@ def _pcl_v3_inventory(root: Path) -> dict[str, Any]:
     return report
 
 
-def _run_pcl_v3(qualification_root: Path) -> dict[str, Any]:
-    source_binding = _pcl_v3_inventory(PCL_V3_SOURCE)
-    if source_binding["PCL_V3_INPUT_BINDING_PASS"] is not True:
+def _pcl_v3_external_qualification_availability(
+    root: Path = PCL_V3_SOURCE,
+    *,
+    environ: Mapping[str, str] | None = None,
+) -> dict[str, Any]:
+    """Describe a missing historical fixture without treating it as qualified.
+
+    An existing path is deliberately left to ``_pcl_v3_inventory`` for strict
+    safety and contract validation.  In particular, an empty directory, a
+    symlink, or a non-directory is not classified as an unavailable source-only
+    dependency and therefore cannot be skipped by the source-only test gate.
+    """
+
+    environment = os.environ if environ is None else environ
+    required = environment.get(PCL_V3_EXTERNAL_QUALIFICATION_ENV) == "1"
+    source = root if root.is_absolute() else (Path.cwd() / root)
+    source = source.absolute()
+    candidate_exists = source.exists() or source.is_symlink()
+    unavailable_reason = (
+        f"{source}: source-only package: external historical qualification "
+        "bundle unavailable"
+    )
+    if not candidate_exists and required:
+        raise FileNotFoundError(
+            f"{PCL_V3_EXTERNAL_QUALIFICATION_ENV}=1 requires {unavailable_reason}"
+        )
+    return {
+        "source_path": str(source),
+        "candidate_exists": candidate_exists,
+        "external_qualification_required": required,
+        "unavailable_reason": unavailable_reason if not candidate_exists else None,
+    }
+
+
+def _validated_pcl_v3_inventory(root: Path) -> dict[str, Any]:
+    """Return the complete fixed inventory only when its frozen contract passes."""
+
+    report = _pcl_v3_inventory(root)
+    if report["PCL_V3_INPUT_BINDING_PASS"] is not True:
         raise RuntimeError("external PCL-v3 requalification package binding mismatch")
+    return report
+
+
+def _run_pcl_v3(qualification_root: Path) -> dict[str, Any]:
+    source_binding = _validated_pcl_v3_inventory(PCL_V3_SOURCE)
     destination = qualification_root / "pcl_v3_fixture"
     destination.mkdir()
     for name in PCL_V3_DIRECTORIES:

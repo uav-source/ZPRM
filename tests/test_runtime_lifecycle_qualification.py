@@ -173,14 +173,124 @@ def test_tar_path_escape_is_rejected(tmp_path: Path) -> None:
         qualification._compare_live_tree_to_tar(live, tar_path)
 
 
+def _external_pcl_v3_inventory_or_skip(
+    root: Path = qualification.PCL_V3_SOURCE,
+    *,
+    environ: dict[str, str] | None = None,
+) -> dict[str, object]:
+    availability = qualification._pcl_v3_external_qualification_availability(
+        root, environ=environ
+    )
+    if availability["candidate_exists"] is not True:
+        pytest.skip(availability["unavailable_reason"])
+    return qualification._validated_pcl_v3_inventory(root)
+
+
 def test_fixed_pcl_v3_input_inventory_matches_contract() -> None:
-    report = qualification._pcl_v3_inventory(qualification.PCL_V3_SOURCE)
+    report = _external_pcl_v3_inventory_or_skip()
 
     assert report["file_count"] == 18
     assert report["size_bytes"] == 8855746
     assert report["canonical_rows_json_sha256"] == qualification.EXPECTED_PCL_V3_TREE_SHA256
     assert report["pcl_point_to_plane_cli_sha256"] == qualification.EXPECTED_PCL_V3_CLI_SHA256
     assert report["PCL_V3_INPUT_BINDING_PASS"] is True
+
+
+def _write_pcl_v3_contract_candidate(root: Path) -> None:
+    for name in qualification.PCL_V3_DIRECTORIES:
+        (root / name).mkdir(parents=True)
+    (root / "bin/pcl_point_to_plane_cli").write_bytes(b"cli\n")
+    (root / "src/source.cc").write_bytes(b"source\n")
+    (root / "tests/case.json").write_bytes(b"{}\n")
+    (root / "tools/verify.py").write_bytes(b"pass\n")
+
+
+def _bind_expected_pcl_v3_contract(
+    monkeypatch: pytest.MonkeyPatch, root: Path
+) -> dict[str, object]:
+    report = qualification._pcl_v3_inventory(root)
+    monkeypatch.setattr(
+        qualification, "EXPECTED_PCL_V3_FILE_COUNT", report["file_count"]
+    )
+    monkeypatch.setattr(
+        qualification, "EXPECTED_PCL_V3_SIZE_BYTES", report["size_bytes"]
+    )
+    monkeypatch.setattr(
+        qualification,
+        "EXPECTED_PCL_V3_TREE_SHA256",
+        report["canonical_rows_json_sha256"],
+    )
+    monkeypatch.setattr(
+        qualification,
+        "EXPECTED_PCL_V3_CLI_SHA256",
+        report["pcl_point_to_plane_cli_sha256"],
+    )
+    return report
+
+
+def test_missing_pcl_v3_bundle_skips_in_source_only_mode(tmp_path: Path) -> None:
+    missing = tmp_path / "missing-pcl-v3"
+
+    with pytest.raises(pytest.skip.Exception) as skipped:
+        _external_pcl_v3_inventory_or_skip(missing, environ={})
+
+    reason = str(skipped.value)
+    assert str(missing) in reason
+    assert (
+        "source-only package: external historical qualification bundle unavailable"
+        in reason
+    )
+
+
+def test_missing_pcl_v3_bundle_fails_when_external_qualification_is_required(
+    tmp_path: Path,
+) -> None:
+    missing = tmp_path / "missing-pcl-v3"
+    environment = {qualification.PCL_V3_EXTERNAL_QUALIFICATION_ENV: "1"}
+
+    with pytest.raises(FileNotFoundError) as failure:
+        _external_pcl_v3_inventory_or_skip(missing, environ=environment)
+
+    message = str(failure.value)
+    assert f"{qualification.PCL_V3_EXTERNAL_QUALIFICATION_ENV}=1" in message
+    assert str(missing) in message
+    assert (
+        "source-only package: external historical qualification bundle unavailable"
+        in message
+    )
+
+
+def test_existing_pcl_v3_bundle_with_wrong_sha_fails(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    candidate = tmp_path / "pcl-v3"
+    _write_pcl_v3_contract_candidate(candidate)
+    _bind_expected_pcl_v3_contract(monkeypatch, candidate)
+    (candidate / "bin/pcl_point_to_plane_cli").write_bytes(b"bad\n")
+
+    with pytest.raises(RuntimeError, match="package binding mismatch"):
+        _external_pcl_v3_inventory_or_skip(candidate, environ={})
+
+
+def test_existing_pcl_v3_bundle_matching_contract_passes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    candidate = tmp_path / "pcl-v3"
+    _write_pcl_v3_contract_candidate(candidate)
+    expected = _bind_expected_pcl_v3_contract(monkeypatch, candidate)
+
+    report = _external_pcl_v3_inventory_or_skip(candidate, environ={})
+
+    assert report["file_inventory"] == expected["file_inventory"]
+    assert report["PCL_V3_INPUT_BINDING_PASS"] is True
+
+
+def test_empty_pcl_v3_directory_cannot_pass_or_skip(tmp_path: Path) -> None:
+    empty = tmp_path / "empty-pcl-v3"
+    empty.mkdir()
+
+    with pytest.raises(RuntimeError, match="package directory is missing or unsafe"):
+        _external_pcl_v3_inventory_or_skip(empty, environ={})
 
 
 def test_worker_command_binds_unique_external_source_log(tmp_path: Path) -> None:
