@@ -1,0 +1,103 @@
+{
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "PUBLIC_DATA_V2_RUN_AUTHORIZED": false,
+  "REAL_DATA_MAIN_EXPERIMENT_AUTHORIZED": false,
+  "analysis_execution_count": 0,
+  "analysis_state": "PREREGISTERED_NOT_EXECUTED",
+  "backend_parameter_contract": {
+    "boreas_specific_icp_parameter_override_allowed": false,
+    "file_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "path": "frozen_assets/backend_parameter_contract.json"
+  },
+  "backends": [
+    "open3d_point_to_plane",
+    "pcl_point_to_plane"
+  ],
+  "contract_payload_sha256": "14ee98d4e8ab8ececf6bf586d2a5211b541c487b5dd887faf57f889f1873157a",
+  "hypotheses": {
+    "V2-H1": {
+      "absolute_millimetre_truth_assertion": false,
+      "description": "Additional registration update from reference-pose initialization",
+      "estimated_pose_relation": "T_est != T_reference",
+      "initial_pose": "T0 = T_reference",
+      "per_backend_counts": [
+        "solver_failure_count",
+        "nonfinite_output_count"
+      ],
+      "quantile_method": "linear",
+      "quantile_probabilities": [
+        0.5,
+        0.75,
+        0.95
+      ],
+      "reported_continuous_metrics": [
+        "translation_displacement_m",
+        "rotation_displacement_rad"
+      ]
+    },
+    "V2-H2": {
+      "backends_evaluated_separately": true,
+      "bootstrap": {
+        "cluster_block": "frozen_scene_interval",
+        "confidence_interval_level": 0.95,
+        "resampling_unit": "scene_interval",
+        "snapshot_level_naive_bootstrap_allowed": false
+      },
+      "comparison": "weak_geometry_vs_rich_geometry",
+      "directional_criterion": "median_weak > median_rich",
+      "reported_statistics": [
+        "median_difference_weak_minus_rich",
+        "median_ratio_weak_over_rich",
+        "clustered_bootstrap_95_percent_CI"
+      ],
+      "rich_design": "10 frozen intervals x 5 snapshots",
+      "weak_design": "10 frozen intervals x 5 snapshots"
+    },
+    "V2-H3": {
+      "comparison": "Open3D_vs_PCL_displacement_ranking",
+      "ranking_unit": "frozen_scene_interval",
+      "reported_statistic": "Spearman_rho",
+      "spearman_rho_reference_threshold": 0.7
+    },
+    "V2-H4": {
+      "association_definition": {
+        "file_sha256": "458190c26d8640353004663474adb64305d1193d89ff0dc68f71f404de8f175d",
+        "path": "src/phase_a_harness/common_association_analysis.py"
+      },
+      "causal_claim_authorized": false,
+      "criterion_scope": "EXTERNAL_CONSISTENCY_NOT_CAUSAL_PROOF",
+      "interval_held_out_direction_consistency_reported": true,
+      "pooled_spearman_rho_reference_threshold": 0.4,
+      "reported_statistics": [
+        "pooled_Spearman_rho",
+        "scene_centered_Spearman_rho",
+        "interval_held_out_direction_consistency"
+      ],
+      "scene_centered_spearman_rho_reference_threshold": 0.2
+    },
+    "V2-H5": {
+      "known_components_report": "Report update magnitude relative to each known RMSE or bound.",
+      "normalized_result_when_not_computable": "NOT_COMPUTABLE",
+      "reported_unknown_components": true,
+      "uncertainty_components": [
+        "trajectory_position_RMSE",
+        "orientation_uncertainty",
+        "time_synchronization_uncertainty",
+        "extrinsic_uncertainty",
+        "interpolation_uncertainty",
+        "deskew_uncertainty",
+        "map_accumulation_uncertainty"
+      ],
+      "unknown_imputed_as_zero": false
+    },
+    "V2-H6": {
+      "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+      "conclusion_boundary": "Boreas v2 alone can never authorize the Measurement paper mainline, the real-data main experiment, or a primary metrological claim.",
+      "primary_metrological_evidence": false
+    }
+  },
+  "hypothesis_count": 6,
+  "role": "SUPPLEMENTARY_EXTERNAL_GENERALIZATION",
+  "schema_version": "public_data_external_validation_analysis_contract_v2",
+  "selected_dataset": "Boreas"
+}

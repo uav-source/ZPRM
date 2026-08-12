@@ -1,0 +1,6 @@
+candidate_id,source_bundle,historical_status,screening_status,failure_reason,registration_count,icp_count,excluded_before_registration_results,eligible_under_public_data_v1
+IILABS,IILABS_GRANDTOUR_V1,R03=FAIL;R04=FAIL;R05=FAIL;R10=FAIL,EXCLUDED_BEFORE_REAL_REGISTRATION,cross-acquisition fixed world frame not proven,0,0,true,false
+GrandTour,IILABS_GRANDTOUR_V1,R03=FAIL;R04=FAIL;R05=FAIL;R10=FAIL,EXCLUDED_BEFORE_REAL_REGISTRATION,GT-only overlap insufficient,0,0,true,false
+RTS-GT,RTS_GT_STAGE1_FAILED_V1,R05=FAIL;R10=FAIL;single_dataset_preregistration_ready=false,EXCLUDED_BEFORE_REAL_REGISTRATION,LiDAR extrinsic/release lineage and uncertainty failure,0,0,true,false
+CAVERS,CAVERS_STAGE1_V1,R04=FAIL;R10=PARTIAL;CAVERS_STAGE1_READY=false,EXCLUDED_BEFORE_REAL_REGISTRATION,cross-recording fixed world frame not proven,0,0,true,false
+Boreas v1,BOREAS_STAGE1_V1,R02=FAIL;R10=PARTIAL;BOREAS_STAGE1_READY=false,EXCLUDED_BEFORE_REAL_REGISTRATION,R02 failed under the stricter Stage-1 independence interpretation; R10 partial,0,0,true,false

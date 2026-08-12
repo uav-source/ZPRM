@@ -1,0 +1,44 @@
+{
+  "E02": "PASS_WITH_DOCUMENTED_LIMITATION",
+  "boreas_v1_verifier_command": "python scripts/verify_boreas_stage1_v1.py --data-root /home/lj/zero_perturbation_data/boreas_stage1_v1 --runtime-root /home/lj/ZPRM/frozen_assets/real_data_boreas_stage1_v1",
+  "boreas_v1_verifier_pass_confirmed_before_v2_build": true,
+  "boreas_v1_verifier_report": {
+    "BOREAS_STAGE1_VERIFICATION_PASS": true,
+    "data_evidence_file_count": 84,
+    "original_sequence_count": 44,
+    "public_gt_sequence_count": 31,
+    "registration_execution_count": 0
+  },
+  "common_world_frame_status": "PASS",
+  "files_redownloaded": 0,
+  "registration_execution_count": 0,
+  "static_extrinsic": {
+    "calibration_date_or_session": "UNKNOWN",
+    "calibration_used_lidar_point_clouds": true,
+    "current_query_target_registration_output_used": false,
+    "fixed": true,
+    "identical_across_all_44_sequences": true,
+    "publicly_released": true,
+    "query_participation": "UNKNOWN",
+    "reestimated_in_v2": false,
+    "uncertainty": "UNKNOWN"
+  },
+  "time_chain_status": "PASS_WITH_DOCUMENTED_LIMITATION",
+  "trajectory_backbone": {
+    "uses_gnss": true,
+    "uses_icp": false,
+    "uses_imu": true,
+    "uses_lidar": false,
+    "uses_rtx_or_pospac": true,
+    "uses_scan_matching": false,
+    "uses_wheel_encoder": true
+  },
+  "v1_conclusion": {
+    "BOREAS_STAGE1_READY": false,
+    "R02": "FAIL",
+    "R10": "PARTIAL"
+  },
+  "v1_conclusion_preserved": true,
+  "v2_role": "SUPPLEMENTARY_EXTERNAL_GENERALIZATION",
+  "v2_semantics_versioned": true
+}

@@ -1,0 +1,139 @@
+{
+  "candidate_reference_sequences": {
+    "eligible_reference_sequence_count": 29,
+    "excluded_for_native_gap_above_0_20_s": 2,
+    "public_gt_sequence_count": 31,
+    "required_exclusions": [
+      "test_ground_truth_hidden",
+      "calibration_missing",
+      "nonfinite_reference_value",
+      "duplicate_timestamp",
+      "nonmonotonic_timestamp",
+      "native_reference_gap_above_0_20_s"
+    ]
+  },
+  "contract_payload_sha256": "792981edbc9fc8409580119f9360f1f23580c65a766e8030fc08b1e5e31763b6",
+  "directed_pair_contract": {
+    "direction": "map_sequence_i -> query_sequence_j",
+    "expected_pair_count_for_29_sequences": 812,
+    "same_sequence_pair_allowed": false
+  },
+  "eligibility_thresholds": {
+    "GT_OVERLAP_RADIUS_M": 5.0,
+    "GT_RESAMPLE_RATE_HZ": 1.0,
+    "MAX_NATIVE_REFERENCE_GAP_S": 0.2,
+    "MIN_CONTIGUOUS_COVERED_DURATION_S": 5.0,
+    "MIN_COVERAGE_FRACTION": 0.6,
+    "MIN_ELIGIBLE_NONOVERLAPPING_5S_INTERVALS": 30,
+    "MIN_TOTAL_COVERED_DURATION_S": 150.0
+  },
+  "gap_aware_overlap_implementation": {
+    "file_sha256": "c757e576f600ddf0ea4a0111137ee43d839611267a06631359823907fcb7ac42",
+    "non_gap_aware_overlap_module_allowed": false,
+    "path": "src/phase_a_harness/real_data_preparation/stage1_gt_overlap.py"
+  },
+  "pair_eligibility_rule": "A directed pair is eligible only when map_sequence_id differs from query_sequence_id and every frozen overlap threshold is satisfied.",
+  "pair_record_fields": [
+    "map_sequence_id",
+    "query_sequence_id",
+    "query_duration_s",
+    "covered_duration_s",
+    "coverage_fraction",
+    "contiguous_covered_interval_count",
+    "eligible_nonoverlapping_5s_intervals",
+    "nearest_distance_median_m",
+    "nearest_distance_q95_m",
+    "nearest_distance_max_m",
+    "map_calibration_sha256",
+    "query_calibration_sha256",
+    "fixed_ENU_ref_status",
+    "pair_eligibility_status",
+    "exclusion_reason"
+  ],
+  "pair_selection": {
+    "eligible_pairs_only": true,
+    "frozen_slots": [
+      "PRIMARY_PAIR",
+      "RESERVE_PAIR_1",
+      "RESERVE_PAIR_2"
+    ],
+    "ranking": [
+      {
+        "direction": "descending",
+        "field": "covered_duration_s",
+        "priority": 1
+      },
+      {
+        "direction": "descending",
+        "field": "coverage_fraction",
+        "priority": 2
+      },
+      {
+        "direction": "descending",
+        "field": "eligible_nonoverlapping_5s_intervals",
+        "priority": 3
+      },
+      {
+        "direction": "ascending",
+        "field": "nearest_distance_q95_m",
+        "priority": 4
+      },
+      {
+        "direction": "lexicographic_ascending",
+        "field": "map_sequence_id",
+        "priority": 5
+      },
+      {
+        "direction": "lexicographic_ascending",
+        "field": "query_sequence_id",
+        "priority": 6
+      }
+    ]
+  },
+  "prerequisites_before_overlap": {
+    "E02_allowed_statuses": [
+      "PASS",
+      "PASS_WITH_DOCUMENTED_LIMITATION"
+    ],
+    "E05_allowed_statuses": [
+      "PASS",
+      "PASS_WITH_DOCUMENTED_LIMITATION"
+    ],
+    "fixed_ENU_ref_required_status": "PASS"
+  },
+  "prohibited_selection_inputs": [
+    "LiDAR_point_cloud",
+    "weather_label",
+    "ICP_result",
+    "registration_residual",
+    "map_quality",
+    "weak_rich_geometry_label",
+    "map_visualization_or_manual_pair_selection"
+  ],
+  "reserve_pair_activation": {
+    "allowed_only_for_infrastructure_failure": true,
+    "allowed_reasons": [
+      "download_object_permanently_missing",
+      "checksum_mismatch",
+      "file_corruption",
+      "GT_file_corruption",
+      "official_object_withdrawn_for_primary_pair"
+    ],
+    "disallowed_reasons": [
+      "ICP_error_too_large",
+      "weak_rich_result_unfavorable",
+      "Open3D_PCL_disagreement",
+      "correlation_not_significant",
+      "publication_result_unfavorable"
+    ]
+  },
+  "schema_version": "public_data_external_validation_pair_selection_contract_v2",
+  "selected_dataset": "Boreas",
+  "selection_reproducibility": {
+    "all_eligible_directed_pairs_must_be_ranked": true,
+    "manual_pair_selection_allowed": false,
+    "registration_result_access_allowed": false,
+    "threshold_lowering_allowed": false,
+    "weather_based_selection_allowed": false
+  }
+}

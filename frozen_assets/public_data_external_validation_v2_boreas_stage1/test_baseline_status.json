@@ -1,0 +1,61 @@
+{
+  "EXTERNAL_QUALIFICATION_BASELINE": "UNAVAILABLE",
+  "SOURCE_ONLY_TEST_BASELINE": "PASS",
+  "external_qualification_baseline": {
+    "command": "ZPRM_REQUIRE_PCL_V3_EXTERNAL_QUALIFICATION=1 python -m pytest -q tests/test_runtime_lifecycle_qualification.py::test_fixed_pcl_v3_input_inventory_matches_contract",
+    "errors": 0,
+    "exit_code": 1,
+    "failed": 1,
+    "missing_path": "/tmp/synthetic_confirmatory_v2_pcl_v3_requalification",
+    "passed": 0,
+    "reason": "/tmp/synthetic_confirmatory_v2_pcl_v3_requalification: source-only package: external historical qualification bundle unavailable",
+    "required_environment": "ZPRM_REQUIRE_PCL_V3_EXTERNAL_QUALIFICATION=1",
+    "status": "UNAVAILABLE"
+  },
+  "initial_baseline": {
+    "collected": 771,
+    "command": "python -m pytest -q",
+    "failed": 1,
+    "passed": 761,
+    "skipped": 9
+  },
+  "source_only_baseline": {
+    "collected": 811,
+    "command": "PYTHONNOUSERSITE=1 MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba python -m pytest -q",
+    "errors": 0,
+    "failed": 0,
+    "passed": 801,
+    "skip_reasons": [
+      {
+        "count": 2,
+        "reason": "source-only ZIP excludes the historical Git baseline object"
+      },
+      {
+        "count": 1,
+        "reason": "source-only ZIP excludes the historical Phase B tag object"
+      },
+      {
+        "count": 1,
+        "reason": "source-only ZIP excludes the historical formal Phase A results"
+      },
+      {
+        "count": 1,
+        "reason": "source-only ZIP excludes the historical Phase B raw results"
+      },
+      {
+        "count": 1,
+        "reason": "/tmp/synthetic_confirmatory_v2_pcl_v3_requalification: source-only package: external historical qualification bundle unavailable"
+      },
+      {
+        "count": 1,
+        "reason": "source-only ZIP excludes the historical v1 failure bundle"
+      },
+      {
+        "count": 3,
+        "reason": "source-only ZIP excludes the historical v2 Git object"
+      }
+    ],
+    "skipped": 10,
+    "status": "PASS"
+  }
+}

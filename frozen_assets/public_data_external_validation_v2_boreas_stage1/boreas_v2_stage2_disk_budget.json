@@ -1,0 +1,17 @@
+{
+  "canonical_bundle_bytes": 208317274944,
+  "current_free_bytes": 119027777536,
+  "current_machine_meets_safety_budget": false,
+  "decoded_or_unpacked_working_bytes": 208317274944,
+  "download_bytes": 104158637472,
+  "formula": "1.5 * (download + decoded_working + target_map + canonical_bundle + temporary_processing)",
+  "minimum_safety_multiplier": 1.5,
+  "query_download_bytes": 62159820192,
+  "required_safe_disk_GB_decimal": 1063.424189088,
+  "required_safe_disk_GiB": 990.3909536898136,
+  "required_safe_disk_bytes": 1063424189088,
+  "subtotal_before_safety_bytes": 708949459392,
+  "target_map_bytes": 83997634560,
+  "target_map_download_bytes": 41998817280,
+  "temporary_processing_bytes": 104158637472
+}

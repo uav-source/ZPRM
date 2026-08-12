@@ -1,0 +1,13 @@
+{
+  "data_root": "/home/lj/zero_perturbation_data/boreas_stage1_v1",
+  "downloaded_lidar_bytes": 0,
+  "downloaded_lidar_object_count": 0,
+  "downloaded_lidar_payload_count": 0,
+  "initial_local_lidar_bin_count": 0,
+  "local_lidar_bin_count": 0,
+  "local_lidar_bin_paths": [],
+  "metadata_listing_only": true,
+  "pass": true,
+  "payload_materialization_authorized": false,
+  "status": "PASS"
+}

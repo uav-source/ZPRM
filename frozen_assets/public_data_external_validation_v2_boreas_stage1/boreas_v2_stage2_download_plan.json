@@ -1,0 +1,70 @@
+{
+  "allowlist_file": "boreas_v2_stage2_download_allowlist.csv",
+  "allowlist_sha256": "26ac211c854472dcb3db2f1cd5b096849bfd27867bac34e75bc8ce0d01bb2787",
+  "downloaded_lidar_bytes": 0,
+  "downloaded_lidar_object_count": 0,
+  "estimated_download_GB_decimal": 104.158637472,
+  "estimated_download_GiB": 97.0052904188633,
+  "estimated_download_bytes": 104158637472,
+  "full_primary_sequence_metadata": {
+    "boreas-2021-01-26-11-22": {
+      "first_timestamp_us": 1611678138564575,
+      "last_timestamp_us": 1611679551335205,
+      "listing_sha256": "2068ce252917604dd8b6e97eba5453b318f5bb68ee4788e88933e92103567ba7",
+      "object_count": 13624,
+      "remote_bytes": 71225980056
+    },
+    "boreas-2021-11-14-09-47": {
+      "first_timestamp_us": 1636901260120239,
+      "last_timestamp_us": 1636902285042816,
+      "listing_sha256": "f164f1941164c8a893b1d3b92a73ab814590a7aea97c1f3a5bff9c4d3874dad2",
+      "object_count": 9876,
+      "remote_bytes": 50402808336
+    }
+  },
+  "metadata_listing_invocations": [
+    {
+      "command_class": "aws s3 ls --recursive --no-sign-request",
+      "listing_sha256": "f164f1941164c8a893b1d3b92a73ab814590a7aea97c1f3a5bff9c4d3874dad2",
+      "payload_download": false,
+      "prefix": "s3://boreas/boreas-2021-11-14-09-47/lidar/",
+      "sequence_id": "boreas-2021-11-14-09-47"
+    },
+    {
+      "command_class": "aws s3 ls --recursive --no-sign-request",
+      "listing_sha256": "2068ce252917604dd8b6e97eba5453b318f5bb68ee4788e88933e92103567ba7",
+      "payload_download": false,
+      "prefix": "s3://boreas/boreas-2021-01-26-11-22/lidar/",
+      "sequence_id": "boreas-2021-01-26-11-22"
+    }
+  ],
+  "metadata_only": true,
+  "primary_pair": {
+    "map_sequence_id": "boreas-2021-11-14-09-47",
+    "query_sequence_id": "boreas-2021-01-26-11-22"
+  },
+  "selected_complete_five_second_window_count": 246,
+  "selected_objects": {
+    "QUERY": {
+      "first_timestamp_us": 1611678138564575,
+      "last_timestamp_us": 1611679547498291,
+      "object_count": 11859,
+      "remote_bytes": 62159820192,
+      "sequence_id": "boreas-2021-01-26-11-22"
+    },
+    "TARGET_MAP": {
+      "first_timestamp_us": 1636901260120239,
+      "last_timestamp_us": 1636902285042816,
+      "object_count": 8202,
+      "remote_bytes": 41998817280,
+      "sequence_id": "boreas-2021-11-14-09-47"
+    }
+  },
+  "selection": {
+    "map": "native map poses within 5 m in fixed ENU_ref of selected covered query 1 Hz samples",
+    "point_cloud_payload_consulted": false,
+    "query": "native query poses in complete half-open nonoverlapping 5 s windows carved from each covered island",
+    "registration_result_consulted": false
+  },
+  "stage2_execution_authorized": false
+}

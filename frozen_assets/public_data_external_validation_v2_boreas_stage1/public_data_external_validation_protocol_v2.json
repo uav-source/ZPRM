@@ -1,0 +1,233 @@
+{
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "PUBLIC_DATA_EXTERNAL_VALIDATION_PROTOCOL_V2_READY": true,
+  "PUBLIC_DATA_V2_RUN_AUTHORIZED": false,
+  "REAL_DATA_MAIN_EXPERIMENT_AUTHORIZED": false,
+  "REAL_REGISTRATION_AUTHORIZED": false,
+  "actual_trials": 0,
+  "current_stage1_counts": {
+    "actual_trials": 0,
+    "planned_trials": 0,
+    "rich_snapshot_count": 0,
+    "snapshot_count": 0,
+    "weak_snapshot_count": 0
+  },
+  "downloaded_lidar_bytes": 0,
+  "downloaded_lidar_object_count": 0,
+  "downloaded_lidar_payload_count": 0,
+  "eligibility_requirement_count": 14,
+  "eligibility_requirements": {
+    "E01": {
+      "mandatory": true,
+      "required_evidence": "Public dataset citation, release identity, and selected-dataset declaration",
+      "requirement": "At least one public real LiDAR data source is required for supplementary external validation.",
+      "two_public_datasets_already_satisfied": false
+    },
+    "E02": {
+      "allowed_adjudications": [
+        "PASS",
+        "PASS_WITH_DOCUMENTED_LIMITATION",
+        "FAIL"
+      ],
+      "boreas_adjudication_when_all_conditions_evidenced": "PASS_WITH_DOCUMENTED_LIMITATION",
+      "documented_limitation_semantics": "PASS_WITH_DOCUMENTED_LIMITATION does not assert that the static extrinsic is non-LiDAR, fully independent, or uncertainty-free. It permits only supplementary external trend/generalization validation under every listed limitation.",
+      "historical_lidar_assisted_static_extrinsic": {
+        "all_conditions_required": true,
+        "allowed": true,
+        "conditions": [
+          {
+            "condition_id": "E02-X01",
+            "requirement": "The static extrinsic is not re-estimated in this experiment."
+          },
+          {
+            "condition_id": "E02-X02",
+            "requirement": "The static extrinsic is not re-estimated for the primary or reserve pair."
+          },
+          {
+            "condition_id": "E02-X03",
+            "requirement": "The static extrinsic is not re-estimated from weak/rich labels."
+          },
+          {
+            "condition_id": "E02-X04",
+            "requirement": "The static extrinsic is not re-estimated from Open3D or PCL results."
+          },
+          {
+            "condition_id": "E02-X05",
+            "requirement": "The static extrinsic does not use any query-to-target registration output from this experiment."
+          },
+          {
+            "condition_id": "E02-X06",
+            "requirement": "Every evaluated sequence uses the same frozen byte-identical matrix."
+          },
+          {
+            "condition_id": "E02-X07",
+            "requirement": "The complete LiDAR-assisted calibration provenance is disclosed."
+          },
+          {
+            "condition_id": "E02-X08",
+            "requirement": "Unknown calibration session, calibration date, or query participation remains UNKNOWN."
+          },
+          {
+            "condition_id": "E02-X09",
+            "requirement": "When extrinsic uncertainty is unknown, no absolute metrological conclusion below reference uncertainty is permitted."
+          },
+          {
+            "condition_id": "E02-X10",
+            "requirement": "The static extrinsic is used only for external trend/generalization validation."
+          }
+        ],
+        "preexisting_publication_required": true,
+        "static_extrinsic_characteristics": [
+          "public_before_experiment",
+          "fixed_before_experiment",
+          "byte_identical_across_sequences"
+        ]
+      },
+      "mandatory": true,
+      "requirement": "The reference trajectory backbone must be independent of the evaluated query-to-target scan-to-map registration and must not be produced by ICP, scan matching, LiDAR odometry, or SLAM.",
+      "trajectory_backbone": {
+        "forbidden_generation_methods": [
+          "ICP",
+          "scan_matching",
+          "LiDAR_odometry",
+          "SLAM"
+        ],
+        "independent_of": "evaluated_query_to_target_scan_to_map_registration"
+      }
+    },
+    "E03": {
+      "mandatory": true,
+      "required_evidence": "Frozen query and target-map construction lineage",
+      "requirement": "An evaluated query scan must not be used to construct its own target map."
+    },
+    "E04": {
+      "mandatory": true,
+      "required_evidence": "Distinct frozen map_sequence_id and query_sequence_id",
+      "requirement": "The target map and query scan must come from different Boreas sequences."
+    },
+    "E05": {
+      "mandatory": true,
+      "required_evidence": "Timestamp provenance, calibration provenance, and transform chain",
+      "requirement": "The timestamp chain and extrinsic chain must be auditable.",
+      "unknown_preservation": [
+        "numeric_time_synchronization_error_bound",
+        "extrinsic_error_or_uncertainty"
+      ]
+    },
+    "E06": {
+      "future_stage2_success_design": {
+        "backend_trial_count": 200,
+        "rich_interval_count": 10,
+        "rich_snapshot_count": 50,
+        "snapshots_per_interval": 5,
+        "total_interval_count": 20,
+        "total_snapshot_count": 100,
+        "weak_interval_count": 10,
+        "weak_snapshot_count": 50
+      },
+      "mandatory": true,
+      "requirement": "After a successful Boreas Stage-2, freeze 10 weak intervals with 5 snapshots each and 10 rich intervals with 5 snapshots each, yielding 50 weak snapshots, 50 rich snapshots, 100 snapshots total, and 200 backend trials.",
+      "stage1_counts": {
+        "actual_trials": 0,
+        "planned_trials": 0,
+        "rich": 0,
+        "snapshots": 0,
+        "weak": 0
+      }
+    },
+    "E07": {
+      "mandatory": true,
+      "required_evidence": "Immutable pre-registration interval and label manifest",
+      "requirement": "Every weak/rich label must be frozen before any real registration is run."
+    },
+    "E08": {
+      "mandatory": true,
+      "required_evidence": "Per-backend canonical-input SHA-256 equality",
+      "requirement": "Open3D and PCL must consume byte-identical canonical input."
+    },
+    "E09": {
+      "backend_contract": {
+        "boreas_specific_icp_parameter_override_allowed": false,
+        "file_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+        "open3d_canonical_parameter_sha256": "94a2d1e991658b7088be43ad1a82f9b1d783264736c3beb0217d6dd1c7a26413",
+        "path": "frozen_assets/backend_parameter_contract.json",
+        "pcl_canonical_parameter_sha256": "16b3d124f466f33c41a1ecfb27a103a570c3ad2055db9c87ae92c74dbba64abd"
+      },
+      "mandatory": true,
+      "requirement": "Retain the frozen Open3D and PCL backend parameter contract without Boreas-specific ICP parameters."
+    },
+    "E10": {
+      "mandatory": true,
+      "requirement": "Record every listed reference, timing, calibration, interpolation, deskew, and map-accumulation uncertainty component.",
+      "uncertainty_components": [
+        "trajectory_position_RMSE",
+        "orientation_uncertainty",
+        "time_synchronization_uncertainty",
+        "extrinsic_uncertainty",
+        "interpolation_uncertainty",
+        "deskew_uncertainty",
+        "map_accumulation_uncertainty"
+      ],
+      "unknown_must_not_be_zero": true,
+      "unknown_value": "UNKNOWN"
+    },
+    "E11": {
+      "main_measurement_gate_applies": false,
+      "mandatory": true,
+      "measurement_mainline_dependency": "Mid-360 static real experiment",
+      "permitted_primary_external_conclusions": [
+        "geometry_trend",
+        "cross_backend_ranking",
+        "reassociation_association"
+      ],
+      "requirement": "Boreas v2 does not require an observed effect to exceed every real-reference uncertainty and cannot supply the primary metrological gate.",
+      "small_or_comparable_update_interpretation": "If an update is smaller than or comparable to reference uncertainty, it is only a descriptive registration update and is not a physical localization error resolved by independent truth."
+    },
+    "E12": {
+      "mandatory": true,
+      "required_evidence": "Frozen continuous-outcome analysis contract",
+      "requirement": "Continuous displacement, rotation, and association metrics are primary; one arbitrary success threshold must not replace the result."
+    },
+    "E13": {
+      "implementation_file_sha256": "458190c26d8640353004663474adb64305d1193d89ff0dc68f71f404de8f175d",
+      "implementation_path": "src/phase_a_harness/common_association_analysis.py",
+      "mandatory": true,
+      "requirement": "Association and reassociation metrics must reuse the frozen offline common-association definition."
+    },
+    "E14": {
+      "frozen_objects": [
+        "primary_pair",
+        "reserve_pairs",
+        "scene_intervals",
+        "weak_rich_labels",
+        "snapshots"
+      ],
+      "mandatory": true,
+      "requirement": "The primary pair, reserve pairs, scene intervals, weak/rich labels, and snapshots must not be reselected after registration results are observed."
+    }
+  },
+  "future_stage2_success_design": {
+    "backend_count": 2,
+    "backend_trial_count": 200,
+    "rich_interval_count": 10,
+    "rich_snapshot_count": 50,
+    "snapshots_per_interval": 5,
+    "total_interval_count": 20,
+    "total_snapshot_count": 100,
+    "weak_interval_count": 10,
+    "weak_snapshot_count": 50
+  },
+  "planned_trials": 0,
+  "primary_metrological_evidence": false,
+  "protocol_payload_sha256": "21097ab9c36de372285f2c40282e5348de3f2d15e43296d87a7e05f331c797cf",
+  "public_dataset_count_required": 1,
+  "purpose": "Check whether additional scan-to-map registration updates initialized from reference pose, geometry dependence, cross-backend trends, and correspondence reassociation in a public independent-acquisition fixed-world-frame mobile dataset are directionally consistent with controlled synthetic results.",
+  "real_trial_result_count": 0,
+  "registration_execution_count": 0,
+  "rich_snapshot_count": 0,
+  "role": "SUPPLEMENTARY_EXTERNAL_GENERALIZATION",
+  "schema_version": "public_data_external_validation_protocol_v2",
+  "selected_dataset": "Boreas",
+  "snapshot_count": 0,
+  "weak_snapshot_count": 0
+}
