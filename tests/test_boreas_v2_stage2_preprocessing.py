@@ -512,6 +512,14 @@ def test_preprocessing_contract_self_hash_and_code_bindings() -> None:
     implementation = contract["implementation_bindings"]["production_preprocessing"]
     source = REPOSITORY / implementation["path"]
     assert hashlib.sha256(source.read_bytes()).hexdigest() == implementation["file_sha256"]
+    witness = contract["implementation_bindings"][
+        "independent_canonical_source_witness"
+    ]
+    witness_source = REPOSITORY / witness["path"]
+    assert hashlib.sha256(witness_source.read_bytes()).hexdigest() == witness["file_sha256"]
+    assert witness["verification_claim"] == (
+        "DUAL_PATH_BYTE_IDENTITY_USING_SHARED_FROZEN_PREPROCESSING_PRIMITIVES"
+    )
     assert contract["execution_state_at_freeze"] == {
         "geometry_metric_execution_count": 0,
         "lidar_payload_download_count": 0,

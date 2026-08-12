@@ -24,6 +24,7 @@ from .public_data_v1_closure_verifier import verify_public_data_v1_closure
 
 
 EXPECTED_BRANCH = "prep/public-data-external-validation-v2-boreas-stage1"
+STAGE2_PREPARATION_BRANCH = "run/boreas-v2-stage2-data-preparation"
 BOREAS_V1_COMMIT = "d304ea7a2a201aff21b48e5039422b63b0eb6e99"
 PCL_EXTERNAL_BUNDLE = Path("/tmp/synthetic_confirmatory_v2_pcl_v3_requalification")
 BACKEND_PARAMETER_SHA256 = "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
@@ -1526,7 +1527,11 @@ def verify_boreas_external_v2_stage1(
     branch = subprocess.check_output(
         ["git", "branch", "--show-current"], cwd=repository_path, text=True
     ).strip()
-    _same(branch, EXPECTED_BRANCH, "verification branch")
+    if branch not in {EXPECTED_BRANCH, STAGE2_PREPARATION_BRANCH}:
+        _fail(
+            "verification branch differs: expected frozen Stage-1 branch or "
+            f"{STAGE2_PREPARATION_BRANCH!r}, got {branch!r}"
+        )
     if subprocess.run(
         ["git", "merge-base", "--is-ancestor", BOREAS_V1_COMMIT, "HEAD"],
         cwd=repository_path,

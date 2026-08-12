@@ -22,6 +22,17 @@ from phase_a_harness.real_data_preparation import (
 REPOSITORY = Path(__file__).resolve().parents[1]
 
 
+def _fixture_repository_gate() -> dict[str, object]:
+    return {
+        "branch": producer.EXPECTED_BRANCH,
+        "head": subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=REPOSITORY, text=True
+        ).strip(),
+        "protected_tags": dict(producer.EXPECTED_TAG_COMMITS),
+        "worktree_clean": True,
+    }
+
+
 @pytest.fixture(scope="module")
 def valid_storage_closure(tmp_path_factory: pytest.TempPathFactory) -> tuple[Path, Path]:
     root = tmp_path_factory.mktemp("boreas-stage2-storage-verifier")
@@ -49,8 +60,7 @@ def valid_storage_closure(tmp_path_factory: pytest.TempPathFactory) -> tuple[Pat
     try:
         for name in names:
             os.environ[name] = "1"
-        recorded_gate = original_repository_gate(REPOSITORY, require_clean=False)
-        recorded_gate["worktree_clean"] = True
+        recorded_gate = _fixture_repository_gate()
         producer.inspect_repository_gate = lambda *_args, **_kwargs: recorded_gate
         producer.build_boreas_stage2_storage_optimization(
             repository=REPOSITORY,

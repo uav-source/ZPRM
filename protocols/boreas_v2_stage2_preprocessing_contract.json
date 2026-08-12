@@ -17,7 +17,7 @@
     "target_point_layout": "C_CONTIGUOUS_N_BY_3",
     "target_point_payload": "target_points.npy NPY_V1_0_ALLOW_PICKLE_FALSE"
   },
-  "contract_payload_sha256": "e1f89636946bad0d7d57af40a5a5dff4dfe37d92f0eea3c695c0672e2a0857b8",
+  "contract_payload_sha256": "d1ececca23cd7638a2ddbd84ed829278a52596bda2d2bfb60732e36ad4afee3e",
   "contract_status": "FROZEN",
   "coordinate_convention": {
     "applanix_frame": "PUBLISHED_APPLANIX_SENSOR_FRAME",
@@ -180,6 +180,11 @@
   },
   "frozen_at_utc": "2026-08-12T15:45:44Z",
   "implementation_bindings": {
+    "independent_canonical_source_witness": {
+      "file_sha256": "8ec014e8f0bae4594b09da0f70613e09b2e61462b3069f24131ee51aff0dd76f",
+      "path": "src/phase_a_harness/real_data_preparation/boreas_v2_stage2_canonical_witness.py",
+      "verification_claim": "DUAL_PATH_BYTE_IDENTITY_USING_SHARED_FROZEN_PREPROCESSING_PRIMITIVES"
+    },
     "production_preprocessing": {
       "file_sha256": "045b5b650bcd658f7abff401c6c95317f63dae8a07665daf6a3336683f88bce3",
       "path": "src/phase_a_harness/real_data_preparation/boreas_v2_stage2_preprocessing.py"

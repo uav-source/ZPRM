@@ -80,6 +80,13 @@ Geometry-only screening 只能输出预注册的 correspondence count 与 transl
 
 Canonical source、target 均为 finite、C-contiguous、little-endian float64 `N×3` NPY v1.0；`T_reference` 为同规范的 float64 `4×4` NPY v1.0。未来两个 backend 必须引用相同 content-addressed source/target；禁止 backend-specific preprocessing copy。
 
+每个最终 query 的 raw 临时对象在删除前，必须通过冻结的
+`boreas_v2_stage2_canonical_witness.py` 再走一次独立 orchestration，并对 producer
+与 witness 的 `source_points.npy`、`T_reference.npy` 做逐字节比较。两条路径复用同一组
+冻结 preprocessing primitives，因此证据声明严格限定为
+`DUAL_PATH_BYTE_IDENTITY_USING_SHARED_FROZEN_PREPROCESSING_PRIMITIVES`，不声明存在第二套
+算法独立实现。
+
 ## E02 limitation 与 uncertainty
 
 Reference trajectory backbone 是 GNSS/IMU/wheel/RTX，未使用 LiDAR、ICP、scan matching 或 SLAM。但是 `T_applanix_lidar` 的官方历史 provenance 是 LiDAR-assisted proprietary batch calibration；calibration session、query sequence 是否参与、translation/rotation uncertainty 均为 `UNKNOWN`。因此 E02 只能是 `PASS_WITH_DOCUMENTED_LIMITATION`，Boreas 只能作为 supplementary external generalization。

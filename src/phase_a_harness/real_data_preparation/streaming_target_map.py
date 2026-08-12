@@ -40,8 +40,14 @@ SUPPORTED_RULE_AUTHORITIES = frozenset(
 STORAGE_PLANNER_AUTHORITY = "STORAGE_PLANNER"
 MAP_STATE_SCHEMA = "zprm.stage2.streaming_target_map_state.v1"
 MAP_RESULT_SCHEMA = "zprm.stage2.streaming_target_map_result.v1"
-PRODUCTION_REPLAY_LEDGER_SCHEMA = "zprm.stage2.production_map_replay_ledger.v1"
+PRODUCTION_REPLAY_LEDGER_SCHEMA = "zprm.stage2.production_map_replay_ledger.v2"
+PRODUCTION_REPLAY_ALLOCATION_INTENT_SCHEMA = (
+    "zprm.stage2.production_map_replay_allocation_intent.v1"
+)
 PRODUCTION_REPLAY_FORMAT = "LITTLE_ENDIAN_FLOAT64_XYZ_C_ORDER_NO_HEADER"
+PRODUCTION_REPLAY_PADDING_RULE = "ZERO_FLOAT64_XYZ_UNUSED_SUFFIX_V1"
+PYTHON_VOXEL_TRANSITION_KIND = "PYTHON_VOXEL_ACCUMULATOR_V1"
+AUTHENTICATED_RANGE_TRANSITION_KIND = "AUTHENTICATED_REPLAY_RANGE_CHAIN_V1"
 BOREAS_RAW_POINT_STRIDE_BYTES = 24
 REPLAY_POINT_STRIDE_BYTES = 24
 ZERO_SHA256 = "0" * 64
@@ -88,7 +94,12 @@ def canonical_array_sha256(array: Any) -> str:
     )
     digest = hashlib.sha256()
     digest.update(header)
-    digest.update(value.tobytes(order="C"))
+    # Hash through a byte view so multi-gigabyte read-only memmaps are not
+    # copied into one equally large Python ``bytes`` object.
+    byte_view = memoryview(value).cast("B")
+    chunk_size = 8 * 1024 * 1024
+    for start in range(0, len(byte_view), chunk_size):
+        digest.update(byte_view[start : start + chunk_size])
     return digest.hexdigest()
 
 
@@ -687,6 +698,226 @@ def _parse_replay_ledger(payload: bytes) -> list[dict[str, Any]]:
     return result
 
 
+def production_replay_plan_payload(
+    allowlist: Sequence[ReplayMapObject | Mapping[str, Any]],
+    *,
+    replay_path: str | Path,
+    processing_contract_sha256: str,
+    gt_sha256: str,
+    calibration_sha256: str,
+    voxel_rule_sha256: str,
+    track_python_voxel_state: bool,
+) -> dict[str, Any]:
+    """Return the canonical fixed replay plan without materializing storage."""
+
+    rows = tuple(ReplayMapObject.from_value(row) for row in allowlist)
+    if [row.ordinal for row in rows] != list(range(len(rows))):
+        raise StreamingTargetMapError(
+            "replay allowlist ordinals must be exactly 0..N-1"
+        )
+    if len({row.object_key for row in rows}) != len(rows):
+        raise StreamingTargetMapError("replay allowlist object keys must be unique")
+    replay = Path(replay_path)
+    if not replay.is_absolute():
+        raise StreamingTargetMapError("replay array path must be absolute")
+    if not isinstance(track_python_voxel_state, bool):
+        raise StreamingTargetMapError("track_python_voxel_state must be boolean")
+    plan_rows: list[dict[str, Any]] = []
+    byte_start = 0
+    for item in rows:
+        byte_count = item.point_capacity * REPLAY_POINT_STRIDE_BYTES
+        plan_rows.append(
+            {
+                **item.identity(),
+                "byte_end_exclusive": byte_start + byte_count,
+                "byte_start": byte_start,
+                "point_capacity": item.point_capacity,
+            }
+        )
+        byte_start += byte_count
+    return {
+        "allowlist": plan_rows,
+        "allowlist_sha256": hashlib.sha256(
+            canonical_json_bytes(plan_rows)
+        ).hexdigest(),
+        "boreas_raw_point_stride_bytes": BOREAS_RAW_POINT_STRIDE_BYTES,
+        "calibration_sha256": _require_sha256(
+            calibration_sha256, field="calibration_sha256"
+        ),
+        "gt_sha256": _require_sha256(gt_sha256, field="gt_sha256"),
+        "numeric_format": PRODUCTION_REPLAY_FORMAT,
+        "processing_contract_sha256": _require_sha256(
+            processing_contract_sha256, field="processing_contract_sha256"
+        ),
+        "padding_rule": PRODUCTION_REPLAY_PADDING_RULE,
+        "replay_path": str(replay),
+        "replay_point_stride_bytes": REPLAY_POINT_STRIDE_BYTES,
+        "track_python_voxel_state": track_python_voxel_state,
+        "total_point_capacity": sum(row.point_capacity for row in rows),
+        "total_replay_bytes": byte_start,
+        "voxel_rule_sha256": _require_sha256(
+            voxel_rule_sha256, field="voxel_rule_sha256"
+        ),
+    }
+
+
+def production_replay_allocation_evidence(
+    plan_payload: Mapping[str, Any], *, ledger_path: str | Path
+) -> tuple[dict[str, Any], bytes]:
+    """Return exact allocation intent and PLAN bytes for pre-gate recovery."""
+
+    replay_path = Path(str(plan_payload.get("replay_path", "")))
+    ledger = Path(ledger_path)
+    if not replay_path.is_absolute() or not ledger.is_absolute():
+        raise StreamingTargetMapError("replay allocation paths must be absolute")
+    total = plan_payload.get("total_replay_bytes")
+    if isinstance(total, bool) or not isinstance(total, int) or total < 0:
+        raise StreamingTargetMapError("replay allocation byte count is invalid")
+    unsigned = {
+        "ledger_path": str(ledger),
+        "plan_payload_sha256": hashlib.sha256(
+            canonical_json_bytes(dict(plan_payload))
+        ).hexdigest(),
+        "replay_path": str(replay_path),
+        "schema": PRODUCTION_REPLAY_ALLOCATION_INTENT_SCHEMA,
+        "total_replay_bytes": total,
+    }
+    intent = {
+        **unsigned,
+        "intent_sha256": hashlib.sha256(canonical_json_bytes(unsigned)).hexdigest(),
+    }
+    plan = _ledger_envelope(
+        sequence_number=1,
+        previous_record_sha256=ZERO_SHA256,
+        record_type="PLAN",
+        payload=plan_payload,
+    )
+    return intent, _compact_json_line(plan)
+
+
+def _safe_zero_managed_file(path: Path, *, maximum_size: int, label: str) -> os.stat_result:
+    if (
+        path.is_symlink()
+        or not path.is_file()
+        or path.resolve(strict=True) != path
+        or os.lstat(path).st_nlink != 1
+    ):
+        raise StreamingTargetMapError(f"{label} is unsafe")
+    descriptor = _open_replay_file(path, os.O_RDONLY)
+    try:
+        metadata = os.fstat(descriptor)
+        if metadata.st_size > maximum_size:
+            raise StreamingTargetMapError(f"{label} exceeds the planned allocation")
+        offset = 0
+        while offset < metadata.st_size:
+            block = os.pread(
+                descriptor,
+                min(8 * 1024 * 1024, metadata.st_size - offset),
+                offset,
+            )
+            if not block or any(block):
+                raise StreamingTargetMapError(f"{label} contains nonzero bytes")
+            offset += len(block)
+        return metadata
+    finally:
+        os.close(descriptor)
+
+
+def recover_production_replay_allocation_before_gate(
+    *,
+    plan_payload: Mapping[str, Any],
+    replay_path: str | Path,
+    ledger_path: str | Path,
+) -> bool:
+    """Authenticate/repair allocation-only crash state before disk RESUME.
+
+    Returns ``True`` only when the complete nonsparse replay allocation remains.
+    A zero partial/sparse allocation and a truncated exact PLAN prefix are
+    safely removed under the exact durable intent, allowing a fresh start gate.
+    """
+
+    replay = Path(replay_path)
+    ledger = Path(ledger_path)
+    intent_path = ledger.parent / "replay_allocation_intent.json"
+    replay_exists = replay.exists() or replay.is_symlink()
+    ledger_exists = ledger.exists() or ledger.is_symlink()
+    intent_exists = intent_path.exists() or intent_path.is_symlink()
+    if not intent_exists:
+        if replay_exists != ledger_exists:
+            raise StreamingTargetMapError("orphan replay array or ledger")
+        if not replay_exists:
+            return False
+        total = plan_payload.get("total_replay_bytes")
+        if isinstance(total, bool) or not isinstance(total, int) or total < 0:
+            raise StreamingTargetMapError("replay allocation byte count is invalid")
+        for path, label in ((replay, "replay array"), (ledger, "replay ledger")):
+            if (
+                path.is_symlink()
+                or not path.is_file()
+                or path.resolve(strict=True) != path
+                or os.lstat(path).st_nlink != 1
+            ):
+                raise StreamingTargetMapError(f"{label} is unsafe")
+        replay_metadata = os.lstat(replay)
+        if replay_metadata.st_size != total:
+            raise StreamingTargetMapError("replay array byte size differs")
+        if replay_metadata.st_blocks * 512 < total:
+            raise StreamingTargetMapError(
+                "replay array is sparse or incompletely allocated"
+            )
+        if os.lstat(ledger).st_size <= 0:
+            raise StreamingTargetMapError("replay ledger is empty")
+        return True
+    expected_intent, expected_plan_line = production_replay_allocation_evidence(
+        plan_payload, ledger_path=ledger
+    )
+    if (
+        intent_path.is_symlink()
+        or not intent_path.is_file()
+        or intent_path.resolve(strict=True) != intent_path
+        or os.lstat(intent_path).st_nlink != 1
+    ):
+        raise StreamingTargetMapError("replay allocation intent is unsafe")
+    try:
+        intent_raw = intent_path.read_bytes()
+        intent = json.loads(intent_raw)
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise StreamingTargetMapError("replay allocation intent is invalid") from exc
+    if intent_raw != canonical_json_bytes(intent) or intent != expected_intent:
+        raise StreamingTargetMapError("replay allocation intent binding differs")
+
+    if ledger_exists:
+        if (
+            ledger.is_symlink()
+            or not ledger.is_file()
+            or ledger.resolve(strict=True) != ledger
+            or os.lstat(ledger).st_nlink != 1
+        ):
+            raise StreamingTargetMapError("replay allocation ledger is unsafe")
+        ledger_raw = ledger.read_bytes()
+        if not expected_plan_line.startswith(ledger_raw):
+            raise StreamingTargetMapError(
+                "replay allocation ledger is not an exact PLAN prefix"
+            )
+    total = int(plan_payload["total_replay_bytes"])
+    complete = False
+    if replay_exists:
+        metadata = _safe_zero_managed_file(
+            replay, maximum_size=total, label="replay allocation"
+        )
+        complete = metadata.st_size == total and metadata.st_blocks * 512 >= total
+    if complete:
+        return True
+
+    for path in (ledger, replay):
+        if path.exists():
+            path.unlink()
+            _fsync_directory(path.parent)
+    intent_path.unlink()
+    _fsync_directory(intent_path.parent)
+    return False
+
+
 def _safe_absolute_file(path: str | Path, *, label: str) -> Path:
     candidate = Path(path)
     if not candidate.is_absolute():
@@ -838,6 +1069,8 @@ class ProductionMapReplayArray:
         calibration_sha256: str,
         voxel_rule: VoxelRule,
         voxel_rule_sha256: str | None = None,
+        track_python_voxel_state: bool = True,
+        allocation_fault_hook: Any | None = None,
     ) -> None:
         self.allowlist = tuple(ReplayMapObject.from_value(row) for row in allowlist)
         if [row.ordinal for row in self.allowlist] != list(range(len(self.allowlist))):
@@ -859,6 +1092,12 @@ class ProductionMapReplayArray:
         if voxel_rule.contract_sha256 != self.voxel_rule_sha256:
             raise StreamingTargetMapError("voxel rule differs from supplied replay binding")
         self.voxel_rule = voxel_rule
+        if not isinstance(track_python_voxel_state, bool):
+            raise StreamingTargetMapError("track_python_voxel_state must be boolean")
+        self.track_python_voxel_state = track_python_voxel_state
+        if allocation_fault_hook is not None and not callable(allocation_fault_hook):
+            raise StreamingTargetMapError("allocation_fault_hook must be callable")
+        self._allocation_fault_hook = allocation_fault_hook
         self.gt_sha256 = _require_sha256(gt_sha256, field="gt_sha256")
         self.calibration_sha256 = _require_sha256(
             calibration_sha256, field="calibration_sha256"
@@ -868,47 +1107,57 @@ class ProductionMapReplayArray:
         if self.replay_path == self.ledger_path:
             raise StreamingTargetMapError("replay array and ledger paths must differ")
         self._plan_payload = self._make_plan_payload()
-        replay_exists = self.replay_path.exists()
-        ledger_exists = self.ledger_path.exists()
+        self.allocation_intent_path = (
+            self.ledger_path.parent / "replay_allocation_intent.json"
+        )
+        if self.allocation_intent_path in {self.replay_path, self.ledger_path}:
+            raise StreamingTargetMapError("replay allocation intent path collides")
+        replay_exists = self.replay_path.exists() or self.replay_path.is_symlink()
+        ledger_exists = self.ledger_path.exists() or self.ledger_path.is_symlink()
+        intent_exists = (
+            self.allocation_intent_path.exists()
+            or self.allocation_intent_path.is_symlink()
+        )
+        if replay_exists != ledger_exists and not intent_exists:
+            raise StreamingTargetMapError("orphan replay array or ledger")
+        if intent_exists:
+            self._recover_allocation_intent()
+            replay_exists = self.replay_path.exists() or self.replay_path.is_symlink()
+            ledger_exists = self.ledger_path.exists() or self.ledger_path.is_symlink()
         if replay_exists != ledger_exists:
             raise StreamingTargetMapError("orphan replay array or ledger")
         if not replay_exists:
             self._initialize_files()
         self._replay_file_identity = _capture_replay_file_identity(self.replay_path)
-        self._map_builder = StreamingTargetMapBuilder(voxel_rule)
+        # The Python dictionary accumulator is an exact synthetic/reference
+        # primitive, but is not bounded for the real 8202-scan map.  Production
+        # ingestion may authenticate replay ranges without constructing it; an
+        # independent exact-order external reducer then consumes those ranges.
+        self._map_builder = (
+            StreamingTargetMapBuilder(voxel_rule)
+            if self.track_python_voxel_state
+            else None
+        )
         self._records = self._load_and_verify()
 
     def _make_plan_payload(self) -> dict[str, Any]:
-        rows: list[dict[str, Any]] = []
-        byte_start = 0
-        for item in self.allowlist:
-            byte_count = item.point_capacity * REPLAY_POINT_STRIDE_BYTES
-            rows.append(
-                {
-                    **item.identity(),
-                    "byte_end_exclusive": byte_start + byte_count,
-                    "byte_start": byte_start,
-                    "point_capacity": item.point_capacity,
-                }
-            )
-            byte_start += byte_count
-        allowlist_sha256 = hashlib.sha256(canonical_json_bytes(rows)).hexdigest()
-        return {
-            "allowlist": rows,
-            "allowlist_sha256": allowlist_sha256,
-            "boreas_raw_point_stride_bytes": BOREAS_RAW_POINT_STRIDE_BYTES,
-            "calibration_sha256": self.calibration_sha256,
-            "gt_sha256": self.gt_sha256,
-            "numeric_format": PRODUCTION_REPLAY_FORMAT,
-            "processing_contract_sha256": self.processing_contract_sha256,
-            "replay_path": str(self.replay_path),
-            "replay_point_stride_bytes": REPLAY_POINT_STRIDE_BYTES,
-            "total_point_capacity": sum(row.point_capacity for row in self.allowlist),
-            "total_replay_bytes": byte_start,
-            "voxel_rule_sha256": self.voxel_rule_sha256,
-        }
+        return production_replay_plan_payload(
+            self.allowlist,
+            replay_path=self.replay_path,
+            processing_contract_sha256=self.processing_contract_sha256,
+            gt_sha256=self.gt_sha256,
+            calibration_sha256=self.calibration_sha256,
+            voxel_rule_sha256=self.voxel_rule_sha256,
+            track_python_voxel_state=self.track_python_voxel_state,
+        )
 
     def _initialize_files(self) -> None:
+        intent = self._allocation_intent()
+        if self.allocation_intent_path.exists() or self.allocation_intent_path.is_symlink():
+            raise StreamingTargetMapError("replay allocation intent already exists")
+        atomic_write_json(self.allocation_intent_path, intent, overwrite=False)
+        _fsync_directory(self.allocation_intent_path.parent)
+        self._allocation_fault("AFTER_ALLOCATION_INTENT")
         flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_CLOEXEC", 0)
         if hasattr(os, "O_NOFOLLOW"):
             flags |= os.O_NOFOLLOW
@@ -922,6 +1171,8 @@ class ProductionMapReplayArray:
             os.fsync(replay_descriptor)
         finally:
             os.close(replay_descriptor)
+        _fsync_directory(self.replay_path.parent)
+        self._allocation_fault("AFTER_REPLAY_ALLOCATION")
         plan = _ledger_envelope(
             sequence_number=1,
             previous_record_sha256=ZERO_SHA256,
@@ -947,6 +1198,158 @@ class ProductionMapReplayArray:
         _fsync_directory(self.replay_path.parent)
         if self.ledger_path.parent != self.replay_path.parent:
             _fsync_directory(self.ledger_path.parent)
+        self._allocation_fault("AFTER_PLAN_LEDGER")
+        self._clear_allocation_intent()
+
+    def _allocation_fault(self, label: str) -> None:
+        if self._allocation_fault_hook is not None:
+            self._allocation_fault_hook(label)
+
+    def _allocation_intent(self) -> dict[str, Any]:
+        return production_replay_allocation_evidence(
+            self._plan_payload, ledger_path=self.ledger_path
+        )[0]
+
+    def _load_allocation_intent(self) -> dict[str, Any]:
+        path = self.allocation_intent_path
+        if path.is_symlink() or not path.is_file() or os.lstat(path).st_nlink != 1:
+            raise StreamingTargetMapError("replay allocation intent is unsafe")
+        try:
+            raw = path.read_bytes()
+            value = json.loads(raw)
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            raise StreamingTargetMapError("replay allocation intent is invalid") from exc
+        if (
+            not isinstance(value, dict)
+            or raw != canonical_json_bytes(value)
+            or value != self._allocation_intent()
+        ):
+            raise StreamingTargetMapError("replay allocation intent binding differs")
+        return value
+
+    def _clear_allocation_intent(self) -> None:
+        path = self.allocation_intent_path
+        if not path.exists():
+            return
+        self._load_allocation_intent()
+        path.unlink()
+        _fsync_directory(path.parent)
+
+    @staticmethod
+    def _is_all_zero_file(path: Path, size: int) -> bool:
+        descriptor = _open_replay_file(path, os.O_RDONLY)
+        try:
+            metadata = os.fstat(descriptor)
+            if (
+                metadata.st_size != size
+                or metadata.st_nlink != 1
+                or metadata.st_blocks * 512 < size
+            ):
+                return False
+            offset = 0
+            while offset < size:
+                block = os.pread(descriptor, min(8 * 1024 * 1024, size - offset), offset)
+                if not block or any(block):
+                    return False
+                offset += len(block)
+            return True
+        finally:
+            os.close(descriptor)
+
+    def _recover_allocation_intent(self) -> None:
+        """Close the only legal replay-without-PLAN crash windows."""
+
+        self._load_allocation_intent()
+        replay_exists = self.replay_path.exists()
+        ledger_exists = self.ledger_path.exists()
+        expected_plan = _compact_json_line(
+            _ledger_envelope(
+                sequence_number=1,
+                previous_record_sha256=ZERO_SHA256,
+                record_type="PLAN",
+                payload=self._plan_payload,
+            )
+        )
+        if ledger_exists:
+            if (
+                self.ledger_path.is_symlink()
+                or not self.ledger_path.is_file()
+                or self.ledger_path.resolve(strict=True) != self.ledger_path
+                or os.lstat(self.ledger_path).st_nlink != 1
+            ):
+                raise StreamingTargetMapError("replay allocation ledger is unsafe")
+            ledger_raw = self.ledger_path.read_bytes()
+            if not expected_plan.startswith(ledger_raw):
+                raise StreamingTargetMapError(
+                    "allocation intent accompanies a non-PLAN replay ledger prefix"
+                )
+            if ledger_raw != expected_plan:
+                self.ledger_path.unlink()
+                _fsync_directory(self.ledger_path.parent)
+                ledger_exists = False
+        if not replay_exists:
+            if ledger_exists:
+                self.ledger_path.unlink()
+                _fsync_directory(self.ledger_path.parent)
+            self._clear_allocation_intent()
+            return
+        total = int(self._plan_payload["total_replay_bytes"])
+        if replay_exists:
+            metadata = _safe_zero_managed_file(
+                self.replay_path,
+                maximum_size=total,
+                label="allocation intent replay",
+            )
+            complete = metadata.st_size == total and metadata.st_blocks * 512 >= total
+            if not complete:
+                if ledger_exists:
+                    self.ledger_path.unlink()
+                    _fsync_directory(self.ledger_path.parent)
+                self.replay_path.unlink()
+                _fsync_directory(self.replay_path.parent)
+                self._clear_allocation_intent()
+                return
+        if ledger_exists:
+            if not replay_exists or not self._is_all_zero_file(
+                self.replay_path, total
+            ):
+                raise StreamingTargetMapError(
+                    "allocation intent replay is not exact nonsparse zero-filled storage"
+                )
+            self._clear_allocation_intent()
+            return
+        if replay_exists:
+            if not self._is_all_zero_file(
+                self.replay_path, int(self._plan_payload["total_replay_bytes"])
+            ):
+                raise StreamingTargetMapError(
+                    "allocation intent replay is not exact nonsparse zero-filled storage"
+                )
+            plan = _ledger_envelope(
+                sequence_number=1,
+                previous_record_sha256=ZERO_SHA256,
+                record_type="PLAN",
+                payload=self._plan_payload,
+            )
+            flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_CLOEXEC", 0)
+            if hasattr(os, "O_NOFOLLOW"):
+                flags |= os.O_NOFOLLOW
+            descriptor = os.open(self.ledger_path, flags, 0o600)
+            try:
+                view = memoryview(_compact_json_line(plan))
+                while view:
+                    written = os.write(descriptor, view)
+                    if written <= 0:
+                        raise OSError("zero-byte recovered replay plan write")
+                    view = view[written:]
+                os.fsync(descriptor)
+            finally:
+                os.close(descriptor)
+            _fsync_directory(self.ledger_path.parent)
+            self._clear_allocation_intent()
+            return
+        # Crash after intent but before O_EXCL allocation: restart allocation.
+        self._clear_allocation_intent()
 
     @staticmethod
     def _transition_payload(payload: Mapping[str, Any]) -> dict[str, Any]:
@@ -955,6 +1358,58 @@ class ProductionMapReplayArray:
             for key, value in payload.items()
             if key != "replay_state_transition_sha256"
         }
+
+    @staticmethod
+    def _authenticated_range_transition_sha256(payload: Mapping[str, Any]) -> str:
+        """Bind one active prefix inside an authenticated fixed-capacity range."""
+
+        core = {
+            "byte_end_exclusive": payload["byte_end_exclusive"],
+            "byte_start": payload["byte_start"],
+            "calibration_sha256": payload["calibration_sha256"],
+            "etag": payload["etag"],
+            "gt_sha256": payload["gt_sha256"],
+            "last_modified": payload["last_modified"],
+            "local_temporary_sha256": payload["local_temporary_sha256"],
+            "map_state_transition_kind": AUTHENTICATED_RANGE_TRANSITION_KIND,
+            "object_key": payload["object_key"],
+            "ordinal": payload["ordinal"],
+            "padding_point_count": payload["padding_point_count"],
+            "padding_rule": payload["padding_rule"],
+            "point_count": payload["point_count"],
+            "previous_map_state_transition_sha256": payload[
+                "previous_map_state_transition_sha256"
+            ],
+            "processing_contract_sha256": payload["processing_contract_sha256"],
+            "remote_size_bytes": payload["remote_size_bytes"],
+            "replay_range_sha256": payload["replay_range_sha256"],
+            "transformed_xyz_sha256": payload["transformed_xyz_sha256"],
+        }
+        return hashlib.sha256(canonical_json_bytes(core)).hexdigest()
+
+    @staticmethod
+    def _active_range_bytes(
+        range_bytes: bytes, payload: Mapping[str, Any], plan: Mapping[str, Any]
+    ) -> bytes:
+        point_count = payload["point_count"]
+        capacity = plan["point_capacity"]
+        if (
+            isinstance(point_count, bool)
+            or not isinstance(point_count, int)
+            or point_count < 0
+            or point_count > capacity
+        ):
+            raise StreamingTargetMapError(
+                "production replay active point count exceeds fixed capacity"
+            )
+        if payload["padding_point_count"] != capacity - point_count:
+            raise StreamingTargetMapError("production replay padding point count differs")
+        if payload["padding_rule"] != PRODUCTION_REPLAY_PADDING_RULE:
+            raise StreamingTargetMapError("production replay padding rule differs")
+        active_end = point_count * REPLAY_POINT_STRIDE_BYTES
+        if any(range_bytes[active_end:]):
+            raise StreamingTargetMapError("production replay inactive padding is nonzero")
+        return range_bytes[:active_end]
 
     def _load_and_verify(self) -> list[dict[str, Any]]:
         if self.replay_path.is_symlink() or self.ledger_path.is_symlink():
@@ -967,6 +1422,7 @@ class ProductionMapReplayArray:
             raise StreamingTargetMapError("production replay plan differs from frozen allowlist")
         completed: list[dict[str, Any]] = []
         previous_transition = ZERO_SHA256
+        previous_map_transition = ZERO_SHA256
         previous_end = 0
         if len(envelopes) - 1 > len(self.allowlist):
             raise StreamingTargetMapError("production replay ledger exceeds the allowlist")
@@ -983,12 +1439,17 @@ class ProductionMapReplayArray:
                 "last_modified",
                 "local_temporary_sha256",
                 "map_state_transition_sha256",
+                "map_state_transition_kind",
                 "object_key",
                 "ordinal",
+                "padding_point_count",
+                "padding_rule",
                 "point_count",
+                "previous_map_state_transition_sha256",
                 "previous_replay_state_transition_sha256",
                 "processing_contract_sha256",
                 "remote_size_bytes",
+                "replay_range_sha256",
                 "replay_state_transition_sha256",
                 "transformed_xyz_sha256",
             }
@@ -1009,8 +1470,17 @@ class ProductionMapReplayArray:
                     )
             if payload["ordinal"] != expected_ordinal or payload["byte_start"] != previous_end:
                 raise StreamingTargetMapError("production replay completed ranges are not a prefix")
-            if payload["point_count"] != plan["point_capacity"]:
-                raise StreamingTargetMapError("production replay point count differs from capacity")
+            if payload["previous_map_state_transition_sha256"] != previous_map_transition:
+                raise StreamingTargetMapError("production replay map-state transition chain breaks")
+            expected_transition_kind = (
+                PYTHON_VOXEL_TRANSITION_KIND
+                if self.track_python_voxel_state
+                else AUTHENTICATED_RANGE_TRANSITION_KIND
+            )
+            if payload["map_state_transition_kind"] != expected_transition_kind:
+                raise StreamingTargetMapError(
+                    "production replay map-state transition kind differs"
+                )
             for field, expected in (
                 ("processing_contract_sha256", self.processing_contract_sha256),
                 ("gt_sha256", self.gt_sha256),
@@ -1018,7 +1488,11 @@ class ProductionMapReplayArray:
             ):
                 if payload[field] != expected:
                     raise StreamingTargetMapError(f"production replay {field} differs")
-            for field in ("local_temporary_sha256", "transformed_xyz_sha256"):
+            for field in (
+                "local_temporary_sha256",
+                "replay_range_sha256",
+                "transformed_xyz_sha256",
+            ):
                 _require_sha256(str(payload[field]), field=field)
             try:
                 completed_at = datetime.fromisoformat(
@@ -1050,31 +1524,43 @@ class ProductionMapReplayArray:
                 byte_count,
                 expected_identity=self._replay_file_identity,
             )
-            if hashlib.sha256(range_bytes).hexdigest() != payload["transformed_xyz_sha256"]:
+            if hashlib.sha256(range_bytes).hexdigest() != payload["replay_range_sha256"]:
                 raise StreamingTargetMapError("authenticated production replay byte range differs")
-            transition = self._map_builder.process_scan(
-                MapScan(
-                    ordinal=plan["ordinal"],
-                    object_key=plan["object_key"],
-                    points_xyz=np.frombuffer(range_bytes, dtype="<f8").reshape((-1, 3)),
-                    reference_from_sensor=np.eye(4, dtype="<f8"),
-                    remote_size_bytes=plan["remote_size_bytes"],
-                    etag=plan["etag"],
-                    last_modified=plan["last_modified"],
-                    gt_sha256=self.gt_sha256,
-                    calibration_sha256=self.calibration_sha256,
-                    object_sha256=payload["local_temporary_sha256"],
+            active_bytes = self._active_range_bytes(range_bytes, payload, plan)
+            if hashlib.sha256(active_bytes).hexdigest() != payload["transformed_xyz_sha256"]:
+                raise StreamingTargetMapError(
+                    "authenticated production replay active prefix differs"
                 )
-            )
-            if (
-                payload["map_state_transition_sha256"]
-                != transition["map_state_transition_sha256"]
-            ):
+            if self.track_python_voxel_state:
+                assert self._map_builder is not None
+                transition = self._map_builder.process_scan(
+                    MapScan(
+                        ordinal=plan["ordinal"],
+                        object_key=plan["object_key"],
+                        points_xyz=np.frombuffer(active_bytes, dtype="<f8").reshape((-1, 3)),
+                        reference_from_sensor=np.eye(4, dtype="<f8"),
+                        remote_size_bytes=plan["remote_size_bytes"],
+                        etag=plan["etag"],
+                        last_modified=plan["last_modified"],
+                        gt_sha256=self.gt_sha256,
+                        calibration_sha256=self.calibration_sha256,
+                        object_sha256=payload["local_temporary_sha256"],
+                    )
+                )
+                expected_map_transition = transition[
+                    "map_state_transition_sha256"
+                ]
+            else:
+                expected_map_transition = self._authenticated_range_transition_sha256(
+                    payload
+                )
+            if payload["map_state_transition_sha256"] != expected_map_transition:
                 raise StreamingTargetMapError(
                     "production replay map-state transition differs"
                 )
             completed.append(payload)
             previous_transition = actual_transition
+            previous_map_transition = payload["map_state_transition_sha256"]
             previous_end = payload["byte_end_exclusive"]
         return completed
 
@@ -1091,6 +1577,45 @@ class ProductionMapReplayArray:
         """Only these objects may be downloaded by a production caller."""
 
         return self.allowlist[len(self._records) :]
+
+    @property
+    def tracks_python_voxel_state(self) -> bool:
+        """Whether ingestion also maintains the unbounded reference accumulator."""
+
+        return self.track_python_voxel_state
+
+    @property
+    def plan_identity(self) -> dict[str, Any]:
+        """Public immutable identity consumed by an external exact-order reducer."""
+
+        return {
+            "allowlist_sha256": self._plan_payload["allowlist_sha256"],
+            "ledger_path": str(self.ledger_path),
+            "numeric_format": self._plan_payload["numeric_format"],
+            "padding_rule": self._plan_payload["padding_rule"],
+            "plan_sha256": hashlib.sha256(
+                canonical_json_bytes(self._plan_payload)
+            ).hexdigest(),
+            "processing_contract_sha256": self.processing_contract_sha256,
+            "replay_path": str(self.replay_path),
+            "total_point_capacity": self._plan_payload["total_point_capacity"],
+            "total_replay_bytes": self._plan_payload["total_replay_bytes"],
+            "track_python_voxel_state": self.track_python_voxel_state,
+            "voxel_rule_sha256": self.voxel_rule_sha256,
+        }
+
+    @property
+    def authenticated_range_records(self) -> tuple[dict[str, Any], ...]:
+        """Return the completed-prefix range ledger after path-identity recheck."""
+
+        if _capture_replay_file_identity(self.replay_path) != self._replay_file_identity:
+            raise StreamingTargetMapError("production replay file identity changed")
+        result: list[dict[str, Any]] = []
+        for row in self._records:
+            exported = json.loads(json.dumps(row))
+            exported["byte_offset"] = exported["byte_start"]
+            result.append(exported)
+        return tuple(result)
 
     def append_transformed_scan(
         self,
@@ -1117,11 +1642,15 @@ class ProductionMapReplayArray:
         if item.ordinal != len(self._records) or item != self.allowlist[item.ordinal]:
             raise StreamingTargetMapError("production replay input is not the next frozen object")
         points = _canonical_float64(transformed_xyz, shape_tail=(3,))
-        if points.shape[0] != item.point_capacity:
+        if points.shape[0] > item.point_capacity:
             raise StreamingTargetMapError(
-                "transformed XYZ count differs from allowlist size/24 capacity"
+                "transformed XYZ count exceeds allowlist size/24 capacity"
             )
-        replay_bytes = points.tobytes(order="C")
+        active_bytes = points.tobytes(order="C")
+        padding_point_count = item.point_capacity - int(points.shape[0])
+        replay_bytes = active_bytes + (
+            b"\x00" * (padding_point_count * REPLAY_POINT_STRIDE_BYTES)
+        )
         plan = self._plan_payload["allowlist"][item.ordinal]
         if len(replay_bytes) != plan["byte_end_exclusive"] - plan["byte_start"]:
             raise StreamingTargetMapError("transformed XYZ byte range length differs")
@@ -1179,19 +1708,10 @@ class ProductionMapReplayArray:
                 if not self._records
                 else self._records[-1]["replay_state_transition_sha256"]
             )
-            map_transition = self._map_builder.process_scan(
-                MapScan(
-                    ordinal=item.ordinal,
-                    object_key=item.object_key,
-                    points_xyz=points,
-                    reference_from_sensor=np.eye(4, dtype="<f8"),
-                    remote_size_bytes=item.remote_size_bytes,
-                    etag=item.etag,
-                    last_modified=item.last_modified,
-                    gt_sha256=self.gt_sha256,
-                    calibration_sha256=self.calibration_sha256,
-                    object_sha256=local_sha,
-                )
+            prior_map_transition = (
+                ZERO_SHA256
+                if not self._records
+                else self._records[-1]["map_state_transition_sha256"]
             )
             payload = {
                 "byte_end_exclusive": plan["byte_end_exclusive"],
@@ -1204,17 +1724,46 @@ class ProductionMapReplayArray:
                 "gt_sha256": self.gt_sha256,
                 "last_modified": item.last_modified,
                 "local_temporary_sha256": local_sha,
-                "map_state_transition_sha256": map_transition[
-                    "map_state_transition_sha256"
-                ],
+                "map_state_transition_kind": (
+                    PYTHON_VOXEL_TRANSITION_KIND
+                    if self.track_python_voxel_state
+                    else AUTHENTICATED_RANGE_TRANSITION_KIND
+                ),
                 "object_key": item.object_key,
                 "ordinal": item.ordinal,
+                "padding_point_count": padding_point_count,
+                "padding_rule": PRODUCTION_REPLAY_PADDING_RULE,
                 "point_count": int(points.shape[0]),
+                "previous_map_state_transition_sha256": prior_map_transition,
                 "previous_replay_state_transition_sha256": prior_transition,
                 "processing_contract_sha256": self.processing_contract_sha256,
                 "remote_size_bytes": item.remote_size_bytes,
-                "transformed_xyz_sha256": hashlib.sha256(replay_bytes).hexdigest(),
+                "replay_range_sha256": hashlib.sha256(replay_bytes).hexdigest(),
+                "transformed_xyz_sha256": hashlib.sha256(active_bytes).hexdigest(),
             }
+            if self.track_python_voxel_state:
+                assert self._map_builder is not None
+                map_transition = self._map_builder.process_scan(
+                    MapScan(
+                        ordinal=item.ordinal,
+                        object_key=item.object_key,
+                        points_xyz=points,
+                        reference_from_sensor=np.eye(4, dtype="<f8"),
+                        remote_size_bytes=item.remote_size_bytes,
+                        etag=item.etag,
+                        last_modified=item.last_modified,
+                        gt_sha256=self.gt_sha256,
+                        calibration_sha256=self.calibration_sha256,
+                        object_sha256=local_sha,
+                    )
+                )
+                payload["map_state_transition_sha256"] = map_transition[
+                    "map_state_transition_sha256"
+                ]
+            else:
+                payload["map_state_transition_sha256"] = (
+                    self._authenticated_range_transition_sha256(payload)
+                )
             payload["replay_state_transition_sha256"] = hashlib.sha256(
                 canonical_json_bytes(payload)
             ).hexdigest()
@@ -1281,7 +1830,7 @@ class ProductionMapReplayArray:
                 length,
                 expected_identity=self._replay_file_identity,
             )
-        if hashlib.sha256(payload).hexdigest() != row["transformed_xyz_sha256"]:
+        if hashlib.sha256(payload).hexdigest() != row["replay_range_sha256"]:
             raise StreamingTargetMapError(
                 "authenticated production replay byte range differs at use time"
             )
@@ -1292,7 +1841,9 @@ class ProductionMapReplayArray:
             raise StreamingTargetMapError("requested replay scan is not authenticated complete")
         row = self._records[ordinal]
         payload = self._read_authenticated_payload(row)
-        return np.frombuffer(payload, dtype="<f8").reshape((-1, 3)).copy()
+        plan = self._plan_payload["allowlist"][ordinal]
+        active = self._active_range_bytes(payload, row, plan)
+        return np.frombuffer(active, dtype="<f8").reshape((-1, 3)).copy()
 
     def build_target_map(
         self, voxel_rule: VoxelRule, *, worker_count: int = 1
@@ -1307,6 +1858,11 @@ class ProductionMapReplayArray:
 
         if len(self._records) != len(self.allowlist):
             raise StreamingTargetMapError("cannot finalize an incomplete production replay prefix")
+        if not self.track_python_voxel_state:
+            raise StreamingTargetMapError(
+                "production replay disabled Python voxel state; use the authenticated "
+                "range plan with an independently qualified external reducer"
+            )
         if voxel_rule.contract_sha256 != self.voxel_rule_sha256:
             raise StreamingTargetMapError("voxel rule differs from authenticated replay plan")
         builder = StreamingTargetMapBuilder(voxel_rule, worker_count=worker_count)
@@ -1323,7 +1879,12 @@ class ProductionMapReplayArray:
                 payload = self._read_authenticated_payload(
                     record, descriptor=replay_descriptor
                 )
-                points = np.frombuffer(payload, dtype="<f8").reshape((-1, 3)).copy()
+                active = self._active_range_bytes(
+                    payload,
+                    record,
+                    self._plan_payload["allowlist"][item.ordinal],
+                )
+                points = np.frombuffer(active, dtype="<f8").reshape((-1, 3)).copy()
                 scan = MapScan(
                     ordinal=item.ordinal,
                     object_key=item.object_key,
@@ -1337,7 +1898,7 @@ class ProductionMapReplayArray:
                     object_sha256=record["local_temporary_sha256"],
                 )
                 builder.process_scan(scan)
-                del scan, points, payload
+                del scan, points, active, payload
             if _capture_replay_file_identity(self.replay_path) != self._replay_file_identity:
                 raise StreamingTargetMapError(
                     "production replay path identity changed during build"

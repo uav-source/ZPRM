@@ -51,6 +51,12 @@ from .runtime_lifecycle_io import (
     write_once_immutable_run_lock,
 )
 from .runtime_path_policy import RuntimePathLayout
+from .real_data_preparation.stage2_safe_fixture_replay import (
+    Stage2SafeFixtureReplayError,
+    record_authenticated_test_double_result,
+    replay_fixture_result as replay_stage2_safe_fixture_result,
+    safe_fixture_replay_active as stage2_safe_fixture_replay_active,
+)
 
 
 RUN_CONTRACT_SCHEMA = "runtime_lifecycle_fixture_run_contract_v1"
@@ -60,12 +66,65 @@ RUN_REPORT_SCHEMA = "runtime_lifecycle_fixture_execution_report_v1"
 BACKENDS = (OPEN3D_BACKEND, PCL_BACKEND)
 EXPECTED_SNAPSHOT_COUNT = 3
 EXPECTED_TRIAL_COUNT = 6
+_ORIGINAL_EXECUTE_OPEN3D_FIXTURE = execute_open3d_fixture
+_ORIGINAL_EXECUTE_PCL_FIXTURE = execute_pcl_fixture
+_AUTHORIZED_PYTEST_DOUBLE_MODULES = frozenset(
+    {"test_runtime_lifecycle_fixture", "tests.test_runtime_lifecycle_fixture"}
+)
+_AUTHORIZED_PYTEST_DOUBLE_QUALNAME = (
+    "_install_fake_backends.<locals>.fake"
+)
 
 
 class RuntimeLifecycleCorruption(RuntimeError):
     """A pre-existing runtime object failed its immutable binding."""
 
     classification = "CORRUPT_OR_TAMPERED_RUNTIME_OBJECT"
+
+
+def _execute_or_replay_stage2_fixture(
+    *,
+    executor: Callable[..., Mapping[str, Any]],
+    original: Callable[..., Mapping[str, Any]],
+    fixture: FixtureSnapshot,
+    common: Mapping[str, Any],
+    parameters: Mapping[str, Any],
+    pcl_cli: Path | None = None,
+) -> dict[str, Any]:
+    """Preserve the one frozen pytest double; replay every real adapter."""
+
+    if not stage2_safe_fixture_replay_active():
+        arguments: dict[str, Any] = {
+            "fixture": fixture,
+            "common": common,
+            "parameters": parameters,
+        }
+        if pcl_cli is not None:
+            arguments["pcl_cli"] = pcl_cli
+        return dict(executor(**arguments))
+    if executor is original:
+        return replay_stage2_safe_fixture_result(
+            fixture=fixture,
+            common=common,
+            parameters=parameters,
+            pcl_cli=pcl_cli,
+        )
+    if (
+        getattr(executor, "__module__", None) not in _AUTHORIZED_PYTEST_DOUBLE_MODULES
+        or getattr(executor, "__qualname__", None)
+        != _AUTHORIZED_PYTEST_DOUBLE_QUALNAME
+    ):
+        raise Stage2SafeFixtureReplayError(
+            "formal Stage-2 backend adapter was replaced by an unauthorized callable"
+        )
+    arguments = {
+        "fixture": fixture,
+        "common": common,
+        "parameters": parameters,
+    }
+    if pcl_cli is not None:
+        arguments["pcl_cli"] = pcl_cli
+    return record_authenticated_test_double_result(executor(**arguments))
 
 
 def _strict_object(path: Path, label: str) -> dict[str, Any]:
@@ -686,17 +745,23 @@ def execute_runtime_trials(
                 backend=backend,
             )
             if backend == OPEN3D_BACKEND:
-                result = execute_open3d_fixture(
+                parameters = parameter_lock["open3d_parameter_contract"]["parameters"]
+                result = _execute_or_replay_stage2_fixture(
+                    executor=execute_open3d_fixture,
+                    original=_ORIGINAL_EXECUTE_OPEN3D_FIXTURE,
                     fixture=fixture,
                     common=common,
-                    parameters=parameter_lock["open3d_parameter_contract"]["parameters"],
+                    parameters=parameters,
                 )
                 open3d_seed_calls += 1
             elif backend == PCL_BACKEND:
-                result = execute_pcl_fixture(
+                parameters = parameter_lock["pcl_parameter_contract"]["parameters"]
+                result = _execute_or_replay_stage2_fixture(
+                    executor=execute_pcl_fixture,
+                    original=_ORIGINAL_EXECUTE_PCL_FIXTURE,
                     fixture=fixture,
                     common=common,
-                    parameters=parameter_lock["pcl_parameter_contract"]["parameters"],
+                    parameters=parameters,
                     pcl_cli=pcl_cli,
                 )
             else:  # pragma: no cover - frozen tuple protects this branch
@@ -2015,11 +2080,11 @@ def execute_qualification_open3d(
     backend_input: QualificationBackendInput,
     common: Mapping[str, Any],
 ) -> dict[str, Any]:
-    from .phase_a_execution_chain_audit import execute_open3d_fixture
-
     if backend_input.backend != OPEN3D_BACKEND:
         raise ValueError("Open3D component received another backend")
-    return execute_open3d_fixture(
+    return _execute_or_replay_stage2_fixture(
+        executor=execute_open3d_fixture,
+        original=_ORIGINAL_EXECUTE_OPEN3D_FIXTURE,
         fixture=backend_input.fixture,
         common=common,
         parameters=backend_input.parameters,
@@ -2031,14 +2096,14 @@ def execute_qualification_pcl(
     backend_input: QualificationBackendInput,
     common: Mapping[str, Any],
 ) -> dict[str, Any]:
-    from .phase_a_execution_chain_audit import execute_pcl_fixture
-
     if (
         backend_input.backend != PCL_BACKEND
         or backend_input.pcl_cli is None
     ):
         raise ValueError("PCL component input binding is incomplete")
-    return execute_pcl_fixture(
+    return _execute_or_replay_stage2_fixture(
+        executor=execute_pcl_fixture,
+        original=_ORIGINAL_EXECUTE_PCL_FIXTURE,
         fixture=backend_input.fixture,
         common=common,
         parameters=backend_input.parameters,

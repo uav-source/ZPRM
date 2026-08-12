@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -17,6 +18,19 @@ STAGE1 = REPOSITORY / producer.STAGE1_RELATIVE_ROOT
 
 def _read(name: str) -> dict[str, object]:
     return json.loads((STAGE1 / name).read_text(encoding="utf-8"))
+
+
+def _fixture_repository_gate() -> dict[str, object]:
+    """A closed fixture gate without rerunning the historical branch-only producer gate."""
+
+    return {
+        "branch": producer.EXPECTED_BRANCH,
+        "head": subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=REPOSITORY, text=True
+        ).strip(),
+        "protected_tags": dict(producer.EXPECTED_TAG_COMMITS),
+        "worktree_clean": True,
+    }
 
 
 def test_storage_audit_binds_exact_stage1_science_and_allowlist() -> None:
@@ -160,9 +174,7 @@ def test_metadata_only_producer_builds_complete_zero_execution_closure(
 ) -> None:
     monkeypatch.setenv("ZPRM_REAL_DATA_PREP_NO_REGISTRATION", "1")
     monkeypatch.setenv("ZPRM_BOREAS_NO_LIDAR_PAYLOAD_DOWNLOAD", "1")
-    original_gate = producer.inspect_repository_gate
-    recorded_gate = original_gate(REPOSITORY, require_clean=False)
-    recorded_gate["worktree_clean"] = True
+    recorded_gate = _fixture_repository_gate()
     monkeypatch.setattr(
         producer,
         "inspect_repository_gate",
