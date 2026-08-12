@@ -12,6 +12,10 @@ import numpy as np
 import pytest
 
 from phase_a_harness.real_data_preparation import boreas_external_v2_stage1 as producer
+from phase_a_harness.real_data_preparation.boreas_external_v2_stage1_verifier import (
+    BoreasExternalV2Stage1VerificationError,
+    verify_boreas_external_v2_stage1,
+)
 from phase_a_harness.real_data_preparation.guard import (
     NoRegistrationGuard,
     RegistrationForbiddenError,
@@ -542,3 +546,20 @@ def test_stage1_protocol_freezes_zero_payload_and_all_authorization_boundaries()
     assert protocol["REAL_REGISTRATION_AUTHORIZED"] is False
     assert protocol["REAL_DATA_MAIN_EXPERIMENT_AUTHORIZED"] is False
     assert protocol["MEASUREMENT_PAPER_MAINLINE_AUTHORIZED"] is False
+
+
+def test_independent_verifier_rejects_incomplete_tampered_closure(tmp_path: Path) -> None:
+    data_root = tmp_path / "data"
+    runtime_root = tmp_path / "tampered-v2-closure"
+    data_root.mkdir()
+    runtime_root.mkdir()
+    (runtime_root / "public_data_v2_stage1_eligibility.json").write_text(
+        '{"MEASUREMENT_PAPER_MAINLINE_AUTHORIZED":true}\n', encoding="utf-8"
+    )
+
+    with pytest.raises(BoreasExternalV2Stage1VerificationError, match="SHA256SUMS"):
+        verify_boreas_external_v2_stage1(
+            repository=REPOSITORY,
+            data_root=data_root,
+            runtime_root=runtime_root,
+        )

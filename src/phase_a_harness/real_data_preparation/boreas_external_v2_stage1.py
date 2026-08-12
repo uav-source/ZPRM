@@ -484,6 +484,10 @@ def _validate_test_baseline(value: Mapping[str, Any]) -> None:
         raise BoreasExternalV2Stage1Error("initial test baseline was altered")
     if source.get("status") != "PASS" or source.get("failed") != 0 or source.get("errors") != 0:
         raise BoreasExternalV2Stage1Error("source-only test baseline is not clean")
+    if source.get("collected") != source.get("passed", 0) + source.get("skipped", 0):
+        raise BoreasExternalV2Stage1Error("source-only collected/pass/skip counts do not close")
+    if sum(row.get("count", -1) for row in source.get("skip_reasons", [])) != source.get("skipped"):
+        raise BoreasExternalV2Stage1Error("source-only skip-reason counts do not close")
     if external.get("status") != "UNAVAILABLE" or external.get("passed") != 0:
         raise BoreasExternalV2Stage1Error("external historical qualification was misreported")
     if external.get("missing_path") != str(PCL_EXTERNAL_BUNDLE):
@@ -527,10 +531,29 @@ def make_test_baseline_report(
         },
         "source_only_baseline": {
             "collected": source_only_collected,
-            "command": "python -m pytest -q",
+            "command": (
+                "PYTHONNOUSERSITE=1 "
+                "MAMBA_ROOT_PREFIX=/home/lj/.local/share/degen-lio-micromamba "
+                "python -m pytest -q"
+            ),
             "errors": 0,
             "failed": 0,
             "passed": source_only_passed,
+            "skip_reasons": [
+                {"count": 2, "reason": "source-only ZIP excludes the historical Git baseline object"},
+                {"count": 1, "reason": "source-only ZIP excludes the historical Phase B tag object"},
+                {"count": 1, "reason": "source-only ZIP excludes the historical formal Phase A results"},
+                {"count": 1, "reason": "source-only ZIP excludes the historical Phase B raw results"},
+                {
+                    "count": 1,
+                    "reason": (
+                        f"{PCL_EXTERNAL_BUNDLE}: source-only package: external historical "
+                        "qualification bundle unavailable"
+                    ),
+                },
+                {"count": 1, "reason": "source-only ZIP excludes the historical v1 failure bundle"},
+                {"count": 3, "reason": "source-only ZIP excludes the historical v2 Git object"},
+            ],
             "skipped": source_only_skipped,
             "status": "PASS",
         },
@@ -561,7 +584,30 @@ def _summary_markdown(summary: Mapping[str, Any]) -> str:
         "",
     ]
     lines.extend(f"{index}. {answer}" for index, answer in enumerate(summary["answers"], 1))
-    lines.extend(["", "## 最终结论", "", summary["final_conclusion"], ""])
+    lines.extend(
+        [
+            "",
+            "## 冻结零计数与授权边界",
+            "",
+            "```text",
+            "weak_snapshot_count=0",
+            "rich_snapshot_count=0",
+            "snapshot_count=0",
+            "planned_trials=0",
+            "actual_trials=0",
+            "registration_execution_count=0",
+            "downloaded_lidar_payload_count=0",
+            "PUBLIC_DATA_V2_RUN_AUTHORIZED=false",
+            "REAL_DATA_MAIN_EXPERIMENT_AUTHORIZED=false",
+            "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED=false",
+            "```",
+            "",
+            "## 最终结论",
+            "",
+            summary["final_conclusion"],
+            "",
+        ]
+    )
     return "\n".join(lines)
 
 
@@ -1009,8 +1055,11 @@ def build_boreas_external_v2_stage1(
             "REAL_DATA_MAIN_EXPERIMENT_AUTHORIZED": False,
             "REAL_REGISTRATION_AUTHORIZED": False,
             "actual_trials": 0,
+            "downloaded_lidar_bytes": 0,
+            "downloaded_lidar_object_count": 0,
             "downloaded_lidar_payload_count": 0,
             "planned_trials": 0,
+            "real_trial_result_count": 0,
             "registration_execution_count": 0,
             "rich_snapshot_count": 0,
             "snapshot_count": 0,
