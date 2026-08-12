@@ -1,0 +1,18 @@
+{
+  "PUBLIC_DATA_V1_CANDIDATE_COUNT": 5,
+  "PUBLIC_DATA_V1_CLOSED": true,
+  "PUBLIC_DATA_V1_ELIGIBLE_DATASET_COUNT": 0,
+  "PUBLIC_DATA_V1_ICP_COUNT": 0,
+  "PUBLIC_DATA_V1_REAL_REGISTRATION_COUNT": 0,
+  "PUBLIC_DATA_V1_RUN_AUTHORIZED": false,
+  "PUBLIC_DATA_V1_SCREENING_COMPLETE": true,
+  "all_candidates_excluded_before_registration_results": true,
+  "boreas_v1_conclusion_preserved": true,
+  "candidate_screening_sha256": "bb0135a5f795ef4179c40db9be1d324c1e68953d4b4c47213aae3679882d0071",
+  "evidence_manifest_root_sha256": "55007b4e95c83f2c2dad4a0a73c610b7ea3cd6a6a7c2ed71f4ba2c89445edb5f",
+  "evidence_manifest_sha256": "633436bcd18568e85b483bf8d8fbed48648b34f54e0622f87f8f422d973170e2",
+  "historical_protocol_v1_preserved": true,
+  "no_real_registration_attestation_sha256": "44d856169a6d6081fd855d410120540f487d886b9d99deaee0bc69104d561f18",
+  "schema_version": "public_data_v1_closure_v1",
+  "source_bundle_count": 4
+}

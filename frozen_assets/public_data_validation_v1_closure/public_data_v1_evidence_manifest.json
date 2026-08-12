@@ -1,0 +1,90 @@
+{
+  "candidate_count": 5,
+  "historical_head": "d304ea7a2a201aff21b48e5039422b63b0eb6e99",
+  "manifest_kind": "PUBLIC_DATA_V1_SCREENING_EVIDENCE_CLOSURE",
+  "manifest_root_sha256": "55007b4e95c83f2c2dad4a0a73c610b7ea3cd6a6a7c2ed71f4ba2c89445edb5f",
+  "protocols": [
+    {
+      "path": "protocols/real_data_validation_protocol_framework_v1.md",
+      "sha256": "4755a90dfd42de1650d50caa0facc4d32a0dba7f837ce9d867d28f030edfc834",
+      "size_bytes": 2755
+    },
+    {
+      "path": "protocols/real_data_validation_protocol_framework_v1.json",
+      "sha256": "3b4dc774051806728a060a93aa1220ac7a4fc82a6e59181da2390cfdcb7bd86e",
+      "size_bytes": 1119
+    },
+    {
+      "path": "protocols/real_data_dataset_eligibility_checklist.csv",
+      "sha256": "7a3c0b492f3783ea84bdda1eb8ff7fbd41ab73b9f5f7823806e2e30544a19c44",
+      "size_bytes": 1712
+    }
+  ],
+  "schema_version": "public_data_v1_evidence_manifest_v1",
+  "source_bundle_count": 4,
+  "source_bundles": [
+    {
+      "bundle_id": "IILABS_GRANDTOUR_V1",
+      "candidate_ids": [
+        "IILABS",
+        "GrandTour"
+      ],
+      "no_registration_attestation_path": "NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "2f81bdb3fbb4e312a9106cc0e90507058df7a5bf1340ea2fcca6392c6892a6a9",
+      "path": "frozen_assets/real_data_validation_v1",
+      "root_manifest_path": "SHA256SUMS",
+      "root_manifest_sha256": "4e5a32a84831e5dbf08e23bb7449fdd3936219effe231aae2cabb732732f8f13",
+      "semantic_manifest_path": "frozen_manifest_v1.json",
+      "semantic_manifest_sha256": "697e1283106d4b2b6ac2f80de61b25183cf7418bb9041bc74884feb6784df9cd",
+      "sha256sums_entry_count": 47,
+      "total_file_count": 48
+    },
+    {
+      "bundle_id": "RTS_GT_STAGE1_FAILED_V1",
+      "candidate_ids": [
+        "RTS-GT"
+      ],
+      "no_registration_attestation_path": "NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "9e50027384ab81b8e7fe47cfc823be5bc62a63d1501365759188ca95b4afede0",
+      "path": "frozen_assets/real_data_rts_gt_stage1_failed_v1",
+      "root_manifest_path": "SHA256SUMS",
+      "root_manifest_sha256": "8565f5e5f59d7f2b057d5507f0945c9ceaf2f1040c632d5f59417abfc22ad3e0",
+      "semantic_manifest_path": "rts_gt_stage1_eligibility.json",
+      "semantic_manifest_sha256": "5655c192c78f341fa776c76c320d19e0dcd1fdcb3e1388116135e16985b3c4a8",
+      "sha256sums_entry_count": 15,
+      "total_file_count": 16
+    },
+    {
+      "bundle_id": "CAVERS_STAGE1_V1",
+      "candidate_ids": [
+        "CAVERS"
+      ],
+      "no_registration_attestation_path": "NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "7447c4c68b3a434adf328592352688b9e3704ca0cbb2ac45579015c9b7004db1",
+      "path": "frozen_assets/real_data_cavers_stage1_v1",
+      "root_manifest_path": "SHA256SUMS",
+      "root_manifest_sha256": "00332af73a7aca45ba60a7e2c1bdeb76169c6dd9d43ffd318a0fbe03666ec896",
+      "semantic_manifest_path": "cavers_stage1_manifest.json",
+      "semantic_manifest_sha256": "bbb92e78382969fbb65b5ae5ff176abb004137045c39d2da6fd1d55eb98fd5c8",
+      "sha256sums_entry_count": 30,
+      "total_file_count": 31
+    },
+    {
+      "bundle_id": "BOREAS_STAGE1_V1",
+      "candidate_ids": [
+        "Boreas v1"
+      ],
+      "no_registration_attestation_path": "NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "aa971b6956599a465d3b23985fa27cb65c00da682dc698eaaa530bbef7173b7c",
+      "path": "frozen_assets/real_data_boreas_stage1_v1",
+      "root_manifest_path": "SHA256SUMS",
+      "root_manifest_sha256": "69a3a138617a315a3853dd33a519f9f142bd5bd9d08a3ace65b1dca9ba8d1975",
+      "semantic_manifest_path": "boreas_stage1_manifest.json",
+      "semantic_manifest_sha256": "29c582361eb83392e54d34ea4465ae4fb6b1813c89a33a5fa1eb85e1abbab112",
+      "sha256sums_entry_count": 28,
+      "total_file_count": 29
+    }
+  ],
+  "verified_sha256sums_entry_count": 120,
+  "verified_source_total_file_count": 124
+}

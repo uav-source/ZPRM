@@ -1,0 +1,69 @@
+{
+  "PUBLIC_DATA_V1_ICP_COUNT": 0,
+  "PUBLIC_DATA_V1_REAL_REGISTRATION_COUNT": 0,
+  "all_candidates_excluded_before_registration_results": true,
+  "candidate_count": 5,
+  "estimated_transform_count": 0,
+  "evidence_bundle_attestations": [
+    {
+      "bundle_id": "IILABS_GRANDTOUR_V1",
+      "candidate_ids": [
+        "IILABS",
+        "GrandTour"
+      ],
+      "no_registration_attestation_path": "frozen_assets/real_data_validation_v1/NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "2f81bdb3fbb4e312a9106cc0e90507058df7a5bf1340ea2fcca6392c6892a6a9",
+      "open3d_registration_call_count": 0,
+      "other_registration_process_count": 0,
+      "pcl_cli_invocation_count": 0,
+      "real_trial_result_count": 0,
+      "registration_execution_count": 0
+    },
+    {
+      "bundle_id": "RTS_GT_STAGE1_FAILED_V1",
+      "candidate_ids": [
+        "RTS-GT"
+      ],
+      "no_registration_attestation_path": "frozen_assets/real_data_rts_gt_stage1_failed_v1/NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "9e50027384ab81b8e7fe47cfc823be5bc62a63d1501365759188ca95b4afede0",
+      "open3d_registration_call_count": 0,
+      "other_registration_process_count": 0,
+      "pcl_cli_invocation_count": 0,
+      "real_trial_result_count": 0,
+      "registration_execution_count": 0
+    },
+    {
+      "bundle_id": "CAVERS_STAGE1_V1",
+      "candidate_ids": [
+        "CAVERS"
+      ],
+      "no_registration_attestation_path": "frozen_assets/real_data_cavers_stage1_v1/NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "7447c4c68b3a434adf328592352688b9e3704ca0cbb2ac45579015c9b7004db1",
+      "open3d_registration_call_count": 0,
+      "other_registration_process_count": 0,
+      "pcl_cli_invocation_count": 0,
+      "real_trial_result_count": 0,
+      "registration_execution_count": 0
+    },
+    {
+      "bundle_id": "BOREAS_STAGE1_V1",
+      "candidate_ids": [
+        "Boreas v1"
+      ],
+      "no_registration_attestation_path": "frozen_assets/real_data_boreas_stage1_v1/NO_ICP_ATTESTATION.json",
+      "no_registration_attestation_sha256": "aa971b6956599a465d3b23985fa27cb65c00da682dc698eaaa530bbef7173b7c",
+      "open3d_registration_call_count": 0,
+      "other_registration_process_count": 0,
+      "pcl_cli_invocation_count": 0,
+      "real_trial_result_count": 0,
+      "registration_execution_count": 0
+    }
+  ],
+  "open3d_registration_call_count": 0,
+  "other_registration_process_count": 0,
+  "pass": true,
+  "pcl_cli_invocation_count": 0,
+  "real_trial_result_count": 0,
+  "registration_execution_count": 0,
+  "schema_version": "no_real_registration_attestation_v1"
+}

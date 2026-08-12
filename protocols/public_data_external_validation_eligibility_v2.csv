@@ -1,0 +1,15 @@
+requirement_id,requirement,mandatory,required_evidence,allowed_adjudications,status
+E01,At least one public real LiDAR data source for supplementary external validation,True,"public dataset citation, immutable release identity, and selected-dataset declaration",PASS|FAIL,NOT_EVALUATED
+E02,"Reference trajectory backbone independent of evaluated query-to-target scan-to-map registration; no ICP, scan matching, LiDAR odometry, or SLAM; historical LiDAR-assisted static extrinsic allowed only under all ten documented limitations",True,trajectory provenance and complete fixed-extrinsic provenance,PASS|PASS_WITH_DOCUMENTED_LIMITATION|FAIL,NOT_EVALUATED
+E03,Evaluated query scan is not used to construct its own target map,True,frozen query and target-map construction lineage,PASS|FAIL,NOT_EVALUATED
+E04,Target map and query scan come from different Boreas sequences,True,distinct frozen map_sequence_id and query_sequence_id,PASS|FAIL,NOT_EVALUATED
+E05,Timestamp and extrinsic chains are auditable while unknown numeric error bounds remain unknown,True,"timestamp provenance, calibration provenance, and transform chain",PASS|PASS_WITH_DOCUMENTED_LIMITATION|FAIL,NOT_EVALUATED
+E06,"Future successful Stage-2 design freezes 10 weak intervals x 5 snapshots and 10 rich intervals x 5 snapshots: 50 weak, 50 rich, 100 total, 200 backend trials; current Stage-1 counts remain zero",True,frozen interval and snapshot inventory,PASS|FAIL,NOT_EVALUATED
+E07,Every weak/rich label is frozen before any real registration is run,True,immutable pre-registration interval and label manifest,PASS|FAIL,NOT_EVALUATED
+E08,Open3D and PCL consume byte-identical canonical input,True,per-backend canonical-input SHA-256 equality,PASS|FAIL,NOT_EVALUATED
+E09,Existing frozen Open3D/PCL backend parameter contract is retained without Boreas-specific ICP parameters,True,frozen_assets/backend_parameter_contract.json and SHA-256,PASS|FAIL,NOT_EVALUATED
+E10,"Record trajectory position RMSE plus orientation, time-sync, extrinsic, interpolation, deskew, and map-accumulation uncertainty; UNKNOWN is never zero",True,uncertainty inventory preserving UNKNOWN,PASS|PARTIAL|FAIL,NOT_EVALUATED
+E11,Boreas v2 is not the primary metrological gate and small/comparable updates are only descriptive registration updates,True,explicit metrology and conclusion boundary,PASS|FAIL,NOT_EVALUATED
+E12,"Continuous displacement, rotation, and association metrics are primary and cannot be replaced by one arbitrary success threshold",True,frozen continuous-outcome analysis contract,PASS|FAIL,NOT_EVALUATED
+E13,Association and reassociation reuse the frozen offline common-association definition,True,src/phase_a_harness/common_association_analysis.py and SHA-256,PASS|FAIL,NOT_EVALUATED
+E14,"Primary pair, reserve pairs, intervals, weak/rich labels, and snapshots cannot be reselected after registration results are observed",True,immutable pre-registration selection manifests,PASS|FAIL,NOT_EVALUATED
