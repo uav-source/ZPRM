@@ -1,0 +1,12 @@
+object_class,lifecycle_class,creation_or_source,consumed_by,deletion_or_retention_rule,persistent,scientific_evidence,resume_rule
+map remote object,REMOTE_ONLY,frozen S3 key,map streaming pass,never local by default,False,False,identity rechecked
+map raw temp,TEMPORARY_DOWNLOAD,one authenticated download,decoder,delete immediately after state transition,False,False,partial file rejected
+map decoded scan,TEMPORARY_DECODED,six-float32 raw decoded to float64,GT transform and accumulator,delete after accumulator commit,False,False,rederive from object
+raw cache object,PERSISTENT_RAW,optional FULL_RAW_CACHE,decoder,retain only in full-cache mode,True,False,identity must remain frozen
+selected canonical source,PERSISTENT_CANONICAL,second-pass selected query,both backends,content-addressed retention,True,True,verify SHA; never silently replace
+content-addressed target map,PERSISTENT_MAP,incremental deterministic builder,100 snapshot references and both backends,one physical copy,True,True,checkpoint or deterministic rebuild
+geometry/result row,PERSISTENT_RESULT,query screen or backend output,selection/analysis/verifier,retain immutable row and SHA,True,True,row SHA must match
+map checkpoint,CHECKPOINT,atomic accumulator checkpoint,strict resume,retain latest authenticated generation,True,True,orphan generation rejected
+query raw temp,TEMPORARY_DOWNLOAD,one authenticated download,first-pass metric or second-pass source,delete immediately after consumption,False,False,partial file rejected
+query decoded scan,TEMPORARY_DECODED,raw decoder,geometry metric or canonical writer,delete immediately after consumption,False,False,rederive from object
+PCL source/target PCD,TEMPORARY_DECODED,deterministic conversion from canonical NPY,PCL CLI only,delete when trial exits,False,False,rederive; canonical SHA is authority

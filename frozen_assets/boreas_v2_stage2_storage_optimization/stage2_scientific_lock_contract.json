@@ -1,0 +1,54 @@
+{
+  "allowlist_object_count": 20061,
+  "future_success_design": {
+    "backend_trial_count": 200,
+    "rich_interval_count": 10,
+    "rich_snapshot_count": 50,
+    "snapshot_count": 100,
+    "snapshots_per_interval": 5,
+    "weak_interval_count": 10,
+    "weak_snapshot_count": 50
+  },
+  "planner_configurable_fields": [
+    "current_free_bytes",
+    "execution_mode",
+    "persistent_directory",
+    "temporary_directory"
+  ],
+  "preprocessing_parameter_status": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+  "primary_pair": {
+    "map_sequence_id": "boreas-2021-11-14-09-47",
+    "query_sequence_id": "boreas-2021-01-26-11-22"
+  },
+  "remote_payload_bytes": 104158637472,
+  "scientific_fields_planner_configurable": false,
+  "scientific_locked_fields": [
+    "allowlist_object_count",
+    "association_distance",
+    "backend_trial_count",
+    "geometry_metric",
+    "icp_parameters",
+    "normal_neighborhood",
+    "primary_pair",
+    "range_limits",
+    "remote_payload_bytes",
+    "reserve_pairs",
+    "rich_interval_count",
+    "rich_snapshot_count",
+    "snapshot_count",
+    "snapshots_per_interval",
+    "voxel_size",
+    "weak_interval_count",
+    "weak_rich_thresholds",
+    "weak_snapshot_count"
+  ],
+  "storage_only_changes": [
+    "data_lifecycle",
+    "file_organization",
+    "cache_policy",
+    "content_addressing",
+    "temporary_file_cleanup",
+    "streaming_architecture"
+  ],
+  "voxel_size": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION"
+}

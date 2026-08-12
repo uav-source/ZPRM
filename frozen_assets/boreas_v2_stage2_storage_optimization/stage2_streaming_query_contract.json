@@ -1,0 +1,57 @@
+{
+  "actual_geometry_metric_row_count": 0,
+  "actual_query_object_processing_count": 0,
+  "actual_selected_source_count": 0,
+  "allowlist_object_count": 11859,
+  "allowlist_remote_bytes": 62159820192,
+  "architecture_test_scope": "SYNTHETIC_TINY_POINT_CLOUDS_ONLY",
+  "first_pass": {
+    "blind_to_registration_results": true,
+    "candidate_object_count": 11859,
+    "persistent_fields": [
+      "timestamp",
+      "S3_key",
+      "ETag",
+      "LastModified",
+      "remote_bytes",
+      "object_identity_sha256",
+      "geometry_only_metrics",
+      "GT_sha256",
+      "calibration_sha256",
+      "target_map_sha256",
+      "geometry_row_sha256"
+    ],
+    "raw_payload_cleanup": "IMMEDIATE_AFTER_METRIC_AND_CHECKPOINT_COMMIT"
+  },
+  "primary_query_sequence_id": "boreas-2021-01-26-11-22",
+  "real_boreas_geometry_computed": false,
+  "role": "DRY_RUN_ARCHITECTURE_ONLY",
+  "schema_version": "boreas_v2_stage2_streaming_query_contract_v1",
+  "second_pass": {
+    "begins_only_after_R14_selection_freeze": true,
+    "canonical_source_count": 100,
+    "checkpoint_file": "processed_selected_sources.jsonl",
+    "checkpoint_processing_binding": "SHA256_OF_CANONICALIZATION_CONTRACT_AND_FROZEN_SELECTION_RECORD",
+    "checkpoint_record_kind": "SELECTED_SOURCE",
+    "object_identity_must_match_first_pass": true,
+    "raw_payload_cleanup": "IMMEDIATE_AFTER_CANONICAL_SOURCE_COMMIT",
+    "resume": "SKIP_ONLY_AUTHENTICATED_COMPLETED_SELECTION_PREFIX",
+    "selected_object_count": 100
+  },
+  "selection_contract": {
+    "geometry_only_selector": "phase_a_harness.real_data_preparation.selection",
+    "planned_rich_snapshot_count": 50,
+    "planned_snapshot_count": 100,
+    "planned_weak_snapshot_count": 50,
+    "registration_derived_fields_forbidden": true,
+    "storage_planner_selects_snapshots": false
+  },
+  "two_pass_adjudication": {
+    "R07": "PASS_SELECTION_USES_ONLY_PREREGISTERED_GEOMETRY_METRICS",
+    "R08": "PASS_BOTH_BACKENDS_LATER_READ_THE_SAME_CONTENT_ADDRESSED_INPUTS",
+    "R14": "PASS_SELECTION_RECORD_IS_FROZEN_BEFORE_REGISTRATION",
+    "preferred": true,
+    "reproducibility": "PASS_REMOTE_IDENTITY_AND_ALL_CONTRACT_SHA_VALUES_ARE_FROZEN",
+    "sha_auditability": "PASS_RECEIPTS_BIND_BOTH_PASSES_TO_KEY_SIZE_ETAG_LASTMODIFIED_AND_SHA"
+  }
+}

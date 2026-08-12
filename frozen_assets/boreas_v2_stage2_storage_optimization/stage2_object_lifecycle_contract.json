@@ -1,0 +1,126 @@
+{
+  "lifecycle_classes": [
+    "REMOTE_ONLY",
+    "TEMPORARY_DOWNLOAD",
+    "TEMPORARY_DECODED",
+    "PERSISTENT_RAW",
+    "PERSISTENT_CANONICAL",
+    "PERSISTENT_MAP",
+    "PERSISTENT_RESULT",
+    "CHECKPOINT"
+  ],
+  "rows": [
+    {
+      "consumed_by": "map streaming pass",
+      "creation_or_source": "frozen S3 key",
+      "deletion_or_retention_rule": "never local by default",
+      "lifecycle_class": "REMOTE_ONLY",
+      "object_class": "map remote object",
+      "persistent": false,
+      "resume_rule": "identity rechecked",
+      "scientific_evidence": false
+    },
+    {
+      "consumed_by": "decoder",
+      "creation_or_source": "one authenticated download",
+      "deletion_or_retention_rule": "delete immediately after state transition",
+      "lifecycle_class": "TEMPORARY_DOWNLOAD",
+      "object_class": "map raw temp",
+      "persistent": false,
+      "resume_rule": "partial file rejected",
+      "scientific_evidence": false
+    },
+    {
+      "consumed_by": "GT transform and accumulator",
+      "creation_or_source": "six-float32 raw decoded to float64",
+      "deletion_or_retention_rule": "delete after accumulator commit",
+      "lifecycle_class": "TEMPORARY_DECODED",
+      "object_class": "map decoded scan",
+      "persistent": false,
+      "resume_rule": "rederive from object",
+      "scientific_evidence": false
+    },
+    {
+      "consumed_by": "decoder",
+      "creation_or_source": "optional FULL_RAW_CACHE",
+      "deletion_or_retention_rule": "retain only in full-cache mode",
+      "lifecycle_class": "PERSISTENT_RAW",
+      "object_class": "raw cache object",
+      "persistent": true,
+      "resume_rule": "identity must remain frozen",
+      "scientific_evidence": false
+    },
+    {
+      "consumed_by": "both backends",
+      "creation_or_source": "second-pass selected query",
+      "deletion_or_retention_rule": "content-addressed retention",
+      "lifecycle_class": "PERSISTENT_CANONICAL",
+      "object_class": "selected canonical source",
+      "persistent": true,
+      "resume_rule": "verify SHA; never silently replace",
+      "scientific_evidence": true
+    },
+    {
+      "consumed_by": "100 snapshot references and both backends",
+      "creation_or_source": "incremental deterministic builder",
+      "deletion_or_retention_rule": "one physical copy",
+      "lifecycle_class": "PERSISTENT_MAP",
+      "object_class": "content-addressed target map",
+      "persistent": true,
+      "resume_rule": "checkpoint or deterministic rebuild",
+      "scientific_evidence": true
+    },
+    {
+      "consumed_by": "selection/analysis/verifier",
+      "creation_or_source": "query screen or backend output",
+      "deletion_or_retention_rule": "retain immutable row and SHA",
+      "lifecycle_class": "PERSISTENT_RESULT",
+      "object_class": "geometry/result row",
+      "persistent": true,
+      "resume_rule": "row SHA must match",
+      "scientific_evidence": true
+    },
+    {
+      "consumed_by": "strict resume",
+      "creation_or_source": "atomic accumulator checkpoint",
+      "deletion_or_retention_rule": "retain latest authenticated generation",
+      "lifecycle_class": "CHECKPOINT",
+      "object_class": "map checkpoint",
+      "persistent": true,
+      "resume_rule": "orphan generation rejected",
+      "scientific_evidence": true
+    },
+    {
+      "consumed_by": "first-pass metric or second-pass source",
+      "creation_or_source": "one authenticated download",
+      "deletion_or_retention_rule": "delete immediately after consumption",
+      "lifecycle_class": "TEMPORARY_DOWNLOAD",
+      "object_class": "query raw temp",
+      "persistent": false,
+      "resume_rule": "partial file rejected",
+      "scientific_evidence": false
+    },
+    {
+      "consumed_by": "geometry metric or canonical writer",
+      "creation_or_source": "raw decoder",
+      "deletion_or_retention_rule": "delete immediately after consumption",
+      "lifecycle_class": "TEMPORARY_DECODED",
+      "object_class": "query decoded scan",
+      "persistent": false,
+      "resume_rule": "rederive from object",
+      "scientific_evidence": false
+    },
+    {
+      "consumed_by": "PCL CLI only",
+      "creation_or_source": "deterministic conversion from canonical NPY",
+      "deletion_or_retention_rule": "delete when trial exits",
+      "lifecycle_class": "TEMPORARY_DECODED",
+      "object_class": "PCL source/target PCD",
+      "persistent": false,
+      "resume_rule": "rederive; canonical SHA is authority",
+      "scientific_evidence": false
+    }
+  ],
+  "schema_version": "boreas_v2_stage2_object_lifecycle_contract_v1",
+  "two_pass_query_preferred": true
+}

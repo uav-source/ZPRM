@@ -1,0 +1,19 @@
+component,unit_count,bytes_per_unit,raw_bytes,duplication_factor,lifetime,simultaneously_live,peak_contribution_bytes,retained_after_stage2,reason,source_of_estimate
+raw lidar payload,20061,PER_OBJECT_ALLOWLIST_SIZE,104158637472,1.0,PERSISTENT_RAW,True,104158637472,True,Old envelope assumed the full selected raw payload is local.,frozen disk budget: download_bytes
+temporary download files,1,104158637472,104158637472,1.0,TEMPORARY_DOWNLOAD,True,104158637472,False,Old envelope reserved another complete-payload temporary copy.,frozen disk budget: temporary_processing_bytes
+decoded arrays,1,104158637472,104158637472,2.0,TEMPORARY_DECODED,True,208317274944,False,Boreas six-float32 wire rows become six-float64 devkit arrays.,frozen disk budget: decoded_or_unpacked_working_bytes
+map scan materialization,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,Not itemized inside the frozen aggregate decoded-working term.,not independently specified by frozen v1 budget
+accumulated target map,1,41998817280,41998817280,2.0,PERSISTENT_MAP,True,83997634560,True,Old envelope doubled the selected map-side raw bytes.,frozen disk budget: target_map_bytes
+voxel map copies,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,No voxel size or measured voxel-map size was frozen in Stage-1.,PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION
+query decoded points,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,Included but not itemized in the two-times decoded aggregate.,not independently specified by frozen v1 budget
+canonical source arrays,1,104158637472,104158637472,2.0,PERSISTENT_CANONICAL,True,208317274944,True,Old envelope used two payload-equivalents for the canonical bundle.,frozen disk budget: canonical_bundle_bytes
+canonical target arrays,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,Not split from the aggregate canonical-bundle term.,not independently specified by frozen v1 budget
+Open3D copies,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,Backend-specific copies were not separately measured.,not independently specified by frozen v1 budget
+PCL copies,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,Backend-specific copies were not separately measured.,not independently specified by frozen v1 budget
+per-snapshot target copies,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,The old aggregate did not assert or quantify 100 physical maps.,not independently specified by frozen v1 budget
+intermediate PCD/bin files,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,Potential temporaries were not itemized in Stage-1.,not independently specified by frozen v1 budget
+geometry metrics,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,True,Small results were not separately estimated.,not independently specified by frozen v1 budget
+publication artifacts,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,True,Publication outputs were not separately estimated.,not independently specified by frozen v1 budget
+resume/checkpoint files,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,True,Resume state was not separately estimated.,not independently specified by frozen v1 budget
+safety factor,1,708949459392,708949459392,0.5,SAFETY_MARGIN,True,354474729696,False,The frozen envelope added 50 percent to the naive subtotal.,frozen disk budget: minimum_safety_multiplier=1.5
+filesystem overhead,1,0,0,0.0,NOT_SEPARATELY_QUANTIFIED,True,0,False,No independent filesystem-overhead term was specified.,not independently specified by frozen v1 budget

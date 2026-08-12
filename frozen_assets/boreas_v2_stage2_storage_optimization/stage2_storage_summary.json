@@ -1,0 +1,210 @@
+{
+  "CURRENT_DISK_SUFFICIENT": true,
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "PUBLIC_DATA_V2_RUN_AUTHORIZED": false,
+  "REAL_REGISTRATION_AUTHORIZED": false,
+  "STAGE2_DOWNLOAD_AUTHORIZED": false,
+  "STAGE2_STORAGE_PLAN_READY": true,
+  "actual_trials": 0,
+  "answer_count": 27,
+  "answers": [
+    {
+      "answer": "旧公式把完整 raw、2×decoded、2×map、2×canonical 和一个完整 raw 大小的 temp 同时相加为 708,949,459,392 bytes，再乘 1.5 得 1,063,424,189,088 bytes （990.390954 GiB）。",
+      "question_number": 1
+    },
+    {
+      "answer": "最大显式重复包络是 decoded 与 canonical，各为完整 remote payload 的 2 倍；随后又叠加 50% 总体余量。",
+      "question_number": 2
+    },
+    {
+      "answer": "没有证据表明旧设计实际存在 100 份 target map；旧 JSON 没有单列这一项。新合同明确禁止并检测这种复制。",
+      "question_number": 3
+    },
+    {
+      "answer": "没有证据表明旧设计实际持久保存 Open3D/PCL 双份输入；新合同让两个 backend 引用同一 canonical SHA。",
+      "question_number": 4
+    },
+    {
+      "answer": "优化后保存 1 份 content-addressed 全局 target map；100 个未来 snapshot 仅引用其 SHA。",
+      "question_number": 5
+    },
+    {
+      "answer": "可以。候选 query 第一遍只保留 authenticated receipt、checkpoint 和 geometry-only row，成功提交后删除 raw/decoded temp。",
+      "question_number": 6
+    },
+    {
+      "answer": "是。第一遍 blind geometry screening 后冻结 100 个选择；第二遍只为这 100 个重取并生成 canonical source。",
+      "question_number": 7
+    },
+    {
+      "answer": "每个 selected source 以 deterministic canonical NPY 内容寻址保存一次，并由 Open3D/PCL 共享；raw temp 随后删除。",
+      "question_number": 8
+    },
+    {
+      "answer": "不必须。STREAMING_LOW_DISK 不永久保存 104,158,637,472 remote bytes；FULL_RAW_CACHE 只是可选操作模式。",
+      "question_number": 9
+    },
+    {
+      "answer": "THEORETICAL_MINIMUM 要求 70005149653 bytes（65.197376 GiB）。",
+      "question_number": 10
+    },
+    {
+      "answer": "RECOMMENDED_OPERATIONAL 要求 101563921871 bytes（94.588773 GiB）。",
+      "question_number": 11
+    },
+    {
+      "answer": "CONSERVATIVE_FULL_CACHE 要求 226554286838 bytes（210.995122 GiB）。",
+      "question_number": 12
+    },
+    {
+      "answer": "当前 118671130624 bytes（110.521103 GiB）足够运行推荐的 STREAMING_LOW_DISK 模式；它不满足 FULL_RAW_CACHE。",
+      "question_number": 13
+    },
+    {
+      "answer": "推荐流式模式额外需要 0.000000 GiB；full-cache 额外需要 100.474019 GiB。",
+      "question_number": 14
+    },
+    {
+      "answer": "真实 target map 大小尚未知；不设 voxel 参数的保守持久上界是 41998817408 bytes。",
+      "question_number": 15
+    },
+    {
+      "answer": "推荐模式最大 mutually-exclusive temporary phase 是 map checkpoint，上界 41998817408 bytes。",
+      "question_number": 16
+    },
+    {
+      "answer": "推荐模式真正 simultaneously-live peak 是 84636601559 bytes。",
+      "question_number": 17
+    },
+    {
+      "answer": "是。checkpoint 为 locked O_APPEND canonical JSONL hash chain，绑定 remote identity、科学合同和 state/row transition SHA。",
+      "question_number": 18
+    },
+    {
+      "answer": "不需要。只重做未完成对象；认证完成项跳过，ETag/size/LastModified/contract 改变或 orphan state 均 fail closed。",
+      "question_number": 19
+    },
+    {
+      "answer": "没有。未冻结的 voxel/range/normal/association 数值均标记 PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION。",
+      "question_number": 20
+    },
+    {
+      "answer": "没有。primary pair 仍为 boreas-2021-11-14-09-47 -> boreas-2021-01-26-11-22。",
+      "question_number": 21
+    },
+    {
+      "answer": "没有。真实 lidar/*.bin 下载对象数和字节数均为 0。",
+      "question_number": 22
+    },
+    {
+      "answer": "没有。Open3D/PCL/其他 registration 调用及 real result 均为 0。",
+      "question_number": 23
+    },
+    {
+      "answer": "是；source-only 测试 934 collected, 924 passed, 10 skipped, 0 failed, 0 errors。",
+      "question_number": 24
+    },
+    {
+      "answer": "是；producer 返回及 freeze 前均强制运行 `python3 scripts/verify_boreas_v2_stage2_storage_plan.py` 并要求 PASS，另有 11 个语义篡改用例必须全部被拒绝。",
+      "question_number": 25
+    },
+    {
+      "answer": "STAGE2_STORAGE_PLAN_READY=true。",
+      "question_number": 26
+    },
+    {
+      "answer": "下一步只能由用户在单独任务中授权真正 Stage-2 下载；本 closure 仍保持 STAGE2_DOWNLOAD_AUTHORIZED=false。",
+      "question_number": 27
+    }
+  ],
+  "architecture_test_scope": "SOURCE_ONLY_SYNTHETIC_FIXTURES",
+  "audit_pre_change_source_only_baseline": {
+    "collected": 811,
+    "errors": 0,
+    "failed": 0,
+    "head": "fb6d84fc41a252fc1934716f96473fad1634ebdc",
+    "passed": 801,
+    "skipped": 10,
+    "status": "PASS"
+  },
+  "canonical_backend_input_no_duplication": true,
+  "checkpoint_resume_contract_ready": true,
+  "current_free_bytes": 118671130624,
+  "downloaded_lidar_bytes": 0,
+  "downloaded_lidar_object_count": 0,
+  "downloaded_lidar_payload_count": 0,
+  "final_conclusion": "STAGE2_STORAGE_PLAN_READY=true 只表示 storage/lifecycle/resume/low-disk architecture 的当前审计结论；真实 Stage-2 runner 不在本任务范围，未来 runner 必须在启动和每次 projected write 前接入已测试的磁盘门禁。所有真实下载、geometry selection、Open3D/PCL 和 registration 仍未授权且未执行。下一步若要下载，必须由用户在单独任务中显式授权，并先独立冻结缺失的 preprocessing 科学参数。",
+  "independent_storage_verifier_required": true,
+  "next_step_requires_separate_user_authorization": true,
+  "planned_future_backend_trial_count_after_success": 200,
+  "planned_future_rich_interval_count": 10,
+  "planned_future_rich_snapshot_count": 50,
+  "planned_future_snapshot_count": 100,
+  "planned_future_snapshots_per_interval": 5,
+  "planned_future_weak_interval_count": 10,
+  "planned_future_weak_snapshot_count": 50,
+  "planned_trials": 0,
+  "preprocessing_parameter_status": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+  "real_stage2_execution_runner_in_scope": false,
+  "real_trial_result_count": 0,
+  "recommended_execution_mode": "STREAMING_LOW_DISK",
+  "registration_execution_count": 0,
+  "repository_gate": {
+    "branch": "prep/boreas-v2-stage2-storage-optimization",
+    "head": "0cfea686c601ecaba84a88eb2080f292cdef33f3",
+    "protected_tags": {
+      "archive/public-data-v1-screening-closed": "59a1fa000d1de7fc4df2b7feeb5b4fb2f617750c",
+      "execution/synthetic-confirmatory-v3-requalified": "01b19b1ba89376cb53aa082b77032b562888eb7b",
+      "preparation/public-data-external-v2-boreas-stage1": "fb6d84fc41a252fc1934716f96473fad1634ebdc"
+    },
+    "worktree_clean": true
+  },
+  "rich_snapshot_count": 0,
+  "runtime_disk_gate_contract_ready": true,
+  "runtime_disk_gate_runner_integration_required": true,
+  "runtime_disk_gate_status": "PLANNER_START_AND_PROJECTED_WRITE_GUARDS_IMPLEMENTED_AND_SYNTHETICALLY_TESTED;SEPARATELY_AUTHORIZED_REAL_STAGE2_RUNNER_MUST_INVOKE_THEM",
+  "schema_version": "boreas_v2_stage2_storage_summary_v1",
+  "snapshot_count": 0,
+  "source_only_test_status": {
+    "collected": 934,
+    "errors": 0,
+    "failed": 0,
+    "head": "0cfea686c601ecaba84a88eb2080f292cdef33f3",
+    "junit_filename": "source_only_pytest_junit.xml",
+    "junit_sha256": "7ede4f682d0f9a6b2be9bdbb5ba7312cb1312258502021e3f3b6c9722bd9307e",
+    "junit_size_bytes": 136055,
+    "junit_verification_scope": "INDEPENDENTLY_PARSED_SHA_BOUND_COUNTS_AND_UNIQUE_TESTCASE_IDENTITIES;THE_XML_IS_NOT_A_SIGNED_ATTESTATION",
+    "minimum_collected_required": 811,
+    "passed": 924,
+    "skipped": 10,
+    "status": "PASS",
+    "testcase_count": 934
+  },
+  "stage1_binding": {
+    "allowlist_object_count": 20061,
+    "allowlist_remote_bytes": 104158637472,
+    "allowlist_sha256": "26ac211c854472dcb3db2f1cd5b096849bfd27867bac34e75bc8ce0d01bb2787",
+    "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "frozen_manifest_file_sha256": "71cfd78aa588c67dd28f8f8be87b7514c20ed090e75a8433583362253a97a8be",
+    "manifest_root_sha256": "677346ded7d4d45be1877dc19d0c316e80e87699784a441ed1d8b69848eae44f",
+    "map_object_count": 8202,
+    "map_remote_bytes": 41998817280,
+    "max_object_bytes": 5591160,
+    "no_icp_attestation_sha256": "3296df5556ca6e6f0a6cf55f30dbdda0d9a776e77f23a960e8ab502c2ba52876",
+    "no_lidar_attestation_sha256": "1765fab5fe25217f18594411efde0adbb5d05edfb31fee213c08b49f84deb8ac",
+    "pair_selection_sha256": "b28a52498a2fddc1b80d43c626b75179358066677ce8f493be22afba7a19639c",
+    "primary_pair": {
+      "map_sequence_id": "boreas-2021-11-14-09-47",
+      "query_sequence_id": "boreas-2021-01-26-11-22"
+    },
+    "query_object_count": 11859,
+    "query_remote_bytes": 62159820192,
+    "signed_file_count": 27,
+    "top_100_query_remote_bytes": 556548720,
+    "verification_pass": true
+  },
+  "stage1_frozen_assets_verified": true,
+  "storage_planner_verifier_command": "python3 scripts/verify_boreas_v2_stage2_storage_plan.py",
+  "target_physical_copy_count": 1,
+  "weak_snapshot_count": 0
+}

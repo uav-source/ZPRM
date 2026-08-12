@@ -1,0 +1,36 @@
+{
+  "PCL_conversion": "DETERMINISTIC_TEMPORARY_DERIVATION_FROM_CANONICAL_NPY",
+  "PCL_temporary_input_retained": false,
+  "canonical_source_physical_copy_count_per_snapshot": 1,
+  "canonical_target_physical_copy_count": 1,
+  "execution_modes": {
+    "FULL_RAW_CACHE": {
+      "persistent_raw_payload": true,
+      "two_pass_query_selection": true
+    },
+    "STREAMING_LOW_DISK": {
+      "persistent_raw_payload": false,
+      "two_pass_query_selection": true
+    }
+  },
+  "future_open3d_source_sha256_equals_future_pcl_source_sha256": true,
+  "future_open3d_target_sha256_equals_future_pcl_target_sha256": true,
+  "mode_scientific_equivalence_required": [
+    "target_map_sha256",
+    "geometry_metrics_sha256",
+    "selection_manifest_sha256",
+    "selected_canonical_source_sha256",
+    "backend_results"
+  ],
+  "per_snapshot_target_copy_allowed": false,
+  "physical_target_map_copy_count": 1,
+  "preprocessing_parameter_status": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+  "snapshot_target_binding": "target_map_sha256",
+  "snapshot_target_reference_count": 100,
+  "stage1_primary_pair": {
+    "map_sequence_id": "boreas-2021-11-14-09-47",
+    "query_sequence_id": "boreas-2021-01-26-11-22"
+  },
+  "target_store": "target_maps/<target_map_sha256>/target_points.npy",
+  "unique_target_map_count": 1
+}

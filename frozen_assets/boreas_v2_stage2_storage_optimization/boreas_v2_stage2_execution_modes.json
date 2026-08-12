@@ -1,0 +1,32 @@
+{
+  "actual_execution_mode": null,
+  "architecture_only": true,
+  "mode_count": 2,
+  "mode_scientific_equivalence_required": true,
+  "modes": {
+    "FULL_RAW_CACHE": {
+      "budget_mode": "CONSERVATIVE_FULL_CACHE",
+      "canonical_source_semantics": "IDENTICAL",
+      "geometry_metric_semantics": "IDENTICAL",
+      "raw_policy": "PERSIST_ALL_20061_AUTHENTICATED_RAW_OBJECTS",
+      "science_contract_fingerprint": "3a935f31e5817ce3b5b0260854830175b03e528af326fb908f6f7158730a59f3",
+      "selection_semantics": "IDENTICAL",
+      "target_map_semantics": "IDENTICAL",
+      "target_policy": "ONE_CONTENT_ADDRESSED_TARGET"
+    },
+    "STREAMING_LOW_DISK": {
+      "budget_mode": "RECOMMENDED_OPERATIONAL",
+      "canonical_source_semantics": "IDENTICAL",
+      "geometry_metric_semantics": "IDENTICAL",
+      "raw_policy": "TEMPORARY_ONE_OBJECT_PROCESS_RECEIPT_DELETE",
+      "science_contract_fingerprint": "3a935f31e5817ce3b5b0260854830175b03e528af326fb908f6f7158730a59f3",
+      "selection_semantics": "IDENTICAL",
+      "target_map_semantics": "IDENTICAL",
+      "target_policy": "ONE_CONTENT_ADDRESSED_TARGET"
+    }
+  },
+  "optimized_budget_contract_sha256": "c2af162969822eb502ba2c602601ad5514e11c9138d72fa7245f1c1f608cb5ed",
+  "real_execution_performed": false,
+  "schema_version": "boreas_v2_stage2_execution_modes_v1",
+  "synthetic_fixture_equivalence": "PASS"
+}

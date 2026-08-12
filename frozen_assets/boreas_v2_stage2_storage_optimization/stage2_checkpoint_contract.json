@@ -1,0 +1,33 @@
+{
+  "actual_completed_map_object_count": 0,
+  "actual_completed_query_object_count": 0,
+  "actual_completed_selected_source_count": 0,
+  "append_semantics": "LOCKED_O_APPEND_CANONICAL_HASH_CHAIN_FILE_AND_DIRECTORY_FSYNC",
+  "checkpoint_files": [
+    "processed_map_objects.jsonl",
+    "processed_query_objects.jsonl",
+    "processed_selected_sources.jsonl"
+  ],
+  "completed_record_fields": [
+    "S3_key",
+    "remote_size",
+    "ETag",
+    "LastModified",
+    "local_temporary_SHA_if_materialized",
+    "processing_contract_SHA",
+    "GT_SHA",
+    "calibration_SHA",
+    "result_geometry_row_SHA_or_map_state_transition_SHA",
+    "completed_at_UTC",
+    "prior_record_SHA",
+    "record_SHA"
+  ],
+  "identity_change_semantics": "FAIL_ON_SIZE_ETAG_LASTMODIFIED_OR_CONTRACT_CHANGE",
+  "manifest_overwrite": "FORBIDDEN",
+  "orphan_state": "REJECT_NEVER_AUTO_ADOPT",
+  "partial_temp": "DELETE_THEN_REACQUIRE_SAME_FROZEN_OBJECT_IDENTITY",
+  "production_map_resume_payload": "ONE_PREALLOCATED_FLOAT64_XYZ_REPLAY_ARRAY_WITH_AUTHENTICATED_FIXED_ORDER_BYTE_RANGES",
+  "resume": "SKIP_ONLY_COMPLETE_AUTHENTICATED_CHAIN_MEMBERS",
+  "schema_version": "boreas_v2_stage2_checkpoint_contract_v1",
+  "strict_resume_implemented": true
+}

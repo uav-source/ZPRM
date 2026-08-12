@@ -1,0 +1,15 @@
+{
+  "collected": 934,
+  "errors": 0,
+  "failed": 0,
+  "head": "0cfea686c601ecaba84a88eb2080f292cdef33f3",
+  "junit_filename": "source_only_pytest_junit.xml",
+  "junit_sha256": "7ede4f682d0f9a6b2be9bdbb5ba7312cb1312258502021e3f3b6c9722bd9307e",
+  "junit_size_bytes": 136055,
+  "junit_verification_scope": "INDEPENDENTLY_PARSED_SHA_BOUND_COUNTS_AND_UNIQUE_TESTCASE_IDENTITIES;THE_XML_IS_NOT_A_SIGNED_ATTESTATION",
+  "minimum_collected_required": 811,
+  "passed": 924,
+  "skipped": 10,
+  "status": "PASS",
+  "testcase_count": 934
+}

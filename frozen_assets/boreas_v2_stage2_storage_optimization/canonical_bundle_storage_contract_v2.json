@@ -1,0 +1,32 @@
+{
+  "actual_canonical_source_count": 0,
+  "actual_target_map_count": 0,
+  "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+  "canonical_array_container": "NPY_V1_CONTENT_ADDRESSED_IMMUTABLE",
+  "canonicalizer_point_count_contract": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+  "future_open3d_source_sha256": "REFERENCED_CONTENT_ADDRESSED_CANONICAL_SOURCE_SHA256",
+  "future_open3d_target_sha256": "REFERENCED_CONTENT_ADDRESSED_TARGET_MAP_SHA256",
+  "future_pcl_source_sha256": "REFERENCED_CONTENT_ADDRESSED_CANONICAL_SOURCE_SHA256",
+  "future_pcl_target_sha256": "REFERENCED_CONTENT_ADDRESSED_TARGET_MAP_SHA256",
+  "input_equality_requirements": {
+    "future_open3d_source_sha256_equals_future_pcl_source_sha256": true,
+    "future_open3d_target_sha256_equals_future_pcl_target_sha256": true
+  },
+  "pcl_runtime_conversion": {
+    "cleanup": "DELETE_IN_FINALLY_AFTER_RESULT_OR_ERROR",
+    "determinism": "BYTE_IDENTICAL_FROM_SAME_CANONICAL_NPY_AND_CONVERSION_CONTRACT",
+    "directory": "tmp_pcl",
+    "persistent": false,
+    "reverse_validation": "TEMPORARY_PCD_REPARSE_MUST_EQUAL_THE_DETERMINISTIC_FLOAT32_PROJECTION_OF_THE_CANONICAL_ARRAY"
+  },
+  "prohibitions": [
+    "NO_PERSISTENT_OPEN3D_ONLY_SOURCE_COPY",
+    "NO_PERSISTENT_PCL_ONLY_SOURCE_COPY",
+    "NO_PERSISTENT_OPEN3D_ONLY_TARGET_COPY",
+    "NO_PERSISTENT_PCL_ONLY_TARGET_COPY",
+    "NO_PER_SNAPSHOT_TARGET_MAP_COPY"
+  ],
+  "role": "FUTURE_STAGE2_STORAGE_CONTRACT_NOT_EXECUTION_AUTHORIZATION",
+  "schema_version": "boreas_v2_canonical_bundle_storage_contract_v2",
+  "shared_input_architecture": "ONE_CANONICAL_SOURCE_AND_TARGET_FAN_OUT_TO_BOTH_BACKENDS"
+}

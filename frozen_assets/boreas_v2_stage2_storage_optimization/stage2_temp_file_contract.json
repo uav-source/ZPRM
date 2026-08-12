@@ -1,0 +1,27 @@
+{
+  "directories": {
+    "tmp_decode": "TEMPORARY_DECODED",
+    "tmp_download": "TEMPORARY_DOWNLOAD",
+    "tmp_pcl": "TEMPORARY_DECODED_BACKEND_CONVERSION"
+  },
+  "frozen_manifest_inclusion": false,
+  "persistent_directories": [
+    "receipts",
+    "target_map",
+    "geometry_metrics",
+    "selected_sources",
+    "manifests",
+    "results",
+    "checkpoints"
+  ],
+  "rules": [
+    "EACH_TEMP_ROOT_HAS_EXPLICIT_MARKER_AND_PURPOSE",
+    "NO_SYMLINK_OR_UNKNOWN_ENTRY_CLEANUP",
+    "SUCCESSFUL_CONSUMPTION_DELETES_TEMP_IMMEDIATELY",
+    "CRASH_RESUME_REMOVES_ONLY_MARKED_PARTIAL_TEMP_FILES",
+    "TEMP_IS_NEVER_THE_ONLY_COPY_OF_SCIENTIFIC_EVIDENCE",
+    "PERSISTENT_OUTPUT_MUST_COMMIT_BEFORE_TEMP_DELETE"
+  ],
+  "safe_to_clear_when_validated": true,
+  "schema_version": "boreas_v2_stage2_temp_file_contract_v1"
+}

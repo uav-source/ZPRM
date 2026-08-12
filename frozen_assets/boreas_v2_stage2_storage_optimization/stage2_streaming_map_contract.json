@@ -1,0 +1,66 @@
+{
+  "actual_map_object_processing_count": 0,
+  "actual_target_map_count": 0,
+  "algorithm": {
+    "accumulator": "VOXEL_KEY_TO_COUNT_AND_FLOAT64_SUM_XYZ",
+    "duplicate_handling": "KEEP_ALL_FINITE_POINTS_IN_SUFFICIENT_STATISTICS",
+    "final_point_order": "LEXICOGRAPHIC_VOXEL_KEY_X_Y_Z",
+    "input_order": "FROZEN_ALLOWLIST_ORDER_WITH_EXPLICIT_ORDINAL",
+    "numeric_dtype": "LITTLE_ENDIAN_FLOAT64",
+    "processing_order": "SCAN_ORDINAL_THEN_POINT_ORDINAL",
+    "representative": "CENTROID_FROM_FIXED_ORDER_FLOAT64_SUM",
+    "worker_count_effect": "NONE_WORKERS_MAY_NOT_CHANGE_REDUCTION_ORDER"
+  },
+  "allowlist_object_count": 8202,
+  "allowlist_remote_bytes": 41998817280,
+  "architecture_test_scope": "SYNTHETIC_TINY_POINT_CLOUDS_ONLY",
+  "batch_incremental_semantics": "BYTE_EXACT_FOR_SAME_ORDERED_INPUTS_AND_RULE",
+  "content_addressing": {
+    "planned_physical_target_map_copy_count": 1,
+    "planned_snapshot_target_reference_count": 100,
+    "planned_unique_target_map_count": 1,
+    "snapshot_target_storage": "SHA256_REFERENCE_ONLY"
+  },
+  "crash_resume_semantics": "AUTHENTICATED_STATE_CHAIN_PRODUCES_SAME_FINAL_BYTES",
+  "floating_point_risk": "Floating-point addition is non-associative; byte equality would be false if worker or resume partition changed reduction order. The architecture therefore fixes scan and point order and does not parallel-reduce voxel sums.",
+  "flow": [
+    "REMOTE_ONLY",
+    "TEMPORARY_DOWNLOAD",
+    "TEMPORARY_DECODED",
+    "FROZEN_GT_AND_CALIBRATION_TRANSFORM",
+    "INCREMENTAL_ACCUMULATOR",
+    "AUTHENTICATED_CHECKPOINT",
+    "DELETE_TEMPORARIES",
+    "ONE_PERSISTENT_CONTENT_ADDRESSED_MAP"
+  ],
+  "local_subset_policy": {
+    "default": "NO_LOCAL_CROP_ONE_GLOBAL_TARGET",
+    "future_exception": "Only a separately preregistered scientific contract before any registration may define a deterministic subset from the same frozen global target.",
+    "registration_result_adaptation": "FORBIDDEN",
+    "subset_content_addressed_and_deduplicated": true
+  },
+  "primary_map_sequence_id": "boreas-2021-11-14-09-47",
+  "production_disk_checkpoint": {
+    "budget_upper_bound_bytes": 41998817408,
+    "format": "ONE_PREALLOCATED_LITTLE_ENDIAN_FLOAT64_XYZ_REPLAY_ARRAY",
+    "identity": "Frozen allowlist sizes determine the complete point count; an append ledger authenticates each fixed-order scan byte range and map-state transition.",
+    "internal_state_sha_semantics": "REPRESENTATION_SPECIFIC_NOT_COMPARED_BETWEEN_DIRECT_TRANSFORM_AND_PRETRANSFORMED_REPLAY",
+    "ledger_and_receipt_overhead_budget_component": "SMALL_EVIDENCE_UPPER_BOUND_NOT_THE_128_BYTE_ARRAY_ALLOWANCE",
+    "reason": "On crash, replay the authenticated transformed XYZ prefix locally to rebuild the deterministic accumulator; completed remote objects are not downloaded again.",
+    "replay_array_payload_bytes": 41998817280,
+    "retention": "DELETE_ONLY_AFTER_FINAL_CONTENT_ADDRESSED_TARGET_COMMITS_AND_VERIFIES",
+    "synthetic_json_checkpoint_scope": "TINY_FIXTURE_ONLY_NOT_PRODUCTION_DISK_BUDGET",
+    "target_npy_byte_exact_after_authenticated_replay": true
+  },
+  "real_boreas_map_built": false,
+  "role": "DRY_RUN_ARCHITECTURE_ONLY",
+  "schema_version": "boreas_v2_stage2_streaming_map_contract_v1",
+  "scientific_preprocessing_parameters": {
+    "association_distance": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+    "normal_neighborhood": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+    "range_limits": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+    "voxel_origin_xyz_m": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION",
+    "voxel_size_m": "PREPROCESSING_PARAMETER_REQUIRES_STAGE2_PREREGISTRATION"
+  },
+  "storage_planner_parameter_authority": "NONE"
+}

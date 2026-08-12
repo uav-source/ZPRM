@@ -1,0 +1,127 @@
+{
+  "actual_execution_count": 0,
+  "allowlist_object_count": 20061,
+  "allowlist_remote_bytes": 104158637472,
+  "allowlist_sha256": "26ac211c854472dcb3db2f1cd5b096849bfd27867bac34e75bc8ce0d01bb2787",
+  "architecture_only": true,
+  "downloaded_lidar_payload_count": 0,
+  "manifest_root_sha256": "c00aa59eef3f602316cf2c25e1c26fd0573b9d63dcdd50b3c766463291d1fe73",
+  "payload": [
+    {
+      "path": "NO_ICP_ATTESTATION.json",
+      "sha256": "ec27e21b29d2b16e42b6cb3c074e47539a0eb741b80421cdfa541d6b1422440f",
+      "size_bytes": 958
+    },
+    {
+      "path": "NO_LIDAR_PAYLOAD_ATTESTATION.json",
+      "sha256": "8ae4e004526528ccb23f67d273b13171168638a0a882787eb228c06f7dc6b7fe",
+      "size_bytes": 1383
+    },
+    {
+      "path": "boreas_v2_stage2_disk_budget_optimized.csv",
+      "sha256": "7b5b170470732db4e1bedf2ba3e891f0aac4f84cc774897d904b24f0b896614c",
+      "size_bytes": 1305
+    },
+    {
+      "path": "boreas_v2_stage2_disk_budget_optimized.json",
+      "sha256": "d2d0f5748bb9531f5727284b6449e56c11789954cf1127423727b64d62b7d13f",
+      "size_bytes": 5532
+    },
+    {
+      "path": "boreas_v2_stage2_execution_modes.json",
+      "sha256": "714cfdf0826d52da5162c29c5397f9dc6f201c9c616d292569fe263e07974ae5",
+      "size_bytes": 1374
+    },
+    {
+      "path": "boreas_v2_stage2_storage_readiness.json",
+      "sha256": "138a1f871bb5b5737dc9c441adde780d527ba0d2301dfa9753f3cee48c0c739a",
+      "size_bytes": 4399
+    },
+    {
+      "path": "canonical_bundle_storage_contract_v2.json",
+      "sha256": "4c0171bf8208b5a0b3daf96339b859b1dfc98123ad16a02755ca3745b26d2ae5",
+      "size_bytes": 1693
+    },
+    {
+      "path": "source_only_pytest_junit.xml",
+      "sha256": "7ede4f682d0f9a6b2be9bdbb5ba7312cb1312258502021e3f3b6c9722bd9307e",
+      "size_bytes": 136055
+    },
+    {
+      "path": "source_only_test_status.json",
+      "sha256": "096268f74df343890b9fb8611d32ea757734668cba189e1d9dbe0a2dba010f2f",
+      "size_bytes": 529
+    },
+    {
+      "path": "stage2_checkpoint_contract.json",
+      "sha256": "43b5111ff51c33b373df2a3d0b9c521733a9e551ce4fec1ad1d8e61f65a3ec99",
+      "size_bytes": 1221
+    },
+    {
+      "path": "stage2_object_lifecycle_contract.csv",
+      "sha256": "a3c1e9fb24152561e551e1e652cc773ab38431a15cc7c6caef0413ff7222422e",
+      "size_bytes": 1831
+    },
+    {
+      "path": "stage2_object_lifecycle_contract.json",
+      "sha256": "a2a7e9bce187d89284e9a0a7c99c498c8d6eb25adc98e4034a740664f40b0f30",
+      "size_bytes": 4613
+    },
+    {
+      "path": "stage2_scientific_lock_contract.json",
+      "sha256": "2744c2d867b863fdc82e150c00a0e86661c3f20005c350bf55ceb23615192369",
+      "size_bytes": 1489
+    },
+    {
+      "path": "stage2_storage_architecture_contract.json",
+      "sha256": "e2cc29ba56e2ea9a0cdadb076c908ee59777b45e8a7b6dc560083978683cd3aa",
+      "size_bytes": 1321
+    },
+    {
+      "path": "stage2_storage_budget_original_breakdown.csv",
+      "sha256": "20a2e89e31dc1fa78649959ecb4800e457b6b8431c0ae6de368f0bf1d328dfb1",
+      "size_bytes": 3446
+    },
+    {
+      "path": "stage2_storage_budget_original_breakdown.json",
+      "sha256": "6909c9d0097a36a164d4a55bba91c4d543d30b7a0e755c8202196210b27fb1bb",
+      "size_bytes": 9114
+    },
+    {
+      "path": "stage2_storage_budget_original_explanation.md",
+      "sha256": "531a87a3bbcb55ba2b763240688ce6d1f0b7bd56e77efc5e6744a713471dba5f",
+      "size_bytes": 1762
+    },
+    {
+      "path": "stage2_storage_summary.json",
+      "sha256": "ea4277ca199274ebce77ff6755e679138b01a797e2537e00a2be0f9446c442e2",
+      "size_bytes": 9529
+    },
+    {
+      "path": "stage2_storage_summary.md",
+      "sha256": "57af4b6d10f80e5f6f00b412af6fe6c07c045fecb4e601c05c8398eb3fba342f",
+      "size_bytes": 3987
+    },
+    {
+      "path": "stage2_streaming_map_contract.json",
+      "sha256": "180d009735cafd53469eeae98564aa0cd95c9a84a867e293d48de79f906f4f1b",
+      "size_bytes": 3744
+    },
+    {
+      "path": "stage2_streaming_query_contract.json",
+      "sha256": "781170e1bf89ff65a3cc7d9f3b24cee3cc2d569fdbc58ce8a17a2ecd4e07b5cd",
+      "size_bytes": 2263
+    },
+    {
+      "path": "stage2_temp_file_contract.json",
+      "sha256": "f0f72d0b928d6b767ade0a526517015f9d66fb3c318a2ca12539cae4e9d5a695",
+      "size_bytes": 811
+    }
+  ],
+  "producer_commit": "0cfea686c601ecaba84a88eb2080f292cdef33f3",
+  "registration_execution_count": 0,
+  "schema_version": "boreas_v2_stage2_storage_optimization_manifest_v1",
+  "stage1_frozen_manifest_file_sha256": "71cfd78aa588c67dd28f8f8be87b7514c20ed090e75a8433583362253a97a8be",
+  "stage1_manifest_root_sha256": "677346ded7d4d45be1877dc19d0c316e80e87699784a441ed1d8b69848eae44f",
+  "stage1_tag_commit": "fb6d84fc41a252fc1934716f96473fad1634ebdc"
+}

@@ -1,0 +1,32 @@
+{
+  "MEASUREMENT_PAPER_MAINLINE_AUTHORIZED": false,
+  "PUBLIC_DATA_V2_RUN_AUTHORIZED": false,
+  "REAL_REGISTRATION_AUTHORIZED": false,
+  "STAGE2_DOWNLOAD_AUTHORIZED": false,
+  "actual_trials": 0,
+  "downloaded_lidar_bytes": 0,
+  "downloaded_lidar_object_count": 0,
+  "downloaded_lidar_payload_count": 0,
+  "estimated_transform_count": 0,
+  "estimated_transform_evidence": [],
+  "estimated_transform_file_count": 0,
+  "estimated_transform_files": [],
+  "open3d_registration_call_count": 0,
+  "other_registration_process_count": 0,
+  "pass": true,
+  "pcl_cli_invocation_count": 0,
+  "planned_trials": 0,
+  "real_trial_result_count": 0,
+  "registration_execution_count": 0,
+  "rich_snapshot_count": 0,
+  "snapshot_count": 0,
+  "static_source_audit": {
+    "pass": true,
+    "python_file_count": 30,
+    "violations": []
+  },
+  "status": "PASS",
+  "structured_result_scan_error_count": 0,
+  "structured_result_scan_error_files": [],
+  "weak_snapshot_count": 0
+}
