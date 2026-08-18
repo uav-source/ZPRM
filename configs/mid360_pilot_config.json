@@ -1,0 +1,59 @@
+{
+  "schema": "mid360_single_bag_pilot_config_v1",
+  "classification": {
+    "method": "PILOT_DESCRIPTIVE_HEURISTIC_NOT_PAPER_THRESHOLD",
+    "rich_condition_number_max": 6.666666666666667,
+    "rich_normalized_lambda_min_min": 0.15,
+    "rich_spectral_entropy_min": 0.85,
+    "weak_condition_number_min": 20.0,
+    "weak_normalized_lambda_min_max": 0.05
+  },
+  "flags": {
+    "FORMAL_REAL_DATA": false,
+    "INDEPENDENT_MAP_QUERY_ACQUISITION": false,
+    "MEASUREMENT_EVIDENCE": false,
+    "PILOT_ONLY": true
+  },
+  "imu_staticity_screen": {
+    "accel_norm_absolute_deviation_max_raw": 0.25,
+    "accel_norm_q99_minus_median_max_raw": 0.10,
+    "accel_step_max_raw": 0.10,
+    "gyro_norm_max": 0.35,
+    "gyro_norm_q99_max": 0.15,
+    "gyro_step_max": 0.15,
+    "method": "PILOT_OBVIOUS_MOTION_SCREEN_ONLY"
+  },
+  "map": {
+    "construction": "DIRECT_SAME_SENSOR_FRAME_MERGE_NO_REGISTRATION",
+    "maximum_range_m": 200.0,
+    "minimum_range_m": 0.1,
+    "voxel_size_m": 0.05
+  },
+  "query_quantiles": [
+    0.05,
+    0.15,
+    0.25,
+    0.35,
+    0.45,
+    0.55,
+    0.65,
+    0.75,
+    0.85,
+    0.95
+  ],
+  "split_seconds_relative_to_first_lidar_header_stamp": {
+    "guard": [
+      7.0,
+      9.0
+    ],
+    "map": [
+      1.0,
+      7.0
+    ],
+    "minimum_lidar_duration": 16.0,
+    "query": [
+      9.0,
+      15.0
+    ]
+  }
+}

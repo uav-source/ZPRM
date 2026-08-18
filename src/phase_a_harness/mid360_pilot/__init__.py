@@ -1,0 +1,12 @@
+"""PILOT_ONLY Mid-360 single-bag audit and geometry preparation."""
+
+PILOT_FLAGS = {
+    "PILOT_ONLY": True,
+    "FORMAL_REAL_DATA": False,
+    "INDEPENDENT_MAP_QUERY_ACQUISITION": False,
+    "MEASUREMENT_EVIDENCE": False,
+}
+
+NONFORMAL_MARKER = "PILOT_NONFORMAL_DO_NOT_CITE"
+
+__all__ = ["NONFORMAL_MARKER", "PILOT_FLAGS"]
