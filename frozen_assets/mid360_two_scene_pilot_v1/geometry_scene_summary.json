@@ -1,0 +1,237 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_GEOMETRY_DIRECTIONALLY_CONSISTENT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "SEMANTIC_LABEL_GEOMETRY_MISMATCH": false,
+  "T0": "IDENTITY_4X4",
+  "W_TEST_01_GEOMETRICALLY_WEAKER_THAN_R_TEST_01": true,
+  "formal_threshold_added_posthoc": false,
+  "geometry_only": true,
+  "metric_fields": [
+    "initial_correspondence_count",
+    "initial_valid_normal_correspondence_count",
+    "lambda_min_trans",
+    "lambda_mid_trans",
+    "lambda_max_trans",
+    "normalized_lambda_min_trans",
+    "normalized_lambda_mid_trans",
+    "normalized_lambda_max_trans",
+    "condition_number_trans",
+    "spectral_entropy_trans"
+  ],
+  "scene_summaries": {
+    "R_TEST_01": {
+      "metrics": {
+        "condition_number_trans": {
+          "count": 10,
+          "max": 1.8978209975018212,
+          "median": 1.7913086213972624,
+          "min": 1.7588456670262478,
+          "q25": 1.7691694593255562,
+          "q75": 1.8033412076219484,
+          "q95": 1.8697976830236767
+        },
+        "initial_correspondence_count": {
+          "count": 10,
+          "max": 15462.0,
+          "median": 15372.0,
+          "min": 15235.0,
+          "q25": 15324.75,
+          "q75": 15390.25,
+          "q95": 15434.1
+        },
+        "initial_valid_normal_correspondence_count": {
+          "count": 10,
+          "max": 15462.0,
+          "median": 15372.0,
+          "min": 15235.0,
+          "q25": 15324.75,
+          "q75": 15390.25,
+          "q95": 15434.1
+        },
+        "lambda_max_trans": {
+          "count": 10,
+          "max": 0.4580122488777892,
+          "median": 0.45342707724386816,
+          "min": 0.44609486793036585,
+          "q25": 0.4526953381513817,
+          "q75": 0.45743839809611164,
+          "q95": 0.4579680903137961
+        },
+        "lambda_mid_trans": {
+          "count": 10,
+          "max": 0.3008017352156844,
+          "median": 0.29330958345600194,
+          "min": 0.28706112019731295,
+          "q25": 0.28967061213518785,
+          "q75": 0.29788871756603763,
+          "q95": 0.3005650602266952
+        },
+        "lambda_min_trans": {
+          "count": 10,
+          "max": 0.25657072726672686,
+          "median": 0.25382763830149,
+          "min": 0.2412841460487334,
+          "q25": 0.25345778721493306,
+          "q75": 0.25470446577885064,
+          "q95": 0.25599700730938757
+        },
+        "normalized_lambda_max_trans": {
+          "count": 10,
+          "max": 0.4580122488777893,
+          "median": 0.45342707724386805,
+          "min": 0.44609486793036585,
+          "q25": 0.45269533815138174,
+          "q75": 0.4574383980961115,
+          "q95": 0.4579680903137961
+        },
+        "normalized_lambda_mid_trans": {
+          "count": 10,
+          "max": 0.3008017352156843,
+          "median": 0.2933095834560019,
+          "min": 0.287061120197313,
+          "q25": 0.28967061213518774,
+          "q75": 0.2978887175660375,
+          "q95": 0.3005650602266952
+        },
+        "normalized_lambda_min_trans": {
+          "count": 10,
+          "max": 0.2565707272667269,
+          "median": 0.25382763830149,
+          "min": 0.24128414604873336,
+          "q25": 0.25345778721493295,
+          "q75": 0.25470446577885064,
+          "q95": 0.2559970073093876
+        },
+        "spectral_entropy_trans": {
+          "count": 10,
+          "max": 0.9733148533997634,
+          "median": 0.9700746638002031,
+          "min": 0.9667395231485169,
+          "q25": 0.9689303008863904,
+          "q75": 0.9710945767055068,
+          "q95": 0.9727190135085415
+        }
+      },
+      "scene_type": "RICH_CANDIDATE",
+      "semantic_scene": "LABORATORY",
+      "snapshot_count": 10
+    },
+    "W_TEST_01": {
+      "metrics": {
+        "condition_number_trans": {
+          "count": 10,
+          "max": 8.291363610310642,
+          "median": 8.041619944991176,
+          "min": 7.824544763672572,
+          "q25": 7.996031473913186,
+          "q75": 8.130140809566127,
+          "q95": 8.261898304355125
+        },
+        "initial_correspondence_count": {
+          "count": 10,
+          "max": 16050.0,
+          "median": 15899.0,
+          "min": 15835.0,
+          "q25": 15856.25,
+          "q75": 15957.5,
+          "q95": 16037.85
+        },
+        "initial_valid_normal_correspondence_count": {
+          "count": 10,
+          "max": 16050.0,
+          "median": 15899.0,
+          "min": 15835.0,
+          "q25": 15856.25,
+          "q75": 15957.5,
+          "q95": 16037.85
+        },
+        "lambda_max_trans": {
+          "count": 10,
+          "max": 0.6967488872221578,
+          "median": 0.6930142083023785,
+          "min": 0.6886819639259067,
+          "q25": 0.6915220524799753,
+          "q75": 0.6959383860488056,
+          "q95": 0.6966964084003083
+        },
+        "lambda_mid_trans": {
+          "count": 10,
+          "max": 0.2262422396912274,
+          "median": 0.2202006592806297,
+          "min": 0.2159687560895425,
+          "q25": 0.2188249111548013,
+          "q75": 0.22226341686603782,
+          "q95": 0.2257987365180429
+        },
+        "lambda_min_trans": {
+          "count": 10,
+          "max": 0.08834991805176642,
+          "median": 0.08618677699724922,
+          "min": 0.08327709395100333,
+          "q25": 0.08522375250021333,
+          "q75": 0.08667069549844397,
+          "q95": 0.08796793149936734
+        },
+        "normalized_lambda_max_trans": {
+          "count": 10,
+          "max": 0.6967488872221577,
+          "median": 0.6930142083023784,
+          "min": 0.6886819639259067,
+          "q25": 0.6915220524799752,
+          "q75": 0.6959383860488058,
+          "q95": 0.6966964084003083
+        },
+        "normalized_lambda_mid_trans": {
+          "count": 10,
+          "max": 0.2262422396912274,
+          "median": 0.22020065928062973,
+          "min": 0.2159687560895425,
+          "q25": 0.21882491115480124,
+          "q75": 0.22226341686603787,
+          "q95": 0.2257987365180429
+        },
+        "normalized_lambda_min_trans": {
+          "count": 10,
+          "max": 0.08834991805176641,
+          "median": 0.08618677699724922,
+          "min": 0.08327709395100333,
+          "q25": 0.08522375250021336,
+          "q75": 0.08667069549844394,
+          "q95": 0.08796793149936734
+        },
+        "spectral_entropy_trans": {
+          "count": 10,
+          "max": 0.7315522421235073,
+          "median": 0.7269473960295512,
+          "min": 0.7220113122688737,
+          "q25": 0.7248666125405822,
+          "q75": 0.7279308163292196,
+          "q95": 0.7312203366502906
+        }
+      },
+      "scene_type": "WEAK_CANDIDATE",
+      "semantic_scene": "LONG_CORRIDOR",
+      "snapshot_count": 10
+    }
+  },
+  "schema": "mid360_two_scene_geometry_scene_summary_v1",
+  "status": "PASS",
+  "weak_vs_rich": {
+    "condition_number_median_ratio": 4.489243142657642,
+    "directional_checks": {
+      "weak_condition_number_higher_than_rich": true,
+      "weak_lambda_min_lower_than_rich": true,
+      "weak_spectral_entropy_lower_than_rich": true
+    },
+    "lambda_min_median_ratio": 0.3395484336299058,
+    "spectral_entropy_median_difference": -0.24312726777065197
+  }
+}

@@ -1,0 +1,1611 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MAX_ALLOWED_TRIALS": 40,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "T0": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "authorization_created_at_utc": "2026-08-18T13:58:43.445407+00:00",
+  "authorized_backends": [
+    "open3d_point_to_plane",
+    "pcl_point_to_plane"
+  ],
+  "authorized_snapshot_count": 20,
+  "authorized_trial_count": 40,
+  "authorized_trials": [
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q01",
+      "source_npy_sha256": "ea0425eba9828b4b7d20ec7d70c03629aad052b37129bd2f2eb66c741404be7f",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q01::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q01",
+      "source_npy_sha256": "ea0425eba9828b4b7d20ec7d70c03629aad052b37129bd2f2eb66c741404be7f",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q01::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q02",
+      "source_npy_sha256": "58d3d3263669758becf1d84c2ddcd407eadff022434e3c2a2f7e887e4d9b0a81",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q02::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q02",
+      "source_npy_sha256": "58d3d3263669758becf1d84c2ddcd407eadff022434e3c2a2f7e887e4d9b0a81",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q02::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q03",
+      "source_npy_sha256": "6bb6e40b1252f6a44aad71bb316e7cc3b2020164cc2d7522e24cd2d014446801",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q03::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q03",
+      "source_npy_sha256": "6bb6e40b1252f6a44aad71bb316e7cc3b2020164cc2d7522e24cd2d014446801",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q03::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q04",
+      "source_npy_sha256": "f152478ee07afab66a780213d3435457b88937567ff7e175e5eeb652005e9017",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q04::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q04",
+      "source_npy_sha256": "f152478ee07afab66a780213d3435457b88937567ff7e175e5eeb652005e9017",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q04::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q05",
+      "source_npy_sha256": "f76a227b96a4308a80e63e2b307e86ea59528878de9d8f3cce8e7a8d3c85c11a",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q05::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q05",
+      "source_npy_sha256": "f76a227b96a4308a80e63e2b307e86ea59528878de9d8f3cce8e7a8d3c85c11a",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q05::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q06",
+      "source_npy_sha256": "325ec45c672bb2f7b4a1d1899adf5e972f3bc953cf67f30a32b97eac195e2e29",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q06::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q06",
+      "source_npy_sha256": "325ec45c672bb2f7b4a1d1899adf5e972f3bc953cf67f30a32b97eac195e2e29",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q06::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q07",
+      "source_npy_sha256": "07038ada9ddf64fd44d76275c17e97e82d03fd9ed8e0479a5e4c994d8666f5e6",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q07::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q07",
+      "source_npy_sha256": "07038ada9ddf64fd44d76275c17e97e82d03fd9ed8e0479a5e4c994d8666f5e6",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q07::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q08",
+      "source_npy_sha256": "9c9ab65dbce7264c1f140da964ef0c5ebf5568a466b19f1b65959c3c6e7523a5",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q08::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q08",
+      "source_npy_sha256": "9c9ab65dbce7264c1f140da964ef0c5ebf5568a466b19f1b65959c3c6e7523a5",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q08::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q09",
+      "source_npy_sha256": "8e6be665ef019801e2634c8a788b22fdc0c47b0deaf412a1555eb73f87835c71",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q09::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q09",
+      "source_npy_sha256": "8e6be665ef019801e2634c8a788b22fdc0c47b0deaf412a1555eb73f87835c71",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q09::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q10",
+      "source_npy_sha256": "8dfeca0a569fb425aecf985f57632b7777e3ec76a28877e45b81ddb53f49fc53",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q10::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q10",
+      "source_npy_sha256": "8dfeca0a569fb425aecf985f57632b7777e3ec76a28877e45b81ddb53f49fc53",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+      "trial_id": "R_TEST_01_Q10::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q01",
+      "source_npy_sha256": "65ebda34614b838d33dd81dc414777206d9f91cef865ef71c6579a880d65a3d5",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q01::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q01",
+      "source_npy_sha256": "65ebda34614b838d33dd81dc414777206d9f91cef865ef71c6579a880d65a3d5",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q01::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q02",
+      "source_npy_sha256": "8b779def96121339250a907c5ae70965e42ad304c216febb720cb2db39ed6650",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q02::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q02",
+      "source_npy_sha256": "8b779def96121339250a907c5ae70965e42ad304c216febb720cb2db39ed6650",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q02::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q03",
+      "source_npy_sha256": "ae96479c693492eb41170dba28a3b9e68bf113cdfee36225f5849e89074ebd6c",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q03::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q03",
+      "source_npy_sha256": "ae96479c693492eb41170dba28a3b9e68bf113cdfee36225f5849e89074ebd6c",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q03::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q04",
+      "source_npy_sha256": "81916407344063730e82a4c18c4bd4ecb673e003f8965dd8f4fe4a96d7710b2f",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q04::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q04",
+      "source_npy_sha256": "81916407344063730e82a4c18c4bd4ecb673e003f8965dd8f4fe4a96d7710b2f",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q04::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q05",
+      "source_npy_sha256": "6897f897ad61d49f34028f2b90e12a3b9df19524fedd1fc8de7e728bba7e1393",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q05::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q05",
+      "source_npy_sha256": "6897f897ad61d49f34028f2b90e12a3b9df19524fedd1fc8de7e728bba7e1393",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q05::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q06",
+      "source_npy_sha256": "34bd0bcc6413e190f860e363ca9cff4347da340df1b52f52805165380d34c714",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q06::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q06",
+      "source_npy_sha256": "34bd0bcc6413e190f860e363ca9cff4347da340df1b52f52805165380d34c714",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q06::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q07",
+      "source_npy_sha256": "f61cad3e066c85f4b6a6cd90b468a016e0e47ed71899268024284e0a1b48b0b5",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q07::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q07",
+      "source_npy_sha256": "f61cad3e066c85f4b6a6cd90b468a016e0e47ed71899268024284e0a1b48b0b5",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q07::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q08",
+      "source_npy_sha256": "54355f8a4d3d05807636f59079e3af93c526a2a21249eb41ca2da987f4ca5315",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q08::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q08",
+      "source_npy_sha256": "54355f8a4d3d05807636f59079e3af93c526a2a21249eb41ca2da987f4ca5315",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q08::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q09",
+      "source_npy_sha256": "05a9437e87612119894dd2dda87ddbbd6c6248d7f033eb9d8e6ab474753af130",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q09::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q09",
+      "source_npy_sha256": "05a9437e87612119894dd2dda87ddbbd6c6248d7f033eb9d8e6ab474753af130",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q09::pcl_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "open3d_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q10",
+      "source_npy_sha256": "49a1f1af9dac4df0826858ec247f6abed6797f7c2f3558bef57248e39362dbae",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q10::open3d_point_to_plane"
+    },
+    {
+      "T0": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "backend": "pcl_point_to_plane",
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q10",
+      "source_npy_sha256": "49a1f1af9dac4df0826858ec247f6abed6797f7c2f3558bef57248e39362dbae",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+      "trial_id": "W_TEST_01_Q10::pcl_point_to_plane"
+    }
+  ],
+  "backend_parameter_contract_path": "/home/lj/ZPRM_mid360_two_scene_pilot/frozen_assets/backend_parameter_contract.json",
+  "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+  "boreas_authorized": false,
+  "canonical_input_manifest_sha256": "bd6fb95f009723826d5d426f83e06a917b0d7c4a32808dfa74487ddcee7ac002",
+  "forbidden_backends": [
+    "GICP",
+    "NDT",
+    "KISS_ICP",
+    "FAST_LIO",
+    "LIO_SAM",
+    "LOAM"
+  ],
+  "formal_multisite_experiment_authorized": false,
+  "geometry_only_metrics_sha256": "463983cb850fa192b6c74ea6cb75e66fc61bc4d35f1cdbbb4413b7d0e01b422d",
+  "geometry_scene_summary_sha256": "a1fa243c2d031d5861c3137d1365e9b9d200e3d2c16b498aa690b19023edc191",
+  "preprocessing_contract_sha256": "b605a3f724ae734dad7b38d01cb02a542d73996227595b631baeeaf683158d25",
+  "query_selection_csv_sha256": "fe21810f7d560dd0060aef716e9f5587980fc35a60ee5cf1f77bbd1169a61c96",
+  "query_selection_frozen_before_backend": true,
+  "query_selection_json_sha256": "2bb06618daf6116aad54fc0929543e9c76a72b23b1eb44c2700fa7a56aa264dc",
+  "schema": "mid360_two_scene_debug_registration_authorization_v1",
+  "snapshots": [
+    {
+      "query_timestamp": 1787056353.543167,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q01",
+      "source_array_sha256": "613bb78470decf3b64194fab7c3579af1a98be115a387dedc0cda1b44ad2444e",
+      "source_npy_sha256": "ea0425eba9828b4b7d20ec7d70c03629aad052b37129bd2f2eb66c741404be7f",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056355.0438464,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q02",
+      "source_array_sha256": "e233190c9450f497a5343feaf2b90fd5a0928e0593f04b7361ff175e65104eb7",
+      "source_npy_sha256": "58d3d3263669758becf1d84c2ddcd407eadff022434e3c2a2f7e887e4d9b0a81",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056356.5430822,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q03",
+      "source_array_sha256": "8950f5b17ff80e6952baf368df81921325fd897ed735daac6cf06bbd28a5866d",
+      "source_npy_sha256": "6bb6e40b1252f6a44aad71bb316e7cc3b2020164cc2d7522e24cd2d014446801",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056357.9431353,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q04",
+      "source_array_sha256": "fd1dca82d562ebf21b66f4c256d42251cacbb66869e40c362b3718809022dfd6",
+      "source_npy_sha256": "f152478ee07afab66a780213d3435457b88937567ff7e175e5eeb652005e9017",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056359.4431496,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q05",
+      "source_array_sha256": "d057bff7bce05877a9331e60ea3f7b42739153e8e2bf644ef07e1dba7e9961d4",
+      "source_npy_sha256": "f76a227b96a4308a80e63e2b307e86ea59528878de9d8f3cce8e7a8d3c85c11a",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056360.9431803,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q06",
+      "source_array_sha256": "f6bb3f5ba310894a2220cdb08ffb37fa9be44b45ddaa2535c2d86dad4d2cae5f",
+      "source_npy_sha256": "325ec45c672bb2f7b4a1d1899adf5e972f3bc953cf67f30a32b97eac195e2e29",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056362.4431906,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q07",
+      "source_array_sha256": "87949f4088bbdefa97bb936b77bcfab6cedaa6cabbf58c71acd942a6f218600f",
+      "source_npy_sha256": "07038ada9ddf64fd44d76275c17e97e82d03fd9ed8e0479a5e4c994d8666f5e6",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056363.843278,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q08",
+      "source_array_sha256": "166887b391976f4a37885b9491218358406cd935f2890ebe58c6e56d7a961a8a",
+      "source_npy_sha256": "9c9ab65dbce7264c1f140da964ef0c5ebf5568a466b19f1b65959c3c6e7523a5",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056365.3432193,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q09",
+      "source_array_sha256": "f77f42fffa1419b7b30cb675a70e857c5871b516deb675c53fc7509cc98d580c",
+      "source_npy_sha256": "8e6be665ef019801e2634c8a788b22fdc0c47b0deaf412a1555eb73f87835c71",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787056366.8432264,
+      "scene_id": "R_TEST_01",
+      "snapshot_id": "R_TEST_01_Q10",
+      "source_array_sha256": "bc19f8fef46dd2e661b12e076b2b3432c34dd5f40c1f41eae4c86e14513d7b71",
+      "source_npy_sha256": "8dfeca0a569fb425aecf985f57632b7777e3ec76a28877e45b81ddb53f49fc53",
+      "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+      "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7"
+    },
+    {
+      "query_timestamp": 1787057454.3874817,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q01",
+      "source_array_sha256": "2ea42e63a9fc6d6d1697c88d02e10e52e26765c2c311ab5381f42d381cfa8692",
+      "source_npy_sha256": "65ebda34614b838d33dd81dc414777206d9f91cef865ef71c6579a880d65a3d5",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057455.8877437,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q02",
+      "source_array_sha256": "71c8caafe4cf606b9e0f00d3f17ffb68e76f03f4b262cafcc83daf83531778a8",
+      "source_npy_sha256": "8b779def96121339250a907c5ae70965e42ad304c216febb720cb2db39ed6650",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057457.2866461,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q03",
+      "source_array_sha256": "3018641fd1cacd76226055574bf0190043dc9768765460fb371aa77e845693d6",
+      "source_npy_sha256": "ae96479c693492eb41170dba28a3b9e68bf113cdfee36225f5849e89074ebd6c",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057458.7866569,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q04",
+      "source_array_sha256": "836bd7f8fd49bb2cb1ae98bf6bd99ccb467582c29e8525a0003151f593aa5baa",
+      "source_npy_sha256": "81916407344063730e82a4c18c4bd4ecb673e003f8965dd8f4fe4a96d7710b2f",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057460.2870233,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q05",
+      "source_array_sha256": "741da51ff93d08482124548c1eac8fc6acc0144120244c8b3564d522c012cc9a",
+      "source_npy_sha256": "6897f897ad61d49f34028f2b90e12a3b9df19524fedd1fc8de7e728bba7e1393",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057461.6871781,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q06",
+      "source_array_sha256": "da7b1d3f3090975b1c519b55ec6d35f6ca34840818f7930f202d29c2fa42b2e9",
+      "source_npy_sha256": "34bd0bcc6413e190f860e363ca9cff4347da340df1b52f52805165380d34c714",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057463.1866984,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q07",
+      "source_array_sha256": "2c2b8ab5601d4c5c9e27ed45d140de7061c27ed6cd94cb0eaca6013ea1be6af5",
+      "source_npy_sha256": "f61cad3e066c85f4b6a6cd90b468a016e0e47ed71899268024284e0a1b48b0b5",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057464.5864189,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q08",
+      "source_array_sha256": "2b30cb55df54fb970b748a0471087c717492d28cf17764d1341e8cfcbd736eab",
+      "source_npy_sha256": "54355f8a4d3d05807636f59079e3af93c526a2a21249eb41ca2da987f4ca5315",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057466.0921798,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q09",
+      "source_array_sha256": "58d2bb868f08d171fda5e80e8a9c7c72a53f39e49df5198d22c8e51dc31b258b",
+      "source_npy_sha256": "05a9437e87612119894dd2dda87ddbbd6c6248d7f033eb9d8e6ab474753af130",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    },
+    {
+      "query_timestamp": 1787057467.5870302,
+      "scene_id": "W_TEST_01",
+      "snapshot_id": "W_TEST_01_Q10",
+      "source_array_sha256": "57cd4c0f6c2d631c28097d0e8f9a6fcab6ed2a833dc96c7d2e4d5de9b3099887",
+      "source_npy_sha256": "49a1f1af9dac4df0826858ec247f6abed6797f7c2f3558bef57248e39362dbae",
+      "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+      "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e"
+    }
+  ],
+  "status": "AUTHORIZED_PILOT_ONLY",
+  "target_map_manifest_sha256": "25baa9a7391ade5934c001263492ac8d4fee167f2be9bd100f84925b54b7812b"
+}

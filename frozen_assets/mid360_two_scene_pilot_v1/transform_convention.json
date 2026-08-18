@@ -1,0 +1,110 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "backends": {
+    "open3d": {
+      "estimated_transform": [
+        [
+          0.9999500008333277,
+          -0.006039799335337778,
+          -0.007969733835996636,
+          0.030000000000000034
+        ],
+        [
+          0.005959800668662221,
+          0.9999320011333257,
+          -0.010023666270002689,
+          -0.020000000000000028
+        ],
+        [
+          0.0080297328360033,
+          0.009975667069997356,
+          0.9999180013666575,
+          0.014999999999999911
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "finite_result": true,
+      "frobenius_error_to_inverse": 0.08774902185334836,
+      "frobenius_error_to_source_to_target": 2.2474546059285237e-16,
+      "solver_success": true,
+      "source_to_target_verified": true
+    },
+    "pcl": {
+      "estimated_transform": [
+        [
+          0.9999499917030334,
+          -0.006039799191057682,
+          -0.007969732396304607,
+          0.029999997466802597
+        ],
+        [
+          0.005959799978882074,
+          0.9999319911003113,
+          -0.010023673996329308,
+          -0.020000001415610313
+        ],
+        [
+          0.008029731921851635,
+          0.009975675493478775,
+          0.9999179840087891,
+          0.015000015497207642
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "finite_result": true,
+      "frobenius_error_to_inverse": 0.08774902919578695,
+      "frobenius_error_to_source_to_target": 2.9461159313727977e-08,
+      "solver_success": true,
+      "source_to_target_verified": true
+    }
+  },
+  "definition": "T_est maps source/query points into target/map frame",
+  "delta_definition": "Delta_T = inv(T0) @ T_est",
+  "known_source_to_target_transform": [
+    [
+      0.9999500008333279,
+      -0.006039799335337769,
+      -0.007969733835996655,
+      0.03
+    ],
+    [
+      0.005959800668662213,
+      0.9999320011333258,
+      -0.010023666270002651,
+      -0.02
+    ],
+    [
+      0.008029732836003322,
+      0.00997566706999732,
+      0.9999180013666576,
+      0.015
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "schema": "mid360_pilot_debug_transform_convention_v1",
+  "status": "PASS",
+  "transform_convention_verified": true
+}

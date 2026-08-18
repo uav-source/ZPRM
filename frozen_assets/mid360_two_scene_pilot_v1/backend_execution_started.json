@@ -1,0 +1,19 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "authorization_sha256": "ef500859d8b90be2f7072e7e1e4157d3d7aa6d9c0b275c94d4db11fe453ab5b5",
+  "authorized_pilot_trial_count": 40,
+  "geometry_only_metrics_sha256": "463983cb850fa192b6c74ea6cb75e66fc61bc4d35f1cdbbb4413b7d0e01b422d",
+  "nontrial_transform_fixture_backend_invocation_count": 2,
+  "pilot_backend_trial_count_before_start": 0,
+  "query_selection_csv_sha256": "fe21810f7d560dd0060aef716e9f5587980fc35a60ee5cf1f77bbd1169a61c96",
+  "schema": "mid360_two_scene_backend_execution_started_v1",
+  "started_at_utc": "2026-08-18T14:00:03.388022+00:00"
+}

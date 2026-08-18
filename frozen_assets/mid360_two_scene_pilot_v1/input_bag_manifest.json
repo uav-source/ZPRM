@@ -1,0 +1,528 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "bag_count": 4,
+  "bags": [
+    {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "acceleration_unit": "UNCONFIRMED_RAW_NO_CONVERSION",
+      "bag_path": "/home/lj/ZPRM/bag/mid360_20260818_203200_part1_20s.bag",
+      "bag_sha256": "ec998bc44cd7f6276548cbf7c11cffdfcb7a5a5601335cf2fdddd3c8da998c13",
+      "duration_seconds": 19.804260730743408,
+      "end_time": 1787056341.5462954,
+      "file_size_bytes": 64723197,
+      "imu_frame_ids": [
+        "livox_frame"
+      ],
+      "imu_header_rate_hz": 200.0066663599205,
+      "imu_message_count": 3962,
+      "imu_message_type": "sensor_msgs/Imu",
+      "lidar_frame_count": 199,
+      "lidar_frame_ids": [
+        "livox_frame"
+      ],
+      "lidar_header_rate_hz": 9.999953424304609,
+      "lidar_message_type": "sensor_msgs/PointCloud2",
+      "lidar_point_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity",
+        "tag",
+        "line",
+        "timestamp"
+      ],
+      "mtime_utc": "2026-08-18T13:23:04.790700+00:00",
+      "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+      "role": "MAP",
+      "scene_id": "R_TEST_01",
+      "scene_type": "RICH_CANDIDATE",
+      "semantic_scene": "LABORATORY",
+      "start_time": 1787056321.7420347,
+      "topic_inventory": [
+        {
+          "average_bag_record_rate_hz": 200.00746575968316,
+          "connections": 1,
+          "fields": [],
+          "first_bag_timestamp": 1787056321.7420347,
+          "first_header_timestamp": 1787056321.7416296,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787056341.5462954,
+          "last_header_timestamp": 1787056341.5459695,
+          "message_count": 3962,
+          "message_md5": [
+            "6a62c6daae103f4ff57a132d6f95cec2"
+          ],
+          "message_type": "sensor_msgs/Imu",
+          "rosbag_reported_frequency_hz": 198.82929604171605,
+          "topic": "/livox/imu"
+        },
+        {
+          "average_bag_record_rate_hz": 10.000444008089637,
+          "connections": 1,
+          "fields": [
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "x",
+              "offset": 0
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "y",
+              "offset": 4
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "z",
+              "offset": 8
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "intensity",
+              "offset": 12
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "tag",
+              "offset": 16
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "line",
+              "offset": 17
+            },
+            {
+              "count": 1,
+              "datatype": 8,
+              "name": "timestamp",
+              "offset": 18
+            }
+          ],
+          "first_bag_timestamp": 1787056321.7451997,
+          "first_header_timestamp": 1787056321.6430824,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787056341.5443206,
+          "last_header_timestamp": 1787056341.4431746,
+          "message_count": 199,
+          "message_md5": [
+            "1158d486dd51d683ce2f1be655c3c181"
+          ],
+          "message_type": "sensor_msgs/PointCloud2",
+          "rosbag_reported_frequency_hz": 9.998984439999713,
+          "topic": "/livox/lidar"
+        }
+      ]
+    },
+    {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "acceleration_unit": "UNCONFIRMED_RAW_NO_CONVERSION",
+      "bag_path": "/home/lj/ZPRM/bag/mid360_20260818_203200_part2_15s.bag",
+      "bag_sha256": "3a96dba7563f9742e8fabe5cbc7a90d77991e1d6d25dc024c1c36073af116e73",
+      "duration_seconds": 14.788865089416504,
+      "end_time": 1787056367.6722076,
+      "file_size_bytes": 48123887,
+      "imu_frame_ids": [
+        "livox_frame"
+      ],
+      "imu_header_rate_hz": 200.0126299215447,
+      "imu_message_count": 2959,
+      "imu_message_type": "sensor_msgs/Imu",
+      "lidar_frame_count": 148,
+      "lidar_frame_ids": [
+        "livox_frame"
+      ],
+      "lidar_header_rate_hz": 10.000226227045731,
+      "lidar_message_type": "sensor_msgs/PointCloud2",
+      "lidar_point_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity",
+        "tag",
+        "line",
+        "timestamp"
+      ],
+      "mtime_utc": "2026-08-18T13:23:02.162698+00:00",
+      "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+      "role": "QUERY",
+      "scene_id": "R_TEST_01",
+      "scene_type": "RICH_CANDIDATE",
+      "semantic_scene": "LABORATORY",
+      "start_time": 1787056352.8833425,
+      "topic_inventory": [
+        {
+          "average_bag_record_rate_hz": 200.01534817684296,
+          "connections": 1,
+          "fields": [],
+          "first_bag_timestamp": 1787056352.8833425,
+          "first_header_timestamp": 1787056352.8827221,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787056367.6722076,
+          "last_header_timestamp": 1787056367.6717882,
+          "message_count": 2959,
+          "message_md5": [
+            "6a62c6daae103f4ff57a132d6f95cec2"
+          ],
+          "message_type": "sensor_msgs/Imu",
+          "rosbag_reported_frequency_hz": 202.16436111245,
+          "topic": "/livox/imu"
+        },
+        {
+          "average_bag_record_rate_hz": 10.000632060028444,
+          "connections": 1,
+          "fields": [
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "x",
+              "offset": 0
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "y",
+              "offset": 4
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "z",
+              "offset": 8
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "intensity",
+              "offset": 12
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "tag",
+              "offset": 16
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "line",
+              "offset": 17
+            },
+            {
+              "count": 1,
+              "datatype": 8,
+              "name": "timestamp",
+              "offset": 18
+            }
+          ],
+          "first_bag_timestamp": 1787056352.9456036,
+          "first_header_timestamp": 1787056352.8439429,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787056367.6446745,
+          "last_header_timestamp": 1787056367.5436103,
+          "message_count": 148,
+          "message_md5": [
+            "1158d486dd51d683ce2f1be655c3c181"
+          ],
+          "message_type": "sensor_msgs/PointCloud2",
+          "rosbag_reported_frequency_hz": 9.995410165791675,
+          "topic": "/livox/lidar"
+        }
+      ]
+    },
+    {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "acceleration_unit": "UNCONFIRMED_RAW_NO_CONVERSION",
+      "bag_path": "/home/lj/ZPRM/bag/mid360_20260818_205021_part1_20s.bag",
+      "bag_sha256": "d20b50bd4be04229d311717a27021502a74429fa3a143418b18ad70622eb4a6d",
+      "duration_seconds": 19.755598783493042,
+      "end_time": 1787057442.391352,
+      "file_size_bytes": 64103479,
+      "imu_frame_ids": [
+        "livox_frame"
+      ],
+      "imu_header_rate_hz": 199.94540437744703,
+      "imu_message_count": 3951,
+      "imu_message_type": "sensor_msgs/Imu",
+      "lidar_frame_count": 198,
+      "lidar_frame_ids": [
+        "livox_frame"
+      ],
+      "lidar_header_rate_hz": 10.00021237858276,
+      "lidar_message_type": "sensor_msgs/PointCloud2",
+      "lidar_point_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity",
+        "tag",
+        "line",
+        "timestamp"
+      ],
+      "mtime_utc": "2026-08-18T13:22:55.674694+00:00",
+      "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+      "role": "MAP",
+      "scene_id": "W_TEST_01",
+      "scene_type": "WEAK_CANDIDATE",
+      "semantic_scene": "LONG_CORRIDOR",
+      "start_time": 1787057422.6357532,
+      "topic_inventory": [
+        {
+          "average_bag_record_rate_hz": 199.94331952623253,
+          "connections": 1,
+          "fields": [],
+          "first_bag_timestamp": 1787057422.6357532,
+          "first_header_timestamp": 1787057422.6354241,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787057442.391352,
+          "last_header_timestamp": 1787057442.390817,
+          "message_count": 3951,
+          "message_md5": [
+            "6a62c6daae103f4ff57a132d6f95cec2"
+          ],
+          "message_type": "sensor_msgs/Imu",
+          "rosbag_reported_frequency_hz": 204.41572239686136,
+          "topic": "/livox/imu"
+        },
+        {
+          "average_bag_record_rate_hz": 10.000863440262002,
+          "connections": 1,
+          "fields": [
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "x",
+              "offset": 0
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "y",
+              "offset": 4
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "z",
+              "offset": 8
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "intensity",
+              "offset": 12
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "tag",
+              "offset": 16
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "line",
+              "offset": 17
+            },
+            {
+              "count": 1,
+              "datatype": 8,
+              "name": "timestamp",
+              "offset": 18
+            }
+          ],
+          "first_bag_timestamp": 1787057422.6903265,
+          "first_header_timestamp": 1787057422.5868363,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787057442.3886256,
+          "last_header_timestamp": 1787057442.286418,
+          "message_count": 198,
+          "message_md5": [
+            "1158d486dd51d683ce2f1be655c3c181"
+          ],
+          "message_type": "sensor_msgs/PointCloud2",
+          "rosbag_reported_frequency_hz": 10.00468473453966,
+          "topic": "/livox/lidar"
+        }
+      ]
+    },
+    {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "acceleration_unit": "UNCONFIRMED_RAW_NO_CONVERSION",
+      "bag_path": "/home/lj/ZPRM/bag/mid360_20260818_205021_part2_15s.bag",
+      "bag_sha256": "2c9893beb56146996eccbe846dc0ee5a4a3ca9aba5b3bb71f7067c598b27c581",
+      "duration_seconds": 14.74362587928772,
+      "end_time": 1787057468.4379203,
+      "file_size_bytes": 47608895,
+      "imu_frame_ids": [
+        "livox_frame"
+      ],
+      "imu_header_rate_hz": 199.9484409948819,
+      "imu_message_count": 2949,
+      "imu_message_type": "sensor_msgs/Imu",
+      "lidar_frame_count": 147,
+      "lidar_frame_ids": [
+        "livox_frame"
+      ],
+      "lidar_header_rate_hz": 10.000022110922595,
+      "lidar_message_type": "sensor_msgs/PointCloud2",
+      "lidar_point_fields": [
+        "x",
+        "y",
+        "z",
+        "intensity",
+        "tag",
+        "line",
+        "timestamp"
+      ],
+      "mtime_utc": "2026-08-18T13:22:57.854695+00:00",
+      "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+      "role": "QUERY",
+      "scene_id": "W_TEST_01",
+      "scene_type": "WEAK_CANDIDATE",
+      "semantic_scene": "LONG_CORRIDOR",
+      "start_time": 1787057453.6942945,
+      "topic_inventory": [
+        {
+          "average_bag_record_rate_hz": 199.95081427977885,
+          "connections": 1,
+          "fields": [],
+          "first_bag_timestamp": 1787057453.6942945,
+          "first_header_timestamp": 1787057453.6938553,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787057468.4379203,
+          "last_header_timestamp": 1787057468.4376562,
+          "message_count": 2949,
+          "message_md5": [
+            "6a62c6daae103f4ff57a132d6f95cec2"
+          ],
+          "message_type": "sensor_msgs/Imu",
+          "rosbag_reported_frequency_hz": 200.66999976078273,
+          "topic": "/livox/imu"
+        },
+        {
+          "average_bag_record_rate_hz": 10.000602843424003,
+          "connections": 1,
+          "fields": [
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "x",
+              "offset": 0
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "y",
+              "offset": 4
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "z",
+              "offset": 8
+            },
+            {
+              "count": 1,
+              "datatype": 7,
+              "name": "intensity",
+              "offset": 12
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "tag",
+              "offset": 16
+            },
+            {
+              "count": 1,
+              "datatype": 2,
+              "name": "line",
+              "offset": 17
+            },
+            {
+              "count": 1,
+              "datatype": 8,
+              "name": "timestamp",
+              "offset": 18
+            }
+          ],
+          "first_bag_timestamp": 1787057453.789922,
+          "first_header_timestamp": 1787057453.6871927,
+          "frame_ids": [
+            "livox_frame"
+          ],
+          "last_bag_timestamp": 1787057468.389042,
+          "last_header_timestamp": 1787057468.2871604,
+          "message_count": 147,
+          "message_md5": [
+            "1158d486dd51d683ce2f1be655c3c181"
+          ],
+          "message_type": "sensor_msgs/PointCloud2",
+          "rosbag_reported_frequency_hz": 9.997149326659516,
+          "topic": "/livox/lidar"
+        }
+      ]
+    }
+  ],
+  "schema": "mid360_two_scene_input_bag_manifest_v1",
+  "status": "PASS"
+}

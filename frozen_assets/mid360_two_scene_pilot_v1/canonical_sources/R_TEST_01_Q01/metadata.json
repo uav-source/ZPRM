@@ -1,0 +1,59 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "T0": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "c_contiguous": true,
+  "deterministic_point_ordering": true,
+  "dtype": "<f8",
+  "finite": true,
+  "little_endian_float64": true,
+  "query_bag_path": "/home/lj/ZPRM/bag/mid360_20260818_203200_part2_15s.bag",
+  "query_bag_sha256": "3a96dba7563f9742e8fabe5cbc7a90d77991e1d6d25dc024c1c36073af116e73",
+  "query_frame_index": 7,
+  "query_timestamp": 1787056353.543167,
+  "scene_id": "R_TEST_01",
+  "scene_type": "RICH_CANDIDATE",
+  "schema": "mid360_two_scene_canonical_source_v1",
+  "semantic_scene": "LABORATORY",
+  "snapshot_id": "R_TEST_01_Q01",
+  "source_array_sha256": "613bb78470decf3b64194fab7c3579af1a98be115a387dedc0cda1b44ad2444e",
+  "source_npy_sha256": "ea0425eba9828b4b7d20ec7d70c03629aad052b37129bd2f2eb66c741404be7f",
+  "source_path": "/home/lj/zero_perturbation_runtime/real_data/mid360_two_scene_pilot_v1/canonical_sources/R_TEST_01_Q01/source_points.npy",
+  "source_point_count": 15377,
+  "target_array_sha256": "d08c60b22a7dc3f1345b9401225fec550da80c4f7025bb8a198065f0dbe75b59",
+  "target_npy_sha256": "43c6f299b5b24d220e6ee1a5ad8395ebb1380f992ff4fe207f822e25c92a65f7",
+  "target_path": "/home/lj/zero_perturbation_runtime/real_data/mid360_two_scene_pilot_v1/target_maps/R_TEST_01/target_points.npy",
+  "target_point_count": 136443
+}

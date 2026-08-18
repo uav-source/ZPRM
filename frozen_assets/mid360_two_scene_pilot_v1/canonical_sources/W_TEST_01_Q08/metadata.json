@@ -1,0 +1,59 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "T0": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "c_contiguous": true,
+  "deterministic_point_ordering": true,
+  "dtype": "<f8",
+  "finite": true,
+  "little_endian_float64": true,
+  "query_bag_path": "/home/lj/ZPRM/bag/mid360_20260818_205021_part2_15s.bag",
+  "query_bag_sha256": "2c9893beb56146996eccbe846dc0ee5a4a3ca9aba5b3bb71f7067c598b27c581",
+  "query_frame_index": 109,
+  "query_timestamp": 1787057464.5864189,
+  "scene_id": "W_TEST_01",
+  "scene_type": "WEAK_CANDIDATE",
+  "schema": "mid360_two_scene_canonical_source_v1",
+  "semantic_scene": "LONG_CORRIDOR",
+  "snapshot_id": "W_TEST_01_Q08",
+  "source_array_sha256": "2b30cb55df54fb970b748a0471087c717492d28cf17764d1341e8cfcbd736eab",
+  "source_npy_sha256": "54355f8a4d3d05807636f59079e3af93c526a2a21249eb41ca2da987f4ca5315",
+  "source_path": "/home/lj/zero_perturbation_runtime/real_data/mid360_two_scene_pilot_v1/canonical_sources/W_TEST_01_Q08/source_points.npy",
+  "source_point_count": 16050,
+  "target_array_sha256": "e94c88ddc68916220d35f10c3da8fbaa53e6de526a6a0afc3a91899d5ce7a66a",
+  "target_npy_sha256": "d4438aba190de47a85fb6188ddc3b39dbfd6e39d3fdb5fa264bf425912e6c02e",
+  "target_path": "/home/lj/zero_perturbation_runtime/real_data/mid360_two_scene_pilot_v1/target_maps/W_TEST_01/target_points.npy",
+  "target_point_count": 158862
+}

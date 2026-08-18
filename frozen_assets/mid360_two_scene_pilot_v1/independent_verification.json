@@ -1,0 +1,49 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "INDEPENDENT_VERIFIER_PASS": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "checks": {
+    "backend_input_byte_identity": "PASS",
+    "bag_sha_count": 4,
+    "canonical_arrays": "FINITE_LITTLE_ENDIAN_FLOAT64_C_CONTIGUOUS",
+    "common_reassociation_definition": "PASS",
+    "extra_backend_count": 0,
+    "formal_flags": "PASS",
+    "geometry_only_firewall": "PASS",
+    "identity_T0_count": 40,
+    "independent_map_query_lineage": "PASS",
+    "open3d_count": 20,
+    "pcl_count": 20,
+    "preprocessing_contract": "PASS",
+    "protected_assets": {
+      "changed": [],
+      "protected_file_count": 254
+    },
+    "query_selection_prebackend_freeze": "PASS",
+    "result_math_recomputation": "PASS",
+    "rich_snapshot_count": 10,
+    "scene_role_mapping": "PASS",
+    "sha256_closure": {
+      "all_match": true,
+      "entry_count": 74
+    },
+    "snapshot_count": 20,
+    "target_map_sha": "PASS",
+    "target_maps_without_registration": 2,
+    "trial_count": 40,
+    "weak_snapshot_count": 10
+  },
+  "finalization_mode": "INDEPENDENT_VERIFY_THEN_FREEZE_METADATA",
+  "frozen_root": "/home/lj/ZPRM_mid360_two_scene_pilot/frozen_assets/mid360_two_scene_pilot_v1",
+  "runtime_sha256_regenerated_after_report": true,
+  "schema": "mid360_two_scene_independent_verification_v1",
+  "status": "PASS",
+  "verified_at_utc": "2026-08-18T14:01:08.607056+00:00"
+}

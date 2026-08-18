@@ -1,0 +1,535 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "PILOT_REGISTRATION_BLOCKED_BY_STATICITY": false,
+  "SAME_BAG_MAP_QUERY": false,
+  "acceleration_unit_confirmed": false,
+  "bag_staticity": {
+    "R_TEST_01_map": {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+      "acceleration_conversion_applied": false,
+      "acceleration_unit_confirmed": false,
+      "acceleration_unit_note": "UNCONFIRMED_RAW_APPROXIMATELY_1G_SCALE_NO_CONVERSION_APPLIED",
+      "duration_seconds": 19.80433988571167,
+      "effective_rate_hz": 200.0066663599205,
+      "first_header_timestamp": 1787056321.7416296,
+      "gyro_semantic_unit": "sensor_msgs/Imu_declares_rad_per_second_not_independently_calibrated",
+      "interpretation": "PILOT_QA_ONLY_NOT_GROUND_TRUTH_NO_IMU_INTEGRATION",
+      "large_spike_count": 0,
+      "last_header_timestamp": 1787056341.5459695,
+      "maximum_accel_norm_absolute_deviation_raw": 0.029136867820164003,
+      "maximum_accel_step_raw": 0.05615128253079826,
+      "maximum_gyro_step": 0.025163702300439145,
+      "maximum_inter_message_interval_seconds": 0.011516571044921875,
+      "median_inter_message_interval_seconds": 0.005015850067138672,
+      "message_count": 3962,
+      "missing_interval_count": 0,
+      "motion_screen_criteria": {
+        "accel_norm_absolute_deviation_exceeded": false,
+        "accel_norm_q99_spread_exceeded": false,
+        "accel_step_exceeded": false,
+        "gyro_norm_max_exceeded": false,
+        "gyro_norm_q99_exceeded": false,
+        "gyro_step_exceeded": false
+      },
+      "motion_screen_thresholds": {
+        "accel_norm_absolute_deviation_max_raw": 0.25,
+        "accel_norm_q99_minus_median_max_raw": 0.1,
+        "accel_step_max_raw": 0.1,
+        "gyro_norm_max": 0.35,
+        "gyro_norm_q99_max": 0.15,
+        "gyro_step_max": 0.15,
+        "method": "PILOT_OBVIOUS_MOTION_SCREEN_ONLY"
+      },
+      "schema": "mid360_pilot_imu_staticity_summary_v1",
+      "statistics": {
+        "accel_norm": {
+          "absolute_max": 1.0222638142405094,
+          "mad": 0.01808216965460896,
+          "max": 1.0222638142405094,
+          "median": 0.9934368793643356,
+          "min": 0.9643000115441716,
+          "q95": 1.01866518663335,
+          "q99": 1.0202241256217295
+        },
+        "accel_x": {
+          "absolute_max": 0.02821233682334423,
+          "mad": 0.012695312150754035,
+          "max": 0.02501031942665577,
+          "median": -0.0013568674912676215,
+          "min": -0.02821233682334423,
+          "q95": 0.01719781942665577,
+          "q99": 0.02085992880165577
+        },
+        "accel_y": {
+          "absolute_max": 0.028935730457305908,
+          "mad": 0.01318359375,
+          "max": 0.028935730457305908,
+          "median": 0.0003712764009833336,
+          "min": -0.024286925792694092,
+          "q95": 0.021855652332305908,
+          "q99": 0.025029480457305908
+        },
+        "accel_z": {
+          "absolute_max": 1.0220973491668701,
+          "mad": 0.01806640625,
+          "max": 1.0220973491668701,
+          "median": 0.9932887554168701,
+          "min": 0.9642360210418701,
+          "q95": 1.0184352397918701,
+          "q99": 1.0201442241668701
+        },
+        "gyro_norm": {
+          "absolute_max": 0.02892013222826065,
+          "mad": 0.0032216492832836388,
+          "max": 0.02892013222826065,
+          "median": 0.014727602240002918,
+          "min": 0.005802283422515123,
+          "q95": 0.024051657947021923,
+          "q99": 0.025887618078980355
+        },
+        "gyro_x": {
+          "absolute_max": 0.022498879581689835,
+          "mad": 0.00852211657911539,
+          "max": 0.022498879581689835,
+          "median": 0.0033241193741559982,
+          "min": -0.015850640833377838,
+          "q95": 0.018237821757793427,
+          "q99": 0.02036835253238678
+        },
+        "gyro_y": {
+          "absolute_max": 0.008870303630828857,
+          "mad": 0.002130527049303055,
+          "max": 0.00604340061545372,
+          "median": -0.002478715032339096,
+          "min": -0.008870303630828857,
+          "q95": 0.001782342791557312,
+          "q99": 0.003912869840860367
+        },
+        "gyro_z": {
+          "absolute_max": 0.020670074969530106,
+          "mad": 0.002130528911948204,
+          "max": -0.0025605782866477966,
+          "median": -0.01214795932173729,
+          "min": -0.020670074969530106,
+          "q95": -0.006821636110544205,
+          "q99": -0.005756372585892677
+        }
+      },
+      "status": "PASS",
+      "timestamp_monotonic": true,
+      "timestamp_strictly_monotonic": true
+    },
+    "R_TEST_01_query": {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+      "acceleration_conversion_applied": false,
+      "acceleration_unit_confirmed": false,
+      "acceleration_unit_note": "UNCONFIRMED_RAW_APPROXIMATELY_1G_SCALE_NO_CONVERSION_APPLIED",
+      "duration_seconds": 14.789066076278687,
+      "effective_rate_hz": 200.0126299215447,
+      "first_header_timestamp": 1787056352.8827221,
+      "gyro_semantic_unit": "sensor_msgs/Imu_declares_rad_per_second_not_independently_calibrated",
+      "interpretation": "PILOT_QA_ONLY_NOT_GROUND_TRUTH_NO_IMU_INTEGRATION",
+      "large_spike_count": 0,
+      "last_header_timestamp": 1787056367.6717882,
+      "maximum_accel_norm_absolute_deviation_raw": 0.030624782212656854,
+      "maximum_accel_step_raw": 0.056001942560056486,
+      "maximum_gyro_step": 0.027387864440901712,
+      "maximum_inter_message_interval_seconds": 0.009121179580688477,
+      "median_inter_message_interval_seconds": 0.0049762725830078125,
+      "message_count": 2959,
+      "missing_interval_count": 0,
+      "motion_screen_criteria": {
+        "accel_norm_absolute_deviation_exceeded": false,
+        "accel_norm_q99_spread_exceeded": false,
+        "accel_step_exceeded": false,
+        "gyro_norm_max_exceeded": false,
+        "gyro_norm_q99_exceeded": false,
+        "gyro_step_exceeded": false
+      },
+      "motion_screen_thresholds": {
+        "accel_norm_absolute_deviation_max_raw": 0.25,
+        "accel_norm_q99_minus_median_max_raw": 0.1,
+        "accel_step_max_raw": 0.1,
+        "gyro_norm_max": 0.35,
+        "gyro_norm_q99_max": 0.15,
+        "gyro_step_max": 0.15,
+        "method": "PILOT_OBVIOUS_MOTION_SCREEN_ONLY"
+      },
+      "schema": "mid360_pilot_imu_staticity_summary_v1",
+      "statistics": {
+        "accel_norm": {
+          "absolute_max": 1.0229764266115193,
+          "mad": 0.01814405919681472,
+          "max": 1.0229764266115193,
+          "median": 0.9934594766228224,
+          "min": 0.9628346944101656,
+          "q95": 1.018599530859871,
+          "q99": 1.0202055208182172
+        },
+        "accel_x": {
+          "absolute_max": 0.02723577432334423,
+          "mad": 0.012695312150754035,
+          "max": 0.02549860067665577,
+          "median": -0.0013568674912676215,
+          "min": -0.02723577432334423,
+          "q95": 0.01695367880165577,
+          "q99": 0.02037164755165577
+        },
+        "accel_y": {
+          "absolute_max": 0.027470886707305908,
+          "mad": 0.013427734375,
+          "max": 0.027470886707305908,
+          "median": 0.0008595576509833336,
+          "min": -0.023554503917694092,
+          "q95": 0.021880066394805886,
+          "q99": 0.024887878894805926
+        },
+        "accel_z": {
+          "absolute_max": 1.0225856304168701,
+          "mad": 0.018310546875,
+          "max": 1.0225856304168701,
+          "median": 0.9932887554168701,
+          "min": 0.9627711772918701,
+          "q95": 1.0184352397918701,
+          "q99": 1.0199000835418701
+        },
+        "gyro_norm": {
+          "absolute_max": 0.02925176110816244,
+          "mad": 0.003357988030697756,
+          "max": 0.02925176110816244,
+          "median": 0.014720715785277255,
+          "min": 0.00584250921075435,
+          "q95": 0.024053562016748787,
+          "q99": 0.026246765661791658
+        },
+        "gyro_x": {
+          "absolute_max": 0.02356414496898651,
+          "mad": 0.009587380103766918,
+          "max": 0.02356414496898651,
+          "median": 0.0043893838301301,
+          "min": -0.015850640833377838,
+          "q95": 0.018237821757793427,
+          "q99": 0.02036835253238678
+        },
+        "gyro_y": {
+          "absolute_max": 0.012066097930073738,
+          "mad": 0.002130527049303055,
+          "max": 0.007108662277460098,
+          "median": -0.002478715032339096,
+          "min": -0.012066097930073738,
+          "q95": 0.001782342791557312,
+          "q99": 0.00284760445356369
+        },
+        "gyro_z": {
+          "absolute_max": 0.020670074969530106,
+          "mad": 0.002130528911948204,
+          "max": -0.0036258436739444733,
+          "median": -0.01214795932173729,
+          "min": -0.020670074969530106,
+          "q95": -0.006821636110544205,
+          "q99": -0.005756372585892677
+        }
+      },
+      "status": "PASS",
+      "timestamp_monotonic": true,
+      "timestamp_strictly_monotonic": true
+    },
+    "W_TEST_01_map": {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+      "acceleration_conversion_applied": false,
+      "acceleration_unit_confirmed": false,
+      "acceleration_unit_note": "UNCONFIRMED_RAW_APPROXIMATELY_1G_SCALE_NO_CONVERSION_APPLIED",
+      "duration_seconds": 19.7553927898407,
+      "effective_rate_hz": 199.94540437744703,
+      "first_header_timestamp": 1787057422.6354241,
+      "gyro_semantic_unit": "sensor_msgs/Imu_declares_rad_per_second_not_independently_calibrated",
+      "interpretation": "PILOT_QA_ONLY_NOT_GROUND_TRUTH_NO_IMU_INTEGRATION",
+      "large_spike_count": 0,
+      "last_header_timestamp": 1787057442.390817,
+      "maximum_accel_norm_absolute_deviation_raw": 0.03110247384126308,
+      "maximum_accel_step_raw": 0.05564585530356125,
+      "maximum_gyro_step": 0.032046581030364125,
+      "maximum_inter_message_interval_seconds": 0.010483503341674805,
+      "median_inter_message_interval_seconds": 0.004917144775390625,
+      "message_count": 3951,
+      "missing_interval_count": 0,
+      "motion_screen_criteria": {
+        "accel_norm_absolute_deviation_exceeded": false,
+        "accel_norm_q99_spread_exceeded": false,
+        "accel_step_exceeded": false,
+        "gyro_norm_max_exceeded": false,
+        "gyro_norm_q99_exceeded": false,
+        "gyro_step_exceeded": false
+      },
+      "motion_screen_thresholds": {
+        "accel_norm_absolute_deviation_max_raw": 0.25,
+        "accel_norm_q99_minus_median_max_raw": 0.1,
+        "accel_step_max_raw": 0.1,
+        "gyro_norm_max": 0.35,
+        "gyro_norm_q99_max": 0.15,
+        "gyro_step_max": 0.15,
+        "method": "PILOT_OBVIOUS_MOTION_SCREEN_ONLY"
+      },
+      "schema": "mid360_pilot_imu_staticity_summary_v1",
+      "statistics": {
+        "accel_norm": {
+          "absolute_max": 1.0234015588598637,
+          "mad": 0.020399991092663772,
+          "max": 1.0234015588598637,
+          "median": 0.9926973470094058,
+          "min": 0.9615948731681427,
+          "q95": 1.0205295647431964,
+          "q99": 1.0216971585748384
+        },
+        "accel_x": {
+          "absolute_max": 0.02332952432334423,
+          "mad": 0.013183593400754035,
+          "max": 0.02085992880165577,
+          "median": -0.0008685862412676215,
+          "min": -0.02332952432334423,
+          "q95": 0.01744196005165577,
+          "q99": 0.01915094442665577
+        },
+        "accel_y": {
+          "absolute_max": 0.026484191417694092,
+          "mad": 0.013427734375,
+          "max": 0.017949402332305908,
+          "median": -0.005732239224016666,
+          "min": -0.026484191417694092,
+          "q95": 0.014531432650983334,
+          "q99": 0.015996277332305908
+        },
+        "accel_z": {
+          "absolute_max": 1.0233180522918701,
+          "mad": 0.0205078125,
+          "max": 1.0233180522918701,
+          "median": 0.9925563335418701,
+          "min": 0.9613063335418701,
+          "q95": 1.0203883647918701,
+          "q99": 1.0216090679168701
+        },
+        "gyro_norm": {
+          "absolute_max": 0.034458997637421274,
+          "mad": 0.0053332992738781525,
+          "max": 0.034458997637421274,
+          "median": 0.015658846702218225,
+          "min": 0.006000960709446749,
+          "q95": 0.028071608848297992,
+          "q99": 0.030280225620652718
+        },
+        "gyro_x": {
+          "absolute_max": 0.03102099522948265,
+          "mad": 0.008522115647792816,
+          "max": 0.03102099522948265,
+          "median": 0.00971570611000061,
+          "min": -0.01158958300948143,
+          "q95": 0.02356414496898651,
+          "q99": 0.026759937405586243
+        },
+        "gyro_y": {
+          "absolute_max": 0.007805038243532181,
+          "mad": 0.002130527049303055,
+          "max": 0.001782342791557312,
+          "median": -0.0035439804196357727,
+          "min": -0.007805038243532181,
+          "q95": -0.00034818798303604126,
+          "q99": 0.0007170774042606354
+        },
+        "gyro_z": {
+          "absolute_max": 0.0185395460575819,
+          "mad": 0.002130528911948204,
+          "max": -0.004691107198596001,
+          "median": -0.01214795932173729,
+          "min": -0.0185395460575819,
+          "q95": -0.007886901497840881,
+          "q99": -0.006821636110544205
+        }
+      },
+      "status": "PASS",
+      "timestamp_monotonic": true,
+      "timestamp_strictly_monotonic": true
+    },
+    "W_TEST_01_query": {
+      "FORMAL_MEASUREMENT_RESULT": false,
+      "FORMAL_REAL_DATA": false,
+      "INDEPENDENT_ACQUISITION": true,
+      "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+      "MEASUREMENT_EVIDENCE": false,
+      "MID360_TWO_SCENE_PILOT": true,
+      "PILOT_NONFORMAL_DO_NOT_CITE": true,
+      "PILOT_ONLY": true,
+      "SAME_BAG_MAP_QUERY": false,
+      "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+      "acceleration_conversion_applied": false,
+      "acceleration_unit_confirmed": false,
+      "acceleration_unit_note": "UNCONFIRMED_RAW_APPROXIMATELY_1G_SCALE_NO_CONVERSION_APPLIED",
+      "duration_seconds": 14.74380087852478,
+      "effective_rate_hz": 199.9484409948819,
+      "first_header_timestamp": 1787057453.6938553,
+      "gyro_semantic_unit": "sensor_msgs/Imu_declares_rad_per_second_not_independently_calibrated",
+      "interpretation": "PILOT_QA_ONLY_NOT_GROUND_TRUTH_NO_IMU_INTEGRATION",
+      "large_spike_count": 0,
+      "last_header_timestamp": 1787057468.4376562,
+      "maximum_accel_norm_absolute_deviation_raw": 0.030724138958202696,
+      "maximum_accel_step_raw": 0.05514876744915054,
+      "maximum_gyro_step": 0.03142078716827334,
+      "maximum_inter_message_interval_seconds": 0.013643264770507812,
+      "median_inter_message_interval_seconds": 0.0049419403076171875,
+      "message_count": 2949,
+      "missing_interval_count": 0,
+      "motion_screen_criteria": {
+        "accel_norm_absolute_deviation_exceeded": false,
+        "accel_norm_q99_spread_exceeded": false,
+        "accel_step_exceeded": false,
+        "gyro_norm_max_exceeded": false,
+        "gyro_norm_q99_exceeded": false,
+        "gyro_step_exceeded": false
+      },
+      "motion_screen_thresholds": {
+        "accel_norm_absolute_deviation_max_raw": 0.25,
+        "accel_norm_q99_minus_median_max_raw": 0.1,
+        "accel_step_max_raw": 0.1,
+        "gyro_norm_max": 0.35,
+        "gyro_norm_q99_max": 0.15,
+        "gyro_step_max": 0.15,
+        "method": "PILOT_OBVIOUS_MOTION_SCREEN_ONLY"
+      },
+      "schema": "mid360_pilot_imu_staticity_summary_v1",
+      "statistics": {
+        "accel_norm": {
+          "absolute_max": 1.0231911034033798,
+          "mad": 0.020330100196284784,
+          "max": 1.0231911034033798,
+          "median": 0.9925424808010171,
+          "min": 0.9618183418428145,
+          "q95": 1.0207387892804682,
+          "q99": 1.021925416636577
+        },
+        "accel_x": {
+          "absolute_max": 0.02357366494834423,
+          "mad": 0.013183593400754035,
+          "max": 0.02061578817665577,
+          "median": -0.0008685862412676215,
+          "min": -0.02357366494834423,
+          "q95": 0.01744196005165577,
+          "q99": 0.01890680380165577
+        },
+        "accel_y": {
+          "absolute_max": 0.026972472667694092,
+          "mad": 0.013427734375,
+          "max": 0.017949402332305908,
+          "median": -0.005732239224016666,
+          "min": -0.026972472667694092,
+          "q95": 0.014531432650983334,
+          "q99": 0.015996277332305908
+        },
+        "accel_z": {
+          "absolute_max": 1.0230739116668701,
+          "mad": 0.020263671875,
+          "max": 1.0230739116668701,
+          "median": 0.9923121929168701,
+          "min": 0.9615504741668701,
+          "q95": 1.0206325054168701,
+          "q99": 1.0218532085418701
+        },
+        "gyro_norm": {
+          "absolute_max": 0.03363213058399503,
+          "mad": 0.005472733266003829,
+          "max": 0.03363213058399503,
+          "median": 0.01579307278514693,
+          "min": 0.005984692761377223,
+          "q95": 0.028687726052855543,
+          "q99": 0.030786222411308066
+        },
+        "gyro_x": {
+          "absolute_max": 0.03102099522948265,
+          "mad": 0.009587380103766918,
+          "max": 0.03102099522948265,
+          "median": 0.00971570611000061,
+          "min": -0.010524318553507328,
+          "q95": 0.024629410356283188,
+          "q99": 0.026759937405586243
+        },
+        "gyro_y": {
+          "absolute_max": 0.007805038243532181,
+          "mad": 0.002130527049303055,
+          "max": 0.001782342791557312,
+          "median": -0.0035439804196357727,
+          "min": -0.007805038243532181,
+          "q95": -0.00034818798303604126,
+          "q99": 0.0007170774042606354
+        },
+        "gyro_z": {
+          "absolute_max": 0.01960480958223343,
+          "mad": 0.002130528911948204,
+          "max": -0.0036258436739444733,
+          "median": -0.01214795932173729,
+          "min": -0.01960480958223343,
+          "q95": -0.007886901497840881,
+          "q99": -0.005756372585892677
+        }
+      },
+      "status": "PASS",
+      "timestamp_monotonic": true,
+      "timestamp_strictly_monotonic": true
+    }
+  },
+  "imu_interpretation": "OBVIOUS_MOTION_SCREEN_ONLY_NOT_SUBMILLIMETER_TRUTH",
+  "imu_position_integration_used": false,
+  "scene_map_query_comparisons": {
+    "R_TEST_01": {
+      "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+      "map_accel_norm_median_raw": 0.9934368793643356,
+      "map_gyro_norm_median": 0.014727602240002918,
+      "map_gyro_norm_q95": 0.024051657947021923,
+      "query_accel_norm_median_raw": 0.9934594766228224,
+      "query_gyro_norm_median": 0.014720715785277255,
+      "query_gyro_norm_q95": 0.024053562016748787
+    },
+    "W_TEST_01": {
+      "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+      "map_accel_norm_median_raw": 0.9926973470094058,
+      "map_gyro_norm_median": 0.015658846702218225,
+      "map_gyro_norm_q95": 0.028071608848297992,
+      "query_accel_norm_median_raw": 0.9925424808010171,
+      "query_gyro_norm_median": 0.01579307278514693,
+      "query_gyro_norm_q95": 0.028687726052855543
+    }
+  },
+  "schema": "mid360_two_scene_staticity_summary_v1",
+  "status": "PASS"
+}

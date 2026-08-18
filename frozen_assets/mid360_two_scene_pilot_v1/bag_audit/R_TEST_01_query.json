@@ -1,0 +1,309 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_REAL_DATA": false,
+  "INDEPENDENT_ACQUISITION": true,
+  "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "MID360_TWO_SCENE_PILOT": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "SAME_BAG_MAP_QUERY": false,
+  "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+  "acceleration_conversion_applied": false,
+  "acceleration_unit_confirmed": false,
+  "bag_path": "/home/lj/ZPRM/bag/mid360_20260818_203200_part2_15s.bag",
+  "bag_sha256": "3a96dba7563f9742e8fabe5cbc7a90d77991e1d6d25dc024c1c36073af116e73",
+  "imu_summary": {
+    "FORMAL_MEASUREMENT_RESULT": false,
+    "FORMAL_REAL_DATA": false,
+    "INDEPENDENT_ACQUISITION": true,
+    "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+    "MEASUREMENT_EVIDENCE": false,
+    "MID360_TWO_SCENE_PILOT": true,
+    "PILOT_NONFORMAL_DO_NOT_CITE": true,
+    "PILOT_ONLY": true,
+    "SAME_BAG_MAP_QUERY": false,
+    "STATICITY_SCREEN": "NO_OBVIOUS_MOTION",
+    "acceleration_conversion_applied": false,
+    "acceleration_unit_confirmed": false,
+    "acceleration_unit_note": "UNCONFIRMED_RAW_APPROXIMATELY_1G_SCALE_NO_CONVERSION_APPLIED",
+    "duration_seconds": 14.789066076278687,
+    "effective_rate_hz": 200.0126299215447,
+    "first_header_timestamp": 1787056352.8827221,
+    "gyro_semantic_unit": "sensor_msgs/Imu_declares_rad_per_second_not_independently_calibrated",
+    "interpretation": "PILOT_QA_ONLY_NOT_GROUND_TRUTH_NO_IMU_INTEGRATION",
+    "large_spike_count": 0,
+    "last_header_timestamp": 1787056367.6717882,
+    "maximum_accel_norm_absolute_deviation_raw": 0.030624782212656854,
+    "maximum_accel_step_raw": 0.056001942560056486,
+    "maximum_gyro_step": 0.027387864440901712,
+    "maximum_inter_message_interval_seconds": 0.009121179580688477,
+    "median_inter_message_interval_seconds": 0.0049762725830078125,
+    "message_count": 2959,
+    "missing_interval_count": 0,
+    "motion_screen_criteria": {
+      "accel_norm_absolute_deviation_exceeded": false,
+      "accel_norm_q99_spread_exceeded": false,
+      "accel_step_exceeded": false,
+      "gyro_norm_max_exceeded": false,
+      "gyro_norm_q99_exceeded": false,
+      "gyro_step_exceeded": false
+    },
+    "motion_screen_thresholds": {
+      "accel_norm_absolute_deviation_max_raw": 0.25,
+      "accel_norm_q99_minus_median_max_raw": 0.1,
+      "accel_step_max_raw": 0.1,
+      "gyro_norm_max": 0.35,
+      "gyro_norm_q99_max": 0.15,
+      "gyro_step_max": 0.15,
+      "method": "PILOT_OBVIOUS_MOTION_SCREEN_ONLY"
+    },
+    "schema": "mid360_pilot_imu_staticity_summary_v1",
+    "statistics": {
+      "accel_norm": {
+        "absolute_max": 1.0229764266115193,
+        "mad": 0.01814405919681472,
+        "max": 1.0229764266115193,
+        "median": 0.9934594766228224,
+        "min": 0.9628346944101656,
+        "q95": 1.018599530859871,
+        "q99": 1.0202055208182172
+      },
+      "accel_x": {
+        "absolute_max": 0.02723577432334423,
+        "mad": 0.012695312150754035,
+        "max": 0.02549860067665577,
+        "median": -0.0013568674912676215,
+        "min": -0.02723577432334423,
+        "q95": 0.01695367880165577,
+        "q99": 0.02037164755165577
+      },
+      "accel_y": {
+        "absolute_max": 0.027470886707305908,
+        "mad": 0.013427734375,
+        "max": 0.027470886707305908,
+        "median": 0.0008595576509833336,
+        "min": -0.023554503917694092,
+        "q95": 0.021880066394805886,
+        "q99": 0.024887878894805926
+      },
+      "accel_z": {
+        "absolute_max": 1.0225856304168701,
+        "mad": 0.018310546875,
+        "max": 1.0225856304168701,
+        "median": 0.9932887554168701,
+        "min": 0.9627711772918701,
+        "q95": 1.0184352397918701,
+        "q99": 1.0199000835418701
+      },
+      "gyro_norm": {
+        "absolute_max": 0.02925176110816244,
+        "mad": 0.003357988030697756,
+        "max": 0.02925176110816244,
+        "median": 0.014720715785277255,
+        "min": 0.00584250921075435,
+        "q95": 0.024053562016748787,
+        "q99": 0.026246765661791658
+      },
+      "gyro_x": {
+        "absolute_max": 0.02356414496898651,
+        "mad": 0.009587380103766918,
+        "max": 0.02356414496898651,
+        "median": 0.0043893838301301,
+        "min": -0.015850640833377838,
+        "q95": 0.018237821757793427,
+        "q99": 0.02036835253238678
+      },
+      "gyro_y": {
+        "absolute_max": 0.012066097930073738,
+        "mad": 0.002130527049303055,
+        "max": 0.007108662277460098,
+        "median": -0.002478715032339096,
+        "min": -0.012066097930073738,
+        "q95": 0.001782342791557312,
+        "q99": 0.00284760445356369
+      },
+      "gyro_z": {
+        "absolute_max": 0.020670074969530106,
+        "mad": 0.002130528911948204,
+        "max": -0.0036258436739444733,
+        "median": -0.01214795932173729,
+        "min": -0.020670074969530106,
+        "q95": -0.006821636110544205,
+        "q99": -0.005756372585892677
+      }
+    },
+    "status": "PASS",
+    "timestamp_monotonic": true,
+    "timestamp_strictly_monotonic": true
+  },
+  "inventory": {
+    "FORMAL_MEASUREMENT_RESULT": false,
+    "FORMAL_REAL_DATA": false,
+    "INDEPENDENT_ACQUISITION": true,
+    "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+    "MEASUREMENT_EVIDENCE": false,
+    "MID360_TWO_SCENE_PILOT": true,
+    "PILOT_NONFORMAL_DO_NOT_CITE": true,
+    "PILOT_ONLY": true,
+    "SAME_BAG_MAP_QUERY": false,
+    "bag_format": "ROS1_BAG_V2.0",
+    "bag_path": "/home/lj/ZPRM/bag/mid360_20260818_203200_part2_15s.bag",
+    "bag_sha256": "3a96dba7563f9742e8fabe5cbc7a90d77991e1d6d25dc024c1c36073af116e73",
+    "bag_size_bytes": 48123887,
+    "duration_seconds": 14.788865089416504,
+    "end_time_utc": "2026-08-18T12:32:47.672208+00:00",
+    "end_timestamp": 1787056367.6722076,
+    "message_count": 3107,
+    "schema": "mid360_pilot_bag_inventory_v1",
+    "start_time_utc": "2026-08-18T12:32:32.883343+00:00",
+    "start_timestamp": 1787056352.8833425,
+    "status": "PASS",
+    "topics": [
+      {
+        "average_bag_record_rate_hz": 200.01534817684296,
+        "connections": 1,
+        "fields": [],
+        "first_bag_timestamp": 1787056352.8833425,
+        "first_header_timestamp": 1787056352.8827221,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "last_bag_timestamp": 1787056367.6722076,
+        "last_header_timestamp": 1787056367.6717882,
+        "message_count": 2959,
+        "message_md5": [
+          "6a62c6daae103f4ff57a132d6f95cec2"
+        ],
+        "message_type": "sensor_msgs/Imu",
+        "rosbag_reported_frequency_hz": 202.16436111245,
+        "topic": "/livox/imu"
+      },
+      {
+        "average_bag_record_rate_hz": 10.000632060028444,
+        "connections": 1,
+        "fields": [
+          {
+            "count": 1,
+            "datatype": 7,
+            "name": "x",
+            "offset": 0
+          },
+          {
+            "count": 1,
+            "datatype": 7,
+            "name": "y",
+            "offset": 4
+          },
+          {
+            "count": 1,
+            "datatype": 7,
+            "name": "z",
+            "offset": 8
+          },
+          {
+            "count": 1,
+            "datatype": 7,
+            "name": "intensity",
+            "offset": 12
+          },
+          {
+            "count": 1,
+            "datatype": 2,
+            "name": "tag",
+            "offset": 16
+          },
+          {
+            "count": 1,
+            "datatype": 2,
+            "name": "line",
+            "offset": 17
+          },
+          {
+            "count": 1,
+            "datatype": 8,
+            "name": "timestamp",
+            "offset": 18
+          }
+        ],
+        "first_bag_timestamp": 1787056352.9456036,
+        "first_header_timestamp": 1787056352.8439429,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "last_bag_timestamp": 1787056367.6446745,
+        "last_header_timestamp": 1787056367.5436103,
+        "message_count": 148,
+        "message_md5": [
+          "1158d486dd51d683ce2f1be655c3c181"
+        ],
+        "message_type": "sensor_msgs/PointCloud2",
+        "rosbag_reported_frequency_hz": 9.995410165791675,
+        "topic": "/livox/lidar"
+      }
+    ]
+  },
+  "lidar_summary": {
+    "FORMAL_MEASUREMENT_RESULT": false,
+    "FORMAL_REAL_DATA": false,
+    "INDEPENDENT_ACQUISITION": true,
+    "INDEPENDENT_MAP_QUERY_ACQUISITION": true,
+    "MEASUREMENT_EVIDENCE": false,
+    "MID360_TWO_SCENE_PILOT": true,
+    "PILOT_NONFORMAL_DO_NOT_CITE": true,
+    "PILOT_ONLY": true,
+    "SAME_BAG_MAP_QUERY": false,
+    "effective_frame_rate_hz": 10.000226227045731,
+    "empty_frame_count": 0,
+    "field_signatures": [
+      [
+        "x",
+        "y",
+        "z",
+        "intensity",
+        "tag",
+        "line",
+        "timestamp"
+      ]
+    ],
+    "first_header_timestamp": 1787056352.8439429,
+    "frame_count": 148,
+    "frame_rate_anomaly_count": 0,
+    "last_header_timestamp": 1787056367.5436103,
+    "lidar_duration_seconds": 14.69966745376587,
+    "maximum_inter_frame_interval_seconds": 0.10155200958251953,
+    "median_inter_frame_interval_seconds": 0.09996747970581055,
+    "message_types": [
+      "sensor_msgs/PointCloud2"
+    ],
+    "minimum_inter_frame_interval_seconds": 0.09836483001708984,
+    "nonfinite_point_count": 0,
+    "point_coordinate_unit": "UNCONFIRMED_MESSAGE_HAS_NO_UNIT_METADATA_INTERPRETED_AS_METERS",
+    "point_count_drop_frame_count": 0,
+    "point_count_max": 20640,
+    "point_count_mean": 19999.135135135137,
+    "point_count_median": 19968.0,
+    "point_count_min": 19296,
+    "point_timestamp_all_frames_nondecreasing": false,
+    "point_timestamp_all_frames_usable": true,
+    "point_timestamp_frame_count": 148,
+    "point_timestamp_nondecreasing_frame_count": 0,
+    "point_timestamp_order_note": "SERIALIZED_POINT_ORDER_IS_NOT_TIME_MONOTONIC_USE_PER_POINT_VALUES_OR_EXPLICIT_SORT",
+    "point_timestamp_semantics": "PER_POINT_ABSOLUTE_OR_OFFSET_TIME_INFERRED_BY_HEADER_MAGNITUDE",
+    "point_timestamp_unit_inferences": [
+      "nanoseconds_absolute"
+    ],
+    "point_timestamp_usable_frame_count": 148,
+    "schema": "mid360_pilot_lidar_quality_summary_v1",
+    "status": "PASS",
+    "timestamp_monotonic": true,
+    "timestamp_strictly_monotonic": true
+  },
+  "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+  "role": "QUERY",
+  "scene_id": "R_TEST_01",
+  "scene_type": "RICH_CANDIDATE",
+  "schema": "mid360_two_scene_bag_audit_v1",
+  "semantic_scene": "LABORATORY",
+  "status": "PASS"
+}
