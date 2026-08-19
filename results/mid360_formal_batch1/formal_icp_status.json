@@ -1,0 +1,7 @@
+{
+  "FORMAL_BATCH1_FROZEN": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "reason": "NO_FORMAL_BATCH1_LOCK_PREACQUISITION_ONLY",
+  "schema": "mid360_formal_batch1_icp_status_v1"
+}

@@ -28,7 +28,7 @@ from typing import Any, Mapping, Sequence
 
 
 FORMAL_RUNTIME_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
+    "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
 )
 FORMAL_BRANCH = "fix/zero-perturbation-v3-qualification-json-native-r3"
 FORMAL_PRERUN_TAG = (
@@ -39,7 +39,7 @@ DEFAULT_MANIFEST_RELATIVE = Path(
     "frozen_assets/synthetic_confirmatory_formal_manifest_v3_bootstrap_repair_r3.json"
 )
 SOURCE_REPOSITORY = Path("/home/lj/Degen-LIO")
-RUNTIME_ARCHIVE_ROOT = Path("/home/lj/zero_perturbation_runtime_archive")
+RUNTIME_ARCHIVE_ROOT = Path("/home/lj/ZPRM/zero_perturbation_runtime_archive")
 
 EXPECTED_SNAPSHOT_COUNT = 595
 EXPECTED_TRIAL_COUNT = 1190
@@ -798,7 +798,7 @@ def qualify_v3_formal_runtime_path(
         "source_repository": SOURCE_REPOSITORY.resolve(),
         "runtime_archive": RUNTIME_ARCHIVE_ROOT.resolve(strict=False),
         "runtime_qualification": Path(
-            "/home/lj/zero_perturbation_runtime/qualification"
+            "/home/lj/ZPRM/zero_perturbation_runtime/qualification"
         ).resolve(strict=False),
     }
     overlap = [name for name, path in forbidden.items() if _overlaps(raw, path)]

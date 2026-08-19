@@ -1,0 +1,13 @@
+scene_class,backend,sign,weak_bounded_n,strong_bounded_n,weak_median_capture_radius_mid_m,strong_median_capture_radius_mid_m,weak_strong_capture_ratio,weak_smaller_than_strong,PILOT_ONLY,PILOT_NONFORMAL_DO_NOT_CITE,FORMAL_MEASUREMENT_RESULT,MEASUREMENT_EVIDENCE,SPATIAL_AXIS_INTERPRETATION
+Rich,open3d,ALL,20,20,2.3125,2.9875,0.7740585774058578,true,true,true,false,false,UNRESOLVED
+Rich,open3d,+,10,10,1.3124999999999998,2.9875,0.4393305439330543,true,true,true,false,false,UNRESOLVED
+Rich,open3d,-,10,10,3.4000000000000004,2.5874999999999995,1.3140096618357493,false,true,true,false,false,UNRESOLVED
+Rich,pcl,ALL,20,20,2.2125000000000004,3.0,0.7375000000000002,true,true,true,false,false,UNRESOLVED
+Rich,pcl,+,10,10,1.3375,3.0125,0.4439834024896265,true,true,true,false,false,UNRESOLVED
+Rich,pcl,-,10,10,3.1375,2.8,1.1205357142857144,false,true,true,false,false,UNRESOLVED
+Weak,open3d,ALL,20,18,1.7375,2.125,0.8176470588235294,true,true,true,false,false,UNRESOLVED
+Weak,open3d,+,10,8,1.75,2.0374999999999996,0.8588957055214725,true,true,true,false,false,UNRESOLVED
+Weak,open3d,-,10,10,1.6375000000000002,2.1625000000000005,0.7572254335260115,true,true,true,false,false,UNRESOLVED
+Weak,pcl,ALL,20,20,1.7625,2.1,0.8392857142857142,true,true,true,false,false,UNRESOLVED
+Weak,pcl,+,10,10,1.7875,2.0125,0.8881987577639752,true,true,true,false,false,UNRESOLVED
+Weak,pcl,-,10,10,1.625,2.1625000000000005,0.7514450867052022,true,true,true,false,false,UNRESOLVED

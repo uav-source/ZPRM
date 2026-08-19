@@ -1111,7 +1111,7 @@ CONTEXT_A_RUN_ID = "version-agnostic-lifecycle-fixture-a"
 CONTEXT_B_RUN_ID = "version-agnostic-lifecycle-fixture-b"
 
 QUALIFICATION_RUNTIME_BASE = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
     "version_agnostic_formal_lifecycle_v1"
 )
 CONTEXT_A_RUNTIME_ROOT = QUALIFICATION_RUNTIME_BASE / CONTEXT_A

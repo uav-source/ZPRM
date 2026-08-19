@@ -578,8 +578,8 @@ def _environment_report(repository: Path, data_root: Path, aws: Path) -> dict[st
 
 def _cleanup_report() -> dict[str, Any]:
     return {
-        "cavers_data_root": "/home/lj/zero_perturbation_data/cavers_stage1_v1",
-        "cavers_data_root_absent": not Path("/home/lj/zero_perturbation_data/cavers_stage1_v1").exists(),
+        "cavers_data_root": "/home/lj/ZPRM/zero_perturbation_data/cavers_stage1_v1",
+        "cavers_data_root_absent": not Path("/home/lj/ZPRM/zero_perturbation_data/cavers_stage1_v1").exists(),
         "deleted_apparent_bytes": 57_517_402,
         "deleted_allocated_bytes": 57_831_424,
         "deleted_directory_count": 84,

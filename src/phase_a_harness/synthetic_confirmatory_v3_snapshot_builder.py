@@ -290,7 +290,7 @@ def _formal_paths(
         getattr(
             contract,
             "RUNTIME_ARCHIVE_ROOT",
-            "/home/lj/zero_perturbation_runtime_archive",
+            "/home/lj/ZPRM/zero_perturbation_runtime_archive",
         )
     )
     for protected in (repository.resolve(strict=False), archive.resolve(strict=False)):

@@ -1,0 +1,165 @@
+{
+  "schema": "mid360_formal_batch1_preregistration_v1",
+  "FORMAL_BATCH_ID": "FMB1",
+  "FORMAL_BATCH1_PREREGISTRATION_READY": true,
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "purpose": "FORMAL_ACQUISITION_BLINDED_VARIANCE_ESTIMATION_FEASIBILITY_BATCH",
+  "not_final_sample_size": true,
+  "experimental_units": {
+    "independent_scene_count": 6,
+    "rich_scene_count": 3,
+    "weak_scene_count": 3,
+    "stations_per_scene": 3,
+    "map_query_pair_count": 18,
+    "bag_count": 36,
+    "snapshots_per_station": 10,
+    "snapshot_count": 180,
+    "highest_independent_unit": "scene",
+    "hierarchy": ["scene", "station", "snapshot", "perturbation", "backend"],
+    "station_and_snapshot_semantics": "NESTED_REPEATED_WITHIN_SCENE_NOT_INDEPENDENT_SCENES"
+  },
+  "initial_candidate_scene_ids": [
+    "FMB1_R01", "FMB1_R02", "FMB1_R03",
+    "FMB1_W01", "FMB1_W02", "FMB1_W03"
+  ],
+  "station_ids": ["S01", "S02", "S03"],
+  "bag_naming": {
+    "pattern": "FMB1_<CLASS><NN>_<STATION>_<ROLE>_<YYYYMMDD_HHMMSS>.bag",
+    "example_map": "FMB1_R01_S01_MAP_20260820_101530.bag",
+    "example_query": "FMB1_R01_S01_QUERY_20260820_101602.bag",
+    "roles": ["MAP", "QUERY"],
+    "forbidden_result_words": ["good", "bad", "best", "final", "retry_good", "weakest"],
+    "overwrite_forbidden": true,
+    "failed_attempts_retained": true
+  },
+  "acquisition": {
+    "topics": {
+      "/livox/lidar": "sensor_msgs/PointCloud2",
+      "/livox/imu": "sensor_msgs/Imu"
+    },
+    "required_frame_id": "livox_frame",
+    "map_duration_target_s": 20.0,
+    "query_duration_target_s": 15.0,
+    "map_duration_min_s": 19.0,
+    "query_duration_min_s": 14.0,
+    "TARGET_MAP_QUERY_GAP_S": 12.0,
+    "minimum_actual_gap_s": 10.0,
+    "map_query_overlap_allowed": false,
+    "sequence": ["VERIFY_LIVE_TOPICS", "RECORD_MAP_20S", "WAIT_12S", "RECORD_QUERY_15S", "SHA256", "AUDIT", "WRITE_PAIR_METADATA"],
+    "same_station_constraints": [
+      "SAME_SENSOR_MOUNTING", "SAME_PHYSICAL_STATION", "SAME_NOMINAL_ORIENTATION",
+      "NO_INTENTIONAL_PLATFORM_MOTION"
+    ],
+    "mechanically_supported_required": true,
+    "handheld_forbidden": true,
+    "staticity_claim": "NO_OBVIOUS_MOTION",
+    "perfect_staticity_claim_forbidden": true,
+    "unknown_metadata_policy": "USE_NULL_OR_UNKNOWN_NEVER_FABRICATE"
+  },
+  "bag_audit": {
+    "required_checks": [
+      "SHA256", "TOPIC_PRESENCE", "TOPIC_TYPE", "FRAME_ID", "START_TIMESTAMP",
+      "END_TIMESTAMP", "DURATION", "LIDAR_MESSAGE_COUNT", "IMU_MESSAGE_COUNT",
+      "LIDAR_FREQUENCY", "IMU_FREQUENCY", "POINTCLOUD2_FIELDS", "FINITE_POINT_FRACTION",
+      "OBVIOUS_MOTION", "PAIR_GAP", "NO_OVERLAP"
+    ],
+    "lidar_rate_min_hz": 9.5,
+    "lidar_rate_max_hz": 10.5,
+    "imu_rate_min_hz": 190.0,
+    "imu_rate_max_hz": 210.0,
+    "required_pointcloud2_fields": ["x", "y", "z", "intensity", "tag", "line", "timestamp"],
+    "motion_pass_status": "NO_OBVIOUS_MOTION",
+    "motion_failure_invalidates_pair": true,
+    "failed_raw_data_retained": true
+  },
+  "units": {
+    "ACCELERATION_UNIT_UNKNOWN": true,
+    "acceleration_conversion_applied": false,
+    "imu_position_integration_forbidden": true,
+    "imu_ground_truth_forbidden": true,
+    "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+    "confirmed_meters_claim": false
+  },
+  "preprocessing": {
+    "target_construction": "STATIONARY_FRAME_DIRECT_MERGE_NO_REGISTRATION",
+    "finite_xyz_filter": true,
+    "minimum_range_m": 0.1,
+    "maximum_range_m": 200.0,
+    "voxel_size_m": 0.05,
+    "registration_for_target_forbidden": true,
+    "odometry_for_target_forbidden": true,
+    "scan_matching_for_target_forbidden": true,
+    "target_outputs": ["TARGET_POINT_COUNT", "TARGET_NPY_SHA256", "TARGET_CONSTRUCTION_MANIFEST"]
+  },
+  "query_snapshot_freeze": {
+    "method": "REUSE_PHASE_A_MID360_PILOT_SELECT_QUERY_FRAMES",
+    "selection_policy": "FIXED_QUANTILE_SEQUENCE_RANK_NEAREST_UNUSED_EARLIER_TIE",
+    "quantiles": [0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95],
+    "snapshots_per_station": 10,
+    "batch_snapshot_count": 180,
+    "must_precede_any_icp_backend": true,
+    "manifest": "snapshot_manifest.json"
+  },
+  "geometry_admission": {
+    "geometry_only": true,
+    "identity_initial_transform": true,
+    "registration_derived_fields_forbidden": true,
+    "aggregation": "MEDIAN_OVER_ALL_30_FROZEN_STATION_SNAPSHOTS_PER_SCENE",
+    "rich": {
+      "median_normalized_lambda_min_trans_min": 0.18,
+      "median_condition_number_trans_max": 3.0,
+      "median_spectral_entropy_trans_min": 0.90,
+      "logic": "ALL"
+    },
+    "weak": {
+      "median_normalized_lambda_min_trans_max": 0.12,
+      "median_condition_number_trans_min": 6.0,
+      "median_spectral_entropy_trans_max": 0.80,
+      "logic": "ALL"
+    },
+    "otherwise": "INTERMEDIATE",
+    "intermediate_admitted": false,
+    "must_follow_three_passing_stations": true,
+    "must_precede_any_icp_backend": true
+  },
+  "replacement_rule": {
+    "allowed_reasons": ["ACQUISITION_QUALITY", "BAG_INTEGRITY", "GEOMETRY_ONLY_INELIGIBLE", "GEOMETRY_INTERMEDIATE"],
+    "forbidden_reasons": ["ICP_CAPTURE_RADIUS", "ICP_FINAL_ERROR", "BACKEND_RESULT"],
+    "decision_must_precede_any_icp": true,
+    "failed_candidates_retained": true,
+    "required_fields": ["candidate_status", "exclusion_reason", "replacement_scene_id"]
+  },
+  "analysis_firewall": {
+    "lock_filename": "formal_batch1_lock.json",
+    "prelock_FORMAL_ICP_UNLOCKED": false,
+    "required_hash_bindings": [
+      "PREREGISTRATION", "SCENE_REGISTRY", "STATION_REGISTRY", "BAG_MANIFEST",
+      "TARGET_MANIFEST", "SNAPSHOT_MANIFEST", "GEOMETRY_MANIFEST", "BACKEND_PARAMETER_CONTRACT"
+    ],
+    "required_admitted_rich_scenes": 3,
+    "required_admitted_weak_scenes": 3,
+    "required_valid_stations_per_scene": 3,
+    "future_runner_must_authenticate_lock": true
+  },
+  "future_capture_basin_analysis": {
+    "execution_in_this_task": false,
+    "backend_versions": {"open3d": "0.19.0+b012259", "pcl": "1.15.1"},
+    "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "coarse_translation_perturbations_m": [0.05, 0.10, 0.20, 0.40, 0.80, 1.20, 1.60],
+    "extension_translation_perturbations_m": [2.40, 3.20, 4.80, 6.40],
+    "MAX_TRANSLATION_PERTURBATION_M": 6.4,
+    "directions": ["weak_positive", "weak_negative", "strong_positive", "strong_negative"],
+    "recovery": {"final_translation_error_m_max": 0.005, "final_rotation_error_deg_max": 0.2, "logic": "AND"},
+    "boundary_refinement": {"method": "SUCCESS_FAILURE_BRACKET_BINARY", "width_stop_m": 0.025, "max_iterations": 8},
+    "preserved_outcomes": ["NON_MONOTONIC_RECOVERY_PATTERN", "CAPTURE_RADIUS_AMBIGUOUS", "RIGHT_CENSORED", "LEFT_CENSORED"],
+    "initial_overlap_fields": ["initial_correspondence_count", "initial_correspondence_fraction", "LOW_INITIAL_OVERLAP"],
+    "sign_fields": ["direction_sign", "capture_radius_plus", "capture_radius_minus", "sign_asymmetry_ratio"],
+    "primary_endpoints": ["weak_direction_capture_radius", "strong_direction_capture_radius"],
+    "primary_comparisons": ["WEAK_VS_RICH_UNDER_WEAK_DIRECTION", "WEAK_VS_STRONG_DIRECTION_WITHIN_SCENE"],
+    "secondary_endpoints": ["SIGN_ASYMMETRY", "BACKEND_AGREEMENT", "INITIAL_OVERLAP_BEHAVIOR", "NON_MONOTONIC_PROFILES"],
+    "H1": "Weak-class scenes are expected to exhibit smaller capture radius than Rich-class scenes.",
+    "H2": "Geometry-predicted weak direction is expected to exhibit smaller capture radius than strong direction.",
+    "outcome_not_forced": true
+  }
+}

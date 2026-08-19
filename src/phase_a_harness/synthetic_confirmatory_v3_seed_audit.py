@@ -46,7 +46,7 @@ DEVELOPMENT_PROTOCOL_RELATIVE = Path(
     "frozen_assets/full_synthetic_development_protocol_v1.json"
 )
 QUALIFICATION_RUNTIME_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
     "synthetic_confirmatory_v3_prerun"
 )
 

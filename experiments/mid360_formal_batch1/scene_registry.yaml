@@ -1,0 +1,14 @@
+{
+  "schema": "mid360_formal_batch1_scene_registry_v1",
+  "batch_id": "FMB1",
+  "registry_status": "PREACQUISITION_PLANNED",
+  "scene_independence_note": "Six scenes are the six highest-level independent experimental units; stations and snapshots are nested repeats.",
+  "scenes": [
+    {"scene_id":"FMB1_R01","semantic_candidate_label":"RICH_CANDIDATE","final_geometry_class":null,"scene_description":"UNKNOWN","date":null,"operator":"UNKNOWN","environment_notes":"UNKNOWN","candidate_status":"PLANNED","exclusion_reason":null,"replacement_scene_id":null},
+    {"scene_id":"FMB1_R02","semantic_candidate_label":"RICH_CANDIDATE","final_geometry_class":null,"scene_description":"UNKNOWN","date":null,"operator":"UNKNOWN","environment_notes":"UNKNOWN","candidate_status":"PLANNED","exclusion_reason":null,"replacement_scene_id":null},
+    {"scene_id":"FMB1_R03","semantic_candidate_label":"RICH_CANDIDATE","final_geometry_class":null,"scene_description":"UNKNOWN","date":null,"operator":"UNKNOWN","environment_notes":"UNKNOWN","candidate_status":"PLANNED","exclusion_reason":null,"replacement_scene_id":null},
+    {"scene_id":"FMB1_W01","semantic_candidate_label":"WEAK_CANDIDATE","final_geometry_class":null,"scene_description":"UNKNOWN","date":null,"operator":"UNKNOWN","environment_notes":"UNKNOWN","candidate_status":"PLANNED","exclusion_reason":null,"replacement_scene_id":null},
+    {"scene_id":"FMB1_W02","semantic_candidate_label":"WEAK_CANDIDATE","final_geometry_class":null,"scene_description":"UNKNOWN","date":null,"operator":"UNKNOWN","environment_notes":"UNKNOWN","candidate_status":"PLANNED","exclusion_reason":null,"replacement_scene_id":null},
+    {"scene_id":"FMB1_W03","semantic_candidate_label":"WEAK_CANDIDATE","final_geometry_class":null,"scene_description":"UNKNOWN","date":null,"operator":"UNKNOWN","environment_notes":"UNKNOWN","candidate_status":"PLANNED","exclusion_reason":null,"replacement_scene_id":null}
+  ]
+}

@@ -768,7 +768,7 @@ def build_boreas_external_v2_stage1(
         },
         "boreas_v1_verifier_command": (
             "python scripts/verify_boreas_stage1_v1.py --data-root "
-            "/home/lj/zero_perturbation_data/boreas_stage1_v1 --runtime-root "
+            "/home/lj/ZPRM/zero_perturbation_data/boreas_stage1_v1 --runtime-root "
             "/home/lj/ZPRM/frozen_assets/real_data_boreas_stage1_v1"
         ),
         "boreas_v1_verifier_pass_confirmed_before_v2_build": True,

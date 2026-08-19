@@ -36,12 +36,12 @@ if str(HARNESS_SOURCE_ROOT) not in sys.path:
 
 SOURCE_REPOSITORY = Path("/home/lj/Degen-LIO")
 QUALIFICATION_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
     "formal_execution_context_bridge_v1"
 )
 QUALIFICATION_CACHE = QUALIFICATION_ROOT / "snapshot_cache"
 FORMAL_V3_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
+    "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
 )
 RUN_ID = "formal-execution-context-bridge-qualification-v1"
 EXPECTED_BRANCH = "fix/zero-perturbation-formal-execution-context"

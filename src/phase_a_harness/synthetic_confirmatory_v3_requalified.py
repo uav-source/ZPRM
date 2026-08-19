@@ -40,7 +40,7 @@ RUN_ID = "synthetic-confirmatory-v3-requalified"
 EXPECTED_BRANCH = "run/synthetic-confirmatory-v3-requalified"
 EXPECTED_TAG = "execution/synthetic-confirmatory-v3-requalified"
 DEFAULT_RUNTIME_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/confirmatory/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/"
     "synthetic_confirmatory_v3_requalified"
 )
 DEFAULT_MANIFEST_RELATIVE = Path(

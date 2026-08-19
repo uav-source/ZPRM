@@ -19,7 +19,7 @@ from .runtime_path_policy import RuntimePathLayout, qualify_runtime_paths
 
 
 ADAPTER_SCHEMA = "synthetic_confirmatory_v3_execution_adapter_fixture_v1"
-QUALIFICATION_RUNTIME_ROOT = Path("/home/lj/zero_perturbation_runtime")
+QUALIFICATION_RUNTIME_ROOT = Path("/home/lj/ZPRM/zero_perturbation_runtime")
 QUALIFICATION_RUN_KIND = "qualification"
 QUALIFICATION_RUN_ID = "synthetic_confirmatory_v3_prerun"
 

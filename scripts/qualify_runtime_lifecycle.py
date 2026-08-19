@@ -30,14 +30,14 @@ from typing import Any, Callable, Mapping, Sequence
 
 
 QUALIFICATION_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/runtime_lifecycle_v1"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/runtime_lifecycle_v1"
 )
 FAILURE_ARCHIVE = Path(
-    "/home/lj/zero_perturbation_runtime_archive/"
+    "/home/lj/ZPRM/zero_perturbation_runtime_archive/"
     "synthetic_confirmatory_v2_runtime_lifecycle_failure_20260730"
 )
 FAILURE_TAR = Path(
-    "/home/lj/zero_perturbation_runtime_archive/"
+    "/home/lj/ZPRM/zero_perturbation_runtime_archive/"
     "synthetic_confirmatory_v2_runtime_lifecycle_failure_20260730.tar.gz"
 )
 FAILURE_BUNDLE = Path(
@@ -2076,7 +2076,7 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     path_audit = fresh["runtime_path_audit"]
     runtime_policy = {
-        "default_runtime_root": "/home/lj/zero_perturbation_runtime",
+        "default_runtime_root": "/home/lj/ZPRM/zero_perturbation_runtime",
         "qualification_root": str(qualification_root),
         "mutable_path_names": sorted(fresh_layout.mutable_paths()),
         "formal_runtime_artifact_stage": str(artifact),
@@ -2135,11 +2135,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         archive["V2_FAILURE_ARCHIVE_SHA_PASS"],
         retirement["V2_SEED_RETIREMENT_PASS"],
         retirement["V2_CONFIRMATORY_SEED_SET_REUSE_AUTHORIZED"] is False,
-        path_audit["RUNTIME_ROOT_OUTSIDE_REPOSITORY"],
-        path_audit["SNAPSHOT_CACHE_OUTSIDE_REPOSITORY"],
-        path_audit["SNAPSHOT_LOCK_OUTSIDE_REPOSITORY"],
-        path_audit["RAW_RESULTS_OUTSIDE_REPOSITORY"],
-        path_audit["ARTIFACT_STAGE_OUTSIDE_REPOSITORY"],
+        path_audit["RUNTIME_STORAGE_LOCATION_ALLOWED"],
         gitignore["GITIGNORE_SCOPE_PASS"],
         scientific["SCIENTIFIC_CORE_FILE_CHANGE_COUNT"] == 0,
         fresh_report["FRESH_REAL_WRITE_LIFECYCLE_PASS"],

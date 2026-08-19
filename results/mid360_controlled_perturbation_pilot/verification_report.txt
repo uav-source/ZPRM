@@ -1,0 +1,52 @@
+MID-360 CONTROLLED INITIAL-POSE PERTURBATION PILOT VERIFICATION
+schema=mid360_controlled_perturbation_pilot_v1
+generated_at_utc=2026-08-18T14:46:13.709727+00:00
+scope=pilot descriptive / sensitivity analysis; nonformal
+transform_convention=T maps source/query into target/map
+perturbation=T_initial=Delta_T@T_star; target-frame translation
+recovery_threshold_translation_m=0.005
+recovery_threshold_rotation_deg=0.2
+translation_error_reduction_ratio=1-final_translation_error/initial_translation_error
+run_count=480
+open3d_count=240
+pcl_count=240
+solver_success_count=480
+finite_transform_count=480
+zero_runtime_authenticated_file_count=76
+backend_contract_sha256=6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9
+formal_measurement_result=false
+
+CHECKS
+PASS exactly_480_rows
+PASS exactly_480_unique_run_ids
+PASS run_id_set_matches_frozen_plan
+PASS exactly_240_open3d
+PASS exactly_240_pcl
+PASS all_finite_transforms
+PASS backend_contract_sha_fixed
+PASS zero_perturbation_runtime_unchanged
+PASS formal_measurement_false
+PASS repository_contract_sha_fixed
+PASS frozen_transform_convention_authenticated
+PASS all_run_math_recomputed
+PASS all_recovery_thresholds_recomputed
+PASS all_run_file_hashes_authenticated
+PASS exactly_240_complete_backend_pairs
+PASS all_backend_pairs_have_identical_inputs
+PASS summary_has_24_groups
+PASS rich_vs_weak_has_12_rows
+PASS weak_vs_strong_has_12_rows
+PASS paired_differences_has_240_rows
+PASS backend_agreement_has_13_rows
+PASS geometry_direction_rows_40
+PASS all_direction_vectors_unit_norm
+
+CONTROLLED_PERTURBATION_PILOT_READY=true
+CONTROLLED_PERTURBATION_PILOT_SUPPORTS_EXPANSION=false
+FORMAL_MEASUREMENT_RESULT=false
+
+LIMITATIONS
+NO_OBVIOUS_MOTION is retained; perfect/static ground truth is not claimed.
+ACCELERATION_UNIT_UNKNOWN=true; no 9.81 scaling or IMU integration was used.
+Point coordinates remain ASSUMED_METERS_FROM_SCALE.
+Snapshot observations within a scene/station are not independent scene replicates.

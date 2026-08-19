@@ -34,7 +34,9 @@ def _valid(tmp_path: Path, **overrides):
 
 
 def test_default_root_and_qualification_layout_are_exact() -> None:
-    assert DEFAULT_RUNTIME_ROOT == Path("/home/lj/zero_perturbation_runtime")
+    assert DEFAULT_RUNTIME_ROOT == Path(
+        "/home/lj/ZPRM/zero_perturbation_runtime"
+    )
     # Layout identity must remain testable while the one permitted
     # qualification directory exists; explicit resume preserves the strict
     # fresh-run collision check exercised separately below.
@@ -54,6 +56,8 @@ def test_valid_layout_has_complete_json_serializable_audit(tmp_path: Path) -> No
     audit = qualified.audit
     assert audit["schema_version"] == POLICY_SCHEMA
     assert audit["RUNTIME_PATH_POLICY_PASS"] is True
+    assert audit["RUNTIME_STORAGE_LOCATION_ALLOWED"] is True
+    assert audit["RUNTIME_ROOT_IN_WORKSPACE_LOCAL_STORAGE"] is False
     assert audit["RUNTIME_ROOT_OUTSIDE_REPOSITORY"] is True
     assert audit["SNAPSHOT_CACHE_OUTSIDE_REPOSITORY"] is True
     assert audit["SNAPSHOT_LOCK_OUTSIDE_REPOSITORY"] is True
@@ -102,6 +106,18 @@ def test_runtime_root_inside_repository_is_rejected(tmp_path: Path) -> None:
             repository_root=repository,
             runtime_root=repository / "runtime",
         )
+
+
+def test_designated_workspace_local_runtime_root_is_allowed(tmp_path: Path) -> None:
+    repository = tmp_path / "repository"
+    qualified = _valid(
+        tmp_path,
+        repository_root=repository,
+        runtime_root=repository / "zero_perturbation_runtime",
+    )
+    assert qualified.audit["RUNTIME_ROOT_OUTSIDE_REPOSITORY"] is False
+    assert qualified.audit["RUNTIME_ROOT_IN_WORKSPACE_LOCAL_STORAGE"] is True
+    assert qualified.audit["RUNTIME_STORAGE_LOCATION_ALLOWED"] is True
 
 
 def test_runtime_root_containing_repository_is_rejected(tmp_path: Path) -> None:

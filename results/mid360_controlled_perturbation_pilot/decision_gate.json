@@ -1,0 +1,43 @@
+{
+  "ACCELERATION_UNIT_UNKNOWN": true,
+  "BACKEND_DIRECTIONALLY_CONSISTENT": false,
+  "CONTROLLED_PERTURBATION_PILOT_READY": true,
+  "CONTROLLED_PERTURBATION_PILOT_SUPPORTS_EXPANSION": false,
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "GEOMETRY_SEPARATION_CONFIRMED": true,
+  "MEASUREMENT_EVIDENCE": false,
+  "NO_OBVIOUS_MOTION": true,
+  "PILOT_NONFORMAL_DO_NOT_CITE": true,
+  "PILOT_ONLY": true,
+  "POINT_COORDINATE_UNIT_STATUS": "ASSUMED_METERS_FROM_SCALE",
+  "WEAK_DIRECTION_MORE_SENSITIVE_RICH_OPEN3D": true,
+  "WEAK_DIRECTION_MORE_SENSITIVE_RICH_PCL": false,
+  "WEAK_DIRECTION_MORE_SENSITIVE_WEAK_OPEN3D": true,
+  "WEAK_DIRECTION_MORE_SENSITIVE_WEAK_PCL": true,
+  "WEAK_SCENE_MORE_SENSITIVE_AT_WEAK_DIRECTION_OPEN3D": true,
+  "WEAK_SCENE_MORE_SENSITIVE_AT_WEAK_DIRECTION_PCL": true,
+  "alternative_a_by_magnitude": {
+    "30mm": false,
+    "50mm": false
+  },
+  "alternative_b_by_magnitude": {
+    "30mm": false,
+    "50mm": false
+  },
+  "base_by_magnitude": {
+    "30mm": true,
+    "50mm": true
+  },
+  "gate_definition": {
+    "alternative_a": "At a level, Weak scene weak-direction recovery is below Rich for both backends.",
+    "alternative_b": "At a level, weak-direction median error exceeds strong-direction for both scenes and both backends.",
+    "base": "At both 30 and 50 mm, Weak scene weak-direction median final translation error exceeds Rich for both backends.",
+    "large_perturbation_levels_m": [
+      0.03,
+      0.05
+    ],
+    "support": "base AND (A OR B) at both 30 and 50 mm"
+  },
+  "gate_preregistered_before_backend_execution": true,
+  "schema": "mid360_controlled_perturbation_pilot_v1_decision_gate"
+}

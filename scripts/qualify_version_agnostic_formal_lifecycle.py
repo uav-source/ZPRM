@@ -50,7 +50,7 @@ MANIFESTS = {
     ),
 }
 RUNTIME_BASE = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
     "version_agnostic_formal_lifecycle_v1"
 )
 INTERRUPTION_ROOTS = {
@@ -1868,11 +1868,11 @@ def main() -> int:
                     "partial_snapshot_scientific_use_authorized": False,
                     "formal_run_resume_authorized": False,
                     "formal_root": (
-                        "/home/lj/zero_perturbation_runtime/confirmatory/"
+                        "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/"
                         "synthetic_confirmatory_v3"
                     ),
                     "archive_root": (
-                        "/home/lj/zero_perturbation_runtime_archive/"
+                        "/home/lj/ZPRM/zero_perturbation_runtime_archive/"
                         "synthetic_confirmatory_v3_post_snapshot_pretrial_"
                         "failure_20260730"
                     ),

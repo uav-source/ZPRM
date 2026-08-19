@@ -18,6 +18,13 @@ __pycache__/
 .pytest_cache/
 *.tmp
 
+# Workspace-local large data and mutable experiment state.  These directories
+# live beside the source tree for a single-folder workspace, but are never Git
+# inputs and must not be committed.
+/zero_perturbation_data/
+/zero_perturbation_runtime/
+/zero_perturbation_runtime_archive/
+
 # The Degen-LIO nested import retains the complete, seed-free fixture audit.
 # The unmodified standalone rules are archived as .gitignore.source.
 !/artifacts/fixture_qualification/fixture_cache/

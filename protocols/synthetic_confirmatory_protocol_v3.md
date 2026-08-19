@@ -10,7 +10,7 @@ frozen Development models are unchanged from the v2 scientific contract.
 - Seed declaration authority: `frozen_assets/synthetic_confirmatory_v3_seed_schedule.json`
 - Parent lineage schema: `synthetic_confirmatory_parent_lineage_v2`
 - Formal run ID: `synthetic-confirmatory-v3`
-- Formal runtime root: `/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3`
+- Formal runtime root: `/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3`
 - INDEPENDENT_NOISE_FREE: one input per scene/geometry, no measurement seed, repeat 0
 - Native backend: prohibited; planned count 0
 - Formal state in this freeze: NOT_EXECUTED / NOT_EVALUATED

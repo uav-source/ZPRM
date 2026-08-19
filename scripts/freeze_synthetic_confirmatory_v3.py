@@ -21,7 +21,7 @@ from typing import Any, Mapping, Sequence
 
 DEFAULT_EVIDENCE_DIR = Path("/tmp/synthetic_confirmatory_v3_prerun_evidence")
 FIXTURE_REPORT = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
     "synthetic_confirmatory_v3_prerun_preseed_9bd944/working_inventory/"
     "v3_adapter_fixture_qualification.json"
 )

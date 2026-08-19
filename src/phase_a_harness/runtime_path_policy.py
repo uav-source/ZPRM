@@ -1,10 +1,11 @@
-"""Fail-closed external runtime-path policy for mutable experiment state.
+"""Fail-closed runtime-path policy for mutable experiment state.
 
-The standalone repository is an immutable execution input.  Snapshot caches,
-locks, raw results, event logs, analysis work products, and publisher staging
-therefore live below a dedicated external runtime root.  This module performs
-path validation only: it does not create directories, inspect scientific
-assets, construct an RNG, or execute a backend.
+Snapshot caches, locks, raw results, event logs, analysis work products, and
+publisher staging live below a dedicated runtime root.  The root may be truly
+external or the one workspace-local, Git-ignored storage directory named
+``zero_perturbation_runtime``.  All other overlap with repository inputs stays
+fail-closed.  This module performs path validation only: it does not create
+directories, inspect scientific assets, construct an RNG, or execute a backend.
 """
 
 from __future__ import annotations
@@ -16,16 +17,18 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 
-DEFAULT_RUNTIME_ROOT = Path("/home/lj/zero_perturbation_runtime")
-DEFAULT_SOURCE_REPOSITORY = Path("/home/lj/Degen-LIO")
-DEFAULT_RUNTIME_ARCHIVE_ROOT = Path("/home/lj/zero_perturbation_runtime_archive")
 DEFAULT_REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_RUNTIME_ROOT = DEFAULT_REPOSITORY_ROOT / "zero_perturbation_runtime"
+DEFAULT_SOURCE_REPOSITORY = Path("/home/lj/Degen-LIO")
+DEFAULT_RUNTIME_ARCHIVE_ROOT = (
+    DEFAULT_REPOSITORY_ROOT / "zero_perturbation_runtime_archive"
+)
 DEFAULT_DEVELOPMENT_RAW_RESULT_ROOTS = (
     DEFAULT_REPOSITORY_ROOT / "results/phase_b_signal_v1/raw_results",
     DEFAULT_REPOSITORY_ROOT / "results/full_synthetic_development_v1/raw_results",
 )
 
-POLICY_SCHEMA = "zero_perturbation_external_runtime_path_policy_v1"
+POLICY_SCHEMA = "zero_perturbation_runtime_path_policy_v2"
 RUN_KINDS = frozenset({"qualification", "formal", "fixture"})
 _SAFE_SEGMENT = re.compile(r"[A-Za-z0-9][A-Za-z0-9_-]{0,127}\Z")
 
@@ -159,6 +162,7 @@ def _safe_segment(value: Any, *, label: str) -> str:
 def _forbidden_roots(
     *,
     repository_root: Path,
+    protect_repository_root: bool,
     source_repository: os.PathLike[str] | str,
     runtime_archive_root: os.PathLike[str] | str,
     development_raw_result_roots: Sequence[os.PathLike[str] | str] | None,
@@ -169,10 +173,11 @@ def _forbidden_roots(
         else tuple(development_raw_result_roots)
     )
     result = {
-        "repository": repository_root,
         "source_repository": _trusted_canonical(source_repository),
         "runtime_archive": _trusted_canonical(runtime_archive_root),
     }
+    if protect_repository_root:
+        result["repository"] = repository_root
     for index, path in enumerate(development):
         result[f"development_raw_results_{index}"] = _trusted_canonical(path)
     return result
@@ -283,7 +288,7 @@ def qualify_runtime_paths(
     registered_run_directories: Mapping[str, os.PathLike[str] | str] | None = None,
     resume: bool = False,
 ) -> RuntimePathQualification:
-    """Validate and return the complete external layout for one run.
+    """Validate and return the complete isolated layout for one run.
 
     ``resume`` authorizes reuse of the *same* canonical run directory.  It does
     not weaken any containment, symlink, protected-root, or cross-run check.
@@ -298,8 +303,11 @@ def qualify_runtime_paths(
         raise RuntimePathPolicyError(f"unsupported run kind: {kind}")
     repository = _trusted_canonical(repository_root)
     root = _canonical_runtime_path(runtime_root, label="runtime root")
+    workspace_runtime_root = repository / "zero_perturbation_runtime"
+    workspace_local_storage = root == workspace_runtime_root
     forbidden = _forbidden_roots(
         repository_root=repository,
+        protect_repository_root=not workspace_local_storage,
         source_repository=source_repository,
         runtime_archive_root=runtime_archive_root,
         development_raw_result_roots=development_raw_result_roots,
@@ -356,10 +364,15 @@ def qualify_runtime_paths(
         }
         for name, path in {"run_root": run_root, **paths}.items()
     }
+    runtime_outside_repository = not _overlap(root, repository)
     audit: dict[str, Any] = {
         "schema_version": POLICY_SCHEMA,
         "RUNTIME_PATH_POLICY_PASS": True,
-        "RUNTIME_ROOT_OUTSIDE_REPOSITORY": not _overlap(root, repository),
+        "RUNTIME_ROOT_OUTSIDE_REPOSITORY": runtime_outside_repository,
+        "RUNTIME_ROOT_IN_WORKSPACE_LOCAL_STORAGE": workspace_local_storage,
+        "RUNTIME_STORAGE_LOCATION_ALLOWED": (
+            runtime_outside_repository or workspace_local_storage
+        ),
         "SNAPSHOT_CACHE_OUTSIDE_REPOSITORY": not _overlap(
             paths["snapshot_cache"], repository
         ),
@@ -396,11 +409,7 @@ def qualify_runtime_paths(
         ),
     }
     required = (
-        "RUNTIME_ROOT_OUTSIDE_REPOSITORY",
-        "SNAPSHOT_CACHE_OUTSIDE_REPOSITORY",
-        "SNAPSHOT_LOCK_OUTSIDE_REPOSITORY",
-        "RAW_RESULTS_OUTSIDE_REPOSITORY",
-        "ARTIFACT_STAGE_OUTSIDE_REPOSITORY",
+        "RUNTIME_STORAGE_LOCATION_ALLOWED",
         "all_paths_absolute",
         "all_paths_canonical",
         "all_paths_inside_run_root",

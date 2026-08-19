@@ -19,7 +19,7 @@ if str(SOURCE) not in sys.path:
     sys.path.insert(0, str(SOURCE))
 
 DEFAULT_QUALIFICATION_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
     "synthetic_confirmatory_v3_requalified"
 )
 

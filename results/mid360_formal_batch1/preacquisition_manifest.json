@@ -1,0 +1,30 @@
+{
+  "ACQUISITION_TOOL_READY": true,
+  "FORMAL_BATCH1_FROZEN": false,
+  "FORMAL_BATCH1_PREREGISTRATION_READY": true,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+  "files": {
+    "experiments/mid360_formal_batch1/acquisition_protocol.md": "aa6edc31f471b768e6958fd9e180ac97a6fd2bebf97262ed963debd95bf739dc",
+    "experiments/mid360_formal_batch1/analysis_protocol.md": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "experiments/mid360_formal_batch1/preregistration.yaml": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "experiments/mid360_formal_batch1/protocol.py": "24fa0b4e5aee625348ce8cbbb64d3a92db58810464f660af8975175afcdc8d82",
+    "experiments/mid360_formal_batch1/scene_registry.yaml": "74569b79704af09c0b2a01c91e289b4c000d1f18b5f2000c74756a326370206b",
+    "experiments/mid360_formal_batch1/station_registry.yaml": "cdf0ca8f5366489c06857cb779471b6190ab7ba9df1b368982cd3cc54d744001",
+    "tools/mid360_formal_batch1/audit_bag_pair.py": "5a7ad4cbdf59f9f78ea8dc2ae5db236f892092f861e6a67b080c2d7dbaddd73a",
+    "tools/mid360_formal_batch1/build_formal_manifest.py": "b98cf4e17fbe04a905b1e6771c259bdeea7146d058c45dc9c078881f417cc7cd",
+    "tools/mid360_formal_batch1/freeze_batch.py": "15cf8c7979fb89a184ac9c91b4a3f9c37fe430907caf8b33b6625cdb1864a6ef",
+    "tools/mid360_formal_batch1/geometry_precheck.py": "a85ffd9c0c1d6dd883ffb21855c55ab29dd01a31049e373bea7e4848cae74a7d",
+    "tools/mid360_formal_batch1/record_map_query_pair.py": "f42caad1039303f6bcda3dd56a7d937f0579ebaedae56f0d01bbf6422b3556dc"
+  },
+  "initial_data_state": {
+    "bag_count": 0,
+    "formal_icp_executions": 0,
+    "geometry_admission_count": 0,
+    "snapshot_count": 0,
+    "target_count": 0
+  },
+  "pilot_freeze_anchors_sha256": "0cc4057fbd3197b8f0d193b132fdc87ed809147487b4fe28207704e7ef0eeb7e",
+  "schema": "mid360_formal_batch1_preacquisition_manifest_v1"
+}

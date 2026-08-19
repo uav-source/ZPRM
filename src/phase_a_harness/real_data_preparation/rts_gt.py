@@ -392,8 +392,8 @@ def execute_stage1(*, repository: Path, data_root: Path, runtime_root: Path) -> 
     first_audit_verification = _verify_sha256sums(first_audit_root)
     cleanup = {
         "allowed_deleted_roots": [
-            "/home/lj/zero_perturbation_data/real_data_v1",
-            "/home/lj/zero_perturbation_runtime/real_data/preparation_v1",
+            "/home/lj/ZPRM/zero_perturbation_data/real_data_v1",
+            "/home/lj/ZPRM/zero_perturbation_runtime/real_data/preparation_v1",
         ],
         "before": {
             "data_root_allocated_bytes": 73676689408,
@@ -413,7 +413,7 @@ def execute_stage1(*, repository: Path, data_root: Path, runtime_root: Path) -> 
         "released_decimal_gb": 73.676959744,
         "released_gib": 68.61705374717712,
         "synthetic_confirmatory_runtime_preserved": Path(
-            "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3_requalified"
+            "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3_requalified"
         ).is_dir(),
     }
     if not first_audit_verification["pass"]:

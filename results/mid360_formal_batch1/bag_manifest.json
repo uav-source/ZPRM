@@ -1,0 +1,10 @@
+{
+  "FORMAL_MEASUREMENT_RESULT": false,
+  "all_attempts_retained": true,
+  "attempts": [],
+  "batch_id": "FMB1",
+  "schema": "mid360_formal_batch1_bag_manifest_v1",
+  "selected_pairs": [],
+  "selected_valid_pair_count": 0,
+  "selection_uses_icp": false
+}

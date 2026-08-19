@@ -1,0 +1,40 @@
+MID-360 CAPTURE-BASIN PILOT VERIFICATION
+schema=mid360_capture_basin_pilot_v1
+generated_at_utc=2026-08-18T17:42:36.381829+00:00
+coarse_rows=1664
+coarse_new_icp_executions=1504
+boundary_new_icp_executions=776
+solver_success=2434
+finite_transform=2440
+50mm_policy=reused authenticated previous results
+recovery_threshold=translation<=0.005m AND rotation<=0.2deg
+SPATIAL_AXIS_INTERPRETATION=UNRESOLVED
+FORMAL_MEASUREMENT_RESULT=false
+
+CHECKS
+PASS previous_pilot_unchanged
+PASS base_coarse_grid_exactly_1120
+PASS reused_50mm_exactly_160
+PASS new_base_coarse_exactly_960
+PASS all_run_ids_unique
+PASS all_magnitudes_within_cap
+PASS capture_record_count_160
+PASS all_bounded_resolutions_within_25mm
+PASS backend_contract_unchanged
+PASS formal_measurement_false
+PASS base_backend_pairs_exactly_560
+PASS base_backend_inputs_identical
+PASS all_pose_math_recomputed
+PASS all_recovery_decisions_recomputed
+PASS all_overlap_proxies_recomputed
+PASS all_boundary_iterations_within_cap
+PASS all_boundary_updates_valid
+PASS direction_audit_has_20_rows
+PASS direction_audit_pass
+PASS summary_has_16_rows
+PASS sign_asymmetry_has_80_rows
+PASS backend_agreement_has_81_rows
+
+CAPTURE_BASIN_PILOT_READY=true
+CAPTURE_BASIN_PILOT_SUPPORTS_FORMAL_EXPANSION=true
+FORMAL_MEASUREMENT_RESULT=false

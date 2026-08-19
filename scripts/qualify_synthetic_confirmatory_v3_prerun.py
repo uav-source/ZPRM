@@ -34,7 +34,7 @@ V1_BUNDLE_SHA256 = (
     "21e803756da78c3bf06a93d957c0395850a36d6cf119b23cd00c88ab927dcb72"
 )
 V2_ARCHIVE_TAR = Path(
-    "/home/lj/zero_perturbation_runtime_archive/"
+    "/home/lj/ZPRM/zero_perturbation_runtime_archive/"
     "synthetic_confirmatory_v2_runtime_lifecycle_failure_20260730.tar.gz"
 )
 V2_ARCHIVE_TAR_SHA256 = (
@@ -44,7 +44,7 @@ DEFAULT_ADAPTER_REPORT = Path(
     "/tmp/synthetic_confirmatory_v3_adapter_fixture_result.json"
 )
 DEFAULT_DESTINATION = Path(
-    "/home/lj/zero_perturbation_runtime/qualification/"
+    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
     "synthetic_confirmatory_v3_prerun/compact_prerun_artifact"
 )
 
@@ -896,7 +896,7 @@ def _formal_profile(raw: Mapping[str, Any]) -> dict[str, Any]:
 
 def _formal_commands() -> str:
     root = "/home/lj/zero_perturbation_phase_a_harness_20260729_1407"
-    runtime = "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
+    runtime = "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
     manifest = "frozen_assets/synthetic_confirmatory_formal_manifest_v3.json"
     common = (
         "env -u PYTHONPATH PYTHONNOUSERSITE=1 "
@@ -997,7 +997,7 @@ def build_v3_prerun_artifact(
         raise FileExistsError(f"v3 pre-run destination already exists: {output}")
     if enforce_external_destination:
         expected_parent = Path(
-            "/home/lj/zero_perturbation_runtime/qualification/"
+            "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
             "synthetic_confirmatory_v3_prerun"
         )
         if expected_parent not in output.parents:

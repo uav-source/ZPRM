@@ -1,0 +1,81 @@
+{
+  "schema": "mid360_unified_workspace_paths_v2",
+  "repository_root": "/home/lj/ZPRM",
+  "active_branch": "formal/mid360-batch1-unified-v1",
+  "repository_assets": {
+    "single_bag": "/home/lj/ZPRM/mid360.bag",
+    "independent_map_query_bags": "/home/lj/ZPRM/bag",
+    "experiments": "/home/lj/ZPRM/experiments",
+    "formal_batch1_results": "/home/lj/ZPRM/results/mid360_formal_batch1",
+    "formal_batch1_tests": "/home/lj/ZPRM/tests/mid360_formal_batch1",
+    "formal_batch1_tools": "/home/lj/ZPRM/tools/mid360_formal_batch1"
+  },
+  "workspace_large_assets": {
+    "runtime": {
+      "path": "/home/lj/ZPRM/zero_perturbation_runtime",
+      "observed_size": "43M",
+      "present": true,
+      "inside_repository_directory": true,
+      "tracked_by_git": false,
+      "policy": "KEEP_WORKSPACE_LOCAL_AND_GIT_IGNORED"
+    },
+    "data": {
+      "future_workspace_path": "/home/lj/ZPRM/zero_perturbation_data",
+      "observed_size": "397M",
+      "present": false,
+      "policy": "DELETED_BY_USER_REDOWNLOAD_FOR_BOREAS"
+    }
+  },
+  "removed_git_worktrees": [
+    "/home/lj/ZPRM_mid360_controlled_perturbation",
+    "/home/lj/ZPRM_mid360_pilot",
+    "/home/lj/ZPRM_mid360_two_scene_pilot"
+  ],
+  "deleted_external_assets": [
+    {
+      "path": "/home/lj/zero_perturbation_data",
+      "observed_size": "397M",
+      "deleted_at": "2026-08-19T16:13:29+08:00",
+      "recoverable_from_trash": false,
+      "permanent_deletion_verified_at": "2026-08-19T16:30:30+08:00",
+      "restore_policy": "REDOWNLOAD_BOREAS_DATA"
+    }
+  ],
+  "deleted_external_intermediates": [
+    {
+      "path": "/home/lj/zero_perturbation_runtime/real_data/boreas_v2_stage2_preparation/map/transformed_xyz.f64le",
+      "size_bytes": 41998817280,
+      "deleted_at": "2026-08-19T15:55:20+08:00",
+      "recoverable_from_trash": false,
+      "restore_policy": "REBUILD_BY_REDOWNLOADING_AND_REPROCESSING_BOREAS_STAGE2"
+    }
+  ],
+  "runtime_cleanup": {
+    "performed_at": "2026-08-19T16:30:30+08:00",
+    "permanently_deleted": [
+      "zero_perturbation_runtime/real_data/boreas_single_dataset_stage1_v1",
+      "zero_perturbation_runtime/real_data/boreas_single_dataset_stage1_v1_pre_direction_gate_fix_3353718",
+      "zero_perturbation_runtime/real_data/boreas_single_dataset_stage1_v1_pre_gap_exclusion_fix_7615352",
+      "zero_perturbation_runtime/real_data/boreas_v2_stage2_preparation",
+      "zero_perturbation_runtime/real_data/boreas_v2_stage2_storage_optimization",
+      "zero_perturbation_runtime/real_data/public_data_external_v2_boreas_stage1",
+      "zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3_requalified/snapshot_cache"
+    ],
+    "runtime_size_before": "769M",
+    "runtime_size_after": "43M",
+    "trash_empty": true,
+    "mid360_runtime_retained": true
+  },
+  "consolidation_verification": {
+    "copied_file_count": 76,
+    "copied_total_bytes": 11818133,
+    "source_target_manifest_sha256": "1323a00f2b90abf73536afda66861080f2b8c90429883e2d3edf900dfd42ca6b",
+    "mismatch_count": 0,
+    "tests_passed": 135,
+    "pilot_byte_anchors_passed": true,
+    "runtime_moved_to_repository_directory": true,
+    "runtime_tracked_by_git": false
+  },
+  "formal_measurement_result": false,
+  "formal_icp_unlocked": false
+}

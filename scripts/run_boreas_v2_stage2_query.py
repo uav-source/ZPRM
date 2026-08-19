@@ -75,7 +75,7 @@ except ImportError:  # pragma: no cover - source-only test environments
 
 
 DEFAULT_AWS = Path(
-    "/home/lj/zero_perturbation_data/boreas_stage1_v1/"
+    "/home/lj/ZPRM/zero_perturbation_data/boreas_stage1_v1/"
     "tools/awscli-venv/bin/aws"
 )
 REMOTE_INVENTORY_SCHEMA = "zprm.boreas.v2.stage2.remote_inventory.v1"

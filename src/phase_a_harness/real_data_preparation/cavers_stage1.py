@@ -1142,8 +1142,8 @@ def _source_files(data_root: Path) -> list[dict[str, Any]]:
 
 def _cleanup_report() -> dict[str, Any]:
     return {
-        "allowed_deleted_root": "/home/lj/zero_perturbation_data/rts_gt_v1",
-        "deleted_root_absent": not Path("/home/lj/zero_perturbation_data/rts_gt_v1").exists(),
+        "allowed_deleted_root": "/home/lj/ZPRM/zero_perturbation_data/rts_gt_v1",
+        "deleted_root_absent": not Path("/home/lj/ZPRM/zero_perturbation_data/rts_gt_v1").exists(),
         "deleted_root_allocated_bytes_before": 232075264,
         "filesystem_available_bytes_after": 111142998016,
         "filesystem_available_bytes_before": 110910959616,
@@ -1152,10 +1152,10 @@ def _cleanup_report() -> dict[str, Any]:
             Path("/home/lj/ZPRM/frozen_assets/real_data_rts_gt_stage1_failed_v1/SHA256SUMS")
         ),
         "rts_runtime_preserved": Path(
-            "/home/lj/zero_perturbation_runtime/real_data/rts_gt_single_dataset_v1"
+            "/home/lj/ZPRM/zero_perturbation_runtime/real_data/rts_gt_single_dataset_v1"
         ).is_dir(),
         "synthetic_runtime_preserved": Path(
-            "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3_requalified"
+            "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3_requalified"
         ).is_dir(),
     }
 

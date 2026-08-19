@@ -32,7 +32,7 @@ V3_EXPECTED_RELEASE_TAG = (
     "archive/zero-perturbation-synthetic-confirmatory-v3-pre-run-pass"
 )
 V3_FORMAL_RUNTIME_ROOT = Path(
-    "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
+    "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
 )
 FROZEN_MODEL_SHA256 = (
     "99806f83d3a0d2393ee7e36e8c06f14a1a8a44fb8d02b074ebc2d9fe750d0872"

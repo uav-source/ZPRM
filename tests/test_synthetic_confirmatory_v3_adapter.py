@@ -29,14 +29,15 @@ def test_v3_adapter_is_seed_free_before_schedule_derivation() -> None:
     assert ADAPTER_SCHEMA == "synthetic_confirmatory_v3_execution_adapter_fixture_v1"
 
 
-def test_v3_adapter_qualification_layout_is_exact_and_external() -> None:
+def test_v3_adapter_qualification_layout_is_exact_and_workspace_local() -> None:
     layout = qualification_layout(repository=ROOT, resume=True)
     assert QUALIFICATION_RUN_ID == "synthetic_confirmatory_v3_prerun"
     assert layout.run_root == Path(
-        "/home/lj/zero_perturbation_runtime/qualification/"
+        "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
         "synthetic_confirmatory_v3_prerun"
     )
-    assert ROOT not in layout.run_root.parents
+    assert ROOT in layout.run_root.parents
+    assert layout.runtime_root == ROOT / "zero_perturbation_runtime"
     assert Path("/home/lj/Degen-LIO") not in layout.run_root.parents
     assert layout.snapshot_cache.parent == layout.run_root
     assert layout.snapshot_lock.parent == layout.run_root
