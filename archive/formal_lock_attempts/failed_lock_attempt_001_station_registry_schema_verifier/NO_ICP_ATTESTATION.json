@@ -1,0 +1,32 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "actual_formal_trials": 0,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "authoritative_runtime_root": "zero_perturbation_runtime/mid360_formal_batch1_zero_perturbation_v1_1",
+  "authority_file_sha256": {
+    "experiments/__init__.py": "9f84c17dbe1b57c00af9e4513daa7069e7090f5cc08de0bb940e1314993715d4",
+    "experiments/mid360_formal_batch1/__init__.py": "2c18a601dcd5bc00d2ae372832a602b4a236496e81db8bf51b1a3dc9839a0d01",
+    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_r1_lock.py": "de4a5618b9761da86b6816ceef762773ffaa42d04942875557568211fae2ba70",
+    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_r1_runner.py": "5d0dc1e2d7586e1b3525cb1b48886b1b51268c27abce57c80f2768de48342589",
+    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_r1_verify.py": "c99dbf0ecd6eac7bb7ce1b79aefcf01a376c70b8f85b1c2211f210761a414f62",
+    "src/phase_a_harness/__init__.py": "2bbd236bb1222cc6813aa68463d4d864fb6e9414e4fc5a7676113f9884d7195a"
+  },
+  "execution_lifecycle_file_count": 0,
+  "formal_trial_count": 0,
+  "future_execution_boundary_verified": true,
+  "live_registration_process_count": 0,
+  "open3d_registration_call_count": 0,
+  "other_registration_process_count": 0,
+  "pass": true,
+  "pcl_cli_invocation_count": 0,
+  "prelock_no_icp_attestation_path": "results/mid360_formal_batch1/final_dataset_v1/NO_ICP_ATTESTATION.json",
+  "prelock_no_icp_attestation_sha256": "c59bb05646abebc116239fb0fa42608fc9e8ddc2f9a38e60fe72ac93aae292b0",
+  "real_trial_result_file_count": 0,
+  "registration_execution_count": 0,
+  "schema": "mid360_fmb1_zero_perturbation_r1_no_icp_attestation_v1",
+  "scope": "R1_LOCK_AND_FUTURE_EXECUTION_BOUNDARY_PRE_AUTHORIZATION",
+  "status": "PASS"
+}

@@ -25,6 +25,9 @@ from tests.mid360_formal_batch1.zero_perturbation_v1_1_r1_fixture import (
 )
 
 
+REPOSITORY = Path(__file__).resolve().parents[2]
+
+
 def _rewrite(path: Path, mutate: Callable[[dict[str, object]], None]) -> None:
     payload = json.loads(path.read_text())
     mutate(payload)
@@ -41,6 +44,68 @@ def _verify(root: Path, lock_dir: Path, runtime: Path) -> dict[str, object]:
         runtime_root=runtime, remeasure_environment=False,
         remeasure_execution_commit=False,
     )
+
+
+def _dataset_bindings() -> dict[str, dict[str, str]]:
+    return {
+        name: {"repository_relative_path": relative}
+        for name, relative in DEFAULT_BINDING_PATHS.items()
+    }
+
+
+def test_real_final_station_registry_mixed_attempt_schemas_pass() -> None:
+    snapshots, targets = independent._verify_final_dataset(
+        REPOSITORY, _dataset_bindings()
+    )
+    assert len(snapshots) == 180
+    assert len(targets) == 18
+    registry = json.loads(
+        (REPOSITORY / DEFAULT_BINDING_PATHS["final_station_registry"]).read_text()
+    )
+    w02 = [row for row in registry["stations"] if row["scene_id"] == "FMB1_W02"]
+    assert len(w02) == 3
+    assert all(row["attempt"] == 2 for row in w02)
+    assert all("acquisition_status" not in row for row in w02)
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("attempt", 1),
+        ("station_acquisition_status", "ACQUISITION_FAIL"),
+        ("attempt_status", "INVALID_ACQUISITION"),
+        ("map_bag_status", "FAIL"),
+        ("query_bag_status", "FAIL"),
+        ("pair_audit.FORMAL_PAIR_VALID", False),
+        ("acquisition_status", "ACQUISITION_PASS"),
+    ],
+)
+def test_w02_attempt2_station_schema_tamper_fails_closed(
+    tmp_path: Path, field: str, value: object,
+) -> None:
+    root, _, _ = build_valid_r1_lock(tmp_path)
+    registry = _bound(root, "final_station_registry")
+
+    def tamper(payload: dict[str, object]) -> None:
+        stations = payload["stations"]
+        assert isinstance(stations, list)
+        row = next(
+            item for item in stations
+            if isinstance(item, dict) and item.get("scene_id") == "FMB1_W02"
+        )
+        if field == "pair_audit.FORMAL_PAIR_VALID":
+            pair = row["pair_audit"]
+            assert isinstance(pair, dict)
+            pair["FORMAL_PAIR_VALID"] = value
+        else:
+            row[field] = value
+
+    _rewrite(registry, tamper)
+    with pytest.raises(
+        R1IndependentVerificationError,
+        match="W02 attempt2 station acquisition record differs",
+    ):
+        independent._verify_final_dataset(root, _dataset_bindings())
 
 
 def test_independent_verifier_recomputes_valid_lock_without_backend(tmp_path: Path) -> None:

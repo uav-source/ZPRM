@@ -210,12 +210,23 @@ def build_valid_r1_lock(tmp_path: Path) -> tuple[Path, Path, Path]:
          "final_geometry_class": klass, "admitted": True}
         for scene, klass in SCENE_CLASS.items()
     ]
-    station_rows = [
-        {"scene_id": scene, "station_id": f"S0{station}",
-         "attempt": 2 if scene == "FMB1_W02" else 1,
-         "acquisition_status": "ACQUISITION_PASS"}
-        for scene in SCENE_CLASS for station in range(1, 4)
-    ]
+    station_rows: list[dict[str, object]] = []
+    for scene in SCENE_CLASS:
+        for station in range(1, 4):
+            row: dict[str, object] = {
+                "scene_id": scene, "station_id": f"S0{station}",
+                "attempt": 2 if scene == "FMB1_W02" else 1,
+            }
+            if scene == "FMB1_W02":
+                row.update({
+                    "station_acquisition_status": "ACQUISITION_PASS",
+                    "attempt_status": "VALID_ACQUISITION",
+                    "map_bag_status": "PASS", "query_bag_status": "PASS",
+                    "pair_audit": {"FORMAL_PAIR_VALID": True},
+                })
+            else:
+                row["acquisition_status"] = "ACQUISITION_PASS"
+            station_rows.append(row)
     write_json(final_dir / "final_scene_registry.yaml", {"scenes": scene_rows})
     write_json(final_dir / "final_station_registry.yaml", {"stations": station_rows})
     write_json(final_dir / "acquisition_attempt_lineage.json", {

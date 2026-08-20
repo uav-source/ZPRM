@@ -1,0 +1,9 @@
+{
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0,
+  "execution_code_commit": "56717ff9e8fcc187d36888b660cf18809cfaf364",
+  "lock_file_sha256": "e094ca9e736af04518501323dd3c454aba798be3b5b6ba4be32d58df61cb20c5",
+  "lock_fingerprint": "6e976f31c3c3bbc686265e2c2379da5f77c5f1ae5f2dcde293d465a8288f36b0",
+  "lock_inventory_file_sha256": "efe3558b823be95397a1c8220bd4048cac2c00f5a9f08a402d8222340296a44b",
+  "schema": "mid360_fmb1_zero_perturbation_lock_fingerprint_v1_1_r1"
+}

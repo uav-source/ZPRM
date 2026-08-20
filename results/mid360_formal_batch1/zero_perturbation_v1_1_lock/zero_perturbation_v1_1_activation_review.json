@@ -135,7 +135,7 @@
   },
   "missingness_clarification_independent_verification": {
     "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_c1_missingness_independent_verification.json",
-    "sha256": "a53706aa9a7837d13b23eb626e223d2363dc4430ebd0623b781488b84d7efa45",
+    "sha256": "212e282da1b3983f18ac5fa92463e6732a11c2e64d8dbb581beeb37a5bfbd331",
     "status": "PASS"
   },
   "candidate_review_pass": true,

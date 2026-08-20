@@ -408,10 +408,38 @@ def _verify_final_dataset(root: Path, bindings: Mapping[str, Mapping[str, Any]])
     if station_keys != {(scene, f"S0{i}") for scene in SCENE_CLASS for i in range(1, 4)}:
         _fail("station registry keys differ")
     for row in stations:
+        if not isinstance(row, Mapping):
+            _fail("station registry row is not a mapping")
         scene = str(row.get("scene_id"))
-        if (int(row.get("attempt", -1)) != (2 if scene == "FMB1_W02" else 1)
-                or row.get("acquisition_status") != "ACQUISITION_PASS"):
-            _fail(f"station attempt/status differs: {scene}/{row.get('station_id')}")
+        station = row.get("station_id")
+        attempt = row.get("attempt")
+        if scene == "FMB1_W02":
+            pair_audit = row.get("pair_audit")
+            if (
+                type(attempt) is not int
+                or attempt != 2
+                or "acquisition_status" in row
+                or row.get("station_acquisition_status") != "ACQUISITION_PASS"
+                or row.get("attempt_status") != "VALID_ACQUISITION"
+                or row.get("map_bag_status") != "PASS"
+                or row.get("query_bag_status") != "PASS"
+                or not isinstance(pair_audit, Mapping)
+                or pair_audit.get("FORMAL_PAIR_VALID") is not True
+            ):
+                _fail(f"W02 attempt2 station acquisition record differs: {scene}/{station}")
+        elif (
+            type(attempt) is not int
+            or attempt != 1
+            or row.get("acquisition_status") != "ACQUISITION_PASS"
+            or any(
+                field in row
+                for field in (
+                    "station_acquisition_status", "attempt_status",
+                    "map_bag_status", "query_bag_status", "pair_audit",
+                )
+            )
+        ):
+            _fail(f"attempt1 station acquisition record differs: {scene}/{station}")
 
     raw_rows = _csv(_resolve(root, bindings["admitted_bag_manifest"]["repository_relative_path"], "admitted bags"))
     if len(raw_rows) != 36:
