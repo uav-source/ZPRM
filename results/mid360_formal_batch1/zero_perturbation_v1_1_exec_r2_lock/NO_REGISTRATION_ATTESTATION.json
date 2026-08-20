@@ -1,0 +1,18 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "formal_trial_count": 0,
+  "new_lock_file_sha256": "fe8846fd80e879b497c8ef68568aa9f83a5ad339e0a29e8113afc36577eb3e4c",
+  "new_lock_fingerprint": "5db11e845c4b1307d40ea9ba3598ead6ba2778a0370b0ce853c8408e8d21e8c5",
+  "old_lock_fingerprint": "9fcd01bd439e1c4e8c2bd0a220a3af1d16c394177bb17197850c4d769109cbba",
+  "old_lock_sha256": "a191894d76f5c3bd3be2aa53f4a2b8bb6b641b77d9603a6f300993b49bbf9c0c",
+  "open3d_registration_call_count": 0,
+  "other_registration_process_count": 0,
+  "pass": true,
+  "pcl_cli_invocation_count": 0,
+  "schema": "mid360_fmb1_exec_r2_no_registration_attestation_v1",
+  "status": "PASS"
+}

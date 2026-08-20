@@ -1,0 +1,37 @@
+{
+  "schema": "mid360_fmb1_execution_control_patch_report_exec_r2_v1",
+  "status": "PASS",
+  "recorded_at_utc": "2026-08-20T05:01:08Z",
+  "baseline_head": "0899b84150467e2d31617db55447c54e2eec66c1",
+  "NEW_EXECUTION_CODE_COMMIT": "f8084795b5b63d149e10282226798c070f808b81",
+  "patch_scope": "EXECUTION_CONTROL_INFRASTRUCTURE_ONLY",
+  "blocker_resolved": "MISSING_LOCK_MATCHED_AUTHORIZATION_PRODUCER_AND_INDEPENDENT_VERIFIER",
+  "SCIENTIFIC_PROTOCOL_CHANGED": false,
+  "FINAL_DATASET_CHANGED": false,
+  "TRIAL_PLAN_SCIENTIFIC_CONTENT_CHANGED": false,
+  "BACKEND_PARAMETER_CHANGED": false,
+  "BACKEND_PARAMETERS_CHANGED": false,
+  "ACTUAL_OPEN3D_TRIALS": 0,
+  "ACTUAL_PCL_TRIALS": 0,
+  "ACTUAL_FORMAL_TRIALS": 0,
+  "registration_execution_count": 0,
+  "fmb1_test_count": 508,
+  "fmb1_failed": 0,
+  "full_test_count": 1691,
+  "full_failed": 0,
+  "restored_preexisting_protected_asset_sha256": {
+    "src/phase_a_harness/synthetic_confirmatory_v3_contract.py": "9fc677e78522317a8c2ccb24b80f425dad7ed51a8eeb84631b1b3631df9058f0",
+    "src/phase_a_harness/synthetic_confirmatory_v3_requalified.py": "6318ed727e3f30537ed6c1274827757ff798e9ceb14bbd0c796365853c40c84f"
+  },
+  "frozen_scientific_sha256": {
+    "active_amendment": "0f9681af0e23632926a69423c44e945abc0153a3aba9358412d5f38cc1516ec6",
+    "analysis_contract": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d",
+    "backend_parameter_contract": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "final_dataset_manifest": "757a349da2952e49b311b1989891c2d289f234512ab6134c6da6de5a8866af48",
+    "original_analysis_protocol": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "original_preregistration": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "result_schema": "cf226717911eef9107a45523cff39519b6c70c8d5e53f48b2e3accb18964fab2",
+    "trial_plan_csv": "e988fde793c8a238ba7d10f053b6c3300ad502f15a8670ecc6880ccc5b9cfacd",
+    "trial_plan_json": "e96917f93ffbcccf0e2c1d75ee75ba86e342f08a9e4651732e2457b7ad867427"
+  }
+}

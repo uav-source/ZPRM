@@ -1,0 +1,29 @@
+{
+  "schema": "mid360_fmb1_exec_r2_post_lock_test_report_v1",
+  "status": "PASS",
+  "pass": true,
+  "recorded_at_utc": "2026-08-20T05:08:02Z",
+  "execution_code_commit": "f8084795b5b63d149e10282226798c070f808b81",
+  "fmb1_tests": {
+    "collected": 508,
+    "failed": 0,
+    "errors": 0,
+    "command_environment": {
+      "PYTHONNOUSERSITE": "1",
+      "ZPRM_FMB1_NO_FORMAL_REGISTRATION": "1"
+    }
+  },
+  "full_tests": {
+    "collected": 1691,
+    "failed": 0,
+    "errors": 0,
+    "command_environment": {
+      "PYTHONNOUSERSITE": "1",
+      "ZPRM_FMB1_NO_FORMAL_REGISTRATION": "1"
+    }
+  },
+  "REAL_OPEN3D_CALLS": 0,
+  "REAL_PCL_CALLS": 0,
+  "REAL_FORMAL_TRIALS": 0,
+  "FORMAL_REGISTRATION_AUTHORIZED": false
+}
