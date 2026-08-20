@@ -1,0 +1,304 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_analysis_contract_determinacy_audit_v1",
+  "audit_id": "FMB1_ZERO_PERTURBATION_LOCKED_ANALYSIS_DETERMINACY_AUDIT_V1",
+  "status": "FAIL_CLOSED_UNDER_SPECIFIED_REQUIRED_RULES",
+  "audited_at_utc": "2026-08-20T10:07:14Z",
+  "repository_root": "/home/lj/ZPRM",
+  "starting_head": "18bb94e62761f5193da8cdc5509c470cb4983244",
+  "raw_execution_commit": "059e39533991d929a97ab208ad738643af82d09a",
+  "raw_execution_tag": "execution/fmb1-zero-perturbation-v1.1-exec-r3-formal-v1",
+  "postrun_verification_commit": "18bb94e62761f5193da8cdc5509c470cb4983244",
+  "postrun_verification_tag": "verification/fmb1-zero-perturbation-postrun-v1",
+  "r3_lock_fingerprint": "fd601e8daf62c488a3a079beea05f65c9bd283399ae4d7f3acf16e63fc473a6d",
+  "audit_scope": {
+    "allowed_inputs_only": true,
+    "formal_trial_result_files_opened": 0,
+    "real_formal_scientific_values_read": 0,
+    "real_scene_aggregation_count": 0,
+    "real_station_aggregation_count": 0,
+    "real_weak_rich_comparison_count": 0,
+    "real_p_value_computation_count": 0,
+    "backend_execution_count": 0,
+    "capture_radius_execution_count": 0
+  },
+  "source_bindings": [
+    {
+      "role": "ACTIVE_PROTOCOL_POINTER",
+      "path": "experiments/mid360_formal_batch1/ACTIVE_PROTOCOL.json",
+      "sha256": "5a735b6b9e4d0795f4916e08f8517c4c8af98f1a8517b42d20acfdd206b9ac2c"
+    },
+    {
+      "role": "ACTIVE_AMENDMENT",
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.json",
+      "sha256": "0f9681af0e23632926a69423c44e945abc0153a3aba9358412d5f38cc1516ec6"
+    },
+    {
+      "role": "ACTIVE_ANALYSIS_CONTRACT",
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d"
+    },
+    {
+      "role": "ACTIVE_ANALYSIS_PROTOCOL",
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "9982193c3c4c2a6cda77c8db858fd73e73f61da7eb7ffe651610e5b1ed1c0b4c"
+    },
+    {
+      "role": "ACTIVE_MISSINGNESS_CLARIFICATION",
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.json",
+      "sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb"
+    },
+    {
+      "role": "ACTIVE_MISSINGNESS_CLARIFICATION_NARRATIVE",
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.md",
+      "sha256": "7685db784b50430ec4e8b7cfa75e684c96d3a2c57b0127fa7509b085dfdd2826"
+    },
+    {
+      "role": "POSTRUN_PASS_REPORT",
+      "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1/postrun_independent_verification.json",
+      "sha256": "8067cc8735fd5b2a849bce8dd3839a59b87cd7cac716009892be622903084f90"
+    }
+  ],
+  "classification_definitions": {
+    "FULLY_DETERMINED": "The frozen sources directly and uniquely specify the required inputs, statistic, completeness gate, sidedness where applicable, and undefined behavior.",
+    "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE": "The frozen sources uniquely specify the rule through a direct reference to another frozen rule or clarification.",
+    "DESCRIPTIVE_ONLY_NO_INFERENCE_REQUIRED": "The frozen sources explicitly restrict the output to descriptive reporting and do not require an inferential statistic.",
+    "UNDER_SPECIFIED_REQUIRED_RULE": "A required output admits more than one reasonable implementation because a necessary endpoint, statistic, tie rule, or inferential definition is absent."
+  },
+  "determinacy_items": [
+    {
+      "id": 1,
+      "rule": "primary translation scene summary",
+      "required": true,
+      "classification": "FULLY_DETERMINED",
+      "evidence": [
+        "analysis_contract.primary_endpoint.scene_summary",
+        "missingness_clarification.formal_translation_rotation_summary_rule"
+      ],
+      "determination": "For each backend, use all 30 finite translation_norm_m snapshot values only after the complete-coverage gate; report median, q25, q75, and q95 with linear quantiles plus three station medians."
+    },
+    {
+      "id": 2,
+      "rule": "primary Weak/Rich estimand",
+      "required": true,
+      "classification": "FULLY_DETERMINED",
+      "evidence": ["analysis_contract.primary_endpoint.weak_vs_rich_estimand"],
+      "determination": "median(three Weak scene medians) minus median(three Rich scene medians), separately by backend."
+    },
+    {
+      "id": 3,
+      "rule": "exact permutation",
+      "required": true,
+      "classification": "FULLY_DETERMINED",
+      "evidence": [
+        "analysis_contract.primary_endpoint.inference",
+        "analysis_protocol.Primary translation analysis"
+      ],
+      "determination": "Enumerate all C(6,3)=20 allocations; one-sided Weak-greater-than-Rich p=count(permuted statistic >= observed statistic)/20, without correction or randomization."
+    },
+    {
+      "id": 4,
+      "rule": "rotation secondary analysis",
+      "required": true,
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "evidence": ["analysis_contract.secondary_rotation_endpoint"],
+      "determination": "rotation_angle_rad and rotation_angle_deg use the same complete-coverage scene-first summaries and exact 20-allocation procedure as the primary endpoint; the role remains secondary."
+    },
+    {
+      "id": 5,
+      "rule": "cross-backend scene Spearman",
+      "required": true,
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "evidence": [
+        "analysis_contract.cross_backend_analysis.scene_median_spearman",
+        "missingness_clarification.spearman_rules"
+      ],
+      "determination": "SciPy spearmanr with average ranks on exactly six complete paired scene medians; formal rho/p are null for incomplete or constant input under the frozen statuses."
+    },
+    {
+      "id": 6,
+      "rule": "cross-backend station Spearman",
+      "required": true,
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "evidence": [
+        "analysis_contract.cross_backend_analysis.station_median_spearman",
+        "missingness_clarification.spearman_rules"
+      ],
+      "determination": "SciPy spearmanr with average ranks on exactly 18 complete paired station medians; formal rho/p are null for incomplete or constant input under the frozen statuses."
+    },
+    {
+      "id": 7,
+      "rule": "snapshot translation direction cosine",
+      "required": true,
+      "classification": "FULLY_DETERMINED",
+      "evidence": [
+        "analysis_contract.cross_backend_analysis.per_snapshot_translation_direction_cosine",
+        "missingness_clarification.snapshot_direction_cosine_rule"
+      ],
+      "determination": "The descriptive direction cosine is defined for paired finite nonzero backend translation vectors; zero and missing/nonfinite vectors remain as null with the two frozen statuses."
+    },
+    {
+      "id": 8,
+      "rule": "scene-ordering agreement",
+      "required": true,
+      "classification": "UNDER_SPECIFIED_REQUIRED_RULE",
+      "evidence": ["analysis_contract.cross_backend_analysis.scene_ordering_agreement_required"],
+      "unresolved_root_ids": ["SCENE_ORDERING_AGREEMENT_STATISTIC_UNDEFINED"],
+      "unresolved_reason": "The contract requires scene-ordering agreement but defines neither the statistic nor tie behavior nor the exact reported output. Kendall tau, Spearman, pairwise concordance, exact rank-vector equality, and other rules remain reasonable but non-equivalent choices."
+    },
+    {
+      "id": 9,
+      "rule": "reassociation scene median turnover",
+      "required": true,
+      "classification": "UNDER_SPECIFIED_REQUIRED_RULE",
+      "evidence": [
+        "analysis_contract.reassociation_analysis.frozen_fields",
+        "analysis_contract.reassociation_analysis.required_reports_per_backend"
+      ],
+      "unresolved_root_ids": ["FORMAL_TURNOVER_ENDPOINT_UNDEFINED"],
+      "unresolved_reason": "Both correspondence_turnover and accepted_source_turnover are frozen, while SCENE_LEVEL_MEDIAN_TURNOVER does not select one endpoint or require both in a defined primary/secondary relationship."
+    },
+    {
+      "id": 10,
+      "rule": "reassociation scene-level association",
+      "required": true,
+      "classification": "UNDER_SPECIFIED_REQUIRED_RULE",
+      "evidence": ["analysis_contract.reassociation_analysis.required_reports_per_backend"],
+      "unresolved_root_ids": ["FORMAL_TURNOVER_ENDPOINT_UNDEFINED"],
+      "unresolved_reason": "Spearman and the six-scene completeness gate are specified, but the required turnover side of the association is not uniquely selected from the two frozen turnover fields."
+    },
+    {
+      "id": 11,
+      "rule": "within-scene centered association",
+      "required": true,
+      "classification": "UNDER_SPECIFIED_REQUIRED_RULE",
+      "evidence": [
+        "analysis_contract.reassociation_analysis.within_scene_centering",
+        "missingness_clarification.reassociation_missingness_rule.within_scene_centered_association"
+      ],
+      "unresolved_root_ids": [
+        "FORMAL_TURNOVER_ENDPOINT_UNDEFINED",
+        "CENTERED_ASSOCIATION_STATISTIC_UNDEFINED"
+      ],
+      "unresolved_reason": "Centering and complete-pair requirements are frozen, but the association statistic is not identified as Spearman, Pearson, Kendall, or another statistic; the turnover endpoint is also unresolved."
+    },
+    {
+      "id": 12,
+      "rule": "optional stratified permutation",
+      "required": true,
+      "classification": "UNDER_SPECIFIED_REQUIRED_RULE",
+      "evidence": ["analysis_contract.reassociation_analysis.optional_stratified_permutation"],
+      "unresolved_root_ids": [
+        "CENTERED_ASSOCIATION_STATISTIC_UNDEFINED",
+        "REGISTERED_CENTERED_PERMUTATION_STATISTIC_UNDEFINED"
+      ],
+      "unresolved_reason": "The shuffle domain, seed, count, strata preservation, and sidedness are frozen, but the registered test statistic and its exact p-value comparison rule are not. The rule is enabled and therefore cannot be silently omitted."
+    },
+    {
+      "id": 13,
+      "rule": "systematic fraction station value",
+      "required": true,
+      "classification": "FULLY_DETERMINED",
+      "evidence": [
+        "analysis_contract.systematic_component",
+        "missingness_clarification.systematic_fraction_missingness_rule"
+      ],
+      "determination": "For 10/10 finite station/backend vectors, norm(mean(v))/mean(norm(v)); exact zero denominator produces defined 0.0 with the frozen status, otherwise incomplete input produces null."
+    },
+    {
+      "id": 14,
+      "rule": "systematic fraction scene value",
+      "required": true,
+      "classification": "FULLY_DETERMINED",
+      "evidence": ["analysis_contract.systematic_component.scene_summary"],
+      "determination": "Median of the three station systematic fractions only when all three are defined; otherwise null with the frozen incomplete-scene status."
+    },
+    {
+      "id": 15,
+      "rule": "systematic Weak/Rich comparison",
+      "required": true,
+      "classification": "UNDER_SPECIFIED_REQUIRED_RULE",
+      "evidence": [
+        "analysis_contract.systematic_component.weak_rich_comparison_unit",
+        "analysis_protocol.Systematic component"
+      ],
+      "unresolved_root_ids": ["SYSTEMATIC_WEAK_RICH_COMPARISON_RULE_UNDEFINED"],
+      "unresolved_reason": "The scene comparison unit and backend separation are frozen, but no estimand, statistic, inferential versus descriptive role, sidedness, or p-value rule is specified."
+    },
+    {
+      "id": 16,
+      "rule": "missingness",
+      "required": true,
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "evidence": [
+        "analysis_contract.missingness_and_nonfinite_policy",
+        "active missingness clarification"
+      ],
+      "determination": "All planned trials remain in accounting; 10/10 station, 30/30 scene, 6/6 scene-pair, 18/18 station-pair, and 180/180 centered gates and explicit null statuses are frozen."
+    },
+    {
+      "id": 17,
+      "rule": "available-case descriptive rules",
+      "required": true,
+      "classification": "DESCRIPTIVE_ONLY_NO_INFERENCE_REQUIRED",
+      "evidence": ["missingness_clarification.available_case_descriptive_rule"],
+      "determination": "Finite available-case median/q25/q75/q95 with linear quantiles and N may be reported only under AVAILABLE_CASE_DESCRIPTIVE_NOT_PRIMARY_NOT_INFERENTIAL and can never replace formal summaries or enter inference."
+    },
+    {
+      "id": 18,
+      "rule": "solver/nonfinite accounting",
+      "required": true,
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "evidence": [
+        "analysis_contract.failure_and_exclusion_rules",
+        "missingness_clarification.authoritative_trial_outcome",
+        "missingness_clarification.row_endpoint_classification"
+      ],
+      "determination": "Earliest schema-valid infrastructure-PASS scientific outcome is authoritative; finite solver-nonconverged outcomes remain finite, scientific nonfinite outcomes are retained and non-retryable, and unresolved infrastructure outcomes remain in denominators."
+    }
+  ],
+  "unresolved_root_definitions": [
+    {
+      "id": "SCENE_ORDERING_AGREEMENT_STATISTIC_UNDEFINED",
+      "required_resolution": "Freeze the exact statistic, tie behavior, completeness rule, and output fields."
+    },
+    {
+      "id": "FORMAL_TURNOVER_ENDPOINT_UNDEFINED",
+      "required_resolution": "Freeze correspondence_turnover, accepted_source_turnover, or an explicit dual-endpoint hierarchy before any formal scientific value is read."
+    },
+    {
+      "id": "CENTERED_ASSOCIATION_STATISTIC_UNDEFINED",
+      "required_resolution": "Freeze the exact centered association statistic and its constant-input behavior."
+    },
+    {
+      "id": "REGISTERED_CENTERED_PERMUTATION_STATISTIC_UNDEFINED",
+      "required_resolution": "Freeze the permutation test statistic and exact p-value counting/comparison rule while preserving the already-frozen seed, count, strata, and sidedness."
+    },
+    {
+      "id": "SYSTEMATIC_WEAK_RICH_COMPARISON_RULE_UNDEFINED",
+      "required_resolution": "Freeze whether the comparison is descriptive or inferential and define its estimand, statistic, sidedness, completeness, and p-value behavior if inferential."
+    }
+  ],
+  "gate": {
+    "audited_required_rule_count": 18,
+    "required_under_specified_count": 6,
+    "unresolved_root_definition_count": 5,
+    "ANALYSIS_CONTRACT_FULLY_DETERMINATE": false,
+    "FMB1_LOCKED_ANALYSIS_CONTRACT_DETERMINATE": false,
+    "LOCKED_ANALYSIS_IMPLEMENTATION_FREEZE_READY": false,
+    "FMB1_LOCKED_ANALYSIS_IMPLEMENTATION_FROZEN": false,
+    "LOCKED_ANALYSIS_LOCK_ISSUED": false,
+    "LOCKED_ANALYSIS_LOCK_VERIFIER_PASS": false,
+    "READY_FOR_LOCKED_SCIENTIFIC_ANALYSIS": false,
+    "fail_closed": true
+  },
+  "prohibited_follow_on_actions_attestation": {
+    "locked_analysis_code_implemented": false,
+    "formal_analysis_cli_executed": false,
+    "formal_scientific_output_created": false,
+    "real_weak_rich_aggregation_executed": false,
+    "real_p_value_computed": false,
+    "backend_called": false,
+    "analysis_lock_issued": false,
+    "reason": "The determinacy gate failed before implementation; choosing among reasonable definitions after this point would violate fail-closed preregistration."
+  }
+}
