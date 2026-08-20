@@ -1,0 +1,11 @@
+{
+  "covered_regular_file_count": 25,
+  "failure_count": 0,
+  "pass": true,
+  "path_safety_verified": true,
+  "schema": "mid360_fmb1_zero_perturbation_release_checksum_verification_v1_1_r1",
+  "set_equality_verified": true,
+  "sha256sums_sha256": "a4129b9c11a73f953f23d371a9a3cbb179d6bb0fc3a02d3ee7af780c3be4a4e3",
+  "status": "PASS",
+  "symlink_count": 0
+}

@@ -20,5 +20,10 @@
   "actual_pcl_trials": 0,
   "actual_formal_trials": 0,
   "registration_execution_count": 0,
-  "superseded_by_successful_lock_attempt": null
+  "superseded_by_successful_lock_attempt": {
+    "execution_code_commit": "e162bf1e53e683424562a0488fa19097d3151d2f",
+    "lock_file_sha256": "a191894d76f5c3bd3be2aa53f4a2b8bb6b641b77d9603a6f300993b49bbf9c0c",
+    "lock_fingerprint": "9fcd01bd439e1c4e8c2bd0a220a3af1d16c394177bb17197850c4d769109cbba",
+    "independent_verification_status": "PASS"
+  }
 }

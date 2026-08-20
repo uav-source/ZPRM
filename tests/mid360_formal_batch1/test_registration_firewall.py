@@ -44,7 +44,7 @@ def real_guard_env(monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.delenv(name, raising=False)
 
 
-def test_current_real_batch_is_blocked_only_for_missing_w04(
+def test_legacy_prebackend_scanner_rejects_the_issued_r1_lock(
     real_guard_env: None, tmp_path: Path
 ) -> None:
     proc_root = tmp_path / "proc"
@@ -52,12 +52,11 @@ def test_current_real_batch_is_blocked_only_for_missing_w04(
     report = preflight_real_batch(REPOSITORY, proc_root=proc_root)
     assert report["status"] == "BLOCKED"
     assert report["CURRENT_REAL_BATCH_BLOCKED"] is True
-    assert report["CURRENT_BLOCK_REASON"] == "MISSING_ADMITTED_WEAK_REPLACEMENT_W04"
-    assert report["scientific_blocker_codes"] == [
-        "MISSING_ADMITTED_WEAK_REPLACEMENT_W04"
-    ]
+    assert report["CURRENT_BLOCK_REASON"] == "REGISTRATION_OR_AUTHORITY_ARTIFACT_PRESENT"
     assert report["integrity_blockers"] == []
-    assert report["security_blockers"] == []
+    assert "REGISTRATION_OR_AUTHORITY_ARTIFACT_PRESENT" in {
+        row["code"] for row in report["security_blockers"]
+    }
     assert report["admitted_weak_scene_count"] == 2
     assert report["required_weak_scene_count"] == 3
     assert report["admitted_weak_scene_ids"] == ["FMB1_W01", "FMB1_W03"]
@@ -66,6 +65,10 @@ def test_current_real_batch_is_blocked_only_for_missing_w04(
     assert qualification_scan["scanned_file_count"] == 1129
     assert qualification_scan["excluded_nonreal_artifact_count"] == 1128
     assert qualification_scan["real_registration_artifact_count"] == 0
+    artifact_scan = report["artifact_scan"]
+    assert artifact_scan["status"] == "FAIL"
+    assert artifact_scan["pass"] is False
+    assert artifact_scan["real_registration_artifact_count"] > 0
     for field in (
         "FORMAL_RUN_MATRIX_ISSUED",
         "FORMAL_LOCK_ISSUED",
@@ -85,7 +88,7 @@ def test_current_real_batch_is_blocked_only_for_missing_w04(
         assert report[field] == 0
 
 
-def test_reports_and_tonight_attestation_issue_no_matrix_or_lock(
+def test_legacy_tonight_attestation_refuses_after_r1_lock_issuance(
     real_guard_env: None, tmp_path: Path
 ) -> None:
     proc_root = tmp_path / "proc"
@@ -94,18 +97,13 @@ def test_reports_and_tonight_attestation_issue_no_matrix_or_lock(
     output = tmp_path / "prebackend_qualification_v1"
     written = write_preflight_reports(report, output)
     report["written_reports"] = written
-    attestation = write_no_icp_attestation_tonight(report, output)
+    with pytest.raises(
+        RegistrationFirewallError, match="artifact scan is not PASS"
+    ):
+        write_no_icp_attestation_tonight(report, output)
     assert Path(written["json_path"]).name == "current_real_batch_preflight_report.json"
     assert Path(written["markdown_path"]).name == "current_real_batch_preflight_report.md"
-    assert Path(attestation["path"]).name == "NO_ICP_ATTESTATION_TONIGHT.json"
-    assert attestation["status"] == "PASS"
-    assert attestation["pass"] is True
-    assert attestation["real_T_est_file_count"] == 0
-    assert attestation["qualification_runtime_artifact_scan_status"] == "PASS"
-    assert attestation["qualification_runtime_scanned_file_count"] == 1129
-    assert attestation["qualification_runtime_fixture_exclusion_count"] == 1128
-    assert attestation["qualification_runtime_real_registration_artifact_count"] == 0
-    assert attestation["CURRENT_BLOCK_REASON"] == "MISSING_ADMITTED_WEAK_REPLACEMENT_W04"
+    assert not (output / "NO_ICP_ATTESTATION_TONIGHT.json").exists()
     assert not (output / "formal_batch1_lock.json").exists()
     assert not (output / "formal_registration_trial_matrix.json").exists()
 

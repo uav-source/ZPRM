@@ -1,0 +1,62 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_v1_1_r1_test_report_v1",
+  "generated_at_utc": "2026-08-20T03:52:06Z",
+  "repository": "/home/lj/ZPRM",
+  "branch": "formal/fmb1-w02-attempt2-correction-v1",
+  "execution_code_commit": "e162bf1e53e683424562a0488fa19097d3151d2f",
+  "guard_environment": {
+    "ZPRM_FMB1_NO_FORMAL_REGISTRATION": "1",
+    "ZPRM_REAL_DATA_PREP_NO_REGISTRATION": "1",
+    "NO_FORMAL_REGISTRATION": "1",
+    "PYTHONNOUSERSITE": "1"
+  },
+  "python_executable": "/home/lj/.local/share/degen-lio-micromamba/envs/degen-lio-zprm-py311/bin/python3.11",
+  "suites": [
+    {
+      "name": "mid360_formal_batch1",
+      "command": "PYTHONNOUSERSITE=1 python -m pytest -q tests/mid360_formal_batch1",
+      "collected": 461,
+      "passed": 461,
+      "skipped": 0,
+      "failed": 0,
+      "errors": 0,
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "name": "full_repository",
+      "command": "PYTHONNOUSERSITE=1 python -m pytest -q",
+      "collected": 1644,
+      "passed": 1626,
+      "skipped": 18,
+      "failed": 0,
+      "errors": 0,
+      "warnings": 15,
+      "duration_s": 149.0,
+      "exit_code": 0,
+      "status": "PASS"
+    }
+  ],
+  "skip_policy_status": "PASS_RECORDED_EXTERNAL_HISTORICAL_OR_NO_REGISTRATION_ONLY",
+  "skip_reasons": [
+    {
+      "count": 4,
+      "reason": "NO_FORMAL_REGISTRATION=true intentionally skips tests that execute real Open3D/PCL backends"
+    },
+    {
+      "count": 5,
+      "reason": "External Boreas, historical qualification, Degen-LIO, or requalified-v3 runtime roots are absent from the consolidated workspace"
+    },
+    {
+      "count": 9,
+      "reason": "Source-only workspace excludes historical Git objects or historical result bundles"
+    }
+  ],
+  "tamper_tests_status": "PASS",
+  "registration_backend_import_count": 0,
+  "open3d_registration_call_count": 0,
+  "pcl_cli_invocation_count": 0,
+  "actual_formal_trials": 0,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "status": "PASS"
+}

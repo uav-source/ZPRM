@@ -1,0 +1,22 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": true,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "READY_FOR_SEPARATE_FORMAL_REGISTRATION_AUTHORIZATION": true,
+  "actual_formal_trials": 0,
+  "checksum_entry_count": 7,
+  "failure_count": 0,
+  "lock_core_checksum_entry_count": 7,
+  "lock_fingerprint": "9fcd01bd439e1c4e8c2bd0a220a3af1d16c394177bb17197850c4d769109cbba",
+  "pass": true,
+  "planned_open3d_trials": 180,
+  "planned_pcl_trials": 180,
+  "planned_total_trials": 360,
+  "registration_backend_imports_or_calls": 0,
+  "release_checksum_status": "DERIVED_AFTER_INDEPENDENT_REPORT_NOT_SELF_VERIFIED",
+  "scene_count": 6,
+  "schema": "mid360_fmb1_zero_perturbation_lock_independent_verification_v1_1_r1",
+  "snapshot_count": 180,
+  "station_count": 18,
+  "status": "PASS"
+}
