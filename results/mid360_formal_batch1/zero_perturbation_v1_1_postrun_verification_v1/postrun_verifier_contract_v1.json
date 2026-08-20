@@ -1,0 +1,49 @@
+{
+  "association": {
+    "association_distance_limit_m": 0.5,
+    "ckdtree_workers": 1,
+    "nearest_neighbor_k": 1,
+    "normal_norm_epsilon": 1e-12,
+    "quantile_method": "linear",
+    "target_normal_pca_chunk_size": 2048,
+    "target_normal_pca_k": 50,
+    "target_normal_pca_min_neighbors": 10
+  },
+  "contract_id": "FMB1_EXEC_R3_POSTRUN_INDEPENDENT_VERIFIER_CONTRACT_V1",
+  "enum_fields": "EXACT",
+  "forbidden_imports": [
+    "experiments.mid360_formal_batch1.zero_perturbation_v1_1_r1_runner",
+    "experiments.mid360_formal_batch1.zero_perturbation_r1_trial_assets",
+    "phase_a_harness.common_association_analysis",
+    "phase_a_harness.rotation_metrics",
+    "phase_a_harness.open3d_backend",
+    "phase_a_harness.pcl_backend"
+  ],
+  "integer_fields": "EXACT",
+  "null_fields": "EXACT",
+  "physical_reference_semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+  "r3_execution_code_commit": "c2702b266c427e108209d476bb5e07c3292735c5",
+  "r3_lock_fingerprint": "fd601e8daf62c488a3a079beea05f65c9bd283399ae4d7f3acf16e63fc473a6d",
+  "r3_lock_sha256": "f7349142d8a5b3dd0277f64672297017366725c1d47de870580bf5bec4c4dd30",
+  "raw_execution_commit": "059e39533991d929a97ab208ad738643af82d09a",
+  "raw_execution_tag": "execution/fmb1-zero-perturbation-v1.1-exec-r3-formal-v1",
+  "real_result_values_read_before_contract_freeze": false,
+  "rotation_quality": {
+    "determinant_error_max": 1e-05,
+    "orthogonality_defect_max": 1e-05,
+    "projection_correction_max": 1e-05
+  },
+  "schema": "mid360_fmb1_exec_r3_postrun_verifier_contract_v1",
+  "scientific_aggregation_permitted": false,
+  "status": "FROZEN_BEFORE_REAL_RESULT_VALUE_READ",
+  "tolerances": {
+    "angle_deg_atol": 1e-09,
+    "angle_deg_rtol": 1e-10,
+    "angle_rad_atol": 1e-12,
+    "angle_rad_rtol": 1e-10,
+    "matrix_atol": 1e-12,
+    "matrix_rtol": 1e-10,
+    "scalar_atol": 1e-12,
+    "scalar_rtol": 1e-10
+  }
+}

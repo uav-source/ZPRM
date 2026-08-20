@@ -1,0 +1,14 @@
+{
+  "checksum_entry_count": 743,
+  "checksum_failure_count": 0,
+  "duplicate_path_count": 0,
+  "missing_declared_file_count": 0,
+  "pass": true,
+  "raw_freeze_inventory_match": true,
+  "raw_freeze_primary_inventory_count": 740,
+  "schema": "mid360_fmb1_postrun_checksum_audit_v1",
+  "status": "PASS",
+  "symlink_count": 0,
+  "unknown_file_count": 0,
+  "unsafe_path_count": 0
+}

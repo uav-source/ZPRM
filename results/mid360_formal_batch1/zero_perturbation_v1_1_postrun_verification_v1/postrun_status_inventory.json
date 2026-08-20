@@ -1,0 +1,13 @@
+{
+  "finite_result_count": 360,
+  "infrastructure_failure_count": 0,
+  "infrastructure_status_OK_count": 360,
+  "pass": true,
+  "schema": "mid360_fmb1_postrun_status_inventory_v1",
+  "scientific_aggregation_executed": false,
+  "scientific_status_counts": {
+    "COMPLETED": 360
+  },
+  "status": "PASS",
+  "valid_nonfinite_terminal_count": 0
+}

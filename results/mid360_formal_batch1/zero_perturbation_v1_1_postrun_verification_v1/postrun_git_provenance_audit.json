@@ -1,0 +1,14 @@
+{
+  "head_equals_verifier_code_commit": true,
+  "pass": true,
+  "raw_execution_commit": "059e39533991d929a97ab208ad738643af82d09a",
+  "raw_execution_is_ancestor": true,
+  "raw_execution_root_diff_count": 0,
+  "raw_execution_tag": "execution/fmb1-zero-perturbation-v1.1-exec-r3-formal-v1",
+  "raw_execution_tag_object": "26e245fa3a0e3f378d3ccd074042d18f1011efe7",
+  "raw_execution_tag_peeled_commit": "059e39533991d929a97ab208ad738643af82d09a",
+  "schema": "mid360_fmb1_postrun_git_provenance_audit_v1",
+  "status": "PASS",
+  "verifier_code_commit": "ec72d23f0f94cd91a84f2960b87672788266524f",
+  "worktree_clean_before_real_read": true
+}

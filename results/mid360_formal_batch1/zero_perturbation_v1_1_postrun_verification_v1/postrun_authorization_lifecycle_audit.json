@@ -1,0 +1,21 @@
+{
+  "actual_open3d_trials": 180,
+  "actual_pcl_trials": 180,
+  "actual_total_trials": 360,
+  "authorization_consumed": true,
+  "authorization_id": "FMB1-AUTH-91f6236f44a74142b21b4aee00cab403",
+  "authorization_immutable": true,
+  "authorization_issue_status": "ISSUED",
+  "authorization_reusable": false,
+  "authorization_sha256": "2f63ee9583e345f688c6f1a45def5c73af4688010be1c5443e69dc2d629ab4e6",
+  "consumption_receipt_sha256": "049b071e4c948149a0a2cff7025a53870c8f0e8b547e325836bceb0485d313c5",
+  "consumption_receipt_verified": true,
+  "further_registration_authorized": false,
+  "in_use_marker_verified": true,
+  "pass": true,
+  "receipt_binds_run_manifest": true,
+  "run_manifest_sha256": "9f2af8fb4bbfefa39cb2ee0b12334132a1ef517178da3ef96e482e7c4b152f2d",
+  "schema": "mid360_fmb1_postrun_authorization_lifecycle_audit_v1",
+  "second_live_authorization_count": 0,
+  "status": "PASS"
+}

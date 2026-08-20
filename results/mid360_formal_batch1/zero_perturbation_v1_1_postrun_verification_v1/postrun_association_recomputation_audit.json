@@ -1,0 +1,48 @@
+{
+  "correspondence_count_mismatch_count": 0,
+  "finite_association_recomputation_count": 360,
+  "missingness_mismatch_count": 0,
+  "normal_angle_mismatch_count": 0,
+  "numeric_error_maxima": {
+    "accepted_source_turnover": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "correspondence_count_change_ratio": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "correspondence_turnover": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "final_residual_rmse": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "initial_residual_rmse": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "median_normal_angle_change_deg": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "q95_normal_angle_change_deg": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    },
+    "residual_rmse_change": {
+      "max_absolute_error": 0.0,
+      "max_relative_error": 0.0
+    }
+  },
+  "pass": true,
+  "residual_rmse_mismatch_count": 0,
+  "schema": "mid360_fmb1_postrun_association_recomputation_audit_v1",
+  "scientific_aggregation_executed": false,
+  "snapshot_processed_count": 180,
+  "status": "PASS",
+  "target_processed_count": 18,
+  "turnover_mismatch_count": 0
+}
