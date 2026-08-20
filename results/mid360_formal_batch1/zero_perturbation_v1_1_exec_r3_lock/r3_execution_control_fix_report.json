@@ -1,0 +1,21 @@
+{
+  "schema": "mid360_fmb1_exec_r3_execution_control_fix_report_v1",
+  "status": "PASS",
+  "recorded_at_utc": "2026-08-20T06:42:49Z",
+  "R3_EXECUTION_CODE_COMMIT": "c2702b266c427e108209d476bb5e07c3292735c5",
+  "defect_code": "AUTHORIZATION_VERIFIER_BINDING_PROVENANCE_DEFECT",
+  "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
+  "explicit_binding_provenance_enabled": true,
+  "prefix_based_provenance_inference": false,
+  "execution_control_patch_report_binding_class": "LOCK_RELEASE_EVIDENCE",
+  "unknown_or_missing_binding_class_fails_closed": true,
+  "scientific_protocol_changed": false,
+  "final_dataset_changed": false,
+  "trial_plan_changed": false,
+  "backend_parameters_changed": false,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_formal_trials": 0,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_ICP_UNLOCKED": false
+}

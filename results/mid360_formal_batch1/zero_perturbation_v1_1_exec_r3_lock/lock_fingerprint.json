@@ -1,0 +1,11 @@
+{
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0,
+  "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
+  "execution_code_commit": "c2702b266c427e108209d476bb5e07c3292735c5",
+  "execution_lock_revision": 3,
+  "lock_file_sha256": "f7349142d8a5b3dd0277f64672297017366725c1d47de870580bf5bec4c4dd30",
+  "lock_fingerprint": "fd601e8daf62c488a3a079beea05f65c9bd283399ae4d7f3acf16e63fc473a6d",
+  "lock_inventory_file_sha256": "e191c6c204bfd984535684ad4e866d0da308142d145e3d619fbf5923b03bfcf3",
+  "schema": "mid360_fmb1_zero_perturbation_lock_fingerprint_v1_1_exec_r3"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "mid360_fmb1_exec_r2_lock_supersession_v1",
+  "recorded_at_utc": "2026-08-20T06:42:49Z",
+  "R2_EXECUTION_LOCK_STATUS": "SUPERSEDED_BEFORE_BACKEND_EXECUTION",
+  "reason": "AUTHORIZATION_VERIFIER_BINDING_PROVENANCE_DEFECT",
+  "r2_execution_code_commit": "f8084795b5b63d149e10282226798c070f808b81",
+  "r2_lock_release_commit": "ce83e131dfb896b500818e6ff4cf3399f80d05be",
+  "r2_lock_sha256": "fe8846fd80e879b497c8ef68568aa9f83a5ad339e0a29e8113afc36577eb3e4c",
+  "r2_lock_fingerprint": "5db11e845c4b1307d40ea9ba3598ead6ba2778a0370b0ce853c8408e8d21e8c5",
+  "r2_lock_file_modified": false,
+  "R2_ACTUAL_OPEN3D_TRIALS": 0,
+  "R2_ACTUAL_PCL_TRIALS": 0,
+  "R2_ACTUAL_FORMAL_TRIALS": 0,
+  "scientific_protocol_defect": false,
+  "final_dataset_defect": false,
+  "trial_plan_defect": false,
+  "backend_parameter_defect": false,
+  "execution_infrastructure_defect": true,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_ICP_UNLOCKED": false
+}

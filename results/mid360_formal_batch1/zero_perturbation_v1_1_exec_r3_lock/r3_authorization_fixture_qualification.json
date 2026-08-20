@@ -1,0 +1,30 @@
+{
+  "schema": "mid360_fmb1_exec_r3_authorization_fixture_qualification_v1",
+  "status": "PASS",
+  "pass": true,
+  "recorded_at_utc": "2026-08-20T06:42:49Z",
+  "fixture_only": true,
+  "not_real_fmb1_authorization": true,
+  "two_commit_fixture": {
+    "execution_code_commit_role": "A",
+    "lock_release_commit_role": "B",
+    "execution_control_patch_report_present_in_A": false,
+    "execution_control_patch_report_present_in_B": true,
+    "execution_control_patch_report_binding_class": "LOCK_RELEASE_EVIDENCE",
+    "name_prefix_used_for_routing": false
+  },
+  "producer_pass": true,
+  "independent_verifier_pass": true,
+  "fixture_preflight_pass": true,
+  "fixture_dry_run_pass": true,
+  "authorization_lifecycle_fixture_pass": true,
+  "targeted_test_file_count": 3,
+  "targeted_test_count": 81,
+  "targeted_test_failed": 0,
+  "targeted_test_errors": 0,
+  "REAL_OPEN3D_CALLS": 0,
+  "REAL_PCL_CALLS": 0,
+  "REAL_FORMAL_TRIALS": 0,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_ICP_UNLOCKED": false
+}

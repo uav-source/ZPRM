@@ -1,0 +1,30 @@
+{
+  "schema": "mid360_fmb1_exec_r3_test_report_v1",
+  "status": "PASS",
+  "recorded_at_utc": "2026-08-20T06:44:31Z",
+  "environment": {
+    "PYTHONNOUSERSITE": "1",
+    "ZPRM_FMB1_NO_FORMAL_REGISTRATION": "1",
+    "python": "/home/lj/.local/share/degen-lio-micromamba/envs/degen-lio-zprm-py311/bin/python"
+  },
+  "fmb1": {
+    "command": "python -m pytest -q tests/mid360_formal_batch1",
+    "collected": 523,
+    "passed": 523,
+    "skipped": 0,
+    "failed": 0,
+    "errors": 0
+  },
+  "full_repository": {
+    "command": "python -m pytest -q",
+    "collected": 1706,
+    "passed": 1696,
+    "skipped": 10,
+    "failed": 0,
+    "errors": 0
+  },
+  "new_unconditional_skips": 0,
+  "REAL_OPEN3D_CALLS": 0,
+  "REAL_PCL_CALLS": 0,
+  "REAL_FORMAL_TRIALS": 0
+}

@@ -1,0 +1,752 @@
+{
+  "AUTHORIZATION_LIFECYCLE_QUALIFIED": true,
+  "AUTHORIZATION_PRODUCER_READY": true,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": true,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "INDEPENDENT_AUTHORIZATION_VERIFIER_READY": true,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "READY_FOR_SEPARATE_FORMAL_REGISTRATION_AUTHORIZATION": true,
+  "actual_formal_trials": 0,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "authoritative_runtime_root": "zero_perturbation_runtime/mid360_zero_perturbation_v1_1_formal_execution_v1",
+  "binding_inventory_sha256": "0add4bb6e647756cc89c3e11f62aa7dc84f8b54e498ed243a8c148fe2d28240b",
+  "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
+  "bindings": {
+    "acquisition_attempt_lineage": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "acquisition_attempt_lineage",
+      "bytes": 953,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/acquisition_attempt_lineage.json",
+      "sha256": "cc156c95e9b5e0b6c3235acbccff32e3c6ba6efe122669e73a99db9be659e507",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "activation_review": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "activation_review",
+      "bytes": 7150,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/zero_perturbation_v1_1_activation_review.json",
+      "sha256": "a5433870b37da0fbca918df2a44f544b682d409ffed8d46d5a5f3de09279bc73",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "active_amendment": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "active_amendment",
+      "bytes": 8643,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.json",
+      "sha256": "0f9681af0e23632926a69423c44e945abc0153a3aba9358412d5f38cc1516ec6",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "active_amendment_md": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "active_amendment_md",
+      "bytes": 7068,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.md",
+      "sha256": "14b59028d7b8ccb882a845e0962647c4e2ef04c3009c56883bb694bc9b32ff25",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "active_protocol_pointer": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "active_protocol_pointer",
+      "bytes": 3638,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/ACTIVE_PROTOCOL.json",
+      "sha256": "5a735b6b9e4d0795f4916e08f8517c4c8af98f1a8517b42d20acfdd206b9ac2c",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "admitted_bag_manifest": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "admitted_bag_manifest",
+      "bytes": 10203,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/final_raw_bag_manifest.csv",
+      "sha256": "2c8953ad5db1bd30a905f7412a6c0bf7c27e9f8b8a02926078a96e8237757415",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "amendment_activation_record": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "amendment_activation_record",
+      "bytes": 6266,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/amendment_activation_record_v1_1_r1.json",
+      "sha256": "86e43dfde797fc93c83430d03175b9da78f6e879aa14a5b17d7723d91b202378",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "analysis_contract": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "analysis_contract",
+      "bytes": 14438,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "analysis_missingness_clarification": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "analysis_missingness_clarification",
+      "bytes": 10327,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.json",
+      "sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "analysis_missingness_clarification_md": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "analysis_missingness_clarification_md",
+      "bytes": 5569,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.md",
+      "sha256": "7685db784b50430ec4e8b7cfa75e684c96d3a2c57b0127fa7509b085dfdd2826",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "analysis_missingness_clarification_transition": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "analysis_missingness_clarification_transition",
+      "bytes": 2888,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/analysis_missingness_clarification_transition_v1_1_r1_c1.json",
+      "sha256": "1d25d38ec4192ca505dfe35f36a9992da43ea2d7a4bd209da136991805ef9238",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "analysis_preclarification_history_inventory": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "analysis_preclarification_history_inventory",
+      "bytes": 1775,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_active_pre_missingness_clarification/active_preclarification_inventory.json",
+      "sha256": "44410fd6952c3f49597ee53dc0ce64952ca96f184094e84d36b4fb933ff900c7",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "analysis_protocol": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "analysis_protocol",
+      "bytes": 9734,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "9982193c3c4c2a6cda77c8db858fd73e73f61da7eb7ffe651610e5b1ed1c0b4c",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "attempt_003_authorization_invalidation": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "attempt_003_authorization_invalidation",
+      "bytes": 1046,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock/AUTHORIZATION_INVALIDATION_RECORD.json",
+      "sha256": "1fbc3a3a8e719b0f897ecf42a967aa0b612625dc07ea74937314b55c2fcb2265",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_binding_provenance_defect_audit_json": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "authorization_binding_provenance_defect_audit_json",
+      "bytes": 35872,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock/authorization_binding_provenance_defect_audit.json",
+      "sha256": "740d26c3490c62291e83998e64edcda2e026c1729bd3365891e56de5a4a52975",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_binding_provenance_defect_audit_md": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "authorization_binding_provenance_defect_audit_md",
+      "bytes": 1071,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock/authorization_binding_provenance_defect_audit.md",
+      "sha256": "bccace76bd6219a800157eee723469ebe75a18652d5875974f67a957166a20b1",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_contract": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "authorization_contract",
+      "bytes": 2041,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/authorization/authorization_contract_v1.md",
+      "sha256": "0b69586af62316df3172d682af6f6c2cd3a83d3c5bec836d7b897f6e3bd61d22",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_lifecycle": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "authorization_lifecycle",
+      "bytes": 5447,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/authorization/authorization_lifecycle.py",
+      "sha256": "ed1500425f53192fbd6edf978ba4e4bac57581d01711e72d87b5b84125c065d6",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_lifecycle_test_report": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "authorization_lifecycle_test_report",
+      "bytes": 1009,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock/r3_authorization_fixture_qualification.json",
+      "sha256": "822b08292b6d81dbdef904da26b90ceecd7230d5ec4178190ba042500b55c6b5",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_producer": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "authorization_producer",
+      "bytes": 17163,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/authorization/formal_registration_authorization.py",
+      "sha256": "50cb7b674982a47755bd619d2d7afd5ee08f4e7c061bd2bd76c5d2754ffe69ad",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_producer_cli": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "authorization_producer_cli",
+      "bytes": 1765,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "tools/mid360_formal_batch1/issue_formal_registration_authorization.py",
+      "sha256": "583d65a272da8ab94548564f82f762630663e98e5f9e527929415766543aa078",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_schema": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "authorization_schema",
+      "bytes": 3900,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/authorization/formal_registration_authorization_schema_v1.json",
+      "sha256": "f9cabc641f06ceaf0f433cee2566775334cadaa2f7cec8c6c40460242da104f9",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_verifier": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "authorization_verifier",
+      "bytes": 26016,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/authorization/formal_registration_authorization_verify.py",
+      "sha256": "d96134adadc68d7d3d27b404af88ab4e03dfa11df2d0a226417de2aca775ea4e",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "authorization_verifier_cli": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "authorization_verifier_cli",
+      "bytes": 2126,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "tools/mid360_formal_batch1/verify_formal_registration_authorization.py",
+      "sha256": "c043c6013f152ae9818ab692fe3dfec81afad288ef1f10d4cfa01dc5b4c9fe37",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "backend_parameter_contract": {
+      "binding_class": "ENVIRONMENT_OR_BINARY",
+      "binding_id": "backend_parameter_contract",
+      "bytes": 1802,
+      "commit_role": "NONE",
+      "repository_relative_path": "frozen_assets/backend_parameter_contract.json",
+      "sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+      "verification_source": "FROZEN_SHA256_AND_ENVIRONMENT_CONTRACT"
+    },
+    "binding_provenance_contract": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "binding_provenance_contract",
+      "bytes": 2872,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/authorization/binding_provenance.py",
+      "sha256": "3866910424452c9b8847786a009d743dc2f2f274d303755376b979b93f5515c7",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "blocked_attempt_no_registration": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "blocked_attempt_no_registration",
+      "bytes": 510,
+      "commit_role": "NONE",
+      "repository_relative_path": "archive/formal_execution_attempts/blocked_attempt_001_missing_authorization_infrastructure/NO_REGISTRATION_ATTESTATION.json",
+      "sha256": "951f1328b7e0cbfe628daeb5f7b12ec4803a675341f01091fe6c04d0d03e4de9",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "blocked_attempt_record": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "blocked_attempt_record",
+      "bytes": 1099,
+      "commit_role": "NONE",
+      "repository_relative_path": "archive/formal_execution_attempts/blocked_attempt_001_missing_authorization_infrastructure/BLOCKED_EXECUTION_ATTEMPT.json",
+      "sha256": "fbebcffa88f67e339da0266d67c2b78e96d7b222a60bccb44db3a7ead66d7c0c",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "blocked_attempt_sha256sums": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "blocked_attempt_sha256sums",
+      "bytes": 291,
+      "commit_role": "NONE",
+      "repository_relative_path": "archive/formal_execution_attempts/blocked_attempt_001_missing_authorization_infrastructure/SHA256SUMS",
+      "sha256": "251a392704ed4de3dcd3035990245f012df447cc214628d1faf1a1842f4a5945",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "common_association": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "common_association",
+      "bytes": 21894,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "src/phase_a_harness/common_association_analysis.py",
+      "sha256": "458190c26d8640353004663474adb64305d1193d89ff0dc68f71f404de8f175d",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "environment_manifest": {
+      "binding_class": "ENVIRONMENT_OR_BINARY",
+      "binding_id": "environment_manifest",
+      "bytes": 13827,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock/environment_manifest.json",
+      "sha256": "e7637921f841d9c7a4ee667dca471ae682afa71f4943eee0a15ef2678e54686e",
+      "verification_source": "FROZEN_SHA256_AND_ENVIRONMENT_CONTRACT"
+    },
+    "exec_r3_lock_builder": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "exec_r3_lock_builder",
+      "bytes": 19996,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock.py",
+      "sha256": "b2e3f6d2e596d215fb8ac70ceb7a1a4461b42cc9f5986bc8f9f828814a66ea16",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "exec_r3_lock_issuer_cli": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "exec_r3_lock_issuer_cli",
+      "bytes": 1377,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "tools/mid360_formal_batch1/issue_zero_perturbation_v1_1_exec_r3_lock.py",
+      "sha256": "893bf6f1a3cb634656988c4f143854463fc2c0d55bd6fbdc8a1e94536b9af390",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "exec_r3_lock_verifier": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "exec_r3_lock_verifier",
+      "bytes": 24301,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_verify.py",
+      "sha256": "b8f2a4314f67b4b00122ffc6dc58f82e4faf721a815b0c300520083bdc18d73e",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "exec_r3_lock_verifier_cli": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "exec_r3_lock_verifier_cli",
+      "bytes": 2551,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "tools/mid360_formal_batch1/verify_zero_perturbation_v1_1_exec_r3_lock.py",
+      "sha256": "da99c150043c33404fd8902907ee592c9aa13dc45561362e37d415e5560f95a0",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "execution_control_patch_report": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "execution_control_patch_report",
+      "bytes": 866,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock/r3_execution_control_fix_report.json",
+      "sha256": "15032b60be0ac0707f6a51b59b347d6421345ad51cba45735d4bcde518ca99d9",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "execution_environment": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "execution_environment",
+      "bytes": 15176,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_v1_1_r1_environment.py",
+      "sha256": "6bd4861e55ff82fd7c72350f07aa7845b27895e9014e5dbac758b921c5e0bddb",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "execution_types": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "execution_types",
+      "bytes": 5140,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "src/phase_a_harness/types.py",
+      "sha256": "f74527d30e10da4d729de33ae072cc31af65519fe1d9162ea522568fbae20cc2",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "experiments_package_init": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "experiments_package_init",
+      "bytes": 48,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/__init__.py",
+      "sha256": "9f84c17dbe1b57c00af9e4513daa7069e7090f5cc08de0bb940e1314993715d4",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "final_dataset_independent_verification": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "final_dataset_independent_verification",
+      "bytes": 2249,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/independent_verification.json",
+      "sha256": "892937d3354b8e7648e9d20f1c39af269d1bbb47200b6a774be3611148fcd7af",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "final_dataset_pointer": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "final_dataset_pointer",
+      "bytes": 814,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/CURRENT_FINAL_DATASET.json",
+      "sha256": "aaa5ae45da89e5eb7c17c2fb54dc8798e564240e17b20e4ce8d0fc581da6a330",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "final_dataset_prelock_reauthentication": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "final_dataset_prelock_reauthentication",
+      "bytes": 2058,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/final_dataset_prelock_reauthentication.json",
+      "sha256": "32a7afcf7f237317888b47de09064f03fe0417a9996fd7918aecdccfc51b8f93",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "final_scene_registry": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "final_scene_registry",
+      "bytes": 6573,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/final_scene_registry.yaml",
+      "sha256": "54e69717317632cd36422b7316d4288909ade9155386d783d36fcdc5ff2078fe",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "final_station_registry": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "final_station_registry",
+      "bytes": 30972,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/final_station_registry.yaml",
+      "sha256": "4045a75443dbd03705290b26096a3fa947cc5b410da3b1c8c0d3218d5ba4f25f",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "geometry_manifest": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "geometry_manifest",
+      "bytes": 37260,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/final_geometry_manifest.csv",
+      "sha256": "c0a1c8ea9cbb1b28f8ffdc507d7becf8f591ed333d047161168a1a0962a10bd4",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "invalid_attempt_archive_manifest": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "invalid_attempt_archive_manifest",
+      "bytes": 5395,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/invalid_attempt_archive_manifest.json",
+      "sha256": "ffba29d8565c4c34cd8ec4b433ac9fbbea750e8e24c0a636964a74d92828d5c1",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "metrics": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "metrics",
+      "bytes": 1327,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "src/phase_a_harness/metrics.py",
+      "sha256": "5cce4ca571a87f0c4f1a6beda028bc406c2ea2f55cac2a2069d8b3014c725a41",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "mid360_formal_batch1_package_init": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "mid360_formal_batch1_package_init",
+      "bytes": 75,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/__init__.py",
+      "sha256": "2c18a601dcd5bc00d2ae372832a602b4a236496e81db8bf51b1a3dc9839a0d01",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "old_lock_file": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "old_lock_file",
+      "bytes": 17330,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/formal_batch1_zero_perturbation_lock_v1_1.json",
+      "sha256": "a191894d76f5c3bd3be2aa53f4a2b8bb6b641b77d9603a6f300993b49bbf9c0c",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "old_lock_fingerprint": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "old_lock_fingerprint",
+      "bytes": 496,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/lock_fingerprint.json",
+      "sha256": "6c025d1fe4effe116a79ff6c2a6f084fec5efcb2faecc0d1bcc2f4e1031f4d09",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "old_lock_supersession": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "old_lock_supersession",
+      "bytes": 949,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/history/zero_perturbation_v1_1_exec_r1_lock.SUPERSEDED.json",
+      "sha256": "931cef9b634cbb2d78f4c42334c75616bc1ee888fb50ffbb34034baf5a161743",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "open3d_backend": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "open3d_backend",
+      "bytes": 4112,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "src/phase_a_harness/open3d_backend.py",
+      "sha256": "eb327dd5d13f7cf099469e5e1a315e23c41d593cd7301d278135b4276b9f255f",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "original_capture_radius_analysis_protocol": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "original_capture_radius_analysis_protocol",
+      "bytes": 3309,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/analysis_protocol.md",
+      "sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "original_preregistration": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "original_preregistration",
+      "bytes": 7541,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/preregistration.yaml",
+      "sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "original_zero_perturbation_proposal_json": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "original_zero_perturbation_proposal_json",
+      "bytes": 4042,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.json",
+      "sha256": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "original_zero_perturbation_proposal_md": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "original_zero_perturbation_proposal_md",
+      "bytes": 3636,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.md",
+      "sha256": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "pcl_backend": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "pcl_backend",
+      "bytes": 12911,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "src/phase_a_harness/pcl_backend.py",
+      "sha256": "25e45b31bc90c93bc578104c994992c3f913437b12bf46389a8380d1d06b9e31",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "pcl_executable": {
+      "binding_class": "ENVIRONMENT_OR_BINARY",
+      "binding_id": "pcl_executable",
+      "bytes": 7036160,
+      "commit_role": "NONE",
+      "repository_relative_path": "bin/pcl_point_to_plane_cli",
+      "sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff",
+      "verification_source": "FROZEN_SHA256_AND_ENVIRONMENT_CONTRACT"
+    },
+    "phase_a_harness_package_init": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "phase_a_harness_package_init",
+      "bytes": 81,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "src/phase_a_harness/__init__.py",
+      "sha256": "2bbd236bb1222cc6813aa68463d4d864fb6e9414e4fc5a7676113f9884d7195a",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "prelock_no_icp_attestation": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "prelock_no_icp_attestation",
+      "bytes": 796,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/NO_ICP_ATTESTATION.json",
+      "sha256": "c59bb05646abebc116239fb0fa42608fc9e8ddc2f9a38e60fe72ac93aae292b0",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "proposal_correction_record": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "proposal_correction_record",
+      "bytes": 3405,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/proposal_correction_record_v1_1_r1.json",
+      "sha256": "872c9bb4e12176185bff2cf082dff40ed32a1e674ca7165a967e6c378edbd41a",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "proposal_difference_report": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "proposal_difference_report",
+      "bytes": 4628,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/proposal_difference_report_v1_1_r1.json",
+      "sha256": "b40b64cfe4375cd566672c37814c5437163162f663312c7e389c2ad11f93c419",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "proposal_superseded_sidecar": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "proposal_superseded_sidecar",
+      "bytes": 1997,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.SUPERSEDED.json",
+      "sha256": "e76af07f4dd2bc63944563fc8139b0ebc1b3489d7d83429f8d80d2936662d44c",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "protocol_c1_missingness_independent_verification": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "protocol_c1_missingness_independent_verification",
+      "bytes": 4466,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_c1_missingness_independent_verification.json",
+      "sha256": "212e282da1b3983f18ac5fa92463e6732a11c2e64d8dbb581beeb37a5bfbd331",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "protocol_transition_independent_verification": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "protocol_transition_independent_verification",
+      "bytes": 2480,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_active_transition_independent_verification.json",
+      "sha256": "acf24c710550632cdbbe815f3502b66d138927314e45620a0a34d675bcf49b71",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "r2_lock_supersession": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "r2_lock_supersession",
+      "bytes": 948,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/history/zero_perturbation_v1_1_exec_r2_lock.SUPERSEDED.json",
+      "sha256": "c96640ba5667d6d25aabfee559a7b564821fcaa3083d4c555dccc808fce1c784",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "result_schema": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "result_schema",
+      "bytes": 18526,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_trial_result_schema_v1_1.json",
+      "sha256": "cf226717911eef9107a45523cff39519b6c70c8d5e53f48b2e3accb18964fab2",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "result_validator": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "result_validator",
+      "bytes": 47031,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_r1_trial_assets.py",
+      "sha256": "f1cf3401b0f5ec0c662881c5b9938e412bd679abdaf83b103c20a17f8e979363",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "rotation_metrics": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "rotation_metrics",
+      "bytes": 5249,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "src/phase_a_harness/rotation_metrics.py",
+      "sha256": "0ed2f040d275f013e26cfc3d9be0610511be436ba512333fed610daa663ffb8a",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "runner": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "runner",
+      "bytes": 58977,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_v1_1_r1_runner.py",
+      "sha256": "f60ecd0ddda84c7c78503f946f76fea834b9cbba0800f498756f04411705448c",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "runner_cli": {
+      "binding_class": "EXECUTION_CODE",
+      "binding_id": "runner_cli",
+      "bytes": 2674,
+      "commit_role": "EXECUTION_CODE_COMMIT",
+      "repository_relative_path": "tools/mid360_formal_batch1/run_zero_perturbation_v1_1_r1.py",
+      "sha256": "5b3ecb2a9e82f1217284416ba7526bdcb6840d26070bc11fccf278fd7034954c",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "snapshot_manifest": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "snapshot_manifest",
+      "bytes": 93105,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/final_snapshot_manifest.csv",
+      "sha256": "8067b3bf31263f53b62a83f277b5fe095367a3d58be3d9749c47e3c195a15d02",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "superseded_r2_fingerprint": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "superseded_r2_fingerprint",
+      "bytes": 533,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock/lock_fingerprint.json",
+      "sha256": "1e78ecd871024f8e362079800018c692214e1c79b72f080d135ee8f3e48638eb",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "superseded_r2_lock": {
+      "binding_class": "LOCK_RELEASE_EVIDENCE",
+      "binding_id": "superseded_r2_lock",
+      "bytes": 24216,
+      "commit_role": "LOCK_RELEASE_COMMIT",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock/formal_batch1_zero_perturbation_lock_v1_1_exec_r2.json",
+      "sha256": "fe8846fd80e879b497c8ef68568aa9f83a5ad339e0a29e8113afc36577eb3e4c",
+      "verification_source": "GIT_BLOB_AT_COMMIT"
+    },
+    "target_manifest": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "target_manifest",
+      "bytes": 7811,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/final_dataset_v1/final_target_manifest.csv",
+      "sha256": "3b64bb04e6bf6ef303c70debd6018cd2318bc21c733a8e9260116179020e6b15",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "trial_plan_csv": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "trial_plan_csv",
+      "bytes": 414482,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_trial_plan_v1_1.csv",
+      "sha256": "e988fde793c8a238ba7d10f053b6c3300ad502f15a8670ecc6880ccc5b9cfacd",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "trial_plan_independent_verification": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "trial_plan_independent_verification",
+      "bytes": 1405,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/trial_plan_independent_verification.json",
+      "sha256": "82459b3d30266a4a97a700e5e70b7f5fd678518f07bb5439852a40016199c11c",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "trial_plan_json": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "trial_plan_json",
+      "bytes": 908454,
+      "commit_role": "NONE",
+      "repository_relative_path": "experiments/mid360_formal_batch1/zero_perturbation_trial_plan_v1_1.json",
+      "sha256": "e96917f93ffbcccf0e2c1d75ee75ba86e342f08a9e4651732e2457b7ad867427",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    },
+    "w04_superseded_history": {
+      "binding_class": "FROZEN_SCIENCE_OR_DATA",
+      "binding_id": "w04_superseded_history",
+      "bytes": 638,
+      "commit_role": "NONE",
+      "repository_relative_path": "results/mid360_formal_batch1/history/final_dataset_w04_replacement_superseded_v1.SUPERSEDED.json",
+      "sha256": "d849fb47074c64a19264d8d78b57a4c50928a8c74971b7b6e1bdbc4a41f9c046",
+      "verification_source": "INHERITED_EXEC_R2_LOCK_SHA256"
+    }
+  },
+  "counts": {
+    "planned_open3d_trials": 180,
+    "planned_pcl_trials": 180,
+    "planned_total_trials": 360,
+    "scene_count": 6,
+    "snapshot_count": 180,
+    "station_count": 18
+  },
+  "execution_code_commit": "c2702b266c427e108209d476bb5e07c3292735c5",
+  "execution_lock_revision": 3,
+  "formal_results_root": "results/mid360_formal_batch1/zero_perturbation_v1_1_execution_v1",
+  "issued_at_utc": "2026-08-20T06:42:49Z",
+  "lock_id": "FMB1_ZERO_PERTURBATION_V1_1_R1_FORMAL_EXECUTION_LOCK_EXEC_R3",
+  "prefix_based_provenance_inference": false,
+  "registration_execution_count": 0,
+  "schema": "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r3",
+  "status": "ISSUED_AWAITING_SEPARATE_AUTHORIZATION",
+  "supersedes_lock_fingerprint": "5db11e845c4b1307d40ea9ba3598ead6ba2778a0370b0ce853c8408e8d21e8c5",
+  "supersedes_lock_revision": 2,
+  "supersedes_lock_sha256": "fe8846fd80e879b497c8ef68568aa9f83a5ad339e0a29e8113afc36577eb3e4c",
+  "supersession_reason": "AUTHORIZATION_VERIFIER_BINDING_PROVENANCE_DEFECT",
+  "track_id": "ZERO_PERTURBATION_TRACK"
+}
