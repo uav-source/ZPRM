@@ -1,0 +1,41 @@
+{
+  "ANALYSIS_ACCOUNTING_BUG_MISSING_SOLVER_SUCCESS_FIELD": false,
+  "ANALYSIS_ACCOUNTING_BUG_WRONG_STATUS_MAPPING": true,
+  "ANALYSIS_SUMMARY_SOLVER_ACCOUNTING_INCONSISTENT_WITH_FORMAL_ROWS": true,
+  "OPEN3D_FORMAL_SOLVER_NONCONVERGENCE_COUNT": 0,
+  "PCL_FINITE_BUT_NATIVE_NONCONVERGED_COUNT": 0,
+  "REPORTED_SOLVER_NONCONVERGED_FINITE_COUNT": 360,
+  "TRUE_UNIQUE_SOLVER_NONCONVERGED_TRIAL_COUNT": "UNDETERMINABLE",
+  "UNIQUE_TRIAL_COUNT": 360,
+  "diagnostic_a": {
+    "by_backend": {
+      "OPEN3D_POINT_TO_PLANE": 0,
+      "PCL_POINT_TO_PLANE": 0
+    },
+    "definition": "finite_result=true AND scientific_status=SOLVER_NON_CONVERGENCE",
+    "total": 0
+  },
+  "diagnostic_b": {
+    "by_backend": {
+      "OPEN3D_POINT_TO_PLANE": 0,
+      "PCL_POINT_TO_PLANE": 0
+    },
+    "definition": "nonconvergence determined from frozen runner mapping and preserved formal status",
+    "scope": "formal adapter convergence; Open3D native stopping convergence remains unobservable",
+    "total": 0
+  },
+  "diagnostic_c": {
+    "by_backend": {
+      "OPEN3D_POINT_TO_PLANE": 180,
+      "PCL_POINT_TO_PLANE": 180
+    },
+    "definition": "locked analysis expression on solver_status",
+    "total": 360
+  },
+  "is_translation_plus_rotation_endpoint_double_count": false,
+  "schema": "fmb1_solver_count_reconciliation_v1",
+  "true_native_nonconvergence_bounds": {
+    "maximum": 180,
+    "minimum": 0
+  }
+}

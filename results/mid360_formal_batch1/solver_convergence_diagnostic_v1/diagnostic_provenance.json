@@ -1,0 +1,63 @@
+{
+  "analysis_result_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+  "analysis_result_tag_peeled_commit": "2302f3fe6de804c934e2131b8fc77a49424bd83b",
+  "execution_code_commit": "c2702b266c427e108209d476bb5e07c3292735c5",
+  "formal_rows_read": 360,
+  "formal_runner_calls": 0,
+  "frozen_artifacts_modified": false,
+  "frozen_checksum_verification_before_diagnostic": {
+    "locked_analysis_results": {
+      "entry_count": 18,
+      "failures": [],
+      "manifest_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/SHA256SUMS",
+      "manifest_sha256": "7addad715eca76b1a4ebfdb747a7b37718fa003a0985f33dfd18741e4ce11a02",
+      "status": "PASS"
+    },
+    "postrun_verification": {
+      "entry_count": 12,
+      "failures": [],
+      "manifest_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1/SHA256SUMS",
+      "manifest_sha256": "3c74ec99cd1c8dc979f93bb68261bf6cc2d3ba3da85534ea3c901786fd44fb82",
+      "status": "PASS"
+    },
+    "raw_execution": {
+      "entry_count": 743,
+      "failures": [],
+      "manifest_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_execution_v1/SHA256SUMS",
+      "manifest_sha256": "5a4829279f18350c61d3d03d77d3d9f638dba102cec0a503e7228e9420a87de5",
+      "status": "PASS"
+    }
+  },
+  "frozen_checksum_verification_after_diagnostic": {
+    "locked_analysis_results": {
+      "entry_count": 18,
+      "failures": [],
+      "manifest_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/SHA256SUMS",
+      "manifest_sha256": "7addad715eca76b1a4ebfdb747a7b37718fa003a0985f33dfd18741e4ce11a02",
+      "status": "PASS"
+    },
+    "postrun_verification": {
+      "entry_count": 12,
+      "failures": [],
+      "manifest_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1/SHA256SUMS",
+      "manifest_sha256": "3c74ec99cd1c8dc979f93bb68261bf6cc2d3ba3da85534ea3c901786fd44fb82",
+      "status": "PASS"
+    },
+    "raw_execution": {
+      "entry_count": 743,
+      "failures": [],
+      "manifest_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_execution_v1/SHA256SUMS",
+      "manifest_sha256": "5a4829279f18350c61d3d03d77d3d9f638dba102cec0a503e7228e9420a87de5",
+      "status": "PASS"
+    }
+  },
+  "generated_at_utc": "2026-08-20T13:16:24.609933Z",
+  "locked_analysis_calls": 0,
+  "locked_analysis_code_commit": "215a7961ed93dac9cf691e1e8ccd99d7ee868175",
+  "mode": "STRICT_READ_ONLY_FROZEN_ARTIFACT_DIAGNOSTIC",
+  "raw_execution_commit": "059e39533991d929a97ab208ad738643af82d09a",
+  "registration_calls": 0,
+  "repository_head": "2302f3fe6de804c934e2131b8fc77a49424bd83b",
+  "schema": "fmb1_solver_convergence_diagnostic_provenance_v1",
+  "scientific_statistics_added": false
+}

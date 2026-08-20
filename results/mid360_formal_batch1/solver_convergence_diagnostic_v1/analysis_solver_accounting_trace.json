@@ -1,0 +1,92 @@
+{
+  "endpoint_duplication_interpretation": {
+    "do_not_sum_across_station_scene_or_endpoints": true,
+    "reported_360_translation_station_sum_is_360_unique_trials": true,
+    "rotation_rad_and_deg_each_repeat_solver_count": true,
+    "translation_scene_sum_repeats_same_trials_at_scene_level": true
+  },
+  "exact_expression": "row.get('solver_status') not in ('CONVERGED', 'SUCCESS')",
+  "output_aggregation_inventory": {
+    "missingness_accounting": {
+      "distinct_values": [
+        10,
+        30
+      ],
+      "row_count": 48,
+      "rows_with_solver_count": 48,
+      "sum": 720
+    },
+    "rotation_scene_summaries": {
+      "distinct_values": [
+        30
+      ],
+      "row_count": 24,
+      "rows_with_solver_count": 24,
+      "sum": 720
+    },
+    "rotation_station_summaries": {
+      "distinct_values": [
+        10
+      ],
+      "row_count": 72,
+      "rows_with_solver_count": 72,
+      "sum": 720
+    },
+    "translation_scene_summaries": {
+      "distinct_values": [
+        30
+      ],
+      "row_count": 12,
+      "rows_with_solver_count": 12,
+      "sum": 360
+    },
+    "translation_station_summaries": {
+      "distinct_values": [
+        10
+      ],
+      "row_count": 36,
+      "rows_with_solver_count": 36,
+      "sum": 360
+    }
+  },
+  "schema": "fmb1_analysis_solver_accounting_trace_v1",
+  "stages": [
+    {
+      "evidence": "360 unique attempt-0001.json rows; each finite=true, scientific_status=COMPLETED, solver_status=completed_finite_correspondences",
+      "stage": "formal_result_rows"
+    },
+    {
+      "evidence": "schema validation adds schema_valid=true without changing solver fields",
+      "source": "formal_firewall_v1.py:142-164",
+      "stage": "firewall_load"
+    },
+    {
+      "evidence": "all 360 selected as FINITE_SCIENTIFIC_VALUE based on schema_valid, infrastructure_status, and finite_result",
+      "source": "authoritative_outcomes_v1.py:25-83",
+      "stage": "authoritative_selection"
+    },
+    {
+      "evidence": "solver_status not in uppercase CONVERGED/SUCCESS increments the counter",
+      "source": "descriptive_summary_v1.py:76-83",
+      "stage": "status_accounting"
+    },
+    {
+      "evidence": "36 disjoint translation station groups x 10 = reported aggregate 360",
+      "source": "locked_analysis_v1.py:190-229",
+      "stage": "station_summary"
+    },
+    {
+      "evidence": "12 scene summaries x 30 = the same 360 trial identities at another aggregation level",
+      "source": "locked_analysis_v1.py:236-264",
+      "stage": "scene_summary"
+    },
+    {
+      "evidence": "counts persist per station/scene; there is no canonical global native-convergence count field",
+      "source": "analysis_summary.json",
+      "stage": "analysis_summary"
+    }
+  ],
+  "uses_scientific_status": false,
+  "uses_solver_status": true,
+  "uses_solver_success_missing_default": false
+}

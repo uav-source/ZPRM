@@ -1,0 +1,78 @@
+{
+  "RESULT_SCHEMA_HAS_FINITE_RESULT": true,
+  "RESULT_SCHEMA_HAS_INFRASTRUCTURE_STATUS": true,
+  "RESULT_SCHEMA_HAS_SCIENTIFIC_STATUS": true,
+  "RESULT_SCHEMA_HAS_SOLVER_STATUS": true,
+  "RESULT_SCHEMA_HAS_SOLVER_SUCCESS": false,
+  "fields": {
+    "finite_result": {
+      "present": true,
+      "required": true,
+      "schema_definition": {
+        "type": "boolean"
+      }
+    },
+    "has_converged": {
+      "present": false,
+      "required": false,
+      "schema_definition": "MISSING_FIELD"
+    },
+    "has_converged_raw": {
+      "present": false,
+      "required": false,
+      "schema_definition": "MISSING_FIELD"
+    },
+    "infrastructure_status": {
+      "present": true,
+      "required": true,
+      "schema_definition": {
+        "enum": [
+          "OK",
+          "PROCESS_CRASH",
+          "FILE_READ_CORRUPTION",
+          "RESULT_SCHEMA_WRITE_FAILURE",
+          "PCL_EXECUTABLE_INFRASTRUCTURE_FAILURE"
+        ]
+      }
+    },
+    "iteration_count": {
+      "present": false,
+      "required": false,
+      "schema_definition": "MISSING_FIELD"
+    },
+    "scientific_status": {
+      "present": true,
+      "required": true,
+      "schema_definition": {
+        "enum": [
+          "COMPLETED",
+          "SOLVER_NON_CONVERGENCE",
+          "FINITE_SCIENTIFIC_FAILURE",
+          "NONFINITE_RESULT_RECORDED_WITHOUT_NONFINITE_TRANSFORM",
+          "NOT_EVALUATED_INFRASTRUCTURE_FAILURE"
+        ]
+      }
+    },
+    "solver_converged": {
+      "present": false,
+      "required": false,
+      "schema_definition": "MISSING_FIELD"
+    },
+    "solver_status": {
+      "present": true,
+      "required": true,
+      "schema_definition": {
+        "minLength": 1,
+        "type": "string"
+      }
+    },
+    "solver_success": {
+      "present": false,
+      "required": false,
+      "schema_definition": "MISSING_FIELD"
+    }
+  },
+  "schema": "fmb1_solver_schema_field_presence_v1",
+  "source_commit": "c2702b266c427e108209d476bb5e07c3292735c5",
+  "source_path": "experiments/mid360_formal_batch1/zero_perturbation_trial_result_schema_v1_1.json"
+}

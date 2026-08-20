@@ -1,0 +1,42 @@
+{
+  "FROZEN_RAW_POSES_AFFECTED": false,
+  "OPEN3D_NATIVE_CONVERGENCE_OBSERVABLE": false,
+  "PCL_ITERATION_COUNT_OBSERVABLE": false,
+  "PCL_NATIVE_CONVERGENCE_OBSERVABLE": true,
+  "POSTHOC_DIAGNOSTIC_IDENTIFIED_ACCOUNTING_DEFECT": true,
+  "PRIMARY_SCIENTIFIC_NUMERICAL_RESULTS_AFFECTED": false,
+  "REGISTRATION_RERUN_REQUIRED": false,
+  "SOLVER_CONVERGENCE_DIAGNOSIS": "ANALYSIS_ACCOUNTING_BUG_WRONG_STATUS_MAPPING + OPEN3D_NATIVE_CONVERGENCE_UNOBSERVABLE",
+  "SOLVER_STATUS_REPORTING_ONLY_AFFECTED": true,
+  "TRUE_UNIQUE_SOLVER_NONCONVERGED_COUNT": "UNDETERMINABLE",
+  "contributing_observability_limit": "OPEN3D_NATIVE_CONVERGENCE_UNOBSERVABLE",
+  "diagnostic_counts": {
+    "A_formal_scientific_status": {
+      "open3d": 0,
+      "pcl": 0,
+      "total": 0
+    },
+    "B_frozen_runner_semantics": {
+      "open3d_formal_proxy": 0,
+      "pcl_native": 0,
+      "total_formal_adapter": 0
+    },
+    "C_locked_analysis_expression": {
+      "open3d": 180,
+      "pcl": 180,
+      "total": 360
+    }
+  },
+  "key_evidence": [
+    "All 360 frozen rows are finite_result=true, scientific_status=COMPLETED, infrastructure_status=OK.",
+    "All 360 frozen rows have solver_status=completed_finite_correspondences.",
+    "The final schema omits solver_success, native convergence booleans, and iteration_count.",
+    "Locked analysis counts every finite solver_status other than exact uppercase CONVERGED/SUCCESS as nonconverged.",
+    "Open3D's wrapper boolean is only finite+correspondence_count>0, not a native stopping criterion.",
+    "PCL COMPLETED lineage proves has_converged=true for all 180 PCL trials; iteration count was not preserved."
+  ],
+  "primary_cause": "ANALYSIS_ACCOUNTING_BUG_WRONG_STATUS_MAPPING",
+  "recommended_next_action": "VERSIONED_REPORTING_CORRECTION_WITHOUT_REGISTRATION_RERUN",
+  "schema": "fmb1_solver_convergence_diagnostic_report_v1",
+  "status": "PASS_DIAGNOSTIC_COMPLETE_DEFECT_IDENTIFIED"
+}

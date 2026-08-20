@@ -1,0 +1,22 @@
+{
+  "FROZEN_RAW_POSES_AFFECTED": false,
+  "PRIMARY_SCIENTIFIC_NUMERICAL_RESULTS_AFFECTED": false,
+  "REGISTRATION_RERUN_REQUIRED": false,
+  "SOLVER_STATUS_REPORTING_ONLY_AFFECTED": true,
+  "confidence": "HIGH",
+  "cross_backend_rho_depends_on_convergence_flag": false,
+  "exact_p_0_7_depends_on_solver_success": false,
+  "primary_weak_rich_estimand_depends_on_solver_success": false,
+  "reason": "The only solver-related read in locked analysis is the descriptive accounting counter; finite endpoints and all numerical estimands are computed from preserved finite values.",
+  "reassociation_defined_endpoint_count": 360,
+  "reassociation_rho_p_depends_on_convergence_flag": false,
+  "rotation_finite_endpoint_count": 360,
+  "scene_summaries_depend_on_convergence_flag": false,
+  "schema": "fmb1_solver_paper_impact_assessment_v1",
+  "severity": {
+    "frozen_numerical_results": "NONE",
+    "solver_convergence_reporting": "HIGH"
+  },
+  "systematic_fraction_depends_on_convergence_flag": false,
+  "translation_finite_endpoint_count": 360
+}

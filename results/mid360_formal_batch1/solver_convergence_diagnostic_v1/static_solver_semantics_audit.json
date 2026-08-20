@@ -1,0 +1,67 @@
+{
+  "ANALYSIS_ACCOUNTING_BUG_MISSING_SOLVER_SUCCESS_FIELD": false,
+  "ANALYSIS_ACCOUNTING_BUG_WRONG_STATUS_MAPPING": true,
+  "RESULT_SCHEMA_CONVERGENCE_SEMANTICS_INSUFFICIENT": true,
+  "execution_code_commit": "c2702b266c427e108209d476bb5e07c3292735c5",
+  "locked_analysis": {
+    "all_frozen_solver_status_value": "completed_finite_correspondences",
+    "classification": "WRONG_STATUS_MAPPING",
+    "count_expression": "finite endpoint and solver_status not in ('CONVERGED', 'SUCCESS')",
+    "count_expression_lines": [
+      76,
+      83
+    ],
+    "source_path": "experiments/mid360_formal_batch1/locked_analysis/descriptive_summary_v1.py",
+    "uses_missing_solver_success_default": false,
+    "uses_scientific_status": false,
+    "uses_solver_success": false,
+    "why_360": "The lowercase semantic success string is not in the two-token uppercase allowlist, so all 360 finite translation trial rows are counted."
+  },
+  "locked_analysis_code_commit": "215a7961ed93dac9cf691e1e8ccd99d7ee868175",
+  "open3d": {
+    "OPEN3D_NATIVE_ITERATION_COUNT_OBSERVABLE": false,
+    "OPEN3D_NATIVE_TERMINATION_REASON_OBSERVABLE": false,
+    "OPEN3D_SOLVER_CONVERGED_IS_NATIVE_STOPPING_CRITERION": false,
+    "failure_reason_expression": "empty string if converged else termination reason",
+    "failure_reason_line": 99,
+    "interpretation": "The wrapper labels any finite result with at least one Open3D correspondence as converged; it does not expose Open3D's native stopping event.",
+    "iteration_count_expression": "-1",
+    "iteration_count_line": 94,
+    "native_max_iteration_observable": false,
+    "native_relative_fitness_stop_observable": false,
+    "native_relative_rmse_stop_observable": false,
+    "solver_converged_expression": "finite and correspondence_count > 0",
+    "solver_converged_lines": [
+      81,
+      86
+    ],
+    "source_path": "src/phase_a_harness/open3d_backend.py",
+    "termination_reason_expression": "completed_finite_correspondences if converged else open3d_invalid_result",
+    "termination_reason_lines": [
+      87,
+      98
+    ]
+  },
+  "pcl": {
+    "PCL_ITERATION_COUNT_OBSERVABLE": false,
+    "PCL_NATIVE_CONVERGENCE_OBSERVABLE": true,
+    "adapter_has_converged_expression": "bool(payload['has_converged_raw'])",
+    "adapter_has_converged_line": 241,
+    "adapter_iteration_count_expression": "int(payload['iteration_count'])",
+    "adapter_iteration_count_line": 255,
+    "adapter_raw_compatibility_check_line": 208,
+    "backend_payload_fields": [
+      "has_converged_raw",
+      "has_converged",
+      "iteration_count",
+      "failure_reason"
+    ],
+    "backend_produced_has_converged": true,
+    "backend_produced_iteration_count": true,
+    "formal_result_preserved_has_converged": false,
+    "formal_result_preserved_iteration_count": false,
+    "interpretation": "Native CLI convergence enters runner solver_success and is recoverable logically from finite+COMPLETED; iteration_count is dropped before the formal row and cannot be recovered.",
+    "source_path": "src/phase_a_harness/pcl_backend.py"
+  },
+  "schema": "fmb1_static_solver_semantics_audit_v1"
+}

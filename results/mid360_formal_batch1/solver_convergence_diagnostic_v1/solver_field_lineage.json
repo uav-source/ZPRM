@@ -1,0 +1,108 @@
+{
+  "open3d": [
+    {
+      "field": "BackendResult.solver_converged",
+      "preserved": true,
+      "stage": "backend",
+      "value_semantics": "finite and correspondence_count > 0"
+    },
+    {
+      "field": "solver_success",
+      "preserved": true,
+      "stage": "execution_adapter",
+      "value_semantics": "bool(result.solver_converged)"
+    },
+    {
+      "field": "solver_success",
+      "preserved": true,
+      "stage": "core_dict",
+      "value_semantics": "adapter proxy boolean"
+    },
+    {
+      "field": "scientific_status",
+      "preserved": true,
+      "stage": "_scientific_result",
+      "value_semantics": "COMPLETED iff finite and solver_success"
+    },
+    {
+      "field": "solver_success",
+      "preserved": false,
+      "stage": "final_formal_json",
+      "value_semantics": "MISSING_FIELD"
+    },
+    {
+      "field": "solver_status",
+      "preserved": true,
+      "stage": "final_formal_json",
+      "value_semantics": "constructed backend termination_reason"
+    }
+  ],
+  "pcl": [
+    {
+      "field": "has_converged_raw",
+      "preserved": true,
+      "stage": "native_cli_payload",
+      "value_semantics": "native CLI convergence boolean"
+    },
+    {
+      "field": "PclBackendResult.has_converged",
+      "preserved": true,
+      "stage": "backend_adapter",
+      "value_semantics": "bool(payload['has_converged_raw'])"
+    },
+    {
+      "field": "solver_success",
+      "preserved": true,
+      "stage": "execution_adapter",
+      "value_semantics": "bool(result.has_converged)"
+    },
+    {
+      "field": "solver_success",
+      "preserved": true,
+      "stage": "core_dict",
+      "value_semantics": "native PCL convergence boolean"
+    },
+    {
+      "field": "scientific_status",
+      "preserved": true,
+      "stage": "_scientific_result",
+      "value_semantics": "COMPLETED iff finite and solver_success"
+    },
+    {
+      "field": "solver_success",
+      "preserved": false,
+      "stage": "final_formal_json",
+      "value_semantics": "MISSING_FIELD"
+    },
+    {
+      "field": "solver_status",
+      "preserved": true,
+      "stage": "final_formal_json",
+      "value_semantics": "failure_reason or completed_finite_correspondences/solver_non_convergence"
+    },
+    {
+      "field": "iteration_count",
+      "preserved": false,
+      "stage": "final_formal_json",
+      "value_semantics": "MISSING_FIELD"
+    }
+  ],
+  "runner_evidence": {
+    "backend_mapping_lines": [
+      506,
+      508,
+      529,
+      534
+    ],
+    "result_metrics_lines": [
+      616,
+      627
+    ],
+    "scientific_status_mapping_lines": [
+      630,
+      638
+    ],
+    "solver_success_omitted_from_result_metrics": true
+  },
+  "schema": "fmb1_solver_field_lineage_v1"
+}

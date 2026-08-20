@@ -1,0 +1,83 @@
+{
+  "backends": {
+    "OPEN3D_POINT_TO_PLANE": {
+      "diagnostic_a_formal_status_nonconverged": 0,
+      "diagnostic_b_frozen_runner_semantics_nonconverged": 0,
+      "diagnostic_c_locked_analysis_expression_nonconverged": 180,
+      "finite_result_counts": {
+        "true": 180
+      },
+      "formal_field_presence_counts": {
+        "finite_result": 180,
+        "has_converged": 0,
+        "has_converged_raw": 0,
+        "infrastructure_status": 180,
+        "iteration_count": 0,
+        "scientific_status": 180,
+        "solver_converged": 0,
+        "solver_status": 180,
+        "solver_success": 0
+      },
+      "infrastructure_status_counts": {
+        "OK": 180
+      },
+      "planned": 180,
+      "scientific_status_counts": {
+        "COMPLETED": 180
+      },
+      "solver_status_counts": {
+        "completed_finite_correspondences": 180
+      }
+    },
+    "PCL_POINT_TO_PLANE": {
+      "diagnostic_a_formal_status_nonconverged": 0,
+      "diagnostic_b_frozen_runner_semantics_nonconverged": 0,
+      "diagnostic_c_locked_analysis_expression_nonconverged": 180,
+      "finite_result_counts": {
+        "true": 180
+      },
+      "formal_field_presence_counts": {
+        "finite_result": 180,
+        "has_converged": 0,
+        "has_converged_raw": 0,
+        "infrastructure_status": 180,
+        "iteration_count": 0,
+        "scientific_status": 180,
+        "solver_converged": 0,
+        "solver_status": 180,
+        "solver_success": 0
+      },
+      "infrastructure_status_counts": {
+        "OK": 180
+      },
+      "planned": 180,
+      "scientific_status_counts": {
+        "COMPLETED": 180
+      },
+      "solver_status_counts": {
+        "completed_finite_correspondences": 180
+      }
+    }
+  },
+  "core_table": [
+    {
+      "COMPLETED": 180,
+      "SOLVER_NON_CONVERGENCE": 0,
+      "analysis_reported_nonconverged": 180,
+      "backend": "OPEN3D_POINT_TO_PLANE",
+      "finite": 180,
+      "planned": 180
+    },
+    {
+      "COMPLETED": 180,
+      "SOLVER_NON_CONVERGENCE": 0,
+      "analysis_reported_nonconverged": 180,
+      "backend": "PCL_POINT_TO_PLANE",
+      "finite": 180,
+      "planned": 180
+    }
+  ],
+  "formal_row_count": 360,
+  "schema": "fmb1_solver_status_counts_by_backend_v1",
+  "unique_trial_count": 360
+}
