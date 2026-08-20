@@ -1,0 +1,200 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_analysis_contract_determinacy_audit_c1_c2_v1",
+  "audit_id": "FMB1_ZERO_PERTURBATION_LOCKED_ANALYSIS_DETERMINACY_AUDIT_C1_C2_V1",
+  "status": "PASS_FULLY_DETERMINATE_C1_PLUS_C2",
+  "audited_at_utc": "2026-08-20T10:49:55Z",
+  "starting_commit": "364c0ae76801c373d9ea6a4d9dd36e2fdf211e09",
+  "c2_annotated_tag": "freeze/fmb1-zero-perturbation-analysis-determinacy-c2",
+  "c2_tag_object": "b0491f91723f726f22cb5137e0d044ef9f03d120",
+  "clarification_phase": "BLINDED_POSTRUN_PRE_LOCKED_SCIENTIFIC_ANALYSIS",
+  "audit_scope": {
+    "allowed_contract_inputs_only": true,
+    "formal_trial_result_files_opened": 0,
+    "real_formal_scientific_values_read": 0,
+    "real_scientific_aggregation_count": 0,
+    "real_weak_rich_comparison_count": 0,
+    "real_p_value_computation_count": 0,
+    "backend_execution_count": 0,
+    "capture_radius_execution_count": 0
+  },
+  "source_bindings": {
+    "c1_contract": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d"
+    },
+    "c1_protocol": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "9982193c3c4c2a6cda77c8db858fd73e73f61da7eb7ffe651610e5b1ed1c0b4c"
+    },
+    "c1_missingness": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.json",
+      "sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb"
+    },
+    "historical_audit": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit.json",
+      "sha256": "6153aadc46ef321770494b62321a19b75a896439407b7cc69daed7799cfe692d",
+      "status": "RETAINED_UNCHANGED_HISTORICAL_FAIL_CLOSED_AUDIT"
+    },
+    "c2": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_determinacy_clarification_v1_1_r1_c2.json",
+      "sha256": "a446d069436c2972a11316e8a709aeb3c4265817b5e9889fa9583275ffc7be6b",
+      "commit": "364c0ae76801c373d9ea6a4d9dd36e2fdf211e09"
+    },
+    "c2_basis": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/c2_clarification_basis.json",
+      "sha256": "2b813f2189fa7de73c360b62e67694222b239224455b4396e790143e52caa7bd"
+    },
+    "c2_independent_verification": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/c2_independent_verification.json",
+      "sha256": "d89f41788c822d49185b1d42b2703eb7ed879dc827b7d684fe26934095d7c251",
+      "status": "PASS"
+    },
+    "postrun_verification": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1/postrun_independent_verification.json",
+      "sha256": "8067cc8735fd5b2a849bce8dd3839a59b87cd7cac716009892be622903084f90",
+      "status": "PASS"
+    }
+  },
+  "classification_definitions": {
+    "FULLY_DETERMINED": "The frozen C1+C2 sources directly and uniquely specify the required algorithm and undefined behavior.",
+    "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE": "The frozen C1+C2 sources uniquely specify the rule through an explicit versioned cross-reference.",
+    "DESCRIPTIVE_ONLY_NO_INFERENCE_REQUIRED": "The frozen sources explicitly limit the output to descriptive reporting without formal inference."
+  },
+  "determinacy_items": [
+    {
+      "id": 1,
+      "rule": "primary translation scene summary",
+      "classification": "FULLY_DETERMINED",
+      "resolution": "C1 fixes 30-snapshot median/q25/q75/q95 with linear quantiles, three station medians, and complete-coverage gates."
+    },
+    {
+      "id": 2,
+      "rule": "primary Weak/Rich estimand",
+      "classification": "FULLY_DETERMINED",
+      "resolution": "C1 fixes median(three Weak scene medians)-median(three Rich scene medians), separately by backend."
+    },
+    {
+      "id": 3,
+      "rule": "exact primary permutation",
+      "classification": "FULLY_DETERMINED",
+      "resolution": "C1 fixes all 20 three-versus-three scene allocations and one-sided p=count(stat_perm>=stat_obs)/20 without correction."
+    },
+    {
+      "id": 4,
+      "rule": "rotation secondary analysis",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C1 explicitly applies the same scene-first summaries and exact 20-allocation procedure while retaining secondary status."
+    },
+    {
+      "id": 5,
+      "rule": "cross-backend scene Spearman",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C1+C1-missingness fix SciPy spearmanr average ranks, 6/6 completeness, and constant/incomplete null behavior."
+    },
+    {
+      "id": 6,
+      "rule": "cross-backend station Spearman",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C1+C1-missingness fix SciPy spearmanr average ranks, 18/18 completeness, and constant/incomplete null behavior."
+    },
+    {
+      "id": 7,
+      "rule": "snapshot translation direction cosine",
+      "classification": "FULLY_DETERMINED",
+      "resolution": "C1 fixes paired finite nonzero translation-vector direction cosine and explicit zero/missing statuses as descriptive-only."
+    },
+    {
+      "id": 8,
+      "rule": "scene-ordering agreement",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C2 fixes all 15 pairwise sign comparisons, four exhaustive tie/concordance classes, agreement fraction, strict match, and descriptive-only role."
+    },
+    {
+      "id": 9,
+      "rule": "reassociation scene median turnover",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C2 maps every unqualified formal turnover to correspondence_turnover and retains accepted_source_turnover as a secondary descriptive companion."
+    },
+    {
+      "id": 10,
+      "rule": "reassociation scene-level association",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C1 fixes scene-level Spearman and completeness; C2 fixes correspondence_turnover as its turnover endpoint."
+    },
+    {
+      "id": 11,
+      "rule": "within-scene centered association",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C2 fixes median-centering of both correspondence_turnover and translation_norm_m followed by pooled 180-pair SciPy Spearman rho, without asymptotic formal p-value."
+    },
+    {
+      "id": 12,
+      "rule": "registered stratified sensitivity permutation",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C2 fixes abs(centered Spearman rho), per-backend PCG64(20260820), exactly 10,000 within-scene draws, exceedance >=, and p=(b+1)/10001."
+    },
+    {
+      "id": 13,
+      "rule": "systematic fraction station value",
+      "classification": "FULLY_DETERMINED",
+      "resolution": "C1 fixes the 10-vector formula, zero denominator=0.0, and incomplete null behavior."
+    },
+    {
+      "id": 14,
+      "rule": "systematic fraction scene value",
+      "classification": "FULLY_DETERMINED",
+      "resolution": "C1 fixes median of exactly three defined station fractions and incomplete-scene null behavior."
+    },
+    {
+      "id": 15,
+      "rule": "systematic Weak/Rich comparison",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C2 fixes Weak-minus-Rich group-median difference and six scene outputs as SECONDARY_DESCRIPTIVE_MECHANISTIC_COMPARISON with no hypothesis test or p-value."
+    },
+    {
+      "id": 16,
+      "rule": "missingness",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C1 missingness clarification fixes all trial accounting, completeness gates, explicit null statuses, and retry boundaries; C2 leaves it unchanged."
+    },
+    {
+      "id": 17,
+      "rule": "available-case descriptive rules",
+      "classification": "DESCRIPTIVE_ONLY_NO_INFERENCE_REQUIRED",
+      "resolution": "C1 permits labeled available-case summaries with N only and forbids their use as formal summaries or inference."
+    },
+    {
+      "id": 18,
+      "rule": "solver/nonfinite accounting",
+      "classification": "DETERMINED_BY_EXPLICIT_CROSS_REFERENCE",
+      "resolution": "C1 fixes earliest valid scientific outcome, retention of finite solver non-convergence, nonretryable scientific nonfinite outcomes, and unresolved infrastructure denominators."
+    }
+  ],
+  "resolved_root_definitions": [
+    "SCENE_ORDERING_AGREEMENT_STATISTIC_UNDEFINED",
+    "FORMAL_TURNOVER_ENDPOINT_UNDEFINED",
+    "CENTERED_ASSOCIATION_STATISTIC_UNDEFINED",
+    "REGISTERED_CENTERED_PERMUTATION_STATISTIC_UNDEFINED",
+    "SYSTEMATIC_WEAK_RICH_COMPARISON_RULE_UNDEFINED"
+  ],
+  "hidden_choice_audit": {
+    "new_implicit_undefined_choice_count": 0,
+    "primary_analysis_changed": false,
+    "effect_direction_used_for_definition": false,
+    "actual_correlation_used_for_definition": false,
+    "actual_p_value_used_for_definition": false,
+    "systematic_formal_p_value_added": false,
+    "centered_permutation_confused_with_primary_exact_permutation": false
+  },
+  "gate": {
+    "audited_required_rule_count": 18,
+    "required_under_specified_count": 0,
+    "unresolved_root_definition_count": 0,
+    "FMB1_ANALYSIS_DETERMINACY_C2_ACTIVE": true,
+    "FMB1_LOCKED_ANALYSIS_CONTRACT_DETERMINATE": true,
+    "READY_FOR_LOCKED_ANALYSIS_IMPLEMENTATION_AND_FREEZE": true,
+    "LOCKED_ANALYSIS_IMPLEMENTATION_CREATED": false,
+    "LOCKED_ANALYSIS_LOCK_ISSUED": false,
+    "READY_FOR_LOCKED_SCIENTIFIC_ANALYSIS": false
+  }
+}

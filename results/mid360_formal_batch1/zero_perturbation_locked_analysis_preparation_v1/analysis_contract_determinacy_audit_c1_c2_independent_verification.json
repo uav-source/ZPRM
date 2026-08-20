@@ -1,0 +1,32 @@
+{
+  "schema": "mid360_fmb1_analysis_contract_determinacy_reaudit_independent_verification_v1",
+  "status": "PASS",
+  "pass": true,
+  "frozen_verifier_commit": "364c0ae76801c373d9ea6a4d9dd36e2fdf211e09",
+  "frozen_verifier_tag": "freeze/fmb1-zero-perturbation-analysis-determinacy-c2",
+  "c2_sha256": "a446d069436c2972a11316e8a709aeb3c4265817b5e9889fa9583275ffc7be6b",
+  "c2_independent_verification_sha256": "d89f41788c822d49185b1d42b2703eb7ed879dc827b7d684fe26934095d7c251",
+  "reaudit_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit_c1_c2.json",
+  "reaudit_sha256": "bb9e821efac1db457facdfaa8857f10ccb8edc4a6e7cde8eb1b201449b8675b6",
+  "independent_check_count": 5,
+  "independent_checks": [
+    "REAUDIT_STATUS_PASS",
+    "REAUDIT_BINDS_C1_AND_C2",
+    "REAUDIT_ALL_18_ROWS_DETERMINATE",
+    "REAUDIT_ZERO_UNRESOLVED_AND_IMPLEMENTATION_READY",
+    "REAUDIT_RESULT_BLIND_ZERO_COUNTERS"
+  ],
+  "required_under_specified_count": 0,
+  "unresolved_root_definition_count": 0,
+  "new_implicit_undefined_choice_count": 0,
+  "primary_analysis_changed": false,
+  "systematic_formal_p_value_added": false,
+  "centered_permutation_confused_with_primary_exact_permutation": false,
+  "formal_trial_result_files_read": 0,
+  "real_scientific_aggregation_count": 0,
+  "real_weak_rich_comparison_count": 0,
+  "real_p_value_count": 0,
+  "FMB1_LOCKED_ANALYSIS_CONTRACT_DETERMINATE": true,
+  "READY_FOR_LOCKED_ANALYSIS_IMPLEMENTATION_AND_FREEZE": true,
+  "READY_FOR_LOCKED_SCIENTIFIC_ANALYSIS": false
+}
