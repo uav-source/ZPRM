@@ -1,0 +1,26 @@
+[
+  {
+    "backend": "OPEN3D_POINT_TO_PLANE",
+    "draw_count": 10000,
+    "extreme_count": 0,
+    "observed_statistic": 0.7376914925357778,
+    "p_value": 9.999000099990002e-05,
+    "p_value_denominator": 10001,
+    "rng": "numpy.random.Generator(numpy.random.PCG64(20260820))",
+    "scene_strata_preserved": true,
+    "seed": 20260820,
+    "status": "SECONDARY_STRATIFIED_MONTE_CARLO_PERMUTATION_SENSITIVITY"
+  },
+  {
+    "backend": "PCL_POINT_TO_PLANE",
+    "draw_count": 10000,
+    "extreme_count": 0,
+    "observed_statistic": 0.7611716411000339,
+    "p_value": 9.999000099990002e-05,
+    "p_value_denominator": 10001,
+    "rng": "numpy.random.Generator(numpy.random.PCG64(20260820))",
+    "scene_strata_preserved": true,
+    "seed": 20260820,
+    "status": "SECONDARY_STRATIFIED_MONTE_CARLO_PERMUTATION_SENSITIVITY"
+  }
+]

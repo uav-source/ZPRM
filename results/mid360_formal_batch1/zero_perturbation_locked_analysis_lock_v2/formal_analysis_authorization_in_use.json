@@ -1,0 +1,11 @@
+{
+  "REAL_VALUES_ALREADY_UNBLINDED": true,
+  "analysis_code_commit": "215a7961ed93dac9cf691e1e8ccd99d7ee868175",
+  "analysis_lock_fingerprint": "407114966420e471ebb4f50229eb980c9da8c304ce3479fa3ac36960407953ac",
+  "authorization_id": "FMB1_ZP_LOCKED_ANALYSIS_AUTH_AA7F1D6E3A237D7C526397C680ECC0B1",
+  "authorization_sha256": "5ebf997e1a683408bf469d4f0017bd8a3fbe922f0ee9ce0cadb2f489a0000ca7",
+  "first_real_value_read_utc": "2026-08-20T12:42:10.033024Z",
+  "lifecycle_state": "IN_USE",
+  "reusable": false,
+  "schema": "fmb1_formal_analysis_authorization_in_use_v1"
+}

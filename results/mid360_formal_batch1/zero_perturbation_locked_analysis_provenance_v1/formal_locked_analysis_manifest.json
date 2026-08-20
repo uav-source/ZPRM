@@ -1,0 +1,132 @@
+{
+  "schema": "fmb1_zero_perturbation_locked_scientific_analysis_provenance_v1",
+  "status": "FORMAL_LOCKED_SCIENTIFIC_ANALYSIS_COMPLETE",
+  "frozen_at_utc": "2026-08-20T12:47:18Z",
+  "repository_pre_analysis_commit": "65f2b6ea4c977ea3161f6ecc1c31d05894f1f494",
+  "analysis_code_commit": "215a7961ed93dac9cf691e1e8ccd99d7ee868175",
+  "analysis_lock": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_lock_v2/locked_analysis_lock_v2.json",
+    "sha256": "5796f70ca9b5e58d729ada5ace3d817d913aea24d7c2132e8984dadc4df2311c",
+    "fingerprint": "407114966420e471ebb4f50229eb980c9da8c304ce3479fa3ac36960407953ac",
+    "independent_lock_verification": "PASS"
+  },
+  "authorization": {
+    "authorization_id": "FMB1_ZP_LOCKED_ANALYSIS_AUTH_AA7F1D6E3A237D7C526397C680ECC0B1",
+    "candidate_sha256": "ca973386adac6f60599ab4a20e906b3a06b861d943952c9030298de535808698",
+    "final_authorization_sha256": "5ebf997e1a683408bf469d4f0017bd8a3fbe922f0ee9ce0cadb2f489a0000ca7",
+    "candidate_independent_verification": "PASS",
+    "published_authorization_firewall_preflight": "PASS_AUTHORIZED_FORMAL_READ_BOUNDARY",
+    "lifecycle_state": "CONSUMED",
+    "reusable": false,
+    "first_real_value_read_utc": "2026-08-20T12:42:10.033024Z",
+    "analysis_completed_utc": "2026-08-20T12:42:13.709795Z",
+    "analysis_success": true,
+    "prepare_count": 1,
+    "publish_count": 1,
+    "real_analysis_execution_count": 1
+  },
+  "formal_input": {
+    "raw_execution_commit": "059e39533991d929a97ab208ad738643af82d09a",
+    "raw_execution_sha256sums_sha256": "5a4829279f18350c61d3d03d77d3d9f638dba102cec0a503e7228e9420a87de5",
+    "raw_sha256_verification_after_analysis": "PASS",
+    "postrun_verification_commit": "18bb94e62761f5193da8cdc5509c470cb4983244",
+    "postrun_sha256sums_sha256": "3c74ec99cd1c8dc979f93bb68261bf6cc2d3ba3da85534ea3c901786fd44fb82",
+    "postrun_sha256_verification_after_analysis": "PASS",
+    "formal_result_files_read": 360,
+    "formal_input_bytes_unchanged": true,
+    "w04_rows": 0,
+    "old_w02_attempt1_rows": 0,
+    "w02_attempts_present": [2]
+  },
+  "analysis_accounting": {
+    "planned_trials": 360,
+    "authoritative_outcomes": 360,
+    "open3d_outcomes": 180,
+    "pcl_outcomes": 180,
+    "finite_translation_endpoints": 360,
+    "finite_rotation_endpoints": 360,
+    "solver_nonconverged_finite_outcomes": 360,
+    "scientific_nonfinite_outcomes": 0,
+    "unresolved_infrastructure_failures": 0,
+    "resolved_infrastructure_attempts": 0,
+    "reassociation_undefined_endpoints": 0,
+    "capture_radius_rows": 0
+  },
+  "result_validation": {
+    "frozen_output_schema_validation": "PASS",
+    "frozen_output_sha256sums_verification": "PASS",
+    "nonfinite_json_token_count": 0,
+    "independent_calculation_spot_check": "PASS",
+    "independent_calculation_spot_check_count": 22,
+    "INDEPENDENT_REAL_ANALYSIS_RESULT_VERIFIER_BOUND": false,
+    "independent_result_verifier_status": "NOT_BOUND_BY_ANALYSIS_LOCK_V2"
+  },
+  "output": {
+    "root": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1",
+    "frozen_wrapper_manifest_semantics": "analysis_summary.json",
+    "analysis_summary_sha256": "b23c303e013ef5194d109b997a35876153140f8ad911dfa5188b6b0d53c1f869",
+    "receipt_analysis_output_manifest_sha256": "b23c303e013ef5194d109b997a35876153140f8ad911dfa5188b6b0d53c1f869",
+    "sha256sums_sha256": "7addad715eca76b1a4ebfdb747a7b37718fa003a0985f33dfd18741e4ce11a02",
+    "file_count_including_sha256sums": 19,
+    "row_counts": {
+      "translation_scene_summaries": 12,
+      "translation_station_summaries": 36,
+      "translation_exact_permutations": 40,
+      "rotation_scene_summaries": 24,
+      "rotation_station_summaries": 72,
+      "rotation_exact_permutations": 80,
+      "cross_backend_scene_pairs": 15,
+      "cross_backend_station_pairs": 18,
+      "snapshot_direction_cosines": 180,
+      "reassociation_scene_summaries": 12,
+      "reassociation_centered_rows": 360,
+      "reassociation_centered_permutation_draws": 20000,
+      "systematic_station_values": 36,
+      "systematic_scene_values": 12,
+      "analysis_missingness_inventory": 48
+    },
+    "files_sha256": {
+      "analysis_missingness_inventory.csv": "fa2b3532f7cbba2f8cf3072fdbf269934b292db6f09c298c6d7825d76e09ff2c",
+      "analysis_summary.json": "b23c303e013ef5194d109b997a35876153140f8ad911dfa5188b6b0d53c1f869",
+      "analysis_summary.md": "f8d1af183fa68d3b2107bd1167a7c6a79ab7fe268235430fa1b37a7d7862f006",
+      "cross_backend_scene_pairs.csv": "de56d6ed1fb1043558e1fe73ebd502b0c73fccb2abcc4f2b6c3370e6faf86ec8",
+      "cross_backend_station_pairs.csv": "a7359abc8af9c00633b3928766a418a3dd39e9a63fce63b9608b1b3be5618463",
+      "reassociation_centered_permutation_draws.csv": "5861a5a9940c359269d9ed409da9a06b3159489d73016b36cd30b0e6bd54e899",
+      "reassociation_centered_permutation_summary.json": "dcbf7b978aeaccc76f0ce4d1d4015994a4fb61058a122d3a63f4c71161d4b1e5",
+      "reassociation_centered_rows.csv": "15c7ce6822e45e2d26393ac4dc1a561f742e132b1e2dba62a0f7d2106ef4d725",
+      "reassociation_scene_summaries.csv": "47bbee5a140025377c3818776504ddbbb2447c6ea4bf38d66551c6e627f4da1e",
+      "rotation_exact_permutations.csv": "6b9ff40953fe60a64361465fb45e02a4247b118744cb61bd1f372acd0a4b98be",
+      "rotation_scene_summaries.csv": "c5bdbbad64986da97bff9f6fd07879dfa6b6dbdf6140d0ba82660bd1b456483a",
+      "rotation_station_summaries.csv": "703936e7c9cbff2103dd3fed41a09b0ab71c047a23498fbc5b7fad7ce7a490e3",
+      "snapshot_direction_cosines.csv": "c8a59eb7bced5a3ea425e395080f3421303d52fdaaab1d91ecdf85f2b9a37ffe",
+      "systematic_scene_values.csv": "cde079d4f227f2d22c75b57404bfd55a6e88fe209efd87f98992951b46f64a07",
+      "systematic_station_values.csv": "474ac676c84f7408e5eaa43ae07e9bbc55cc9541726dc858cbe49d1d6c89db0f",
+      "translation_exact_permutations.csv": "0feeefba4f0f2ab72954232036a822b1f7388b0375242ffab5d9495eddde6f2e",
+      "translation_scene_summaries.csv": "888fb5f8d336b1cb62f0671a9f18ca73e178663c88ea69c48838f536094bd532",
+      "translation_station_summaries.csv": "9397d9814807a472206a30cb003c804d326980483bd1a8d5dc2deda8d203b847"
+    }
+  },
+  "scientific_scope": {
+    "highest_independent_unit": "scene",
+    "scene_count": 6,
+    "station_count": 18,
+    "snapshot_count": 180,
+    "backend_count": 2,
+    "physical_reference_semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+    "capture_radius_status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+    "synthetic_transfer_status": "MODEL_TRANSFER_NOT_COMPATIBLE",
+    "conclusion_threshold_status": "CONCLUSION_THRESHOLD_NOT_PREDEFINED"
+  },
+  "legacy_deviation_provenance": {
+    "LEGACY_SYNTHETIC_DEBUG_REGISTRATION_TEST_DEVIATION": true,
+    "FMB1_FORMAL_RESULT_CONTAMINATION": false,
+    "LOCKED_ANALYSIS_CONTAMINATION": false,
+    "FORMAL_SCIENTIFIC_VALUE_READ_BEFORE_FREEZE": false
+  },
+  "registration_execution_during_analysis": {
+    "open3d_registration_calls": 0,
+    "pcl_registration_calls": 0,
+    "other_registration_calls": 0,
+    "icp_trials": 0
+  }
+}
