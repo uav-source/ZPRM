@@ -24,6 +24,8 @@ __pycache__/
 /zero_perturbation_data/
 /zero_perturbation_runtime/
 /zero_perturbation_runtime_archive/
+/bags/
+/archive/invalid_acquisition/
 
 # The Degen-LIO nested import retains the complete, seed-free fixture audit.
 # The unmodified standalone rules are archived as .gitignore.source.

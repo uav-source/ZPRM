@@ -1,0 +1,176 @@
+{
+  "schema": "mid360_fmb1_prebackend_replacement_plan_v1",
+  "decision_id": "FMB1_REPLACE_W02_WITH_W04_PREBACKEND",
+  "decision_status": "REPLACEMENT_PLANNED_NOT_ACQUIRED",
+  "decision_timestamp_local": "2026-08-19T23:33:07+08:00",
+  "decision_timestamp_utc": "2026-08-19T15:33:07+00:00",
+  "decision_timestamp": "2026-08-19T15:33:07+00:00",
+  "timezone": "Asia/Shanghai",
+  "FORMAL_AUTHORITY": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "actual_registration_trials_at_decision": 0,
+  "rejected_candidate_scene_id": "FMB1_W02",
+  "rejection_reason": "GEOMETRY_ONLY_INELIGIBLE",
+  "replacement_scene_id": "FMB1_W04",
+  "semantic_candidate_label": "WEAK_CANDIDATE",
+  "decision_before_any_icp": true,
+  "formal_trial_count_at_decision": 0,
+  "stations": [
+    {
+      "station_id": "FMB1_W04_S01",
+      "map_target_s": 20.0,
+      "map_minimum_s": 19.0,
+      "map_duration_target_s": 20.0,
+      "map_duration_min_s": 19.0,
+      "gap_target_s": 12.0,
+      "gap_minimum_s": 10.0,
+      "gap_min_s": 10.0,
+      "query_target_s": 15.0,
+      "query_minimum_s": 14.0,
+      "query_duration_target_s": 15.0,
+      "query_duration_min_s": 14.0
+    },
+    {
+      "station_id": "FMB1_W04_S02",
+      "map_target_s": 20.0,
+      "map_minimum_s": 19.0,
+      "map_duration_target_s": 20.0,
+      "map_duration_min_s": 19.0,
+      "gap_target_s": 12.0,
+      "gap_minimum_s": 10.0,
+      "gap_min_s": 10.0,
+      "query_target_s": 15.0,
+      "query_minimum_s": 14.0,
+      "query_duration_target_s": 15.0,
+      "query_duration_min_s": 14.0
+    },
+    {
+      "station_id": "FMB1_W04_S03",
+      "map_target_s": 20.0,
+      "map_minimum_s": 19.0,
+      "map_duration_target_s": 20.0,
+      "map_duration_min_s": 19.0,
+      "gap_target_s": 12.0,
+      "gap_minimum_s": 10.0,
+      "gap_min_s": 10.0,
+      "query_target_s": 15.0,
+      "query_minimum_s": 14.0,
+      "query_duration_target_s": 15.0,
+      "query_duration_min_s": 14.0
+    }
+  ],
+  "decision_basis": {
+    "registration_derived_evidence_used": false,
+    "preregistration_allowed_reason": "GEOMETRY_ONLY_INELIGIBLE",
+    "observed_failure_reason": "SEMANTIC_CANDIDATE_GEOMETRY_CLASS_MISMATCH",
+    "source_scene_id": "FMB1_W02",
+    "source_semantic_candidate_label": "WEAK_CANDIDATE",
+    "source_final_geometry_class": "RICH",
+    "source_geometry_admission_status": "GEOMETRY_REJECTED",
+    "source_snapshot_count": 30,
+    "source_station_count": 3,
+    "source_scene_metrics": {
+      "median_normalized_lambda_min_trans": 0.26409792279695593,
+      "median_condition_number_trans": 1.5182110865077014,
+      "median_spectral_entropy_trans": 0.9870726476118592
+    },
+    "source_evidence": {
+      "geometry_scene_summary": "results/mid360_formal_batch1/fmb1_geometry_scene_summary.csv",
+      "geometry_scene_summary_sha256": "0d7ece0f93364fe17eb7a69a1a9476a76b8b44704692d2b0b19967d7faf190a3",
+      "geometry_admission_manifest": "results/mid360_formal_batch1/fmb1_geometry_admission_manifest.json",
+      "geometry_admission_manifest_sha256": "b1081d8429e3383cf05d6d80c7557689140193fd3b9b1f9dc789e80746adf97d",
+      "pre_registration_readiness": "results/mid360_formal_batch1/fmb1_pre_registration_readiness.json",
+      "pre_registration_readiness_sha256": "90f9d9d26d202ffeb68edb172c4fb15ad042fb44e8c6e280467aa940c5ee1955"
+    }
+  },
+  "candidate_status": "FMB1_W02_RETAINED_GEOMETRY_REJECTED",
+  "exclusion_reason": "GEOMETRY_ONLY_INELIGIBLE",
+  "replacement_candidate": {
+    "scene_id": "FMB1_W04",
+    "semantic_candidate_label": "WEAK_CANDIDATE",
+    "physical_location": null,
+    "environment_description": null,
+    "operator": null,
+    "capture_date": null,
+    "location_metadata_status": "UNKNOWN_MUST_BE_RECORDED_IN_FIELD",
+    "W04_ACQUISITION_COMPLETE": false,
+    "W04_GEOMETRY_ADMITTED": false,
+    "stations": [
+      {
+        "station_id": "S01",
+        "map_capture_prefix": null,
+        "query_capture_prefix": null,
+        "status": "NOT_ACQUIRED"
+      },
+      {
+        "station_id": "S02",
+        "map_capture_prefix": null,
+        "query_capture_prefix": null,
+        "status": "NOT_ACQUIRED"
+      },
+      {
+        "station_id": "S03",
+        "map_capture_prefix": null,
+        "query_capture_prefix": null,
+        "status": "NOT_ACQUIRED"
+      }
+    ]
+  },
+  "capture_requirements": {
+    "new_capture_timestamps_required": true,
+    "reuse_or_overwrite_w02_bags_forbidden": true,
+    "failed_w02_assets_retained": true,
+    "stations_required": ["S01", "S02", "S03"],
+    "bags_per_station": 2,
+    "roles": ["MAP", "QUERY"],
+    "map_duration_target_s": 20.0,
+    "map_duration_min_s": 19.0,
+    "query_duration_target_s": 15.0,
+    "query_duration_min_s": 14.0,
+    "target_map_query_gap_s": 12.0,
+    "minimum_actual_gap_s": 10.0,
+    "map_query_overlap_allowed": false,
+    "required_frame_id": "livox_frame",
+    "required_pointcloud2_fields": ["x", "y", "z", "intensity", "tag", "line", "timestamp"],
+    "lidar_rate_range_hz": [9.5, 10.5],
+    "imu_rate_range_hz": [190.0, 210.0],
+    "required_motion_status": "NO_OBVIOUS_MOTION",
+    "mechanically_supported_required": true,
+    "handheld_forbidden": true
+  },
+  "prebackend_admission_requirements": {
+    "all_three_stations_must_pass_acquisition": true,
+    "target_construction": "STATIONARY_FRAME_DIRECT_MERGE_NO_REGISTRATION",
+    "query_contribution_to_target": 0,
+    "snapshot_quantiles": [0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95],
+    "snapshots_per_station": 10,
+    "scene_snapshot_count": 30,
+    "required_final_geometry_class": "WEAK",
+    "weak_gate": {
+      "median_normalized_lambda_min_trans_max": 0.12,
+      "median_condition_number_trans_min": 6.0,
+      "median_spectral_entropy_trans_max": 0.80,
+      "logic": "ALL"
+    },
+    "registration_derived_fields_forbidden": true,
+    "registration_calls_allowed": 0
+  },
+  "replacement_effect": {
+    "current_frozen_results_are_not_modified": true,
+    "current_frozen_registries_are_not_modified": true,
+    "w04_does_not_enter_the_batch_until_all_gates_pass": true,
+    "future_refreeze_must_replace_only_the_weak_scene_slot_held_by_w02": true,
+    "future_lock_and_fingerprint_required": true,
+    "automatic_registration_after_admission_forbidden": true
+  },
+  "hard_stops": [
+    "DO_NOT_INVENT_W04_LOCATION",
+    "DO_NOT_REUSE_OR_OVERWRITE_W02_BAGS",
+    "DO_NOT_ACCEPT_FEWER_THAN_THREE_PASSING_STATIONS",
+    "DO_NOT_ADMIT_INTERMEDIATE_OR_RICH_GEOMETRY_AS_WEAK",
+    "DO_NOT_USE_REGISTRATION_RESULTS_FOR_REPLACEMENT",
+    "DO_NOT_RUN_ANY_BACKEND_FROM_THIS_PLAN"
+  ]
+}

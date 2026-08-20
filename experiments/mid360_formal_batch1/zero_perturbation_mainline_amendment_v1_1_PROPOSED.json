@@ -1,0 +1,86 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_mainline_amendment_v1_1_proposed",
+  "document_version": "1.1-PROPOSED",
+  "status": "PROPOSED_NOT_ACTIVE",
+  "decision_timestamp_local": "2026-08-19T23:33:07+08:00",
+  "decision_timestamp_utc": "2026-08-19T15:33:07+00:00",
+  "timezone": "Asia/Shanghai",
+  "FORMAL_AUTHORITY": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "supersedes_active_preregistration": false,
+  "changes_active_protocol": false,
+  "backend_execution_permitted": false,
+  "proposal_scope": "SEPARATE_ZERO_PERTURBATION_MAINLINE_TRACK",
+  "active_authority_unchanged": {
+    "preregistration_path": "experiments/mid360_formal_batch1/preregistration.yaml",
+    "preregistration_sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "analysis_protocol_path": "experiments/mid360_formal_batch1/analysis_protocol.md",
+    "analysis_protocol_sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "active_future_track": "CAPTURE_BASIN",
+    "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+  },
+  "proposed_tracks": {
+    "ZERO_PERTURBATION_MAINLINE": {
+      "proposal_status": "INACTIVE",
+      "proposed_scientific_role": "PRIMARY",
+      "scientific_role": "SAME_STATION_IDENTITY_INITIALIZATION_BACKEND_BASELINE",
+      "scene_count_after_valid_replacement": 6,
+      "station_count_after_valid_replacement": 18,
+      "snapshot_count_after_valid_replacement": 180,
+      "backends": ["open3d", "pcl"],
+      "trials_per_snapshot": 2,
+      "planned_trial_count": 360,
+      "T0": [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]],
+      "one_locked_trial_per_snapshot_backend": true,
+      "scene_is_highest_independent_unit": true,
+      "snapshots_are_not_independent_scenes": true,
+      "proposed_primary_endpoints": [
+        "TRANSLATION_DISPLACEMENT_NORM_AND_COMPONENTS",
+        "ROTATION_DISPLACEMENT_ANGLE_AND_COMPONENTS",
+        "WEAK_VS_RICH_SCENE_COMPARISON",
+        "OPEN3D_VS_PCL_AGREEMENT",
+        "CORRESPONDENCE_REASSOCIATION_TURNOVER",
+        "SYSTEMATIC_DIRECTION_AND_COMPONENT_PATTERN"
+      ]
+    },
+    "CAPTURE_BASIN": {
+      "proposal_status": "INACTIVE_PROPOSED_OPTIONAL_SUPPLEMENTARY",
+      "proposed_scientific_role": "OPTIONAL_SUPPLEMENTARY",
+      "scientific_role": "PREREGISTERED_SIGNED_WEAK_STRONG_DIRECTION_CAPTURE_RADIUS",
+      "identity_substitution_for_perturbed_T0_forbidden": true,
+      "changed_by_this_proposal": false,
+      "existing_preregistration_authority_remains_unchanged": true
+    }
+  },
+  "common_result_integrity_requirements": {
+    "formal_trial_result_schema": "experiments/mid360_formal_batch1/formal_trial_result_schema_v1.json",
+    "exact_formal_lock_trial_id_required": true,
+    "track_must_match_lock": true,
+    "T0_must_match_lock": true,
+    "backend_must_match_lock": true,
+    "source_and_target_sha256_must_match_lock": true,
+    "backend_parameter_contract_sha256_must_match": true,
+    "all_numeric_results_must_be_finite": true,
+    "fixture_results_publishable": false
+  },
+  "activation_prerequisites": [
+    "W04_ACQUIRED_WITH_NONFABRICATED_FIELD_METADATA",
+    "W04_ACQUISITION_PASS_AT_ALL_THREE_STATIONS",
+    "W04_GEOMETRY_ADMITTED_AS_WEAK",
+    "EXACT_3_RICH_3_WEAK_18_STATION_180_SNAPSHOT_REFREEZE_VERIFIED",
+    "VERSIONED_PREREGISTRATION_AUTHORITY_APPROVES_ZERO_PERTURBATION_MAINLINE",
+    "NEW_PROTOCOL_ANCHOR_LOCK_AND_FINGERPRINT_BIND_THIS_TRACK",
+    "FORMAL_TRIAL_RESULT_SCHEMA_AND_VALIDATOR_TESTS_PASS",
+    "SEPARATE_EXPLICIT_FORMAL_REGISTRATION_AUTHORIZATION"
+  ],
+  "activation_forbidden_by_this_file": true,
+  "retrospective_relabeling_or_result_selection_forbidden": true,
+  "fixture_policy": {
+    "fixtures_may_exercise_schema_validation": true,
+    "fixtures_may_invoke_formal_publication": false,
+    "fixtures_count_as_formal_trials": false,
+    "fixture_publish_eligible_must_be_false": true
+  }
+}

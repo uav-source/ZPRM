@@ -1,0 +1,109 @@
+{
+  "schema": "mid360_fmb1_protocol_alignment_audit_v1",
+  "audit_status": "PREBACKEND_ALIGNMENT_REQUIRES_RESOLUTION",
+  "decision_timestamp_local": "2026-08-19T23:33:07+08:00",
+  "decision_timestamp_utc": "2026-08-19T15:33:07+00:00",
+  "timezone": "Asia/Shanghai",
+  "audit_scope": "READ_ONLY_PREBACKEND_PROTOCOL_ALIGNMENT",
+  "FORMAL_AUTHORITY": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "registration_execution_count": 0,
+  "authoritative_inputs": [
+    {
+      "path": "experiments/mid360_formal_batch1/preregistration.yaml",
+      "sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+      "role": "ACTIVE_FMB1_PREREGISTRATION_UNCHANGED"
+    },
+    {
+      "path": "experiments/mid360_formal_batch1/analysis_protocol.md",
+      "sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+      "role": "ACTIVE_FUTURE_ANALYSIS_DESCRIPTION_UNCHANGED"
+    },
+    {
+      "path": "frozen_assets/backend_parameter_contract.json",
+      "sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+      "role": "FROZEN_BACKEND_PARAMETER_CONTRACT_UNCHANGED"
+    }
+  ],
+  "observed_state": {
+    "pre_registration_ready": false,
+    "rich_scene_count": 3,
+    "weak_scene_count": 2,
+    "failed_scene_id": "FMB1_W02",
+    "failed_scene_reason": "SEMANTIC_CANDIDATE_GEOMETRY_CLASS_MISMATCH",
+    "replacement_allowed_under_preregistration": true,
+    "no_icp_attestation_pass": true,
+    "actual_registration_trials": 0,
+    "source_readiness_path": "results/mid360_formal_batch1/fmb1_pre_registration_readiness.json",
+    "source_readiness_sha256": "90f9d9d26d202ffeb68edb172c4fb15ad042fb44e8c6e280467aa940c5ee1955"
+  },
+  "findings": [
+    {
+      "finding_id": "ALIGN-001",
+      "status": "ALIGNED",
+      "subject": "W02 replacement timing and evidence",
+      "detail": "W02 was rejected by registration-free geometry before any backend result. Planning W04 under the preregistered GEOMETRY_ONLY_INELIGIBLE reason is prebackend and retains W02 assets."
+    },
+    {
+      "finding_id": "ALIGN-002",
+      "status": "ALIGNED_WITH_CONDITION",
+      "subject": "W04 admission",
+      "detail": "W04 may occupy the weak-scene slot only after three passing stations, 30 frozen snapshots, and all preregistered WEAK geometry gates pass. A new verified freeze and lock are required."
+    },
+    {
+      "finding_id": "ALIGN-003",
+      "status": "NOT_ALIGNED_WITH_ACTIVE_PREREGISTRATION",
+      "subject": "Proposed 360 identity-initialization mainline",
+      "detail": "The active preregistration defines a multi-magnitude, signed weak/strong-direction capture-basin experiment. It does not make one identity-initialization run per snapshot/backend the active formal scientific endpoint."
+    },
+    {
+      "finding_id": "ALIGN-004",
+      "status": "REQUIRES_EXPLICIT_TRACK_AND_LOCK_BINDING",
+      "subject": "T0 versus backend contract T_reference",
+      "detail": "The backend contract names the supplied initial transform T_reference. Current stationary MAP/QUERY canonical inputs use identity. Every future trial must bind an explicit track and exact locked T0; identity must not be silently substituted for a capture-basin perturbation."
+    },
+    {
+      "finding_id": "ALIGN-005",
+      "status": "ALIGNED",
+      "subject": "Backend identity and parameters",
+      "detail": "Only open3d 0.19.0+b012259 and pcl 1.15.1 under backend contract SHA256 6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9 are named; no scene-specific parameter adjustment is permitted."
+    },
+    {
+      "finding_id": "ALIGN-006",
+      "status": "HARD_STOP",
+      "subject": "Current readiness and authorization",
+      "detail": "FMB1 has only two admitted WEAK scenes, no active formal lock, and FORMAL_REGISTRATION_AUTHORIZED=false. No backend execution or publication is authorized."
+    },
+    {
+      "finding_id": "ALIGN-007",
+      "status": "PROPOSAL_ONLY",
+      "subject": "Zero-perturbation amendment v1.1",
+      "detail": "The companion v1.1 amendment is PROPOSED_NOT_ACTIVE and has no formal authority. It cannot modify, supersede, or reinterpret the active preregistration."
+    },
+    {
+      "finding_id": "ALIGN-008",
+      "status": "HARD_STOP",
+      "subject": "Fixture publication",
+      "detail": "Schema-valid fixture rows remain fixture-only and can never be published or counted as formal measurements."
+    }
+  ],
+  "required_before_any_backend_authorization": [
+    "ACQUIRE_W04_WITH_REAL_NONFABRICATED_FIELD_METADATA",
+    "PASS_W04_THREE_STATION_ACQUISITION_AUDIT",
+    "ADMIT_W04_AS_WEAK_USING_GEOMETRY_ONLY",
+    "REFREEZE_EXACT_3_RICH_3_WEAK_18_STATION_180_SNAPSHOT_INVENTORY",
+    "INDEPENDENTLY_VERIFY_ALL_NEW_HASH_BINDINGS",
+    "RESOLVE_ACTIVE_FORMAL_TRACK_IN_A_VERSIONED_PREREGISTRATION_DECISION",
+    "GENERATE_AND_AUTHENTICATE_A_NEW_FORMAL_LOCK_AND_FINGERPRINT",
+    "ISSUE_SEPARATE_EXPLICIT_FORMAL_REGISTRATION_AUTHORIZATION"
+  ],
+  "conclusion": {
+    "prebackend_replacement_planning_aligned": true,
+    "zero_perturbation_mainline_active": false,
+    "capture_basin_preregistration_unchanged": true,
+    "ready_for_separate_formal_registration_authorization": false,
+    "formal_registration_authorized": false
+  }
+}

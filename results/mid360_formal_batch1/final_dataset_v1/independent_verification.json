@@ -1,0 +1,72 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "W04_INCLUDED_IN_FINAL_SET": false,
+  "actual_formal_trials": 0,
+  "checksum_entry_count": 12,
+  "failure_count": 0,
+  "failures": [],
+  "final_admitted_bag_count": 36,
+  "invalid_attempt_bag_count": 6,
+  "pass": true,
+  "raw_candidate_bag_count": 42,
+  "recomputed_scene_geometry": {
+    "FMB1_R01": {
+      "condition_number_trans": 1.9981959744945692,
+      "final_geometry_class": "RICH",
+      "normalized_lambda_min_trans": 0.24484681172613515,
+      "spectral_entropy_trans": 0.9527074836636167
+    },
+    "FMB1_R02": {
+      "condition_number_trans": 2.5927717480786523,
+      "final_geometry_class": "RICH",
+      "normalized_lambda_min_trans": 0.18546358100898663,
+      "spectral_entropy_trans": 0.9376476654523527
+    },
+    "FMB1_R03": {
+      "condition_number_trans": 1.765244609133981,
+      "final_geometry_class": "RICH",
+      "normalized_lambda_min_trans": 0.2350942867800197,
+      "spectral_entropy_trans": 0.9758269086223962
+    },
+    "FMB1_W01": {
+      "condition_number_trans": 8.717839283940705,
+      "final_geometry_class": "WEAK",
+      "normalized_lambda_min_trans": 0.08095527833771524,
+      "spectral_entropy_trans": 0.7076452355122542
+    },
+    "FMB1_W02": {
+      "condition_number_trans": 14.962160828788019,
+      "final_geometry_class": "WEAK",
+      "normalized_lambda_min_trans": 0.05371477720168752,
+      "spectral_entropy_trans": 0.5565444059398812
+    },
+    "FMB1_W03": {
+      "condition_number_trans": 14.330203641138922,
+      "final_geometry_class": "WEAK",
+      "normalized_lambda_min_trans": 0.057751952792107486,
+      "spectral_entropy_trans": 0.5190202262391768
+    }
+  },
+  "rehashed_raw_count": 42,
+  "rehashed_source_count": 180,
+  "rehashed_target_count": 18,
+  "rich_scene_count": 3,
+  "scene_ids": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03",
+    "FMB1_W01",
+    "FMB1_W02",
+    "FMB1_W03"
+  ],
+  "schema": "mid360_fmb1_w02_attempt2_independent_verification_v1",
+  "snapshot_count": 180,
+  "station_count": 18,
+  "status": "PASS",
+  "target_count": 18,
+  "w02_attempt1_snapshot_count_in_final": 0,
+  "w02_attempt2_snapshot_count_in_final": 30,
+  "weak_scene_count": 3
+}

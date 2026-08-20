@@ -1,0 +1,14 @@
+{
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_registration_trials": 0,
+  "error": {
+    "message": "FMB1_MANIFEST_INVALID: scene FMB1_W02 geometry does not satisfy expected WEAK gate",
+    "type": "FormalBatchError"
+  },
+  "manifest_file_sha256": "5901be102cfd444bb103849c9b6f9370dedf12aa3aa809bc89f8137763077e50",
+  "manifest_path": "/home/lj/ZPRM/results/mid360_formal_batch1/fmb1_frozen_manifest.json",
+  "schema": "mid360_fmb1_independent_verification_report_v1",
+  "status": "FAIL",
+  "verification": null,
+  "verify_files": true
+}

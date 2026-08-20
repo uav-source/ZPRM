@@ -1,0 +1,23 @@
+{
+  "W02_INCLUDED_IN_FINAL_SET": false,
+  "W02_REJECTED_BEFORE_ANY_ICP": true,
+  "W02_RETAINED": true,
+  "W04_ADMISSION_OCCURRED_BEFORE_ANY_ICP": true,
+  "candidate_status": "GEOMETRY_REJECTED",
+  "decision_before_any_icp": true,
+  "decision_timestamp": "2026-08-19T15:33:07+00:00",
+  "formal_trial_count_at_admission": 0,
+  "formal_trial_count_at_decision": 0,
+  "formal_trial_count_at_w04_admission": 0,
+  "original_geometry_failure_reason": "SEMANTIC_CANDIDATE_GEOMETRY_CLASS_MISMATCH",
+  "rejected_candidate_scene_id": "FMB1_W02",
+  "rejection_reason": "GEOMETRY_ONLY_INELIGIBLE",
+  "replacement_decision_used_registration_evidence": false,
+  "replacement_scene_id": "FMB1_W04",
+  "schema": "mid360_fmb1_replacement_lineage_v1",
+  "w02_raw_bag_count": 6,
+  "w02_snapshot_count_excluded": 30,
+  "w04_admission_before_any_icp": true,
+  "w04_raw_bag_count": 6,
+  "w04_snapshot_count_admitted": 30
+}

@@ -1,0 +1,79 @@
+{
+  "FMB1_PRE_REGISTRATION_DATA_READY": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "NO_FORMAL_REGISTRATION": true,
+  "NO_ICP_ATTESTATION_PASS": true,
+  "READY_FOR_SEPARATE_FORMAL_REGISTRATION_AUTHORIZATION": false,
+  "acquisition_pass_station_count": 18,
+  "actual_registration_trials": 0,
+  "actual_trials": 0,
+  "all_livox_frame": true,
+  "all_r_candidates_rich": true,
+  "all_required_fields": true,
+  "all_w_candidates_weak": false,
+  "authenticated_bag_count": 36,
+  "bag_count": 36,
+  "failures": [
+    {
+      "failure_reason": "SEMANTIC_CANDIDATE_GEOMETRY_CLASS_MISMATCH",
+      "replacement_allowed_under_preregistration": true,
+      "scene_id": "FMB1_W02",
+      "station_id": null
+    }
+  ],
+  "formal_batch1_verifier_pass": false,
+  "gap_lt_10_count": 0,
+  "gap_range_s": [
+    11.122812986373901,
+    11.431724309921265
+  ],
+  "geometry_admitted_scenes": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03",
+    "FMB1_W01",
+    "FMB1_W03"
+  ],
+  "geometry_not_admitted_scenes": [
+    "FMB1_W02"
+  ],
+  "imu_rate_range_hz": [
+    199.74777584908003,
+    200.12122928163748
+  ],
+  "inventory_pair_gate_pass": true,
+  "lidar_rate_range_hz": [
+    9.999850647687873,
+    10.002626658608019
+  ],
+  "map_duration_range_s": [
+    19.71976637840271,
+    19.813581228256226
+  ],
+  "mapping_frozen": true,
+  "motion_suspected_bag_count": 0,
+  "overlap_count": 0,
+  "pair_count": 18,
+  "planned_open3d_trials": 180,
+  "planned_pcl_trials": 180,
+  "planned_total_trials": 360,
+  "query_contribution_total": 0,
+  "query_duration_range_s": [
+    14.72146487236023,
+    14.807947397232056
+  ],
+  "reacquisition_station_count": 0,
+  "registration_execution_count": 0,
+  "rich_scene_count": 3,
+  "rich_snapshot_count": 90,
+  "scene_count": 6,
+  "schema": "mid360_fmb1_pre_registration_readiness_v1",
+  "snapshot_count": 180,
+  "station_count": 18,
+  "target_count": 18,
+  "ten_snapshots_per_station": true,
+  "weak_scene_count": 2,
+  "weak_snapshot_count": 90
+}

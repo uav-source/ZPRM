@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:zprm:mid360:fmb1:formal-trial-result:v1",
+  "title": "Mid-360 FMB1 formal trial result v1",
+  "description": "Strict result-row contract. Validation does not authorize execution or publication; authorization and exact trial identity come from a separately authenticated formal lock.",
+  "type": "object",
+  "additionalProperties": false,
+  "x-document-status": "PREBACKEND_SCHEMA_ACTIVE_AUTHORITY_INACTIVE",
+  "x-formal-authority": false,
+  "x-formal-registration-authorized": false,
+  "x-backend-parameter-contract-sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+  "x-lock-binding-required": true,
+  "x-fixture-publication-forbidden": true,
+  "required": [
+    "schema",
+    "trial_id",
+    "batch_id",
+    "track",
+    "track_classification",
+    "execution_kind",
+    "fixture_only",
+    "publish_eligible",
+    "formal_authority",
+    "formal_lock_sha256",
+    "scene_id",
+    "station_id",
+    "snapshot_id",
+    "backend",
+    "backend_version",
+    "backend_parameter_contract_sha256",
+    "source_sha256",
+    "target_sha256",
+    "source_point_count",
+    "target_point_count",
+    "T0",
+    "T_est",
+    "trial_status",
+    "solver_status",
+    "solver_success",
+    "finite_transform",
+    "finite_result",
+    "pose_recovered",
+    "translation_vector_m",
+    "translation_norm_m",
+    "rotation_vector_deg",
+    "rotation_angle_deg",
+    "initial_correspondence_count",
+    "initial_correspondence_fraction",
+    "LOW_INITIAL_OVERLAP",
+    "final_correspondence_count",
+    "correspondence_turnover",
+    "fitness",
+    "final_residual_rmse",
+    "final_translation_error_m",
+    "final_rotation_error_deg",
+    "iteration_count",
+    "runtime_ms",
+    "failure_reason",
+    "created_at_utc",
+    "MEASUREMENT_FINAL_RESULT"
+  ],
+  "properties": {
+    "schema": {"const": "mid360_fmb1_formal_trial_result_v1"},
+    "trial_id": {"type": "string", "minLength": 1},
+    "batch_id": {"const": "FMB1"},
+    "track": {
+      "enum": ["ZERO_PERTURBATION_MAINLINE", "CAPTURE_BASIN"]
+    },
+    "track_classification": {
+      "enum": ["ZERO_PERTURBATION_TRACK", "CAPTURE_RADIUS_TRACK", "FIXTURE_ONLY"]
+    },
+    "execution_kind": {"enum": ["FORMAL", "FIXTURE"]},
+    "fixture_only": {"type": "boolean"},
+    "publish_eligible": {"type": "boolean"},
+    "formal_authority": {"type": "boolean"},
+    "formal_lock_sha256": {"$ref": "#/$defs/sha256"},
+    "scene_id": {"type": "string", "pattern": "^FMB1_[RW][0-9]{2}$"},
+    "station_id": {"enum": ["S01", "S02", "S03"]},
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^FMB1_[RW][0-9]{2}_S0[1-3]_Q(0[1-9]|10)$"
+    },
+    "backend": {"enum": ["open3d", "pcl"]},
+    "backend_version": {"type": "string", "minLength": 1},
+    "backend_parameter_contract_sha256": {
+      "const": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+    },
+    "source_sha256": {"$ref": "#/$defs/sha256"},
+    "target_sha256": {"$ref": "#/$defs/sha256"},
+    "source_point_count": {"type": "integer", "minimum": 1},
+    "target_point_count": {"type": "integer", "minimum": 1},
+    "T0": {"$ref": "#/$defs/matrix4x4"},
+    "T_est": {
+      "oneOf": [
+        {"$ref": "#/$defs/matrix4x4"},
+        {"type": "null"}
+      ]
+    },
+    "trial_status": {"enum": ["COMPLETED", "BACKEND_FAILURE"]},
+    "solver_status": {"enum": ["CONVERGED", "NOT_CONVERGED", "BACKEND_ERROR"]},
+    "solver_success": {"type": "boolean"},
+    "finite_transform": {"type": "boolean"},
+    "finite_result": {"type": "boolean"},
+    "pose_recovered": {"type": ["boolean", "null"]},
+    "translation_vector_m": {
+      "oneOf": [
+        {"$ref": "#/$defs/vector3"},
+        {"type": "null"}
+      ]
+    },
+    "translation_norm_m": {"type": ["number", "null"], "minimum": 0.0},
+    "rotation_vector_deg": {
+      "oneOf": [
+        {"$ref": "#/$defs/vector3"},
+        {"type": "null"}
+      ]
+    },
+    "rotation_angle_deg": {"type": ["number", "null"], "minimum": 0.0, "maximum": 180.0},
+    "initial_correspondence_count": {"type": "integer", "minimum": 0},
+    "initial_correspondence_fraction": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+    "LOW_INITIAL_OVERLAP": {"type": "boolean"},
+    "final_correspondence_count": {"type": ["integer", "null"], "minimum": 0},
+    "correspondence_turnover": {"type": ["number", "null"], "minimum": 0.0, "maximum": 1.0},
+    "fitness": {"type": ["number", "null"], "minimum": 0.0},
+    "final_residual_rmse": {"type": ["number", "null"], "minimum": 0.0},
+    "final_translation_error_m": {"type": ["number", "null"], "minimum": 0.0},
+    "final_rotation_error_deg": {"type": ["number", "null"], "minimum": 0.0},
+    "iteration_count": {"type": ["integer", "null"], "minimum": 0},
+    "runtime_ms": {"type": "number", "minimum": 0.0},
+    "failure_reason": {"type": ["string", "null"]},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "MEASUREMENT_FINAL_RESULT": {"const": false}
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "matrix4x4": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "array",
+        "minItems": 4,
+        "maxItems": 4,
+        "items": {"type": "number"}
+      }
+    },
+    "vector3": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"type": "number"}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"backend": {"const": "open3d"}}},
+      "then": {"properties": {"backend_version": {"const": "0.19.0+b012259"}}}
+    },
+    {
+      "if": {"properties": {"backend": {"const": "pcl"}}},
+      "then": {"properties": {"backend_version": {"const": "1.15.1"}}}
+    },
+    {
+      "if": {"properties": {"track": {"const": "ZERO_PERTURBATION_MAINLINE"}}},
+      "then": {
+        "properties": {
+          "T0": {
+            "const": [
+              [1.0, 0.0, 0.0, 0.0],
+              [0.0, 1.0, 0.0, 0.0],
+              [0.0, 0.0, 1.0, 0.0],
+              [0.0, 0.0, 0.0, 1.0]
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "track": {"const": "ZERO_PERTURBATION_MAINLINE"},
+          "execution_kind": {"const": "FORMAL"}
+        },
+        "required": ["track", "execution_kind"]
+      },
+      "then": {
+        "properties": {
+          "track_classification": {"const": "ZERO_PERTURBATION_TRACK"}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "track": {"const": "CAPTURE_BASIN"},
+          "execution_kind": {"const": "FORMAL"}
+        },
+        "required": ["track", "execution_kind"]
+      },
+      "then": {
+        "properties": {
+          "track_classification": {"const": "CAPTURE_RADIUS_TRACK"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"execution_kind": {"const": "FORMAL"}}},
+      "then": {
+        "properties": {
+          "fixture_only": {"const": false},
+          "publish_eligible": {"const": true},
+          "formal_authority": {"const": true}
+        }
+      },
+      "else": {
+        "properties": {
+          "track_classification": {"const": "FIXTURE_ONLY"},
+          "fixture_only": {"const": true},
+          "publish_eligible": {"const": false},
+          "formal_authority": {"const": false}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"trial_status": {"const": "COMPLETED"}}},
+      "then": {
+        "properties": {
+          "solver_status": {"enum": ["CONVERGED", "NOT_CONVERGED"]},
+          "finite_transform": {"const": true},
+          "finite_result": {"const": true},
+          "T_est": {"$ref": "#/$defs/matrix4x4"},
+          "pose_recovered": {"type": "boolean"},
+          "translation_vector_m": {"$ref": "#/$defs/vector3"},
+          "translation_norm_m": {"type": "number", "minimum": 0.0},
+          "rotation_vector_deg": {"$ref": "#/$defs/vector3"},
+          "rotation_angle_deg": {"type": "number", "minimum": 0.0, "maximum": 180.0},
+          "final_correspondence_count": {"type": "integer", "minimum": 0},
+          "correspondence_turnover": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+          "fitness": {"type": "number", "minimum": 0.0},
+          "final_residual_rmse": {"type": "number", "minimum": 0.0},
+          "final_translation_error_m": {"type": "number", "minimum": 0.0},
+          "final_rotation_error_deg": {"type": "number", "minimum": 0.0},
+          "iteration_count": {"type": "integer", "minimum": 0},
+          "failure_reason": {"type": "null"}
+        }
+      },
+      "else": {
+        "properties": {
+          "solver_status": {"const": "BACKEND_ERROR"},
+          "solver_success": {"const": false},
+          "finite_transform": {"const": false},
+          "finite_result": {"const": false},
+          "T_est": {"type": "null"},
+          "pose_recovered": {"type": "null"},
+          "translation_vector_m": {"type": "null"},
+          "translation_norm_m": {"type": "null"},
+          "rotation_vector_deg": {"type": "null"},
+          "rotation_angle_deg": {"type": "null"},
+          "final_correspondence_count": {"type": "null"},
+          "correspondence_turnover": {"type": "null"},
+          "fitness": {"type": "null"},
+          "final_residual_rmse": {"type": "null"},
+          "final_translation_error_m": {"type": "null"},
+          "final_rotation_error_deg": {"type": "null"},
+          "iteration_count": {"type": "null"},
+          "failure_reason": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$id": "https://zprm.local/schemas/fmb1/formal_batch1_lock_v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "FORMAL_LOCK_ISSUED": {
+      "const": true
+    },
+    "FORMAL_REGISTRATION_AUTHORIZED": {
+      "const": true
+    },
+    "LOCK_STATUS": {
+      "const": "ISSUED"
+    },
+    "admitted_scene_ids": {
+      "const": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W03",
+        "FMB1_W04"
+      ]
+    },
+    "hash_bindings": {
+      "required": [
+        "bags",
+        "targets",
+        "snapshots",
+        "geometry_manifest",
+        "backend_parameter_contract"
+      ],
+      "type": "object"
+    },
+    "schema": {
+      "const": "mid360_fmb1_formal_batch1_lock_v1"
+    },
+    "snapshot_count": {
+      "const": 180
+    },
+    "station_count": {
+      "const": 18
+    }
+  },
+  "required": [
+    "schema",
+    "LOCK_STATUS",
+    "FORMAL_LOCK_ISSUED",
+    "FORMAL_REGISTRATION_AUTHORIZED",
+    "admitted_scene_ids",
+    "station_count",
+    "snapshot_count",
+    "hash_bindings"
+  ],
+  "title": "FMB1 formal registration lock",
+  "type": "object"
+}

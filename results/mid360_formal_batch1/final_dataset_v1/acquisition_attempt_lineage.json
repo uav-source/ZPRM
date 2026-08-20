@@ -1,0 +1,23 @@
+{
+  "W04_IDENTIFIER_RETIRED": true,
+  "W04_INCLUDED_IN_FINAL_SET": false,
+  "correction_before_any_icp": true,
+  "correction_reason": "OPERATOR_CONFIRMED_WRONG_SCENE_LOCATION",
+  "correction_type": "PRE_BACKEND_ADMINISTRATIVE_ACQUISITION_CORRECTION",
+  "failed_attempts_retained": true,
+  "failed_raw_data_retained": true,
+  "formal_trial_count_at_correction": 0,
+  "invalid_attempt": 1,
+  "invalid_attempt_raw_bag_count": 6,
+  "invalid_attempt_reason": "WRONG_SCENE_LOCATION / OPERATOR_SCENE_SELECTION_ERROR",
+  "invalid_attempt_snapshot_count_in_final": 0,
+  "invalid_attempt_status": "INVALID_ACQUISITION",
+  "registration_evidence_used_for_correction": false,
+  "scene_id": "FMB1_W02",
+  "schema": "mid360_fmb1_w02_acquisition_attempt_lineage_v1",
+  "valid_attempt": 2,
+  "valid_attempt_final_geometry_class": "WEAK",
+  "valid_attempt_raw_bag_count": 6,
+  "valid_attempt_snapshot_count_in_final": 30,
+  "valid_attempt_status": "GEOMETRY_ADMITTED"
+}

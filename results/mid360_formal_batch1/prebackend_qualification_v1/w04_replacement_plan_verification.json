@@ -1,0 +1,23 @@
+{
+  "FMB1_W04_REPLACEMENT_PLAN_FROZEN": true,
+  "checklist_sha256": "5570f1af34c52974b7aba4256b4b7a36134d82764bd6817a99c34255f6e7a60c",
+  "decision_before_any_icp": true,
+  "formal_trial_count_at_decision": 0,
+  "new_bag_count_required": 6,
+  "plan_sha256": "11cb6dbcc79e685fa10cd58a75af69b5172bea94e5696f54ea523453c721c4ad",
+  "rejected_candidate_scene_id": "FMB1_W02",
+  "rejection_reason": "GEOMETRY_ONLY_INELIGIBLE",
+  "replacement_scene_id": "FMB1_W04",
+  "scene_location": "UNKNOWN",
+  "schema": "mid360_fmb1_w04_replacement_plan_verification_v1",
+  "semantic_candidate_label": "WEAK_CANDIDATE",
+  "sensor_height": "UNKNOWN",
+  "sensor_orientation": "UNKNOWN",
+  "station_count": 3,
+  "station_ids": [
+    "FMB1_W04_S01",
+    "FMB1_W04_S02",
+    "FMB1_W04_S03"
+  ],
+  "status": "PASS"
+}

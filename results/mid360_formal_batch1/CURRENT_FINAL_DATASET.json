@@ -1,0 +1,25 @@
+{
+  "schema": "mid360_fmb1_current_final_dataset_pointer_v1",
+  "status": "ACTIVE_PRE_BACKEND_FROZEN_DATASET",
+  "active_dataset_path": "results/mid360_formal_batch1/final_dataset_v1",
+  "active_manifest_sha256": "757a349da2952e49b311b1989891c2d289f234512ab6134c6da6de5a8866af48",
+  "scene_ids": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03",
+    "FMB1_W01",
+    "FMB1_W02",
+    "FMB1_W03"
+  ],
+  "correction_reason": "OPERATOR_CONFIRMED_WRONG_SCENE_LOCATION",
+  "correction_before_any_icp": true,
+  "formal_trial_count_at_correction": 0,
+  "w02_active_attempt": 2,
+  "w02_invalid_attempt_retained": 1,
+  "W04_IDENTIFIER_RETIRED": true,
+  "W04_INCLUDED_IN_FINAL_SET": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0
+}

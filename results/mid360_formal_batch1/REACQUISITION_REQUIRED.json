@@ -1,0 +1,14 @@
+{
+  "REACQUISITION_REQUIRED": false,
+  "items": [
+    {
+      "failure_reason": "SEMANTIC_CANDIDATE_GEOMETRY_CLASS_MISMATCH",
+      "replacement_allowed_under_preregistration": true,
+      "scene_id": "FMB1_W02",
+      "station_id": null
+    }
+  ],
+  "new_capture_timestamp_required": true,
+  "old_attempts_retained": true,
+  "schema": "mid360_fmb1_reacquisition_or_replacement_required_v1"
+}

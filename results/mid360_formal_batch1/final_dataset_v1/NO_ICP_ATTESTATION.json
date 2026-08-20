@@ -1,0 +1,21 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "NO_FORMAL_REGISTRATION": true,
+  "NO_ICP_ATTESTATION_PASS": true,
+  "actual_formal_trials": 0,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_registration_trials": 0,
+  "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+  "formal_trial_count": 0,
+  "open3d_registration_call_count": 0,
+  "other_registration_process_count": 0,
+  "pass": true,
+  "pcl_cli_invocation_count": 0,
+  "registration_execution_count": 0,
+  "schema": "mid360_fmb1_final_dataset_no_icp_attestation_v1",
+  "source_attestation_sha256": "130d1bda2cb1cf401fc85e43a884f3b6ee163f26d2909daad138871255509121"
+}

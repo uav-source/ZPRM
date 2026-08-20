@@ -1,0 +1,126 @@
+{
+  "FMB1_CURRENT_BLOCK_REASON": "MISSING_ADMITTED_WEAK_REPLACEMENT_W04",
+  "FMB1_CURRENT_FAILURE_CLOSURE_REAUTHENTICATED": true,
+  "FMB1_CURRENT_REAL_BATCH_BLOCKED": true,
+  "FMB1_PRE_REGISTRATION_DATA_READY": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "W02_DATA_RETAINED": true,
+  "W02_FINAL_GEOMETRY_CLASS": "RICH",
+  "W02_GEOMETRY_ADMISSION_STATUS": "GEOMETRY_REJECTED",
+  "W02_INCLUDED_IN_FUTURE_FORMAL_SET": false,
+  "W02_RAW_BAGS": [
+    {
+      "authenticated": true,
+      "bytes": 66704614,
+      "raw_absolute_path": "/home/lj/ZPRM/bags/mid360_20260819_213446_part1_20s.bag",
+      "role": "MAP",
+      "scene_id": "FMB1_W02",
+      "sha256": "2e679af241d0a798ee567009c573d96d0c3ed3509f22fe05b5ef89a573a1f945",
+      "station_id": "S01"
+    },
+    {
+      "authenticated": true,
+      "bytes": 49512752,
+      "raw_absolute_path": "/home/lj/ZPRM/bags/mid360_20260819_213446_part2_15s.bag",
+      "role": "QUERY",
+      "scene_id": "FMB1_W02",
+      "sha256": "4006d97ee438e2426fb81c1b75f66fb36fd9ce3a7e8efb2362d036906f4d81c7",
+      "station_id": "S01"
+    },
+    {
+      "authenticated": true,
+      "bytes": 66587084,
+      "raw_absolute_path": "/home/lj/ZPRM/bags/mid360_20260819_213744_part1_20s.bag",
+      "role": "MAP",
+      "scene_id": "FMB1_W02",
+      "sha256": "e363e46c23106395cf668cb0bdc5a1cbe00f93c70a2d4cacb01a5f32378fc610",
+      "station_id": "S02"
+    },
+    {
+      "authenticated": true,
+      "bytes": 50033560,
+      "raw_absolute_path": "/home/lj/ZPRM/bags/mid360_20260819_213744_part2_15s.bag",
+      "role": "QUERY",
+      "scene_id": "FMB1_W02",
+      "sha256": "58ef557c7dabafde6c34508647ed1018681f68c3efd16464e9a1694ad9b093dd",
+      "station_id": "S02"
+    },
+    {
+      "authenticated": true,
+      "bytes": 66363027,
+      "raw_absolute_path": "/home/lj/ZPRM/bags/mid360_20260819_214044_part1_20s.bag",
+      "role": "MAP",
+      "scene_id": "FMB1_W02",
+      "sha256": "011d7a5367370c70d9c37c6251d531b12b48f89ac6ecdca5f3ec06f8efc664b0",
+      "station_id": "S03"
+    },
+    {
+      "authenticated": true,
+      "bytes": 49877384,
+      "raw_absolute_path": "/home/lj/ZPRM/bags/mid360_20260819_214044_part2_15s.bag",
+      "role": "QUERY",
+      "scene_id": "FMB1_W02",
+      "sha256": "d0d3ca6245824577a9fd9236c3a21b224d13c2d44c94814ba5c8db87b5ed948f",
+      "station_id": "S03"
+    }
+  ],
+  "W02_RAW_BAG_COUNT": 6,
+  "W02_REJECTION_PRESERVED": true,
+  "W02_REJECTION_REASON": "GEOMETRY_ONLY_INELIGIBLE",
+  "W02_SOURCE_EVIDENCE_REASON": "SEMANTIC_CANDIDATE_GEOMETRY_CLASS_MISMATCH",
+  "W04_DATA_PRESENT": false,
+  "W04_GEOMETRY_ADMITTED": false,
+  "acquisition_pass_station_count": 18,
+  "actual_formal_trials": 0,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "admitted_rich_scene_count": 3,
+  "admitted_scene_count": 5,
+  "admitted_scenes": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03",
+    "FMB1_W01",
+    "FMB1_W03"
+  ],
+  "admitted_weak_scene_count": 2,
+  "authenticated_bag_count": 36,
+  "current_freeze_verifier_expected_failure": "FMB1_MANIFEST_INVALID: scene FMB1_W02 geometry does not satisfy expected WEAK gate",
+  "current_freeze_verifier_status": "FAIL",
+  "deep_verification_status": "PASS",
+  "existing_checksum_verification": {
+    "entry_count": 37,
+    "failure_count": 0,
+    "failures": [],
+    "manifest_path": "/home/lj/ZPRM/results/mid360_formal_batch1/SHA256SUMS",
+    "pass": true
+  },
+  "git_entry_state": {
+    "automatic_stash_performed": false,
+    "branch": "formal/mid360-fmb1-ingest-v1",
+    "head": "641f6c67848653845ba67daf65c0ab8351c40cb0",
+    "reset_or_rebase_performed": false,
+    "tracked_modifications_present": [
+      ".gitignore"
+    ],
+    "untracked_prior_fmb1_assets_present": true,
+    "worktree_clean": false
+  },
+  "protected_file_sha256": {
+    "analysis_protocol.md": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "backend_parameter_contract.json": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "preregistration.yaml": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb"
+  },
+  "provisional_snapshot_count": 180,
+  "qualification_branch": "formal/fmb1-prebackend-qualification-v1",
+  "raw_bag_bytes_rehashed": true,
+  "rejected_scenes": [
+    "FMB1_W02"
+  ],
+  "required_weak_scene_count": 3,
+  "schema": "mid360_fmb1_current_state_reauthentication_v1",
+  "station_pair_count": 18,
+  "status": "PASS"
+}

@@ -1,0 +1,31 @@
+{
+  "FMB1_W02_ATTEMPT2_ADMISSION_PASS": true,
+  "FMB1_W02_ATTEMPT2_FINAL_GEOMETRY_CLASS": "WEAK",
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "NO_FORMAL_REGISTRATION": true,
+  "actual_formal_trials": 0,
+  "failure_count": 0,
+  "failures": [],
+  "geometry_row_count": 30,
+  "pass": true,
+  "registration_guard": {
+    "blocked_process_attempt_count": 0,
+    "formal_trial_count": 0,
+    "guard_active_at_report": false,
+    "guard_was_activated": true,
+    "new_registration_processes": [],
+    "open3d_registration_call_count": 0,
+    "other_registration_process_count": 0,
+    "pass": true,
+    "pcl_cli_invocation_count": 0,
+    "registration_processes_at_guard_entry": [],
+    "registration_processes_at_report": [],
+    "registration_processes_observed": [],
+    "schema": "mid360_fmb1_no_registration_guard_stage_v1",
+    "status": "PASS"
+  },
+  "scene_count": 1,
+  "schema": "mid360_fmb1_w02_attempt2_deep_geometry_verification_v1",
+  "station_count": 3,
+  "status": "PASS"
+}

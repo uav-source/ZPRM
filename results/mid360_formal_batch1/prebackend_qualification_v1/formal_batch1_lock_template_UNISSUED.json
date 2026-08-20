@@ -1,0 +1,37 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "LOCK_STATUS": "UNISSUED",
+  "REASON": "W04_NOT_YET_ACQUIRED_OR_ADMITTED",
+  "TEMPLATE_ONLY": true,
+  "actual_formal_trials": 0,
+  "current_admitted_scene_ids": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03",
+    "FMB1_W01",
+    "FMB1_W03"
+  ],
+  "issuance_requirements": [
+    "ALL_BAG_SHA_VALID",
+    "ALL_TARGET_SHA_VALID",
+    "ALL_SNAPSHOT_SHA_VALID",
+    "GEOMETRY_MANIFEST_FROZEN",
+    "BACKEND_CONTRACT_UNCHANGED",
+    "WORKTREE_CLEAN",
+    "INDEPENDENT_VERIFIER_PASS",
+    "SEPARATE_FORMAL_REGISTRATION_AUTHORIZATION"
+  ],
+  "required_final_scene_ids": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03",
+    "FMB1_W01",
+    "FMB1_W03",
+    "FMB1_W04"
+  ],
+  "required_snapshot_count": 180,
+  "required_station_count": 18,
+  "schema": "mid360_fmb1_formal_batch1_lock_template_v1"
+}

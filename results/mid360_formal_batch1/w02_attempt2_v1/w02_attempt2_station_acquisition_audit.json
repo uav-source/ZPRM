@@ -1,0 +1,438 @@
+{
+  "W02_ATTEMPT2_ACQUISITION_PASS": true,
+  "schema": "mid360_fmb1_w02_attempt2_station_audit_v1",
+  "stations": [
+    {
+      "attempt": 2,
+      "attempt_status": "VALID_ACQUISITION",
+      "capture_prefix": "20260820_081749",
+      "map_audit": {
+        "ACCELERATION_UNIT_UNKNOWN": true,
+        "ACQUISITION_AUDIT_PASS": true,
+        "REVIEW_REQUIRED": false,
+        "SHA256": "fe31a72dba708601ea6b667624063343612811b0867c40e399ef8d2c9ece067c",
+        "acceleration_conversion_applied": false,
+        "all_pointcloud2_field_signatures_pass": true,
+        "bag_path": "/home/lj/ZPRM/bags/mid360_20260820_081749_part1_20s.bag",
+        "checks": {
+          "all_pointcloud2_field_signatures": true,
+          "duration": true,
+          "exact_topics": true,
+          "finite_points": true,
+          "frame_id": true,
+          "imu_integrity": true,
+          "imu_rate": true,
+          "lidar_payload": true,
+          "lidar_rate": true,
+          "obvious_motion": true,
+          "pointcloud2_fields": true,
+          "sha256": true,
+          "topic_types": true
+        },
+        "duration_s": 19.7661771774292,
+        "end_time": 1787185090.1336646,
+        "failure_reasons": [],
+        "finite_point_fraction": 1.0,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "frequencies_hz": {
+          "/livox/imu": 200.08927191628004,
+          "/livox/lidar": 9.999967904363329
+        },
+        "large_spike_count": 0,
+        "message_counts": {
+          "/livox/imu": 3956,
+          "/livox/lidar": 198
+        },
+        "motion_audit_status": "NO_OBVIOUS_MOTION",
+        "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+        "pointcloud2_fields": [
+          "intensity",
+          "line",
+          "tag",
+          "timestamp",
+          "x",
+          "y",
+          "z"
+        ],
+        "role": "MAP",
+        "schema": "mid360_formal_batch1_bag_audit_v1",
+        "start_time": 1787185070.3674874,
+        "topics": [
+          "/livox/imu",
+          "/livox/lidar"
+        ]
+      },
+      "map_bag_status": "PASS",
+      "map_raw_filename": "mid360_20260820_081749_part1_20s.bag",
+      "pair_audit": {
+        "FORMAL_PAIR_VALID": true,
+        "actual_gap_minimum_pass": true,
+        "actual_gap_s": 11.301142930984497,
+        "exclusion_reasons": [],
+        "map_end_timestamp": 1787185090.1336646,
+        "map_query_no_overlap": true,
+        "map_start_timestamp": 1787185070.3674874,
+        "query_end_timestamp": 1787185116.153374,
+        "query_start_timestamp": 1787185101.4348075,
+        "raw_data_retained": true,
+        "schema": "mid360_formal_batch1_pair_audit_v1",
+        "timing_pass": true
+      },
+      "pair_index": 1,
+      "query_audit": {
+        "ACCELERATION_UNIT_UNKNOWN": true,
+        "ACQUISITION_AUDIT_PASS": true,
+        "REVIEW_REQUIRED": false,
+        "SHA256": "75ea84ca9265dd8e584b2ffc6eedc029b6c80d946ccc10bc7baa340d6d726dec",
+        "acceleration_conversion_applied": false,
+        "all_pointcloud2_field_signatures_pass": true,
+        "bag_path": "/home/lj/ZPRM/bags/mid360_20260820_081749_part2_15s.bag",
+        "checks": {
+          "all_pointcloud2_field_signatures": true,
+          "duration": true,
+          "exact_topics": true,
+          "finite_points": true,
+          "frame_id": true,
+          "imu_integrity": true,
+          "imu_rate": true,
+          "lidar_payload": true,
+          "lidar_rate": true,
+          "obvious_motion": true,
+          "pointcloud2_fields": true,
+          "sha256": true,
+          "topic_types": true
+        },
+        "duration_s": 14.718566417694092,
+        "end_time": 1787185116.153374,
+        "failure_reasons": [],
+        "finite_point_fraction": 1.0,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "frequencies_hz": {
+          "/livox/imu": 200.01947991761187,
+          "/livox/lidar": 10.000638120687054
+        },
+        "large_spike_count": 0,
+        "message_counts": {
+          "/livox/imu": 2945,
+          "/livox/lidar": 147
+        },
+        "motion_audit_status": "NO_OBVIOUS_MOTION",
+        "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+        "pointcloud2_fields": [
+          "intensity",
+          "line",
+          "tag",
+          "timestamp",
+          "x",
+          "y",
+          "z"
+        ],
+        "role": "QUERY",
+        "schema": "mid360_formal_batch1_bag_audit_v1",
+        "start_time": 1787185101.4348075,
+        "topics": [
+          "/livox/imu",
+          "/livox/lidar"
+        ]
+      },
+      "query_bag_status": "PASS",
+      "query_raw_filename": "mid360_20260820_081749_part2_15s.bag",
+      "scene_id": "FMB1_W02",
+      "semantic_candidate_label": "WEAK_CANDIDATE",
+      "station_acquisition_status": "ACQUISITION_PASS",
+      "station_id": "S01"
+    },
+    {
+      "attempt": 2,
+      "attempt_status": "VALID_ACQUISITION",
+      "capture_prefix": "20260820_081954",
+      "map_audit": {
+        "ACCELERATION_UNIT_UNKNOWN": true,
+        "ACQUISITION_AUDIT_PASS": true,
+        "REVIEW_REQUIRED": false,
+        "SHA256": "686e48448ce46bdc5ca2bec5d611b22410d61007ff2203dda0e404347f9c907a",
+        "acceleration_conversion_applied": false,
+        "all_pointcloud2_field_signatures_pass": true,
+        "bag_path": "/home/lj/ZPRM/bags/mid360_20260820_081954_part1_20s.bag",
+        "checks": {
+          "all_pointcloud2_field_signatures": true,
+          "duration": true,
+          "exact_topics": true,
+          "finite_points": true,
+          "frame_id": true,
+          "imu_integrity": true,
+          "imu_rate": true,
+          "lidar_payload": true,
+          "lidar_rate": true,
+          "obvious_motion": true,
+          "pointcloud2_fields": true,
+          "sha256": true,
+          "topic_types": true
+        },
+        "duration_s": 19.787160634994507,
+        "end_time": 1787185214.8451402,
+        "failure_reasons": [],
+        "finite_point_fraction": 1.0,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "frequencies_hz": {
+          "/livox/imu": 200.0286990645891,
+          "/livox/lidar": 10.000441614278829
+        },
+        "large_spike_count": 0,
+        "message_counts": {
+          "/livox/imu": 3959,
+          "/livox/lidar": 198
+        },
+        "motion_audit_status": "NO_OBVIOUS_MOTION",
+        "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+        "pointcloud2_fields": [
+          "intensity",
+          "line",
+          "tag",
+          "timestamp",
+          "x",
+          "y",
+          "z"
+        ],
+        "role": "MAP",
+        "schema": "mid360_formal_batch1_bag_audit_v1",
+        "start_time": 1787185195.0579796,
+        "topics": [
+          "/livox/imu",
+          "/livox/lidar"
+        ]
+      },
+      "map_bag_status": "PASS",
+      "map_raw_filename": "mid360_20260820_081954_part1_20s.bag",
+      "pair_audit": {
+        "FORMAL_PAIR_VALID": true,
+        "actual_gap_minimum_pass": true,
+        "actual_gap_s": 11.184906005859375,
+        "exclusion_reasons": [],
+        "map_end_timestamp": 1787185214.8451402,
+        "map_query_no_overlap": true,
+        "map_start_timestamp": 1787185195.0579796,
+        "query_end_timestamp": 1787185240.8332534,
+        "query_start_timestamp": 1787185226.0300462,
+        "raw_data_retained": true,
+        "schema": "mid360_formal_batch1_pair_audit_v1",
+        "timing_pass": true
+      },
+      "pair_index": 2,
+      "query_audit": {
+        "ACCELERATION_UNIT_UNKNOWN": true,
+        "ACQUISITION_AUDIT_PASS": true,
+        "REVIEW_REQUIRED": false,
+        "SHA256": "94d65b3cdc2838f78e8f941b434380ca187255fb13dee738705367d81a838c51",
+        "acceleration_conversion_applied": false,
+        "all_pointcloud2_field_signatures_pass": true,
+        "bag_path": "/home/lj/ZPRM/bags/mid360_20260820_081954_part2_15s.bag",
+        "checks": {
+          "all_pointcloud2_field_signatures": true,
+          "duration": true,
+          "exact_topics": true,
+          "finite_points": true,
+          "frame_id": true,
+          "imu_integrity": true,
+          "imu_rate": true,
+          "lidar_payload": true,
+          "lidar_rate": true,
+          "obvious_motion": true,
+          "pointcloud2_fields": true,
+          "sha256": true,
+          "topic_types": true
+        },
+        "duration_s": 14.803207159042358,
+        "end_time": 1787185240.8332534,
+        "failure_reasons": [],
+        "finite_point_fraction": 1.0,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "frequencies_hz": {
+          "/livox/imu": 200.024222331531,
+          "/livox/lidar": 10.00078015996345
+        },
+        "large_spike_count": 0,
+        "message_counts": {
+          "/livox/imu": 2962,
+          "/livox/lidar": 148
+        },
+        "motion_audit_status": "NO_OBVIOUS_MOTION",
+        "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+        "pointcloud2_fields": [
+          "intensity",
+          "line",
+          "tag",
+          "timestamp",
+          "x",
+          "y",
+          "z"
+        ],
+        "role": "QUERY",
+        "schema": "mid360_formal_batch1_bag_audit_v1",
+        "start_time": 1787185226.0300462,
+        "topics": [
+          "/livox/imu",
+          "/livox/lidar"
+        ]
+      },
+      "query_bag_status": "PASS",
+      "query_raw_filename": "mid360_20260820_081954_part2_15s.bag",
+      "scene_id": "FMB1_W02",
+      "semantic_candidate_label": "WEAK_CANDIDATE",
+      "station_acquisition_status": "ACQUISITION_PASS",
+      "station_id": "S02"
+    },
+    {
+      "attempt": 2,
+      "attempt_status": "VALID_ACQUISITION",
+      "capture_prefix": "20260820_082207",
+      "map_audit": {
+        "ACCELERATION_UNIT_UNKNOWN": true,
+        "ACQUISITION_AUDIT_PASS": true,
+        "REVIEW_REQUIRED": false,
+        "SHA256": "46e76fbad2c7503d6629060ec1e19c77754542a236120090e3e705a37942e017",
+        "acceleration_conversion_applied": false,
+        "all_pointcloud2_field_signatures_pass": true,
+        "bag_path": "/home/lj/ZPRM/bags/mid360_20260820_082207_part1_20s.bag",
+        "checks": {
+          "all_pointcloud2_field_signatures": true,
+          "duration": true,
+          "exact_topics": true,
+          "finite_points": true,
+          "frame_id": true,
+          "imu_integrity": true,
+          "imu_rate": true,
+          "lidar_payload": true,
+          "lidar_rate": true,
+          "obvious_motion": true,
+          "pointcloud2_fields": true,
+          "sha256": true,
+          "topic_types": true
+        },
+        "duration_s": 19.734574556350708,
+        "end_time": 1787185348.4076066,
+        "failure_reasons": [],
+        "finite_point_fraction": 1.0,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "frequencies_hz": {
+          "/livox/imu": 200.0043116576755,
+          "/livox/lidar": 10.000205600918548
+        },
+        "large_spike_count": 0,
+        "message_counts": {
+          "/livox/imu": 3948,
+          "/livox/lidar": 198
+        },
+        "motion_audit_status": "NO_OBVIOUS_MOTION",
+        "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+        "pointcloud2_fields": [
+          "intensity",
+          "line",
+          "tag",
+          "timestamp",
+          "x",
+          "y",
+          "z"
+        ],
+        "role": "MAP",
+        "schema": "mid360_formal_batch1_bag_audit_v1",
+        "start_time": 1787185328.673032,
+        "topics": [
+          "/livox/imu",
+          "/livox/lidar"
+        ]
+      },
+      "map_bag_status": "PASS",
+      "map_raw_filename": "mid360_20260820_082207_part1_20s.bag",
+      "pair_audit": {
+        "FORMAL_PAIR_VALID": true,
+        "actual_gap_minimum_pass": true,
+        "actual_gap_s": 11.335923194885254,
+        "exclusion_reasons": [],
+        "map_end_timestamp": 1787185348.4076066,
+        "map_query_no_overlap": true,
+        "map_start_timestamp": 1787185328.673032,
+        "query_end_timestamp": 1787185374.489933,
+        "query_start_timestamp": 1787185359.7435298,
+        "raw_data_retained": true,
+        "schema": "mid360_formal_batch1_pair_audit_v1",
+        "timing_pass": true
+      },
+      "pair_index": 3,
+      "query_audit": {
+        "ACCELERATION_UNIT_UNKNOWN": true,
+        "ACQUISITION_AUDIT_PASS": true,
+        "REVIEW_REQUIRED": false,
+        "SHA256": "62636e25f4a6c453762de1b677c2ce0687ad51e3f57933b07b02a5be3f3f6d29",
+        "acceleration_conversion_applied": false,
+        "all_pointcloud2_field_signatures_pass": true,
+        "bag_path": "/home/lj/ZPRM/bags/mid360_20260820_082207_part2_15s.bag",
+        "checks": {
+          "all_pointcloud2_field_signatures": true,
+          "duration": true,
+          "exact_topics": true,
+          "finite_points": true,
+          "frame_id": true,
+          "imu_integrity": true,
+          "imu_rate": true,
+          "lidar_payload": true,
+          "lidar_rate": true,
+          "obvious_motion": true,
+          "pointcloud2_fields": true,
+          "sha256": true,
+          "topic_types": true
+        },
+        "duration_s": 14.746403217315674,
+        "end_time": 1787185374.489933,
+        "failure_reasons": [],
+        "finite_point_fraction": 1.0,
+        "frame_ids": [
+          "livox_frame"
+        ],
+        "frequencies_hz": {
+          "/livox/imu": 200.00997860238087,
+          "/livox/lidar": 10.001462482034682
+        },
+        "large_spike_count": 0,
+        "message_counts": {
+          "/livox/imu": 2950,
+          "/livox/lidar": 148
+        },
+        "motion_audit_status": "NO_OBVIOUS_MOTION",
+        "point_coordinate_unit": "ASSUMED_METERS_FROM_SCALE",
+        "pointcloud2_fields": [
+          "intensity",
+          "line",
+          "tag",
+          "timestamp",
+          "x",
+          "y",
+          "z"
+        ],
+        "role": "QUERY",
+        "schema": "mid360_formal_batch1_bag_audit_v1",
+        "start_time": 1787185359.7435298,
+        "topics": [
+          "/livox/imu",
+          "/livox/lidar"
+        ]
+      },
+      "query_bag_status": "PASS",
+      "query_raw_filename": "mid360_20260820_082207_part2_15s.bag",
+      "scene_id": "FMB1_W02",
+      "semantic_candidate_label": "WEAK_CANDIDATE",
+      "station_acquisition_status": "ACQUISITION_PASS",
+      "station_id": "S03"
+    }
+  ]
+}

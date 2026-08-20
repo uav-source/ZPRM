@@ -1,0 +1,149 @@
+{
+  "FMB1_CURRENT_BLOCK_REASON": "MISSING_ADMITTED_WEAK_REPLACEMENT_W04",
+  "FMB1_CURRENT_REAL_BATCH_BLOCKED": true,
+  "FMB1_PREBACKEND_EXECUTION_PATH_QUALIFIED": true,
+  "FMB1_PRE_REGISTRATION_DATA_READY": false,
+  "FMB1_W04_REPLACEMENT_PLAN_FROZEN": true,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_RUN_MATRIX_ISSUED": false,
+  "MEASUREMENT_FINAL_RESULT": false,
+  "NO_ICP_ATTESTATION_TONIGHT_PASS": true,
+  "PROPOSED_AMENDMENT_ACTIVE": false,
+  "actual_formal_trials": 0,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "analysis_hierarchy": {
+    "fixture_analysis_structure_pass": true,
+    "fixture_citation_allowed": false,
+    "fixture_publication_performed": false,
+    "highest_independent_unit": "scene",
+    "snapshots_treated_as_independent_scenes": false,
+    "station_and_snapshot_are_nested_repeats": true
+  },
+  "current_real_batch": {
+    "W02_DATA_RETAINED": true,
+    "W02_INCLUDED_IN_FUTURE_FORMAL_SET": false,
+    "W02_REJECTION_PRESERVED": true,
+    "acquisition_pass_station_count": 18,
+    "admitted_rich_scene_count": 3,
+    "admitted_scene_count": 5,
+    "admitted_scenes": [
+      "FMB1_R01",
+      "FMB1_R02",
+      "FMB1_R03",
+      "FMB1_W01",
+      "FMB1_W03"
+    ],
+    "admitted_weak_scene_count": 2,
+    "authenticated_bag_count": 36,
+    "provisional_snapshot_count": 180,
+    "rejected_scenes": [
+      "FMB1_W02"
+    ]
+  },
+  "current_real_preflight": {
+    "fail_closed_correctly": true,
+    "integrity_blocker_count": 0,
+    "pass": false,
+    "scientific_blocker_codes": [
+      "MISSING_ADMITTED_WEAK_REPLACEMENT_W04"
+    ],
+    "security_blocker_count": 0,
+    "status": "BLOCKED"
+  },
+  "fixture_execution": {
+    "actual_registration_execution_count": 0,
+    "detected_and_rejected_case_count": 6,
+    "planned_open3d_trials": 180,
+    "planned_pcl_trials": 180,
+    "planned_snapshot_count": 180,
+    "planned_total_trials": 360,
+    "resume_status": "PASS_FIXTURE_ONLY",
+    "status": "PASS_FIXTURE_ONLY"
+  },
+  "independent_verifier_pass": true,
+  "protocol_alignment": {
+    "active_hypotheses_are_capture_radius": true,
+    "active_perturbation_magnitudes_include_zero": false,
+    "active_primary_endpoints": [
+      "weak_direction_capture_radius",
+      "strong_direction_capture_radius"
+    ],
+    "active_zero_perturbation_primary_track": false,
+    "alignment_audit_status": "PREBACKEND_ALIGNMENT_REQUIRES_RESOLUTION",
+    "paper_zero_perturbation_mainline_offset_detected": true,
+    "proposal_formal_authority": false,
+    "proposal_status": "PROPOSED_NOT_ACTIVE"
+  },
+  "result_schema_qualification": {
+    "capture_track_cannot_masquerade_as_zero": true,
+    "fixture_cannot_publish": true,
+    "fixture_only_validation": true,
+    "formal_positive_result_persisted": false,
+    "invalid_backend_rejected": true,
+    "missing_field_rejected": true,
+    "nonfinite_rejected": true,
+    "status": "PASS",
+    "track_classifications": [
+      "ZERO_PERTURBATION_TRACK",
+      "CAPTURE_RADIUS_TRACK",
+      "FIXTURE_ONLY"
+    ],
+    "unlocked_identity_rejected": true,
+    "zero_track_nonidentity_t0_rejected": true
+  },
+  "schema": "mid360_fmb1_prebackend_qualification_summary_v1",
+  "status": "PASS",
+  "tests": {
+    "baseline_before_changes": {
+      "collected": 1300,
+      "errors": 0,
+      "failed": 0,
+      "passed": 1283,
+      "skipped": 17
+    },
+    "full_repository_after_changes": {
+      "collected": 1415,
+      "errors": 0,
+      "failed": 0,
+      "passed": 1397,
+      "skipped": 18
+    },
+    "mid360_formal_batch1_after_changes": {
+      "collected": 232,
+      "errors": 0,
+      "failed": 0,
+      "passed": 232,
+      "skipped": 0
+    }
+  },
+  "tomorrow_after_w04_pass": {
+    "automatic_backend_after_admission": false,
+    "can_enter_final_freeze_quickly": true,
+    "expected_final_scene_ids": [
+      "FMB1_R01",
+      "FMB1_R02",
+      "FMB1_R03",
+      "FMB1_W01",
+      "FMB1_W03",
+      "FMB1_W04"
+    ],
+    "final_lock_required": true,
+    "independent_verifier_required": true,
+    "separate_formal_registration_authorization_required": true
+  },
+  "w04_future_capture": {
+    "height": "UNKNOWN",
+    "location": "UNKNOWN",
+    "new_bag_count_required": 6,
+    "orientation": "UNKNOWN",
+    "station_count": 3,
+    "station_ids": [
+      "FMB1_W04_S01",
+      "FMB1_W04_S02",
+      "FMB1_W04_S03"
+    ]
+  }
+}

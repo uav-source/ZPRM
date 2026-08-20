@@ -1,0 +1,13 @@
+{
+  "schema": "mid360_fmb1_superseded_dataset_pointer_v1",
+  "status": "HISTORICAL_SUPERSEDED_NOT_ACTIVE",
+  "superseded_dataset_path": "results/mid360_formal_batch1/history/final_dataset_w04_replacement_superseded_v1",
+  "superseded_manifest_sha256": "75ade6fcaed1b20e6d626f9070c2bb3aa599673206f576a81139f507bdae366a",
+  "superseded_reason": "OPERATOR_CONFIRMED_WRONG_SCENE_LOCATION",
+  "superseded_by": "results/mid360_formal_batch1/final_dataset_v1",
+  "correction_before_any_icp": true,
+  "formal_trial_count_at_correction": 0,
+  "raw_evidence_retained": true,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0
+}

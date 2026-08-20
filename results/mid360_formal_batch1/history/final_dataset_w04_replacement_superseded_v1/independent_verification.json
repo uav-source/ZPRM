@@ -1,0 +1,46 @@
+{
+  "checks": {
+    "actual_formal_trials": 0,
+    "actual_open3d_trials": 0,
+    "actual_pcl_trials": 0,
+    "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "checksum_entry_count": 11,
+    "final_geometry_row_count": 180,
+    "final_raw_bag_count": 36,
+    "final_rich_scene_count": 3,
+    "final_scene_count": 6,
+    "final_snapshot_count": 180,
+    "final_station_count": 18,
+    "final_target_count": 18,
+    "final_weak_scene_count": 3,
+    "formal_lock_issued": false,
+    "formal_registration_authorized": false,
+    "query_contribution_total": 0,
+    "raw_candidate_bag_count": 42,
+    "rejected_raw_bag_count": 6,
+    "w02_snapshot_count": 0,
+    "w04_snapshot_count": 30,
+    "zero_perturbation_amendment_active": false
+  },
+  "failure_count": 0,
+  "formal_qualification": true,
+  "pass": true,
+  "registration_backend_imports_or_calls": 0,
+  "scene_geometry_classes": {
+    "FMB1_R01": "RICH",
+    "FMB1_R02": "RICH",
+    "FMB1_R03": "RICH",
+    "FMB1_W01": "WEAK",
+    "FMB1_W03": "WEAK",
+    "FMB1_W04": "WEAK"
+  },
+  "schema": "mid360_fmb1_w04_final_independent_verification_v1",
+  "status": "PASS",
+  "verify_checksums": true,
+  "verify_files": true,
+  "w04_recomputed_geometry": {
+    "median_condition_number_trans": 14.962160828788019,
+    "median_normalized_lambda_min_trans": 0.05371477720168752,
+    "median_spectral_entropy_trans": 0.5565444059398812
+  }
+}

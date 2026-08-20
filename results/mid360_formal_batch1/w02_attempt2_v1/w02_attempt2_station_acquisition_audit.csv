@@ -1,0 +1,4 @@
+scene_id,station_id,attempt,capture_prefix,status,gap_s,gap_pass,map_query_no_overlap,failure_reasons
+FMB1_W02,S01,2,20260820_081749,ACQUISITION_PASS,11.301142930984497,True,True,[]
+FMB1_W02,S02,2,20260820_081954,ACQUISITION_PASS,11.184906005859375,True,True,[]
+FMB1_W02,S03,2,20260820_082207,ACQUISITION_PASS,11.335923194885254,True,True,[]
