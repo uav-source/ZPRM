@@ -1,0 +1,17 @@
+{
+  "ANALYSIS_AUTHORIZATION_FIXTURE_QUALIFICATION_PASS": true,
+  "REAL_FORMAL_RESULT_FILES_READ": 0,
+  "REAL_P_VALUE_COUNT": 0,
+  "REAL_SCIENTIFIC_VALUES_READ": 0,
+  "REAL_WEAK_RICH_COMPARISON_COUNT": 0,
+  "REGISTRATION_BACKEND_CALLS": 0,
+  "candidate_cannot_directly_authorize": true,
+  "candidate_plus_verifier_cannot_authorize_before_publish": true,
+  "fixture_only": true,
+  "interruption_lifecycle_pass": true,
+  "pass": true,
+  "published_authorization_firewall_gate_pass": true,
+  "schema": "fmb1_analysis_authorization_fixture_qualification_v1",
+  "status": "PASS",
+  "success_lifecycle_pass": true
+}

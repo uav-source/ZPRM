@@ -1,0 +1,33 @@
+{
+  "ANALYSIS_CODE_REFREEZE_REQUIRED": false,
+  "EXTERNAL_AUTH_INFRA_CAN_SATISFY_FROZEN_FIREWALL": true,
+  "analysis_code_commit_binding": "authorization.analysis_code_commit must equal the FormalReadRequest analysis_code_commit and the lock LOCKED_ANALYSIS_CODE_COMMIT",
+  "analysis_lock_hash_binding": "authorization.analysis_lock_sha256 must equal SHA256(analysis_lock_dir/locked_analysis_lock_v1.json)",
+  "authorization_exact_path_for_v2": "/home/lj/ZPRM/results/mid360_formal_batch1/zero_perturbation_locked_analysis_lock_v2/formal_analysis_authorization.json",
+  "authorization_path_rule": "analysis_lock_dir/formal_analysis_authorization.json",
+  "candidate_filename": "formal_analysis_authorization.candidate.json",
+  "candidate_is_authority": false,
+  "compatibility_requirement": "Analysis Lock v2 must expose a regular, byte-identical locked_analysis_lock_v1.json compatibility view beside locked_analysis_lock_v2.json",
+  "formal_firewall_sha256": "0678e4c4365725033671b118b1f917548a8089d27bfff09f87fd18dc59369357",
+  "formal_read_confirmation_alone_is_authority": false,
+  "frozen_firewall_requires_verifier_receipt": false,
+  "frozen_firewall_required_authorization_fields": {
+    "REAL_SCIENTIFIC_ANALYSIS_AUTHORIZED": true,
+    "analysis_code_commit": "must equal requested frozen analysis code commit",
+    "analysis_lock_sha256": "must equal compatibility lock file SHA256",
+    "consumed": false
+  },
+  "independent_verifier_and_publisher_required_by_external_control": true,
+  "one_time_semantics_enforced_by_frozen_firewall_alone": false,
+  "one_time_semantics_enforced_by_lock_bound_canonical_wrapper": true,
+  "real_aggregations": 0,
+  "real_p_values": 0,
+  "real_result_files_read": 0,
+  "real_scientific_values_read": 0,
+  "required_combined_gates": [
+    "verified published formal_analysis_authorization.json",
+    "--confirm-read-frozen-formal-results"
+  ],
+  "schema": "fmb1_analysis_authorization_contract_audit_v1",
+  "status": "PASS_EXTERNAL_CONTROL_COMPATIBLE"
+}

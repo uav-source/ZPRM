@@ -1,0 +1,157 @@
+{
+  "AUTHORIZATION_INFRASTRUCTURE_READY": true,
+  "C2_COMMIT": "364c0ae76801c373d9ea6a4d9dd36e2fdf211e09",
+  "C2_TAG": "freeze/fmb1-zero-perturbation-analysis-determinacy-c2",
+  "C2_TAG_OBJECT": "b0491f91723f726f22cb5137e0d044ef9f03d120",
+  "FORMAL_ANALYSIS_AUTHORIZATION_PRESENT": false,
+  "FROZEN_FIREWALL_COMPATIBILITY_PASS": true,
+  "INDEPENDENT_REAL_ANALYSIS_AUTHORIZATION_VERIFIER_READY": true,
+  "LOCKED_ANALYSIS_CODE_COMMIT": "215a7961ed93dac9cf691e1e8ccd99d7ee868175",
+  "POSTRUN_VERIFICATION_COMMIT": "18bb94e62761f5193da8cdc5509c470cb4983244",
+  "POSTRUN_VERIFICATION_REPORT_SHA": "8067cc8735fd5b2a849bce8dd3839a59b87cd7cac716009892be622903084f90",
+  "POSTRUN_VERIFICATION_TAG": "verification/fmb1-zero-perturbation-postrun-v1",
+  "POSTRUN_VERIFIER_CODE_COMMIT": "ec72d23f0f94cd91a84f2960b87672788266524f",
+  "R3_LOCK_FINGERPRINT": "fd601e8daf62c488a3a079beea05f65c9bd283399ae4d7f3acf16e63fc473a6d",
+  "R3_LOCK_SHA": "f7349142d8a5b3dd0277f64672297017366725c1d47de870580bf5bec4c4dd30",
+  "RAW_EXECUTION_COMMIT": "059e39533991d929a97ab208ad738643af82d09a",
+  "RAW_EXECUTION_TAG": "execution/fmb1-zero-perturbation-v1.1-exec-r3-formal-v1",
+  "READY_FOR_LOCKED_SCIENTIFIC_ANALYSIS": true,
+  "READY_FOR_SEPARATE_REAL_ANALYSIS_AUTHORIZATION": true,
+  "REAL_ANALYSIS_AUTHORIZATION_LIFECYCLE_QUALIFIED": true,
+  "REAL_ANALYSIS_AUTHORIZATION_PRODUCER_READY": true,
+  "REAL_FORMAL_RESULT_FILES_READ": 0,
+  "REAL_FORMAL_RESULT_FILES_READ_BEFORE_FREEZE": 0,
+  "REAL_P_VALUE_COUNT": 0,
+  "REAL_SCIENTIFIC_ANALYSIS_AUTHORIZED": false,
+  "REAL_SCIENTIFIC_ANALYSIS_EXECUTED": false,
+  "REAL_VALUES_ALREADY_UNBLINDED": false,
+  "SCIENTIFIC_ANALYSIS_IMPLEMENTATION_CHANGED": false,
+  "VERIFIED_AUTHORIZATION_PUBLISHER_READY": true,
+  "analysis_authorization_contract_audit_sha256": "65a12d72b8fe1eb31ff1d2e6377def3fe3e93d91dcd08fac19a5f6435c3c7921",
+  "analysis_authorization_contract_path": "experiments/mid360_formal_batch1/analysis_authorization/formal_analysis_authorization_contract_v1.md",
+  "analysis_authorization_contract_sha256": "896fbc247746a63a408a76c8bb38fff84f2f83d5874c9252c791c07ed487cb1d",
+  "analysis_authorization_control_qualification_sha256": "f11a05839dbf659de405dd1319caf8557a00969ed21bd634b34344c57485f0c2",
+  "analysis_authorization_fixture_qualification_sha256": "541d112cf93b9bdcec1b6c82b436d42b7fef04539cf7f273e479c3ecdaab1b3d",
+  "analysis_authorization_schema_path": "experiments/mid360_formal_batch1/analysis_authorization/formal_analysis_authorization_schema_v1.json",
+  "analysis_authorization_schema_sha256": "72fd2ccfa34739413eeae909769bfe5214ed2fd942a23d0c8d27dd32e426956e",
+  "analysis_code_inventory_sha256": "605fd4bf34453eb7ffcdeae633cc2854ad3bd726a9e5354160dd252262d2f28b",
+  "analysis_code_paths": [
+    "experiments/__init__.py",
+    "experiments/mid360_formal_batch1/__init__.py",
+    "experiments/mid360_formal_batch1/locked_analysis/__init__.py",
+    "experiments/mid360_formal_batch1/locked_analysis/contract_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/authoritative_outcomes_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/descriptive_summary_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/exact_scene_permutation_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/cross_backend_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/reassociation_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/systematic_component_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/formal_firewall_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/lock_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/lock_verify_v1.py",
+    "experiments/mid360_formal_batch1/locked_analysis/output_schema_v1.json",
+    "experiments/mid360_formal_batch1/locked_analysis/locked_analysis_v1.py",
+    "tools/mid360_formal_batch1/run_zero_perturbation_locked_analysis_v1.py",
+    "tools/mid360_formal_batch1/issue_zero_perturbation_locked_analysis_lock_v1.py",
+    "tools/mid360_formal_batch1/verify_zero_perturbation_locked_analysis_lock_v1.py"
+  ],
+  "analysis_contract_binding_sha256": "ea7f7b9556287523b46cc4869d7d723bd892ce7a6bd38f60c087ab06399adba5",
+  "analysis_control_commit": "6ef9197d36a0c5a73878a7191172d2a27a9a5dae",
+  "analysis_control_inventory_sha256": "d92ac90ebd9ef9e2331275be36ec36dcff24ec110773f682389ab12fe5b715bb",
+  "analysis_control_paths": [
+    "experiments/mid360_formal_batch1/analysis_authorization/__init__.py",
+    "experiments/mid360_formal_batch1/analysis_authorization/contract_v1.py",
+    "experiments/mid360_formal_batch1/analysis_authorization/formal_analysis_authorization_schema_v1.json",
+    "experiments/mid360_formal_batch1/analysis_authorization/formal_analysis_authorization_contract_v1.md",
+    "experiments/mid360_formal_batch1/analysis_authorization/formal_analysis_authorization_producer_v1.py",
+    "experiments/mid360_formal_batch1/analysis_authorization/formal_analysis_authorization_verify_v1.py",
+    "experiments/mid360_formal_batch1/analysis_authorization/formal_analysis_authorization_lifecycle_v1.py",
+    "experiments/mid360_formal_batch1/analysis_authorization/authorized_analysis_runner_v1.py",
+    "experiments/mid360_formal_batch1/analysis_authorization/analysis_lock_v2.py",
+    "experiments/mid360_formal_batch1/analysis_authorization/analysis_lock_v2_verify.py",
+    "tools/mid360_formal_batch1/prepare_formal_analysis_authorization_v1.py",
+    "tools/mid360_formal_batch1/verify_formal_analysis_authorization_v1.py",
+    "tools/mid360_formal_batch1/issue_verified_formal_analysis_authorization_v1.py",
+    "tools/mid360_formal_batch1/run_verified_formal_analysis_v1.py",
+    "tools/mid360_formal_batch1/issue_zero_perturbation_locked_analysis_lock_v2.py",
+    "tools/mid360_formal_batch1/verify_zero_perturbation_locked_analysis_lock_v2.py"
+  ],
+  "analysis_determinacy_binding_sha256": "a543a8934aeeaf155860c6ef121b38128c5ebe9f8d935164dc69079b163b8b32",
+  "analysis_lock_fingerprint": "407114966420e471ebb4f50229eb980c9da8c304ce3479fa3ac36960407953ac",
+  "analysis_lock_release_commit_intentionally_unbound_to_avoid_self_reference": true,
+  "analysis_lock_revision": 2,
+  "analysis_lock_v1_supersession_binding_sha256": "04367e030d27ddbd9efbfeae2605c1ee238d4463a818490facde55efef1dc842",
+  "analysis_no_real_results_attestation_sha256": "2ff86ae80f2e37778abb9a2a17c3a8f68e3e46285983fb6aa6b979c3d6c17f6e",
+  "analysis_output_root": "/home/lj/ZPRM/results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1",
+  "analysis_output_schema_sha256": "707e2d5f7030c090a30ebb5cfb74f07373e04a223ac1beae94e53bc502eec23e",
+  "blocked_attempt_001_binding": {
+    "path": "archive/formal_analysis_attempts/blocked_attempt_001_missing_lock_bound_authorization/BLOCKED_ANALYSIS_ATTEMPT.json",
+    "sha256": "8a8d43797495e67da00bb04f0ad60472bd927d94dfa0507f107f8744d134c8aa"
+  },
+  "capture_radius_status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+  "centered_permutation_draw_count": 10000,
+  "centered_permutation_p_value_denominator": 10001,
+  "fixture_qualification_sha256": "62b999b5c836a1f9ee5c7eec73afa9cd2d7b234f7bc2ec38bcbbace460ffb810",
+  "formal_results_root": "/home/lj/ZPRM/results/mid360_formal_batch1/zero_perturbation_v1_1_execution_v1",
+  "future_analysis_output_root": "/home/lj/ZPRM/results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1",
+  "issued_at_utc": "2026-08-20T12:22:11.103663+00:00",
+  "lock_id": "FMB1_ZERO_PERTURBATION_LOCKED_ANALYSIS_V2",
+  "no_real_results_attestation_sha256": "6b6da7108114f6fe8a660d0f95b206e3dec3ac2e06e7f614c2568b877485b7e4",
+  "numpy_version": "1.26.4",
+  "postrun_verification_root": "/home/lj/ZPRM/results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1",
+  "primary_exact_allocation_count": 20,
+  "primary_p_value_denominator": 20,
+  "protected_bindings": {
+    "backend_contract": {
+      "path": "frozen_assets/backend_parameter_contract.json",
+      "sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+    },
+    "c1_c2_determinacy_audit": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit_c1_c2.json",
+      "sha256": "bb9e821efac1db457facdfaa8857f10ccb8edc4a6e7cde8eb1b201449b8675b6"
+    },
+    "c1_c2_determinacy_verifier": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit_c1_c2_independent_verification.json",
+      "sha256": "0007648c65634932b9ed78aed7ebb77b280fdf4d902493da05413bc765d14df9"
+    },
+    "c1_contract": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d"
+    },
+    "c1_missingness": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.json",
+      "sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb"
+    },
+    "c1_protocol": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "9982193c3c4c2a6cda77c8db858fd73e73f61da7eb7ffe651610e5b1ed1c0b4c"
+    },
+    "c2_clarification": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_determinacy_clarification_v1_1_r1_c2.json",
+      "sha256": "a446d069436c2972a11316e8a709aeb3c4265817b5e9889fa9583275ffc7be6b"
+    },
+    "formal_result_schema": {
+      "path": "experiments/mid360_formal_batch1/zero_perturbation_trial_result_schema_v1_1.json",
+      "sha256": "cf226717911eef9107a45523cff39519b6c70c8d5e53f48b2e3accb18964fab2"
+    },
+    "postrun_verification_report": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1/postrun_independent_verification.json",
+      "sha256": "8067cc8735fd5b2a849bce8dd3839a59b87cd7cac716009892be622903084f90"
+    },
+    "trial_plan": {
+      "path": "experiments/mid360_formal_batch1/zero_perturbation_trial_plan_v1_1.json",
+      "sha256": "e96917f93ffbcccf0e2c1d75ee75ba86e342f08a9e4651732e2457b7ad867427"
+    }
+  },
+  "scene_strata_preserved": true,
+  "schema": "fmb1_zero_perturbation_locked_analysis_lock_v2",
+  "scipy_version": "1.11.4",
+  "status": "ISSUED_AWAITING_SEPARATE_REAL_ANALYSIS_AUTHORIZATION",
+  "supersedes_lock_id": "FMB1_ZERO_PERTURBATION_LOCKED_ANALYSIS_V1",
+  "supersedes_lock_v1_fingerprint": "24fa8bf5d6713b744a1ccbac8fa46ec4bd6f8af7227b248e7db371f2a0c7e300",
+  "supersedes_lock_v1_release_commit": "74b7b4f19f0d756158dedfafcb396309988361be",
+  "supersedes_lock_v1_sha256": "ab3acf55db181772a55a8af59b592902c2da9d0b5a1b50e3511f79c41438e21a",
+  "supersession_reason": "MISSING_LOCK_BOUND_REAL_ANALYSIS_AUTHORIZATION_MECHANISM",
+  "synthetic_transfer_status": "MODEL_TRANSFER_NOT_COMPATIBLE",
+  "systematic_formal_p_value_defined": false
+}

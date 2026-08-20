@@ -1,0 +1,33 @@
+{
+  "LOCKED_ANALYSIS_CODE_COMMIT": "215a7961ed93dac9cf691e1e8ccd99d7ee868175",
+  "LOCKED_ANALYSIS_V2_LOCK_VERIFIER_PASS": true,
+  "REAL_FORMAL_RESULT_FILES_READ": 0,
+  "REAL_P_VALUE_COUNT": 0,
+  "REAL_SCIENTIFIC_VALUES_READ": 0,
+  "REGISTRATION_BACKEND_CALLS": 0,
+  "analysis_control_commit": "6ef9197d36a0c5a73878a7191172d2a27a9a5dae",
+  "analysis_lock_fingerprint": "407114966420e471ebb4f50229eb980c9da8c304ce3479fa3ac36960407953ac",
+  "analysis_lock_sha256": "5796f70ca9b5e58d729ada5ace3d817d913aea24d7c2132e8984dadc4df2311c",
+  "authorization_infrastructure_ready": true,
+  "c1_unchanged": true,
+  "c2_unchanged": true,
+  "candidate_cannot_directly_authorize": true,
+  "determinacy_pass": true,
+  "failure_count": 0,
+  "failures": [],
+  "final_real_authorization_absent": true,
+  "fixture_lifecycle_pass": true,
+  "pass": true,
+  "postrun_verification_pass": true,
+  "raw_execution_unchanged": true,
+  "real_analysis_output_absent": true,
+  "schema": "fmb1_locked_analysis_v2_independent_verification_v1",
+  "static_control_audit": {
+    "candidate_verifier_imports_producer": false,
+    "finding_count": 0,
+    "scanned_path_count": 16,
+    "status": "PASS"
+  },
+  "statistical_implementation_bytes_unchanged": true,
+  "status": "PASS"
+}

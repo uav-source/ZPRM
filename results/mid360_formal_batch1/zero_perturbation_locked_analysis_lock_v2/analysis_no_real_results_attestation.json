@@ -1,0 +1,14 @@
+{
+  "REAL_AGGREGATIONS": 0,
+  "REAL_FORMAL_RESULT_FILES_READ": 0,
+  "REAL_P_VALUES": 0,
+  "REAL_SCIENTIFIC_ANALYSIS_AUTHORIZED": false,
+  "REAL_SCIENTIFIC_ANALYSIS_EXECUTED": false,
+  "REAL_SCIENTIFIC_VALUES_READ": 0,
+  "REAL_VALUES_ALREADY_UNBLINDED": false,
+  "REGISTRATION_BACKEND_CALLS": 0,
+  "attested_at_utc": "2026-08-20T12:14:24Z",
+  "pass": true,
+  "schema": "fmb1_analysis_authorization_control_no_real_results_attestation_v1",
+  "status": "PASS_ZERO_REAL_RESULT_READS"
+}

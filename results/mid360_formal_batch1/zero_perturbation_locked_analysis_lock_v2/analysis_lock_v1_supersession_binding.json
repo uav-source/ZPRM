@@ -1,0 +1,13 @@
+{
+  "analysis_lock_v1_fingerprint": "24fa8bf5d6713b744a1ccbac8fa46ec4bd6f8af7227b248e7db371f2a0c7e300",
+  "analysis_lock_v1_release_commit": "74b7b4f19f0d756158dedfafcb396309988361be",
+  "analysis_lock_v1_sha256": "ab3acf55db181772a55a8af59b592902c2da9d0b5a1b50e3511f79c41438e21a",
+  "authorization_infrastructure_defect": true,
+  "reason": "MISSING_LOCK_BOUND_REAL_ANALYSIS_AUTHORIZATION_MECHANISM",
+  "schema": "fmb1_locked_analysis_lock_v1_supersession_v1",
+  "scientific_analysis_code_defect": false,
+  "status": "SUPERSEDED_BEFORE_REAL_SCIENTIFIC_ANALYSIS",
+  "superseded_at_utc": "2026-08-20T12:14:24Z",
+  "v1_real_scientific_analysis_count": 0,
+  "v1_real_values_read": 0
+}
