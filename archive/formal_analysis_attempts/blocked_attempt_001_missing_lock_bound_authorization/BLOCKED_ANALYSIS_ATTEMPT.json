@@ -1,0 +1,18 @@
+{
+  "ANALYSIS_LOCK_V1_DEFECT": "MISSING_LOCK_BOUND_REAL_ANALYSIS_AUTHORIZATION_INFRASTRUCTURE",
+  "FORMAL_RESULT_CONTAMINATION": false,
+  "SCIENTIFIC_ANALYSIS_CODE_DEFECT": false,
+  "SCIENTIFIC_CONTRACT_DEFECT": false,
+  "analysis_lock_v1_fingerprint": "24fa8bf5d6713b744a1ccbac8fa46ec4bd6f8af7227b248e7db371f2a0c7e300",
+  "analysis_lock_v1_sha256": "ab3acf55db181772a55a8af59b592902c2da9d0b5a1b50e3511f79c41438e21a",
+  "blocked_at_utc": "2026-08-20T12:14:24Z",
+  "blocker": "MISSING_LOCK_BOUND_REAL_ANALYSIS_AUTHORIZATION_MECHANISM",
+  "real_aggregations": 0,
+  "real_analysis_authorization_issued": false,
+  "real_analysis_executed": false,
+  "real_p_values": 0,
+  "real_result_files_read": 0,
+  "real_scientific_values_read": 0,
+  "schema": "fmb1_blocked_formal_analysis_attempt_v1",
+  "status": "BLOCKED_BEFORE_REAL_SCIENTIFIC_VALUE_READ"
+}
