@@ -1,0 +1,154 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_v1_1_r1_activation_review",
+  "review_status": "PASS_ACTIVE_R1_C1",
+  "activation_effective": true,
+  "candidate_reviewed_at_utc": "2026-08-20T01:45:47Z",
+  "c1_reviewed_at_utc": "2026-08-20T03:26:00Z",
+  "reviewed_at_utc": "2026-08-20T03:26:00Z",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "checks": [
+    {
+      "check_id": "R1-ACT-001",
+      "name": "ORIGINAL_PROPOSAL_CREATED_PRE_BACKEND",
+      "pass": true,
+      "evidence": "protocol_alignment_audit registration_execution_count=0 and FORMAL_REGISTRATION_AUTHORIZED=false"
+    },
+    {
+      "check_id": "R1-ACT-002",
+      "name": "ORIGINAL_PROPOSAL_NOT_BASED_ON_REAL_BACKEND_RESULTS",
+      "pass": true,
+      "evidence": "NO_ICP attestations and zero formal trial lineage"
+    },
+    {
+      "check_id": "R1-ACT-003",
+      "name": "OLD_PROPOSAL_DIFFERENCE_NOT_SILENTLY_REWRITTEN",
+      "pass": true,
+      "evidence": "old proposal SHA retained and versioned difference/supersession records created"
+    },
+    {
+      "check_id": "R1-ACT-004",
+      "name": "FINAL_DATASET_SEMANTICS_CORRECTED",
+      "pass": true,
+      "evidence": "W02 attempt 1 wrong-location invalid acquisition retained; W02 attempt 2 admitted Weak; W04 retired"
+    },
+    {
+      "check_id": "R1-ACT-005",
+      "name": "FINAL_DATASET_BINDING_DECLARED",
+      "pass": true,
+      "evidence": "6 scenes, 18 stations, 180 snapshots; R01-R03 Rich; W01-W03 Weak"
+    },
+    {
+      "check_id": "R1-ACT-006",
+      "name": "CAPTURE_RADIUS_TRACK_PRESERVED",
+      "pass": true,
+      "evidence": "original preregistration and analysis hashes unchanged; PRESERVED_SUPPLEMENTARY_NOT_EXECUTED"
+    },
+    {
+      "check_id": "R1-ACT-007",
+      "name": "PHYSICAL_REFERENCE_LIMITATION_FROZEN",
+      "pass": true,
+      "evidence": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT in amendment and analysis contract"
+    },
+    {
+      "check_id": "R1-ACT-008",
+      "name": "SCENE_FIRST_ANALYSIS_FROZEN",
+      "pass": true,
+      "evidence": "scene highest independent unit; exact 20-allocation inference; no snapshot pseudoreplication"
+    },
+    {
+      "check_id": "R1-ACT-009",
+      "name": "COMMON_REASSOCIATION_IMPLEMENTATION_BOUND",
+      "pass": true,
+      "evidence": "src/phase_a_harness/common_association_analysis.py SHA256 458190c2...175d"
+    },
+    {
+      "check_id": "R1-ACT-010",
+      "name": "MODEL_TRANSFER_FAIL_CLOSED",
+      "pass": true,
+      "evidence": "MODEL_TRANSFER_NOT_COMPATIBLE and not a formal-lock gate"
+    },
+    {
+      "check_id": "R1-ACT-011",
+      "name": "BACKEND_PARAMETER_CONTRACT_UNCHANGED",
+      "pass": true,
+      "evidence": "SHA256 6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+    },
+    {
+      "check_id": "R1-ACT-012",
+      "name": "ACTUAL_FORMAL_TRIAL_COUNT_ZERO",
+      "pass": true,
+      "evidence": "final dataset NO_ICP attestation and current dataset pointer"
+    },
+    {
+      "check_id": "R1-ACT-013",
+      "name": "CANDIDATE_DOES_NOT_SELF_ACTIVATE",
+      "pass": true,
+      "evidence": "status candidate; activation_effective=false; no activation record or ACTIVE_PROTOCOL created in this phase"
+    }
+  ],
+  "candidate_assets": {
+    "amendment_json_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.json",
+    "amendment_json_sha256": "fc06bfcc44ded84df1e226d8203859201ef3b78e3e416c8e6eef2360e6e40eef",
+    "amendment_md_sha256": "68b89240e4d94b88d1ee3f133c68b17623db9a6568118b8d174bc741d45b0f73",
+    "analysis_contract_sha256": "e507ae54c5a9c997b40734006ac1643a337ffdfafd65c031ecb0251e3c7f0c3d",
+    "analysis_protocol_sha256": "c1a4fbfcc93c64bd0d75d1f8bdf77bbfcbd086e5ed42d70b0b9a6f5506b47a59"
+  },
+  "candidate_independent_verification": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_candidate_independent_verification.json",
+    "sha256": "82b228dfad2e2eaa5cdca9ed6b15e68a08199548aca44cbd31d1c6e5d971aeff",
+    "status": "PASS"
+  },
+  "active_transition_independent_verification": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_active_transition_independent_verification.json",
+    "sha256": "acf24c710550632cdbbe815f3502b66d138927314e45620a0a34d675bcf49b71",
+    "status": "PASS"
+  },
+  "candidate_bytes_archive": {
+    "inventory_path": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_candidate_verified/candidate_verified_inventory.json",
+    "inventory_sha256": "892a853daa33b17c4f1e3f06e9b6b5088baa1d5c374be10736c90034385938fe",
+    "exact_candidate_file_count": 4
+  },
+  "final_dataset_prelock_reauthentication": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/final_dataset_prelock_reauthentication.json",
+    "sha256": "32a7afcf7f237317888b47de09064f03fe0417a9996fd7918aecdccfc51b8f93",
+    "status": "PASS"
+  },
+  "active_assets": {
+    "amendment_json_sha256": "0f9681af0e23632926a69423c44e945abc0153a3aba9358412d5f38cc1516ec6",
+    "amendment_md_sha256": "14b59028d7b8ccb882a845e0962647c4e2ef04c3009c56883bb694bc9b32ff25",
+    "analysis_contract_sha256": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d",
+    "analysis_protocol_sha256": "9982193c3c4c2a6cda77c8db858fd73e73f61da7eb7ffe651610e5b1ed1c0b4c",
+    "activation_record_sha256": "86e43dfde797fc93c83430d03175b9da78f6e879aa14a5b17d7723d91b202378",
+    "active_protocol_pointer_sha256": "5a735b6b9e4d0795f4916e08f8517c4c8af98f1a8517b42d20acfdd206b9ac2c",
+    "initial_activation_transition_sha256": "9beeb1d501369d25ca89f510641614c8e7641d27cbdaddb39ccb3af558a094d5"
+  },
+  "prelock_missingness_clarification": {
+    "clarification_id": "FMB1_ZERO_PERTURBATION_MISSINGNESS_CLARIFICATION_V1_1_R1_C1",
+    "status": "ACTIVE_PRELOCK_CLARIFICATION",
+    "json_sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb",
+    "markdown_sha256": "7685db784b50430ec4e8b7cfa75e684c96d3a2c57b0127fa7509b085dfdd2826",
+    "prior_active_inventory_sha256": "44410fd6952c3f49597ee53dc0ce64952ca96f184094e84d36b4fb933ff900c7",
+    "clarification_transition_sha256": "1d25d38ec4192ca505dfe35f36a9992da43ea2d7a4bd209da136991805ef9238",
+    "clarification_before_formal_lock": true,
+    "clarification_before_any_formal_icp": true,
+    "clarification_at_formal_trial_count": 0
+  },
+  "missingness_clarification_independent_verification": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_c1_missingness_independent_verification.json",
+    "sha256": "a53706aa9a7837d13b23eb626e223d2363dc4430ebd0623b781488b84d7efa45",
+    "status": "PASS"
+  },
+  "candidate_review_pass": true,
+  "independent_activation_verifier_pass": true,
+  "active_transition_verifier_pass": true,
+  "missingness_clarification_verifier_pass": true,
+  "activation_record_created": true,
+  "active_protocol_pointer_created": true,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_formal_trials": 0,
+  "next_gate": "FORMAL_LOCK_QUALIFICATION_WITHOUT_BACKEND_EXECUTION"
+}

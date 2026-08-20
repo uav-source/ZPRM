@@ -1,0 +1,68 @@
+{
+  "schema": "mid360_fmb1_active_protocol_pointer_v1_1_r1",
+  "status": "ACTIVE",
+  "active_amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "active_track_id": "ZERO_PERTURBATION_TRACK",
+  "activation_effective": true,
+  "activated_before_any_formal_icp": true,
+  "formal_trial_count_at_activation": 0,
+  "active_amendment": {
+    "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.json",
+    "sha256": "1ff006ce3226c849c6ad70a12ca538bddf0b69c932c3c84e59f540fe42e7c1ab"
+  },
+  "activation_record": {
+    "path": "experiments/mid360_formal_batch1/amendments/amendment_activation_record_v1_1_r1.json",
+    "sha256": "cf6c7dde69e1c5ff0742c8f7dcb6189edc359686af366fcb1d96b3c904b5c097"
+  },
+  "active_analysis_contract": {
+    "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+    "sha256": "6f763eed64a438c58b2549c7d3741a67975af1560264b7c47158d92f8c33530a"
+  },
+  "active_analysis_protocol": {
+    "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+    "sha256": "b1f3b7ef54ae75e86e4131f171e8a2b74a3472c675e9c1c8210e918a2f056fd4"
+  },
+  "candidate_verification": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_candidate_independent_verification.json",
+    "sha256": "82b228dfad2e2eaa5cdca9ed6b15e68a08199548aca44cbd31d1c6e5d971aeff",
+    "status": "PASS"
+  },
+  "final_dataset_prelock_reauthentication": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/final_dataset_prelock_reauthentication.json",
+    "sha256": "32a7afcf7f237317888b47de09064f03fe0417a9996fd7918aecdccfc51b8f93",
+    "status": "PASS"
+  },
+  "final_dataset": {
+    "current_pointer_path": "results/mid360_formal_batch1/CURRENT_FINAL_DATASET.json",
+    "current_pointer_sha256": "aaa5ae45da89e5eb7c17c2fb54dc8798e564240e17b20e4ce8d0fc581da6a330",
+    "scene_ids": [
+      "FMB1_R01",
+      "FMB1_R02",
+      "FMB1_R03",
+      "FMB1_W01",
+      "FMB1_W02",
+      "FMB1_W03"
+    ],
+    "scene_count": 6,
+    "station_count": 18,
+    "snapshot_count": 180,
+    "w02_active_attempt": 2,
+    "w04_included": false
+  },
+  "physical_reference_semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+  "capture_radius_track": {
+    "status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+    "original_preregistration_sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "original_analysis_protocol_sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "execution_authorized": false
+  },
+  "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+  "activation_grants_backend_execution": false,
+  "FORMAL_AUTHORITY": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_formal_trials": 0
+}

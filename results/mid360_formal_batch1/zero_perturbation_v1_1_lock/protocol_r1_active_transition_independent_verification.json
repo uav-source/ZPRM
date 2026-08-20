@@ -1,0 +1,39 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "activation_effective": true,
+  "activation_record_sha256": "cf6c7dde69e1c5ff0742c8f7dcb6189edc359686af366fcb1d96b3c904b5c097",
+  "activation_transition_sha256": "9beeb1d501369d25ca89f510641614c8e7641d27cbdaddb39ccb3af558a094d5",
+  "active_hashes": {
+    "amendment_json_sha256": "1ff006ce3226c849c6ad70a12ca538bddf0b69c932c3c84e59f540fe42e7c1ab",
+    "amendment_md_sha256": "b506f2a37d4624132d5ff3c05b6611e5e4f199f9f22c902d6f38b496066c607e",
+    "analysis_contract_sha256": "6f763eed64a438c58b2549c7d3741a67975af1560264b7c47158d92f8c33530a",
+    "analysis_protocol_sha256": "b1f3b7ef54ae75e86e4131f171e8a2b74a3472c675e9c1c8210e918a2f056fd4"
+  },
+  "active_protocol_pointer_sha256": "f4933ca1048f873e2465b617184df8bbe5cfb3b11199fca97316aedab9bf12c2",
+  "actual_formal_trials": 0,
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "amendment_status": "ACTIVE",
+  "backend_calls": 0,
+  "backend_modules_imported": 0,
+  "candidate_hashes_preserved": {
+    "amendment_json_sha256": "fc06bfcc44ded84df1e226d8203859201ef3b78e3e416c8e6eef2360e6e40eef",
+    "amendment_md_sha256": "68b89240e4d94b88d1ee3f133c68b17623db9a6568118b8d174bc741d45b0f73",
+    "analysis_contract_sha256": "e507ae54c5a9c997b40734006ac1643a337ffdfafd65c031ecb0251e3c7f0c3d",
+    "analysis_protocol_sha256": "c1a4fbfcc93c64bd0d75d1f8bdf77bbfcbd086e5ed42d70b0b9a6f5506b47a59"
+  },
+  "candidate_inventory_sha256": "892a853daa33b17c4f1e3f06e9b6b5088baa1d5c374be10736c90034385938fe",
+  "candidate_verification_sha256": "82b228dfad2e2eaa5cdca9ed6b15e68a08199548aca44cbd31d1c6e5d971aeff",
+  "capture_radius_track_status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+  "model_transfer_status": "MODEL_TRANSFER_NOT_COMPATIBLE",
+  "next_gate": "FORMAL_LOCK_QUALIFICATION_WITHOUT_BACKEND_EXECUTION",
+  "old_proposal_json_sha256_before_and_after": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+  "old_proposal_md_sha256_before_and_after": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed",
+  "pass": true,
+  "phase": "ACTIVE_PRE_LOCK",
+  "physical_reference_semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+  "prelock_reauthentication_sha256": "32a7afcf7f237317888b47de09064f03fe0417a9996fd7918aecdccfc51b8f93",
+  "schema": "mid360_fmb1_zero_perturbation_protocol_r1_active_transition_independent_verification",
+  "verification_status": "PASS"
+}

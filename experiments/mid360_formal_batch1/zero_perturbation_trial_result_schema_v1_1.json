@@ -1,0 +1,862 @@
+{
+  "$id": "urn:zprm:fmb1:zero-perturbation:trial-result:v1.1-r1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "else": {
+        "properties": {
+          "Delta_T": {
+            "type": "null"
+          },
+          "T_est": {
+            "type": "null"
+          },
+          "accepted_source_turnover": {
+            "type": "null"
+          },
+          "common_association_invalid_detail": {
+            "type": "null"
+          },
+          "common_association_invalid_reason": {
+            "type": "null"
+          },
+          "common_association_valid": {
+            "type": "null"
+          },
+          "correspondence_count_change_ratio": {
+            "type": "null"
+          },
+          "correspondence_turnover": {
+            "type": "null"
+          },
+          "final_correspondence_count": {
+            "type": "null"
+          },
+          "final_residual_rmse": {
+            "type": "null"
+          },
+          "final_valid_normal_correspondence_count": {
+            "type": "null"
+          },
+          "initial_correspondence_count": {
+            "type": "null"
+          },
+          "initial_residual_rmse": {
+            "type": "null"
+          },
+          "initial_valid_normal_correspondence_count": {
+            "type": "null"
+          },
+          "median_normal_angle_change_deg": {
+            "type": "null"
+          },
+          "q95_normal_angle_change_deg": {
+            "type": "null"
+          },
+          "residual_rmse_change": {
+            "type": "null"
+          },
+          "rotation_angle_deg": {
+            "type": "null"
+          },
+          "rotation_angle_rad": {
+            "type": "null"
+          },
+          "translation_norm_m": {
+            "type": "null"
+          },
+          "translation_x_m": {
+            "type": "null"
+          },
+          "translation_y_m": {
+            "type": "null"
+          },
+          "translation_z_m": {
+            "type": "null"
+          }
+        }
+      },
+      "if": {
+        "properties": {
+          "finite_result": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "Delta_T": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "type": "array"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "T_est": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "type": "array"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "common_association_valid": {
+            "type": "boolean"
+          },
+          "rotation_angle_deg": {
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "rotation_angle_rad": {
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "translation_norm_m": {
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "translation_x_m": {
+            "type": "number"
+          },
+          "translation_y_m": {
+            "type": "number"
+          },
+          "translation_z_m": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "common_association_valid": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "accepted_source_turnover": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "common_association_invalid_detail": {
+            "type": "null"
+          },
+          "common_association_invalid_reason": {
+            "type": "null"
+          },
+          "correspondence_count_change_ratio": {
+            "minimum": -1.0,
+            "type": "number"
+          },
+          "correspondence_turnover": {
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "final_correspondence_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "final_residual_rmse": {
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "final_valid_normal_correspondence_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "initial_correspondence_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "initial_residual_rmse": {
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "initial_valid_normal_correspondence_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "median_normal_angle_change_deg": {
+            "maximum": 180.0,
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "q95_normal_angle_change_deg": {
+            "maximum": 180.0,
+            "minimum": 0.0,
+            "type": "number"
+          },
+          "residual_rmse_change": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "common_association_valid": {
+            "const": false
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "common_association_invalid_reason": {
+            "enum": [
+              "NO_INITIAL_CORRESPONDENCE",
+              "NO_FINAL_CORRESPONDENCE",
+              "INSUFFICIENT_VALID_NORMALS",
+              "NONFINITE_COMMON_METRICS",
+              "OTHER"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "common_association_invalid_reason": {
+            "const": "OTHER"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "common_association_invalid_detail": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          }
+        }
+      }
+    }
+  ],
+  "description": "Future formal result row. T_est/Delta_T are null only when a nonfinite or infrastructure failure is retained without serializing NaN/Infinity.",
+  "properties": {
+    "Delta_T": {
+      "oneOf": [
+        {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "T0": {
+      "const": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "T_est": {
+      "oneOf": [
+        {
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 4,
+            "minItems": 4,
+            "type": "array"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "T_reference_nominal": {
+      "const": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "accepted_source_turnover": {
+      "oneOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "active_amendment_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "amendment_id": {
+      "const": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1"
+    },
+    "analysis_contract_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "attempt": {
+      "enum": [
+        1,
+        2
+      ],
+      "type": "integer"
+    },
+    "backend": {
+      "enum": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ]
+    },
+    "backend_canonical_parameter_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "backend_parameter_contract_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "backend_version": {
+      "enum": [
+        "0.19.0+b012259",
+        "1.15.1"
+      ]
+    },
+    "batch_id": {
+      "const": "FMB1"
+    },
+    "code_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "common_association_invalid_detail": {
+      "oneOf": [
+        {
+          "maxLength": 1000,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "common_association_invalid_reason": {
+      "oneOf": [
+        {
+          "enum": [
+            "NO_INITIAL_CORRESPONDENCE",
+            "NO_FINAL_CORRESPONDENCE",
+            "INSUFFICIENT_VALID_NORMALS",
+            "NONFINITE_COMMON_METRICS",
+            "OTHER"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "common_association_valid": {
+      "oneOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "correspondence_count_change_ratio": {
+      "oneOf": [
+        {
+          "minimum": -1.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "correspondence_turnover": {
+      "oneOf": [
+        {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at_utc": {
+      "format": "date-time",
+      "type": "string"
+    },
+    "environment_identity": {
+      "additionalProperties": false,
+      "properties": {
+        "environment_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "numpy": {
+          "const": "1.26.4"
+        },
+        "open3d": {
+          "const": "0.19.0+b012259"
+        },
+        "pcl": {
+          "const": "1.15.1"
+        },
+        "python": {
+          "const": "3.11.15"
+        },
+        "scipy": {
+          "const": "1.11.4"
+        }
+      },
+      "required": [
+        "python",
+        "numpy",
+        "scipy",
+        "open3d",
+        "pcl",
+        "environment_manifest_sha256"
+      ],
+      "type": "object"
+    },
+    "execution_kind": {
+      "const": "FORMAL"
+    },
+    "final_correspondence_count": {
+      "oneOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "final_residual_rmse": {
+      "oneOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "final_valid_normal_correspondence_count": {
+      "oneOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "finite_result": {
+      "type": "boolean"
+    },
+    "fixture_only": {
+      "const": false
+    },
+    "formal_lock_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "geometry_class": {
+      "enum": [
+        "RICH",
+        "WEAK"
+      ]
+    },
+    "infrastructure_status": {
+      "enum": [
+        "OK",
+        "PROCESS_CRASH",
+        "FILE_READ_CORRUPTION",
+        "RESULT_SCHEMA_WRITE_FAILURE",
+        "PCL_EXECUTABLE_INFRASTRUCTURE_FAILURE"
+      ]
+    },
+    "initial_correspondence_count": {
+      "oneOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "initial_residual_rmse": {
+      "oneOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "initial_valid_normal_correspondence_count": {
+      "oneOf": [
+        {
+          "minimum": 0,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "median_normal_angle_change_deg": {
+      "oneOf": [
+        {
+          "maximum": 180.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "physical_reference_semantics": {
+      "const": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT"
+    },
+    "q95_normal_angle_change_deg": {
+      "oneOf": [
+        {
+          "maximum": 180.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "residual_rmse_change": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "retry_eligible": {
+      "type": "boolean"
+    },
+    "retry_reason": {
+      "oneOf": [
+        {
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rotation_angle_deg": {
+      "oneOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rotation_angle_rad": {
+      "oneOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "scene_id": {
+      "enum": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ]
+    },
+    "schema": {
+      "const": "mid360_fmb1_zero_perturbation_trial_result_v1_1_r1"
+    },
+    "scientific_status": {
+      "enum": [
+        "COMPLETED",
+        "SOLVER_NON_CONVERGENCE",
+        "FINITE_SCIENTIFIC_FAILURE",
+        "NONFINITE_RESULT_RECORDED_WITHOUT_NONFINITE_TRANSFORM",
+        "NOT_EVALUATED_INFRASTRUCTURE_FAILURE"
+      ]
+    },
+    "snapshot_id": {
+      "pattern": "^FMB1_[RW]0[1-3]_S0[1-3]_Q(?:0[1-9]|10)$",
+      "type": "string"
+    },
+    "solver_status": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_reference": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "station_id": {
+      "enum": [
+        "S01",
+        "S02",
+        "S03"
+      ]
+    },
+    "target_reference": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "target_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "track_id": {
+      "const": "ZERO_PERTURBATION_TRACK"
+    },
+    "translation_norm_m": {
+      "oneOf": [
+        {
+          "minimum": 0.0,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "translation_x_m": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "translation_y_m": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "translation_z_m": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "trial_id": {
+      "pattern": "^FMB1-ZP11R1-FMB1-[RW]0[1-3]-S0[1-3]-Q(?:0[1-9]|10)-(?:O3D|PCL)$",
+      "type": "string"
+    },
+    "trial_plan_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "trial_id",
+    "batch_id",
+    "amendment_id",
+    "track_id",
+    "scene_id",
+    "geometry_class",
+    "station_id",
+    "attempt",
+    "snapshot_id",
+    "backend",
+    "backend_version",
+    "source_reference",
+    "source_sha256",
+    "target_reference",
+    "target_sha256",
+    "T0",
+    "T_reference_nominal",
+    "T_est",
+    "Delta_T",
+    "translation_x_m",
+    "translation_y_m",
+    "translation_z_m",
+    "translation_norm_m",
+    "rotation_angle_rad",
+    "rotation_angle_deg",
+    "solver_status",
+    "finite_result",
+    "scientific_status",
+    "infrastructure_status",
+    "retry_eligible",
+    "retry_reason",
+    "common_association_valid",
+    "common_association_invalid_reason",
+    "common_association_invalid_detail",
+    "initial_correspondence_count",
+    "initial_valid_normal_correspondence_count",
+    "final_correspondence_count",
+    "final_valid_normal_correspondence_count",
+    "correspondence_turnover",
+    "accepted_source_turnover",
+    "correspondence_count_change_ratio",
+    "initial_residual_rmse",
+    "final_residual_rmse",
+    "residual_rmse_change",
+    "median_normal_angle_change_deg",
+    "q95_normal_angle_change_deg",
+    "backend_parameter_contract_sha256",
+    "backend_canonical_parameter_sha256",
+    "active_amendment_sha256",
+    "analysis_contract_sha256",
+    "trial_plan_sha256",
+    "formal_lock_sha256",
+    "code_commit",
+    "environment_identity",
+    "physical_reference_semantics",
+    "execution_kind",
+    "fixture_only",
+    "created_at_utc"
+  ],
+  "title": "FMB1 Zero-Perturbation Mainline v1.1 R1 Trial Result",
+  "type": "object",
+  "x-amendment-id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "x-common-invalid-detail-required-for-other": true,
+  "x-common-invalid-reason-enum": [
+    "NO_INITIAL_CORRESPONDENCE",
+    "NO_FINAL_CORRESPONDENCE",
+    "INSUFFICIENT_VALID_NORMALS",
+    "NONFINITE_COMMON_METRICS",
+    "OTHER"
+  ],
+  "x-common-invalid-reason-retained": true,
+  "x-common-status-null-only-without-finite-pose": true,
+  "x-physical-reference-semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+  "x-primary-experimental-unit": "scene",
+  "x-real-result-count-at-freeze": 0,
+  "x-reassociation-definition": "src/phase_a_harness/common_association_analysis.py",
+  "x-registration-authority-granted": false,
+  "x-retry-policy": "INFRASTRUCTURE_FAILURE_ONLY",
+  "x-scientific-failures-retained": true,
+  "x-snapshot-independent-scene-claim-forbidden": true,
+  "x-track-id": "ZERO_PERTURBATION_TRACK"
+}

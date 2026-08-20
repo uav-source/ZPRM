@@ -36,6 +36,12 @@ _EXCLUDED_SCOPE_PATHS = frozenset(
     {
         "experiments/mid360_formal_batch1/__init__.py",
         "experiments/mid360_formal_batch1/preregistration_firewall.py",
+        # Versioned future-execution/result-schema authorities are outside the
+        # registration-free preparation scope.  They are individually AST- and
+        # hash-audited by zero_perturbation_v1_1_r1_verify.py; no directory-wide
+        # exclusion is permitted.
+        "experiments/mid360_formal_batch1/zero_perturbation_r1_trial_assets.py",
+        "experiments/mid360_formal_batch1/zero_perturbation_v1_1_r1_runner.py",
         "tools/mid360_formal_batch1/freeze_batch.py",
     }
 )

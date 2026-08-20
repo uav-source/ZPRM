@@ -1,0 +1,99 @@
+{
+  "schema": "mid360_fmb1_final_dataset_prelock_reauthentication_v1",
+  "generated_at_utc": "2026-08-20T01:42:31+00:00",
+  "status": "PASS",
+  "pass": true,
+  "dataset_identity": "FMB1_FINAL_DATASET_W02_ATTEMPT2_V1",
+  "current_dataset_pointer": "results/mid360_formal_batch1/CURRENT_FINAL_DATASET.json",
+  "current_dataset_pointer_sha256": "aaa5ae45da89e5eb7c17c2fb54dc8798e564240e17b20e4ce8d0fc581da6a330",
+  "final_dataset_manifest_sha256": "757a349da2952e49b311b1989891c2d289f234512ab6134c6da6de5a8866af48",
+  "final_dataset_sha256sums_sha256": "37ed735d30f1f6cb76e4f58b20b670593d581fed22eebdb7d7bffcf42aabbd0f",
+  "final_dataset_sha256sums_entry_count": 13,
+  "final_dataset_sha256sums_all_pass": true,
+  "final_scene_count": 6,
+  "final_station_count": 18,
+  "final_target_count": 18,
+  "final_snapshot_count": 180,
+  "final_geometry_row_count": 180,
+  "final_admitted_bag_count": 36,
+  "raw_candidate_bag_count": 42,
+  "rich_scenes": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03"
+  ],
+  "weak_scenes": [
+    "FMB1_W01",
+    "FMB1_W02",
+    "FMB1_W03"
+  ],
+  "independent_rehash": {
+    "raw_candidate_count": 42,
+    "target_count": 18,
+    "source_count": 180,
+    "missing_count": 0,
+    "mismatch_count": 0,
+    "report": "results/mid360_formal_batch1/final_dataset_v1/independent_verification.json",
+    "report_sha256": "892937d3354b8e7648e9d20f1c39af269d1bbb47200b6a774be3611148fcd7af"
+  },
+  "w02_attempt1": {
+    "attempt": 1,
+    "status": "INVALID_ACQUISITION",
+    "reason": "WRONG_SCENE_LOCATION / OPERATOR_SCENE_SELECTION_ERROR",
+    "archived_bag_count": 6,
+    "archive_files_present": 6,
+    "archive_sha256_pass_count": 6,
+    "active_bag_count": 0,
+    "final_snapshot_count": 0,
+    "retained": true
+  },
+  "w02_attempt2": {
+    "attempt": 2,
+    "status": "GEOMETRY_ADMITTED",
+    "raw_bag_count": 6,
+    "station_count": 3,
+    "target_count": 3,
+    "snapshot_count": 30,
+    "geometry_class": "WEAK",
+    "included_in_final_set": true
+  },
+  "w04": {
+    "identifier_retired": true,
+    "included_in_final_set": false,
+    "final_raw_row_count": 0,
+    "final_target_row_count": 0,
+    "final_snapshot_row_count": 0,
+    "final_geometry_row_count": 0,
+    "historical_superseded_record": "results/mid360_formal_batch1/history/final_dataset_w04_replacement_superseded_v1.SUPERSEDED.json"
+  },
+  "query_contribution_to_target_total": 0,
+  "protected_assets": {
+    "preregistration_v1_sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "analysis_protocol_v1_sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "unchanged": true
+  },
+  "pre_icp_freeze": {
+    "commit": "b84c81855d0cdce2958cdc51ea3831ea4fb17f5a",
+    "annotated_tag": "freeze/fmb1-final-dataset-pre-icp-v1",
+    "tag_object": "7bf095fbbede80556236e47d398e9ecf17cd68af",
+    "tag_peeled_commit": "b84c81855d0cdce2958cdc51ea3831ea4fb17f5a"
+  },
+  "formal_execution_state": {
+    "actual_open3d_trials": 0,
+    "actual_pcl_trials": 0,
+    "actual_formal_trials": 0,
+    "registration_execution_count": 0,
+    "FORMAL_ICP_UNLOCKED": false,
+    "FORMAL_REGISTRATION_AUTHORIZED": false,
+    "MEASUREMENT_FINAL_RESULT": false
+  },
+  "correction": {
+    "type": "PRE_BACKEND_ADMINISTRATIVE_ACQUISITION_CORRECTION",
+    "reason": "original W02 attempt1 was an operator wrong-scene acquisition; 20260820 data are W02 attempt2 reacquisition; W04 identity is retired",
+    "correction_at_formal_trial_count": 0,
+    "registration_evidence_used": false
+  },
+  "ready_for_r1_protocol_candidate_verification": true,
+  "this_report_authorizes_backend_execution": false
+}

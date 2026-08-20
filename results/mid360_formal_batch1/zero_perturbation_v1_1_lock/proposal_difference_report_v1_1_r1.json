@@ -1,0 +1,82 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_proposal_difference_report_v1_1_r1",
+  "status": "DIFFERENCES_DOCUMENTED_VERSIONED_CORRECTION_REQUIRED",
+  "reviewed_at_utc": "2026-08-20T01:45:47Z",
+  "old_proposal_preserved_byte_for_byte": true,
+  "old_proposal_json_sha256_before_r1": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+  "old_proposal_md_sha256_before_r1": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed",
+  "reviewed_inputs": [
+    {
+      "path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.json",
+      "sha256": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e"
+    },
+    {
+      "path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.md",
+      "sha256": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed"
+    },
+    {
+      "path": "experiments/mid360_formal_batch1/protocol_alignment_audit.json",
+      "sha256": "d19c5ca8b95192810c6b329d799dff250e4d7fe130a3e25a64418fc45c302d4d"
+    },
+    {
+      "path": "results/mid360_formal_batch1/CURRENT_FINAL_DATASET.json",
+      "sha256": "aaa5ae45da89e5eb7c17c2fb54dc8798e564240e17b20e4ce8d0fc581da6a330"
+    },
+    {
+      "path": "results/mid360_formal_batch1/final_dataset_v1/acquisition_attempt_lineage.json",
+      "sha256": "cc156c95e9b5e0b6c3235acbccff32e3c6ba6efe122669e73a99db9be659e507"
+    }
+  ],
+  "differences": [
+    {
+      "difference_id": "R1-DIFF-001",
+      "old_proposal": "W04_ACQUIRED_WITH_NONFABRICATED_FIELD_METADATA is an activation prerequisite.",
+      "current_evidence": "W04_IDENTIFIER_RETIRED=true and W04_INCLUDED_IN_FINAL_SET=false.",
+      "r1_resolution": "Forbid W04 and bind the active weak slot to FMB1_W02 attempt 2."
+    },
+    {
+      "difference_id": "R1-DIFF-002",
+      "old_proposal": "W04 three-station acquisition and WEAK geometry admission are required.",
+      "current_evidence": "The 2026-08-20 data are W02 attempt 2: three acquisition-passing stations, 30 snapshots, and GEOMETRY_ADMITTED as WEAK.",
+      "r1_resolution": "Replace only the activation-candidate semantics; retain the old proposal as history."
+    },
+    {
+      "difference_id": "R1-DIFF-003",
+      "old_proposal": "The original alignment audit treated W02 as a geometry-only-ineligible scene to be replaced.",
+      "current_evidence": "Operator-confirmed lineage classifies W02 attempt 1 as INVALID_ACQUISITION for WRONG_SCENE_LOCATION / OPERATOR_SCENE_SELECTION_ERROR.",
+      "r1_resolution": "Record a pre-backend administrative reacquisition, not result-based replacement."
+    },
+    {
+      "difference_id": "R1-DIFF-004",
+      "old_proposal": "Activation requirement text includes separate explicit formal registration authorization.",
+      "current_requirement": "Protocol activation and formal lock must precede, and remain distinct from, a later registration authorization.",
+      "r1_resolution": "Make activation possible with FORMAL_REGISTRATION_AUTHORIZED=false; backend execution remains forbidden until separate authorization."
+    },
+    {
+      "difference_id": "R1-DIFF-005",
+      "old_proposal": "The result-integrity section points to formal_trial_result_schema_v1.json.",
+      "current_requirement": "A strict, track-specific zero-perturbation v1.1 result schema is required.",
+      "r1_resolution": "Require a separately frozen v1.1 result schema and bind it at activation/lock; do not alter the old proposal."
+    },
+    {
+      "difference_id": "R1-DIFF-006",
+      "old_proposal": "Physical-reference limitations are not fully specified.",
+      "current_requirement": "Controlled-static nominal Identity must not be represented as independently verified submillimeter physical ground truth.",
+      "r1_resolution": "Freeze NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT in R1 protocol, contract, metadata, and reporting limitations."
+    },
+    {
+      "difference_id": "R1-DIFF-007",
+      "old_proposal": "Scene-first analysis is named but exact inference, reassociation, systematic fraction, and model-transfer rules are not fully frozen.",
+      "current_requirement": "Those methods must be fixed before real results.",
+      "r1_resolution": "Freeze them in the R1 analysis contract while actual formal trial count remains zero."
+    }
+  ],
+  "scientific_change_timing": {
+    "correction_before_any_formal_icp": true,
+    "formal_trial_count_at_correction": 0,
+    "registration_result_used": false
+  },
+  "candidate_outcome": "R1_CANDIDATE_CREATED_NOT_YET_ACTIVE",
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0
+}

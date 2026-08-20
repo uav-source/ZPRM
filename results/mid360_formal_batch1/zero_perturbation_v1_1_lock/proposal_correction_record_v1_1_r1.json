@@ -1,0 +1,65 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_proposal_correction_record_v1_1_r1",
+  "correction_id": "FMB1_ZERO_PERTURBATION_PROPOSAL_CORRECTION_V1_1_R1",
+  "status": "RECORDED_PRE_ACTIVATION",
+  "recorded_at_utc": "2026-08-20T01:45:47Z",
+  "correction_reason": "OPERATOR_CONFIRMED_WRONG_SCENE_LOCATION",
+  "correction_type": "PRE_BACKEND_ADMINISTRATIVE_ACQUISITION_AND_PROPOSAL_SEMANTICS_CORRECTION",
+  "correction_before_any_formal_icp": true,
+  "correction_at_formal_trial_count": 0,
+  "registration_evidence_used": false,
+  "old_proposal": {
+    "registry_status": "SUPERSEDED_PROPOSAL",
+    "status": "PROPOSED_NOT_ACTIVE",
+    "modified": false,
+    "json_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.json",
+    "json_sha256": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+    "markdown_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.md",
+    "markdown_sha256": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed",
+    "supersession_record_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.SUPERSEDED.json",
+    "supersession_record_sha256": "e76af07f4dd2bc63944563fc8139b0ebc1b3489d7d83429f8d80d2936662d44c"
+  },
+  "lineage": {
+    "scene_id": "FMB1_W02",
+    "attempt1_status": "INVALID_ACQUISITION",
+    "attempt1_reason": "WRONG_SCENE_LOCATION / OPERATOR_SCENE_SELECTION_ERROR",
+    "attempt1_raw_bags_retained": 6,
+    "attempt1_in_final_dataset": false,
+    "attempt2_status": "GEOMETRY_ADMITTED",
+    "attempt2_final_geometry_class": "WEAK",
+    "attempt2_station_count": 3,
+    "attempt2_snapshot_count": 30,
+    "attempt2_in_final_dataset": true,
+    "w04_identifier_retired": true,
+    "w04_in_final_dataset": false,
+    "source_path": "results/mid360_formal_batch1/final_dataset_v1/acquisition_attempt_lineage.json",
+    "source_sha256": "cc156c95e9b5e0b6c3235acbccff32e3c6ba6efe122669e73a99db9be659e507"
+  },
+  "r1_candidate": {
+    "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+    "status": "CANDIDATE_PENDING_INDEPENDENT_ACTIVATION_VERIFIER",
+    "activation_effective": false,
+    "amendment_json_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.json",
+    "amendment_json_sha256": "fc06bfcc44ded84df1e226d8203859201ef3b78e3e416c8e6eef2360e6e40eef",
+    "amendment_md_sha256": "68b89240e4d94b88d1ee3f133c68b17623db9a6568118b8d174bc741d45b0f73",
+    "analysis_contract_sha256": "e507ae54c5a9c997b40734006ac1643a337ffdfafd65c031ecb0251e3c7f0c3d",
+    "analysis_protocol_sha256": "c1a4fbfcc93c64bd0d75d1f8bdf77bbfcbd086e5ed42d70b0b9a6f5506b47a59"
+  },
+  "original_capture_radius_track": {
+    "status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+    "original_preregistration_sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "original_analysis_protocol_sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "modified": false
+  },
+  "activation_state": {
+    "r1_candidate_created": true,
+    "independent_activation_verifier_pass_required": true,
+    "activation_record_created": false,
+    "active_protocol_pointer_created": false,
+    "activation_effective": false
+  },
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0
+}

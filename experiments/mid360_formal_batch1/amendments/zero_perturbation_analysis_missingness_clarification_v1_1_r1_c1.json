@@ -1,0 +1,220 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1",
+  "clarification_id": "FMB1_ZERO_PERTURBATION_MISSINGNESS_CLARIFICATION_V1_1_R1_C1",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "status": "ACTIVE_PRELOCK_CLARIFICATION",
+  "clarified_at_utc": "2026-08-20T02:38:21Z",
+  "clarified_at_local": "2026-08-20T10:38:21+08:00",
+  "clarification_before_formal_lock": true,
+  "clarification_before_any_formal_icp": true,
+  "clarification_at_formal_trial_count": 0,
+  "registration_result_used": false,
+  "reason": "The active R1 contract retained scientific nonfinite results but had not fixed how undefined endpoints affect nested summaries and inference.",
+  "principles": {
+    "all_360_planned_trial_ids_remain_in_accounting": true,
+    "silent_row_deletion_forbidden": true,
+    "scientific_failure_retry_forbidden": true,
+    "infrastructure_retry_lineage_retained": true,
+    "imputation_forbidden": true,
+    "winsorization_forbidden": true,
+    "undefined_formal_summary_never_replaced_by_available_case_summary": true,
+    "result_dependent_threshold_changes_forbidden": true
+  },
+  "authoritative_trial_outcome": {
+    "selection_order": "LOWEST_ATTEMPT_INDEX_WITH_SCHEMA_VALID_INFRASTRUCTURE_PASS_SCIENTIFIC_OUTCOME",
+    "scientific_outcome_may_be_finite_or_nonfinite": true,
+    "duplicate_scientific_outcome_after_one_exists": "FORBIDDEN",
+    "infrastructure_attempts_before_authoritative_outcome": "RETAIN_AND_REPORT",
+    "no_schema_valid_infrastructure_pass_outcome": "UNRESOLVED_INFRASTRUCTURE_FAILURE",
+    "scientific_nonfinite_outcome": "AUTHORITATIVE_SCIENTIFIC_FAILURE_NOT_RETRYABLE",
+    "json_representation_of_nonfinite": "NULL_ENDPOINTS_WITH_EXPLICIT_NONFINITE_STATUS_NEVER_NAN_OR_INFINITY_TOKEN"
+  },
+  "row_endpoint_classification": {
+    "FINITE_SCIENTIFIC_VALUE": "infrastructure_status=\"OK\", scientific execution completed, finite_result true, and the endpoint value is finite",
+    "SCIENTIFIC_UNDEFINED_NONFINITE": "infrastructure_status=\"OK\" and scientific execution completed, but finite_result is false or the endpoint is nonfinite/undefined",
+    "UNRESOLVED_INFRASTRUCTURE_FAILURE": "no authoritative scientific outcome exists after retaining all allowed infrastructure attempts",
+    "ENDPOINT_SPECIFIC_UNDEFINED_COMMON_METRIC": "pose endpoint may remain finite while a common reassociation metric is null with its frozen invalid reason",
+    "SOLVER_NONCONVERGED_FINITE": "included as FINITE_SCIENTIFIC_VALUE when infrastructure passed and the relevant endpoint is finite"
+  },
+  "mandatory_counts_at_every_station_scene_backend_summary": [
+    "planned_n",
+    "authoritative_scientific_outcome_n",
+    "finite_endpoint_n",
+    "scientific_undefined_nonfinite_n",
+    "unresolved_infrastructure_failure_n",
+    "resolved_infrastructure_attempt_n",
+    "solver_nonconverged_finite_n",
+    "endpoint_specific_undefined_n",
+    "formal_summary_status"
+  ],
+  "available_case_descriptive_rule": {
+    "enabled": true,
+    "minimum_finite_n": 1,
+    "statistics": ["median", "q25", "q75", "q95"],
+    "quantile_method": "linear",
+    "label": "AVAILABLE_CASE_DESCRIPTIVE_NOT_PRIMARY_NOT_INFERENTIAL",
+    "when_finite_n_zero": "ALL_AVAILABLE_CASE_STATISTICS_NULL",
+    "may_replace_formal_summary": false
+  },
+  "formal_translation_rotation_summary_rule": {
+    "station": {
+      "planned_n": 10,
+      "required_finite_endpoint_n": 10,
+      "required_scientific_undefined_nonfinite_n": 0,
+      "required_unresolved_infrastructure_failure_n": 0,
+      "defined_status": "FORMAL_STATION_SUMMARY_DEFINED_COMPLETE_10_OF_10",
+      "undefined_status": "FORMAL_STATION_SUMMARY_UNDEFINED_INCOMPLETE_FINITE_COVERAGE",
+      "undefined_values": ["median", "q25", "q75", "q95"]
+    },
+    "scene": {
+      "planned_n": 30,
+      "required_finite_endpoint_n": 30,
+      "required_defined_station_summaries": 3,
+      "required_scientific_undefined_nonfinite_n": 0,
+      "required_unresolved_infrastructure_failure_n": 0,
+      "defined_status": "FORMAL_SCENE_SUMMARY_DEFINED_COMPLETE_30_OF_30",
+      "undefined_status": "FORMAL_SCENE_SUMMARY_UNDEFINED_INCOMPLETE_FINITE_COVERAGE",
+      "undefined_values": ["median", "q25", "q75", "q95"]
+    },
+    "nonfinite_or_missing_values_used_in_quantile": false,
+    "available_case_values_used_for_formal_inference": false
+  },
+  "weak_rich_exact_permutation_rule": {
+    "required_defined_scene_summaries": 6,
+    "required_defined_rich_scene_summaries": 3,
+    "required_defined_weak_scene_summaries": 3,
+    "allocation_count_when_defined": 20,
+    "undefined_behavior": {
+      "estimand": null,
+      "p_value": null,
+      "status": "INFERENCE_UNDEFINED_INCOMPLETE_SIX_SCENE_COVERAGE"
+    },
+    "partial_scene_permutation_forbidden": true,
+    "class_rebalancing_forbidden": true,
+    "imputation_forbidden": true
+  },
+  "spearman_rules": {
+    "implementation": "SCIPY_STATS_SPEARMANR_WITH_AVERAGE_RANKS",
+    "scene_backend_agreement": {
+      "required_complete_pairs": 6,
+      "partial_pair_analysis": "AVAILABLE_CASE_DESCRIPTIVE_ONLY",
+      "formal_rho_if_incomplete": null,
+      "formal_status_if_incomplete": "SCENE_SPEARMAN_UNDEFINED_INCOMPLETE_6_PAIRS"
+    },
+    "station_backend_agreement": {
+      "required_complete_pairs": 18,
+      "partial_pair_analysis": "AVAILABLE_CASE_DESCRIPTIVE_ONLY",
+      "formal_rho_if_incomplete": null,
+      "formal_status_if_incomplete": "STATION_SPEARMAN_UNDEFINED_INCOMPLETE_18_PAIRS"
+    },
+    "constant_input_behavior": {
+      "rho": null,
+      "p_value": null,
+      "status": "SPEARMAN_UNDEFINED_CONSTANT_INPUT"
+    },
+    "nonfinite_pairs_silently_dropped": false,
+    "complete_pair_and_undefined_counts_reported": true
+  },
+  "snapshot_direction_cosine_rule": {
+    "defined_only_when_both_backend_translation_vectors_are_finite_and_nonzero": true,
+    "missing_or_nonfinite_vector": {
+      "cosine": null,
+      "status": "DIRECTION_COSINE_UNDEFINED_MISSING_OR_NONFINITE_VECTOR"
+    },
+    "zero_vector": {
+      "cosine": null,
+      "status": "DIRECTION_COSINE_UNDEFINED_ZERO_VECTOR"
+    },
+    "snapshot_retained": true,
+    "status_counts_reported": true,
+    "role": "DESCRIPTIVE_ONLY"
+  },
+  "reassociation_missingness_rule": {
+    "endpoint_specific": true,
+    "common_invalid_reason_retained": true,
+    "required_result_status_fields": [
+      "common_association_valid",
+      "common_association_invalid_reason",
+      "common_association_invalid_detail"
+    ],
+    "common_association_invalid_reason_enum": [
+      "NO_INITIAL_CORRESPONDENCE",
+      "NO_FINAL_CORRESPONDENCE",
+      "INSUFFICIENT_VALID_NORMALS",
+      "NONFINITE_COMMON_METRICS",
+      "OTHER"
+    ],
+    "valid_row_status_rule": "common_association_valid=true requires invalid_reason=null and invalid_detail=null",
+    "invalid_row_status_rule": "common_association_valid=false requires an enumerated invalid_reason",
+    "invalid_detail_rule": "optional bounded diagnostic text; required for OTHER and forbidden from changing endpoint classification",
+    "result_schema_and_runner_must_preserve_status_fields": true,
+    "formal_scene_metric_summary": {
+      "required_finite_metric_n": 30,
+      "undefined_status": "REASSOCIATION_SCENE_SUMMARY_UNDEFINED_INCOMPLETE_30_METRICS"
+    },
+    "scene_median_turnover_displacement_spearman": {
+      "required_complete_scene_pairs": 6,
+      "constant_input_behavior": "NULL_WITH_SPEARMAN_UNDEFINED_CONSTANT_INPUT",
+      "incomplete_behavior": "NULL_WITH_REASSOCIATION_SCENE_ASSOCIATION_UNDEFINED_INCOMPLETE_6_PAIRS"
+    },
+    "within_scene_centered_association": {
+      "required_complete_snapshot_pairs_per_scene": 30,
+      "required_complete_scene_strata": 6,
+      "required_total_complete_pairs": 180,
+      "incomplete_behavior": "NULL_WITH_CENTERED_ASSOCIATION_UNDEFINED_INCOMPLETE_180_PAIRS",
+      "available_case_centered_association": "DESCRIPTIVE_ONLY_WITH_N_AND_MISSINGNESS_COUNTS",
+      "registered_permutation_runs_only_when_formal_centered_association_is_defined": true
+    },
+    "missing_common_metric_does_not_invalidate_finite_pose_endpoint": true
+  },
+  "systematic_fraction_missingness_rule": {
+    "required_finite_translation_vectors_per_station": 10,
+    "incomplete_station_behavior": {
+      "systematic_fraction": null,
+      "status": "SYSTEMATIC_FRACTION_UNDEFINED_INCOMPLETE_10_VECTORS",
+      "station_retained": true
+    },
+    "complete_all_zero_station_behavior": {
+      "systematic_fraction": 0.0,
+      "status": "ALL_ZERO_UPDATES_DEFINED_ZERO_SYSTEMATIC_FRACTION",
+      "station_retained": true
+    },
+    "scene_required_defined_station_fractions": 3,
+    "incomplete_scene_behavior": {
+      "scene_systematic_fraction": null,
+      "status": "SCENE_SYSTEMATIC_FRACTION_UNDEFINED_INCOMPLETE_3_STATIONS"
+    },
+    "weak_rich_comparison_requires_all_six_defined_scene_values": true,
+    "available_subset_used_for_formal_systematic_fraction": false
+  },
+  "infrastructure_failure_rule": {
+    "retry_permitted": true,
+    "retry_requires_explicit_infrastructure_failure_classification": true,
+    "all_attempts_retained": true,
+    "authoritative_selection": "EARLIEST_SCHEMA_VALID_INFRASTRUCTURE_PASS_SCIENTIFIC_OUTCOME",
+    "unresolved_failure_trial_retained_in_planned_denominator": true,
+    "unresolved_failure_endpoint": null,
+    "unresolved_failure_affects_completeness_gate": true,
+    "infrastructure_failure_may_not_be_reclassified_from_scientific_failure": true
+  },
+  "reporting_requirement": {
+    "backend_specific_nonfinite_counts": true,
+    "backend_specific_infrastructure_counts": true,
+    "trial_ids_for_every_undefined_category": true,
+    "formal_and_available_case_summaries_visibly_separated": true,
+    "undefined_inference_reported_not_omitted": true,
+    "paper_limitation_includes_missingness_rule": true
+  },
+  "formal_lock_precondition": {
+    "result_schema_contains_common_association_status_fields": true,
+    "runner_preserves_common_association_status_fields": true,
+    "independent_verifier_rejects_missing_or_invalid_status_binding": true
+  },
+  "capture_radius_track_status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_formal_trials": 0
+}

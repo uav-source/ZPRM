@@ -1,0 +1,329 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_analysis_contract_v1_1_r1",
+  "document_version": "1.1-R1-C1",
+  "contract_id": "FMB1_ZERO_PERTURBATION_ANALYSIS_CONTRACT_V1_1_R1_C1",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "clarification_id": "FMB1_ZERO_PERTURBATION_MISSINGNESS_CLARIFICATION_V1_1_R1_C1",
+  "status": "ACTIVE",
+  "activation_effective": true,
+  "activated_at_utc": "2026-08-20T01:59:53Z",
+  "activated_before_any_formal_icp": true,
+  "formal_trial_count_at_activation": 0,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0,
+  "prelock_missingness_clarification": {
+    "status": "ACTIVE_PRELOCK_CLARIFICATION",
+    "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.json",
+    "sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb",
+    "clarification_before_formal_lock": true,
+    "clarification_before_any_formal_icp": true,
+    "clarification_at_formal_trial_count": 0
+  },
+  "track_id": "ZERO_PERTURBATION_TRACK",
+  "dataset": {
+    "rich_scene_ids": ["FMB1_R01", "FMB1_R02", "FMB1_R03"],
+    "weak_scene_ids": ["FMB1_W01", "FMB1_W02", "FMB1_W03"],
+    "forbidden_scene_ids": ["FMB1_W04"],
+    "w02_active_attempt": 2,
+    "w02_attempt1_forbidden": true,
+    "scene_count": 6,
+    "station_count": 18,
+    "snapshot_count": 180,
+    "snapshot_count_per_scene": 30,
+    "snapshot_count_per_station": 10
+  },
+  "physical_reference": {
+    "physical_reference_semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+    "map_query_recording_relation": "INDEPENDENT_BAGS_SAME_MECHANICALLY_SUPPORTED_STATION",
+    "intentional_platform_motion": false,
+    "imu_claim_limit": "NO_OBVIOUS_MOTION_ONLY",
+    "independent_submillimeter_external_ground_truth_available": false,
+    "imu_submillimeter_ground_truth_claim_forbidden": true,
+    "controlled_static_nominal_identity_update_only": true,
+    "absolute_physical_displacement_claim_forbidden": true,
+    "paper_limitation_required": true
+  },
+  "transform_semantics": {
+    "T0": [
+      [1.0, 0.0, 0.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0],
+      [0.0, 0.0, 1.0, 0.0],
+      [0.0, 0.0, 0.0, 1.0]
+    ],
+    "T_reference_nominal": [
+      [1.0, 0.0, 0.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0],
+      [0.0, 0.0, 1.0, 0.0],
+      [0.0, 0.0, 0.0, 1.0]
+    ],
+    "delta_transform_formula": "Delta_T = inverse(T0) @ T_est",
+    "translation_vector_source": "Delta_T[:3,3]",
+    "translation_norm_source": "norm(Delta_T[:3,3])",
+    "rotation_angle_source": "principal_SO3_angle(Delta_T[:3,:3])",
+    "translation_perturbation_m": 0.0,
+    "rotation_perturbation_deg": 0.0
+  },
+  "experimental_units": {
+    "hierarchy": ["scene", "station", "snapshot", "backend"],
+    "highest_independent_unit": "scene",
+    "primary_experimental_unit": "scene",
+    "station_role": "NESTED_REPEAT_WITHIN_SCENE",
+    "snapshot_role": "NESTED_REPEAT_WITHIN_STATION",
+    "snapshots_are_independent_scenes": false,
+    "snapshot_level_naive_p_value_forbidden": true,
+    "pooled_180_row_inference_as_independent_samples_forbidden": true
+  },
+  "backend_separation": {
+    "backends": ["OPEN3D_POINT_TO_PLANE", "PCL_POINT_TO_PLANE"],
+    "primary_analysis_run_separately_by_backend": true,
+    "scene_specific_parameter_tuning_forbidden": true,
+    "backend_parameter_contract_path": "frozen_assets/backend_parameter_contract.json",
+    "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+  },
+  "missingness_and_nonfinite_policy": {
+    "all_planned_trial_ids_retained_in_accounting": true,
+    "silent_exclusion_forbidden": true,
+    "nonfinite_json_representation": "NULL_WITH_EXPLICIT_STATUS_NEVER_NAN_OR_INFINITY",
+    "scientific_nonfinite_retry_forbidden": true,
+    "infrastructure_attempts_all_retained": true,
+    "authoritative_trial_outcome": "EARLIEST_SCHEMA_VALID_INFRASTRUCTURE_PASS_SCIENTIFIC_OUTCOME",
+    "unresolved_infrastructure_failure_retained_in_planned_denominator": true,
+    "mandatory_counts": [
+      "planned_n",
+      "authoritative_scientific_outcome_n",
+      "finite_endpoint_n",
+      "scientific_undefined_nonfinite_n",
+      "unresolved_infrastructure_failure_n",
+      "resolved_infrastructure_attempt_n",
+      "solver_nonconverged_finite_n",
+      "endpoint_specific_undefined_n",
+      "formal_summary_status"
+    ],
+    "station_formal_summary": {
+      "planned_n": 10,
+      "required_finite_n": 10,
+      "required_scientific_undefined_n": 0,
+      "required_unresolved_infrastructure_n": 0,
+      "undefined_status": "FORMAL_STATION_SUMMARY_UNDEFINED_INCOMPLETE_FINITE_COVERAGE"
+    },
+    "scene_formal_summary": {
+      "planned_n": 30,
+      "required_finite_n": 30,
+      "required_defined_station_summaries": 3,
+      "required_scientific_undefined_n": 0,
+      "required_unresolved_infrastructure_n": 0,
+      "undefined_status": "FORMAL_SCENE_SUMMARY_UNDEFINED_INCOMPLETE_FINITE_COVERAGE"
+    },
+    "available_case_descriptive": {
+      "minimum_finite_n": 1,
+      "label": "AVAILABLE_CASE_DESCRIPTIVE_NOT_PRIMARY_NOT_INFERENTIAL",
+      "may_replace_formal_summary": false
+    },
+    "imputation_forbidden": true,
+    "winsorization_forbidden": true
+  },
+  "primary_endpoint": {
+    "name": "TRANSLATION_ZERO_PERTURBATION_UPDATE_NORM_M",
+    "row_value": "translation_norm_m",
+    "scene_summary": {
+      "input_count": 30,
+      "statistics": ["median", "q25", "q75", "q95"],
+      "quantile_method": "linear",
+      "station_medians_reported": 3,
+      "raw_scene_medians_reported": true,
+      "formal_required_finite_n": 30,
+      "formal_required_defined_station_summaries": 3,
+      "formal_incomplete_behavior": "NULL_WITH_FORMAL_SCENE_SUMMARY_UNDEFINED_INCOMPLETE_FINITE_COVERAGE",
+      "available_case_summary_role": "DESCRIPTIVE_ONLY"
+    },
+    "weak_vs_rich_estimand": "median(three Weak scene medians) - median(three Rich scene medians)",
+    "alternative": "WEAK_GREATER_THAN_RICH",
+    "inference": {
+      "method": "EXACT_ONE_SIDED_PERMUTATION_ALL_3_VS_3_SCENE_ALLOCATIONS",
+      "independent_values": "SIX_SCENE_MEDIANS",
+      "allocation_count": 20,
+      "statistic": "median(assigned_Weak_scene_medians) - median(assigned_Rich_scene_medians)",
+      "exact_p_value": "count(permuted_statistic >= observed_statistic) / 20",
+      "random_seed": null,
+      "forced_pass_conclusion": false,
+      "required_defined_scene_summaries": 6,
+      "required_defined_rich_scene_summaries": 3,
+      "required_defined_weak_scene_summaries": 3,
+      "incomplete_behavior": "NULL_ESTIMAND_AND_P_VALUE_WITH_INFERENCE_UNDEFINED_INCOMPLETE_SIX_SCENE_COVERAGE",
+      "partial_scene_permutation_forbidden": true
+    }
+  },
+  "secondary_rotation_endpoint": {
+    "name": "ROTATION_ZERO_PERTURBATION_UPDATE_ANGLE",
+    "row_values": ["rotation_angle_rad", "rotation_angle_deg"],
+    "scene_summary": {
+      "input_count": 30,
+      "statistics": ["median", "q25", "q75", "q95"],
+      "quantile_method": "linear",
+      "station_medians_reported": 3,
+      "formal_required_finite_n": 30,
+      "formal_required_defined_station_summaries": 3,
+      "formal_incomplete_behavior": "NULL_WITH_FORMAL_SCENE_SUMMARY_UNDEFINED_INCOMPLETE_FINITE_COVERAGE"
+    },
+    "weak_vs_rich_estimand": "median(three Weak scene medians) - median(three Rich scene medians)",
+    "inference": "SAME_EXACT_ONE_SIDED_20_ALLOCATION_SCENE_LEVEL_PROCEDURE_AS_PRIMARY"
+  },
+  "cross_backend_analysis": {
+    "scene_median_spearman": {
+      "pair_count": 6,
+      "required": true,
+      "required_complete_pairs": 6,
+      "incomplete_behavior": "NULL_WITH_SCENE_SPEARMAN_UNDEFINED_INCOMPLETE_6_PAIRS",
+      "constant_input_behavior": "NULL_WITH_SPEARMAN_UNDEFINED_CONSTANT_INPUT"
+    },
+    "station_median_spearman": {
+      "pair_count": 18,
+      "required": true,
+      "required_complete_pairs": 18,
+      "incomplete_behavior": "NULL_WITH_STATION_SPEARMAN_UNDEFINED_INCOMPLETE_18_PAIRS",
+      "constant_input_behavior": "NULL_WITH_SPEARMAN_UNDEFINED_CONSTANT_INPUT"
+    },
+    "per_snapshot_translation_direction_cosine": {
+      "pair_count": 180,
+      "role": "DESCRIPTIVE_ONLY",
+      "zero_vector_rule": "REPORT_NULL_WITH_ZERO_VECTOR_STATUS_AND_RETAIN_SNAPSHOT",
+      "missing_or_nonfinite_vector_rule": "REPORT_NULL_WITH_MISSING_OR_NONFINITE_STATUS_AND_RETAIN_SNAPSHOT",
+      "status_counts_required": true
+    },
+    "backend_specific_solver_counts_required": true,
+    "backend_specific_nonfinite_counts_required": true,
+    "scene_ordering_agreement_required": true,
+    "pooled_snapshot_correlation_as_only_agreement_result_forbidden": true
+  },
+  "reassociation_analysis": {
+    "implementation_path": "src/phase_a_harness/common_association_analysis.py",
+    "implementation_sha256_at_candidate_freeze": "458190c26d8640353004663474adb64305d1193d89ff0dc68f71f404de8f175d",
+    "mid360_specific_redefinition_forbidden": true,
+    "frozen_fields": [
+      "initial_correspondence_count",
+      "final_correspondence_count",
+      "initial_valid_normal_correspondence_count",
+      "final_valid_normal_correspondence_count",
+      "correspondence_turnover",
+      "accepted_source_turnover",
+      "correspondence_count_change_ratio",
+      "initial_residual_rmse",
+      "final_residual_rmse",
+      "residual_rmse_change",
+      "median_normal_angle_change_deg",
+      "q95_normal_angle_change_deg"
+    ],
+    "required_reports_per_backend": [
+      "SCENE_LEVEL_MEDIAN_TURNOVER",
+      "SPEARMAN_SCENE_MEDIAN_TURNOVER_VS_SCENE_MEDIAN_TRANSLATION_DISPLACEMENT",
+      "WITHIN_SCENE_CENTERED_TURNOVER_DISPLACEMENT_ASSOCIATION",
+      "POOLED_SNAPSHOT_ASSOCIATION_AS_AUXILIARY_ONLY"
+    ],
+    "within_scene_centering": "subtract the corresponding scene median from each snapshot value before association",
+    "missingness": {
+      "required_result_status_fields": [
+        "common_association_valid",
+        "common_association_invalid_reason",
+        "common_association_invalid_detail"
+      ],
+      "common_association_invalid_reason_enum": [
+        "NO_INITIAL_CORRESPONDENCE",
+        "NO_FINAL_CORRESPONDENCE",
+        "INSUFFICIENT_VALID_NORMALS",
+        "NONFINITE_COMMON_METRICS",
+        "OTHER"
+      ],
+      "result_schema_runner_and_verifier_must_preserve_status_fields": true,
+      "formal_scene_metric_required_finite_n": 30,
+      "scene_association_required_complete_pairs": 6,
+      "centered_required_complete_pairs_per_scene": 30,
+      "centered_required_complete_scene_strata": 6,
+      "centered_required_total_complete_pairs": 180,
+      "incomplete_centered_behavior": "NULL_WITH_CENTERED_ASSOCIATION_UNDEFINED_INCOMPLETE_180_PAIRS",
+      "available_case_centered_role": "DESCRIPTIVE_ONLY_WITH_COUNTS",
+      "missing_common_metric_does_not_invalidate_finite_pose_endpoint": true
+    },
+    "optional_stratified_permutation": {
+      "enabled": true,
+      "method": "PERMUTE_CENTERED_DISPLACEMENT_VALUES_WITHIN_EACH_SCENE_STRATUM",
+      "preserve_scene_strata": true,
+      "seed": 20260820,
+      "permutation_count": 10000,
+      "two_sided": true,
+      "reported_as_secondary_sensitivity": true
+    },
+    "snapshots_treated_as_independent_scenes": false
+  },
+  "systematic_component": {
+    "unit": "station_backend",
+    "input_translation_vector_count": 10,
+    "required_finite_translation_vector_count": 10,
+    "formula": "norm(mean(delta_translation_vectors)) / mean(norm(delta_translation_vectors))",
+    "zero_denominator_rule": {
+      "condition": "mean(norm(delta_translation_vectors)) == 0",
+      "systematic_fraction": 0.0,
+      "status": "ALL_ZERO_UPDATES_DEFINED_ZERO_SYSTEMATIC_FRACTION",
+      "station_retained": true
+    },
+    "incomplete_vector_rule": {
+      "systematic_fraction": null,
+      "status": "SYSTEMATIC_FRACTION_UNDEFINED_INCOMPLETE_10_VECTORS",
+      "station_retained": true
+    },
+    "station_level_values_reported": true,
+    "scene_summary": "median of the three station systematic fractions only when all three are defined",
+    "incomplete_scene_behavior": "NULL_WITH_SCENE_SYSTEMATIC_FRACTION_UNDEFINED_INCOMPLETE_3_STATIONS",
+    "weak_rich_comparison_unit": "scene",
+    "reported_separately_by_backend": true,
+    "direction_inconsistent_snapshots_removed": false
+  },
+  "synthetic_model_transfer": {
+    "status": "MODEL_TRANSFER_NOT_COMPATIBLE",
+    "reason": "Complete equality of the frozen synthetic Model A/Model B feature schema and scale with the FMB1 real-result feature schema has not been demonstrated.",
+    "model_a_or_b_inference_permitted": false,
+    "retraining_permitted": false,
+    "hyperparameter_tuning_permitted": false,
+    "feature_modification_permitted": false,
+    "temporary_scale_adaptation_permitted": false,
+    "required_for_formal_lock": false,
+    "secondary_analysis_only_if_future_pre_result_versioned_compatibility_audit_passes": true
+  },
+  "failure_and_exclusion_rules": {
+    "result_dependent_exclusion_forbidden": true,
+    "must_retain": [
+      "SOLVER_NON_CONVERGENCE",
+      "FINITE_SCIENTIFIC_FAILURE",
+      "LARGE_DISPLACEMENT",
+      "BACKEND_DISAGREEMENT",
+      "OUTLIER",
+      "UNEXPECTED_DIRECTION",
+      "WEAK_RICH_CONTRARY_RESULT"
+    ],
+    "retry_allowed_only_for": [
+      "PROCESS_CRASH",
+      "FILE_READ_CORRUPTION",
+      "RESULT_SCHEMA_WRITE_FAILURE",
+      "PCL_EXECUTABLE_INFRASTRUCTURE_FAILURE"
+    ],
+    "authoritative_outcome_after_infrastructure_retry": "EARLIEST_SCHEMA_VALID_INFRASTRUCTURE_PASS_SCIENTIFIC_OUTCOME",
+    "unresolved_infrastructure_outcome": "NULL_ENDPOINT_RETAINED_IN_PLANNED_DENOMINATOR_AND_COMPLETENESS_GATE",
+    "scientific_nonfinite_outcome_retry_allowed": false,
+    "scientific_result_retry_until_success_forbidden": true,
+    "all_attempts_and_retry_lineage_retained": true
+  },
+  "reporting": {
+    "report_all_six_raw_scene_medians": true,
+    "report_all_three_station_medians_per_scene": true,
+    "report_backend_specific_failures": true,
+    "report_physical_reference_limitation": true,
+    "report_null_and_zero_denominator_statuses": true,
+    "outcome_not_forced": true
+  },
+  "capture_radius_track": {
+    "status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+    "original_preregistration_sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "original_analysis_protocol_sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "changed_by_r1": false,
+    "execution_authorized": false
+  }
+}

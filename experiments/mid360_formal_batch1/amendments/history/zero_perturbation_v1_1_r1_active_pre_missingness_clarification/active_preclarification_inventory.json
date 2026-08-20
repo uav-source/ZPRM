@@ -1,0 +1,43 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_v1_1_r1_active_pre_missingness_clarification_inventory",
+  "status": "ACTIVE_BYTES_PRESERVED_BEFORE_PRELOCK_CLARIFICATION",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "clarification_id": "FMB1_ZERO_PERTURBATION_MISSINGNESS_CLARIFICATION_V1_1_R1_C1",
+  "formal_trial_count_at_archive": 0,
+  "formal_lock_issued_at_archive": false,
+  "files": [
+    {
+      "name": "zero_perturbation_mainline_v1_1_r1.json",
+      "sha256": "1ff006ce3226c849c6ad70a12ca538bddf0b69c932c3c84e59f540fe42e7c1ab"
+    },
+    {
+      "name": "zero_perturbation_mainline_v1_1_r1.md",
+      "sha256": "b506f2a37d4624132d5ff3c05b6611e5e4f199f9f22c902d6f38b496066c607e"
+    },
+    {
+      "name": "zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "6f763eed64a438c58b2549c7d3741a67975af1560264b7c47158d92f8c33530a"
+    },
+    {
+      "name": "zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "b1f3b7ef54ae75e86e4131f171e8a2b74a3472c675e9c1c8210e918a2f056fd4"
+    },
+    {
+      "name": "amendment_activation_record_v1_1_r1.json",
+      "sha256": "cf6c7dde69e1c5ff0742c8f7dcb6189edc359686af366fcb1d96b3c904b5c097"
+    },
+    {
+      "name": "amendment_activation_transition_v1_1_r1.json",
+      "sha256": "9beeb1d501369d25ca89f510641614c8e7641d27cbdaddb39ccb3af558a094d5"
+    },
+    {
+      "name": "ACTIVE_PROTOCOL.json",
+      "sha256": "f4933ca1048f873e2465b617184df8bbe5cfb3b11199fca97316aedab9bf12c2"
+    }
+  ],
+  "clarification_reason": "Freeze deterministic treatment of scientific nonfinite/null endpoints and unresolved infrastructure failures before formal lock or ICP.",
+  "backend_calls": 0,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0
+}

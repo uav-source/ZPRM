@@ -1,0 +1,170 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_mainline_amendment_v1_1_r1",
+  "document_version": "1.1-R1",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "status": "ACTIVE",
+  "activation_effective": true,
+  "activation_effective_only_after": [
+    "R1_PROTOCOL_CANDIDATE_INDEPENDENT_VERIFIER_PASS",
+    "FINAL_DATASET_PRELOCK_REAUTHENTICATION_PASS",
+    "ACTIVATION_RECORD_CREATED_AT_FORMAL_TRIAL_COUNT_ZERO",
+    "ACTIVE_PROTOCOL_POINTER_CREATED_AND_HASH_BOUND"
+  ],
+  "formal_lock_prerequisites_not_activation_prerequisites": [
+    "FORMAL_ENVIRONMENT_QUALIFICATION_PASS",
+    "TRIAL_PLAN_AND_RESULT_SCHEMA_INDEPENDENT_VERIFIER_PASS"
+  ],
+  "activated_at_utc": "2026-08-20T01:59:53Z",
+  "activated_at_local": "2026-08-20T09:59:53+08:00",
+  "activated_before_any_formal_icp": true,
+  "formal_trial_count_at_activation": 0,
+  "candidate_created_at_utc": "2026-08-20T01:45:47Z",
+  "candidate_created_at_local": "2026-08-20T09:45:47+08:00",
+  "timezone": "Asia/Shanghai",
+  "FORMAL_AUTHORITY": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "backend_execution_permitted": false,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_formal_trials": 0,
+  "correction": {
+    "correction_type": "VERSIONED_PRE_BACKEND_PROPOSAL_SEMANTICS_CORRECTION",
+    "correction_reason": "OPERATOR_CONFIRMED_WRONG_SCENE_LOCATION",
+    "correction_at_formal_trial_count": 0,
+    "correction_before_any_formal_icp": true,
+    "registration_evidence_used_for_correction": false,
+    "original_proposal_modified": false,
+    "original_proposal_json_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.json",
+    "original_proposal_json_sha256": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+    "original_proposal_md_path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.md",
+    "original_proposal_md_sha256": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed",
+    "original_proposal_disposition": "SUPERSEDED_AS_ACTIVATION_CANDIDATE_RETAINED_UNCHANGED",
+    "incorrect_interpretation": "W04_REPLACES_W02_AFTER_GEOMETRY_ONLY_REJECTION",
+    "corrected_interpretation": "FMB1_W02_ATTEMPT1_INVALID_WRONG_SCENE_LOCATION_THEN_FMB1_W02_ATTEMPT2_REACQUIRED_CORRECT_SCENE",
+    "w02_attempt1": {
+      "status": "INVALID_ACQUISITION",
+      "reason": "WRONG_SCENE_LOCATION / OPERATOR_SCENE_SELECTION_ERROR",
+      "raw_bag_count": 6,
+      "retained_in_invalid_archive": true,
+      "included_in_final_dataset": false,
+      "included_in_trial_plan": false
+    },
+    "w02_attempt2": {
+      "status": "GEOMETRY_ADMITTED",
+      "acquisition_pass": true,
+      "final_geometry_class": "WEAK",
+      "raw_bag_count": 6,
+      "station_count": 3,
+      "snapshot_count": 30,
+      "included_in_final_dataset": true
+    },
+    "w04_identifier_retired": true,
+    "w04_included_in_final_dataset": false,
+    "w04_included_in_trial_plan": false
+  },
+  "authority_preservation": {
+    "original_preregistration_path": "experiments/mid360_formal_batch1/preregistration.yaml",
+    "original_preregistration_sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "original_capture_radius_analysis_protocol_path": "experiments/mid360_formal_batch1/analysis_protocol.md",
+    "original_capture_radius_analysis_protocol_sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "original_files_modified_by_r1": false,
+    "capture_radius_track_status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+    "capture_radius_hypotheses_preserved": true,
+    "capture_radius_perturbation_magnitudes_preserved": true,
+    "capture_radius_weak_strong_directions_and_signs_preserved": true,
+    "capture_radius_execution_authorized": false,
+    "retrospective_override": false
+  },
+  "final_dataset_binding": {
+    "current_dataset_pointer_path": "results/mid360_formal_batch1/CURRENT_FINAL_DATASET.json",
+    "current_dataset_pointer_sha256": "aaa5ae45da89e5eb7c17c2fb54dc8798e564240e17b20e4ce8d0fc581da6a330",
+    "final_dataset_manifest_path": "results/mid360_formal_batch1/final_dataset_v1/final_dataset_manifest.json",
+    "final_dataset_manifest_sha256": "757a349da2952e49b311b1989891c2d289f234512ab6134c6da6de5a8866af48",
+    "acquisition_attempt_lineage_path": "results/mid360_formal_batch1/final_dataset_v1/acquisition_attempt_lineage.json",
+    "acquisition_attempt_lineage_sha256": "cc156c95e9b5e0b6c3235acbccff32e3c6ba6efe122669e73a99db9be659e507",
+    "scene_ids": [
+      "FMB1_R01",
+      "FMB1_R02",
+      "FMB1_R03",
+      "FMB1_W01",
+      "FMB1_W02",
+      "FMB1_W03"
+    ],
+    "rich_scene_ids": ["FMB1_R01", "FMB1_R02", "FMB1_R03"],
+    "weak_scene_ids": ["FMB1_W01", "FMB1_W02", "FMB1_W03"],
+    "scene_count": 6,
+    "station_count": 18,
+    "snapshot_count": 180,
+    "w04_forbidden": true,
+    "old_w02_attempt1_forbidden": true
+  },
+  "zero_perturbation_track": {
+    "track_id": "ZERO_PERTURBATION_TRACK",
+    "scientific_role": "PRIMARY_CONTROLLED_STATIC_NOMINAL_IDENTITY_REGISTRATION_UPDATE",
+    "primary_question": "Whether same-station independently recorded MAP/QUERY registration initialized exactly at Identity produces a nonzero pose update, and whether that update varies with scene geometry and correspondence reassociation.",
+    "backends": ["OPEN3D_POINT_TO_PLANE", "PCL_POINT_TO_PLANE"],
+    "trials_per_snapshot": 2,
+    "planned_open3d_trials": 180,
+    "planned_pcl_trials": 180,
+    "planned_total_trials": 360,
+    "native_trial_count": 0,
+    "T0": [
+      [1.0, 0.0, 0.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0],
+      [0.0, 0.0, 1.0, 0.0],
+      [0.0, 0.0, 0.0, 1.0]
+    ],
+    "T_reference_nominal": [
+      [1.0, 0.0, 0.0, 0.0],
+      [0.0, 1.0, 0.0, 0.0],
+      [0.0, 0.0, 1.0, 0.0],
+      [0.0, 0.0, 0.0, 1.0]
+    ],
+    "delta_transform_formula": "Delta_T = inverse(T0) @ T_est",
+    "translation_perturbation_m": 0.0,
+    "rotation_perturbation_deg": 0.0,
+    "one_locked_trial_per_snapshot_backend": true,
+    "result_dependent_exclusion_forbidden": true,
+    "scientific_failure_retry_forbidden": true
+  },
+  "physical_reference": {
+    "physical_reference_semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+    "map_and_query_are_independent_bags": true,
+    "same_mechanical_support_station": true,
+    "intentional_platform_motion": false,
+    "imu_evidence_scope": "NO_OBVIOUS_MOTION_ONLY",
+    "independent_submillimeter_external_ground_truth_available": false,
+    "imu_proves_physical_displacement_below_1mm": false,
+    "permitted_claim": "CONTROLLED_STATIC_NOMINAL_IDENTITY_REGISTRATION_UPDATE",
+    "forbidden_claim": "INDEPENDENT_METROLOGY_VALIDATED_ABSOLUTE_PHYSICAL_DISPLACEMENT",
+    "paper_limitation_required": true
+  },
+  "experimental_hierarchy": {
+    "hierarchy": ["scene", "station", "snapshot", "backend"],
+    "highest_independent_unit": "scene",
+    "scene_count": 6,
+    "stations_per_scene": 3,
+    "snapshots_per_station": 10,
+    "snapshots_per_scene": 30,
+    "snapshots_are_independent_scenes": false,
+    "snapshot_level_naive_inference_forbidden": true
+  },
+  "backend_contract": {
+    "path": "frozen_assets/backend_parameter_contract.json",
+    "sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+    "scene_specific_tuning_forbidden": true,
+    "changed_by_r1": false
+  },
+  "analysis_contract": {
+    "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+    "status": "ACTIVE"
+  },
+  "registration_firewall": {
+    "no_backend_import_required_for_protocol_validation": true,
+    "no_real_result_files_allowed_before_authorization": true,
+    "formal_registration_authorized": false,
+    "actual_formal_trials_required": 0
+  }
+}

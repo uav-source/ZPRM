@@ -1,0 +1,101 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_amendment_activation_record_v1_1_r1",
+  "activation_record_id": "FMB1_ZERO_PERTURBATION_ACTIVATION_RECORD_V1_1_R1",
+  "status": "ACTIVE",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "activated_at_utc": "2026-08-20T01:59:53Z",
+  "activated_at_local": "2026-08-20T09:59:53+08:00",
+  "timezone": "Asia/Shanghai",
+  "activated_before_any_formal_icp": true,
+  "formal_trial_count_at_activation": 0,
+  "correction_at_formal_trial_count": 0,
+  "registration_evidence_used_for_activation_or_correction": false,
+  "candidate_state": {
+    "status": "CANDIDATE_PENDING_INDEPENDENT_ACTIVATION_VERIFIER",
+    "activation_effective": false,
+    "amendment_json_sha256": "fc06bfcc44ded84df1e226d8203859201ef3b78e3e416c8e6eef2360e6e40eef",
+    "amendment_md_sha256": "68b89240e4d94b88d1ee3f133c68b17623db9a6568118b8d174bc741d45b0f73",
+    "analysis_contract_sha256": "e507ae54c5a9c997b40734006ac1643a337ffdfafd65c031ecb0251e3c7f0c3d",
+    "analysis_protocol_sha256": "c1a4fbfcc93c64bd0d75d1f8bdf77bbfcbd086e5ed42d70b0b9a6f5506b47a59",
+    "independent_verification_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_candidate_independent_verification.json",
+    "independent_verification_sha256": "82b228dfad2e2eaa5cdca9ed6b15e68a08199548aca44cbd31d1c6e5d971aeff",
+    "independent_verification_pass": true
+  },
+  "candidate_bytes_archive": {
+    "directory": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_candidate_verified",
+    "inventory_path": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_candidate_verified/candidate_verified_inventory.json",
+    "inventory_sha256": "892a853daa33b17c4f1e3f06e9b6b5088baa1d5c374be10736c90034385938fe",
+    "exact_candidate_file_count": 4,
+    "all_candidate_hashes_match_independent_verification": true
+  },
+  "active_state": {
+    "status": "ACTIVE",
+    "activation_effective": true,
+    "amendment_json_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.json",
+    "amendment_json_sha256": "1ff006ce3226c849c6ad70a12ca538bddf0b69c932c3c84e59f540fe42e7c1ab",
+    "amendment_md_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.md",
+    "amendment_md_sha256": "b506f2a37d4624132d5ff3c05b6611e5e4f199f9f22c902d6f38b496066c607e",
+    "analysis_contract_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+    "analysis_contract_sha256": "6f763eed64a438c58b2549c7d3741a67975af1560264b7c47158d92f8c33530a",
+    "analysis_protocol_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+    "analysis_protocol_sha256": "b1f3b7ef54ae75e86e4131f171e8a2b74a3472c675e9c1c8210e918a2f056fd4"
+  },
+  "final_dataset_prelock_reauthentication": {
+    "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/final_dataset_prelock_reauthentication.json",
+    "sha256": "32a7afcf7f237317888b47de09064f03fe0417a9996fd7918aecdccfc51b8f93",
+    "status": "PASS",
+    "scene_count": 6,
+    "station_count": 18,
+    "target_count": 18,
+    "snapshot_count": 180,
+    "raw_candidate_rehash_count": 42,
+    "target_rehash_count": 18,
+    "source_rehash_count": 180,
+    "rehash_missing_count": 0,
+    "rehash_mismatch_count": 0
+  },
+  "corrected_lineage": {
+    "correction_reason": "OPERATOR_CONFIRMED_WRONG_SCENE_LOCATION",
+    "w02_attempt1_status": "INVALID_ACQUISITION",
+    "w02_attempt1_reason": "WRONG_SCENE_LOCATION / OPERATOR_SCENE_SELECTION_ERROR",
+    "w02_attempt1_retained": true,
+    "w02_attempt1_in_final_dataset": false,
+    "w02_attempt2_status": "GEOMETRY_ADMITTED",
+    "w02_attempt2_final_geometry_class": "WEAK",
+    "w02_attempt2_in_final_dataset": true,
+    "w04_identifier_retired": true,
+    "w04_in_final_dataset": false
+  },
+  "original_proposal": {
+    "registry_status": "SUPERSEDED_PROPOSAL",
+    "inside_file_status": "PROPOSED_NOT_ACTIVE",
+    "modified": false,
+    "json_sha256": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+    "markdown_sha256": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed"
+  },
+  "capture_radius_track": {
+    "status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+    "original_preregistration_sha256": "76ae548874d8c1584fcc033685db4a1e7cf104fd881cbd1c334eba0bfe1a9beb",
+    "original_analysis_protocol_sha256": "d453d12e713c546c5a054ceb1710b86eea12fa09e3f244705e46df9db255a879",
+    "execution_authorized": false
+  },
+  "activation_gate_scope": {
+    "amendment_activation_gates_passed": [
+      "R1_PROTOCOL_CANDIDATE_INDEPENDENT_VERIFIER_PASS",
+      "FINAL_DATASET_PRELOCK_REAUTHENTICATION_PASS",
+      "FORMAL_TRIAL_COUNT_ZERO"
+    ],
+    "formal_lock_gates_remain_separate": [
+      "FORMAL_ENVIRONMENT_QUALIFICATION_PASS",
+      "TRIAL_PLAN_AND_RESULT_SCHEMA_INDEPENDENT_VERIFIER_PASS"
+    ]
+  },
+  "activation_grants_backend_execution": false,
+  "FORMAL_AUTHORITY": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_formal_trials": 0
+}

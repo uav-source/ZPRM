@@ -576,7 +576,13 @@ def _scan_artifact_value(
         for key, child in value.items():
             name = _normalized(key)
             child_path = f"{json_path}.{key}"
-            if _is_forbidden_artifact_key(name):
+            # This exact administrative key is negative evidence only when it
+            # is the JSON boolean false.  Do not generalize the exemption to
+            # similarly named fields, false-like strings, or nested results.
+            negative_registration_evidence = (
+                name == "registration_result_used" and child is False
+            )
+            if _is_forbidden_artifact_key(name) and not negative_registration_evidence:
                 findings.append(
                     {
                         "path": relative,

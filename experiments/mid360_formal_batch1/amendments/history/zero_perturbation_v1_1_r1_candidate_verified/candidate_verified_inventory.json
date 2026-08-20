@@ -1,0 +1,31 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_v1_1_r1_candidate_verified_inventory",
+  "status": "VERIFIED_CANDIDATE_BYTES_PRESERVED",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "candidate_status": "CANDIDATE_PENDING_INDEPENDENT_ACTIVATION_VERIFIER",
+  "candidate_activation_effective": false,
+  "files": [
+    {
+      "path": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_candidate_verified/zero_perturbation_mainline_v1_1_r1.json",
+      "sha256": "fc06bfcc44ded84df1e226d8203859201ef3b78e3e416c8e6eef2360e6e40eef"
+    },
+    {
+      "path": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_candidate_verified/zero_perturbation_mainline_v1_1_r1.md",
+      "sha256": "68b89240e4d94b88d1ee3f133c68b17623db9a6568118b8d174bc741d45b0f73"
+    },
+    {
+      "path": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_candidate_verified/zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "e507ae54c5a9c997b40734006ac1643a337ffdfafd65c031ecb0251e3c7f0c3d"
+    },
+    {
+      "path": "experiments/mid360_formal_batch1/amendments/history/zero_perturbation_v1_1_r1_candidate_verified/zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "c1a4fbfcc93c64bd0d75d1f8bdf77bbfcbd086e5ed42d70b0b9a6f5506b47a59"
+    }
+  ],
+  "candidate_independent_verification_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/protocol_r1_candidate_independent_verification.json",
+  "candidate_independent_verification_sha256": "82b228dfad2e2eaa5cdca9ed6b15e68a08199548aca44cbd31d1c6e5d971aeff",
+  "candidate_independent_verification_status": "PASS",
+  "formal_trial_count_at_candidate_verification": 0,
+  "backend_modules_imported": 0,
+  "backend_calls": 0
+}

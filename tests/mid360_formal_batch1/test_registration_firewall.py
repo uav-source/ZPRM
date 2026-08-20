@@ -323,6 +323,46 @@ def test_authorization_environment_and_real_lock_are_hard_failures(
     )
 
 
+def test_registration_result_used_false_is_exact_negative_evidence(
+    tmp_path: Path,
+) -> None:
+    artifact_root = tmp_path / "artifacts"
+    artifact_root.mkdir()
+    path = artifact_root / "proposal_difference_report.json"
+    path.write_text(json.dumps({
+        "scientific_change_timing": {"registration_result_used": False},
+    }))
+    assert scan_registration_artifacts([artifact_root])["pass"] is True
+
+    path.write_text(json.dumps({
+        "scientific_change_timing": {"registration_result_used": True},
+    }))
+    positive = scan_registration_artifacts([artifact_root])
+    assert positive["pass"] is False
+    assert any(
+        row["kind"] == "BACKEND_RESULT_FIELD"
+        and row.get("json_path")
+        == "$.scientific_change_timing.registration_result_used"
+        for row in positive["artifacts"]
+    )
+
+
+def test_negative_evidence_does_not_hide_other_result_fields(tmp_path: Path) -> None:
+    artifact_root = tmp_path / "artifacts"
+    artifact_root.mkdir()
+    (artifact_root / "proposal_difference_report.json").write_text(json.dumps({
+        "scientific_change_timing": {"registration_result_used": False},
+        "nested": {"T_est": [[1, 0, 0, 0]] * 4},
+    }))
+    report = scan_registration_artifacts([artifact_root])
+    assert report["pass"] is False
+    assert any(
+        row["kind"] == "BACKEND_RESULT_FIELD"
+        and row.get("json_path") == "$.nested.T_est"
+        for row in report["artifacts"]
+    )
+
+
 def test_primary_no_registration_environment_is_mandatory(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

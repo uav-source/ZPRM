@@ -1,0 +1,33 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_proposal_supersession_record_v1_1_r1",
+  "status": "SUPERSEDED_PROPOSAL",
+  "disposition": "SUPERSEDED_AS_ACTIVATION_CANDIDATE_RETAINED_UNCHANGED",
+  "supersession_effective_for": "FUTURE_ACTIVATION_CANDIDATE_SELECTION_ONLY",
+  "historical_proposal_deleted": false,
+  "historical_proposal_modified": false,
+  "historical_proposal_json": {
+    "path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.json",
+    "sha256": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+    "status_recorded_inside_file": "PROPOSED_NOT_ACTIVE"
+  },
+  "historical_proposal_markdown": {
+    "path": "experiments/mid360_formal_batch1/zero_perturbation_mainline_amendment_v1_1_PROPOSED.md",
+    "sha256": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed"
+  },
+  "superseded_reason": "The retained proposal assumes a W04 replacement after W02 geometry rejection, while the operator-confirmed lineage is W02 attempt 1 invalidated for wrong scene location followed by admitted W02 attempt 2; W04 is retired.",
+  "correction_reason_code": "OPERATOR_CONFIRMED_WRONG_SCENE_LOCATION",
+  "correction_before_any_formal_icp": true,
+  "correction_at_formal_trial_count": 0,
+  "registration_evidence_used": false,
+  "replacement_candidate": {
+    "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+    "status": "CANDIDATE_PENDING_INDEPENDENT_ACTIVATION_VERIFIER",
+    "activation_effective": false,
+    "json_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.json",
+    "json_sha256_at_candidate_review": "fc06bfcc44ded84df1e226d8203859201ef3b78e3e416c8e6eef2360e6e40eef",
+    "markdown_path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_mainline_v1_1_r1.md",
+    "markdown_sha256_at_candidate_review": "68b89240e4d94b88d1ee3f133c68b17623db9a6568118b8d174bc741d45b0f73"
+  },
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "actual_formal_trials": 0
+}

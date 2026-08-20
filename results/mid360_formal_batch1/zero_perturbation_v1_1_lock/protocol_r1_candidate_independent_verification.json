@@ -1,0 +1,41 @@
+{
+  "FORMAL_ICP_UNLOCKED": false,
+  "FORMAL_LOCK_ISSUED": false,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "activation_effective": false,
+  "actual_formal_trials": 0,
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "amendment_json_sha256": "fc06bfcc44ded84df1e226d8203859201ef3b78e3e416c8e6eef2360e6e40eef",
+  "amendment_md_sha256": "68b89240e4d94b88d1ee3f133c68b17623db9a6568118b8d174bc741d45b0f73",
+  "amendment_status": "CANDIDATE_PENDING_INDEPENDENT_ACTIVATION_VERIFIER",
+  "analysis_contract_sha256": "e507ae54c5a9c997b40734006ac1643a337ffdfafd65c031ecb0251e3c7f0c3d",
+  "analysis_protocol_sha256": "c1a4fbfcc93c64bd0d75d1f8bdf77bbfcbd086e5ed42d70b0b9a6f5506b47a59",
+  "backend_calls": 0,
+  "backend_modules_imported": 0,
+  "capture_radius_track_status": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED",
+  "model_transfer_status": "MODEL_TRANSFER_NOT_COMPATIBLE",
+  "next_gate": "CREATE_ACTIVATION_TRANSITION_ONLY_AFTER_PARENT_AUTHORIZATION",
+  "old_proposal_json_sha256_before_and_after": "4837f6bd37e3a0f19c4b276964bbd066df09b86e58af288aa103aca704be936e",
+  "old_proposal_md_sha256_before_and_after": "836822c553929a2e5b9e6cdf85b48d318fe71f91aa47447d908d030516e7f4ed",
+  "pass": true,
+  "phase": "CANDIDATE_PRE_ACTIVATION",
+  "physical_reference_semantics": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT",
+  "schema": "mid360_fmb1_zero_perturbation_protocol_r1_candidate_independent_verification",
+  "verification_status": "PASS",
+  "verified_counts": {
+    "scenes": 6,
+    "snapshots": 180,
+    "stations": 18
+  },
+  "verified_scene_classes": {
+    "FMB1_R01": "RICH",
+    "FMB1_R02": "RICH",
+    "FMB1_R03": "RICH",
+    "FMB1_W01": "WEAK",
+    "FMB1_W02": "WEAK",
+    "FMB1_W03": "WEAK"
+  },
+  "w02_attempt1_invalid_retained": true,
+  "w02_attempt2_admitted_weak": true,
+  "w04_retired_and_excluded": true
+}
