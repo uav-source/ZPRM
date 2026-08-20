@@ -1,0 +1,3 @@
+backend,planned_n,finite_result_n,formal_completed_n,formal_solver_nonconvergence_n,infrastructure_ok_n,solver_status,solver_status_count,native_convergence_observable,native_has_converged_true_n,native_has_converged_false_n
+OPEN3D_POINT_TO_PLANE,180,180,180,0,180,completed_finite_correspondences,180,False,UNDETERMINABLE,UNDETERMINABLE
+PCL_POINT_TO_PLANE,180,180,180,0,180,completed_finite_correspondences,180,True,180,0

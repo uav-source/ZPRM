@@ -1,0 +1,71 @@
+{
+  "ACTUAL_VALID_SOLVER_STATUS": "completed_finite_correspondences",
+  "CORRECTED_FORMAL_COMPLETED_N": 360,
+  "CORRECTED_FORMAL_SOLVER_NONCONVERGENCE_N": 0,
+  "CORRECTION_SCOPE": "SOLVER_STATUS_ACCOUNTING_ONLY",
+  "CORRECTION_TYPE": "VERSIONED_REPORTING_CORRECTION",
+  "OLD_SUCCESS_ALLOWLIST": [
+    "CONVERGED",
+    "SUCCESS"
+  ],
+  "ORIGINAL_REPORTED_SOLVER_NONCONVERGED_FINITE_N": 360,
+  "POSTHOC_DIAGNOSTIC_TRIGGERED": true,
+  "PRIMARY_ESTIMAND_RECOMPUTATION": false,
+  "P_VALUE_RECOMPUTATION": false,
+  "RAW_POSE_RECOMPUTATION": false,
+  "REASSOCIATION_RECOMPUTATION": false,
+  "REGISTRATION_RERUN": false,
+  "ROOT_CAUSE": "WRONG_SOLVER_STATUS_STRING_MAPPING",
+  "SCIENTIFIC_ANALYSIS_RERUN": false,
+  "SYSTEMATIC_COMPONENT_RECOMPUTATION": false,
+  "corrected_accounting": {
+    "TRUE_NATIVE_NONCONVERGENCE_BOUNDS": "0..180",
+    "by_backend": {
+      "OPEN3D_POINT_TO_PLANE": {
+        "finite_result_n": 180,
+        "formal_completed_n": 180,
+        "formal_solver_nonconvergence_n": 0,
+        "infrastructure_ok_n": 180,
+        "planned_n": 180,
+        "solver_status_inventory": {
+          "completed_finite_correspondences": 180
+        }
+      },
+      "PCL_POINT_TO_PLANE": {
+        "finite_result_n": 180,
+        "formal_completed_n": 180,
+        "formal_solver_nonconvergence_n": 0,
+        "infrastructure_ok_n": 180,
+        "planned_n": 180,
+        "solver_status_inventory": {
+          "completed_finite_correspondences": 180
+        }
+      }
+    },
+    "formal_completed_n": 360,
+    "formal_finite_result_n": 360,
+    "formal_infrastructure_ok_n": 360,
+    "formal_solver_nonconvergence_n": 0,
+    "formal_trial_count": 360,
+    "open3d_formal_completed_n": 180,
+    "open3d_formal_solver_nonconvergence_n": 0,
+    "open3d_native_convergence_observable": false,
+    "pcl_formal_completed_n": 180,
+    "pcl_formal_solver_nonconvergence_n": 0,
+    "pcl_native_convergence_observable": true,
+    "pcl_native_has_converged_false_n": 0,
+    "pcl_native_has_converged_true_n": 180
+  },
+  "old_value_status": "SUPERSEDED_REPORTING_FIELD",
+  "paper_wording": {
+    "allowed_formal_status_statement": "All 360 formal registration trials produced finite scientific outcomes and were recorded as COMPLETED under the frozen formal result protocol.",
+    "allowed_pcl_native_statement": "For PCL, native convergence was reported for all 180 trials.",
+    "forbidden_statements": [
+      "All 360 trials converged natively.",
+      "Open3D converged 180/180."
+    ],
+    "required_open3d_limitation_statement": "The frozen Open3D wrapper did not preserve the native iteration count or native stopping criterion; therefore native Open3D convergence cannot be retrospectively determined."
+  },
+  "schema": "fmb1_solver_status_reporting_correction_notice_v1",
+  "status": "AUTHORITATIVE_VERSIONED_REPORTING_CORRECTION"
+}

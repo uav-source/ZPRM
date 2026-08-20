@@ -1,0 +1,38 @@
+{
+  "TRUE_NATIVE_NONCONVERGENCE_BOUNDS": "0..180",
+  "by_backend": {
+    "OPEN3D_POINT_TO_PLANE": {
+      "finite_result_n": 180,
+      "formal_completed_n": 180,
+      "formal_solver_nonconvergence_n": 0,
+      "infrastructure_ok_n": 180,
+      "planned_n": 180,
+      "solver_status_inventory": {
+        "completed_finite_correspondences": 180
+      }
+    },
+    "PCL_POINT_TO_PLANE": {
+      "finite_result_n": 180,
+      "formal_completed_n": 180,
+      "formal_solver_nonconvergence_n": 0,
+      "infrastructure_ok_n": 180,
+      "planned_n": 180,
+      "solver_status_inventory": {
+        "completed_finite_correspondences": 180
+      }
+    }
+  },
+  "formal_completed_n": 360,
+  "formal_finite_result_n": 360,
+  "formal_infrastructure_ok_n": 360,
+  "formal_solver_nonconvergence_n": 0,
+  "formal_trial_count": 360,
+  "open3d_formal_completed_n": 180,
+  "open3d_formal_solver_nonconvergence_n": 0,
+  "open3d_native_convergence_observable": false,
+  "pcl_formal_completed_n": 180,
+  "pcl_formal_solver_nonconvergence_n": 0,
+  "pcl_native_convergence_observable": true,
+  "pcl_native_has_converged_false_n": 0,
+  "pcl_native_has_converged_true_n": 180
+}

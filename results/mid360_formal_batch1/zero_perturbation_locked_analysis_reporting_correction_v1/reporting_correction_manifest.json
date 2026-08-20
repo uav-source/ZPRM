@@ -1,0 +1,129 @@
+{
+  "CORRECTION_SCOPE": "SOLVER_STATUS_ACCOUNTING_ONLY",
+  "CORRECTION_TYPE": "VERSIONED_REPORTING_CORRECTION",
+  "core_artifact_sha256": {
+    "analysis_summary_reporting_corrected_v1.json": "31f441bf25e44e2d6d6fb6943714ff1d0b6ff0898e7d969a592b041ed73afa08",
+    "analysis_summary_reporting_corrected_v1.md": "1029f666a1f6643db826626fdcc38bb45b3467789094047ade1de369c09b83d2",
+    "corrected_solver_status_accounting_v1.csv": "3c544b904cc98b4a81242cd46b838e3dfee794cea7725e0cf703eb4416ee4410",
+    "corrected_solver_status_accounting_v1.json": "1703657bd083c78dd6dab4da6d5d110d5957c3eb2545ef74d7524b59359baa0e",
+    "json_path_correction_diff.json": "48cad24a82794d07778539c3665b7ce69aa3e7bc20b2cfa9a2543822f4e7e8d5",
+    "reporting_correction_notice_v1.json": "607bd24074d98b9863112c91b503e6e6c45c948a2209202c6a314934377bfb4e",
+    "reporting_correction_notice_v1.md": "e0e58a8afeb6e8b51ac6636e9c342c3daa72e86076ab7979d988598d5201f480",
+    "scientific_value_immutability_check.json": "253f4f73c0454a225a5b164bfd91deb07cb5c02647eb55333b25339550568959"
+  },
+  "corrected_accounting": {
+    "TRUE_NATIVE_NONCONVERGENCE_BOUNDS": "0..180",
+    "by_backend": {
+      "OPEN3D_POINT_TO_PLANE": {
+        "finite_result_n": 180,
+        "formal_completed_n": 180,
+        "formal_solver_nonconvergence_n": 0,
+        "infrastructure_ok_n": 180,
+        "planned_n": 180,
+        "solver_status_inventory": {
+          "completed_finite_correspondences": 180
+        }
+      },
+      "PCL_POINT_TO_PLANE": {
+        "finite_result_n": 180,
+        "formal_completed_n": 180,
+        "formal_solver_nonconvergence_n": 0,
+        "infrastructure_ok_n": 180,
+        "planned_n": 180,
+        "solver_status_inventory": {
+          "completed_finite_correspondences": 180
+        }
+      }
+    },
+    "formal_completed_n": 360,
+    "formal_finite_result_n": 360,
+    "formal_infrastructure_ok_n": 360,
+    "formal_solver_nonconvergence_n": 0,
+    "formal_trial_count": 360,
+    "open3d_formal_completed_n": 180,
+    "open3d_formal_solver_nonconvergence_n": 0,
+    "open3d_native_convergence_observable": false,
+    "pcl_formal_completed_n": 180,
+    "pcl_formal_solver_nonconvergence_n": 0,
+    "pcl_native_convergence_observable": true,
+    "pcl_native_has_converged_false_n": 0,
+    "pcl_native_has_converged_true_n": 180
+  },
+  "corrected_reporting_artifact_count": 9,
+  "forbidden_scientific_path_change_count": 0,
+  "formal_scientific_analysis_run_count": 0,
+  "frozen_analysis_result_modification_count": 0,
+  "generated_at_utc": "2026-08-20T13:42:39.755780Z",
+  "implementation_artifact_sha256": {
+    "experiments/mid360_formal_batch1/reporting_correction/__init__.py": "c1bdfb12032b00a8795e32622a005a17255edd2b789750f422e486182856c12b",
+    "experiments/mid360_formal_batch1/reporting_correction/reporting_correction_schema_v1.json": "d94a73c98bbb6563a6596e4fbf541249dcb2761c0c1ff73f45bb9d714d464fdf",
+    "experiments/mid360_formal_batch1/reporting_correction/reporting_correction_verify_v1.py": "9746888dc2501fbabe7b3990c566ceff0e313242a6f28fec9d1c4160e754e42d",
+    "experiments/mid360_formal_batch1/reporting_correction/solver_status_reporting_correction_v1.py": "78fffcf3a9eb804523e83b42c7459347d305dae5e74234ab9a9eba0c31587c38",
+    "tools/mid360_formal_batch1/build_solver_status_reporting_correction_v1.py": "de1b6a448440b367b1aec060826a9402d85ff6637ccaade4cf58a6ae66451962",
+    "tools/mid360_formal_batch1/verify_solver_status_reporting_correction_v1.py": "f67dd300c4c193727fd687eda6eb6c00ffb4afd1855524c4f6a19b4f53eb003e"
+  },
+  "independent_verification_expected_path": "independent_reporting_correction_verification.json",
+  "json_path_diff_status": "PASS",
+  "locked_analysis_code_commit": "215a7961ed93dac9cf691e1e8ccd99d7ee868175",
+  "not_a_new_scientific_experiment": true,
+  "original_scientific_analysis": {
+    "analysis_summary_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/analysis_summary.json",
+    "analysis_summary_sha256": "b23c303e013ef5194d109b997a35876153140f8ad911dfa5188b6b0d53c1f869",
+    "commit": "2302f3fe6de804c934e2131b8fc77a49424bd83b",
+    "role": "ORIGINAL_FROZEN_SCIENTIFIC_ANALYSIS",
+    "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+  },
+  "p_value_recomputation_count": 0,
+  "primary_estimand_recomputation_count": 0,
+  "raw_execution_commit": "059e39533991d929a97ab208ad738643af82d09a",
+  "raw_result_modification_count": 0,
+  "registration_backend_call_count": 0,
+  "role": "AUTHORITATIVE_VERSIONED_REPORTING_CORRECTION",
+  "schema": "fmb1_solver_status_reporting_correction_manifest_v1",
+  "scientific_value_immutability_status": "PASS",
+  "scientific_value_references": {
+    "paper_rounded_references": {
+      "centered_permutation_p": "1/10001",
+      "open3d_centered_rho": "0.737691493",
+      "open3d_weak_minus_rich_mm": "-0.026347782",
+      "pcl_centered_rho": "0.761171641",
+      "pcl_weak_minus_rich_mm": "-0.010915495"
+    },
+    "primary_translation": {
+      "OPEN3D_POINT_TO_PLANE": {
+        "estimand_m": -2.6347781758088518e-05,
+        "exact_p_value": 0.7
+      },
+      "PCL_POINT_TO_PLANE": {
+        "estimand_m": -1.0915494546904852e-05,
+        "exact_p_value": 0.7
+      }
+    },
+    "reassociation_centered": {
+      "OPEN3D_POINT_TO_PLANE": {
+        "rho": 0.7376914925357778
+      },
+      "PCL_POINT_TO_PLANE": {
+        "rho": 0.7611716411000339
+      }
+    },
+    "reassociation_centered_permutation": {
+      "OPEN3D_POINT_TO_PLANE": {
+        "p_value": 9.999000099990002e-05,
+        "p_value_denominator": 10001
+      },
+      "PCL_POINT_TO_PLANE": {
+        "p_value": 9.999000099990002e-05,
+        "p_value_denominator": 10001
+      }
+    },
+    "role": "ORIGINAL_FROZEN_SCIENTIFIC_RESULT_REFERENCE"
+  },
+  "solver_diagnostic": {
+    "commit": "a3ada7c345fefc728bdcf4b8a8b92465c974ef4e",
+    "sha256sums_sha256": "baa8d6f1c0a0f0f449f922aef6ddc7bb22a31f8c31e7eed5ee438540425deb31",
+    "sha256sums_status": "PASS",
+    "tag": "diagnostic/fmb1-solver-convergence-v1"
+  },
+  "status": "AUTHORITATIVE_VERSIONED_REPORTING_CORRECTION"
+}

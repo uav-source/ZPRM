@@ -1,0 +1,95 @@
+{
+  "allowed_path_prefixes": [
+    "/reporting_correction"
+  ],
+  "changed_path_count": 1,
+  "changes": [
+    {
+      "json_path": "/reporting_correction",
+      "new_value": {
+        "CORRECTION_SCOPE": "SOLVER_STATUS_ACCOUNTING_ONLY",
+        "CORRECTION_TYPE": "VERSIONED_REPORTING_CORRECTION",
+        "POSTHOC_DIAGNOSTIC_TRIGGERED": true,
+        "PRIMARY_ESTIMAND_RECOMPUTATION": false,
+        "P_VALUE_RECOMPUTATION": false,
+        "RAW_POSE_RECOMPUTATION": false,
+        "REASSOCIATION_RECOMPUTATION": false,
+        "REGISTRATION_RERUN": false,
+        "SCIENTIFIC_ANALYSIS_RERUN": false,
+        "SYSTEMATIC_COMPONENT_RECOMPUTATION": false,
+        "actual_valid_solver_status": "completed_finite_correspondences",
+        "corrected_accounting": {
+          "TRUE_NATIVE_NONCONVERGENCE_BOUNDS": "0..180",
+          "by_backend": {
+            "OPEN3D_POINT_TO_PLANE": {
+              "finite_result_n": 180,
+              "formal_completed_n": 180,
+              "formal_solver_nonconvergence_n": 0,
+              "infrastructure_ok_n": 180,
+              "planned_n": 180,
+              "solver_status_inventory": {
+                "completed_finite_correspondences": 180
+              }
+            },
+            "PCL_POINT_TO_PLANE": {
+              "finite_result_n": 180,
+              "formal_completed_n": 180,
+              "formal_solver_nonconvergence_n": 0,
+              "infrastructure_ok_n": 180,
+              "planned_n": 180,
+              "solver_status_inventory": {
+                "completed_finite_correspondences": 180
+              }
+            }
+          },
+          "formal_completed_n": 360,
+          "formal_finite_result_n": 360,
+          "formal_infrastructure_ok_n": 360,
+          "formal_solver_nonconvergence_n": 0,
+          "formal_trial_count": 360,
+          "open3d_formal_completed_n": 180,
+          "open3d_formal_solver_nonconvergence_n": 0,
+          "open3d_native_convergence_observable": false,
+          "pcl_formal_completed_n": 180,
+          "pcl_formal_solver_nonconvergence_n": 0,
+          "pcl_native_convergence_observable": true,
+          "pcl_native_has_converged_false_n": 0,
+          "pcl_native_has_converged_true_n": 180
+        },
+        "deprecated_reporting_field": {
+          "deprecated": true,
+          "field_name": "solver_nonconverged_finite_n",
+          "original_reported_aggregate_value": 360,
+          "status": "SUPERSEDED_REPORTING_FIELD",
+          "superseded_by": "reporting_correction.corrected_accounting.formal_solver_nonconvergence_n"
+        },
+        "old_success_allowlist": [
+          "CONVERGED",
+          "SUCCESS"
+        ],
+        "original_analysis_summary_sha256": "b23c303e013ef5194d109b997a35876153140f8ad911dfa5188b6b0d53c1f869",
+        "original_scientific_analysis_commit": "2302f3fe6de804c934e2131b8fc77a49424bd83b",
+        "original_scientific_analysis_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+        "paper_wording": {
+          "allowed_formal_status_statement": "All 360 formal registration trials produced finite scientific outcomes and were recorded as COMPLETED under the frozen formal result protocol.",
+          "allowed_pcl_native_statement": "For PCL, native convergence was reported for all 180 trials.",
+          "forbidden_statements": [
+            "All 360 trials converged natively.",
+            "Open3D converged 180/180."
+          ],
+          "required_open3d_limitation_statement": "The frozen Open3D wrapper did not preserve the native iteration count or native stopping criterion; therefore native Open3D convergence cannot be retrospectively determined."
+        },
+        "root_cause": "WRONG_SOLVER_STATUS_STRING_MAPPING",
+        "schema": "fmb1_analysis_summary_reporting_correction_metadata_v1",
+        "solver_diagnostic_commit": "a3ada7c345fefc728bdcf4b8a8b92465c974ef4e",
+        "solver_diagnostic_tag": "diagnostic/fmb1-solver-convergence-v1",
+        "status": "AUTHORITATIVE_VERSIONED_REPORTING_CORRECTION"
+      },
+      "old_value": "MISSING_PATH",
+      "reason": "ADD_VERSIONED_SOLVER_ACCOUNTING_CORRECTION_PROVENANCE"
+    }
+  ],
+  "forbidden_scientific_path_change_count": 0,
+  "schema": "fmb1_reporting_correction_json_path_diff_v1",
+  "status": "PASS"
+}
