@@ -1,0 +1,16 @@
+{
+  "REAL_SCIENTIFIC_ANALYSIS_AUTHORIZED": false,
+  "REAL_SCIENTIFIC_ANALYSIS_EXECUTED": false,
+  "pass": true,
+  "real_centered_permutation_p_values": 0,
+  "real_exact_p_values": 0,
+  "real_formal_result_files_read": 0,
+  "real_rotation_values_read": 0,
+  "real_scene_aggregations": 0,
+  "real_translation_values_read": 0,
+  "real_turnover_values_read": 0,
+  "real_weak_rich_comparisons": 0,
+  "registration_backend_calls": 0,
+  "schema": "mid360_fmb1_locked_analysis_no_real_result_attestation_v1",
+  "status": "PASS"
+}

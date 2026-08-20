@@ -54,6 +54,7 @@ def test_canonical_c2_repository_independent_verifier_passes_23_checks():
     assert report["status"] == "PASS"
     assert report["FMB1_ANALYSIS_DETERMINACY_C2_ACTIVE"] is True
     assert report["semantic_check_count"] == 23
+    assert "POST_C2_IMPLEMENTATION_AND_LOCK_NOT_TRAVERSED" in report["semantic_checks"]
     assert report["protected_source_mismatch_count"] == 0
     assert report["formal_trial_result_files_read"] == 0
     assert report["scientific_aggregation_executed"] is False

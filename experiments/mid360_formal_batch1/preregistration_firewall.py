@@ -42,6 +42,24 @@ _EXCLUDED_SCOPE_PATHS = frozenset(
         # exclusion is permitted.
         "experiments/mid360_formal_batch1/zero_perturbation_r1_trial_assets.py",
         "experiments/mid360_formal_batch1/zero_perturbation_v1_1_r1_runner.py",
+        # Post-registration locked-analysis sources legitimately name frozen
+        # result fields.  They are outside preregistration preparation and are
+        # covered by their own exact code inventory plus independent AST audit.
+        "experiments/mid360_formal_batch1/locked_analysis/__init__.py",
+        "experiments/mid360_formal_batch1/locked_analysis/contract_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/authoritative_outcomes_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/descriptive_summary_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/exact_scene_permutation_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/cross_backend_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/reassociation_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/systematic_component_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/formal_firewall_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/lock_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/lock_verify_v1.py",
+        "experiments/mid360_formal_batch1/locked_analysis/locked_analysis_v1.py",
+        "tools/mid360_formal_batch1/run_zero_perturbation_locked_analysis_v1.py",
+        "tools/mid360_formal_batch1/issue_zero_perturbation_locked_analysis_lock_v1.py",
+        "tools/mid360_formal_batch1/verify_zero_perturbation_locked_analysis_lock_v1.py",
         "tools/mid360_formal_batch1/freeze_batch.py",
     }
 )

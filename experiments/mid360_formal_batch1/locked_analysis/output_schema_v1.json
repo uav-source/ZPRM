@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mid360_fmb1_zero_perturbation_locked_analysis_output_v1",
+  "title": "FMB1 Zero-Perturbation locked scientific analysis output v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "analysis_provenance",
+    "dataset_accounting",
+    "backend_status_counts",
+    "translation_station_summaries",
+    "translation_scene_summaries",
+    "primary_translation_inference",
+    "rotation_station_summaries",
+    "rotation_scene_summaries",
+    "secondary_rotation_inference",
+    "cross_backend_scene_spearman",
+    "cross_backend_station_spearman",
+    "scene_ordering_agreement",
+    "snapshot_direction_cosines",
+    "reassociation_scene_summaries",
+    "reassociation_scene_association",
+    "reassociation_centered_association",
+    "reassociation_centered_permutation_sensitivity",
+    "accepted_source_turnover_descriptive",
+    "systematic_station_values",
+    "systematic_scene_values",
+    "systematic_weak_rich_descriptive",
+    "missingness_accounting",
+    "physical_reference_limitation",
+    "capture_radius_status",
+    "synthetic_transfer_status",
+    "output_contract"
+  ],
+  "properties": {
+    "schema": {
+      "const": "mid360_fmb1_zero_perturbation_locked_analysis_output_v1"
+    },
+    "status": {
+      "enum": [
+        "FORMAL_ANALYSIS_COMPLETE",
+        "FORMAL_ANALYSIS_COMPLETE_WITH_EXPLICIT_UNDEFINED_ENDPOINTS",
+        "FIXTURE_ANALYSIS_COMPLETE"
+      ]
+    },
+    "analysis_provenance": {"type": "object"},
+    "dataset_accounting": {"type": "object"},
+    "backend_status_counts": {"type": "array"},
+    "translation_station_summaries": {"type": "array"},
+    "translation_scene_summaries": {"type": "array"},
+    "primary_translation_inference": {"type": "array"},
+    "rotation_station_summaries": {"type": "array"},
+    "rotation_scene_summaries": {"type": "array"},
+    "secondary_rotation_inference": {"type": "array"},
+    "cross_backend_scene_spearman": {"type": "object"},
+    "cross_backend_station_spearman": {"type": "object"},
+    "scene_ordering_agreement": {"type": "object"},
+    "snapshot_direction_cosines": {"type": "array"},
+    "reassociation_scene_summaries": {"type": "array"},
+    "reassociation_scene_association": {"type": "array"},
+    "reassociation_centered_association": {"type": "array"},
+    "reassociation_centered_permutation_sensitivity": {"type": "array"},
+    "accepted_source_turnover_descriptive": {"type": "array"},
+    "systematic_station_values": {"type": "array"},
+    "systematic_scene_values": {"type": "array"},
+    "systematic_weak_rich_descriptive": {"type": "array"},
+    "missingness_accounting": {"type": "array"},
+    "physical_reference_limitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "physical_reference_semantics",
+        "independent_submillimeter_external_ground_truth_available",
+        "controlled_static_nominal_identity_update_only",
+        "absolute_physical_displacement_claim_forbidden"
+      ],
+      "properties": {
+        "physical_reference_semantics": {
+          "const": "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT"
+        },
+        "independent_submillimeter_external_ground_truth_available": {
+          "const": false
+        },
+        "controlled_static_nominal_identity_update_only": {"const": true},
+        "absolute_physical_displacement_claim_forbidden": {"const": true}
+      }
+    },
+    "capture_radius_status": {
+      "const": "PRESERVED_SUPPLEMENTARY_NOT_EXECUTED"
+    },
+    "synthetic_transfer_status": {"const": "MODEL_TRANSFER_NOT_COMPATIBLE"},
+    "output_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "save_reassociation_centered_permutation_draws",
+        "reassociation_centered_permutation_draw_count_per_backend",
+        "json_nan_infinity_forbidden"
+      ],
+      "properties": {
+        "save_reassociation_centered_permutation_draws": {"const": true},
+        "reassociation_centered_permutation_draw_count_per_backend": {
+          "const": 10000
+        },
+        "json_nan_infinity_forbidden": {"const": true}
+      }
+    }
+  }
+}
