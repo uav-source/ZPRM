@@ -1,0 +1,60 @@
+{
+  "binding_count": 10,
+  "bindings": {
+    "backend_contract": {
+      "bytes": 1802,
+      "path": "frozen_assets/backend_parameter_contract.json",
+      "sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9"
+    },
+    "c1_c2_determinacy_audit": {
+      "bytes": 9736,
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit_c1_c2.json",
+      "sha256": "bb9e821efac1db457facdfaa8857f10ccb8edc4a6e7cde8eb1b201449b8675b6"
+    },
+    "c1_c2_determinacy_verifier": {
+      "bytes": 1559,
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit_c1_c2_independent_verification.json",
+      "sha256": "0007648c65634932b9ed78aed7ebb77b280fdf4d902493da05413bc765d14df9"
+    },
+    "c1_contract": {
+      "bytes": 14438,
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d"
+    },
+    "c1_missingness": {
+      "bytes": 10327,
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.json",
+      "sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb"
+    },
+    "c1_protocol": {
+      "bytes": 9734,
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "9982193c3c4c2a6cda77c8db858fd73e73f61da7eb7ffe651610e5b1ed1c0b4c"
+    },
+    "c2_clarification": {
+      "bytes": 10874,
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_determinacy_clarification_v1_1_r1_c2.json",
+      "sha256": "a446d069436c2972a11316e8a709aeb3c4265817b5e9889fa9583275ffc7be6b"
+    },
+    "formal_result_schema": {
+      "bytes": 18526,
+      "path": "experiments/mid360_formal_batch1/zero_perturbation_trial_result_schema_v1_1.json",
+      "sha256": "cf226717911eef9107a45523cff39519b6c70c8d5e53f48b2e3accb18964fab2"
+    },
+    "postrun_verification_report": {
+      "bytes": 1425,
+      "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1/postrun_independent_verification.json",
+      "sha256": "8067cc8735fd5b2a849bce8dd3839a59b87cd7cac716009892be622903084f90"
+    },
+    "trial_plan": {
+      "bytes": 908454,
+      "path": "experiments/mid360_formal_batch1/zero_perturbation_trial_plan_v1_1.json",
+      "sha256": "e96917f93ffbcccf0e2c1d75ee75ba86e342f08a9e4651732e2457b7ad867427"
+    }
+  },
+  "postrun_verified_trial_count": 360,
+  "required_under_specified_count": 0,
+  "schema": "fmb1_locked_analysis_contract_binding_v1",
+  "status": "PASS",
+  "unresolved_root_definition_count": 0
+}

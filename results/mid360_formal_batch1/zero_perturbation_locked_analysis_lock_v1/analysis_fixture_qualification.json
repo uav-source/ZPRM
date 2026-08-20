@@ -1,0 +1,23 @@
+{
+  "FIXTURE_ANALYSIS_PASS": true,
+  "REAL_FORMAL_RESULT_FILES_READ": 0,
+  "REAL_P_VALUE_COUNT": 0,
+  "REAL_SCIENTIFIC_AGGREGATION_COUNT": 0,
+  "REAL_WEAK_RICH_COMPARISON_COUNT": 0,
+  "centered_association_statistic": "SPEARMAN_RHO",
+  "centered_permutation_draw_count": 10000,
+  "centered_permutation_p_denominator": 10001,
+  "centered_permutation_seed": 20260820,
+  "fixture_backend_count": 2,
+  "fixture_scene_count": 6,
+  "fixture_snapshot_count": 180,
+  "fixture_station_count": 18,
+  "fixture_trial_count": 360,
+  "pass": true,
+  "primary_exact_allocation_count": 20,
+  "primary_exact_p_denominator": 20,
+  "registration_backend_calls": 0,
+  "schema": "mid360_fmb1_locked_analysis_fixture_qualification_v1",
+  "status": "PASS",
+  "systematic_formal_p_value_defined": false
+}

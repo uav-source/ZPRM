@@ -1,0 +1,14 @@
+{
+  "FMB1_LOCKED_ANALYSIS_CONTRACT_DETERMINATE": true,
+  "centered_permutation_draw_count": 10000,
+  "centered_permutation_p_value_denominator": 10001,
+  "centered_permutation_seed": 20260820,
+  "primary_exact_allocation_count": 20,
+  "primary_p_value_denominator": 20,
+  "required_under_specified_count": 0,
+  "scene_strata_preserved": true,
+  "schema": "fmb1_locked_analysis_determinacy_binding_v1",
+  "status": "PASS",
+  "systematic_formal_p_value_defined": false,
+  "unresolved_root_definition_count": 0
+}
