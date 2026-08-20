@@ -1,0 +1,240 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_analysis_determinacy_clarification_v1_1_r1_c2",
+  "clarification_id": "FMB1_ZERO_PERTURBATION_ANALYSIS_DETERMINACY_CLARIFICATION_V1_1_R1_C2",
+  "amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
+  "prior_contract_id": "FMB1_ZERO_PERTURBATION_ANALYSIS_CONTRACT_V1_1_R1_C1",
+  "status": "ACTIVE_BLINDED_POSTRUN_PRE_ANALYSIS_CLARIFICATION",
+  "clarified_at_utc": "2026-08-20T10:36:49Z",
+  "clarification_phase": "BLINDED_POSTRUN_PRE_LOCKED_SCIENTIFIC_ANALYSIS",
+  "formal_registration_complete": true,
+  "formal_trial_count": 360,
+  "postrun_independent_verification_complete": true,
+  "scientific_aggregation_executed": false,
+  "weak_rich_comparison_executed": false,
+  "formal_p_value_computed": false,
+  "result_dependent_rule_selection": false,
+  "clarification_trigger": "PREEXISTING_CONTRACT_DETERMINACY_AUDIT",
+  "postrun_value_access_semantics": {
+    "postrun_integrity_verifier_machine_read_raw_trial_values": true,
+    "c2_clarification_used_raw_trial_values_as_input": false,
+    "c2_clarification_viewed_scene_aggregates": false,
+    "c2_clarification_viewed_weak_rich_aggregates": false,
+    "c2_definition_selected_from_effect_direction": false,
+    "c2_definition_selected_from_actual_correlation": false,
+    "c2_definition_selected_from_actual_p_value": false
+  },
+  "source_bindings": {
+    "determinacy_audit_commit": "21038ee1fd0b59b7edb5ab730d4683e4a9fe5170",
+    "raw_execution_commit": "059e39533991d929a97ab208ad738643af82d09a",
+    "postrun_verifier_code_commit": "ec72d23f0f94cd91a84f2960b87672788266524f",
+    "postrun_verification_commit": "18bb94e62761f5193da8cdc5509c470cb4983244",
+    "r3_lock_fingerprint": "fd601e8daf62c488a3a079beea05f65c9bd283399ae4d7f3acf16e63fc473a6d",
+    "c1_analysis_contract": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_contract_v1_1_r1.json",
+      "sha256": "4120847bb471efbdbd32026ac23e959ab9ae4236709cf599b6e15701eb8b153d"
+    },
+    "c1_analysis_protocol": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_protocol_v1_1_r1.md",
+      "sha256": "9982193c3c4c2a6cda77c8db858fd73e73f61da7eb7ffe651610e5b1ed1c0b4c"
+    },
+    "c1_missingness_clarification": {
+      "path": "experiments/mid360_formal_batch1/amendments/zero_perturbation_analysis_missingness_clarification_v1_1_r1_c1.json",
+      "sha256": "7b50dabef2352b666570657d519e98e9a5ae277da777be222c3483134fca69fb"
+    },
+    "historical_determinacy_audit": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit.json",
+      "sha256": "6153aadc46ef321770494b62321a19b75a896439407b7cc69daed7799cfe692d"
+    },
+    "postrun_independent_verification": {
+      "path": "results/mid360_formal_batch1/zero_perturbation_v1_1_postrun_verification_v1/postrun_independent_verification.json",
+      "sha256": "8067cc8735fd5b2a849bce8dd3839a59b87cd7cac716009892be622903084f90"
+    }
+  },
+  "scope": {
+    "resolved_root_definition_count": 5,
+    "allowed_changes": [
+      "SCENE_ORDERING_AGREEMENT_DEFINITION",
+      "FORMAL_REASSOCIATION_TURNOVER_ENDPOINT",
+      "WITHIN_SCENE_CENTERED_ASSOCIATION_STATISTIC",
+      "REGISTERED_STRATIFIED_SENSITIVITY_PERMUTATION_STATISTIC",
+      "SYSTEMATIC_WEAK_RICH_COMPARISON_ROLE_AND_ESTIMAND"
+    ],
+    "PRIMARY_TRANSLATION_ANALYSIS_CHANGED": false,
+    "PRIMARY_EXACT_PERMUTATION_CHANGED": false,
+    "ROTATION_SECONDARY_ENDPOINT_CHANGED": false,
+    "MISSINGNESS_C1_CHANGED": false,
+    "DATASET_CHANGED": false,
+    "BACKEND_PARAMETERS_CHANGED": false
+  },
+  "root_definitions": {
+    "scene_ordering_agreement": {
+      "definition": "PAIRWISE_SIGN_ORDER_AGREEMENT_ACROSS_SIX_SCENES",
+      "applies_to": "OPEN3D_VS_PCL_PRIMARY_TRANSLATION_SCENE_MEDIANS",
+      "scene_order": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unordered_pair_count": 15,
+      "pair_signs": {
+        "open3d": "sign(O3D_i - O3D_j)",
+        "pcl": "sign(PCL_i - PCL_j)"
+      },
+      "classifications": {
+        "CONCORDANT_NON_TIE": "both signs are equal and nonzero",
+        "DISCORDANT": "both signs are nonzero and opposite",
+        "BOTH_TIED": "both signs are zero",
+        "ONE_BACKEND_TIED": "exactly one sign is zero"
+      },
+      "outputs": {
+        "pair_count": 15,
+        "count_fields": [
+          "concordant_non_tie_count",
+          "discordant_count",
+          "both_tied_count",
+          "one_backend_tied_count"
+        ],
+        "pairwise_order_agreement_fraction": "(concordant_non_tie_count + both_tied_count) / 15",
+        "strict_pairwise_ordering_match": "discordant_count == 0 and one_backend_tied_count == 0"
+      },
+      "role": "DESCRIPTIVE_ONLY",
+      "p_value": null,
+      "replaces_scene_spearman": false
+    },
+    "formal_reassociation_turnover": {
+      "formal_primary_field": "correspondence_turnover",
+      "scientific_rationale": "correspondence_turnover directly represents source-target correspondence-pair reassignment and therefore matches the preregistered correspondence-reassociation construct",
+      "unqualified_terms_mapped_to_primary": [
+        "turnover",
+        "scene median turnover",
+        "turnover-displacement association",
+        "centered turnover-displacement association"
+      ],
+      "accepted_source_turnover": {
+        "retained": true,
+        "role": "SECONDARY_DESCRIPTIVE_COMPANION",
+        "may_replace_formal_primary": false,
+        "selection_by_larger_correlation_forbidden": true
+      }
+    },
+    "within_scene_centered_association": {
+      "backend_separation": "COMPUTE_SEPARATELY_BY_BACKEND",
+      "x_field": "correspondence_turnover",
+      "y_field": "translation_norm_m",
+      "x_centering": "x - median(scene x values)",
+      "y_centering": "y - median(scene y values)",
+      "both_variables_centered": true,
+      "center_statistic": "MEDIAN",
+      "association_statistic": "SPEARMAN_RHO",
+      "implementation": "scipy.stats.spearmanr",
+      "rank_ties": "AVERAGE_RANKS",
+      "scene_pair_count_required": 30,
+      "scene_strata_required": 6,
+      "total_pair_count_required": 180,
+      "pool_centered_rows_after_within_scene_centering": true,
+      "effect_size_role": "FORMAL_CENTERED_ASSOCIATION_EFFECT_SIZE",
+      "snapshots_claimed_as_independent_scenes": false,
+      "scipy_asymptotic_p_value_is_formal_inference": false,
+      "incomplete_status": "CENTERED_ASSOCIATION_UNDEFINED_INCOMPLETE_180_PAIRS",
+      "constant_input_status": "CENTERED_SPEARMAN_UNDEFINED_CONSTANT_INPUT",
+      "registered_permutation_runs_when_undefined": false
+    },
+    "registered_stratified_sensitivity_permutation": {
+      "precondition": "FORMAL_CENTERED_SPEARMAN_DEFINED",
+      "backend_separation": "INDEPENDENT_RNG_INITIALIZATION_PER_BACKEND",
+      "observed_statistic": "abs(Spearman(centered correspondence_turnover, centered translation_norm_m))",
+      "permuted_statistic": "abs(Spearman(fixed centered correspondence_turnover, within-scene-permuted centered translation_norm_m))",
+      "two_sided": true,
+      "seed": 20260820,
+      "permutation_count": 10000,
+      "numpy_version": "1.26.4",
+      "rng": "numpy.random.Generator(numpy.random.PCG64(20260820))",
+      "bit_generator": "PCG64",
+      "scene_iteration_order": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "permutation_unit": "CENTERED_DISPLACEMENT_VALUES_WITHIN_EACH_SCENE",
+      "turnover_values_fixed": true,
+      "cross_scene_permutation_forbidden": true,
+      "duplicate_draws_retained": true,
+      "exceedance_rule": "abs(rho_perm) >= abs(rho_obs)",
+      "p_value_formula": "(1 + exceedance_count) / (10000 + 1)",
+      "p_value_denominator": 10001,
+      "role": "SECONDARY_STRATIFIED_MONTE_CARLO_PERMUTATION_SENSITIVITY",
+      "is_primary_exact_20_allocation_test": false
+    },
+    "systematic_weak_rich_comparison": {
+      "station_and_scene_fraction_definition_changed": false,
+      "backend_separation": "REPORT_SEPARATELY_BY_BACKEND",
+      "required_defined_scene_values": 6,
+      "rich_scene_ids": ["FMB1_R01", "FMB1_R02", "FMB1_R03"],
+      "weak_scene_ids": ["FMB1_W01", "FMB1_W02", "FMB1_W03"],
+      "estimand": "median(W01,W02,W03 scene systematic fractions) - median(R01,R02,R03 scene systematic fractions)",
+      "required_outputs": [
+        "three_rich_scene_values",
+        "three_weak_scene_values",
+        "rich_median",
+        "weak_median",
+        "weak_minus_rich_median_difference"
+      ],
+      "role": "SECONDARY_DESCRIPTIVE_MECHANISTIC_COMPARISON",
+      "formal_hypothesis_test": false,
+      "p_value": null,
+      "directional_pass_fail": false,
+      "permutation": false,
+      "mann_whitney": false,
+      "t_test": false,
+      "scientific_rationale": "C1 did not freeze an inferential test or sidedness for the systematic component, so no new confirmatory inference is added after formal execution"
+    }
+  },
+  "unchanged_primary_analysis": {
+    "endpoint": "translation_norm_m",
+    "scene_snapshot_count": 30,
+    "scene_statistics": ["median", "q25", "q75", "q95"],
+    "quantile_method": "linear",
+    "independent_unit": "scene",
+    "estimand": "median(three Weak scene medians) - median(three Rich scene medians)",
+    "inference": "EXACT_ONE_SIDED_PERMUTATION_ALL_3_VS_3_SCENE_ALLOCATIONS",
+    "allocation_count": 20,
+    "p_value_formula": "count(stat_perm >= stat_obs) / 20",
+    "plus_one_correction": false
+  },
+  "unchanged_rotation_and_cross_backend_rules": {
+    "rotation_role": "SECONDARY",
+    "rotation_uses_same_scene_first_summary": true,
+    "rotation_uses_same_exact_20_allocation_one_sided_procedure": true,
+    "scene_spearman_required_pairs": 6,
+    "station_spearman_required_pairs": 18,
+    "constant_spearman_rho": null,
+    "constant_spearman_p_value": null,
+    "constant_spearman_status": "SPEARMAN_UNDEFINED_CONSTANT_INPUT"
+  },
+  "unchanged_missingness_c1": {
+    "station_required_complete": "10_OF_10",
+    "scene_required_complete": "30_OF_30",
+    "reassociation_scene_required_complete": "30_OF_30_METRICS",
+    "centered_required_complete": "30_PAIRS_X_6_SCENES_EQUALS_180",
+    "systematic_station_required_complete": "10_OF_10_VECTORS",
+    "imputation_forbidden": true,
+    "winsorization_forbidden": true,
+    "silent_exclusion_forbidden": true,
+    "available_case_replaces_formal_inference": false
+  },
+  "execution_authority": {
+    "implements_locked_analysis": false,
+    "authorizes_locked_scientific_analysis": false,
+    "authorizes_backend_execution": false,
+    "real_formal_result_files_read_by_c2_tooling": 0,
+    "real_scientific_aggregation_count": 0,
+    "real_weak_rich_comparison_count": 0,
+    "real_p_value_count": 0
+  }
+}

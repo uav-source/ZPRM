@@ -1,0 +1,50 @@
+{
+  "schema": "mid360_fmb1_zero_perturbation_c2_clarification_basis_v1",
+  "status": "RESULT_BLIND_DEFINITION_BASIS",
+  "source_determinacy_audit_commit": "21038ee1fd0b59b7edb5ab730d4683e4a9fe5170",
+  "source_determinacy_audit_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_preparation_v1/analysis_contract_determinacy_audit.json",
+  "source_determinacy_audit_sha256": "6153aadc46ef321770494b62321a19b75a896439407b7cc69daed7799cfe692d",
+  "unresolved_root_definition_count_before": 5,
+  "actual_scientific_aggregation_count": 0,
+  "weak_rich_comparison_count": 0,
+  "formal_p_value_count": 0,
+  "definition_selected_from_result_values": false,
+  "formal_trial_result_files_read_by_clarification_tooling": 0,
+  "roots": [
+    {
+      "root_id": "SCENE_ORDERING_AGREEMENT_STATISTIC_UNDEFINED",
+      "old_ambiguity": "The required statistic, tie behavior, completeness rule, and exact output were absent.",
+      "new_definition": "PAIRWISE_SIGN_ORDER_AGREEMENT_ACROSS_SIX_SCENES with 15 fixed unordered pairs and four exhaustive tie/concordance classes.",
+      "scientific_rationale": "Pairwise sign agreement directly describes whether the two backends preserve scene ordering while making ties explicit and without introducing post-run inference.",
+      "inferential_role": "DESCRIPTIVE_ONLY_NO_P_VALUE"
+    },
+    {
+      "root_id": "FORMAL_TURNOVER_ENDPOINT_UNDEFINED",
+      "old_ambiguity": "Both correspondence_turnover and accepted_source_turnover were retained without choosing the formal unqualified turnover endpoint.",
+      "new_definition": "correspondence_turnover is formal primary; accepted_source_turnover is retained as SECONDARY_DESCRIPTIVE_COMPANION.",
+      "scientific_rationale": "correspondence_turnover directly represents correspondence-pair reassignment and matches the frozen reassociation construct.",
+      "inferential_role": "PRIMARY_MECHANISTIC_ENDPOINT_WITH_SECONDARY_DESCRIPTIVE_COMPANION"
+    },
+    {
+      "root_id": "CENTERED_ASSOCIATION_STATISTIC_UNDEFINED",
+      "old_ambiguity": "Both variables' centering and the formal association statistic were not uniquely specified.",
+      "new_definition": "Median-center correspondence_turnover and translation_norm_m within every scene, then compute pooled centered Spearman rho across exactly 180 complete pairs.",
+      "scientific_rationale": "Median centering follows the frozen robust scene summaries, and Spearman preserves the already-frozen rank-association family without treating snapshots as independent scenes.",
+      "inferential_role": "FORMAL_CENTERED_ASSOCIATION_EFFECT_SIZE_WITHOUT_ASYMPTOTIC_P_VALUE"
+    },
+    {
+      "root_id": "REGISTERED_CENTERED_PERMUTATION_STATISTIC_UNDEFINED",
+      "old_ambiguity": "Seed, draw count, strata, and sidedness were frozen, but the statistic and p-value counting rule were absent.",
+      "new_definition": "Two-sided abs(centered Spearman rho), 10,000 within-scene displacement permutations using independently reset PCG64(20260820), and p=(b+1)/10001.",
+      "scientific_rationale": "The rule preserves scene strata and supplies a reproducible finite-draw sensitivity calibration without changing the primary exact scene-level test.",
+      "inferential_role": "SECONDARY_STRATIFIED_MONTE_CARLO_PERMUTATION_SENSITIVITY"
+    },
+    {
+      "root_id": "SYSTEMATIC_WEAK_RICH_COMPARISON_RULE_UNDEFINED",
+      "old_ambiguity": "The scene comparison unit was frozen but no estimand, descriptive/inferential role, sidedness, or p-value rule was specified.",
+      "new_definition": "Report all six scene values, Rich/Weak medians, and Weak-minus-Rich median difference separately by backend, with no formal hypothesis test or p-value.",
+      "scientific_rationale": "C2 avoids inventing new confirmatory inference after formal execution while preserving the requested mechanistic comparison.",
+      "inferential_role": "SECONDARY_DESCRIPTIVE_MECHANISTIC_COMPARISON"
+    }
+  ]
+}
