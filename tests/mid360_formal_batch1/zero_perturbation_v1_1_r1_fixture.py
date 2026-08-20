@@ -501,10 +501,10 @@ def build_valid_r1_lock(tmp_path: Path) -> tuple[Path, Path, Path]:
 
 
 def build_valid_exec_r2_runner_fixture(tmp_path: Path) -> tuple[Path, Path, Path]:
-    """Adapt the frozen R1 unit fixture to the exec-r2 runner contract.
+    """Adapt the frozen R1 unit fixture to the Exec-R3 runner contract.
 
     This is intentionally only a synthetic unit-test bundle.  The dedicated
-    exec-r2 integration tests exercise the real producer and independent
+    Exec-R3 integration tests exercise the real producer and independent
     verifier against a two-commit temporary Git repository.
     """
 
@@ -512,9 +512,11 @@ def build_valid_exec_r2_runner_fixture(tmp_path: Path) -> tuple[Path, Path, Path
     old_lock_path = old_lock_dir / "formal_batch1_zero_perturbation_lock_v1_1.json"
     lock = json.loads(old_lock_path.read_text(encoding="utf-8"))
     lock.update({
-        "schema": "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r2",
-        "lock_id": "FIXTURE_ONLY_EXEC_R2_LOCK",
-        "execution_lock_revision": 2,
+        "schema": "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r3",
+        "lock_id": "FIXTURE_ONLY_EXEC_R3_LOCK",
+        "execution_lock_revision": 3,
+        "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
+        "prefix_based_provenance_inference": False,
         "status": "ISSUED_AWAITING_SEPARATE_AUTHORIZATION",
         "authoritative_runtime_root": (
             "zero_perturbation_runtime/"
@@ -531,11 +533,11 @@ def build_valid_exec_r2_runner_fixture(tmp_path: Path) -> tuple[Path, Path, Path
         "actual_formal_trials": 0,
         "registration_execution_count": 0,
     })
-    lock_dir = root / "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock"
+    lock_dir = root / "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock"
     lock_dir.mkdir(parents=True, exist_ok=True)
-    lock_name = "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.json"
+    lock_name = "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.json"
     write_json(lock_dir / lock_name, lock)
-    (lock_dir / "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.sha256").write_text(
+    (lock_dir / "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.sha256").write_text(
         f"{sha(lock_dir / lock_name)}  {lock_name}\n", encoding="ascii"
     )
     shutil.copyfile(old_lock_dir / "lock_inventory.csv", lock_dir / "lock_inventory.csv")
@@ -567,12 +569,30 @@ def build_valid_exec_r2_runner_fixture(tmp_path: Path) -> tuple[Path, Path, Path
         "status": "PASS", "AUTHORIZATION_LIFECYCLE_QUALIFIED": True,
         "tamper_case_count": 25, "REAL_FORMAL_TRIALS": 0,
     })
+    write_json(lock_dir / "authorization_binding_provenance_defect_audit.json", {
+        "status": "PASS", "PREFIX_BASED_PROVENANCE_INFERENCE": False,
+        "ACTUAL_FORMAL_TRIALS": 0,
+    })
+    write_json(lock_dir / "r3_execution_control_fix_report.json", {
+        "status": "PASS", "SCIENTIFIC_PROTOCOL_CHANGED": False,
+        "FINAL_DATASET_CHANGED": False, "ACTUAL_FORMAL_TRIALS": 0,
+    })
+    write_json(lock_dir / "r3_authorization_fixture_qualification.json", {
+        "status": "PASS", "pass": True,
+        "REAL_BACKEND_CALL_COUNT": 0, "REAL_FORMAL_TRIALS": 0,
+    })
+    write_json(lock_dir / "AUTHORIZATION_INVALIDATION_RECORD.json", {
+        "status": "PASS", "prior_authorizations_reusable": False,
+        "actual_formal_trials": 0,
+    })
     core_names = (
-        lock_name, "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.sha256",
+        lock_name, "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.sha256",
         "lock_inventory.csv", "lock_fingerprint.json",
         "NO_REGISTRATION_ATTESTATION.json", "environment_manifest.json",
-        "execution_control_patch_report.json",
-        "authorization_lifecycle_test_report.json",
+        "authorization_binding_provenance_defect_audit.json",
+        "r3_execution_control_fix_report.json",
+        "r3_authorization_fixture_qualification.json",
+        "AUTHORIZATION_INVALIDATION_RECORD.json",
     )
     (lock_dir / "LOCK_CORE_SHA256SUMS").write_text(
         "".join(f"{sha(lock_dir / name)}  {name}\n" for name in core_names),

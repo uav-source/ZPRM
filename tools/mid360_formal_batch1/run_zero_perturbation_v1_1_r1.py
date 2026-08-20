@@ -47,7 +47,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     repository = args.repository_root.expanduser().resolve(strict=True)
     lock_dir = args.lock_dir or repository / (
-        "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock"
+        "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock"
     )
     action = "preflight" if args.preflight else "dry-run" if args.dry_run else "execute"
     report = preflight_or_dry_run(

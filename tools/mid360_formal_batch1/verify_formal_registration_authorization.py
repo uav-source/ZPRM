@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independently verify one immutable FMB1 exec-r2 authorization."""
+"""Independently verify one immutable FMB1 Exec-R3 authorization."""
 
 from __future__ import annotations
 

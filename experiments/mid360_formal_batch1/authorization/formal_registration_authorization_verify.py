@@ -1,4 +1,4 @@
-"""Independent verifier for immutable one-time FMB1 exec-r2 authorization.
+"""Independent verifier for immutable one-time FMB1 Exec-R3 authorization.
 
 This module does not import or call the producer and independently recomputes
 every authority binding needed before the runner may load a backend.
@@ -18,14 +18,14 @@ from typing import Any, Mapping
 from ..zero_perturbation_v1_1_r1_environment import verify_environment_manifest
 
 
-AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_exec_r2_v1"
+AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_exec_r3_v1"
 AUTHORIZATION_FILENAME = "formal_registration_authorization.json"
 AUTHORIZATION_SHA_FILENAME = "formal_registration_authorization.sha256"
 VERIFICATION_REPORT_FILENAME = "authorization_verification_report.json"
 IN_USE_FILENAME = "authorization_in_use.json"
 RECEIPT_FILENAME = "authorization_consumption_receipt.json"
-LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.json"
-LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r2"
+LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.json"
+LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r3"
 EXPECTED_RUNTIME = (
     "zero_perturbation_runtime/"
     "mid360_zero_perturbation_v1_1_formal_execution_v1"
@@ -41,7 +41,8 @@ EXPECTED_KEYS = {
     "schema", "authorization_id", "authorization_type", "authorization_basis",
     "issued_at_utc", "nonce", "status", "track_id", "active_amendment_id",
     "lock_revision", "lock_fingerprint", "lock_file_sha256",
-    "lock_release_commit", "trial_plan_sha256", "analysis_contract_sha256",
+    "lock_release_commit", "binding_inventory_sha256",
+    "binding_provenance_contract", "trial_plan_sha256", "analysis_contract_sha256",
     "backend_contract_sha256", "execution_code_commit",
     "environment_manifest_sha256", "pcl_binary_sha256", "planned_trial_count",
     "planned_open3d_count", "planned_pcl_count", "allowed_backends",
@@ -50,6 +51,60 @@ EXPECTED_KEYS = {
     "parameter_change_authorized", "trial_reselection_authorized",
     "authorization_scope", "authoritative_runtime_root", "immutable",
     "FORMAL_ICP_UNLOCKED", "FORMAL_REGISTRATION_AUTHORIZED",
+}
+
+# Independent, exact classification registry.  These identifiers are opaque;
+# membership is enumerated and never inferred from a prefix or path.
+EXPECTED_EXECUTION_BINDINGS = {
+    "authorization_contract", "authorization_lifecycle",
+    "authorization_producer", "authorization_producer_cli",
+    "authorization_schema", "authorization_verifier",
+    "authorization_verifier_cli", "binding_provenance_contract",
+    "common_association", "exec_r3_lock_builder",
+    "exec_r3_lock_issuer_cli", "exec_r3_lock_verifier",
+    "exec_r3_lock_verifier_cli", "execution_environment",
+    "execution_types", "experiments_package_init", "metrics",
+    "mid360_formal_batch1_package_init", "open3d_backend", "pcl_backend",
+    "phase_a_harness_package_init", "result_validator", "rotation_metrics",
+    "runner", "runner_cli",
+}
+EXPECTED_RELEASE_BINDINGS = {
+    "attempt_003_authorization_invalidation",
+    "authorization_binding_provenance_defect_audit_json",
+    "authorization_binding_provenance_defect_audit_md",
+    "authorization_lifecycle_test_report",
+    # This deliberately starts with execution_; exact membership controls it.
+    "execution_control_patch_report",
+    "r2_lock_supersession", "superseded_r2_fingerprint",
+    "superseded_r2_lock",
+}
+EXPECTED_ENVIRONMENT_BINDINGS = {
+    "backend_parameter_contract", "environment_manifest", "pcl_executable",
+}
+EXPECTED_FROZEN_BINDINGS = {
+    "acquisition_attempt_lineage", "activation_review", "active_amendment",
+    "active_amendment_md", "active_protocol_pointer",
+    "admitted_bag_manifest", "amendment_activation_record",
+    "analysis_contract", "analysis_missingness_clarification",
+    "analysis_missingness_clarification_md",
+    "analysis_missingness_clarification_transition",
+    "analysis_preclarification_history_inventory", "analysis_protocol",
+    "blocked_attempt_no_registration", "blocked_attempt_record",
+    "blocked_attempt_sha256sums", "final_dataset_independent_verification",
+    "final_dataset_pointer", "final_dataset_prelock_reauthentication",
+    "final_scene_registry", "final_station_registry", "geometry_manifest",
+    "invalid_attempt_archive_manifest", "old_lock_file",
+    "old_lock_fingerprint", "old_lock_supersession",
+    "original_capture_radius_analysis_protocol", "original_preregistration",
+    "original_zero_perturbation_proposal_json",
+    "original_zero_perturbation_proposal_md", "prelock_no_icp_attestation",
+    "proposal_correction_record", "proposal_difference_report",
+    "proposal_superseded_sidecar",
+    "protocol_c1_missingness_independent_verification",
+    "protocol_transition_independent_verification", "result_schema",
+    "snapshot_manifest", "target_manifest", "trial_plan_csv",
+    "trial_plan_independent_verification", "trial_plan_json",
+    "w04_superseded_history",
 }
 
 
@@ -130,7 +185,8 @@ def _validate_payload_shape(payload: Mapping[str, Any]) -> None:
         "status": "ISSUED",
         "track_id": "ZERO_PERTURBATION_TRACK",
         "active_amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
-        "lock_revision": 2,
+        "lock_revision": 3,
+        "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
         "planned_trial_count": 360,
         "planned_open3d_count": 180,
         "planned_pcl_count": 180,
@@ -155,7 +211,7 @@ def _validate_payload_shape(payload: Mapping[str, Any]) -> None:
     if AUTH_ID_RE.fullmatch(str(payload.get("authorization_id"))) is None:
         _fail("authorization ID is invalid")
     for key in (
-        "nonce", "lock_fingerprint", "lock_file_sha256", "trial_plan_sha256",
+        "nonce", "lock_fingerprint", "lock_file_sha256", "binding_inventory_sha256", "trial_plan_sha256",
         "analysis_contract_sha256", "backend_contract_sha256",
         "environment_manifest_sha256", "pcl_binary_sha256",
     ):
@@ -187,13 +243,114 @@ def _verify_schema_file(root: Path, lock: Mapping[str, Any]) -> None:
         _fail("authorization JSON Schema is not closed")
 
 
+def _verify_explicit_binding_provenance(
+    root: Path,
+    bindings: Mapping[str, Any],
+    *,
+    execution_commit: str,
+    lock_release_commit: str,
+) -> None:
+    """Independently route bindings using only explicit metadata.
+
+    Binding identifiers and path prefixes are deliberately opaque here.  A
+    Git provenance lookup is selected solely by ``binding_class`` together
+    with the exact source/role tuple required by the R3 contract.
+    """
+
+    expected_classes = {
+        **{name: "EXECUTION_CODE" for name in EXPECTED_EXECUTION_BINDINGS},
+        **{name: "LOCK_RELEASE_EVIDENCE" for name in EXPECTED_RELEASE_BINDINGS},
+        **{name: "FROZEN_SCIENCE_OR_DATA" for name in EXPECTED_FROZEN_BINDINGS},
+        **{name: "ENVIRONMENT_OR_BINARY" for name in EXPECTED_ENVIRONMENT_BINDINGS},
+    }
+    if set(bindings) != set(expected_classes):
+        _fail(
+            "explicit binding registry differs: "
+            f"missing={sorted(set(expected_classes)-set(bindings))}, "
+            f"extra={sorted(set(bindings)-set(expected_classes))}"
+        )
+    explicit_contract = {
+        "EXECUTION_CODE": ("GIT_BLOB_AT_COMMIT", "EXECUTION_CODE_COMMIT"),
+        "LOCK_RELEASE_EVIDENCE": ("GIT_BLOB_AT_COMMIT", "LOCK_RELEASE_COMMIT"),
+        "FROZEN_SCIENCE_OR_DATA": ("INHERITED_EXEC_R2_LOCK_SHA256", "NONE"),
+        "ENVIRONMENT_OR_BINARY": (
+            "FROZEN_SHA256_AND_ENVIRONMENT_CONTRACT", "NONE"
+        ),
+    }
+    required_binding_keys = {
+        "binding_id", "repository_relative_path", "sha256", "bytes",
+        "binding_class", "verification_source", "commit_role",
+    }
+    if not bindings:
+        _fail("Exec-R3 lock bindings are missing")
+    for binding_id, binding in bindings.items():
+        if not isinstance(binding, Mapping):
+            _fail(f"lock binding malformed: {binding_id}")
+        if (
+            set(binding) != required_binding_keys
+            or binding.get("binding_id") != binding_id
+        ):
+            _fail(f"binding provenance metadata differs: {binding_id}")
+        binding_class = binding.get("binding_class")
+        if binding_class != expected_classes[binding_id]:
+            _fail(f"binding_class differs from explicit registry: {binding_id}")
+        if binding_class not in explicit_contract:
+            _fail(f"unknown binding_class: {binding_id}")
+        expected_source, expected_role = explicit_contract[str(binding_class)]
+        if (
+            binding.get("verification_source") != expected_source
+            or binding.get("commit_role") != expected_role
+        ):
+            _fail(f"binding provenance route differs: {binding_id}")
+        path = _resolve(
+            root,
+            Path(str(binding.get("repository_relative_path"))),
+            f"binding {binding_id}",
+        )
+        if (
+            sha256_file(path) != binding.get("sha256")
+            or path.stat().st_size != binding.get("bytes")
+        ):
+            _fail(f"lock binding changed: {binding_id}")
+        if binding_class == "EXECUTION_CODE":
+            commit = execution_commit
+        elif binding_class == "LOCK_RELEASE_EVIDENCE":
+            commit = lock_release_commit
+        else:
+            continue
+        path_relative = path.relative_to(root).as_posix()
+        try:
+            committed = subprocess.run(
+                ["git", "show", f"{commit}:{path_relative}"],
+                cwd=root,
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+            ).stdout
+        except subprocess.CalledProcessError:
+            _fail(
+                "binding absent from declared provenance commit: "
+                f"{binding_id}"
+            )
+        if hashlib.sha256(committed).hexdigest() != binding.get("sha256"):
+            _fail(
+                "binding differs from declared provenance commit: "
+                f"{binding_id}"
+            )
+
+
 def _verify_git_and_lock(
     root: Path, lock_dir: Path, payload: Mapping[str, Any]
 ) -> tuple[Mapping[str, Any], str]:
-    lock_path = _resolve(root, lock_dir / LOCK_FILENAME, "exec-r2 lock")
+    lock_path = _resolve(root, lock_dir / LOCK_FILENAME, "Exec-R3 lock")
     lock = _json(lock_path)
-    if lock.get("schema") != LOCK_SCHEMA or lock.get("execution_lock_revision") != 2:
-        _fail("exec-r2 lock schema/revision differs")
+    if (
+        lock.get("schema") != LOCK_SCHEMA
+        or lock.get("execution_lock_revision") != 3
+        or lock.get("binding_provenance_contract") != "EXPLICIT_PER_BINDING_V1"
+        or lock.get("prefix_based_provenance_inference") is not False
+    ):
+        _fail("Exec-R3 lock schema/provenance/revision differs")
     if (
         lock.get("status") != "ISSUED_AWAITING_SEPARATE_AUTHORIZATION"
         or lock.get("FORMAL_LOCK_ISSUED") is not True
@@ -205,7 +362,7 @@ def _verify_git_and_lock(
         or lock.get("INDEPENDENT_AUTHORIZATION_VERIFIER_READY") is not True
         or lock.get("AUTHORIZATION_LIFECYCLE_QUALIFIED") is not True
     ):
-        _fail("exec-r2 lock is not a closed qualified zero-trial lock")
+        _fail("Exec-R3 lock is not a closed qualified zero-trial lock")
     sums = _resolve(root, lock_dir / "LOCK_CORE_SHA256SUMS", "lock core checksums")
     declared: dict[str, str] = {}
     for line in sums.read_text(encoding="ascii").splitlines():
@@ -219,17 +376,21 @@ def _verify_git_and_lock(
         declared[name] = digest
     required_core = {
         LOCK_FILENAME,
-        "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.sha256",
+        "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.sha256",
         "lock_inventory.csv", "lock_fingerprint.json",
-        "NO_REGISTRATION_ATTESTATION.json", "environment_manifest.json",
-        "execution_control_patch_report.json",
-        "authorization_lifecycle_test_report.json",
+        "NO_REGISTRATION_ATTESTATION.json",
+        "authorization_binding_provenance_defect_audit.json",
+        "r3_execution_control_fix_report.json",
+        "r3_authorization_fixture_qualification.json",
+        "AUTHORIZATION_INVALIDATION_RECORD.json",
     }
     if set(declared) != required_core:
         _fail("lock core checksum coverage differs")
     if sha256_file(lock_path) != payload["lock_file_sha256"]:
         _fail("authorization lock SHA differs")
     inventory = _resolve(root, lock_dir / "lock_inventory.csv", "lock inventory")
+    if lock.get("binding_inventory_sha256") != payload["binding_inventory_sha256"]:
+        _fail("authorization binding inventory SHA differs")
     material = {
         "lock_file_sha256": sha256_file(lock_path),
         "lock_inventory_file_sha256": sha256_file(inventory),
@@ -254,20 +415,15 @@ def _verify_git_and_lock(
         _fail("lock-release commit does not contain the authorized lock bytes")
     if lock.get("execution_code_commit") != payload["execution_code_commit"]:
         _fail("authorization execution commit differs from lock")
-    for name, binding in lock.get("bindings", {}).items():
-        if not isinstance(binding, Mapping):
-            _fail(f"lock binding malformed: {name}")
-        path = _resolve(root, Path(str(binding.get("repository_relative_path"))), f"binding {name}")
-        if sha256_file(path) != binding.get("sha256") or path.stat().st_size != binding.get("bytes"):
-            _fail(f"lock binding changed: {name}")
-        if name.startswith("execution_"):
-            path_relative = path.relative_to(root).as_posix()
-            code_bytes = subprocess.run(
-                ["git", "show", f"{payload['execution_code_commit']}:{path_relative}"],
-                cwd=root, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-            ).stdout
-            if hashlib.sha256(code_bytes).hexdigest() != binding.get("sha256"):
-                _fail(f"execution binding differs from execution commit: {name}")
+    bindings = lock.get("bindings")
+    if not isinstance(bindings, Mapping):
+        _fail("Exec-R3 lock bindings are missing")
+    _verify_explicit_binding_provenance(
+        root,
+        bindings,
+        execution_commit=str(payload["execution_code_commit"]),
+        lock_release_commit=str(payload["lock_release_commit"]),
+    )
     _verify_schema_file(root, lock)
     return lock, fingerprint
 
@@ -344,7 +500,7 @@ def _verify_lifecycle(
     if marker.exists() or marker.is_symlink():
         marker_payload = _json(_resolve(root, marker, "authorization in-use marker"))
         expected = {
-            "schema": "mid360_fmb1_authorization_in_use_exec_r2_v1",
+            "schema": "mid360_fmb1_authorization_in_use_exec_r3_v1",
             "state": "IN_USE",
             "authorization_id": payload["authorization_id"],
             "authorization_sha256": sha256_file(authorization_path),
@@ -400,7 +556,7 @@ def verify_formal_registration_authorization(
     _verify_plan_and_environment(root, lock, payload)
     lifecycle = _verify_lifecycle(root, auth, payload, Path(runtime_root), requested_mode)
     return {
-        "schema": "mid360_fmb1_formal_authorization_independent_verification_exec_r2_v1",
+        "schema": "mid360_fmb1_formal_authorization_independent_verification_exec_r3_v1",
         "status": "PASS",
         "pass": True,
         "AUTHORIZATION_VERIFICATION_PASS": True,

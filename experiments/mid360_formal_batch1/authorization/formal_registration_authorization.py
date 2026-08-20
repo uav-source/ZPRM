@@ -1,4 +1,4 @@
-"""Fail-closed producer for one-time FMB1 exec-r2 authorization.
+"""Fail-closed producer for one-time FMB1 Exec-R3 authorization.
 
 This producer is deliberately separate from the independent verifier.  It
 never imports a registration backend and cannot issue without an explicit CLI
@@ -17,14 +17,21 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Mapping
 
+from .binding_provenance import (
+    EXECUTION_CODE,
+    FROZEN_SCIENCE_OR_DATA,
+    LOCK_RELEASE_EVIDENCE,
+    ENVIRONMENT_OR_BINARY,
+    validate_binding_metadata,
+)
 from ..zero_perturbation_v1_1_r1_environment import verify_environment_manifest
 
 
-AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_exec_r2_v1"
+AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_exec_r3_v1"
 AUTHORIZATION_FILENAME = "formal_registration_authorization.json"
 AUTHORIZATION_SHA_FILENAME = "formal_registration_authorization.sha256"
-LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.json"
-LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r2"
+LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.json"
+LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r3"
 EXPECTED_RUNTIME = (
     "zero_perturbation_runtime/"
     "mid360_zero_perturbation_v1_1_formal_execution_v1"
@@ -134,6 +141,53 @@ def _verify_fingerprint(lock_dir: Path, lock: Mapping[str, Any]) -> tuple[str, s
     return lock_sha, reproduced
 
 
+def _verify_explicit_binding_provenance(
+    root: Path,
+    lock: Mapping[str, Any],
+    *,
+    lock_release_commit: str,
+) -> None:
+    """Producer-side provenance check driven only by explicit metadata."""
+
+    bindings = lock.get("bindings")
+    if not isinstance(bindings, Mapping) or not bindings:
+        _fail("R3 lock bindings are missing")
+    execution_commit = str(lock.get("execution_code_commit"))
+    for binding_id, row in bindings.items():
+        if not isinstance(row, Mapping):
+            _fail(f"binding metadata is malformed: {binding_id}")
+        try:
+            validate_binding_metadata(str(binding_id), row)
+        except ValueError as error:
+            _fail(str(error))
+        path = _inside(
+            root,
+            Path(str(row["repository_relative_path"])),
+            f"binding {binding_id}",
+        )
+        if sha256_file(path) != row["sha256"] or path.stat().st_size != row["bytes"]:
+            _fail(f"binding bytes differ: {binding_id}")
+        binding_class = row["binding_class"]
+        if binding_class == EXECUTION_CODE:
+            commit = execution_commit
+        elif binding_class == LOCK_RELEASE_EVIDENCE:
+            commit = lock_release_commit
+        elif binding_class in {FROZEN_SCIENCE_OR_DATA, ENVIRONMENT_OR_BINARY}:
+            continue
+        else:
+            _fail(f"unknown binding class: {binding_id}")
+        relative = path.relative_to(root).as_posix()
+        try:
+            recorded = subprocess.run(
+                ["git", "show", f"{commit}:{relative}"], cwd=root, check=True,
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            ).stdout
+        except subprocess.CalledProcessError:
+            _fail(f"binding absent from declared provenance commit: {binding_id}")
+        if hashlib.sha256(recorded).hexdigest() != row["sha256"]:
+            _fail(f"binding differs from declared provenance commit: {binding_id}")
+
+
 def _verify_plan(root: Path, lock: Mapping[str, Any]) -> tuple[Path, Mapping[str, Any]]:
     binding = lock.get("bindings", {}).get("trial_plan_json", {})
     path = _inside(root, Path(str(binding.get("repository_relative_path"))), "trial plan")
@@ -212,39 +266,45 @@ def issue_formal_registration_authorization(
     except ValueError:
         _fail("lock directory escapes repository")
     _verify_git(root, lock_release_commit)
-    lock_path = _inside(root, locked / LOCK_FILENAME, "exec-r2 lock")
+    lock_path = _inside(root, locked / LOCK_FILENAME, "Exec-R3 lock")
     lock = _json(lock_path)
     if (
         lock.get("schema") != LOCK_SCHEMA
-        or lock.get("execution_lock_revision") != 2
+        or lock.get("execution_lock_revision") != 3
         or lock.get("status") != "ISSUED_AWAITING_SEPARATE_AUTHORIZATION"
         or lock.get("FORMAL_REGISTRATION_AUTHORIZED") is not False
         or lock.get("actual_formal_trials") != 0
+        or lock.get("binding_provenance_contract") != "EXPLICIT_PER_BINDING_V1"
+        or lock.get("prefix_based_provenance_inference") is not False
     ):
-        _fail("exec-r2 lock is not a closed zero-trial lock")
+        _fail("Exec-R3 lock is not a closed explicit-provenance zero-trial lock")
     lock_sha, fingerprint = _verify_fingerprint(locked, lock)
     if fingerprint != expected_lock_fingerprint:
         _fail("explicit lock fingerprint differs")
     independent = _json(locked / "independent_verification.json")
     if (
         independent.get("pass") is not True
-        or independent.get("NEW_LOCK_VERIFIER_PASS") is not True
+        or independent.get("R3_LOCK_VERIFIER_PASS") is not True
         or independent.get("lock_fingerprint") != fingerprint
     ):
-        _fail("independent exec-r2 lock verifier is not PASS")
+        _fail("independent Exec-R3 lock verifier is not PASS")
     try:
-        from ..zero_perturbation_v1_1_exec_r2_verify import verify_exec_r2_lock
-        live_lock_verification = verify_exec_r2_lock(
+        from ..zero_perturbation_v1_1_exec_r3_verify import verify_exec_r3_lock
+        live_lock_verification = verify_exec_r3_lock(
             root, locked,
             expected_execution_code_commit=str(lock["execution_code_commit"]),
+            expected_lock_release_commit=lock_release_commit,
         )
     except Exception as error:
-        _fail(f"live independent exec-r2 lock verification failed: {error}")
+        _fail(f"live independent Exec-R3 lock verification failed: {error}")
     if (
-        live_lock_verification.get("NEW_LOCK_VERIFIER_PASS") is not True
+        live_lock_verification.get("R3_LOCK_VERIFIER_PASS") is not True
         or live_lock_verification.get("lock_fingerprint") != fingerprint
     ):
-        _fail("live independent exec-r2 lock verification is not PASS/bound")
+        _fail("live independent Exec-R3 lock verification is not PASS/bound")
+    _verify_explicit_binding_provenance(
+        root, lock, lock_release_commit=lock_release_commit
+    )
     plan_path, _ = _verify_plan(root, lock)
     bindings = lock.get("bindings")
     if not isinstance(bindings, Mapping):
@@ -272,7 +332,7 @@ def issue_formal_registration_authorization(
     selected_runtime = _inside(root, runtime_root, "runtime root", must_exist=False)
     expected_runtime = root / EXPECTED_RUNTIME
     if selected_runtime != expected_runtime:
-        _fail("runtime root is not the canonical exec-r2 runtime")
+        _fail("runtime root is not the canonical Exec-R3 runtime")
     if selected_runtime.exists() and any(selected_runtime.iterdir()):
         _fail("formal runtime is not empty before authorization issuance")
     execution_results = root / "results/mid360_formal_batch1/zero_perturbation_v1_1_execution_v1"
@@ -304,10 +364,12 @@ def issue_formal_registration_authorization(
         "status": "ISSUED",
         "track_id": "ZERO_PERTURBATION_TRACK",
         "active_amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
-        "lock_revision": 2,
+        "lock_revision": 3,
         "lock_fingerprint": fingerprint,
         "lock_file_sha256": lock_sha,
         "lock_release_commit": lock_release_commit,
+        "binding_inventory_sha256": lock["binding_inventory_sha256"],
+        "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
         "trial_plan_sha256": sha256_file(plan_path),
         "analysis_contract_sha256": bindings["analysis_contract"]["sha256"],
         "backend_contract_sha256": bindings["backend_parameter_contract"]["sha256"],
@@ -340,7 +402,7 @@ def issue_formal_registration_authorization(
     _write_once(authorization_path, content)
     _write_once(sha_path, f"{digest}  {AUTHORIZATION_FILENAME}\n".encode("ascii"))
     return {
-        "schema": "mid360_fmb1_formal_authorization_issuance_report_exec_r2_v1",
+        "schema": "mid360_fmb1_formal_authorization_issuance_report_exec_r3_v1",
         "status": "ISSUED_AWAITING_INDEPENDENT_VERIFICATION",
         "authorization_path": str(authorization_path),
         "authorization_sha256": digest,

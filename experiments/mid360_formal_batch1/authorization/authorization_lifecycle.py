@@ -52,7 +52,7 @@ def mark_authorization_in_use(
 ) -> dict[str, Any]:
     authorization = json.loads(authorization_path.read_text(encoding="utf-8"))
     payload = {
-        "schema": "mid360_fmb1_authorization_in_use_exec_r2_v1",
+        "schema": "mid360_fmb1_authorization_in_use_exec_r3_v1",
         "state": "IN_USE",
         "authorization_id": authorization["authorization_id"],
         "authorization_sha256": sha256_file(authorization_path),
@@ -82,7 +82,7 @@ def consume_authorization(
         _fail("authorization cannot be consumed without an IN_USE marker")
     marker = json.loads(marker_path.read_text(encoding="utf-8"))
     if (
-        marker.get("schema") != "mid360_fmb1_authorization_in_use_exec_r2_v1"
+        marker.get("schema") != "mid360_fmb1_authorization_in_use_exec_r3_v1"
         or marker.get("state") != "IN_USE"
         or marker.get("authorization_id") != authorization.get("authorization_id")
         or marker.get("authorization_sha256") != sha256_file(authorization_path)
@@ -111,7 +111,7 @@ def consume_authorization(
             _fail(f"{label} lacks timezone")
     total = actual_open3d_trials + actual_pcl_trials
     payload = {
-        "schema": "mid360_fmb1_authorization_consumption_receipt_exec_r2_v1",
+        "schema": "mid360_fmb1_authorization_consumption_receipt_exec_r3_v1",
         "authorization_id": authorization["authorization_id"],
         "authorization_sha256": sha256_file(authorization_path),
         "lock_fingerprint": lock_fingerprint,

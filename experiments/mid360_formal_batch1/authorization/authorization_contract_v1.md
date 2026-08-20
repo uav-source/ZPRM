@@ -1,6 +1,8 @@
-# FMB1 Formal Registration Authorization Contract v1
+# FMB1 Formal Registration Authorization Contract Exec-R3 v1
 
 This contract controls one future execution of the frozen FMB1 Zero-Perturbation v1.1 R1 360-row plan. It changes no scientific input, scene assignment, backend parameter, transform initialization, or analysis rule.
+
+Exec-R3 routes every lock binding only through explicit `binding_class`, `verification_source`, and `commit_role` metadata. Binding identifiers and path strings are never provenance signals. Execution code is verified at the execution-code commit; lock-release evidence is verified at the separately authorized exact release commit; frozen science/data and environment/binary assets retain their locked SHA contracts. Unknown or incomplete provenance fails closed.
 
 The authorization is an immutable canonical JSON document. Issuance requires an explicit operator confirmation flag and binds the exec-r2 lock fingerprint and file SHA, lock-release commit, execution-code commit, frozen plan/analysis/backend/environment/PCL identities, exactly 180 Open3D plus 180 PCL trials, Identity-only T0, two workers, and the canonical runtime root.
 

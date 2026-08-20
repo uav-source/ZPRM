@@ -11,7 +11,7 @@ from experiments.mid360_formal_batch1.authorization import (
     formal_registration_authorization as producer,
     formal_registration_authorization_verify as verifier,
 )
-from experiments.mid360_formal_batch1 import zero_perturbation_v1_1_exec_r2_verify
+from experiments.mid360_formal_batch1 import zero_perturbation_v1_1_exec_r3_verify
 
 
 SHA = "1" * 64
@@ -31,10 +31,12 @@ def _payload() -> dict[str, object]:
         "status": "ISSUED",
         "track_id": "ZERO_PERTURBATION_TRACK",
         "active_amendment_id": "FMB1_ZERO_PERTURBATION_MAINLINE_V1_1_R1",
-        "lock_revision": 2,
+        "lock_revision": 3,
         "lock_fingerprint": FINGERPRINT,
         "lock_file_sha256": SHA,
         "lock_release_commit": COMMIT,
+        "binding_inventory_sha256": SHA,
+        "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
         "trial_plan_sha256": SHA,
         "analysis_contract_sha256": SHA,
         "backend_contract_sha256": SHA,
@@ -85,6 +87,8 @@ def _enable_isolated_verifier(monkeypatch: pytest.MonkeyPatch) -> None:
             verifier._fail("authorization execution commit differs")
         if payload["lock_release_commit"] != COMMIT:
             verifier._fail("authorization lock-release commit differs")
+        if payload["binding_inventory_sha256"] != SHA:
+            verifier._fail("authorization binding inventory differs")
         return ({"bindings": {
             "analysis_contract": {"sha256": SHA},
             "backend_parameter_contract": {"sha256": SHA},
@@ -142,6 +146,8 @@ TAMPERS = [
     ("lock_fingerprint", lambda p: p.__setitem__("lock_fingerprint", "0" * 64)),
     ("lock_sha", lambda p: p.__setitem__("lock_file_sha256", "0" * 64)),
     ("release_commit", lambda p: p.__setitem__("lock_release_commit", "0" * 40)),
+    ("inventory_sha", lambda p: p.__setitem__("binding_inventory_sha256", "0" * 64)),
+    ("provenance_contract", lambda p: p.__setitem__("binding_provenance_contract", "PREFIX_INFERENCE")),
     ("plan_sha", lambda p: p.__setitem__("trial_plan_sha256", "0" * 64)),
     ("analysis_sha", lambda p: p.__setitem__("analysis_contract_sha256", "0" * 64)),
     ("backend_sha", lambda p: p.__setitem__("backend_contract_sha256", "0" * 64)),
@@ -314,9 +320,12 @@ def _producer_fixture(root: Path) -> tuple[Path, Path, str]:
         }
     lock = {
         "schema": verifier.LOCK_SCHEMA,
-        "execution_lock_revision": 2,
+        "execution_lock_revision": 3,
         "status": "ISSUED_AWAITING_SEPARATE_AUTHORIZATION",
         "execution_code_commit": COMMIT,
+        "binding_inventory_sha256": SHA,
+        "binding_provenance_contract": "EXPLICIT_PER_BINDING_V1",
+        "prefix_based_provenance_inference": False,
         "FORMAL_REGISTRATION_AUTHORIZED": False,
         "actual_formal_trials": 0,
         "bindings": bindings,
@@ -334,7 +343,7 @@ def _producer_fixture(root: Path) -> tuple[Path, Path, str]:
         json.dumps({**material, "lock_fingerprint": fingerprint}) + "\n"
     )
     (lock_dir / "independent_verification.json").write_text(json.dumps({
-        "pass": True, "NEW_LOCK_VERIFIER_PASS": True,
+        "pass": True, "R3_LOCK_VERIFIER_PASS": True,
         "lock_fingerprint": fingerprint,
     }) + "\n")
     return lock_dir, root / RUNTIME_RELATIVE, fingerprint
@@ -349,12 +358,15 @@ def test_producer_issues_canonical_unique_write_once_authorization(
         producer, "verify_environment_manifest", lambda *args, **kwargs: {"pass": True}
     )
     monkeypatch.setattr(
-        zero_perturbation_v1_1_exec_r2_verify,
-        "verify_exec_r2_lock",
+        zero_perturbation_v1_1_exec_r3_verify,
+        "verify_exec_r3_lock",
         lambda *args, **kwargs: {
-            "NEW_LOCK_VERIFIER_PASS": True,
+            "R3_LOCK_VERIFIER_PASS": True,
             "lock_fingerprint": fingerprint,
         },
+    )
+    monkeypatch.setattr(
+        producer, "_verify_explicit_binding_provenance", lambda *args, **kwargs: None
     )
     report = producer.issue_formal_registration_authorization(
         tmp_path, lock_dir=lock_dir,

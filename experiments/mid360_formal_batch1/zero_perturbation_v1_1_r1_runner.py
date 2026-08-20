@@ -27,12 +27,12 @@ from .zero_perturbation_v1_1_r1_environment import (
 )
 
 
-LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.json"
-LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r2"
+LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.json"
+LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r3"
 PLAN_SCHEMA = "mid360_fmb1_zero_perturbation_trial_plan_v1_1_r1"
 PLAN_ID = "FMB1_ZERO_PERTURBATION_TRIAL_PLAN_V1_1_R1"
 RESULT_SCHEMA = "mid360_fmb1_zero_perturbation_trial_result_v1_1_r1"
-AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_exec_r2_v1"
+AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_exec_r3_v1"
 AUTHORIZATION_FILENAME = "formal_registration_authorization.json"
 AUTHORIZATION_SCOPE = "ONE_FORMAL_EXECUTION_ATTEMPT_WITH_RESUME_ONLY"
 PHYSICAL_REFERENCE_SEMANTICS = "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT"
@@ -74,12 +74,13 @@ EXECUTION_CODE_PATHS = (
     "experiments/mid360_formal_batch1/authorization/formal_registration_authorization.py",
     "experiments/mid360_formal_batch1/authorization/formal_registration_authorization_verify.py",
     "experiments/mid360_formal_batch1/authorization/authorization_lifecycle.py",
+    "experiments/mid360_formal_batch1/authorization/binding_provenance.py",
     "tools/mid360_formal_batch1/issue_formal_registration_authorization.py",
     "tools/mid360_formal_batch1/verify_formal_registration_authorization.py",
-    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock.py",
-    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_verify.py",
-    "tools/mid360_formal_batch1/issue_zero_perturbation_v1_1_exec_r2_lock.py",
-    "tools/mid360_formal_batch1/verify_zero_perturbation_v1_1_exec_r2_lock.py",
+    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_lock.py",
+    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r3_verify.py",
+    "tools/mid360_formal_batch1/issue_zero_perturbation_v1_1_exec_r3_lock.py",
+    "tools/mid360_formal_batch1/verify_zero_perturbation_v1_1_exec_r3_lock.py",
 )
 
 
@@ -219,11 +220,13 @@ def _verify_core_checksums(lock_dir: Path) -> None:
             _fail(f"lock core checksum differs: {name}")
         declared[name] = digest
     required = {
-        LOCK_FILENAME, "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.sha256",
+        LOCK_FILENAME, "formal_batch1_zero_perturbation_lock_v1_1_exec_r3.sha256",
         "lock_inventory.csv", "lock_fingerprint.json",
-        "NO_REGISTRATION_ATTESTATION.json", "environment_manifest.json",
-        "execution_control_patch_report.json",
-        "authorization_lifecycle_test_report.json",
+        "NO_REGISTRATION_ATTESTATION.json",
+        "authorization_binding_provenance_defect_audit.json",
+        "r3_execution_control_fix_report.json",
+        "r3_authorization_fixture_qualification.json",
+        "AUTHORIZATION_INVALIDATION_RECORD.json",
     }
     if not required.issubset(declared):
         _fail(f"core checksum coverage lacks: {sorted(required - set(declared))}")
@@ -235,8 +238,13 @@ def _validate_lock(root: Path, lock_dir: Path, *, remeasure_environment: bool) -
     lock = _json(lock_path)
     if lock.get("schema") != LOCK_SCHEMA or lock.get("FORMAL_LOCK_ISSUED") is not True:
         _fail("formal R1 lock is absent or not issued")
-    if lock.get("execution_lock_revision") != 2:
-        _fail("formal execution lock revision is not exec-r2")
+    if lock.get("execution_lock_revision") != 3:
+        _fail("formal execution lock revision is not Exec-R3")
+    if (
+        lock.get("binding_provenance_contract") != "EXPLICIT_PER_BINDING_V1"
+        or lock.get("prefix_based_provenance_inference") is not False
+    ):
+        _fail("formal execution lock lacks explicit binding provenance")
     if lock.get("status") != "ISSUED_AWAITING_SEPARATE_AUTHORIZATION":
         _fail("formal lock lifecycle status differs")
     for key in (
@@ -245,7 +253,7 @@ def _validate_lock(root: Path, lock_dir: Path, *, remeasure_environment: bool) -
         "AUTHORIZATION_LIFECYCLE_QUALIFIED",
     ):
         if lock.get(key) is not True:
-            _fail(f"exec-r2 authorization infrastructure is not qualified: {key}")
+            _fail(f"Exec-R3 authorization infrastructure is not qualified: {key}")
     if lock.get("FORMAL_ICP_UNLOCKED") is not False or lock.get("FORMAL_REGISTRATION_AUTHORIZED") is not False:
         _fail("lock itself contains authorization/unlock")
     for key in ("actual_open3d_trials", "actual_pcl_trials", "actual_formal_trials", "registration_execution_count"):

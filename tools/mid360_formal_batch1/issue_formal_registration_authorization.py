@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Issue one immutable, lock-matched FMB1 exec-r2 authorization."""
+"""Issue one immutable, lock-matched FMB1 Exec-R3 authorization."""
 
 from __future__ import annotations
 
@@ -22,7 +22,7 @@ from experiments.mid360_formal_batch1.authorization.formal_registration_authoriz
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repository-root", type=Path, default=REPOSITORY)
-    parser.add_argument("--lock", type=Path, required=True, help="exec-r2 lock directory")
+    parser.add_argument("--lock", type=Path, required=True, help="Exec-R3 lock directory")
     parser.add_argument("--lock-fingerprint", required=True)
     parser.add_argument("--lock-release-commit", required=True)
     parser.add_argument("--workers", type=int, required=True)
