@@ -1,0 +1,9 @@
+{
+  "backend_calls": 0,
+  "backend_parameter_contract_sha256": "6a1ebdee6b34390f1430eab371e1c4108db1f124b59b7239d74785efa6474af9",
+  "environment_manifest_path": "/home/lj/ZPRM/results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock/environment_manifest.json",
+  "exact_version_match": true,
+  "pass": true,
+  "pcl_cli_sha256": "d42ce655df74117f0e6965c9df1326526fabba9f4e65ed10a5644ed911fad7ff",
+  "schema": "mid360_fmb1_zero_perturbation_environment_verification_v1_1_r1"
+}

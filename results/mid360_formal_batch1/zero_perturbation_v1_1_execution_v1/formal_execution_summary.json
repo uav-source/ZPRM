@@ -1,0 +1,40 @@
+{
+  "AUTHORIZATION_CONSUMED": true,
+  "AUTHORIZATION_REUSABLE": false,
+  "CAPTURE_RADIUS_TRACK_EXECUTED": false,
+  "FMB1_ZERO_PERTURBATION_V1_1_EXEC_R3_RAW_EXECUTION_COMPLETE": true,
+  "INDEPENDENT_POSTRUN_VERIFICATION_PASS": null,
+  "LOCKED_FORMAL_RAW_EXECUTION_COMPLETE": true,
+  "POSTRUN_INDEPENDENT_VERIFIER_BOUND_IN_R3": false,
+  "RAW_FREEZE_INTEGRITY_PASS": true,
+  "READY_FOR_LOCKED_SCIENTIFIC_ANALYSIS": false,
+  "READY_FOR_SEPARATE_POSTRUN_VERIFIER_AND_LOCKED_ANALYSIS_PREPARATION": true,
+  "RUNNER_COMPLETENESS_PASS": true,
+  "actual_formal_trials": 360,
+  "actual_open3d_trials": 180,
+  "actual_pcl_trials": 180,
+  "created_at_utc": "2026-08-20T08:59:43.667610+00:00",
+  "duplicate_terminal_trials": 0,
+  "formal_attempt_record_count": 360,
+  "formal_execution_completeness_report_sha256": "8f2b23413dee9afb5a56d5d2f55990b478994886d75ad1b9bbd918413512efe8",
+  "formal_execution_raw_freeze_manifest_sha256": "773b084bbd3580f358b8adc7438466af42969cccb390afc39c8d2e04e0965558",
+  "infrastructure_attempt_count": 0,
+  "missing_trials": 0,
+  "nonfinite_result_count": 0,
+  "orphan_trials": 0,
+  "planned_open3d_trials": 180,
+  "planned_pcl_trials": 180,
+  "planned_total_trials": 360,
+  "schema": "mid360_fmb1_exec_r3_formal_execution_summary_v1",
+  "scientific_aggregation_performed_in_this_task": false,
+  "scientific_result_retry_count": 0,
+  "scientific_status_counts": {
+    "COMPLETED": 360
+  },
+  "solver_status_counts": {
+    "completed_finite_correspondences": 360
+  },
+  "solver_unsuccessful_count": 0,
+  "status": "RAW_EXECUTION_COMPLETE_AWAITING_SEPARATE_POSTRUN_VERIFIER",
+  "unauthorized_trials": 0
+}
