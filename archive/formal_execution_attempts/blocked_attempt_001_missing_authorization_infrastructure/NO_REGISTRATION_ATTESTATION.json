@@ -1,0 +1,16 @@
+{
+  "schema": "mid360_fmb1_blocked_attempt_no_registration_attestation_v1",
+  "attempt_id": "BLOCKED_ATTEMPT_001",
+  "status": "PASS",
+  "pass": true,
+  "recorded_at_utc": "2026-08-20T04:25:45Z",
+  "open3d_registration_call_count": 0,
+  "pcl_cli_invocation_count": 0,
+  "other_registration_process_count": 0,
+  "formal_trial_count": 0,
+  "authorization_file_count": 0,
+  "runtime_created": false,
+  "scientific_result_file_count": 0,
+  "FORMAL_REGISTRATION_AUTHORIZED": false,
+  "FORMAL_ICP_UNLOCKED": false
+}

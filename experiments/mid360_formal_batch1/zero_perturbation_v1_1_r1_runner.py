@@ -27,14 +27,14 @@ from .zero_perturbation_v1_1_r1_environment import (
 )
 
 
-LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1.json"
-LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_r1"
+LOCK_FILENAME = "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.json"
+LOCK_SCHEMA = "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r2"
 PLAN_SCHEMA = "mid360_fmb1_zero_perturbation_trial_plan_v1_1_r1"
 PLAN_ID = "FMB1_ZERO_PERTURBATION_TRIAL_PLAN_V1_1_R1"
 RESULT_SCHEMA = "mid360_fmb1_zero_perturbation_trial_result_v1_1_r1"
-AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_v1_1_r1"
-AUTHORIZATION_FILENAME = "formal_registration_authorization_v1_1_r1.json"
-AUTHORIZATION_SCOPE = "EXECUTE_EXACT_FROZEN_360_TRIAL_ZERO_PERTURBATION_PLAN"
+AUTHORIZATION_SCHEMA = "mid360_fmb1_formal_registration_authorization_exec_r2_v1"
+AUTHORIZATION_FILENAME = "formal_registration_authorization.json"
+AUTHORIZATION_SCOPE = "ONE_FORMAL_EXECUTION_ATTEMPT_WITH_RESUME_ONLY"
 PHYSICAL_REFERENCE_SEMANTICS = "NOMINAL_IDENTITY_NO_OBVIOUS_MOTION_NOT_SUBMILLIMETER_GT"
 SCENE_CLASS = {
     "FMB1_R01": "RICH", "FMB1_R02": "RICH", "FMB1_R03": "RICH",
@@ -71,6 +71,15 @@ EXECUTION_CODE_PATHS = (
     "src/phase_a_harness/rotation_metrics.py",
     "src/phase_a_harness/metrics.py",
     "src/phase_a_harness/types.py",
+    "experiments/mid360_formal_batch1/authorization/formal_registration_authorization.py",
+    "experiments/mid360_formal_batch1/authorization/formal_registration_authorization_verify.py",
+    "experiments/mid360_formal_batch1/authorization/authorization_lifecycle.py",
+    "tools/mid360_formal_batch1/issue_formal_registration_authorization.py",
+    "tools/mid360_formal_batch1/verify_formal_registration_authorization.py",
+    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock.py",
+    "experiments/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_verify.py",
+    "tools/mid360_formal_batch1/issue_zero_perturbation_v1_1_exec_r2_lock.py",
+    "tools/mid360_formal_batch1/verify_zero_perturbation_v1_1_exec_r2_lock.py",
 )
 
 
@@ -166,7 +175,10 @@ def _runtime_path(root: Path, value: Path) -> Path:
 def _validate_resume_runtime_layout(runtime: Path) -> None:
     """Reject every non-canonical lifecycle object before a backend loader."""
 
-    allowed = {"run_contract.json", "trial_results", "inflight", "run_manifest.json"}
+    allowed = {
+        "authorization", "run_contract.json", "trial_results", "inflight",
+        "run_manifest.json",
+    }
     entries = {entry.name: entry for entry in runtime.iterdir()}
     unexpected = set(entries) - allowed
     if unexpected:
@@ -181,6 +193,9 @@ def _validate_resume_runtime_layout(runtime: Path) -> None:
     manifest = entries.get("run_manifest.json")
     if manifest is not None and (manifest.is_symlink() or not manifest.is_file()):
         _fail("resume run_manifest.json is not a regular non-symlink file")
+    authorization = entries.get("authorization")
+    if authorization is None or authorization.is_symlink() or not authorization.is_dir():
+        _fail("resume authorization directory is missing or invalid")
 
 
 def _verify_core_checksums(lock_dir: Path) -> None:
@@ -204,9 +219,11 @@ def _verify_core_checksums(lock_dir: Path) -> None:
             _fail(f"lock core checksum differs: {name}")
         declared[name] = digest
     required = {
-        LOCK_FILENAME, "formal_batch1_zero_perturbation_lock_v1_1.sha256",
-        "lock_inventory.csv", "lock_fingerprint.json", "NO_ICP_ATTESTATION.json",
-        "environment_manifest.json", "final_dataset_prelock_reauthentication.json",
+        LOCK_FILENAME, "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.sha256",
+        "lock_inventory.csv", "lock_fingerprint.json",
+        "NO_REGISTRATION_ATTESTATION.json", "environment_manifest.json",
+        "execution_control_patch_report.json",
+        "authorization_lifecycle_test_report.json",
     }
     if not required.issubset(declared):
         _fail(f"core checksum coverage lacks: {sorted(required - set(declared))}")
@@ -218,8 +235,17 @@ def _validate_lock(root: Path, lock_dir: Path, *, remeasure_environment: bool) -
     lock = _json(lock_path)
     if lock.get("schema") != LOCK_SCHEMA or lock.get("FORMAL_LOCK_ISSUED") is not True:
         _fail("formal R1 lock is absent or not issued")
+    if lock.get("execution_lock_revision") != 2:
+        _fail("formal execution lock revision is not exec-r2")
     if lock.get("status") != "ISSUED_AWAITING_SEPARATE_AUTHORIZATION":
         _fail("formal lock lifecycle status differs")
+    for key in (
+        "AUTHORIZATION_PRODUCER_READY",
+        "INDEPENDENT_AUTHORIZATION_VERIFIER_READY",
+        "AUTHORIZATION_LIFECYCLE_QUALIFIED",
+    ):
+        if lock.get(key) is not True:
+            _fail(f"exec-r2 authorization infrastructure is not qualified: {key}")
     if lock.get("FORMAL_ICP_UNLOCKED") is not False or lock.get("FORMAL_REGISTRATION_AUTHORIZED") is not False:
         _fail("lock itself contains authorization/unlock")
     for key in ("actual_open3d_trials", "actual_pcl_trials", "actual_formal_trials", "registration_execution_count"):
@@ -318,32 +344,50 @@ def _validate_plan(root: Path, path: Path, lock: Mapping[str, Any]) -> tuple[Map
                   "scene_count": 6, "station_count": 18}
 
 
-def _validate_authorization(root: Path, path: Path, *, lock: Mapping[str, Any], fingerprint: Mapping[str, Any], plan_path: Path) -> tuple[bool, bool, Mapping[str, Any] | None, Path | None]:
+def _validate_authorization(
+    root: Path, path: Path, *, lock_dir: Path, lock: Mapping[str, Any],
+    fingerprint: Mapping[str, Any], plan_path: Path, runtime_root: Path,
+    mode: str, workers: int,
+) -> tuple[bool, bool, Mapping[str, Any] | None, Path | None]:
     lexical = _lexical(root, path, "formal authorization")
     if not lexical.exists():
         return False, False, None, lexical
     resolved = _resolve(root, lexical, "formal authorization")
-    payload = _json(resolved)
-    required = {"schema", "authorization_id", "status", "authorization_scope", "track_id",
-                "FORMAL_ICP_UNLOCKED", "FORMAL_REGISTRATION_AUTHORIZED", "lock_fingerprint",
-                "lock_file_sha256", "trial_plan_sha256", "execution_code_commit",
-                "authorized_trial_count", "authorized_backends", "issued_at_utc"}
-    valid = set(payload) == required and payload.get("schema") == AUTHORIZATION_SCHEMA
-    valid = valid and payload.get("status") == "AUTHORIZED" and payload.get("authorization_scope") == AUTHORIZATION_SCOPE
-    valid = valid and payload.get("track_id") == "ZERO_PERTURBATION_TRACK"
-    valid = valid and payload.get("FORMAL_ICP_UNLOCKED") is True and payload.get("FORMAL_REGISTRATION_AUTHORIZED") is True
-    valid = valid and payload.get("lock_fingerprint") == fingerprint.get("lock_fingerprint")
-    valid = valid and payload.get("lock_file_sha256") == fingerprint.get("lock_file_sha256")
-    valid = valid and payload.get("trial_plan_sha256") == _sha256(plan_path)
-    valid = valid and payload.get("execution_code_commit") == lock.get("execution_code_commit")
-    valid = valid and payload.get("authorized_trial_count") == 360 and payload.get("authorized_backends") == list(BACKENDS)
-    valid = valid and isinstance(payload.get("authorization_id"), str) and bool(str(payload.get("authorization_id")).strip())
+    saved_report_path = resolved.parent / "authorization_verification_report.json"
+    saved_report = _json(_resolve(root, saved_report_path, "authorization verifier report"))
+    if (
+        saved_report.get("AUTHORIZATION_VERIFICATION_PASS") is not True
+        or saved_report.get("authorization_sha256") != _sha256(resolved)
+        or saved_report.get("lock_fingerprint") != fingerprint.get("lock_fingerprint")
+    ):
+        _fail("saved independent authorization verifier report is not PASS/bound")
     try:
-        issued = datetime.fromisoformat(str(payload.get("issued_at_utc")).replace("Z", "+00:00"))
-        valid = valid and issued.tzinfo is not None and issued.utcoffset() is not None
-    except ValueError:
-        valid = False
-    return True, bool(valid), payload, resolved
+        from .authorization.formal_registration_authorization_verify import (
+            verify_formal_registration_authorization,
+        )
+    except Exception as error:
+        _fail(f"independent authorization verifier is unavailable: {error}")
+    try:
+        report = verify_formal_registration_authorization(
+            root,
+            lock_dir=lock_dir,
+            authorization_path=resolved,
+            runtime_root=runtime_root,
+            requested_mode=mode,
+            workers=workers,
+        )
+    except Exception as error:
+        _fail(f"independent authorization verification failed: {error}")
+    payload = _json(resolved)
+    valid = bool(
+        report.get("AUTHORIZATION_VERIFICATION_PASS") is True
+        and report.get("lock_fingerprint") == fingerprint.get("lock_fingerprint")
+        and payload.get("schema") == AUTHORIZATION_SCHEMA
+        and payload.get("authorization_scope") == AUTHORIZATION_SCOPE
+        and payload.get("trial_plan_sha256") == _sha256(plan_path)
+        and payload.get("execution_code_commit") == lock.get("execution_code_commit")
+    )
+    return True, valid, payload, resolved
 
 
 def _verify_execution_code_commit(root: Path, commit: str) -> None:
@@ -833,9 +877,26 @@ def _execute_authorized_run(
     """Future real execution entry; caller has already authenticated authority."""
 
     runtime = _runtime_path(root, runtime_root)
+    authorization_dir = runtime / "authorization"
+    try:
+        authorization_path.relative_to(authorization_dir)
+    except ValueError:
+        _fail("formal authorization is not inside the canonical runtime")
     if mode == "fresh":
-        if runtime.exists() and any(runtime.iterdir()):
-            _fail("fresh runtime root already contains artifacts")
+        if not runtime.is_dir() or runtime.is_symlink():
+            _fail("fresh requires the producer-created canonical runtime")
+        entries = {entry.name: entry for entry in runtime.iterdir()}
+        if set(entries) != {"authorization"}:
+            _fail("fresh runtime contains non-authorization artifacts")
+        if authorization_dir.is_symlink() or not authorization_dir.is_dir():
+            _fail("fresh authorization directory is invalid")
+        allowed_authorization = {
+            "formal_registration_authorization.json",
+            "formal_registration_authorization.sha256",
+            "authorization_verification_report.json",
+        }
+        if {entry.name for entry in authorization_dir.iterdir()} != allowed_authorization:
+            _fail("fresh authorization directory contains unexpected lifecycle artifacts")
     elif not runtime.is_dir():
         _fail("resume requires an existing runtime directory")
     else:
@@ -849,6 +910,18 @@ def _execute_authorized_run(
     environment = _json(environment_path)
     environment_sha = _sha256(environment_path)
     authorization_sha = _sha256(authorization_path)
+    from .authorization.authorization_lifecycle import (
+        consume_authorization,
+        mark_authorization_in_use,
+    )
+    if mode == "fresh":
+        in_use = mark_authorization_in_use(
+            authorization_path,
+            lock_fingerprint=str(fingerprint["lock_fingerprint"]),
+            runtime_relative=str(lock["authoritative_runtime_root"]),
+        )
+    else:
+        in_use = _json(authorization_dir / "authorization_in_use.json")
     base = {"lock": lock, "plan_sha": plan_sha, "lock_sha": lock_sha,
             "environment": environment, "environment_sha": environment_sha}
     run_contract = {
@@ -899,6 +972,15 @@ def _execute_authorized_run(
                 _fail("completed resume manifest differs from verified attempts/lock")
         else:
             _atomic_create(manifest_path, expected_manifest)
+        consume_authorization(
+            authorization_path,
+            lock_fingerprint=str(fingerprint["lock_fingerprint"]),
+            first_backend_invocation_utc=str(in_use["started_at_utc"]),
+            last_backend_invocation_utc=datetime.now(timezone.utc).isoformat(),
+            actual_open3d_trials=180,
+            actual_pcl_trials=180,
+            execution_result_manifest_sha256=_sha256(manifest_path),
+        )
         return expected_manifest
 
     # First backend import/instantiation point.  No preflight/dry-run path calls it.
@@ -992,6 +1074,15 @@ def _execute_authorized_run(
             environment_sha=environment_sha,
         )
         _atomic_create(runtime / "run_manifest.json", report)
+        consume_authorization(
+            authorization_path,
+            lock_fingerprint=str(fingerprint["lock_fingerprint"]),
+            first_backend_invocation_utc=str(in_use["started_at_utc"]),
+            last_backend_invocation_utc=datetime.now(timezone.utc).isoformat(),
+            actual_open3d_trials=180,
+            actual_pcl_trials=180,
+            execution_result_manifest_sha256=_sha256(runtime / "run_manifest.json"),
+        )
     return report
 
 
@@ -1024,11 +1115,15 @@ def preflight_or_dry_run(
     plan, summary = _validate_plan(root, resolved_plan, lock)
     if action == "execute" or remeasure_execution_commit:
         _verify_execution_code_commit(root, str(lock["execution_code_commit"]))
-    auth_path = authorization_path or (locked_dir.parent / AUTHORIZATION_FILENAME)
-    present, valid, authorization, resolved_auth = _validate_authorization(
-        root, auth_path, lock=lock, fingerprint=fingerprint, plan_path=resolved_plan,
-    )
     selected_runtime = _runtime_path(root, runtime_root)
+    auth_path = authorization_path or (
+        selected_runtime / "authorization" / AUTHORIZATION_FILENAME
+    )
+    present, valid, authorization, resolved_auth = _validate_authorization(
+        root, auth_path, lock_dir=locked_dir, lock=lock,
+        fingerprint=fingerprint, plan_path=resolved_plan,
+        runtime_root=selected_runtime, mode=mode, workers=workers,
+    )
     expected_runtime = root / str(lock.get("authoritative_runtime_root", ""))
     if selected_runtime != expected_runtime:
         _fail("runtime root differs from the authoritative locked location")
@@ -1045,14 +1140,18 @@ def preflight_or_dry_run(
     # No backend loader or runtime writer is reachable for these two actions.
     return {
         "schema": "mid360_fmb1_zero_perturbation_runner_dry_run_v1_1_r1",
-        "status": "PASS_LOCKED_AWAITING_SEPARATE_AUTHORIZATION",
+        "status": (
+            "PASS_AUTHORIZED_NO_BACKEND_DRY_RUN"
+            if valid else "PASS_LOCKED_AWAITING_SEPARATE_AUTHORIZATION"
+        ),
         "action": action, "mode": mode, "runtime_root": str(runtime_root),
-        "workers": workers, "FORMAL_PLAN_VALID": True,
+        "workers": workers, "LOCK_VALID": True, "FORMAL_PLAN_VALID": True,
         "FORMAL_RUN_AUTHORIZATION_PRESENT": present,
         "FORMAL_RUN_AUTHORIZATION_VALID": valid,
+        "EXECUTION_BLOCKED": not valid,
         "EXECUTION_CODE_COMMIT_VERIFIED": remeasure_execution_commit,
-        **summary, "FORMAL_ICP_UNLOCKED": False,
-        "FORMAL_REGISTRATION_AUTHORIZED": False,
+        **summary, "FORMAL_ICP_UNLOCKED": valid,
+        "FORMAL_REGISTRATION_AUTHORIZED": valid,
         "REAL_BACKEND_IMPORT_COUNT": 0, "REAL_BACKEND_CALL_COUNT": 0,
         "open3d_registration_call_count": 0, "pcl_cli_invocation_count": 0,
         "actual_formal_trials": 0, "real_trial_result_files_written": 0,

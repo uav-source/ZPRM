@@ -1,0 +1,17 @@
+{
+  "schema": "mid360_fmb1_execution_lock_supersession_v1",
+  "recorded_at_utc": "2026-08-20T04:25:45Z",
+  "OLD_LOCK_STATUS": "SUPERSEDED_BEFORE_EXECUTION_BY_EXECUTION_CONTROL_PATCH",
+  "old_lock_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/formal_batch1_zero_perturbation_lock_v1_1.json",
+  "old_lock_sha256": "a191894d76f5c3bd3be2aa53f4a2b8bb6b641b77d9603a6f300993b49bbf9c0c",
+  "old_lock_fingerprint": "9fcd01bd439e1c4e8c2bd0a220a3af1d16c394177bb17197850c4d769109cbba",
+  "old_execution_code_commit": "e162bf1e53e683424562a0488fa19097d3151d2f",
+  "supersession_reason": "MISSING_LOCK_MATCHED_AUTHORIZATION_PRODUCER_AND_INDEPENDENT_VERIFIER",
+  "blocked_attempt_id": "BLOCKED_ATTEMPT_001",
+  "old_lock_file_modified": false,
+  "OLD_LOCK_ACTUAL_FORMAL_TRIALS": 0,
+  "old_lock_authorization_created": false,
+  "old_lock_runtime_created": false,
+  "old_lock_scientific_results_created": false,
+  "new_lock_revision_required": 2
+}

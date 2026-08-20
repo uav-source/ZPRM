@@ -498,3 +498,85 @@ def build_valid_r1_lock(tmp_path: Path) -> tuple[Path, Path, Path]:
     return root, lock_dir, root / (
         "zero_perturbation_runtime/mid360_formal_batch1_zero_perturbation_v1_1"
     )
+
+
+def build_valid_exec_r2_runner_fixture(tmp_path: Path) -> tuple[Path, Path, Path]:
+    """Adapt the frozen R1 unit fixture to the exec-r2 runner contract.
+
+    This is intentionally only a synthetic unit-test bundle.  The dedicated
+    exec-r2 integration tests exercise the real producer and independent
+    verifier against a two-commit temporary Git repository.
+    """
+
+    root, old_lock_dir, _old_runtime = build_valid_r1_lock(tmp_path)
+    old_lock_path = old_lock_dir / "formal_batch1_zero_perturbation_lock_v1_1.json"
+    lock = json.loads(old_lock_path.read_text(encoding="utf-8"))
+    lock.update({
+        "schema": "mid360_fmb1_zero_perturbation_formal_lock_v1_1_exec_r2",
+        "lock_id": "FIXTURE_ONLY_EXEC_R2_LOCK",
+        "execution_lock_revision": 2,
+        "status": "ISSUED_AWAITING_SEPARATE_AUTHORIZATION",
+        "authoritative_runtime_root": (
+            "zero_perturbation_runtime/"
+            "mid360_zero_perturbation_v1_1_formal_execution_v1"
+        ),
+        "AUTHORIZATION_PRODUCER_READY": True,
+        "INDEPENDENT_AUTHORIZATION_VERIFIER_READY": True,
+        "AUTHORIZATION_LIFECYCLE_QUALIFIED": True,
+        "FORMAL_LOCK_ISSUED": True,
+        "FORMAL_ICP_UNLOCKED": False,
+        "FORMAL_REGISTRATION_AUTHORIZED": False,
+        "actual_open3d_trials": 0,
+        "actual_pcl_trials": 0,
+        "actual_formal_trials": 0,
+        "registration_execution_count": 0,
+    })
+    lock_dir = root / "results/mid360_formal_batch1/zero_perturbation_v1_1_exec_r2_lock"
+    lock_dir.mkdir(parents=True, exist_ok=True)
+    lock_name = "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.json"
+    write_json(lock_dir / lock_name, lock)
+    (lock_dir / "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.sha256").write_text(
+        f"{sha(lock_dir / lock_name)}  {lock_name}\n", encoding="ascii"
+    )
+    shutil.copyfile(old_lock_dir / "lock_inventory.csv", lock_dir / "lock_inventory.csv")
+    material = {
+        "lock_file_sha256": sha(lock_dir / lock_name),
+        "lock_inventory_file_sha256": sha(lock_dir / "lock_inventory.csv"),
+        "execution_code_commit": COMMIT,
+    }
+    fingerprint = hashlib.sha256(
+        (json.dumps(material, sort_keys=True, separators=(",", ":")) + "\n").encode()
+    ).hexdigest()
+    write_json(lock_dir / "lock_fingerprint.json", {
+        **material, "lock_fingerprint": fingerprint, "execution_lock_revision": 2,
+    })
+    shutil.copyfile(old_lock_dir / "environment_manifest.json", lock_dir / "environment_manifest.json")
+    write_json(lock_dir / "NO_REGISTRATION_ATTESTATION.json", {
+        "status": "PASS", "pass": True,
+        "open3d_registration_call_count": 0, "pcl_cli_invocation_count": 0,
+        "other_registration_process_count": 0, "formal_trial_count": 0,
+        "actual_formal_trials": 0,
+    })
+    write_json(lock_dir / "execution_control_patch_report.json", {
+        "status": "PASS", "SCIENTIFIC_PROTOCOL_CHANGED": False,
+        "FINAL_DATASET_CHANGED": False,
+        "TRIAL_PLAN_SCIENTIFIC_CONTENT_CHANGED": False,
+        "BACKEND_PARAMETERS_CHANGED": False, "ACTUAL_FORMAL_TRIALS": 0,
+    })
+    write_json(lock_dir / "authorization_lifecycle_test_report.json", {
+        "status": "PASS", "AUTHORIZATION_LIFECYCLE_QUALIFIED": True,
+        "tamper_case_count": 25, "REAL_FORMAL_TRIALS": 0,
+    })
+    core_names = (
+        lock_name, "formal_batch1_zero_perturbation_lock_v1_1_exec_r2.sha256",
+        "lock_inventory.csv", "lock_fingerprint.json",
+        "NO_REGISTRATION_ATTESTATION.json", "environment_manifest.json",
+        "execution_control_patch_report.json",
+        "authorization_lifecycle_test_report.json",
+    )
+    (lock_dir / "LOCK_CORE_SHA256SUMS").write_text(
+        "".join(f"{sha(lock_dir / name)}  {name}\n" for name in core_names),
+        encoding="ascii",
+    )
+    runtime = root / lock["authoritative_runtime_root"]
+    return root, lock_dir, runtime

@@ -1,0 +1,22 @@
+{
+  "schema": "mid360_fmb1_blocked_formal_execution_attempt_v1",
+  "attempt_id": "BLOCKED_ATTEMPT_001",
+  "recorded_at_utc": "2026-08-20T04:25:45Z",
+  "status": "BLOCKED_BEFORE_AUTHORIZATION_AND_EXECUTION",
+  "reason": "MISSING_LOCK_MATCHED_AUTHORIZATION_PRODUCER_AND_INDEPENDENT_VERIFIER",
+  "classification": "INFRASTRUCTURE_PRE_EXECUTION_BLOCKER_NOT_SCIENTIFIC_FAILURE",
+  "repository_head": "0899b84150467e2d31617db55447c54e2eec66c1",
+  "branch": "execution/fmb1-zero-perturbation-v1.1-formal-v1",
+  "old_lock_path": "results/mid360_formal_batch1/zero_perturbation_v1_1_lock/formal_batch1_zero_perturbation_lock_v1_1.json",
+  "old_lock_sha256": "a191894d76f5c3bd3be2aa53f4a2b8bb6b641b77d9603a6f300993b49bbf9c0c",
+  "old_lock_fingerprint": "9fcd01bd439e1c4e8c2bd0a220a3af1d16c394177bb17197850c4d769109cbba",
+  "authorization_created": false,
+  "runtime_created": false,
+  "backend_invocations": 0,
+  "actual_open3d_trials": 0,
+  "actual_pcl_trials": 0,
+  "actual_formal_trials": 0,
+  "scientific_results_created": false,
+  "success_tag_created": false,
+  "reusable_as_execution_attempt": false
+}

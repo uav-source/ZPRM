@@ -358,6 +358,12 @@ def test_trial_bridge_supports_exactly_five_new_conditions() -> None:
 def test_dry_run_is_1050_2100_and_zero_execution(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
+    degen_source = tmp_path / "Degen-LIO"
+    degen_source.mkdir()
+    monkeypatch.setattr(protocol_module, "SOURCE_REPOSITORY", degen_source)
+    monkeypatch.setenv(
+        "MAMBA_ROOT_PREFIX", protocol_module.FROZEN_MAMBA_ROOT_PREFIX
+    )
     new = planned_new_snapshots()
     new_trials = planned_trials(new)
     combined = planned_combined_snapshots()
@@ -406,7 +412,7 @@ def test_dry_run_is_1050_2100_and_zero_execution(
     # Exercise the process-global hook without issuing a real filesystem read
     # against the read-only source repository.  An inert weak monitor must let
     # the synthetic audit event return normally.
-    sys.audit("open", "/home/lj/Degen-LIO/__inert_monitor_probe__", "r", 0)
+    sys.audit("open", str(degen_source / "__inert_monitor_probe__"), "r", 0)
     with pytest.raises(PermissionError, match="PYTHONNOUSERSITE"):
         protocol_module.assert_isolated_python_runtime(
             environ={}, search_paths=[str(ROOT / "src")]
@@ -421,7 +427,7 @@ def test_dry_run_is_1050_2100_and_zero_execution(
                 "MAMBA_ROOT_PREFIX": protocol_module.FROZEN_MAMBA_ROOT_PREFIX,
                 "PYTHONNOUSERSITE": "1",
             },
-            search_paths=["/home/lj/Degen-LIO"],
+            search_paths=[str(degen_source)],
         )
     results_dir = tmp_path / "raw_results"
     results_dir.mkdir()
@@ -433,7 +439,7 @@ def test_dry_run_is_1050_2100_and_zero_execution(
             {"results": {}, "run_id": "x", "schema_version": "x"},
             {new_trials[0]["planned_trial_id"]: new_trials[0]},
         )
-    monkeypatch.chdir("/home/lj/Degen-LIO")
+    monkeypatch.chdir(degen_source)
     with pytest.raises(PermissionError, match="source repository"):
         protocol_module.assert_isolated_python_runtime(
             environ={

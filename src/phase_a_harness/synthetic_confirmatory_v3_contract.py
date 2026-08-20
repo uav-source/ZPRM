@@ -74,14 +74,14 @@ FORMAL_PRERUN_TAG = (
     "bootstrap-repair-r3-pre-run-pass"
 )
 FORMAL_RUNTIME_ROOT = Path(
-    "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
+    "/home/lj/zero_perturbation_runtime/confirmatory/synthetic_confirmatory_v3"
 )
 QUALIFICATION_RUNTIME_ROOT = Path(
-    "/home/lj/ZPRM/zero_perturbation_runtime/qualification/"
+    "/home/lj/zero_perturbation_runtime/qualification/"
     "v3_bootstrap_state_machine_requalification_v3"
 )
 SOURCE_REPOSITORY = Path("/home/lj/Degen-LIO")
-RUNTIME_ARCHIVE_ROOT = Path("/home/lj/ZPRM/zero_perturbation_runtime_archive")
+RUNTIME_ARCHIVE_ROOT = Path("/home/lj/zero_perturbation_runtime_archive")
 V2_FAILURE_ARCHIVE_ROOT = (
     RUNTIME_ARCHIVE_ROOT
     / "synthetic_confirmatory_v2_runtime_lifecycle_failure_20260730"
@@ -900,7 +900,7 @@ def audit_formal_runtime_paths(repository: str | Path) -> dict[str, Any]:
         and child_overlap_count == 0
         and FORMAL_RUNTIME_ROOT
         == Path(
-            "/home/lj/ZPRM/zero_perturbation_runtime/confirmatory/"
+            "/home/lj/zero_perturbation_runtime/confirmatory/"
             "synthetic_confirmatory_v3"
         )
     )

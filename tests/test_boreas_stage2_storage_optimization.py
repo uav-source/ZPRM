@@ -181,9 +181,11 @@ def test_metadata_only_producer_builds_complete_zero_execution_closure(
         lambda *_args, **_kwargs: recorded_gate,
     )
     runtime = tmp_path / "runtime"
+    data_root = tmp_path / "empty_boreas_stage1_data_root"
+    data_root.mkdir()
     summary = producer.build_boreas_stage2_storage_optimization(
         repository=REPOSITORY,
-        data_root=Path.home() / "zero_perturbation_data/boreas_stage1_v1",
+        data_root=data_root,
         runtime_root=runtime,
         pytest_junit_xml=_junit(tmp_path / "pytest.xml"),
         require_clean_worktree=False,
@@ -202,13 +204,13 @@ def test_metadata_only_producer_builds_complete_zero_execution_closure(
     frozen = tmp_path / "frozen"
     producer.freeze_boreas_stage2_storage_optimization(
         repository=REPOSITORY,
-        data_root=Path.home() / "zero_perturbation_data/boreas_stage1_v1",
+        data_root=data_root,
         runtime_root=runtime,
         frozen_root=frozen,
     )
     assert len(list(frozen.iterdir())) == 24
     assert producer._assert_no_local_lidar_payload(
-        Path.home() / "zero_perturbation_data/boreas_stage1_v1"
+        data_root
     ) == []
     monkeypatch.setenv("ZPRM_REAL_DATA_PREP_NO_REGISTRATION", "1")
     monkeypatch.delenv("ZPRM_BOREAS_NO_LIDAR_PAYLOAD_DOWNLOAD", raising=False)
