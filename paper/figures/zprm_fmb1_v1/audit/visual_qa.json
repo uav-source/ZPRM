@@ -1,0 +1,39 @@
+{
+  "schema": "zprm_fmb1_manual_visual_qa_v1",
+  "review_surface": "final 600 dpi PNG exports plus PDF font inspection",
+  "overall_status": "PASS",
+  "checks": {
+    "font_clear": true,
+    "legends_do_not_obscure_data": true,
+    "panel_labels_correct": true,
+    "mm_and_deg_units_correct": true,
+    "backend_colors_and_markers_consistent": true,
+    "rich_weak_partition_consistent": true,
+    "scene_order_r01_to_w03": true,
+    "w02_is_attempt2": true,
+    "w04_absent": true,
+    "text_clipping_absent": true,
+    "png_and_tiff_600_dpi": true,
+    "pdf_fonts_embedded": true,
+    "counter_directional_observations_retained": true
+  },
+  "figures": {
+    "Fig05_geometry_characterization": "PASS; three panels, complete 0-1 spectral-entropy axis, all 180 snapshot points and six frozen scene medians visible.",
+    "Fig11_six_scene_translation_zpru": "PASS; shared y-axis, summary-interval legend clear, station and scene markers distinct.",
+    "Fig12_rich_weak_exact_permutation": "PASS after label-offset revision; six labeled scene medians and all 20 allocations/backend visible, p=0.7 unobscured.",
+    "Fig13_cross_backend_agreement": "PASS after label-offset revision; identity reference and rank annotations separated, 180-value ECDF visible.",
+    "Fig14_reassociation_association": "PASS after label/legend revision; no fitted line, 180 centered rows/backend and frozen-draw insets visible.",
+    "Fig15_systematic_component": "PASS; scene/station markers and frozen group medians distinct, no p-value displayed.",
+    "FigS01_rotation_secondary": "PASS after annotation-background revision; secondary role, degree unit, differences, and exact p-values clear."
+  },
+  "pdf_font_check": {
+    "command": "pdffonts",
+    "font_names": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT"
+    ],
+    "embedded": true,
+    "subset": true,
+    "type3_absent": true
+  }
+}

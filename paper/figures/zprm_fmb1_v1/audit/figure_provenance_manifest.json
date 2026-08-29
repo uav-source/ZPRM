@@ -1,0 +1,281 @@
+{
+  "backend_order": [
+    "OPEN3D_POINT_TO_PLANE",
+    "PCL_POINT_TO_PLANE"
+  ],
+  "counts": {
+    "FORMAL_STATISTIC_RECOMPUTATION_COUNT": 0,
+    "FROZEN_RESULT_MODIFICATION_COUNT": 0,
+    "NEW_HYPOTHESIS_TEST_COUNT": 0,
+    "REGISTRATION_BACKEND_CALL_COUNT": 0
+  },
+  "figure_commit": "SELF_RESOLVED_BY_ANNOTATED_TAG:figures/fmb1-paper-data-figures-v1",
+  "figures": {
+    "Fig05_geometry_characterization": {
+      "outputs": {
+        "pdf": "paper/figures/zprm_fmb1_v1/outputs/pdf/Fig05_geometry_characterization.pdf",
+        "png": "paper/figures/zprm_fmb1_v1/outputs/png/Fig05_geometry_characterization.png",
+        "svg": "paper/figures/zprm_fmb1_v1/outputs/svg/Fig05_geometry_characterization.svg",
+        "tiff": "paper/figures/zprm_fmb1_v1/outputs/tiff/Fig05_geometry_characterization.tiff"
+      },
+      "panels": [
+        "(a) normalized minimum translational eigenvalue",
+        "(b) translational condition number",
+        "(c) spectral entropy"
+      ],
+      "source_basenames": [
+        "final_geometry_manifest.csv",
+        "final_scene_registry.yaml",
+        "final_dataset_readiness.json"
+      ]
+    },
+    "Fig11_six_scene_translation_zpru": {
+      "outputs": {
+        "pdf": "paper/figures/zprm_fmb1_v1/outputs/pdf/Fig11_six_scene_translation_zpru.pdf",
+        "png": "paper/figures/zprm_fmb1_v1/outputs/png/Fig11_six_scene_translation_zpru.png",
+        "svg": "paper/figures/zprm_fmb1_v1/outputs/svg/Fig11_six_scene_translation_zpru.svg",
+        "tiff": "paper/figures/zprm_fmb1_v1/outputs/tiff/Fig11_six_scene_translation_zpru.tiff"
+      },
+      "panels": [
+        "(a) Open3D",
+        "(b) PCL"
+      ],
+      "source_basenames": [
+        "translation_scene_summaries.csv",
+        "translation_station_summaries.csv"
+      ]
+    },
+    "Fig12_rich_weak_exact_permutation": {
+      "outputs": {
+        "pdf": "paper/figures/zprm_fmb1_v1/outputs/pdf/Fig12_rich_weak_exact_permutation.pdf",
+        "png": "paper/figures/zprm_fmb1_v1/outputs/png/Fig12_rich_weak_exact_permutation.png",
+        "svg": "paper/figures/zprm_fmb1_v1/outputs/svg/Fig12_rich_weak_exact_permutation.svg",
+        "tiff": "paper/figures/zprm_fmb1_v1/outputs/tiff/Fig12_rich_weak_exact_permutation.tiff"
+      },
+      "panels": [
+        "(a) Open3D scene medians",
+        "(b) Open3D exact allocations",
+        "(c) PCL scene medians",
+        "(d) PCL exact allocations"
+      ],
+      "source_basenames": [
+        "translation_scene_summaries.csv",
+        "translation_exact_permutations.csv",
+        "analysis_summary.json"
+      ]
+    },
+    "Fig13_cross_backend_agreement": {
+      "outputs": {
+        "pdf": "paper/figures/zprm_fmb1_v1/outputs/pdf/Fig13_cross_backend_agreement.pdf",
+        "png": "paper/figures/zprm_fmb1_v1/outputs/png/Fig13_cross_backend_agreement.png",
+        "svg": "paper/figures/zprm_fmb1_v1/outputs/svg/Fig13_cross_backend_agreement.svg",
+        "tiff": "paper/figures/zprm_fmb1_v1/outputs/tiff/Fig13_cross_backend_agreement.tiff"
+      },
+      "panels": [
+        "(a) scene pairs",
+        "(b) station pairs",
+        "(c) direction-cosine ECDF"
+      ],
+      "source_basenames": [
+        "cross_backend_scene_pairs.csv",
+        "cross_backend_station_pairs.csv",
+        "snapshot_direction_cosines.csv",
+        "analysis_summary.json"
+      ]
+    },
+    "Fig14_reassociation_association": {
+      "outputs": {
+        "pdf": "paper/figures/zprm_fmb1_v1/outputs/pdf/Fig14_reassociation_association.pdf",
+        "png": "paper/figures/zprm_fmb1_v1/outputs/png/Fig14_reassociation_association.png",
+        "svg": "paper/figures/zprm_fmb1_v1/outputs/svg/Fig14_reassociation_association.svg",
+        "tiff": "paper/figures/zprm_fmb1_v1/outputs/tiff/Fig14_reassociation_association.tiff"
+      },
+      "panels": [
+        "(a) Open3D scene association",
+        "(b) PCL scene association",
+        "(c) Open3D centered rows and frozen draws",
+        "(d) PCL centered rows and frozen draws"
+      ],
+      "source_basenames": [
+        "reassociation_scene_summaries.csv",
+        "reassociation_centered_rows.csv",
+        "reassociation_centered_permutation_summary.json",
+        "reassociation_centered_permutation_draws.csv",
+        "analysis_summary.json"
+      ]
+    },
+    "Fig15_systematic_component": {
+      "outputs": {
+        "pdf": "paper/figures/zprm_fmb1_v1/outputs/pdf/Fig15_systematic_component.pdf",
+        "png": "paper/figures/zprm_fmb1_v1/outputs/png/Fig15_systematic_component.png",
+        "svg": "paper/figures/zprm_fmb1_v1/outputs/svg/Fig15_systematic_component.svg",
+        "tiff": "paper/figures/zprm_fmb1_v1/outputs/tiff/Fig15_systematic_component.tiff"
+      },
+      "panels": [
+        "(a) Open3D",
+        "(b) PCL"
+      ],
+      "source_basenames": [
+        "systematic_scene_values.csv",
+        "systematic_station_values.csv",
+        "analysis_summary.json"
+      ]
+    },
+    "FigS01_rotation_secondary": {
+      "outputs": {
+        "pdf": "paper/figures/zprm_fmb1_v1/outputs/pdf/FigS01_rotation_secondary.pdf",
+        "png": "paper/figures/zprm_fmb1_v1/outputs/png/FigS01_rotation_secondary.png",
+        "svg": "paper/figures/zprm_fmb1_v1/outputs/svg/FigS01_rotation_secondary.svg",
+        "tiff": "paper/figures/zprm_fmb1_v1/outputs/tiff/FigS01_rotation_secondary.tiff"
+      },
+      "panels": [
+        "(a) Open3D secondary endpoint",
+        "(b) PCL secondary endpoint"
+      ],
+      "source_basenames": [
+        "rotation_scene_summaries.csv",
+        "rotation_station_summaries.csv",
+        "rotation_exact_permutations.csv",
+        "analysis_summary.json"
+      ]
+    }
+  },
+  "font_family": "Times New Roman",
+  "generation_base_commit": "81f4b566252d09ec5d055bc97c7daa964983ddc8",
+  "pdf_fonttype": 42,
+  "raster_dpi": 600,
+  "scene_is_highest_independent_unit": true,
+  "scene_order": [
+    "FMB1_R01",
+    "FMB1_R02",
+    "FMB1_R03",
+    "FMB1_W01",
+    "FMB1_W02",
+    "FMB1_W03"
+  ],
+  "schema": "zprm_fmb1_figure_provenance_manifest_v1",
+  "source_tags": [
+    "results/fmb1-zero-perturbation-locked-analysis-v1",
+    "correction/fmb1-solver-convergence-reporting-v1",
+    "diagnostic/fmb1-solver-convergence-v1"
+  ],
+  "sources": {
+    "results/mid360_formal_batch1/final_dataset_v1/SHA256SUMS": {
+      "role": "final dataset checksum manifest",
+      "sha256": "37ed735d30f1f6cb76e4f58b20b670593d581fed22eebdb7d7bffcf42aabbd0f",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/final_dataset_v1/final_dataset_readiness.json": {
+      "role": "final scene/W02/W04 admission audit",
+      "sha256": "bf7fa35df2c92816721a686ffa6f9677bd936ba1cb47a329d40d11d76927a1d4",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/final_dataset_v1/final_geometry_manifest.csv": {
+      "role": "Fig05 snapshot geometry",
+      "sha256": "c0a1c8ea9cbb1b28f8ffdc507d7becf8f591ed333d047161168a1a0962a10bd4",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/final_dataset_v1/final_scene_registry.yaml": {
+      "role": "Fig05 frozen scene geometry medians and W02 attempt",
+      "sha256": "54e69717317632cd36422b7316d4288909ade9155386d783d36fcdc5ff2078fe",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_reporting_correction_v1/SHA256SUMS": {
+      "role": "reporting correction checksum manifest",
+      "sha256": "c186ea4da1d6426876191912973c83b29ff13acd33daac871ee7a51f00502d24",
+      "tag": "correction/fmb1-solver-convergence-reporting-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_reporting_correction_v1/analysis_summary_reporting_corrected_v1.json": {
+      "role": "solver/accounting reporting correction v1",
+      "sha256": "31f441bf25e44e2d6d6fb6943714ff1d0b6ff0898e7d969a592b041ed73afa08",
+      "tag": "correction/fmb1-solver-convergence-reporting-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/SHA256SUMS": {
+      "role": "scientific result checksum manifest",
+      "sha256": "7addad715eca76b1a4ebfdb747a7b37718fa003a0985f33dfd18741e4ce11a02",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/analysis_summary.json": {
+      "role": "frozen scientific statistics and pair values",
+      "sha256": "b23c303e013ef5194d109b997a35876153140f8ad911dfa5188b6b0d53c1f869",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/cross_backend_scene_pairs.csv": {
+      "role": "Fig13 frozen scene ordering pairs",
+      "sha256": "de56d6ed1fb1043558e1fe73ebd502b0c73fccb2abcc4f2b6c3370e6faf86ec8",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/cross_backend_station_pairs.csv": {
+      "role": "Fig13 station value pairs",
+      "sha256": "a7359abc8af9c00633b3928766a418a3dd39e9a63fce63b9608b1b3be5618463",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/reassociation_centered_permutation_draws.csv": {
+      "role": "Fig14 frozen permutation draws",
+      "sha256": "5861a5a9940c359269d9ed409da9a06b3159489d73016b36cd30b0e6bd54e899",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/reassociation_centered_permutation_summary.json": {
+      "role": "Fig14 frozen permutation summary",
+      "sha256": "dcbf7b978aeaccc76f0ce4d1d4015994a4fb61058a122d3a63f4c71161d4b1e5",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/reassociation_centered_rows.csv": {
+      "role": "Fig14 frozen centered rows",
+      "sha256": "15c7ce6822e45e2d26393ac4dc1a561f742e132b1e2dba62a0f7d2106ef4d725",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/reassociation_scene_summaries.csv": {
+      "role": "Fig14 reassociation scene summaries",
+      "sha256": "47bbee5a140025377c3818776504ddbbb2447c6ea4bf38d66551c6e627f4da1e",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/rotation_exact_permutations.csv": {
+      "role": "FigS01 frozen exact allocations",
+      "sha256": "6b9ff40953fe60a64361465fb45e02a4247b118744cb61bd1f372acd0a4b98be",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/rotation_scene_summaries.csv": {
+      "role": "FigS01 rotation scene summaries",
+      "sha256": "c5bdbbad64986da97bff9f6fd07879dfa6b6dbdf6140d0ba82660bd1b456483a",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/rotation_station_summaries.csv": {
+      "role": "FigS01 rotation station summaries",
+      "sha256": "703936e7c9cbff2103dd3fed41a09b0ab71c047a23498fbc5b7fad7ce7a490e3",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/snapshot_direction_cosines.csv": {
+      "role": "Fig13 snapshot direction cosines",
+      "sha256": "c8a59eb7bced5a3ea425e395080f3421303d52fdaaab1d91ecdf85f2b9a37ffe",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/systematic_scene_values.csv": {
+      "role": "Fig15 systematic scene values",
+      "sha256": "cde079d4f227f2d22c75b57404bfd55a6e88fe209efd87f98992951b46f64a07",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/systematic_station_values.csv": {
+      "role": "Fig15 systematic station values",
+      "sha256": "474ac676c84f7408e5eaa43ae07e9bbc55cc9541726dc858cbe49d1d6c89db0f",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/translation_exact_permutations.csv": {
+      "role": "Fig12 frozen exact allocations",
+      "sha256": "0feeefba4f0f2ab72954232036a822b1f7388b0375242ffab5d9495eddde6f2e",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/translation_scene_summaries.csv": {
+      "role": "Fig11/Fig12 translation scene summaries",
+      "sha256": "888fb5f8d336b1cb62f0671a9f18ca73e178663c88ea69c48838f536094bd532",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    },
+    "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/translation_station_summaries.csv": {
+      "role": "Fig11 translation station summaries",
+      "sha256": "9397d9814807a472206a30cb003c804d326980483bd1a8d5dc2deda8d203b847",
+      "tag": "results/fmb1-zero-perturbation-locked-analysis-v1"
+    }
+  },
+  "tiff_compression": "LZW",
+  "w02_attempt": 2
+}

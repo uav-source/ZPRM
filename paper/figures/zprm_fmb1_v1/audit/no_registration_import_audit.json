@@ -1,0 +1,125 @@
+{
+  "REGISTRATION_BACKEND_CALL_COUNT": 0,
+  "files_scanned": [
+    "generate_all_figures.py",
+    "paper_figure_common.py",
+    "validate_paper_figures.py"
+  ],
+  "forbidden_backend_calls": [],
+  "forbidden_import_hits": [],
+  "imports": [
+    {
+      "file": "generate_all_figures.py",
+      "module": "__future__"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "ast"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "json"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "math"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "pathlib"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "matplotlib.pyplot"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "numpy"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "pandas"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "matplotlib.lines"
+    },
+    {
+      "file": "generate_all_figures.py",
+      "module": "paper_figure_common"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "__future__"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "hashlib"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "json"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "pathlib"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "typing"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "matplotlib"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "matplotlib.pyplot"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "numpy"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "pandas"
+    },
+    {
+      "file": "paper_figure_common.py",
+      "module": "matplotlib.lines"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "__future__"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "ast"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "json"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "math"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "pathlib"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "pandas"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "PIL"
+    },
+    {
+      "file": "validate_paper_figures.py",
+      "module": "paper_figure_common"
+    }
+  ],
+  "schema": "zprm_fmb1_no_registration_import_audit_v1"
+}

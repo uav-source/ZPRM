@@ -1,0 +1,650 @@
+{
+  "csv_files": [
+    {
+      "attempt_values": [
+        1,
+        2
+      ],
+      "columns": [
+        "scene_id",
+        "station_id",
+        "selection_index",
+        "snapshot_id",
+        "initial_correspondence_count",
+        "initial_valid_normal_correspondence_count",
+        "lambda_min_trans",
+        "lambda_mid_trans",
+        "lambda_max_trans",
+        "normalized_lambda_min_trans",
+        "normalized_lambda_mid_trans",
+        "normalized_lambda_max_trans",
+        "condition_number_trans",
+        "spectral_entropy_trans",
+        "attempt"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": true,
+        "backend": false,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": true,
+        "station_id": true,
+        "status": false
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/final_dataset_v1/final_geometry_manifest.csv",
+      "role": "Fig05 snapshot geometry",
+      "row_count": 180,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "authoritative_scientific_outcome_n",
+        "available_case",
+        "backend",
+        "defined_station_summary_n",
+        "endpoint",
+        "endpoint_specific_undefined_n",
+        "finite_endpoint_n",
+        "formal_statistics",
+        "formal_summary_status",
+        "planned_n",
+        "resolved_infrastructure_attempt_n",
+        "scene_id",
+        "scene_statistics_are_direct_30_snapshot_statistics",
+        "scientific_undefined_nonfinite_n",
+        "solver_nonconverged_finite_n",
+        "station_medians",
+        "station_summaries",
+        "undefined_trial_ids",
+        "unresolved_infrastructure_failure_n"
+      ],
+      "endpoint_names": [
+        "translation_norm_m"
+      ],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": true,
+        "formal_summary_status": true,
+        "scene_id": true,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [
+        "FORMAL_SCENE_SUMMARY_DEFINED_COMPLETE_30_OF_30"
+      ],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/translation_scene_summaries.csv",
+      "role": "Fig11/Fig12 translation scene summaries",
+      "row_count": 12,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "authoritative_scientific_outcome_n",
+        "available_case",
+        "backend",
+        "endpoint",
+        "endpoint_specific_undefined_n",
+        "finite_endpoint_n",
+        "formal_statistics",
+        "formal_summary_status",
+        "planned_n",
+        "resolved_infrastructure_attempt_n",
+        "scene_id",
+        "scientific_undefined_nonfinite_n",
+        "solver_nonconverged_finite_n",
+        "station_id",
+        "undefined_trial_ids",
+        "unresolved_infrastructure_failure_n"
+      ],
+      "endpoint_names": [
+        "translation_norm_m"
+      ],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": true,
+        "formal_summary_status": true,
+        "scene_id": true,
+        "station_id": true,
+        "status": false
+      },
+      "formal_summary_status": [
+        "FORMAL_STATION_SUMMARY_DEFINED_COMPLETE_10_OF_10"
+      ],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/translation_station_summaries.csv",
+      "role": "Fig11 translation station summaries",
+      "row_count": 36,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "assigned_rich_scene_ids",
+        "assigned_weak_scene_ids",
+        "backend",
+        "greater_than_or_equal_observed",
+        "observed_allocation",
+        "statistic"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": false,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/translation_exact_permutations.csv",
+      "role": "Fig12 frozen exact allocations",
+      "row_count": 40,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "classification",
+        "open3d_sign",
+        "pcl_sign",
+        "scene_i",
+        "scene_j"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": false,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": false,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/cross_backend_scene_pairs.csv",
+      "role": "Fig13 frozen scene ordering pairs",
+      "row_count": 15,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [],
+      "unique_scene_ids": [],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "complete",
+        "identifier",
+        "open3d_value",
+        "pcl_value"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": false,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": false,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/cross_backend_station_pairs.csv",
+      "role": "Fig13 station value pairs",
+      "row_count": 18,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [],
+      "unique_scene_ids": [],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "cosine",
+        "snapshot_id",
+        "status"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": false,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": false,
+        "station_id": false,
+        "status": true
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/snapshot_direction_cosines.csv",
+      "role": "Fig13 snapshot direction cosines",
+      "row_count": 180,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [
+        "DIRECTION_COSINE_DEFINED"
+      ],
+      "unique_backends": [],
+      "unique_scene_ids": [],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "backend",
+        "finite_metric_n",
+        "formal_turnover_field",
+        "median",
+        "scene_id",
+        "status"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": true,
+        "station_id": false,
+        "status": true
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/reassociation_scene_summaries.csv",
+      "role": "Fig14 reassociation scene summaries",
+      "row_count": 12,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [
+        "REASSOCIATION_SCENE_SUMMARY_DEFINED_COMPLETE_30_METRICS"
+      ],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "backend",
+        "centered_correspondence_turnover",
+        "centered_translation_norm_m",
+        "scene_id",
+        "scene_row_index"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": true,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/reassociation_centered_rows.csv",
+      "role": "Fig14 frozen centered rows",
+      "row_count": 360,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "abs_rho_permuted",
+        "backend",
+        "draw_index",
+        "greater_than_or_equal_abs_observed",
+        "rho_permuted"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": false,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/reassociation_centered_permutation_draws.csv",
+      "role": "Fig14 frozen permutation draws",
+      "row_count": 20000,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "backend",
+        "defined_station_n",
+        "scene_id",
+        "scene_systematic_fraction",
+        "status"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": true,
+        "station_id": false,
+        "status": true
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/systematic_scene_values.csv",
+      "role": "Fig15 systematic scene values",
+      "row_count": 12,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [
+        "SCENE_SYSTEMATIC_FRACTION_DEFINED_COMPLETE_3_STATIONS"
+      ],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "backend",
+        "denominator",
+        "finite_vector_n",
+        "mean_vector",
+        "planned_n",
+        "scene_id",
+        "station_id",
+        "status",
+        "systematic_fraction"
+      ],
+      "endpoint_names": [],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": false,
+        "formal_summary_status": false,
+        "scene_id": true,
+        "station_id": true,
+        "status": true
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/systematic_station_values.csv",
+      "role": "Fig15 systematic station values",
+      "row_count": 36,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [
+        "SYSTEMATIC_FRACTION_DEFINED_COMPLETE_10_VECTORS"
+      ],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "authoritative_scientific_outcome_n",
+        "available_case",
+        "backend",
+        "defined_station_summary_n",
+        "endpoint",
+        "endpoint_specific_undefined_n",
+        "finite_endpoint_n",
+        "formal_statistics",
+        "formal_summary_status",
+        "planned_n",
+        "resolved_infrastructure_attempt_n",
+        "scene_id",
+        "scene_statistics_are_direct_30_snapshot_statistics",
+        "scientific_undefined_nonfinite_n",
+        "solver_nonconverged_finite_n",
+        "station_medians",
+        "station_summaries",
+        "undefined_trial_ids",
+        "unresolved_infrastructure_failure_n"
+      ],
+      "endpoint_names": [
+        "rotation_angle_rad",
+        "rotation_angle_deg"
+      ],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": true,
+        "formal_summary_status": true,
+        "scene_id": true,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [
+        "FORMAL_SCENE_SUMMARY_DEFINED_COMPLETE_30_OF_30"
+      ],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/rotation_scene_summaries.csv",
+      "role": "FigS01 rotation scene summaries",
+      "row_count": 24,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": []
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "authoritative_scientific_outcome_n",
+        "available_case",
+        "backend",
+        "endpoint",
+        "endpoint_specific_undefined_n",
+        "finite_endpoint_n",
+        "formal_statistics",
+        "formal_summary_status",
+        "planned_n",
+        "resolved_infrastructure_attempt_n",
+        "scene_id",
+        "scientific_undefined_nonfinite_n",
+        "solver_nonconverged_finite_n",
+        "station_id",
+        "undefined_trial_ids",
+        "unresolved_infrastructure_failure_n"
+      ],
+      "endpoint_names": [
+        "rotation_angle_rad",
+        "rotation_angle_deg"
+      ],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": true,
+        "formal_summary_status": true,
+        "scene_id": true,
+        "station_id": true,
+        "status": false
+      },
+      "formal_summary_status": [
+        "FORMAL_STATION_SUMMARY_DEFINED_COMPLETE_10_OF_10"
+      ],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/rotation_station_summaries.csv",
+      "role": "FigS01 rotation station summaries",
+      "row_count": 72,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [
+        "FMB1_R01",
+        "FMB1_R02",
+        "FMB1_R03",
+        "FMB1_W01",
+        "FMB1_W02",
+        "FMB1_W03"
+      ],
+      "unique_station_ids": [
+        "S01",
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "attempt_values": [],
+      "columns": [
+        "assigned_rich_scene_ids",
+        "assigned_weak_scene_ids",
+        "backend",
+        "endpoint",
+        "greater_than_or_equal_observed",
+        "observed_allocation",
+        "statistic"
+      ],
+      "endpoint_names": [
+        "rotation_angle_rad",
+        "rotation_angle_deg"
+      ],
+      "field_presence": {
+        "attempt": false,
+        "backend": true,
+        "endpoint": true,
+        "formal_summary_status": false,
+        "scene_id": false,
+        "station_id": false,
+        "status": false
+      },
+      "formal_summary_status": [],
+      "relative_path": "results/mid360_formal_batch1/zero_perturbation_locked_analysis_results_v1/rotation_exact_permutations.csv",
+      "role": "FigS01 frozen exact allocations",
+      "row_count": 80,
+      "scientific_source_commit_or_tag": "results/fmb1-zero-perturbation-locked-analysis-v1",
+      "status_values": [],
+      "unique_backends": [
+        "OPEN3D_POINT_TO_PLANE",
+        "PCL_POINT_TO_PLANE"
+      ],
+      "unique_scene_ids": [],
+      "unique_station_ids": []
+    }
+  ],
+  "fail_closed_on_ambiguous_schema": true,
+  "schema": "zprm_fmb1_source_schema_audit_v1"
+}
